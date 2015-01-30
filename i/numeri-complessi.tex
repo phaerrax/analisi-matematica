@@ -1,0 +1,186 @@
+\chapter{Numeri complessi}
+I numeri complessi nascono come soluzione all'equazione $x^2=-1$, e in generale a quei problemi che richiedono la radice (di indice pari) di un numero negativo: si introduce così l'\emph{unità immaginaria}, indicata con $i$, tale per cui
+\[
+i^2=-1.
+\]
+Con questa nuova unità si costruiscono i numeri \emph{immaginari puri}, ovvero i numeri della forma $i\alpha$, con $\alpha\in\R$: a questo punto, l'equazione (ad esempio) $x^2=-\alpha$, se $\alpha$ è positivo, ha sempre delle soluzioni, in questo caso il numero $i\sqrt{\alpha}$ e il suo opposto.
+Si chiama inoltre \emph{numero complesso} una qualunque espressione del tipo $z=a+ib$, con $a,b\in\R$. Tale scrittura è detta \emph{forma algebrica} di $z$, e $a$ si chiama parte reale di $z$, mentre $b$ è la parte immaginaria, e si possono indicare come
+\[
+a=\Re z,\qquad b=\Im z.
+\]
+La coppia ordinata $(a,b)$ può essere inoltre associata ad un vettore di $\R^2$, e in effetti i numeri complessi sono in corrispondenza biunivoca con $\{(a,b)\colon a,b\in\R\}$. I numeri complessi quindi si rappresentano su un piano, chiamato appunto \emph{piano complesso}, dove l'asse delle ascisse è l'asse dei numeri reali, e l'asse delle ordinate è l'asse dei numeri immaginari; è chiaro quindi come i numeri reali siano compresi nei numeri complessi: sono semplicemente dei numeri complessi la cui parte immaginaria è nulla.
+
+\section{Operazioni sui numeri complessi}
+Dati due numeri $z=a+ib$ e $w=c+id$, si definiscono:
+\begin{itemize}
+\item l'operazione di somma, come $z+w=(a+c)+i(b+d)$;
+\item l'operazione di prodotto, come $zw=(ac-bd)+i(bc+ad)$ (è un semplice prodotto tra due polinomi);
+\end{itemize}
+\begin{teorema}
+L'insieme dei numeri complessi, indicato con $\C$, dotato delle operazioni appena definite, è un campo, indicato anche con $(\C,+,\cdot)$.
+\end{teorema}
+Ovviamente tutte le operazioni appena descritte valgono anche per i numeri reali e si riducono a quelle già note, poiché $\R\subset\C$.
+
+L'elemento neutro per la somma è $(0,0)$, mentre l'opposto di $z=a+ib$ è $-z=-a-ib$, cioè il simmetrico rispetto all'origine.
+L'elemento neutro per il prodotto è $(1,0)$, e il reciproco di $z=a+ib$ (non nullo) è il numero complesso $\frac1{z}=x+iy$ per cui il prodotto $(x+iy)(a+ib)$ sia 1, quindi
+\[
+\begin{cases}
+	ax-by=1\\
+	bx+ay=0
+\end{cases}
+\longrightarrow
+\begin{dcases}
+	x=\frac{a}{a^2+b^2}\\
+	y=-\frac{b}{a^2+b^2}
+\end{dcases}
+\]
+
+Dato il numero $z=a+ib$, si definiscono inoltre il suo \emph{coniugato}, cioè il numero simmetrico rispetto all'asse reale, $\conj{z}=a-ib$, e il suo \emph{modulo} $\abs{z}=\sqrt{a^2+b^2}$, che è la  distanza del punto $(a,b)$ dall'origine.
+Si hanno le seguenti operazioni con i coniugati e i moduli:
+\begin{itemize}
+\item $\conj{z+w}=\conj{z}+\conj{w}$;
+\item $\conj{zw}=\conj{z}\cdot\conj{w}$;
+\item $z+\conj{z}=2\,\Re z$;
+\item $z-\conj{z}= 2i\,\Im z$;
+\item $z\conj{z}=\abs{z}^2$.
+\item $\abs{zw}=\abs{z}\cdot\abs{w}$;
+\item $\abs{\conj{z}}=\abs{z}$;
+\item $\abs{z+w}\leq\abs{z}+\abs{w}$.
+\end{itemize}
+\begin{proof}
+L'ultima disuguaglianza, che è la disuguaglianza triangolare, si dimostra nel modo seguente:
+\[
+\abs{z+w}^2=(z+w)\cdot(\conj{z+w})=(z+w)(\conj{z}+\conj{w})=z\conj{z}+w\conj{w}+z\conj{w}+\conj{z}w.
+\]
+Gli ultimi due termini sono l'uno il coniugato dell'altro, quindi
+\[
+z\conj{z}+w\conj{w}+z\conj{w}+\conj{z}w=\abs{z}^2+\abs{w}^2+2\,\Re{z\conj{w}}.
+\]
+La parte reale di un numero è sempre minore o uguale al suo modulo, quindi l'uguaglianza rimane applicando i valori assoluti: si possono vedere come il cateto e l'ipotenusa di un triangolo rettangolo, rispettivamente. Quindi $\abs{\Re z}\leq\abs{z}$, e analogamente $\abs{\Im z}\leq\abs{z}$. Quindi si ha
+\[
+\begin{split}
+\abs{z}^2+\abs{w}^2+2\,\Re{z\conj{w}}&\leq\abs{z}^2+\abs{w}^2+2\abs{z\conj{w}}=\\
+&=\abs{z}^2+\abs{w}^2+2\abs{z}\cdot\abs{w}=\\
+&=(\abs{z}+\abs{w})^2.
+\end{split}
+\]
+Applicando le radici, si ottiene quindi la disuguaglianza $\abs{z+w}\leq\abs{z}+\abs{w}$.
+\end{proof}
+Con queste definizioni diventa più ``comodo'' individuare il reciproco di un numero complesso, che si scrive anche come
+\[
+\frac1{z}=\frac{\conj{z}}{z\conj{z}}=\frac{\conj{z}}{\abs{z}^2},
+\]
+che è un prodotto tra un numero reale e un numero complesso.
+Infatti
+\[
+\frac{\conj{z}}{\abs{z}^2}=\frac{a-ib}{a^2+b^2}=\frac{a}{a^2+b^2}-i\frac{b}{a^2+b^2}.
+\]
+Il rapporto tra due numeri complessi allora si scrive come il prodotto di uno per il reciproco dell'altro, quindi
+\[
+\frac{z}{w}=z\cdot\frac{\conj{w}}{\abs{w}^2}.
+\]
+
+\section{Forma trigonometrica ed esponenziale}
+Un altro modo per rappresentare i numeri complessi si ottiene guardandoli in coordinate polari anziché cartesiane: quindi al posto delle componenti sui due assi, cioè la parte reale e la parte immaginaria, si individua il numero con la sua distanza dall'origine e l'angolo che forma con l'asse reale (definito a meno di multipli di $2\pi$), chiamati rispettivamente \emph{modulo}, $r$, e \emph{argomento}, $\theta$:
+\[
+z=r(\cos\theta+i\sin\theta),
+\]
+che vale se $z\neq 0$, poiché in tal caso non si può determinare l'argomento.
+Si può passare da una definizione all'altra tramite le formule
+\[
+\begin{dcases}
+	a=r\cos\theta\\
+	b=r\sin\theta
+\end{dcases}
+\quad\text{e}\quad
+\begin{dcases}
+	r=\sqrt{a^2+b^2}\\
+	\cos\theta=a/r\\
+	\sin\theta=b/r
+\end{dcases}
+\]
+\input{grafici/forma-trigonometrica-complesso}
+
+Questo modo di scrittura dei numeri complessi facilita le operazioni di prodotto, in quanto semplicemente si moltiplicano i moduli e si sommano gli argomenti: dati $z=r(\cos\theta+i\sin\theta)$ e $w=\rho(\cos\phi+i\sin\phi)$, si ha
+\[
+zw=r\rho\big(\!\cos(\theta+\phi)+i\sin(\theta+\phi)\big).
+\]
+\begin{proof}
+Utilizzando le formule del seno e coseno della somma di angoli, risulta
+\[
+\begin{split}
+zw&=r\rho(\cos\theta\cos\phi+i^2\sin\theta\sin\phi+i\sin\theta\cos\phi+i\cos\theta\sin\phi)=\\
+&=r\rho\big(\!\cos(\theta+\phi)+i\sin(\theta+\phi)\big)\qedhere.
+\end{split}
+\]
+\end{proof}
+Si nota come moltiplicare per un numero complesso equivale, oltre ovviamente a moltiplicare i due moduli, a ruotare uno di un angolo equivalente all'argomento dell'altro.
+Inoltre il reciproco di $z\neq 0$, in questa forma, è
+\[
+\frac1{z}=\frac1{r}\big(\!\cos(-\theta)+i\sin(-\theta)\big)=\frac1{r}(\cos\theta-i\sin\theta).
+\]
+Per il rapporto, invece, si sottraggono gli argomenti anziché sommarli.
+
+Un'ulteriore modo più ``compatto'' di rappresentare i numeri complessi è in forma esponenziale, ossia nella scrittura
+\[
+z=re^{i\theta},
+\]
+dove $r$ e $\theta$ sono esattamente lo stesso modulo e argomento della scrittura in forma trigonometrica. La moltipilcazione è ancora più veloce:
+\[
+zw=r\rho e^{i(\theta+\phi)},
+\]
+e così via.
+\section{Potenze e radici}
+Si definiscono le potenze di numeri complessi ad esponente intero relativo, cioè i numeri $z^n$ con $n\in\Z$.
+Sia $z=r(\cos\theta+i\sin\theta)$. La sua potenza $n$-esima è il numero moltiplicato per se stesso $n$ volte. Seguendo la formula per i prodotti in forma trigonometrica,
+\[
+z^n=\underbracket[.4pt]{r\times r\times\dots\times r}_\text{$n$ volte}\big(\!\cos(\underbracket[.4pt]{\theta+\theta+\dots+\theta}_\text{$n$ volte})+i\sin(\underbracket[.4pt]{\theta+\theta+\dots+\theta}_\text{$n$ volte})\big)
+\]
+Il suo modulo sarà quindi $r$ elevato all'esponente $n$, e l'argomento sarà $\theta$ aggiunto a se stesso $n$ volte, quindi $n\theta$. Quindi si ha la formula detta \emph{di De Moivre}:
+\begin{equation}
+\label{eq:demoivre}
+z^n=r^n\big(\!\cos(n\theta)+i\sin(n\theta)\big).
+\end{equation}
+Si definisce inoltre $z^0=1$, e se l'esponente è negativo si pone $z^n=\big(\frac1{z}\big)^{-n}$ e si torna al caso precedente.
+\begin{definizione}
+\label{d:radici-c}
+Sia $w\neq 0$ un numero complesso, e $n\geq 2$. Il numero $z\in\C$ è \emph{radice} $n$-esima di $w$ se $z^n=w$.
+\end{definizione}
+Nel campo complesso, le radici di un equazione di grado $n$ sono sempre $n$, tutte distinte.
+\begin{teorema}
+\label{t:radici-c}
+Sia $w\neq 0$, con $w=r(\cos\theta+i\sin\theta)$ e $n\geq 2$ ($n\in\N$). Esistono sempre $n$ numeri complessi $z_k$ che sono radici $n$-esime di $w$, e sono tutti e solo numeri complessi della forma
+\begin{equation}
+\label{eq:radici-c}
+z_k=\sqrt[n]{r}\left(\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}\right),
+\end{equation}
+con $k=0,1,\dots,n-1$.
+\end{teorema}
+Partendo dalla prima radice, di argomento $\theta/n$, le altre sono ruotate di $2k\pi/n$ per ogni $k=0,1,\dots,n-1$.
+Le $n$ radici allora dividono la circonferenza di raggio $\sqrt[n]{r}$, centrata nell'origine, in $n$ angoli o archi uguali: i punti $(r,\theta)$ che sono radici del numero complesso di partenza formano un poligono equilatero inscritto in tale circonferenza.
+\input{grafici/radici-complesse}
+
+\begin{proof}
+Sia $z=\rho(\cos\phi+i\sin\phi)$ una radice $n$-esima del numero $w=r(\cos\theta+i\sin\theta)$, dove ovviamente $w,z\in\C$. Allora deve essere $z^n=w$, quindi
+\[
+\rho^n\big(\!\cos(n\phi)+i\sin(n\phi)\big)=r(\cos\theta+i\sin\theta).
+\]
+Perché questi due numeri siano uguali, deve allora essere che $\rho^n=r$ e $n\phi=\theta+2h\pi$, per qualche $h\in\Z$.
+La prima è un'uguaglianza tra due numeri reali, quindi ha un'\emph{unica} soluzione positiva che è $\rho=\sqrt[n]{r}$. Inoltre $\phi=(\theta+2h\pi)/n$ per qualche $h\in\Z$.
+Però se si prendono $h$ e $h+n$, i numeri $z$ corrispondenti hanno lo stesso argomento, che è definito a meno di multipli di $2\pi$:
+\[
+\frac{\theta+2(h+n)\pi}{n}=\frac{\theta+2h\pi}{n}+2\pi=\frac{\theta+2h\pi}{n}.
+\]
+Quindi, in realtà, le radici si ripetono ciclicamente tutte uguali dopo ogni multiplo di $n$, allora esistono solo $n$ radici \emph{uniche}.
+\end{proof}
+\begin{teorema}[Teorema fondamentale dell'algebra]
+Il campo $\C$ è algebricamente chiuso. Qualunque polinomio a coefficienti complessi ha sempre un numero di soluzioni (complesse) pari al grado del polinomio.
+\end{teorema}
+Il fatto che esistano sempre $n$ radici di un polinomio di grado $n$ nel campo complesso, e che $\R\subset\C$, significa anche che ogni polinomio di grado $n$ a coefficienti reali ha sempre $n$ soluzioni in $\C$, cioè che $\C$ è la \emph{chiusura algebrica} di $\R$.
+\section{Ordinamento}
+Se come già visto si possono ordinare solo coppie di numeri reali (o di sottoinsiemi di $\R$), in effetti non è possibile stabilire un'ordinamento tra i numeri complessi. Qualunque tipo di ordine si voglia stabilire non è alla fine compatibile con le operazioni precedentemente definite.
+\begin{proof}
+Si consideri il numero $i$: poiché non è nullo, dovrebbe essere o positivo o negativo. Se $i>0$, allora il suo quadrato è positivo. Sia quindi $i\cdot i=-1$ positivo. Moltiplicando due numeri positivi, il prodotto deve essere positivo: allora sia $i\cdot (-1)=-i$ positivo. Ora, la somma di due numeri positivi deve essere a sua volta positiva, ma se si somma $i$ e $-i$ si ottiene 0, che non è positivo. Questo assurdo porta alla conclusione che $i$ non può essere positivo.
+Sia allora $i$ negativo. Il suo quadrato deve essere positivo, e come prima allora sia $-1$ positivo. Moltiplicando un numero negativo e un numero positivo, rispettivamente $i$ e $-1$, si ottiene $-i$ che deve allora essere negativo. La somma di due numeri negativi deve essere quindi negativa, ma sommando $i$ e $-i$ si ottiene 0 che non è negativo. Per questo altro assurdo, $i$ non può essere nemmeno negativo.
+Allora $i$ non è né negativo, né positivo, né nullo, quindi $\C$ non si può ordinare compatibilmente con le sue operazioni.
+\end{proof}

@@ -1,0 +1,16 @@
+\begin{figure}
+	\tikzsetnextfilename{succ-iperbole}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[standard,xtick=\empty,ytick=\empty,xmin=-1.25,xmax=1.25,ymin=-0.5,ymax=2]
+			\addplot [samples=500,black!20!white,domain=-1.25:1.25] {sqrt(x^2+1)};
+			\addplot [samples=500,black!40!white,domain=-1.25:1.25] {sqrt((x^2)+(1/4))};
+			\addplot [samples=500,black!60!white,domain=-1.25:1.25] {sqrt((x^2)+(1/16))};
+			\addplot [samples=500,black!80!white,domain=-1.25:1.25] {sqrt((x^2)+(1/36))};
+			\addplot [samples=500,black,domain=-1.25:1.25] {abs(x)};
+			\node [pin=60:{$\scriptstyle\left(\frac1{n},0\right)$}] at (axis cs:0,1) {};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Convergenza della funzione $f(x)=\sqrt{x^2+\frac1{n^2}}$ alla funzione limite $f(x)=\abs{x}$, per $n=1,2,4,6$.}
+	\label{fig:succ_iperbole}
+\end{figure}

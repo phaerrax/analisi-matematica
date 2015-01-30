@@ -1,0 +1,37 @@
+\begin{figure}
+	\tikzsetnextfilename{partizione}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+						standard,
+						xlabel=$x$,ylabel=$f(x)$,
+						xmin=0.5,xmax=3,ymin=0,ymax=3.5,ytick=\empty,xtick={1,2.5},xticklabels={$a$,$b$}
+					]
+			%\addplot [dashed] coordinates {(1,0) (1,2)};
+			%\addplot [dashed] coordinates {(2.5,0) (2.5,3)};
+			%somme superiori
+			\addplot [draw=black!50!white,fill=black!17!white] coordinates {(1,0) (1,2) (1.1,2) (1.1,0)};
+			\addplot [draw=black!50!white,fill=black!17!white] coordinates {(1.1,0) (1.1,1.69) (1.3,1.69) (1.3,0)};
+			\addplot [draw=black!50!white,fill=black!17!white] coordinates {(1.3,0) (1.3,1.19) (1.6,1.19) (1.6,0)};
+			\addplot [draw=black!50!white,fill=black!17!white] coordinates {(1.6,0) (1.6,1.191) (1.7,1.191) (1.7,0)};
+			\addplot [draw=black!50!white,fill=black!17!white] coordinates {(1.7,0) (1.7,1.546) (1.85,1.546) (1.85,0)};
+			\addplot [draw=black!50!white,fill=black!17!white] coordinates {(1.85,0) (1.85,1.844) (1.95,1.844) (1.95,0)};
+			\addplot [draw=black!50!white,fill=black!17!white] coordinates {(1.95,0) (1.95,2.454) (2.15,2.454) (2.15,0)};
+			\addplot [draw=black!50!white,fill=black!17!white] coordinates {(2.15,0) (2.15,2.809) (2.3,2.809) (2.3,0)};
+			\addplot [draw=black!50!white,fill=black!17!white] coordinates {(2.3,0) (2.3,3) (2.5,3) (2.5,0)};
+			%somme inferiori
+			\addplot [draw=black!50!white,fill=black!10!white] coordinates {(1,0) (1,1.69) (1.1,1.69) (1.1,0)};
+			\addplot [draw=black!50!white,fill=black!10!white] coordinates {(1.1,0) (1.1,1.19) (1.3,1.19) (1.3,0)};
+			\addplot [draw=black!50!white,fill=black!10!white] coordinates {(1.3,0) (1.3,1) (1.6,1) (1.6,0)};
+			\addplot [draw=black!50!white,fill=black!10!white] coordinates {(1.6,0) (1.6,1.049) (1.7,1.049) (1.7,0)};
+			\addplot [draw=black!50!white,fill=black!10!white] coordinates {(1.7,0) (1.7,1.191) (1.85,1.191) (1.85,0)};
+			\addplot [draw=black!50!white,fill=black!10!white] coordinates {(1.85,0) (1.85,1.546) (1.95,1.546) (1.95,0)};
+			\addplot [draw=black!50!white,fill=black!10!white] coordinates {(1.95,0) (1.95,1.844) (2.15,1.844) (2.15,0)};
+			\addplot [draw=black!50!white,fill=black!10!white] coordinates {(2.15,0) (2.15,2.454) (2.3,2.454) (2.3,0)};
+			\addplot [draw=black!50!white,fill=black!10!white] coordinates {(2.3,0) (2.3,2.809) (2.5,2.809) (2.5,0)};
+			\addplot [samples=200,thick,black] function {2+sin(pi*x)};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Somme superiori e inferiori della funzione $f(x)=2+\sin(\pi x)$, con una data partizione.}
+	\label{fig:partizione}
+\end{figure}

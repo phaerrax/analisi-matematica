@@ -1,0 +1,15 @@
+\begin{figure}
+\tikzsetnextfilename{radici-complesse}
+\centering
+\begin{tikzpicture}
+\draw (0,0) circle (2cm);
+\draw (0,0) node[above left]{$O$};
+\draw [->] (-2.5cm,0cm) -- (2.5cm,0cm) node[right]{$\mathrm{Re}$};
+\draw [->] (0cm,-2.5cm) -- (0cm,2.5cm) node[above]{$\mathrm{Im}$};
+\draw [dashed] (60:2cm) -- (180:2cm) -- (300:2cm) -- (60:2cm);
+\draw (60:2cm) node[small dot,pin={[pin distance=.3cm]60:$e^{i\frac{\pi}3}$}]{};
+\draw (180:2cm) node[small dot,pin={[pin distance=.3cm]135:$-1$}]{};
+\draw (300:2cm) node[small dot,pin={[pin distance=.3cm]300:$e^{-i\frac{\pi}3}$}]{};
+\end{tikzpicture}
+\caption{Le tre radici cubiche di -1, che formano un triangolo equilatero inscritto nella circonferenza di raggio $r=1$.}
+\end{figure}

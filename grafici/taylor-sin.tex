@@ -1,0 +1,23 @@
+\begin{figure}
+	\tikzsetnextfilename{taylor-sin}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			enlargelimits,axis on top,axis lines=middle,
+			legend pos=outer north east,
+			xlabel=$x$,xmin=-7,xmax=7,ymin=-2,ymax=2,
+			ytick=\empty,xtick=\empty
+		]
+			\addplot [samples=500,color=black!15!white,domain=-2*pi:2*pi] function {x};
+			\addplot [samples=500,color=black!30!white,domain=-2*pi:2*pi] function {x-(x^3)/6};
+			\addplot [samples=500,color=black!45!white,domain=-2*pi:2*pi] function {x-(x^3)/6+(x^5)/120};
+			\addplot [samples=500,color=black!60!white,domain=-2*pi:2*pi] function {x-(x^3)/6+(x^5)/120-(x^7)/5040};
+			\addplot [samples=500,color=black!75!white,domain=-2*pi:2*pi] function {x-(x^3)/6+(x^5)/120-(x^7)/5040+(x^9)/362880};
+			\addplot [samples=500,color=black!90!white,domain=-2*pi:2*pi] function {x-(x^3)/6+(x^5)/120-(x^7)/5040+(x^9)/362880-(x^11)/39916800};
+			\addplot [very thick,samples=500,color=black,domain=-2*pi:2*pi] function {sin(x)};
+			\legend{$n=0$,$n=1$,$n=2$,$n=3$,$n=4$,$n=5$,$\sin x$}
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Approssimazioni crescenti dello sviluppo di Taylor per $\sin x$. Si nota che lo sviluppo arrestato a $n=4$, che corrisponde alla nona potenza di $x$, già è un'ottima approssimazione in $(-\pi,\pi)$.}
+	\label{fig:taylor_sin}
+\end{figure}

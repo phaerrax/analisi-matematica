@@ -1,0 +1,26 @@
+\begin{figure}
+	\tikzsetnextfilename{xn}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+						enlargelimits,
+						legend pos=outer north east,
+						axis x line=bottom,axis y line=middle,
+						xmin=0,xmax=1.1,ymin=-0.1,ymax=1.1,xtick={1},ytick={0,1}
+					]
+			\addplot [samples=500,color=black!15!white,domain=0:1] function {x};
+			\addplot [samples=500,color=black!30!white,domain=0:1] function {x^2};
+			\addplot [samples=500,color=black!45!white,domain=0:1] function {x^4};
+			\addplot [samples=500,color=black!60!white,domain=0:1] function {x^8};
+			\addplot [samples=500,color=black!75!white,domain=0:1] function {x^16};
+			\addplot [samples=500,color=black!90!white,domain=0:1] function {x^32};
+			\addplot [very thick,color=black] coordinates {(0,0) (1,0)};
+			\node [fill=black,circle,scale=0.4] at (axis cs:1,1) {};
+			\node [fill=black,circle,scale=0.5] at (axis cs:1,0) {};
+			\node [fill=white,circle,scale=0.3] at (axis cs:1,0) {};
+			\legend{$n=1$,$n=2$,$n=4$,$n=8$,$n=16$,$n=32$,$f(x)$}
+		\end{axis}
+	\end{tikzpicture}
+	\caption{La successione $f_n(x)=x^n$ in $[0,1]$.}
+	\label{fig:xn}
+\end{figure}

@@ -1,0 +1,394 @@
+\chapter{Insiemi numerici}
+\section{Numeri razionali}
+I numeri razionali, appartenenti all'insieme $\Q$, sono tutti i numeri esprimibili nella forma
+\[
+\frac{p}{q}\colon p\in\Z,q\in\N.
+\]
+Ad ogni frazione di questo tipo può essere associato un unico numero razionale, però ad ogni numero razionale si associano infinite frazioni, dato che esistono le classi di frazioni equivalenti che, appunto, esprimono tutte un solo numero razionale. Quindi più propriamente $\Q$ non contiene \emph{tutti} gli elementi del tipo appena descritto, ma un sottoinsieme di tali numeri.
+Un modo invece univoco di rappresentare i numeri razionali è tramite gli \emph{allineamenti decimali}: ad esempio il numero $11/6$ si esprime come
+\begin{align*}
+&\frac{11}6=1+\frac56,\\
+&\text{e }\frac56=\frac{50}{60}=\frac{8\cdot6+2}{60}=\frac8{10}+\frac2{60},\\
+&\text{quindi }\frac{11}6=1+\frac8{10}+\frac2{60}
+\end{align*}
+e così via continuando via via a scomporre le frazioni in modo da avere ai denominatori le potenze di 10, a partire da 1. Le frazioni così trovate, in ordine di potenze di 10 crescenti, sono le cifre dell'allineamento decimale di $11/6$.
+Ad ogni numero razionale corrisponde quindi un \emph{unico} (per la proprietà di unicità del quoziente e del resto) allineamento decimale \emph{finito}, se il resto è da un certo punto in poi nullo, o \emph{periodico}, se la parte decimale si ripete identica infinite volte da un certo punto in poi.
+I resti delle divisioni sono quindi sempre limitati, compresi sempre tra 0 e $q-1$ se $q$ è il quoziente: se infatti ad esempio $p/q$ è un numero razionale compreso tra 0 e 1, il risultato della divisione sarà del tipo $q\cdot Q+R$, e allora $0\leq R\leq q-1$, e il resto può allora essere uno soltanto tra i $q$ numeri naturali possibili. Dopo $q$ iterazioni, il resto si deve necessariamente ripetere, e se questo resto è 0 allora l'allineamento è finito, altrimenti si ripeterà all'infinito e l'allineamento è periodico.
+Tra gli allineamenti decimali e i numeri razionali esiste quindi una \emph{corrispondenza biunivoca}.
+
+Tra i numeri razionali sono definite le due operazioni di somma e prodotto: $\forall a,b,c\in\Q$ si hanno le definizioni e proprietà della tabella \ref{tab:operazioni-Q}.
+\begin{table}
+\centering
+\begin{tabular}{lcc}
+\toprule
+{}&Somma&Prodotto\\
+\midrule
+Proprietà associativa&$(a+b)+c=a+(b+c)$&$(a\cdot b)\cdot c=a\cdot(b\cdot c)$\\
+Proprietà riflessiva&$a+b=b+a$&$a\cdot b=b\cdot a$\\
+Elemento neutro&$a+0=0+a=a$&$a\cdot 1=1\cdot a=a$\\
+Opposto, reciproco&$a+(-a)=0$&$a\cdot\frac1{a}=1$, se $a\neq0$\\
+Proprietà distributiva&\multicolumn{2}{c}{$(a+b)\cdot c=ac+bc$}\\
+\bottomrule
+\end{tabular}
+\caption{Operazioni tra numeri razionali e loro proprietà.}
+\label{tab:operazioni-Q}
+\end{table}
+Tutti i numeri razionali soddisfano queste proprietà, e inoltre queste operazioni da una coppia di numeri razionali restituiscono come risultato \emph{sempre} un numero razionale. Questo fà dell'insieme $(\Q,+,\cdot)$, ossia dell'insieme dei numeri razionali dotato delle operazioni di somma e prodotto secondo le proprietà elencate nella \ref{tab:operazioni-Q}, un \emph{campo}.
+Né $\N$, per cui non si possono definire opposto e reciproco, né $\Z$, per cui non esiste il reciproco, sono dei campi.
+
+Il campo $\Q$ è inoltre \emph{ordinato}: per ogni coppia di numeri $(a,b)\in\Q\times\Q$ si può verificare infatti una e una sola tra le condizioni
+\[
+a<b,\qquad a>b,\qquad a=b,
+\]
+con le seguenti proprietà che collegano all'ordinamento le operazioni di campo: se $a<b$,
+\begin{center}
+\begin{tabular}{rl}
+$\forall c,$&$a+c<b+c$\\
+$\forall c>0,$&$a\cdot c<b\cdot c$\\
+$\forall c<0,$&$a\cdot c>b\cdot c$
+\end{tabular}
+\end{center}
+
+\section{Numeri reali}
+L'insieme dei numeri razionali si può naturalmente rappresentare su una retta euclidea orientata, però esistono ancora dei punti della retta che non corrispondono ad alcun numero razionale, ad esempio il numero che corrisponde alla misura della diagonale di un quadrato di lato 1, cioè il numero $\sqrt{2}$, non è razionale, come dimostra il teorema seguente.
+\begin{teorema}
+Non esiste alcun numero $r\in\Q$ tale che $r^2=2$.
+\end{teorema}
+\begin{proof}
+Si supponga che esista un numero $r=p/q$ il cui quadrato è 2: si possono allora scegliere $p,q\in\N$, poiché $r$ è positivo, e che siano primi tra loro. Allora risulta
+\[
+\Big(\frac{p}{q}\Big)^2=2,
+\]
+cioè $p^2=2q^2$. Poiché il secondo membro è pari, anche $p^2$ lo deve essere, e di conseguenza anche $p$, quindi esiste un numero $m\in\N$ tale che $p=2m$, da cui segue che $2m^2=q^2$, quindi come prima sia $q^2$ che $q$ sono pari, il che è assurdo perché contrasta con l'ipotesi che $p$ e $q$ non abbiano fattori comuni.
+\end{proof}
+I numeri che quindi non possono essere rappresentati come frazione a coefficienti interi o come allineamenti decimali finiti o periodici saranno quindi rappresentati con degli allinamenti decimali infiniti, ma non periodici, e si chiamano \emph{irrazionali}.
+L'unione dei numeri razionali e degli irrazionali forma l'insieme dei numeri reali, rappresentato con $\R$, e quindi l'insieme dei razionali e degli irrazionali sono l'uno il complementare dell'altro rispetto a $\R$. Esso ``riempie'' completamente la retta euclidea, e per quanto detto finora tutti i numeri reali possono essere scritti come allineamenti decimali, sia finiti che infiniti, periodici o non periodici, nella forma
+\[
+\pm c_0,\,c_1c_2c_3\dots
+\]
+dove $c_0\in\N_0$ e $c_1,c_2,\dots$ sono cifre in una serie infinita o finita, che non sia di periodo 9.
+Anche per i numeri reali valgono le operazioni di somma e prodotto come definite per i numeri razionali, e le proprietà di ordinamento, quindi anche $(\R,+,\cdot)$ è un campo.
+Seguono alcune definizioni per insiemi di numeri reali.
+\begin{definizione}
+Si definisce \emph{intervallo} chiuso e limitato l'insieme degli $x$ per cui:
+\[
+[a,b]=\{x\in\R\colon a\leq x\leq b\}.
+\]
+Se le disuguaglianze sono strette, l'intervallo si dice aperto:
+\[
+(a,b)=\{x\in\R\colon a<x<b\}.
+\]
+Si definiscono anche gli intervalli illimitati, inferiormente o superiormente, sia aperti che chiusi:
+\begin{align*}
+&(a,\pinf)=\{x\in\R\colon x>a\}\quad\text{(aperto)};\\
+&(\minf,b]=\{x\in\R\colon x\leq b\}\quad\text{(chiuso)}.
+\end{align*}
+\end{definizione}
+I simboli di $\minf$ e $\pinf$ sono solo convenzioni e non rappresentano dei numeri né appartengono all'insieme $\R$, ma sono compresi nell'insieme dei numeri reali \emph{esteso}:
+\[
+\overline{\R}=\R\cup\{\minf\}\cup\{\pinf\}.
+\]
+\begin{definizione}
+Un insieme $A\subseteq\R$ si dice limitato:
+\begin{itemize}
+\item superiormente se $\exists\alpha\in\R\colon x\leq\alpha$ $\forall x\in A$. Ogni numero $\alpha$ siffatto si chiama \emph{maggiorante} di $A$.
+\item inferiormente se $\exists\beta\in\R\colon x\geq\beta$ $\forall x\in A$. Ogni numero $\beta$ siffatto si chiama \emph{minorante} di $A$.
+\end{itemize}
+\end{definizione}
+\begin{definizione}
+Si definisce \emph{massimo} di un insieme il numero reale, se esiste, appartenente all'insieme che è il minore di tutti maggioranti.
+Analogamente, il \emph{minimo} dell'insieme è il numero, se esiste, che appartiene all'insieme ed è maggiore di tutti i minoranti.
+\end{definizione}
+Il massimo e il minimo di un insieme, se esistono, sono unici. Anche quando non esistono, un insieme limitato possiede comunque un estremo superiore o inferiore, o anche entrambi.
+\begin{definizione}
+Sia $a\subseteq\R$ un insieme superiormente limitato. Si chiama \emph{estremo superiore} di $A$ il numero $\alpha\in\R$ che è il minimo dell'insieme dei maggioranti di $A$.
+\[
+\alpha=\sup A.
+\]
+Analogamente si definisce l'estremo inferiore di un insieme limitato inferiormente, che è il massimo dell'insieme dei minoranti.
+\[
+\beta=\inf A.
+\]
+\end{definizione}
+L'estremo superiore può talvolta anche coincidere con il massimo o il minimo, come ad esempio negli intervalli chiusi. Se un insieme ha un massimo, tale massimo è anche l'estremo superiore, ma se un insieme ha l'estremo superiore non è necessariamente vero che possiede anche un massimo; comunque, se esistono entrambi, ovviamente non possono che coincidere.
+Quindi, perché un numero $\alpha$ sia un estremo superiore, deve soddisfare due condizioni:
+\begin{itemize}
+\item deve essere un maggiorante, quindi $x\leq\alpha$ $\forall x\in A$;
+\item deve essere il minore dei maggioranti, cioè ``spostandosi'' di una quantità arbitrariamente piccola $\epsilon$ a sinistra (ossia nell'insieme $A$) di $\alpha$ si devono trovare soltanto elementi di $A$, e non altri maggioranti, quindi $\forall\epsilon>0$, $\exists\tilde{a}\in A\colon\alpha-\epsilon<\tilde{a}\leq\alpha$.
+\end{itemize}
+Invertendo le disuguaglianze si trovano le proprietà che un estremo inferiore deve soddisfare. Se poi tale estremo è massimo o minimo, allora dovrà anche appartenere ad $A$.
+Inoltre, ogni insieme limitato di numeri reali possiede \emph{sempre} un estremo superiore o inferiore, per il seguente teorema.
+\begin{teorema}[proprietà dell'estremo superiore]
+Ogni sottoinsieme di $\R$ limitato superiormente possiede sempre un estremo superiore.
+\end{teorema}
+%proof?
+Questo teorema distingue il campo $\R$ da $\Q$, che non possiede questa proprietà: esiste infatti almeno un sottoinsieme di $\Q$ che, pur essendo superiormente limitato, non ammette un estremo superiore. Sia ad esempio l'insieme
+\[
+A=\{r\in\Q^+\colon r^2<2\}.
+\]
+L'insieme dei suoi maggioranti di $A$ è
+\[
+B=\{p\in\Q^+\colon p^2\geq 2\}.
+\]
+Si trova che $B$ non ha un minimo, perché per qualunque $p\in B$ si può sempre trovare un altro elemento $q\in B$ per cui $q<p$. Infatti, si consideri l'elemento
+\[
+\frac{2p+2}{p+2}=q.
+\]
+Si dimostra che $q<p$: in $B$, infatti, se $p^2\geq 2$ si ha che
+\[
+\bigg(\frac{2p+2}{p+2}\bigg)^2\geq 2\qeq\frac{2p+2}{p+2}<p,
+\]
+a cui segue che $p^2>2$.
+L'estremo superiore, $\sqrt{2}$, che $A$ sembrerebbe avere, in realtà non è tale poiché $\sqrt{2}\notin\Q$, quindi $A$ non ha un estremo superiore. Diversamente sarebbe se $A$ non fosse un sottoinsieme di $\Q$ ma di $\R$: in tal caso $\sqrt{2}\in\R$ quindi è a pieno titolo l'estremo superiore di $A$.
+
+A partire da questa proprietà si può definire l'operazione di addizione tra due allineamenti infiniti di numeri reali.
+Per farlo, si costruiscono le somme dei troncati di due numeri approssimati ogni volta ad una cifra decimale in più: queste somme dei troncati saranno sempre minori della somma reale dei due numeri, e formano una famiglia di elementi che ha un elemento superiore; tale estremo è la somma dei due numeri cercata.
+
+\begin{teorema}[densità di $\R$]
+Assegnati due qualunque numeri reali distinti, si possono sempre trovare tra di essi un numero razionale e un numero irrazionale.
+\end{teorema}
+\begin{proof}
+Siano $x<y$ due numeri reali: i loro allineamenti decimali sono
+\[
+x=a_0,\,a_1a_2a_3\dots\qeq y=b_0,\,b_1b_2b_3\dots.
+\]
+Se $a_0<b_0$, si costruisce come parte decimale un numero maggiore di $a_1a_2a_3\dots$, e per farlo basta sostituire con 9 la prima cifra trovata diversa da 9.
+Se invece $a_0=b_0$ si prosegue con le coppie $a_1,b_1$, $a_2,b_2$, finché non se ne trova una in cui gli elementi non sono più uguali, e poiché dovrà essere $a_k<b_k$ (dato che $x<y$) si ritorna al punto precedente.
+Si può quindi costruire un allineamento decimale finito, quindi razionale, con il seguente criterio, e anche uno infinito e non periodico con questi criteri.
+\end{proof}
+Ovviamente il procedimento si può iterare infinite volte, quindi tra ogni coppia di numeri reali esistono infiniti numeri razionali e infiniti numeri irrazionali. Allora gli insiemi $\Q$ e $\R\setminus\Q$ sono densi in $\R$.
+
+\section{Spazi euclidei}
+L'insieme dei numeri reali si può generalizzare su più dimensioni, permettendo di operare con essi anche su piani e spazi, non solo su una retta. A questo scopo si esegue il prodotto cartesiano di $\R$ con se stesso.
+\begin{definizione}
+Dati due insiemi qualunque $A$ e $B$, il nuovo insieme ottenuto con il prodotto cartesiano tra i due insiemi è l'insieme composto dalle coppie ordinate con un elemento preso dal primo e uno dal secondo.
+\[
+A\times B=\{(a,b)\colon a\in A,\,b\in B\}.
+\]
+\end{definizione}
+Il prodotto cartesiano tra $\R$ e se stesso si indica quindi con $\R\times\R$, che quindi denota un piano dove le coordinate dei punti sono numeri reali.
+In generale, si indica con $\R^n$ il prodotto cartesiano di $\R$ operato $n$ volte, con $n\in\N$:
+\[
+\R^n=\R\times\R\times\dots\times\R=\{\vec x=(x_1,x_2,\dots,x_n)\colon x_i\in\R,\,i=1,2,\dots,n\}.
+\]
+Gli elementi $\vec x$ si chiamano \emph{vettori} di $\R^n$, e le varie $x_i$ sono le \emph{componenti} di tale vettore.
+\begin{definizione}
+\label{d:norma}
+Dato un vettore $\vec x\in\R^n$, si chiama \emph{norma} di $\vec x$ e si indica con $\norm{\vec x}$ il numero ottenuto dalla radice quadrata della somma dei quadrati delle sue componenti:
+\begin{equation}
+\label{eq:norma}
+\norm{\vec x}=\sqrt{\sum_{i=1}^nx_i^2}.
+\end{equation}
+Genericamente, la norma è la distanza tra il punto di coordinate $x_i$ e l'origine, che è anche il punto associato al vettore nullo.
+La norma è anche la radice quadrata del prodotto interno tra il vettore e se stesso.
+\end{definizione}
+Valgono le seguenti proprietà:
+\begin{itemize}
+\item $\norm{\vec x}\geq 0$, e in particolare è nulla se e solo se il vettore è nullo;
+\item $\norm{\alpha\vec x}=|\alpha|\norm{\vec x}$, con $\alpha\in\R$;
+\item $|(\vec x,\vec y)|\leq\norm{\vec x}\norm{\vec y}$ (disuguaglianza di Cauchy);
+\item $\norm{\vec x+\vec y}\leq\norm{\vec x}+\norm{\vec y}$ (disuguaglianza triangolare).
+\end{itemize}
+Le ultime due proprietà sono dimostrate nei seguenti teoremi.
+\begin{teorema}[Disuguaglianza di Cauchy]
+Dati due vettori $\vec x, \vec y\in\R^n$, il modulo del prodotto interno tra di essi è minore o uguale del prodotto delle loro norme.
+\end{teorema}
+\begin{proof}
+Sia $t\in\R$, il prodotto interno tra il vettore $t\vec x+\vec y$ e se stesso è sempre non negativo, in quanto rappresenta una norma. Inoltre:
+\begin{align*}
+(t\vec x+\vec y,t\vec x+\vec y)&=(t\vec x,t\vec x+\vec y)+(t\vec x+\vec y,\vec y)=\\
+&=(t\vec x,t\vec x)+(t\vec x,\vec y)+(t\vec x,\vec y)+(\vec y,\vec y)=\\
+&=t^2(\vec x,\vec x)+2t(\vec x,\vec y)+(\vec y,\vec y)=\\
+&=t^2\norm{\vec x}^2+2t(\vec x,\vec y)+\norm{\vec y}^2.
+\end{align*}
+Quest'ultima deve essere non negativa per ogni valore di $t\in\R$, vale a dire che il suo discriminante deve essere negativo o nullo:
+\begin{gather*}
+\frac{\Delta}{4}=(\vec x,\vec y)^2-\norm{\vec x}^2\norm{\vec y}^2\leq 0\\
+|(\vec x,\vec y)|\leq\norm{\vec x}\norm{\vec y}.\qedhere
+\end{gather*}
+\end{proof}
+\begin{teorema}[Disuguaglianza triangolare]
+Dati due vettori $\vec x, \vec y\in\R^n$, la norma della loro somma è minore o uguale della somma delle loro norme.
+\end{teorema}
+\begin{proof}
+Questo teorema si dimostra a partire dalla disuguaglianza di Cauchy, con $t=1$.
+\[
+\norm{\vec x+\vec y}^2=(\vec x+\vec y,\vec x+\vec y)=\norm{\vec x}^2+2(\vec x,\vec y)+\norm{\vec y}^2.
+\]
+Il termine $(\vec x,\vec y)$, come qualunque numero, è minore o uguale del suo modulo, quindi si può scrivere che
+\[
+\norm{\vec x}^2+2(\vec x,\vec y)+\norm{\vec y}^2\leq\norm{\vec x}^2+2|(\vec x,\vec y)|+\norm{\vec y}^2.
+\]
+Per la disuguaglianza di Cauchy quindi risulta
+\[
+\norm{\vec x}^2+2|(\vec x,\vec y)|+\norm{\vec y}^2\leq\norm{\vec x}^2+2\norm{\vec x}\norm{\vec y}+\norm{\vec y}^2.
+\]
+Il secondo termine è lo sviluppo del quadrato $(\norm{\vec x}+\norm{\vec y})^2$, allora si ha che
+\[
+\norm{\vec x+\vec y}\leq\norm{\vec x}+\norm{\vec y}.\qedhere
+\]
+\end{proof}
+
+\section{Cardinalità degli insiemi}
+\begin{definizione}
+Sia $X$ un insieme qualunque. Si dice che $X$ è finito se esiste un numero naturale $n$ tale che $X$ si possa mettere in corrispondenza biunivoca con l'insieme finito $\{1,2,\dots,n\}$ di numeri naturali. Il numero $n$ si dice \emph{cardinalità} dell'insieme.
+\end{definizione}
+All'insieme vuoto si assegna per convenzione la cardinalità 0.
+Due insiemi in corrispondenza biunivoca con $X$ devono anche essere in corrispondenza biunivoca tra di loro, perciò la cardinalità ha la proprietà transitiva.
+\begin{definizione}
+Un insieme si dice infinito se non è finito, cioè se non esiste alcun numero intero $n$ in modo tale da poterlo mettere in corrispondenza biunivoca con un insieme finito $\{1,2,\dots,n\}$ di naturali.
+\end{definizione}
+\begin{definizione}
+Si dice che due insiemi $X$ e $Y$ sono \emph{equipotenti}, o che hanno la stessa cardinalità, o potenza, se sono in corrispondenza biunivoca, e si indica con $X\sim Y$.
+Si dice che $X$ ha cardinalità, o potenza, maggiore di quella di $Y$ se non sono equipotenti, ed esiste un sottoinsieme proprio $A\subset X$ tale che $A\sim Y$.
+\end{definizione}
+Un insieme finito ha cardinalità sempre maggiore di un suo sottoinsieme proprio.
+
+\begin{teorema}
+Un insieme è infinito se e solo se può essere messo in corrispondenza biunivoca con un suo sottoinsieme proprio.
+\end{teorema}
+Quindi si può sempre definire una funzione biunivoca che leghi un insieme infinito con un suo sottoinsieme proprio. Ad esempio, si può definire una funzione $f\colon\N\to 2\N$, cioè tra i numeri naturali e i numeri naturali pari, che ovviamente formano un sottoinsieme proprio di $\N$. Sia questa funzione $f(n)=2n$: è iniettiva, poiché $n$ differenti hanno immagini differenti, inoltre è suriettiva perché l'insieme immagine è esattamente $2\N$, quindi è una corrispondenza biunivoca tra $2\N$ e $\N$, che è quindi infinito dato che è è in corispondenza bounivocacon un suo sottoinsieme proprio.
+
+\section{Cardinalità del numerabile}
+\begin{definizione}
+Si dice che un insieme è numerabile, o che ha la cardinalità del numerabile, se è equipotente a $\N$.
+\end{definizione}
+Tutti gli elementi di un insieme numerabile si possono elencare, e si possono ordinare in una successione la quale, per definizione, è una corrispondenza biunivoca tra $\N$ e un insieme immagine generico $A$.
+Tra tutti gli insiemi infiniti, quelli numerabili hanno la cardinalità minore, perché tutti i loro sottoinsiemi sono numerabili. Quindi la cardinalità del numerabile è la ``più piccola'' cardinalità infinita. Infatti è dimostrato il seguente teorema.
+\begin{teorema}
+Sia $A$ un insieme infinito e $B$ un insieme numerabile. Se $A\subseteq B$, allora $A$ è numerabile.
+\end{teorema}
+Quindi se un insieme è numerabile, tutti i suoi sottoinsiemi, infiniti o meno, non possono che essere a loro volta numerabili.%e il vuoto?
+
+\begin{teorema}
+\label{t:unione_num}
+L'unione di un'infinità numerabile di insiemi numerabili è numerabile.
+\end{teorema}
+\begin{proof}
+Indicati con $a_{nk}$ gli elementi di ogni $A_n$, cioè
+\[
+A_n=\{a_{n1},a_{n2},a_{n3},\dots,a_{nk},\dots\},
+\]
+tutti gli insiemi con i loro elementi si possono disporre come
+\begin{align*}
+A_1\qquad &a_{11},\,a_{12},\,a_{13},\,a_{14},\,\dots\\
+A_2\qquad &a_{21},\,a_{22},\,a_{23},\,a_{24},\,\dots\\
+A_3\qquad &a_{31},\,a_{32},\,a_{33},\,a_{34},\,\dots\\
+A_4\qquad &a_{41},\,a_{42},\,a_{43},\,a_{44},\,\dots\\
+\vdots\\
+A_n\qquad &a_{n1},\,a_{n2},\,a_{n3},\,a_{n4},\,\dots\\
+\vdots
+\end{align*}
+Questi elementi possono essere numerati con il metodo della diagonale, ottenendo
+\[
+a_{11},a_{21},a_{12},a_{31},a_{22},a_{13},a_{41},a_{32},a_{23},\dots\,.
+\]
+Se si conviene di omettere dall'ordinamento i ``doppioni'', cioè gli elementi già apparsi, l'unione di tutti gli insiemi
+\[
+A=\bigcup_{n=1}^{\infty}A_n,
+\]
+ordinata come sopra, risulta essere una successione, quindi è in corrispondenza biunivoca con l'insieme dei numeri naturali, perciò è numerabile.
+\end{proof}
+\begin{teorema}
+\label{t:prod_cart_numerabile}
+Siano $A_1,A_2,\dots,A_n$ insiemi numerabili. Il loro prodotto cartesiano
+\[
+A_1\times A_2\times\dots\times A_n
+\]
+è numerabile.
+\end{teorema}
+\begin{proof}
+Si dimostra per induzione partendo da $n=2$, ossia dal prodotto cartesiano di due insiemi $A=A_1$ e $B=A_2$: questo prodotto può essere scritto come l'unione dei prodotti cartesiani di ciascun elemento di $A$ con $B$.
+\[
+A\times B=\bigcup_{a_i\in A}\big(\{a_i\}\times B\big),
+\]
+che sono le coppie
+\begin{align*}
+A_1\qquad &(a_1,b_1),\,(a_1,b_2),\,(a_1,b_3),\,\dots,\,(a_1,b_k),\,\dots\\
+A_2\qquad &(a_2,b_1),\,(a_2,b_2),\,(a_2,b_3),\,\dots,\,(a_2,b_k),\,\dots\\
+A_3\qquad &(a_3,b_1),\,(a_3,b_2),\,(a_3,b_3),\,\dots,\,(a_3,b_k),\,\dots\\
+\vdots\\
+A_n\qquad &(a_n,b_1),\,(a_n,b_2),\,(a_n,b_3),\,\dots,\,(a_n,b_k),\,\dots\\
+\vdots
+\end{align*}
+Tutti gli insiemi $\{a_i\}\times B$ sono numerabili, e formano un'infinità numerabile quindi, per il teorema \ref{t:unione_num}, $A\times B$ è numerabile.
+
+Si dimostra che se l'affermazione è vera per $n$ qualunque, lo è anche per $n+1$. Per $n+1$ si ha l'insieme
+\[
+(A_1\times A_2\times\dots\times A_n)\times A_{n+1}.
+\]
+Per l'ipotesi di induzione $A_1\times A_2\times\dots\times A_n$ è numerabile, allora se $A_1\times A_2\times\dots\times A_n=A$, e poiché $A_{n+1}$ è numerabile per ipotesi, il prodotto cartesiano $A\times A_{n+1}$ è numerabile, per le conclusioni fatte al punto precedente.
+\end{proof}
+\begin{corollario}
+$\Q$ è numerabile.
+\end{corollario}
+\begin{proof}
+Ogni numero razionale si esprime come una frazione del tipo $p/q$, con $p\in\Z$ e $q\in\N$. Associando a $p/q$ la coppia di elementi $(p,q)$, l'insieme di tutte le frazioni è in corrispondenza biunivoca con l'insieme $\Z\times\N$ (perché sono coppie di numeri, uno preso dagli interi razionali e uno dai naturali), quindi è numerabile. Poiché $\Q$ è un sottoinsieme infinito di $\Z\times\N$, dato che esistono frazioni diverse che rappresentano lo stesso numero razionale, anch'esso è numerabile per il teorema \ref{t:prod_cart_numerabile}.
+\end{proof}
+
+\section{Cardinalità del continuo}
+\begin{lemma}
+\label{l:r01}
+L'intervallo $(0,1)$ ha la stessa cardinalità di $\R$.
+\end{lemma}
+\begin{proof}
+Si dimostra che esiste una corrispondenza biunivoca tra i due insiemi. Esiste infatti la funzione arcotangente, che ha come dominio tutto l'insieme dei numeri reali e come codominio un intervallo limitato:
+\[
+\arctan\colon\R\to\left(-\frac{\pi}2,\frac{\pi}2\right)
+\]
+dimostra come $\R$ e $\left(-\frac{\pi}2,\frac{\pi}2\right)$ abbiano la stessa cardinalità. Eseguendo una trasformazione si ottiene la funzione
+\[
+\left(\frac1{\pi}\arctan x+\frac12\right)\colon\R\to(0,1),
+\]
+che è una corrispondenza biunivoca tra $\R$ e $(0,1)$, che quindi hanno la stessa cardinalità.
+\end{proof}
+\begin{teorema}
+$\R$ ha cardinalità maggiore di $\N$.
+\end{teorema}
+\begin{proof}
+Basta dimostrare che l'intervallo $(0,1)$ non è numerabile, poiché ciò implica che anche $\R$ non è numerabile, per il lemma \ref{l:r01}.
+
+Per assurdo, sia $(0,1)$ numerabile, quindi sia una successione. Ogni elemento di questa successione ha una sua rappresentazione decimale come
+\begin{equation}
+\begin{split}
+a_1&=\;0,a_{11}\,a_{12}\,a_{13}\,\dots\,a_{1n}\dots\\
+a_2&=\;0,a_{21}\,a_{22}\,a_{23}\,\dots\,a_{2n}\dots\\
+a_3&=\;0,a_{31}\,a_{32}\,a_{33}\,\dots\,a_{3n}\dots\\
+\vdots\\
+a_n&=\;0,a_{n1}\,a_{n2}\,a_{n3}\,\dots\,a_{nn}\dots\\
+\vdots
+\end{split}
+\end{equation}
+Se si costruisce un numero $x\in(0,1)$ come allineamento decimale, in modo che non coincida con nessuno degli $a_n$, sarà definito come
+\[
+x=\;0,x_1\, x_2\,\dots\, x_n\,\dots,
+\]
+in modo che la prima cifra decimale sia
+\[
+x_1\neq 0,\quad x_1\neq 9,\quad x_1\neq a_{11}.
+\]
+Si definisce la seconda cifra decimale, $x_2$, in modo che sia
+\[
+x_2\neq 0,\quad x_2\neq 9,\quad x_2\neq a_{22},
+\]
+quindi, in generale, le cifre decimali $x_n$ di $x$ saranno costruite come
+\[
+x_n\neq 0,\quad x_n\neq 9,\quad x_n\neq a_{nn}.
+\]
+Il numero così definito è un allineamento decimale compreso tra 0 e 1, perché la sua parte intera è 0 e le sue cifre decimali non sono 0, ed è allo stesso tempo diverso da tutti i numeri $a_n$ della successione definita precedentemente se l'intervallo $(0,1)$ fosse numerabile. Poiché questo è un assurdo, tale intervallo non può essere numerabile.
+Quindi anche $\R$ non è numerabile.
+\end{proof}
+Dal teorema \ref{t:prod_cart_numerabile} segue inoltre che anche $\R^n$ con $n>1$ ($n\in\N$) non è numerabile.
+La cardinalità dell'insieme dei numeri reali si chiama cardinalità del continuo. L'ipotesi del continuo di Cantor inoltre afferma che non esiste nessun insieme la cui cardinalità è strettamente compresa fra quella dei numeri interi e quella dei numeri reali.
+\begin{corollario}
+L'insieme dei numeri irrazionali $\R\setminus\Q$ non è numerabile.
+\end{corollario}
+\begin{proof}
+Se anche $\R\setminus\Q$ fosse numerabile, allora $\R$ per il teorema \ref{t:unione_num} sarbbe numerabile in quanto unione di due insiemi numerabili, $(\R\setminus\Q)\cup\Q$. Quindi $\R\setminus\Q$ non è numerabile (e ha la cardinalità del continuo).
+\end{proof}
+La cardinalità degli insiemi non si ferma a quella del continuo. Dato un insieme $X$, è detto \emph{insieme delle parti} di $X$ l'insieme dei suoi sottoinsiemi, compresi l'insieme vuoto e l'insieme stesso, e si indica con $\mathcal P(X)$. Ad esempio, l'insieme delle parti di $E=\{a,b,c\}$ è
+\[
+\mathcal P(E)=\Big\{\emptyset,\{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},E\Big\}.
+\]
+Si dimostra che, \textit{sempre}, l'insieme delle parti ha cardinalità maggiore dell'insieme di partenza. In particolare, se un insieme finito ha cardinalità $N$, il suo insieme delle parti ha cardinalità $2^N$.
+Quindi non esiste un insieme che abbia cardinalità maggiore di tutti gli altri insiemi.

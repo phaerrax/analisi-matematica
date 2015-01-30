@@ -1,0 +1,15 @@
+\begin{figure}
+	\tikzsetnextfilename{funzione-convessa}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[standard,xmin=0,ymin=0,xmax=7,ymax=19,xlabel=$x$,ylabel=$y$,ytick=\empty,xtick={1,6},xticklabels={$a$,$b$}]
+			\addplot[samples=200,domain=.5:6.5] {(x-2)^2+1};
+			\addplot[dotted] coordinates {(1,0) (1,2)};
+			\addplot[dotted] coordinates {(6,0) (6,17)};
+			\addplot[dashed,domain=0:7] {(3*x)-1};
+			\draw (axis cs:4,11) node[pin={above left:${\scriptstyle y=f(a)+}\frac{f(b)-f(a)}{b-a}{\scriptstyle(x-a)}$}]{};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Una funzione convessa in $(a,b)$.}
+	\label{fig:convessa}
+\end{figure}

@@ -1,0 +1,17 @@
+\begin{figure}
+	\tikzsetnextfilename{limite-funzione}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[standard,xmin=0,ymin=0,xmax=6.5,ymax=40,xtick={4,5,6},xticklabels={$x_0-\delta$,$x_0$,$x_0+\delta$},ytick={16,25,36},yticklabels={$\ell-\epsilon$,$\ell$,$\ell+\epsilon$},xlabel=$x$,ylabel=$y$]
+			\addplot[samples=200,domain=0:6.5]{x^2};
+			\addplot[dotted] coordinates {(4,0) (4,16)};
+			\addplot[dotted] coordinates {(6,0) (6,36)};
+			\addplot[dotted] coordinates {(0,16) (4,16)};
+			\addplot[dotted] coordinates {(0,36) (6,36)};
+			\addplot[dashed] coordinates {(5,0) (5,25)};
+			\addplot[dashed] coordinates {(0,25) (5,25)};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Limite di una funzione (non necessariamente si ha $\ell=f(x_0)$).}
+	\label{fig:limite}
+\end{figure}
