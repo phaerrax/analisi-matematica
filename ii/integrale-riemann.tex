@@ -1,0 +1,424 @@
+\chapter{Integrale di Riemann}
+\section{Funzioni primitive}
+\begin{definizione} \label{d:primitiva}
+Sia $I$ un intervallo e $f\colon I\to\R$. La funzione $\phi\colon I\to\R$ si dice primitiva di $f$ in $I$ se è derivabile in $I$ e la sua derivata $\forall x\in I$ è $\phi'=f$.
+\end{definizione}
+Le funzioni primitive sono anche chiamate ``anti-derivate''. Da questa definizione si deducono alcune importanti proprietà delle funzioni primitive:
+\begin{itemize}
+\item Non tutte le funzioni ammettono una primitiva: ad esempio $f(x)=\sgn x$ non è la derivata di alcuna funzione. Dato che una funzione derivata può ammettere soltanto punti di discontinuità di seconda specie, dal teorema \ref{t:derivata_solo_disc_seconda_specie}, tutte le funzioni che presentano discontinuità di prima o terza specie non hanno alcuna primitiva.
+\item L'esistenza delle primitive è determinata anche dall'intervallo considerato. Sempre per la $f(x)=\sgn x$, essa è derivata di $f(x)=x$ e $f(x)=-x$ rispettivamente per ogni intervallo tutto a destra o tutto a sinistra dell'origine, perché in quegli intervalli non ha discontinuità. Questo non vale più non appena si comprende l'origine nell'intervallo.
+\item Aggiungendo una qualsiasi costante ad una funzione, la sua derivata non cambia. Quindi $\forall c\in\R$, $(\phi+c)'=f$. Infatti data una primitiva $\phi$ di $f$ in $I$, \emph{tutte e sole} le primitive sono del tipo $\phi+c$. Si può dimostrare prendendo due primitive $\phi$ e $\psi$ di $f$, in $I$: la derivata della loro differenza è $(\phi-\psi)'=f-f=0$, quindi differiscono di una costante.
+\end{itemize}
+La classe delle infinite funzioni primitive (se esistono) di $f$ nell'intervallo $I$ si indica con la notazione
+\[
+\int f(x)\,\dd x
+\]
+chiamata anche integrale indefinito di $f$ in $I$.
+
+\subsection*{Tecniche di integrazione}
+Dalle proprietà delle derivate delle operazioni tra funzioni si ottengono degli strumenti per semplificare la ricerca delle primitive di una funzione:
+\begin{itemize}
+\item Dalla regola di Leibnitz per il prodotto si ha la formula di integrazione \emph{per parti}, per cui
+\[
+\int f(x)g'(x)\,\dd x=f(x)g(x)-\Int f'(x)g(x)\,\dd x.
+\]
+\item Dalla derivazione di funzioni composte invece si ha la regola di integrazione \emph{per sostituzione}: siano $x=x(t)\in\cont{1}(J)$ definita come $x\colon J\to I$, e $f\colon I\to\R$, $f\in\cont{1}(I)$. componendo le funzioni si ottiene $f\circ x\colon J\to\R$ che è derivabile. Inoltre, se $\phi$ è una primitiva di $f$ in $I$, si ha che
+\[
+\drp{(\phi\circ x)}{t}=\drp{\phi}{x}\cdot\drp{x}{t}=f(t)\,\drp{x}{t}
+\]
+Antiderivando rispetto a $t$ si ottiene\footnote{La notazione di derivata come rapporto di differenziali è utilizzata per indicare rispetto a quale variabile è stata derivata la funzione. \emph{Non} sono da semplificare, in questo caso, i vari termini.}
+\begin{align*}
+\int\drp{(\phi\circ x)}{t}\,\dd t&=\Int f(t)\,\drp{x}{t}\,\dd t\\
+\phi\big(x(t)\big)&=\Int f(t)\,\drp{x}{t}\,\dd t\\
+\int f(x)\,\dd x&=\Int f(t)\,\drp{x}{t}\,\dd t.
+\end{align*}
+In pratica, si effettua un'opportuna sostituzione $x=x(t)$ nella funzione $f$, e si sostituisce il differenziale $\dd x$ con il differenziale della funzione $x(t)$, che è appunto $\drp{x}{t}\,\dd t$. Eventualmente si può anche procedere al contrario.
+\end{itemize}
+
+\section{Costruzione dell'integrale}
+Sia la funzione $f\colon I\to\R$, dove $I$ è un intervallo chiuso e limitato, limitata in $I\defeq[a,b]$, ossia per cui $\exists m,M\colon\forall x\in [a,b]$ si ha $m\leq f(x)\leq M$.
+Si definisce \emph{partizione} dell'intervallo $[a,b]$, e si indica con $\partz[a,b]$, una collezione finita di punti
+\[
+a=x_0<x_1<x_2<\dots<x_n=b,
+\]
+che crea dei sottointervalli del tipo $I_j\defeq[x_{j-1},x_j]\subset I$ per ogni $j=1,2,3,\dots,n$. Poiché la funzione è limitata in $[a,b]$, è certamente limitata anche in ognuno di questi sottointervalli. Allora esistono e sono finiti
+\[
+\inf_{x\in I_j}f(x)\equiv m_j\qeq\sup_{x\in I_j}f(x)\equiv M_j,
+\]
+per cui ovviamente vale $m\leq m_j\leq M_j\leq M$ per ogni $j$.
+Si definiscono quindi le sommatorie
+\[
+\sum_{j=1}^nm_j(x_j-x_{j-1})\qeq\sum_{j=1}^nM_j(x_j-x_{j-1}),
+\]
+rispettivamente denominate \emph{somma inferiore} e \emph{superiore}, indicate con $s(f,\partz)$ e $S(f,\partz)$, che esistono per qualsiasi partizione finita di $[a,b]$ scelta, e si ha sempre che $s\leq S$, poiché $\forall j$ si ha $x_j<x_{j+1}$ e $m_j\leq M_j$ (figura \ref{fig:partizione}).
+\input{grafici/partizione.tex}
+Inoltre
+\begin{equation} \label{eq:riemann1}
+m(b-a)\leq s\leq S\leq M(b-a).
+\end{equation}
+Ciò significa che le classi numeriche di tutte le somme inferiori e superiori, per qualsiasi partizione dell'intervallo, sono limitate, quindi per la completezza di $\R$ ammettono sempre un estremo inferiore e superiore reale. Trascurando $\sup S$ e $\inf s$ che sono di poca importanza, e comunque sono sempre limitati per la \eqref{eq:riemann1}, si definiscono invece \emph{integrale inferiore} e \emph{superiore} $\sup s$ e $\inf S$, rispettivamente, che si indicano con
+\[
+\intinf f(x)\,\dd x\qeq\intsup f(x)\,\dd x
+\]
+che sono compresi tra $m(b-a)$ e $M(b-a)$.
+
+\paragraph{Esempi}
+\begin{itemize}
+\item La funzione $f(x)=k$ (costante) ha indubbiamente, per ogni $j$, $m_j=M_j$, quindi le somme inferiore e superiore e gli integrali inferiore e superiore coincidono tutti e valgono $k(b-a)$.
+\item La funzione di Dirichlet assume come valori 1 se $x\in\Q$ e 0 altrimenti, quindi per ogni partizione dell'intervallo definito si ha che $m_j=0$ e $M_j=1$. Allora $s=0$ e $S=b-a$ per qualsiasi partizione.
+\end{itemize}
+
+Separando uno dei sottointervalli $I_j=[x_{j-1},x_j]$ con un elemento $\tilde{x}\in I_j$, si ottiene un intervallo $\tilde{I}_j=[x_{j-1},\tilde{x}]\cup[\tilde{x},x_j]$, quindi contribuisce alle somme inferiori $s$ con due addendi, la cui somma non è minore di $\inf_jm_j(x_j-x_{j-1})$ e analogamente contribuisce a $S$ con due addendi la cui somma non è maggiore del $\sup_jM_j(x_j-x_{j-1})$. %??????
+Sia $\mathcal{Q}[a,b]$ un raffinamento di $\partz[a,b]$, ossia $\partz\subset\mathcal{Q}$: si ha che $s(f,\partz)\leq s(f,\mathcal{Q})$ e $S(f,\partz)\geq S(f,\mathcal{Q})$ e, come prima, $s(f,\mathcal{Q})\leq S(f,\mathcal{Q})$.
+Anche con due partizioni differenti, $\partz_1\neq\partz_2$ (per cui cioè non vale $\partz_1\subset\partz_2$ o viceversa), si considera $\mathcal{Q}=\partz_1\cup\partz_2$, che è quindi un raffinamento comune ad entrambe le partizioni, per cui risulta
+\[
+s(f,\partz_1)\leq s(f,\mathcal{Q})\leq S(f,\mathcal{Q})\leq S(f,\partz_2).
+\]
+Prendendo quindi soltanto il primo e l'ultimo termine di questa disuguaglianza si ha che
+\begin{equation} \label{eq:riemann2}
+s(f,\partz_1)\leq S(f,\partz_2),
+\end{equation}
+allora le due classi delle $\big\{s(f,\partz)\big\}$ e $\big\{S(f,\partz)\big\}$ sono separate. Calcolando prima l'estremo superiore e poi l'estremo inferiore della relazione \eqref{eq:riemann2} si ottiene che
+\[
+\intinf f(x)\,\dd x\leq S(f,\partz)\qqq\intinf f(x)\,\dd x\leq\intsup f(x)\,\dd x.
+\]
+Allora si giunge alla seguente definizione.
+\begin{definizione} \label{d:riemann}
+La funzione $f\colon[a,b]\to\R$ si dice \emph{integrabile secondo Riemann} se i suoi integrale inferiore e superiore in $[a,b]$ coincidono, cioè se
+\[
+\intinf f(x)\,\dd x=\intsup f(x)\,\dd x=\Int_a^bf(x)\,\dd x,
+\]
+che si chiama \emph{integrale di Riemann} della $f$ nell'intervallo $[a,b]$.
+\end{definizione}
+L'integrale è chiaramente l'elemento separatore delle due classi. Le funzioni integrabili secondo Riemann nell'intervallo $[a,b]$ si indicano anche come appartenenti alla classe $\rie\ab$.
+Con gli esempi fatti in precedenza, la funzione $f(x)=k\in\rie\ab$ mentre la funzione di Dirichlet non vi appartiene, poiché $s\neq S$ $\forall\partz[a,b]$.
+
+\section{Condizioni di esistenza dell'integrale}
+\begin{lemma}[di integrabilità] \label{l:integrabilita}
+Sia una funzione $f\colon[a,b]\to\R$. Essa è integrabile secondo Riemann se e solo se $\forall\epsilon>0$ $\exists\partz[a,b]\colon S(f,\partz)-s(f,\partz)<\epsilon$.
+\end{lemma}
+%\begin{proof}
+%Sia $f$ integrabile: per ogni $\epsilon>0$ esiste una partizione $\partz[a,b]$ tale per cui la somma inferiore è
+%\[
+%s(f,\partz)>\intinf f(x),\dd x-\epsilon\]
+%e una partizione $\mathcal Q[a,b]$ tale che la somma superiore è
+%\[
+%S(f,\mathcal Q)<\intsup f(x)\,\dd x+\epsilon,
+%\]
+%dalla definizione di integrabilità secondo Riemann.
+%La partizione $(f,\partz\cup\mathcal Q)[a,b]$ è dunque tale per cui
+%\[
+%S(f,\partz\cup\mathcal Q)<S(f,\partz)\qeq s(f,\partz\cup\mathcal Q)>s(f,\mathcal Q).
+%\]
+%Confrontando le disuguaglianze si ottiene che
+%\[
+%S(f,\partz\cup\mathcal Q)-s(f,\partz\cup\mathcal Q)<S(f,\mathcal Q)-s(f,\partz)<2\epsilon
+%\]
+%da cui la tesi.
+%Viceversa, risulta che
+%\[
+%\intsup f(x)\,\dd x<S(f,\partz)<s(f,\partz)+\epsilon<\intinf f(x)\,\dd x+\epsilon
+%\]
+%ma si ha sempre la relazione
+%\[
+%\intsup f(x)\,\dd x\geq\intinf f(x)\,\dd x
+%\]
+%quindi integrale inferiore e superiore coincidono.
+%\end{proof}
+
+Un altro teorema garantisce una ancora più semplice condizione sufficiente affinché una funzione sia integrabile.
+\begin{teorema} \label{t:continua-integrabile}
+Sia una funzione $f\colon[a,b]\to\R$. Se $f\in\cont{}\ab$, allora $f\in\rie\ab$.
+\end{teorema}
+\begin{proof}
+Poiché $[a,b]$ è compatto, essendo $f$ continua in questo intervallo si ha che per il teorema \ref{t:weierstrass} di Weierstra\ss\ ammette massimo e minimo in $[a,b]$, e per il teorema \ref{t:heine-cantor} è uniformemente continua, quindi $\forall\epsilon>0$ $\exists\delta>0$ tale che per $\abs{x-y}<\delta$ si abbia $\abs{f(x)-f(y)}<\epsilon$.
+Allora fissato $\epsilon>0$ si trova un $\delta>0$, per il quale prendo una partizione $\partz[a,b]$ con ``passo'' (ampiezza dei sottointervalli) minore di $\delta$. In ogni $I_j=[x_{j-1},x_j]$, con $j\in\{1,2,\dots,n\}$ tale che $x_0=a$ e $x_n=b$, $f$ ammette un massimo e un minimo perché è limitata, quindi esistono $u_j$ e $t_j$ tali che $f(u_j)=\max f(I_j)\defeq M_j$ e $f(t_j)=\min f(I_j)\defeq m_j$. La differenza tra le somme superiori e inferiori è
+\begin{multline}
+S(f,\partz)-s(f,\partz)=\sum_{j=1}^nM_j(x_j-x_{j-1})-\sum_{j=1}^nm_j(x_j-x_{j-1})=\\
+=\sum_{j=1}^n(M_j-m_j)(x_j-x_{j-1})=\sum_{j=1}^n\big[f(u_j)-f(t_j)\big](x_j-x_{j-1}).
+\end{multline}
+Poiché $u_j$ e $t_j$ appartengono entrambi ad un $I_j$, si ha $\abs{u_j-t_j}<\delta$, quindi per l'uniforme continuità $f(u_j)-f(t_j)<\epsilon$. Allora
+\[
+S(f,\partz)-s(f,\partz)<\sum_{j=1}^n\epsilon(x_j-x_{j-1})=\epsilon(b-a),
+\]
+e poiché $b-a$ è costante, per il lemma precedente significa che $f\in\rie\ab$.
+\end{proof}
+La classe delle funzioni integrabili secondo Riemann si può estendere per comprendere anche funzioni discontinue, ma non troppo.
+\begin{osservazione}
+Sia $f\colon[a,b]\to\R$ una funzione limitata: se $f$ è discontinua in $[a,b]$ in un numero finito di punti, allora $f\in\rie\ab$.
+\end{osservazione}
+\begin{teorema}
+Sia $f\colon[a,b]\to\R$ una funzione limitata e monotona: allora $f\in\rie\ab$.
+\end{teorema}
+\begin{proof}
+Sia $f$ crescente: sia $\partz[a,b]$ la partizione che suddivide $[a,b]$ in $n$ intervalli di uguale ampiezza $(b-a)/n$. Con $i\in\{0,1,\dots,n\}$, si ha che in ogni intervallo $I_i=[x_i,x_{i+1}]$ la $f$ ammette minimo e massimo assoluto, per il teorema di Weierstra\ss, in rispettivamente $x_i$ e $x_{i+1}$, per la monotonia. Allora
+\[
+S(f,\partz)-s(f,\partz)=\sum_{i=1}^n\big[f(x_{i+1})-f(x_i)\big](x_{i+1}-x_i)=\frac{b-a}{n}\sum_{i=1}^n\big[f(x_{i+1})-f(x_i)\big],
+\]
+e poiché $\max f(I_k)=\min f(I_{k+1})$, poiché $f$ è monotona, la somma è telescopica quindi risulta
+\[
+S(f,\partz)-s(f,\partz)=\frac{b-a}{n}\big[f(b)-f(a)]
+\]
+che tende a 0 per $n\to\pinf$, quindi $f\in\rie\ab$.
+\end{proof}
+
+\section{Proprietà degli integrali}
+La classe delle funzioni integrabili secondo Riemann ha alcune proprietà:
+\begin{itemize}
+\item $\rie\ab$ è uno spazio vettoriale.
+\item L'operatore di integrale è lineare, cioè lo è la mappa $f\mapsto\Int_a^bf(x)\,\dd x$. Quindi l'integrale di una combinazione lineare di funzioni equivale alla combinazione lineare degli integrali di ogni funzione.
+\item Se $f\in\rie\ab$ e $\phi\colon\R\to\R$ è continua in $\R$, allora $\phi\circ f\in\rie\ab$.
+\item Dal punto precedente, si ha che se $\abs{f}\in\rie\ab$ allora
+\[
+\abs{\int_a^bf(x)\,\dd x}\leq\Int_a^b\abs{f(x)}\,\dd x.
+\]
+\item Se $f,g\in\rie\ab$, allora anche $fg\in\rie\ab$. Infatti $f+g\in\rie\ab$, e elevandola al quadrato (si effettua una composizione con $\phi(x)=x^2$), $(f+g)^2\in\rie\ab$. Sottraendo dal quadrato $f^2$ e $g^2$, anch'esse integrabili, rimane $2fg$ che è quindi a sua volta integrabile secondo Riemann. Basta allora dividere per 2 per ottenere che $fg\in\rie\ab$.
+\end{itemize}
+Gli integrali definiti possiedono inoltre le seguenti proprietà:
+\begin{itemize}
+\item Se $f\geq0$ $\forall x\in\ab$, allora anche il suo integrale tra $a$ e $b$ è non negativo, e inoltre se $f\geq g$, sempre per ogni $x$ nell'intervallo, allora
+\[
+\int_a^bf(x)\,\dd x\geq\Int_a^bg(x)\,\dd x.
+\]
+\item Sia $c\in[a,b]$. Se $f\in\rie\ab$, allora $f\in\rie\big([a,c]\big)\cap\rie\big([c,b]\big)$, e vale anche l'inverso. Inoltre
+\[
+\int_a^bf(x)\,\dd x=\Int_a^cf(x)\,\dd x+\Int_c^bf(x)\,\dd x.
+\]
+\item se $f\in\cont{}\ab$ e se $f\geq 0$ nell'intervallo, allora il suo integrale tra $a$ e $b$ è nullo se e solo se la funzione (almeno in tale intervallo) è identicamente nulla.
+\item Si definisce per convenzione
+\[
+\int_a^bf(x)\,\dd x=-\Int_b^af(x)\,\dd x,
+\]
+ovvero che scambiando gli estremi di integrazione si inverte il segno dell'integrale; da questo si ha anche che $\int_a^af(x)\,\dd x=0$.
+\end{itemize}
+Se non è noto l'ordine degli estremi di integrazione, non si può affermare che
+\[
+\abs{\int_a^bf(x)\,\dd x}\leq\Int_a^b\abs{f(x)}\,\dd x,
+\]
+poiché non è noto il segno dell'integrale di destra, che potrebbe essere negativo. Semmai è giusto affermare che
+\[
+\abs{\int_a^bf(x)\,\dd x}\leq\abs{\int_a^b\abs{f(x)}\,\dd x}.
+\]
+
+\section{Teorema fondamentale del calcolo integrale}
+\begin{definizione} \label{d:f-integrale}
+Sia $f\colon[a,b]\to\R$, $f\in\rie\ab$, con le proprietà che ne conseguono. Per ogni $x\in[a,b]$, si ha anche che $f\in\rie\big([a,x]\big)$, cioè esiste la
+\[
+\int_a^xf(t)\,\dd t\equiv F_a(x),
+\]
+detta \emph{funzione integrale} di $f$, con $a$ (fissato) come estremo inferiore di integrazione; la variabile $x$ invece, che è la vera variabile della funzione, come estremo superiore. La variabile $t$ non ha alcun ruolo nella definizione della funzione integrale, ed è per questo anche detta ``muta''.
+\end{definizione}
+Se $x_0\in[a,b]$, allora la $F_{x_0}(x)$ differisce da $F_a(x)$ per una costante: infatti
+\[
+F_{x_0}(x)=\Int_{x_0}^xf(t)\,\dd t=\Int_{x_0}^af(t)\,\dd t+\Int_a^xf(t)\,\dd t=F_a(x)+\Int_{x_0}^af(t)\,\dd t
+\]
+e l'ultimo termine è un numero definito.
+Le proprietà di $F_{x_0}(x)$ equivalgono quindi in tutto e per tutto a quelle di $F_a(x)$, quindi si possono indicare senza particolare problemi entrambe con $F(x)$.
+Ovviamente, $F_a(a)=0$.
+
+\begin{teorema}[di Torricelli-Barrow] \label{t:tfci1}
+Siano $f\in\rie\ab$, e $F(x)=\Int_a^xf(t)\,\dd t$.
+La funzione $F$ è continua in $[a,b]$. Se inoltre $f$ è continua in un punto $c$ interno ad $[a,b]$, allora $F$ è derivabile in $c$ e vale $F'(c)=f(c)$.
+\end{teorema}
+Ovviamente se $c$ è ad un estremo di $[a,b]$ non esiste la derivata, ma solo quella sinistra o destra.
+\begin{proof}
+Per ogni coppia $x,y\in[a,b]$ si ha
+\[
+\abs{F(x)-F(y)}=\abs{\int_a^xf(t)\,\dd t-\Int_a^yf(t)\,\dd t}=\abs{\int_x^yf(t)\,\dd t},
+\]
+con i valori assoluti, a scanso di equivoci nell'ordine di $x$ e $y$. Inoltre poiché $f\in\rie\ab$ è anche limitata, quindi $\forall t$, $\abs{f(t)}\leq k$. Allora
+\[
+\abs{F(x)-F(y)}=\abs{\int_x^yf(t)\,\dd t}\leq k\abs{x-y},
+\]
+cioè è lipschitziana, quindi (uniformemente) continua.
+
+Se inoltre $f$ è continua in un qualche punto $c\in(a,b)$, per $x\neq c$ si dimostra che il rapporto incrementale di $F(x)$ tende a $f(c)$. Infatti\footnote{Sfruttando l'uguaglianza $f(c)=\frac1{x-c}f(c)(x-c)=\frac1{x-c}f(c)\int_c^x\dd t=\frac1{x-c}\Int_c^xf(c)\,\dd t$.}
+\[
+\begin{split}
+\frac{F(x)-F(c)}{x-c}-f(c)	&=\frac1{x-c}\bigg(\Int_a^xf(t)\,\dd t-\Int_a^cf(t)\,\dd t\bigg)-f(c)=\\
+						&=\frac1{x-c}\Int_c^xf(t)\,\dd t-f(c)=\\
+						&=\frac1{x-c}\Int_c^xf(t)\,\dd t-\frac1{x-c}\Int_c^xf(c)\,\dd t=\\
+						&=\frac1{x-c}\Int_c^x\big[f(t)-f(c)\big]\,\dd t.
+\end{split}
+\]
+Fissato $\epsilon>0$, poiché $f$ è continua in $c$ allora esiste $\delta>0$ per cui se $\abs{t-c}<\delta$ allora $\abs{f(t)-f(c)}<\epsilon$. Quindi per $\abs{x-c}<\delta$ si ha che
+\[
+\abs{\frac{F(x)-F(c)}{x-c}-f(c)}\leq\frac1{x-c}\Int_c^x\abs{f(t)-f(c)}\,\dd t,
+\]
+in cui il secondo membro non è mai negativo, perché l'integrale è negativo se $x<c$ (l'integranda è positiva) ma allora lo è anche la frazione, al più è nullo se $f(t)=f(c)$.
+Per la continuità di $f$, $\abs{f(t)-f(c)}<\epsilon$, quindi
+\[
+\abs{\frac{F(x)-F(c)}{x-c}-f(c)}\leq\abs{\frac1{x-c}\Int_c^x\epsilon\,\dd t}=\epsilon\cdot\abs{\frac1{x-c}\Int_c^x\,\dd t}=\epsilon,
+\]
+quindi
+\[
+\frac{F(x)-F(c)}{x-c}\to f(c).\qedhere
+\]
+\end{proof}
+Come conseguenze di questo teorema, se $f\in\cont{}\ab$ allora la funzione integrale $F(x)\in\cont{1}\ab$. $F$ è inoltre una primitiva di $f$.
+\begin{teorema}[di Newton-Leibnitz] \label{t:tfci2}
+Se $f\in\cont{}\ab$ e $\phi$ è una sua primitiva in $[a,b]$, che quindi esiste sempre, allora
+\begin{equation}
+\int_a^bf(x)\,\dd x=\phi(b)-\phi(a).
+\end{equation}
+\end{teorema}
+\begin{proof}
+Per la continuità di $f$ si ha la sua primitiva $F(x)$, la funzione integrale. Anche $\phi$ è una sua primitiva, quindi le due devono differire di una costante, come ad esempio $\phi(x)=F(x)+c$:
+\begin{multline*}
+\phi(b)-\phi(a)=F(b)+c-F(a)-c=F(b)-F(a)=\\
+=\Int_a^bf(t)\,\dd t-\Int_a^af(t)\,\dd t=\Int_a^bf(t)\,\dd t.\qedhere
+\end{multline*}
+\end{proof}
+\begin{teorema} \label{t:media-integrale}
+Sia $f\in\cont{}\ab$, allora $\exists x_0\in(a,b)$ tale per cui
+\begin{equation}
+f(x_0)=\frac1{b-a}\Int_a^bf(x)\,\dd x.
+\end{equation}
+\end{teorema}
+\begin{proof}
+Essendo continua in $[a,b]$, per il teorema di Weierstra\ss\ la $f$ ha un massimo $M$ e un minimo $m$ nell'intervallo, per cui $\forall x\in[a,b]$ vale
+\[
+m\leq f(x)\leq M.
+\]
+Integrando in $[a,b]$, per la monotonia dell'integrale si ha
+\begin{gather*}
+\int_a^bm,\dd x\leq\Int_a^bf(x)\,\dd x\leq\Int_a^bM\,\dd x\\
+m(b-a)\leq\Int_a^bf(x)\,\dd x\leq M(b-a)
+\end{gather*}
+e dato che $b>a$, altrimenti l'intervallo sarebbe un punto e l'integrale di $f(x)$, di conseguenza, nullo, risulta
+\[
+m\leq\frac1{b-a}\Int_a^bf(x)\,\dd x\leq M.
+\]
+Per il teorema \ref{t:valori_intermedi} dei valori intermedi, $f$ è continua quindi assume tutti i valori tra $m$ e $M$, quindi in particolare deve esistere un punto $x_0\in[a,b]$ in cui assume il valore dell'integrale, ossia
+\[
+f(x_0)=\frac1{b-a}\Int_a^bf(x)\,\dd x.
+\]
+\end{proof}
+Questo teorema è in sostanza una riformulazione del teorema di Lagrange per la funzione integrale, per la quale
+\[
+F(b)=\int_a^bf(t)\,\dd t\qeq F(a)=0.
+\]
+
+\section{Integrali impropri}
+Quando una delle ipotesi tra continuità (anche a tratti) della funzione, limitatezza o compattezza dell'intervallo non sono più verificate, non si può più certamente parlare di integrale di Riemann, ma il significato di integrale si può generalizzare ai vari casi: si estende quindi il calcolo delle aree sottese anche per intervalli illimitati o in cui la funzione tende all'infinito. Gli integrali di questo tipo si dicono appunto \emph{generalizzati}, o \emph{impropri}, e si possono distinguere principalmente in due tipi.
+\paragraph{Prima specie}
+In questo caso l'intervallo di integrazione non è chiuso: sia ad esempio l'intervallo $(a,b]$, e $f$ una funzione definita come $f\colon(a,b]\to\R$ che sia Riemann-integrabile in ogni sottointervallo $I\subset(a,b]$ che \emph{non} comprende un intorno destro di $a$, ossia $f\in\rie\big([x,b]\big)$ per ogni $x\in(a,b]$: allora esiste l'integrale $\int_x^bf(t)\,\dd t$.  Se esiste ed è finito il limite
+\[
+\int_a^bf(t)\,\dd t\equiv\lim_{x\to a^+}\int_x^bf(t)\,\dd t,
+\]
+allora si dice che esiste l'integrale improprio di $f$ sull'intervallo $[a,b]$. Il suo valore è ovviamente il risultato del limite.
+Questo è il caso di funzioni con singolarità in un punto interno all'intervallo di integrazione, come un asintoto: allora si calcola il limite dell'integrale per un estremo che tende a tale punto critico, da sinistra o destra o anche entrambi, come necessario.
+\begin{osservazione}
+Se $f$ è già Riemann-integrabile su $[a,b]$, si sa che la funzione integrale $F_b(x)=\int_x^bf(t)\,\dd t$ è continua per il teorema \ref{t:tfci1} fondamentale del calcolo integrale, quindi $F_b(a)=\lim_{x\to a^+}F_b(x)$, che per la continuità di $F$ coincidono.
+\end{osservazione}
+\paragraph{Seconda specie}
+In questo caso l'intervallo di integrazione non è pià limitato: sia ad esempio $[a,\pinf)$. Sia $f$ una funzione definita come $f\colon[a,\pinf)\to\R$ che sia Riemann-integrabile in ogni intervallo compatto $I\subset[a,\pinf)$: allora esiste l'integrale $\int_a^xf(t)\,\dd t$ per ogni $x>a$. Se esiste ed è finito il limite
+\[
+\int_a^{\pinf} f(t)\,\dd t\equiv\lim_{x\to\pinf}\int_a^xf(t)\,\dd t,
+\]
+allora si dice che esiste l'integrale improprio di $f$ sull'intervallo $[a,\pinf)$. Il suo valore è anche stavolta, ovviamente, il risultato del limite.
+
+Si consideri la funzione $f(x)=\frac1{x^p}$ definita in $[1,\pinf)$. Sicuramente essa è continua in $[1,x]$ $\forall x>1$, per ogni valore di $p$. Il suo integrale in questo intervallo vale
+\[
+\int_1^{\pinf}\frac{\dd t}{t^p}=
+\begin{dcases}
+	\frac{t^{1-p}}{1-p}\bigg|_1^x=\frac{x^{1-p}-1}{1-p}	&p\neq 1\\
+	\log p											&p=1.
+\end{dcases}
+\]
+Nel caso $p=1$ ovviamente l'integrale diverge, mentre per $p\neq 1$ per $x\to\pinf$ l'integrale converge quando $1-p<0$, ossia se $p>1$.
+Allora l'integrale converge (a $\frac1{1-p}$) per $p>1$, mentre diverge a $\pinf$ per $p\leq 1$.
+
+Il calcolo di un integrale improprio è talvolta difficoltoso, e spesso interessa soltanto stabilire soltanto la sua convergenza, ossia la sua esistenza. A questo scopo, laddove l'integrale non sia fin da subito immediato, tornano utili alcuni criteri per la convergenza. Con $I$ si indicheranno dei generici intervalli della forma $(a,b]$, $[a,b)$, $[a,\pinf)$ e $(\minf,b]$.
+\begin{teorema}[del confronto] \label{t:confronto_int1}
+Siano $f,g\colon I\to\R$ tali che, per ogni $J\subset I$ compatto, $f\in\rie(J)$. Allora se $\forall x\in I$ si ha che $0\leq f(x)\leq g(x)$
+\begin{itemize}
+\item ed esiste l'integrale improprio di $g$, allora esiste anche l'integrale improprio di $f$;
+\item se non esiste l'integrale improprio di $f$ diverge, allora non esiste neanche l'integrale improprio di $g$.
+\end{itemize}
+\end{teorema}
+Nel secondo punto si potrebbe anche parlare di divergenza: se infatti le due funzioni sono entrambe positive, il loro integrale improprio può soltanto convergere o divergere a $\pinf$, come già accadeva per le serie.
+\begin{proof}
+Sia $I=[a,b)$. Per le proprietà dell'integrale di Riemann vale la disuguaglianza
+\[
+0\leq\Int_a^xf(t)\,\dd t\leq\Int_a^xg(t)\,\dd t,
+\]
+ed entrambe le funzioni integrali sono positive, perché $f,g\geq 0$, continue per il teorema \ref{t:tfci1} fondamentale del calcolo integrale, e monotone non decrescenti, quindi devono ammettere limite. Dal teorema del confronto del limiti si ottiene allora che se il limite di $G_a(x)$ è finito, lo è anche il limite di $F_a(x)$, mentre se $F_a(x)$ non converge, e allora non può che divergere perché $F_a(x)\geq 0$, anche $G_a(x)$ diverge. La dimostrazione per gli altri tipi di intervalli è del tutto analoga.
+\end{proof}
+\begin{definizione}
+Sia $f\colon I\to\R$: si definisce \emph{parte positiva} di $f$ la funzione
+\[
+f_+(x)=\max_{x\in I}\{f(x),0\},
+\]
+e analogamente \emph{parte negativa} la funzione
+\[
+f_-(x)=-\min_{x\in I}\{f(x),0\}.
+\]
+\end{definizione}
+Notare il segno meno nella definizione della parte negativa, che fa sì che sia $f_+$ che $f_-$ siano funzioni positive in tutto $I$. Con queste definizioni si può ``scomporre'' la $f$ nella somma
+\[
+f(x)=f_+(x)-f_-(x),
+\]
+mentre valgono le proprietà, sempre $\forall x\in I$,
+\[\begin{gathered}
+0\leq f_+(x),f_-(x)\leq\abs{f(x)}\\
+\abs{f(x)}=f_+(x)+f_-(x)\\
+f_+(x)f_-(x)=0.
+\end{gathered}\]
+\begin{teorema}[del confronto] \label{t:confronto_int2}
+Sia $f\colon I\to\R$, con $f\in\rie\big([a,x]\big)$ per ogni sottoinsieme $[a,x]\subseteq I$.
+Se esiste una funzione $g(x)$ tale che $\abs{f(x)}\leq g(x)$ $\forall x\in I$, e $g(x)$ è integrabile in senso improprio in $I$, allora sia $\abs{f(x)}$ che $f(x)$ ammettono l'integrale improprio su $I$.
+\end{teorema}
+\begin{proof}
+Dal teorema \ref{t:confronto_int1} $\abs{f(x)}$ è integrabile in senso improprio in $I$ in quanto per ogni $x\in I$ si ha $0\leq\abs{f(x)}\leq g(x)$ e l'integrale improprio di $g(x)$ esiste in $I$.
+Ma allora sono integrabili impropriamente in tale intervallo anche $f_+(x)$ e $f_-(x)$, in quanto $0\leq f_+(x),f_-(x)\leq\abs{f(x)}$ in ogni punto, quindi la differenza
+\[
+\int_a^xf(t)\,\dd t=\Int_a^x\big[f_+(t)-f_-(t)\big]\,\dd t=\Int_a^xf_+(t)\,\dd t-\Int_a^xf_-(t)\,\dd t
+\]
+esiste ed è finita.
+\end{proof}
+
+\begin{corollario}[del confronto asintotico] \label{t:confronto_asintotico_int}
+Siano $f,g\colon I\to\R$ non negative in $I$. Se $f\sim g$, allora gli integrali impropri di $f$ e $g$ in $I$ hanno lo stesso carattere.
+\end{corollario}
+La convergenza dell'integrale improprio non implica, come si era visto per le serie numeriche, come condizione necessaria la convergenza a zero della funzione! Il limite potrebbe anche non esistere, ma l'integrale improprio sì; se però la funzione è regolare, allora il limite non può che essere 0. Le serie hanno comunque un legame stretto con gli integrali impropri, come dimostra il seguente teorema che lega le serie agli integrali su $[0,\pinf)$.
+\begin{teorema} \label{t:intserie}
+Sia $f\colon[n,\pinf)\to[0,\pinf)$, con $n\in\N$, una funzione monotona decrescente: allora vale
+\begin{equation} \label{eq:intserie}
+\int_n^{\pinf} f(x)\,\dd x\leq\ser{j}f(j)\leq f(n)+\Int_n^{\pinf} f(x)\,\dd x.
+\end{equation}
+\end{teorema}
+\begin{proof}
+Sia $m>n$ intero: l'integrale in $[n,m+1]$ è la somma di integrali in intervalli più piccoli, ossia
+\[
+\int_n^{m+1}f(x)\,\dd x=\sum_{j=n}^{m}\Int_j^{j+1}f(x)\,\dd x.
+\]
+Poiché $f$ è decrescente, per ogni $x\in[j,j+1]$ si ha che $f(j+1)\leq f(x)\leq f(j)$, quindi integrando in $[j,j+1]$ si mantiene la relazione d'ordine anche tra gli integrali, cioè
+\begin{gather*}
+\Int_j^{j+1}f(j+1)\leq\Int_j^{j+1}f(x)\,\dd x\leq\Int_j^{j+1}f(j)\\
+(j+1-j)f(j+1)\leq\Int_j^{j+1}f(x)\,\dd x\leq(j+1-j)f(j)\\
+f(j+1)\leq\Int_j^{j+1}f(x)\,\dd x\leq f(j).
+\end{gather*}
+Allora sommando i termini da $n$ a $m-1$ risulta
+\[
+\sum_{j=n}^{m-1}f(j+1)\leq\Int_n^m f(x)\,\dd x\leq\sum_{j=n}^{m-1},
+\]
+da cui si ottiene
+\[
+\sum_{j=n}^{m-1}f(j)-f(n)\leq\Int_n^m f(x)\,\dd x\leq\sum_{j=n}^{m-1}f(j),
+\]
+da cui per $m\to\pinf$ si ottiene la \eqref{eq:intserie}.
+\end{proof}
+Con questo teorema si può valutare l'integrale
+\[
+\int_a^{\pinf}\frac{\dd x}{x^p\log^qx},
+\]
+per qualsiasi $a>1$, tramite la similitudine con la nota serie $\sum_{n=2}^{\pinf}\frac1{n^p\log^qn}$ si ricava che esso converge se $p>1$ e diverge per $p<1$. Se $p=1$ si ha l'integrale
+\[
+\int_a^{\pinf}\frac{\dd x}{x\log^qx}
+\]
+che con la sostituzione $t=\log x$ diventa
+\[
+\int_{\log a}^{\pinf}\frac{\dd t}{t^q},
+\]
+che quindi converge se $q>1$.

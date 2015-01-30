@@ -1,0 +1,19 @@
+\begin{figure}
+	\tikzsetnextfilename{intorno-funzione}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[standard,xmin=-1,ymin=-1,xmax=7.5,ymax=8,ytick=\empty,xtick={1,6},xticklabels={$a$,$b$},stack plots=y]
+			\draw[dotted] (axis cs:1,0) -- (axis cs:1,4.6829);
+			\draw[dotted] (axis cs:6,0) -- (axis cs:6,7.4411);
+			\draw[gray,<->] (axis cs:3.14,3.14) to node[right]{$r$} (axis cs:3.14,5.14);
+			\addplot[draw=none,domain=1:6,samples=200] {-2+x+2*sin(deg(x))};
+			\addplot[dashed,domain=1:6,samples=200] {4};
+			\addplot[domain=1:6,samples=200] {-2};
+			\addplot[dashed,domain=1:6,samples=200] {-2} node[right]{$f-r$};
+			\addplot[fill=gray!10,draw=none,domain=1:6,samples=200] {2} node[right]{$f$} \closedcycle;
+			\addplot[fill=gray!10,draw=none,dashed,domain=1:6,samples=200] {2} node[right]{$f+r$} \closedcycle;
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Un intorno $B(f,r)\subset(X,d_*)$ della funzione $f=x+2\sin x$.}
+	\label{fig:B-d*}
+\end{figure}

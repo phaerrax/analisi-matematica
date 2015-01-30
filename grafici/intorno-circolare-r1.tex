@@ -1,0 +1,14 @@
+\begin{figure}
+	\tikzsetnextfilename{intorno-circolare-r1}
+	\centering
+	\begin{tikzpicture}
+		\draw[-|] (-5,0) -- (-2,0) node[above]{$p-r$};
+		\draw[-|] (-2,0) -- (0,0) node[above]{$p$};
+		\draw[-|] (0,0) -- (2,0) node[above]{$p+r$};
+		\draw[->] (0,0) -- (5,0) node[above]{};
+		\draw[dashed,|-|] (-2,-.1) -- (2,-.1);
+		\draw[fill=black] (0,-.1) circle (.05);
+	\end{tikzpicture}
+	\caption{Intorno circolare in $\R$ con la distanza data dal valore assoluto.}
+	\label{fig:intorno-circolare-r1}
+\end{figure}

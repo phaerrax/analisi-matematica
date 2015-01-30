@@ -1,0 +1,17 @@
+\begin{figure}
+	\tikzsetnextfilename{forma-trigonometrica-complesso}
+	\centering
+	\begin{tikzpicture}
+		\draw [->] (0,0) -- (0,4) node[anchor=south]{$\mathrm{Im}$};
+		\draw [->] (0,0) -- (5,0) node[anchor=west]{$\mathrm{Re}$};
+		\draw (0,0) node[anchor=north east]{$O$};
+		\draw (0,0) to node[auto]{$r$} (4,3) node[anchor=south west]{$z=re^{i\theta}$};
+		\draw [dotted] (4,0) -- (4,3);
+		\draw [dotted] (0,3) -- (4,3);
+		\draw (4,0) node[anchor=north]{$a$};
+		\draw (0,3) node[anchor=east]{$b$};
+		\draw (1.5,0) arc (0:36.87:1.5) node[anchor=west] at (18.435:1.5){$\theta$};
+	\end{tikzpicture}
+	\caption{Forma trigonometrica ed algebrica di un numero complesso.}
+	\label{fig:forma-trig}
+\end{figure}

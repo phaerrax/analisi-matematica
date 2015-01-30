@@ -1,0 +1,18 @@
+\begin{figure}
+	\tikzsetnextfilename{taylor-exp}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[standard,xlabel=$x$,xmin=-5,xmax=3,ymin=-2,ymax=4,xtick=\empty,ytick=\empty]
+			\addplot [samples=500,color=black!15!white,domain=-5:3] function {1};
+			\addplot [samples=500,color=black!30!white,domain=-5:3] function {1+x};
+			\addplot [samples=500,color=black!45!white,domain=-5:3] function {1+x+(x^2)/2};
+			\addplot [samples=500,color=black!60!white,domain=-5:3] function {1+x+(x^2)/2+(x^3)/6};
+			\addplot [samples=500,color=black!75!white,domain=-5:3] function {1+x+(x^2)/2+(x^3)/6+(x^4)/24};
+			\addplot [samples=500,color=black!90!white,domain=-5:3] function {1+x+(x^2)/2+(x^3)/6+(x^4)/24+(x^5)/120};
+			\addplot [very thick,samples=500,color=black,domain=-5:3] function {exp(x)};
+			\legend{$n=0$,$n=1$,$n=2$,$n=3$,$n=4$,$n=5$,$e^x$}
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Approssimazioni crescenti dello sviluppo di Taylor per la funzione $e^x$.}
+	\label{fig:taylor_exp}
+\end{figure}

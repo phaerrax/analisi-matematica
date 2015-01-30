@@ -1,0 +1,42 @@
+\documentclass[a4paper,notitlepage]{book}
+\usepackage{mathematics}
+\hypersetup{
+	pdftitle={Analisi Matematica},
+	pdfauthor={Ferracin Davide},
+	pdfcreator={Ferracin Davide},
+	pdfsubject={Appunti dei corsi di Analisi Matematica},
+	pdfproducer={Rompileballealprossimo Editore}
+}
+
+\usetikzlibrary{external}
+\usepgfplotslibrary{external}
+\tikzexternalize[prefix=tex/]
+
+\title{
+	{\sffamily\fontsize{35}{42}\selectfont Analisi Matematica}
+}
+\author{}
+\date{\today}
+
+\pagestyle{headings}
+\usepackage{comment}
+
+\begin{document}
+\maketitle
+\vspace{2cm}
+\toccontents
+\part{}
+\include{i/insiemi-numerici}
+\include{i/spazi-metrici}
+\include{i/successioni}
+\include{i/serie}
+\include{i/limiti-continuita}
+\include{i/calcolo-differenziale}
+\include{i/numeri-complessi}
+\part{}
+\include{ii/integrale-riemann}
+\include{ii/calcolo-differenziale-multidimensionale}
+\include{ii/successioni-funzioni}
+\include{ii/serie-funzioni}
+\include{ii/equazioni-differenziali-ordinarie}
+\end{document}

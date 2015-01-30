@@ -1,0 +1,536 @@
+\chapter{Successioni}
+\section{Introduzione}
+Le successioni sono famiglie di elementi del tipo $\{a_n\}_{n=1}^{\infty}$, con $a_n\in (X,d)$ e $\forall n\in\N$, e sono propriamente definite come funzioni dell'insieme dei naturali su uno spazio metrico.
+\[
+f\colon\N\to (X,d).
+\]
+L'immagine $f(n)$, con $n$ sempre naturale, viene indicata con $a_n$, che si chiama \emph{termine generale} della successione, che invece si indica, tra i vari modi, con $\{a_n\}$, che indica anche il suo codominio, ossia l'insieme delle immagini $a_n$.
+Si può descrivere una successione, quindi, anche con l'espressione
+\[
+f\colon n\to f(n)=a_n.
+\]
+\begin{definizione}
+Si dice che una definizione soddisfa una proprietà \emph{definitivamente} se tale proprietà è vera per $n$ sufficientemente grande, cioè se esiste un valore $N$ tale che per ogni $n>N$ il termine $a_n$ verifica la proprietà.
+\end{definizione}
+È diverso affermare che una successione verifica una proprietà per infiniti $n$ o definitivamente: quest'ultimo modo si usa per dire che, per \emph{tutti} gli $n$ maggiori di un certo numero $N$, la proprietà è verificata. Ad esempio, la successione a valori reali $a_n=(-1)^n$ soddisfa la proprietà $a_n=1$ per infiniti $n$, ma non definitivamente, infatti continua ad oscillare tra 1 e $-1$ e non si può stabilire un numero $n=N$ oltre il quale $a_n$ verifichi \textit{sempre} la proprietà.
+
+\section{Successioni convergenti}
+\begin{definizione}
+Siano $\{a_n\}\subset(X,d)$ e $\ell\in X$. Si dice che la successione $\{a_n\}$ \emph{converge} a $\ell$ se per ogni numero $\epsilon$ arbitrariamente piccolo $\{a_n\}$ verifica definitivamente la proprietà $d(a_n,\ell)<\epsilon$, oppure equivalentemente che, sempre definitivamente, $a_n\in B(\ell,\epsilon)$.
+\[
+\forall\epsilon >0\;\exists N\colon\forall n\geq N\to d(a_n,\ell)<\epsilon.
+\]
+\end{definizione}
+\begin{definizione}
+Il numero $\ell\in X$ si chiama \emph{limite} della successione $\{a_n\}\subset(X,d)$ se
+\[
+\lim_{n\to \pinf}a_n=\ell.
+\]
+\end{definizione}
+\begin{teorema}
+\label{t:succ_limitata}
+Se la successione $\{a_n\}$ a valori nello spazio metrico $(X,d)$ è convergente, allora è limitata.
+\end{teorema}
+\begin{proof}
+Si scelga $\epsilon=1$ come raggio dell'intorno. Sia $\ell$ il limite della successione: per ipotesi, esiste un numero intero $N$ tale che $\forall n\geq N$ risulta $a_n\in B(\ell,1)$. Allora l'insieme formato dai valori di $\{a_n\}$ per $n\geq N$ ha un diametro inferiore o uguale a 2, quindi è limitata. Allora poiché l'insieme dei valori della successione per $n<N$ è di cardinalità finita, è limitato anch'esso, quindi tutta la successione è limitata in quanto somma di due insiemi limitati.
+\end{proof}
+Una successione è limitata quando il suo codominio è limitato, ma questo non implica necessariamente che la successione converga ad un limite. Come esempio si può considerare, come prima, la successione $a_n=(-1)^n$ che è chiaramente limitata, ma non converge.
+\begin{teorema}[di unicità del limite] \label{t:unicita_limite}
+Siano $\{a_n\}\subset(X,d)$ e $\ell_1,\ell_2\in X$. Se $a_n\to\ell_1$ e $a_n\to\ell_2$ allora $\ell_1=\ell_2$, vale a dire che una successione, se converge, non può convergere a due limiti differenti.
+\end{teorema}
+\begin{proof}
+Sia per assurdo $\ell_1\neq\ell_2$. Deve allora esistere una distanza non nulla tra di loro. Si considerino allora due raggi $r_1$ e $r_2$ tali che $r_1+r_2\leq d(\ell_1,\ell_2)$: per il teorema di Hausdorff \ref{t:hausdorff} questi due raggi individuano rispettivamente gli intorni $B(\ell_1,r_1)$ e $B(\ell_2,r_2)$, tali che $B(\ell_1,r_1)\cap B(\ell_2,r_2)=\emptyset$. Perché la successione converga ad entrambi i limiti, deve essere definitivamente contenuta in entrambi gli intorni, ma ciò è assurdo, quindi i due limiti $\ell_1$ e $\ell_2$ devono coincidere.
+\end{proof}
+
+\section{Successioni a valori reali}
+Si identificano con questa definizione tutte le successioni le cui immagini sono numeri reali, ossia
+\[
+f\colon\N\to\R.
+\]
+La definizione di limite in questo caso si può riscrivere affermando che se la successione converge a $\ell$, è definitivamente contenuta nell'intervallo $(\ell-\epsilon,\ell+\epsilon)$, perché $|a_n-\ell|<\epsilon$.
+Per il teorema \ref{t:succ_limitata} allora ogni successione convergente è sia superiormente che inferiormente limitata.
+
+\begin{definizione}
+Una successione si dice \emph{divergente} all'infinito se i suoi elementi, in valore assoluto, sono definitivamente grandi. In particolare:
+\begin{itemize}
+\item $a_n\to \pinf$ se $\forall M>0\;\exists N\colon\forall n\geq N\to a_n>M$;
+\item $a_n\to \minf$ se $\forall M>0\;\exists N\colon\forall n\geq N\to a_n<-M$.
+\end{itemize}
+\end{definizione}
+\begin{teorema}
+Se la successione $\{a_n\}$ diverge a $\pinf$, allora non è limitata superiormente. Analogamente, se $a_n\to \minf$ non è limitata inferiormente.
+\end{teorema}
+Non è però sempre valido il contrario, cioè una successione illimitata superiormente non è necessariamente divergente a $\pinf$. Come esempio si consideri la successione
+\[
+a_n=
+\begin{cases*}
+	n & se $n$ è pari\\
+	1 & se $n$ è dispari
+\end{cases*}.
+\]
+Ovviamente questa successione non è limitata, ma non è verificato \emph{definitivamente} che sia arbitrariamente grande.
+\begin{teorema}[di permanenza del segno]
+\label{t:permanenza_segno}
+Sia $\{a_n\}$ una successione a valori reali convergente ad $a$.
+\begin{enumerate}
+\item Se $a$ è positivo, allora gli elementi della successione sono definitivamente positivi.
+\item Se la successione è definitivamente positiva, allora $a\geq 0$.
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+Se la successione converge ad un valore $a$ positivo, scelto un $\epsilon>0$, arbitrariamente piccolo,  deve essere che $a-\epsilon>0$. Poiché $a$ è il limite della successione, i suoi elementi sono definitivamente compresi nell'intorno $(a-\epsilon,a+\epsilon)$, ossia sono sicuramente maggiori di $a-\epsilon$. Dato che $a-\epsilon$ è positivo, segue che anche gli $a_n$ devono essere definitivamente positivi.
+
+Sia ora definitivamente $a_n>0$. Se il suo limite $a$ fosse negativo, per il punto precedente la successione dovrebbe essere definitivamente negativa, che è assurdo: quindi il suo limite non è negativo.
+\end{proof}
+Analogamente si dimostra che se $\{a_n\}$ converge ad un valore $a<0$, i suoi elementi sono definitivamente negativi, e che se una successione è convergente e definitivamente negativa, il suo limite è negativo o nullo.
+La seconda parte del teorema \emph{non è l'inverso} della prima, in quanto anche se la successione è definitivamente positiva il limite non è sempre positivo, ma può essere anche nullo, come per la successione di $1/n$, chiaramente sempre positiva ma convergente a 0.
+Questo teorema può essere ``traslato'' sostituendo 0 con un altro numero e verificando che la successione converga ad un valore maggiore di quel numero.
+Questi ultimi due teoremi suppongono che il limite della successione esista, infatti la convergenza della successione è un'ipotesi fondamentale.
+\begin{teorema}[del confronto]
+\label{t:confronto}
+\begin{enumerate}
+\item Siano $\{a_n\}$, $\{b_n\}$ e $\{c_n\}$ tre successioni a valori reali, con $a_n\leq b_n\leq c_n$ definitivamente. Se le successioni $a_n$ e $c_n$ convergono entrambe ad un limite $\alpha$, allora $b_n$ ammette il limite, e tale limite coincide con $\alpha$.
+\item Siano $\{a_n\}$ e $\{b_n\}$ due successioni a valori reali, con $a_n\leq b_n$ definitivamente:
+	\begin{itemize}
+		\item se $a_n$ diverge a $\pinf$, allora anche $b_n$ ammette il limite, che è $\pinf$;
+		\item se $b_n$ diverge a $\minf$, allora anche $a_n$ ammette il limite, che è $\minf$.
+	\end{itemize}
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+\begin{enumerate}
+\item Per la convergenza di $a_n$ e $c_n$ si ha che
+	\begin{itemize}
+		\item $\forall\epsilon>0\;\exists N_1\colon\forall n\geq N_1\to\alpha-\epsilon<a_n<\alpha+\epsilon$;
+		\item $\forall\epsilon>0\;\exists N_2\colon\forall n\geq N_2\to\alpha-\epsilon<c_n<\alpha+\epsilon$.
+	\end{itemize}
+Per tutti gli $n\geq\max\{N_1,N_2\}$ devono sussistere entrambe le proprietà. Allora, poiché per ipotesi $b_n$ è compreso tra le altre due successioni, risulta
+\[
+\alpha-\epsilon<a_n\leq b_n\leq c_n<\alpha+\epsilon,
+\]
+A questa relazione segue che $\alpha-\epsilon<b_n<\alpha+\epsilon$, che significa che anche $b_n$ converge ad $\alpha$.
+\item Nel caso in cui $a_n\to \pinf$, segue che definitivamente $a_n>M$ con $M$ arbitrariamente grande. Poiché è, per ipotesi, $b_n\geq a_n$, allora definitivamente si ha $b_n\geq a_n>M$, quindi $b_n>M$, cioè diverge a $\pinf$.
+Analogamente si dimostra il caso in cui $b_n\to \minf$.\qedhere
+\end{enumerate}
+\end{proof}
+Nel teorema del confronto non è nota a priori l'esistenza dei limiti delle successioni che sono dimostrate come convergenti o divergenti, quindi è possibile utilizzare questo teorema per dimostrare l'esistenza di tali limiti.
+Dal teorema del confronto segue che
+\begin{osservazione}
+Sia $\{a_n\}$ il prodotto di due successioni $b_n$ e $c_n$. Se $b_n\to 0$ e $c_n$ è limitata, la successione $a_n=b_n\cdot c_n$ converge a 0.
+\end{osservazione}
+
+\begin{definizione}
+Sia $\{a_n\}$ una successione convergente a valori reali. Si dice che $a_n$ tende a $\ell\in\R$ per \emph{eccesso} (e si indica $a_n\to\ell^+$) se la successione è definitivamente compresa nell'intorno destro di $\ell$, cioè in $[\ell,\ell+\epsilon)$.
+Analogamente, $a_n$ tende a $\ell\in\R$ per \emph{difetto} (e si indica $a_n\to\ell^-$) se la successione è definitivamente compresa nell'intorno sinistro di $\ell$, cioè in $(\ell-\epsilon,\ell]$.
+\end{definizione}
+
+\section{Calcolo dei limiti}
+\subsection{Algebra parziale di $\Rex$}
+Si può estendere l'insieme dei numeri reali per comprendere anche il concetto di infinito, negativo e positivo, ottenendo l'insieme dei numeri reali \emph{esteso} $\Rex=\R\cup\{\minf\}\cup\{\pinf\}$. In questo insieme valgono ovviamente tutte le proprietà di somma e prodotto quando $a$ e $b$ sono finiti, ma non valgono più tutte se uno dei due è $\pm\infty$, infatti $\Rex$ non è più un campo.
+
+\begin{teorema}
+Siano $\{a_n\}$ e $\{b_n\}$ due successioni a valori reali, e sia $a_n\to a$ e $b_n\to b$, con $a,b\in\Rex$. Allora
+\begin{itemize}
+	\item la successione $a_n+b_n$ ammette limite, e tale limite è $a+b$, purché la somma $a+b$ sia definita in $\Rex$;
+	\item la successione $a_nb_n$ ammette limite, e tale limite è $ab$, purché il prodotto $ab$ sia definito in $\Rex$.
+\end{itemize}
+\end{teorema}
+Nei casi non compresi da questo teorema, il risultato dell'operazione tra i due limiti non è definito, e si ha una \emph{forma di indecisione}, e in questi casi il risultato non si può sapere a priori, deducendolo da teoremi o formule note, ma bisogna calcolarlo caso per caso, in quanto non è mai stabilito. Le forme di indecisione si presentano nelle seguenti forme:
+\begin{gather*}
+\infty-\infty\qquad 0\cdot\infty\qquad\frac{\infty}{\infty}\\
+\frac00\qquad 1^\infty\qquad 0^0\qquad \infty^0
+\end{gather*}
+Inoltre, si possono applicare alle successioni alcune funzioni elementari, come il logaritmo o le funzioni trigonometriche, e il limite della funzione si può calcolare come la funzione del limite della successione, come afferma il seguente teorema.
+\begin{teorema}
+Sia $\{a_n\}$ una successione a valori reali convergente al numero $a$. Sia $f\colon D\subseteq\R\to\R$ una funzione ``elementare''. Se la successione $a_n$ e il suo limite $a$ appartengono a $D$, allora
+\[
+f(a_n)\to f(a).
+\]
+\end{teorema}
+
+\paragraph{Confronto di infiniti}
+Per calcolare più velocemente il rapporto di due successioni divergenti si stabilisce quale tipo di funzione ``diverge più velocemente'', confrontando i tipi di infiniti. Si definisce così una scala di tipi di successioni, ordinate partendo dalla più lenta a divergere:
+\[
+\log_a^b n\qquad n^c\qquad d^n\qquad n!\qquad n^n,
+\]
+con i vari coefficienti scelti opportumanente in modo che le successioni divergano. Il rapporto di uno di questi infiniti per uno qualsiasi dei precedenti tende a infinito, con il segno opportuno, e ovviamente il reciproco tende a zero.
+
+\section{Successioni monotone}
+Sia $\{a_n\}$ una successione a valori reali. Si dice che la successione è monotona:
+\begin{itemize}
+\item crescente in senso stretto, se $\forall n$ si ha $a_n<a_{n+1}$;
+\item crescente in senso lato, se $\forall n$ si ha $a_n\leq a_{n+1}$;
+\item decrescente in senso stretto, se $\forall n$ si ha $a_n>a_{n+1}$;
+\item decrescente in senso lato, se $\forall n$ si ha $a_n\geq a_{n+1}$.
+\end{itemize}
+Si può eventualmente definire una successione come \emph{definitivamente monotona}, quando vale una delle quattro relazioni precedenti ma solo per tutti i valori di $n$ oltre un certo numero $N$. Le proprietà delle successioni monotone valgono in entrambi i casi, con le opportune modifiche del caso, ossia di ignorare nei calcoli la parte della successione per $n<N$.
+
+Il seguente teorema garantisce l'esistenza del limite per tali successioni.
+\begin{teorema}
+Tutte le successioni monotone sono regolari. Sia inoltre $\{a_n\}$ una successione a valori reali: se è monotona crescente, allora
+\[
+\lim_{n\to \pinf} a_n=\sup\{a_n\},
+\]
+e tale limite è finito se la successione è limitata, altrimenti è $\pinf$.
+Se $\{a_n\}$ è invece monotona decrescente, allora
+\[
+\lim_{n\to \pinf} a_n=\inf\{a_n\},
+\]
+e tale limite è finito se la successione è limitata, altrimenti è $\minf$.
+\end{teorema}
+\begin{proof}
+Si supponga $\{a_n\}$ monotona crescente, e sia $\sup\{a_n\}=\ell\in\R$. Allora $\ell$ è un maggiorante, e anche il minimo dei maggioranti. Quindi
+\[
+a_n\leq\ell\;\forall n\text{ e }\forall\epsilon>0\;\exists N\colon\ell-\epsilon<a_N\leq\ell.
+\]
+L'elemento $a_{N+1}$ deve essere maggiore di $a_N$, perché la successione è crescente, e al contempo deve essere minore di $\ell$, e così via per ogni elemento di $a_n$ che segue nell'ordinamento della successione. Tutti gli elementi $a_n$ sono tali che, $\forall n>N$:
+\[
+\ell-\epsilon<a_N\leq a_n\leq\ell,
+\]
+quindi appartengono all'intorno sinistro di $\ell$, cioè $a_n\to\ell^-$ per $n\to \pinf$.
+
+Sia ora $\sup\{a_n\}=\pinf$. Poiché non ci sono maggioranti, vale che $\forall M>0$ $\exists a_N>M$, e dato che la successione è crescente, esiste $N\colon\forall n\geq N$ si ha che $a_n\geq a_N>M$, quindi $a_n\to \pinf$ per $n\to \pinf$.
+
+La dimostrazione per $\{a_n\}$ decrescente è analoga.
+\end{proof}
+Tra le successioni monotone crescenti ne esiste una molto particolare, che definisce il numero $e$. Si definisce infatti la successione
+\[
+e_n\equiv\left(1+\frac1{n}\right)^n,
+\]
+per cui vale il teorema seguente.
+\begin{teorema}
+La successione $e_n$ è strettamente monotona crescente e superiormente limitata. Essa ammette quindi un limite finito, e tale limite è il numero $e$.
+\[
+\lim_{n\to \pinf} e_n=\sup\{e_n\}=e.
+\]
+\end{teorema}
+Tale numero è trascendente in quanto non è mai radice di un polinomio a coefficienti razionali. Una prima approssimazione del numero è
+\[
+e\approx\num{2.718281828459}.
+\]
+A partire da questo si definiscono i logaritmi, così come le potenze, in base $e$. Valgono inoltre i seguenti limiti notevoli:
+\begin{gather*}
+(1+a\epsilon_n)^{1/\epsilon_n}\to e^a;\qquad\qquad\frac{\log(1+\epsilon_n)}{\epsilon_n}\to 1;\\
+\frac{e^{\epsilon_n}-1}{\epsilon_n}\to 1;\qquad\qquad\frac{(1+\epsilon_n)^b-1}{\epsilon_n}\to b.
+\end{gather*}
+\begin{proof}
+Il primo non è altro che la successione $e_n$ riscritta diversamente per una successione infinitesima generica. Da questa si dimostrano:
+\begin{itemize}
+\item Applicando i logaritmi a $(1+\epsilon_n)^{1/\epsilon_n}\to\epsilon_n$ si ottiene che
+\[
+\log(1+\epsilon_n)^{1/\epsilon_n}\to\log e\text{,  da cui  }\frac{\log(1+\epsilon_n)}{\epsilon_n}\to 1.
+\]
+\item Sia $x_n\equiv e^{\epsilon_n}-1$, che quindi è infinitesima. Allora $e^{\epsilon_n}=x_n+1$, e applicando i logaritmi si ha $\epsilon_n=\log(x_n+1)$, quindi
+\[
+\frac{e^{\epsilon_n}-1}{\epsilon_n}=\frac{x_n}{\log(1+x_n)}\to 1.
+\]
+\item Sia $y_n\equiv a\log(1+\epsilon_n)$, che è infinitesima. Applicando la potenza in base $e$ si trova che $e^{y_n}=e^{a\log(1+\epsilon_n)}=(1+\epsilon_n)^a$, quindi
+\[
+\frac{(1+\epsilon_n)^a-1}{\epsilon_n}=\frac{e^{y_n}-1}{y_n}\cdot\frac{y_n}{\epsilon_n}=\frac{e^{y_n}-1}{y_n}\cdot\frac{a\log(1+\epsilon_n)}{\epsilon_n}\to a.\qedhere
+\]
+\end{itemize}
+\end{proof}
+
+\section{Infiniti e infinitesimi}
+Una successione si dice infinitesima de tende a zero, mentre è infinita se diverge. Esistono due utili criteri per stabilire se una successione è uno di questi due tipi.
+
+\begin{teorema}[Criterio del rapporto]
+\label{t:criterio_del_rapporto_successioni}
+Sia $\{a_n\}$ una successione a valori reali definitivamente positivi. Se esiste il limite del rapporto,
+\[
+\lim_{n\to \pinf} \frac{a_{n+1}}{a_n}\equiv\alpha,
+\]
+con $\alpha\in\Rex$ (è anche positivo, poiché i due termini della frazione sono positivi), allora:
+\begin{itemize}
+	\item se $\alpha<1$, $a_n$ converge a 0;
+	\item se $\alpha>1$, $a_n$ diverge a $\pinf$.
+\end{itemize}
+\end{teorema}
+Questo teorema inoltre garantisce l'esistenza del limite della successione. Il caso in cui $\alpha=1$ non è preso in considerazione in quanto è di indecisione, e non non si può dire niente sul comportamento della successione.
+\begin{proof}
+1) Sia $\alpha<1$: allora, dato un numero $\epsilon>0$ arbitrariamente piccolo per cui $\alpha+\epsilon<1$, esiste $N$ tale che per ogni $n>N$ si abbia $\alpha-\epsilon<a_{n+1}/a_n<\alpha+\epsilon$, perché per la definizione di limite la successione $a_{n+1}/a_n$ è definitivamente contenuta in un arbitrario intorno di $\alpha$. Allora, per questi valori di $n$, la successione $a_n$ si può scrivere come
+\[
+a_n=\frac{a_n}{a_{n-1}}\cdot a_n=\frac{a_n}{a_{n-1}}\cdot\frac{a_{n-1}}{a_{n-2}}\cdot\frac{a_{n-2}}{a_{n-3}}\dots \frac{a_{N+1}}{a_N}\cdot a_N.
+\]
+Tutti i rapporti di questo tipo, cioè $a_k/a_{k-1}$, sono per $n>N$ minori di $\alpha+\epsilon$, quindi
+\[
+\begin{split}
+	a_n&<(\alpha+\epsilon)(\alpha+\epsilon)\cdots(\alpha+\epsilon)a_N\\
+	&=(\alpha+\epsilon)^{n-N}a_N\\
+	&=\frac{a_N}{(\alpha+\epsilon)^N}\cdot (\alpha+\epsilon)^n,
+\end{split}
+\]
+dove il termine $a_N/(\alpha+\epsilon)^N$ è un numero, costante, mentre $(\alpha+\epsilon)^n$ è una successione convergente a 0. Dato che
+\[
+0<a_n<\frac{a_N}{(\alpha+\epsilon)^N}\cdot (\alpha+\epsilon)^n,
+\]
+si ha che per il teorema \ref{t:confronto} del confronto anche $a_n\to 0$.
+
+2) Sia $\alpha>1$, e analogamente al caso precedente si consideri $\epsilon>0$ tale che $\alpha-\epsilon>1$; allora si ha che, definitivamente, $\alpha-\epsilon<a_{n+1}/a_n<\alpha+\epsilon$, quindi $\exists\tilde{N}$ per cui $\forall n>\tilde{N}$ tutte le frazioni del tipo $a_k/a_{k-1}$ sono maggiori di $\alpha-\epsilon$. Allora, riscrivendo la successione $a_n$ come nel caso precedente, si ha che
+\[
+a_n>(\alpha-\epsilon)^n\cdot\frac{a_N}{(\alpha-\epsilon)^N},
+\]
+a cui segue, sempre per il teorema \ref{t:confronto}, che $a_n\to \pinf$.
+\end{proof}
+\begin{teorema}[Criterio della radice]
+\label{t:criterio_della_radice_successioni}
+Sia $\{a_n\}$ una successione a valori reali definitivamente positivi. Se esiste il limite del rapporto,
+\[
+\lim_{n\to \pinf} \sqrt[n]{a_n}\equiv\alpha,
+\]
+con $\alpha\in\Rex$ (è anche positivo, dato che l'argomento della radice è positivo), allora:
+\begin{itemize}
+	\item se $\alpha<1$, $a_n$ converge a 0;
+	\item se $\alpha>1$, $a_n$ diverge a $\pinf$.
+\end{itemize}
+\end{teorema}
+La dimostrazione è simile a quella del teorema precedente.
+
+Grazie a questi teoremi è possibile dimostrare alcuni dei confronti tra infiniti:
+\begin{enumerate}
+\item Sia $x_n\equiv\dfrac{a^n}{n^b}$, con $a>1$ e $b>0$. La successione $x_{n+1}/x_n$ è
+\[
+\frac{x_n}{x_{n+1}}=\frac{a^{n+1}}{a^n}\cdot\frac{n^b}{(n+1)^b}=a\cdot\frac{(n+1-1)^b}{(n+1)^b}=a\,\left(1-\frac{1}{n+1}\right)^b\to a.
+\]
+Per il criterio del rapporto, poiché $a>1$ allora $x_n\to \pinf$, cioè $\dfrac{a^n}{n^b}\to \pinf$.
+\item Sia $y_n\equiv\dfrac{n!}{a^n}$, con $a>1$. La successione $y_{n+1}/y_n$ è
+\[
+\frac{y_n}{y_{n+1}}=\frac{(n+1)!}{a^{n+1}}\cdot\frac{a^n}{n!}=\frac{n+1}{a}>1.
+\]
+Quindi $y_n\to \pinf$ per il criterio del rapporto.
+\end{enumerate}
+
+\section{Successioni asintotiche}
+Spesso, per studiare l'andamento di una successione al limite, è utile poterla approssimare e quindi sostituire con una più semplice. Questo è possibile con la seguente definizione.
+\begin{definizione}
+\label{d:asintotico}
+Due successioni $\{x_n\}$ e $\{y_n\}$ si dicono \emph{asintotiche}, e si scrive $x_n\sim y_n$, se il loro rapporto tende a 1.
+\[
+\lim_{n\to \pinf}\frac{x_n}{y_n}=1.
+\]
+\end{definizione}
+La relazione $\sim$ è riflessiva, simmetrica e transitiva.
+\begin{definizione}
+Date due successioni $\{x_n\}$ e $\{y_n\}$, si dice che $x_n$ è \emph{o-piccolo} di $y_n$, e si scrive $x_n=o(y_n)$, se il loro rapporto è infinitesimo:
+\[
+\lim_{n\to \pinf}\frac{x_n}{y_n}=0.
+\]
+\end{definizione}
+La scrittura $o(1)$ indica un infinitesimo generico.
+Il limite del rapporto della \ref{d:asintotico} può essere riscritto usando questa notazione, cioè se $a_n\sim\alpha b_n$ allora $a_n=\alpha b_n+o(b_n)$. Infatti dividendo l'ultima relazione per $b_n$ si ha che
+\[
+\frac{a_n}{b_n}=\frac{\alpha b_n}{b_n}+\frac{o(b_n)}{b_n}=\alpha+o(1)\text{, cioè }\frac{a_n}{b_n}\to\alpha.
+\]
+Da ciò si può notare come la scrittura con gli o-piccoli mostra l'errore che si commette approssimando una successione con l'altra, cosa che non accade sfruttando l'uguaglianza asintotica, che è infatti è ``sicura'' da utilizzare soltanto in caso di prodotti e altri casi particolari.
+Si noti inoltre che la scrittura, ad esempio, $e^{\epsilon_n}\sim 1+\epsilon_n$, per quanto corretta dal punto di vista delle relazioni, non ha molto senso: infatti, dato che l'uguaglianza asintotica è ``interessata'' soltanto dai termini di ordine maggiore, da quella relazione segue che $e^{\epsilon_n}\sim 1$, che per quanto vera non dà alcuna informazione utile. È invece corretta la scrittura $e^{\epsilon_n}=1+\epsilon_n+o(\epsilon_n)$.
+
+\section{Condizione di Cauchy}
+Senza bisogno di calcolare il limite, esistono dei teoremi che permettono di garantire la convergenza di una successione. La condizione di Cauchy, ad esempio, non fa alcun riferimento al valore del limite, ma considera la distanza tra due elementi della successione.
+\begin{definizione}[condizione di Cauchy]
+\label{d:ccauchy_successioni}
+Sia $\{x_n\}$ una successione a valori in uno spazio metrico $(X,d)$. Si dice che la successione soddisfa la condizione di Cauchy se $\forall\epsilon>0$ vale
+\begin{equation}
+\label{eq:ccauchy_successioni}
+\exists N\colon\forall m,n>N\text{ si ha che }d(x_m,x_n)<\epsilon,
+\end{equation}
+ossia se la distanza tra due generici elementi della successione è definitivamente infinitesima.
+\end{definizione}
+\begin{osservazione}
+Se una successione converge, soddisfa necessariamente la condizione di Cauchy.
+\end{osservazione}
+\begin{proof}
+Sia $\{x_n\}$ una successione convergente a $p$. Per la distanza triangolare, presi due elementi $x_n$ e $x_m$ della successione, si ha
+\[
+d(x_n,x_m)\leq d(x_n,p)+d(x_m,p).
+\]
+Il secondo membro della disuguaglianza, per la definizione di limite, è arbitrariamente piccolo, perciò lo è anche la distanza $d(x_n,x_m)$, quindi la condizione di Cauchy è soddisfatta.
+\end{proof}
+Questo non significa però che una successione che soddisfa la condizione di Cauchy sia anche convergente: non vale insomma il teorema inverso.
+\begin{osservazione}
+Ogni successione che soddisfa la condizione di Cauchy è limitata.
+\end{osservazione}
+\begin{proof}
+Sia $\epsilon=1$, allora per la condizione di Cauchy $\exists N\colon\forall n\geq N$ si ha $d(x_n,x_m)<1$. Quindi per $n\geq N$ si ha che $x_n\in B(x_N,1)$. Al di fuori dell'intorno rimangono al più un numero finito di elementi (tutti quelli per cui $n<N$): sia $r_i=d(x_N,x_i)$ con $i=1,2,\dots,N-1$, preso un qualunque $R>\max\{r_i\}$ allora tutta la successione $\{x_n\}$ è compresa in $B(x_N,R)$, perciò è limitata.
+\end{proof}
+La successione di Cauchy quindi implica la limitatezza della successione, ma non è ancora sufficiente per determinarne la convergenza. Questa proprietà infatti dipende dallo spazio metrico in cui è posta la successione.
+\paragraph{Esempi}
+\begin{itemize}
+\item Nello spazio metrico $(\Q,\abs{\cdot})$, una successione qualsiasi convergente a $\sqrt{2}$, come ad esempio quella dei troncamenti degli allineamenti decimali che la approssimano, soddisfa la condizione di Cauchy, in quanto converge in $\R$ dato che la metrica è la stessa per entrambi gli spazi metrici. Tuttavia il limite di tale successione non appartiene a $\Q$, perciò non converge.
+\item Si definisca per ogni $m,n\in\N$ la distanza $d^*(n,m)=\abs{\dfrac1{n}-\dfrac1{m}}$. Si può dimostrare che $(\N,d^*)$ è uno spazio metrico. La successione $x_n=n$ soddisfa la condizione di Cauchy, poiché
+\[
+\abs{\frac1{n}-\frac1{m}}\leq\frac1{n}+\frac1{m}<\epsilon
+\]
+se vale $m,n>1/2\epsilon$. Tuttavia la successione non converge, infatti supposto che converga al limite $k\in\N$, si ha
+\[
+\lim_{n\to \pinf} d^*(x_n,k)=\abs{\frac1{k}-\frac1{n}}=\frac1{k}\neq 0.
+\]
+\end{itemize}
+Esistono però alcuni spazi metrici in cui ogni successione che soddisfa la condizione di Cauchy è anche convergente.
+\begin{definizione}
+Uno spazio metrico si dice \emph{completo} se in esso ogni successione che verifica la condizione di Cauchy è anche convergente.
+\end{definizione}
+Gli spazi $(\Q,\abs{\cdot})$ e $(\N,d^*)$ non sono quindi completi, per i controesempi precedenti. Gli spazi $(\R^n,\norm{\cdot})$ invece lo sono, come dimostrato di seguito.
+\begin{lemma}
+Sia $\{I_n\}_{n=1}^{\infty}$ una successione di intervalli chiusi, con $I_{n+1}\subseteq I_n$ $\forall n$. Allora
+\[
+\bigcap_{n=1}^{\infty} I_n\neq\emptyset.
+\]
+Inoltre, se $\diam\{I_n\}\to 0$, allora $\bigcap_{n=1}^{\infty} I_n$ è un punto isolato (la sua cardinalità è 1).
+\end{lemma}
+\begin{proof}
+Gli intervalli $I_n$ sono della forma $[a_n,b_n]$, con opportuni $a_n\leq b_n$. Per la relazione di inclusione, gli $a_n$ formano una successione monotona crescente, mentre $b_n$ è monotona decrescente. Inoltre, entrambe sono limitate perché $a_n\leq b_1$ e $b_n\geq a_1$, quindi entrambe ammettono limite, rispettivamente
+\[
+\lim_{n\to\pinf}a_n=\sup a_n\equiv A\qeq\lim_{n\to\pinf}b_n=\inf b_n\equiv B.
+\]
+Sia ora per assurdo che $B<A$, che quindi individuano l'intervallo $[B,A]$. Allora per i limiti precedenti $\exists N\colon\forall n\geq N$ $a_n\in[B,A]$ e $\exists M\colon\forall n\geq M$ $b_n\in[B,A]$. Quindi se si prende $K\geq\max\{N,M\}$, poiché per ipotesi $a_n<b_n$, si avrà che $B<a_K<b_K<A$. Ma proseguendo con gli indici, per $H>K$ si avrà $B<b_H<a_K<A$, che contrasta con l'ipotesi per cui $a_n\leq b_n$ per ogni $n\in\N$. Allora deve essere $A\leq B$, quindi l'intervallo $[A,B]$ è contenuto nell'intersezione di tutti gli $I_n$. Se infine $a_n$ e $b_n$ tendono ad un unico limite $p$, allora l'intervallo si riduce a $[A,B]\to p$, quindi l'intersezione degli $I_n$ è formata soltanto dal punto isolato $p$.
+\end{proof}
+In più dimensioni, cioè in $\R^k$ con $k\geq 2$, un (iper)rettangolo è il prodotto cartesiano di $k$ intervalli:
+\[
+[a_1,b_1]\times[a_2,b_2]\times\dots\times[a_k,b_k]
+\]
+ed è quindi determinato da due vettori $\vec a,\vec b\in\R^k$ con $a_i<b_i$ $\forall i=1,2,\dots,k$.
+\begin{lemma}
+Sia $\{I_n\}_{n=1}^{\infty}$ una successione di iperrettangoli chiusi in $\R^k$, con $I_{n+1}\subseteq I_n$ $\forall n$. Allora
+\[
+\bigcap_{n=1}^{\infty} I_n\neq\emptyset
+\]
+e se $\diam\{I_n\}\to 0$ si ha anche che $\bigcap_{n=1}^{\infty} I_n$ ha cardinalità 1.
+\end{lemma}
+La dimostrazione è la stessa del lemma precedente, svolta su ciascuna dimensione.
+\begin{teorema}
+\label{t:completo}
+Lo spazio metrico $(\R^k,\norm{\cdot})$ è completo per ogni $k\geq 1$.
+\end{teorema}
+\begin{proof}
+Sia $\{x_n\}$ una successione a valori reali che soddisfa la condizione di Cauchy. Per ogni $i\geq 1$ si consideri la successione $\{x_i,x_{i+1},x_{i+2},\dots\}\equiv A_i$, che è a valori reali ed è limitata. Necessariamente quindi $A_i$ ammette un estremo inferiore e superiore: siano tali estremi rispettivamente $a_i$ e $b_i$, e si consideri l'intervallo $I_i=[a_i,b_i]$.
+Questi intervalli formano una famiglia $\{I_i\}$ di intervalli chiusi con $I_{i+1}\subseteq I_i$; inoltre, per la condizione di Cauchy la distanza $\abs{x_n-x_{n+1}}\to 0$, quindi $\diam I_n\to 0$ e per il lemma precedente $\exists! z\in\bigcap\nolimits _i I_i$, cioè che è contenuto in tutti gli intervalli della famiglia. Come $z$, anche $x_n$ per definizione è contenuto in $\bigcap\nolimits _i I_i$, quindi
+\[
+\abs{x_n-z}\leq\diam\{I_n\}.
+\]
+Poiché $\diam\{I_n\}\to 0$, per il teorema del confronto si ha che $\abs{x_n-z}\to 0$, cioè la successione $\{x_n\}$ ammette limite ed è
+\[
+x_n\to z.\qedhere
+\]
+\end{proof}
+\begin{teorema}
+Sia $\{\vec x_n\}$ una successione a valori in $\R^k$ e sia $\vec x\in\R^k$. Allora $\norm{\vec x_n-\vec x}\to 0$ se e solo se
+\[
+\forall i=1,2,\dots,k\text{ si ha che }\abs{x_{i,n}-x_i}\to 0.
+\]
+\end{teorema}
+Ciò significa che una successione a valori in $\R^k$ converge a $\vec x$ se e solo se le successioni numeriche delle distanze tra le omologhe componenti di $\vec x_n$ e $\vec x$ convergono tutte a 0.
+
+\section{Classe limite}
+\begin{lemma}
+\label{l:pda_insieme}
+Sia $A\subseteq (X,d)$. Un punto $p\in(X,d)$ è di accumulazione per l'insieme $A$ se e solo se esiste una successione $\{x_n\}\subset A$ con $x_n\neq p$ tale che $x_n\to p$.
+\end{lemma}
+\begin{proof}
+Se $p$ è il limite di $\{x_n\}$ allora $\forall r>0$ esiste un intorno $B(p,r)$ in cui gli elementi della successione sono definitivamente contenuti, quindi $\exists N\colon\forall n\geq N$ $\{x_n\}\subset B(p,r)$. Ciò vuol dire che in qualsiasi intorno arbitrariamente piccolo di $p$ sono contenuti infiniti elementi di $\{x_n\}$, che sono anche elementi di $A$. Allora $p\in A'$.
+
+Se invece $p\in A'$, in suo intorno si trovano infiniti punti di $A$. Allora, consideriamo un intorno di raggio $r=1$: esiste $x_1\in A\cap B_1(p,1)$. Si prosegue con un nuovo intorno di raggio $\sfrac{1}{2}$, quindi $\sfrac{1}{3}$ e così via, creando una successione come segue:
+\begin{align*}
+&x_1\in B_1(p,1)\\
+&x_2\in B_2(p,\sfrac{1}{2})\\
+&x_3\in B_3(p,\sfrac{1}{3})\\
+&\vdots\\
+&x_n\in B_n(p,\sfrac{1}{n})\\
+&\vdots
+\end{align*}
+La successione di $x_n$ creata appartiene certamente ad $A$, inoltre poiché il raggio dell'intorno $B$ è infinitesimo, anche la distanza tra $p$ e $x_n$ (compresi in $B$) è infinitesima, vale a dire che $x_n\to p$.
+\end{proof}
+\begin{definizione}
+\label{d:sottosuccessione}
+Data una successione $\{x_n\}\subseteq(X,d)$, e sia $n_1<n_2<\dots<n_k<\dots$ una successione di interi indicata con $n_k$, la successione
+\[
+\big\{x_{n_k}\big\}_{k=1}^{\infty}
+\]
+si dice \emph{sottosuccessione estratta} da $x_n$, che ne conserva l'ordinamento.
+\end{definizione}
+Se una successione è regolare, anche ogni sua sottosuccessione estratta converge (o diverge) allo stesso limite. Se invece la successione è irregolare, le sue sottosuccessioni possono assumere qualsiasi comportamento: ad esempio dalla successione $(-1)^n$ si possono estrarre le sottosuccessioni, tra le altre, $(-1)^{2k}$, $(-1)^{2k+1}$ o $(-1)^{3k}$, che hanno tutte un comportamento differente.
+\begin{definizione}
+Si chiama \emph{classe limite} di una successione l'insieme dei limiti di tutte le sottosuccessioni estratte da essa. Ogni elemento della classe limite è detto \emph{valore limite}.
+\end{definizione}
+I valori limiti possono anche essere $\pinf$ o $\minf$.
+Una classe limite è sempre un insieme chiuso, e in $\Rex$ ammette sempre un massimo e un minimo, chiamati rispettivamente limite superiore e inferiore (si indicano con $\limsup a_n$ e $\liminf a_n$).
+Se una successione a valori reali è regolare, la sua classe limite è composta da un solo elemento. Può anche accadere che la classe limite sia infinita: ad esempio la successione
+\[
+x_{n,k}=k+\frac1{n}
+\]
+assume infiniti valori per $n\to\pinf$ al variare di $k\in\N$, quindi la sua classe limite è $\N$.
+La classe limite però non è mai vuota, come dimostra il seguente teorema.
+\begin{teorema}
+\label{t:classe_limite_mai_vuota}
+In $\R$ la classe limite non è mai vuota.
+\end{teorema}
+\begin{proof}
+Sia $\{x_n\}$ una successione a valori reali. Se essa assume un numero finito di valori, se si considera la sottosuccessione costante di uno di questi valori, ripetuto infinite volte, la classe limite è allora composta almeno da quel valore: non è quindi vuota.
+Se invece la successione assume infiniti valori distinti, si distinguono due casi:
+\begin{itemize}
+\item se $x_n$ è superiormente illimitata, allora si può sempre estrarre una sottosuccessione divergente a $\pinf$, o a $\minf$ se è inferiormente illimitata.
+\item se $x_n$ è limitata, è sicuramente contenuta in un intervallo $I=[a,b]$ in cui $a$ è un minorante e $b$ un maggiorante di $\{x_n\}$. Si divide $I$ in due parti, tali che in almeno una delle due cadano infiniti punti di $\{x_n\}$. Iterando questa suddivisione, che è sempre possibile perché la successione assume infiniti valori in $[a,b]$, si costruisce una successione decrescente di intervalli chiusi e inclusi ognuno nel precedente $\{I_n\}$ tale che $\diam I_n \to 0$. Allora risulta che
+\[
+\exists! p\in\R\colon p\in\bigcap_{n=1}^{\infty} I_n,
+\]
+inoltre $p$ è un punto di accumulazione di $\{x_n\}$ perché negli $I_n$ sono contenuti infiniti elementi, quindi esiste una sottosuccessione estratta da $\{x_n\}$ convergente a $p$, per il lemma \ref{l:pda_insieme}.\qedhere
+\end{itemize}
+\end{proof}
+\section{Insiemi compatti}
+\begin{definizione}
+Un insieme $E\subseteq(X,d)$ si dice \emph{compatto} se $\forall\{x_n\}_{n=1}^{\pinf}\in E$ è possibile estrarre una sottosuccessione $\{x_{n_k}\}$ convergente ad un elemento $p\in E$.
+\end{definizione}
+\paragraph{Esempi}
+\begin{enumerate}
+\item Tutti gli insiemi di cardinalità finita sono compatti: ogni successione convergente estratta è infatti necessariamente definitivamente costante, e tale costante non può non essere nell'insieme.
+\item L'insieme $E=[0,1]\subset\R$ è compatto, perché qualsiasi punto di accumulazione a cui può tendere una successione in $E$ appartiene necessariamente ad $E$, poiché coincide con la sua chiusura $\overline{E}$. Infatti ogni insieme di $\R$ chiuso e limitato è compatto.
+\item L'insieme $E=(0,1]$ non è compatto, perché la successione $x_n=1/n$ tende a 0 che non appartiene ad $E$.
+\item Anche un insieme come $E=[a,\pinf)$ non è compatto, perché qualsiasi successione divergente ha come limite $\pinf$, che \emph{non} appartiene all'insieme.
+\end{enumerate}
+\begin{lemma}
+Un insieme $A\subseteq(X,d)$ è chiuso se e solo se $\forall\{x_n\}\subset A$ con $x_n\to p$ si ha che $p\in A$, ossia se $A$ contiene tutti i limiti di successioni convergenti estratte da esso.
+\end{lemma}
+\begin{proof}
+Sia per assurdo che $p\notin A$, allora deve essere comunque che $p\in A'$ dato che la successione appartiene all'insieme $A$. Dato che l'insieme è chiuso, però, deve contenere i suoi punti di accumuazione, cioè deve essere $A'\subset A$. Ma allora si ha che $p\in A'$ e $p\notin A$, il che è assurdo. Quindi $p$ deve appartenere all'insieme.
+Sia ora $p\in A$, e si costruisca una successione di raggi $r_n=1/n$ per cui $\exists x_n\colon d(x_n,p)<r_n$. Allora $x_n\to p$ e $p\in A$, quindi si ha anche che $p\in A'$.
+\end{proof}
+\begin{teorema}
+Un sottoinsieme chiuso di un insieme compatto è a sua volta compatto.
+\end{teorema}
+\begin{proof}
+Sia $F\subseteq E\subseteq(X,d)$, con $E$ compatto e $F$ chiuso, e sia $\{x_n\}\subset F$. Poiché $F\subseteq E$, allora è anche $\{x_n\}\subset E$, quindi per la compattezza di $E$ risulta che $\exists x_{n_k}\to p\in E$. Quindi $p\in F$ per il lemma precedente, dato che è chiuso. Allora $F$ è anche compatto.
+\end{proof}
+\begin{teorema}
+\label{t:compatto_allora_limitato}
+Ogni insieme compatto è necessariamente chiuso e limitato.
+\end{teorema}
+\begin{proof}
+Sia $E\subseteq(X,d)$ un insieme compatto, e sia $\{x_n\}\subset E$ con $x_n\to p\in X$: allora $p\in E'$, e al contempo $p\in E$ perché è compatto. Quindi $E$ è chiuso, perché $E'\subseteq E$.
+
+Sia ora per assurdo che $E$ sia illimitato. Si consideri un elemento generico $z\in X$, allora esiste una successione $\{x_n\}\subset E$ divergente, quindi $\forall n\in\N$ si ha che $d(x_n,z)>n$. Poiché $E$ è compatto, esiste una sottosuccessione $x_{n_k}\to p\in E$. Allora, passando alle sottosuccessioni, si ha che ogni sottosuccesione di $n$, detta $n_k$, a sua volta diverge, quindi è anche $d(x_{n_k},z)>n_k$. Per la disuguaglianza triangolare, inoltre, risulta $d(x_{n_k},z)\leq d(x_{n_k},p)+d(z,p)$. Confrontando le relazioni trovate si ottiene che
+\[
+n_k<d(x_{n_k},z)\leq d(x_{n_k},p)+d(z,p),
+\]
+che però è una contraddizione poiché per il teorema del confronto $d(x_{n_k},z)$ dovrebbe contemporaneamente tendere a $d(z,p)$ e divergere a $\pinf$, quindi si conclude che $E$ deve essere limitato.
+\end{proof}
+Le condizioni di chiusura e limitatezza non sono sufficienti a determinare la compattezza di un insieme. Basti considerare $E=\N$ nello spazio metrico discreto: $E$ è chiuso e limitato, ma la successione $x_n=n$ non ammette sottosuccessioni convergenti (infatti, ogni successione convergente nella metrica discreta deve essere definitivamente costante).
+
+\begin{teorema}[di Heine-Borel]
+\label{t:heine-borel}
+Negli spazi metrici del tipo $(\R^k,\norm{\cdot})$, ogni insieme è compatto se e solo se è chiuso e limitato.
+\end{teorema}
+\begin{proof}
+È già stato dimostrato nel teorema \ref{t:compatto_allora_limitato} come un compatto sia necessariamente chiuso e limitato.
+Sia ora $\{x_n\}\subset E$: è sicuramente limitata, quindi (in $\R$ e in ogni $\R^k$) si può sempre costruire una sottosuccessione convergente, per il teorema \ref{t:classe_limite_mai_vuota}. Allora, dato che $E$ è chiuso, $x_n\to p\in E$, quindi $E$ è compatto.
+\end{proof}
+\begin{teorema}[di Bolzano-Weierstrass]
+\label{t:bolzano-weierstrass}
+Qualsiasi insieme di $\R^k$ di cardinalità infinita e limitato ha sempre almeno un punto di acumulazione. Ossia, se $E\subset(\R^k,\norm{\cdot})$ è limitato e $|E|=\pinf$, allora $E'\neq\emptyset$.
+\end{teorema}
+\begin{proof}
+Dato che ha cardinalità infinita, da $E$ si può sempre estrarre una successione non costante, che sarà sempre limitata (e in $E$). Sia $\{x_n\}\subset E$ con $x_n\neq x_m$ $\forall m,n$. Allora $\{x_n\}$ è limitata in $\overline{E}$, che è anch'esso limitato. Ma anche $\overline{E}$ è compatto per il teorema \ref{t:heine-borel} di Heine-Borel, allora $\exists x_{n_k}\to p$ e si ha che $p\in E'$ perché è un punto di accumulazione. Quindi $E'\neq\emptyset$.
+\end{proof}
+Altre proprietà degli insiemi compatti sono:
+\begin{itemize}
+\item Se $E$ è compatto, da ogni copertura aperta di $E$ è possibile estrarre una sottocopertura finita.
+\item Se $E$ è compatto, ogni suo sottoinsieme finito ha almeno un punto di accumulazione in $E$.
+\end{itemize}

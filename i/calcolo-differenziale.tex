@@ -1,0 +1,386 @@
+\chapter{Calcolo differenziale}
+\section{Rapporto incrementale}
+Siano $f\colon A\subseteq\R\to\R$,  e $x_0,x_0+h\in A$. La retta passante per i punti $\big(x_0,f(x_0)\big)$ e $(x_0+h,f(x_0+h)\big)$ ha come coefficiente angolare
+\begin{equation}
+\label{eq:rapporto_incr}
+\frac{f(x_0+h)-f(x_0)}{h},
+\end{equation}
+detto \emph{rapporto incrementale} della funzione $f$, centrato in $x_0$, rispetto all'incremento $h$.
+Si definisce \emph{derivata} di $f$ in $x_0$ il limite, se esiste ed è finito, del rapporto incrementale per $h\to 0$, e la funzione si dice derivabile in tale punto. La retta tangente al grafico della funzione $f$ nel punto $x_0$ ha come coefficiente angolare proprio la derivata $f'(x_0)$, ed è quindi data dall'equazione
+\begin{equation}
+y=f(x_0)+f'(x_0)(x-x_0).
+\end{equation}
+
+Generalizzando $x_0+h$ con un punto generico $x$, per $x\to x_0$ si ha che
+\[
+\frac{f(x)-f(x_0)}{x-x_0}\to f'(x_0),
+\]
+cioè localmente (nell'intorno) la funzione può essere approssimata linearmente dalla funzione
+\begin{equation}
+\label{eq:incr_finito_1}
+f(x)=f(x_0)+f'(x_0)(x-x_0)+o(x-x_0),
+\end{equation}
+dove $o(x-x_0)$ tende a zero più velocemente di quanto $x$ tenda a $x_0$. Questa formula rappresenta una prima approssimazione, chiamata anche formula dell'incremento finito.
+\begin{teorema}
+Se una funzione $f\colon A\to\R$ è derivabile in un punto $x_0\in\mathring{A}$, in tale punto è necessariamente continua.
+\end{teorema}
+\begin{proof}
+Se $f$ è derivabile in $x_0$, allora il suo rapporto incrementale in tale punto ammette limite, quindi può riscrivere la \eqref{eq:incr_finito_1} nella forma
+\[
+f(x)-f(x_0)=f'(x_0)(x-x_0)+o(x-x_0).
+\]
+Se $x\to x_0$, il secondo membro certamente tende a 0, quindi deve essere anche che $f(x)-f(x_0)\to0$, quindi $f(x)\to f(x_0)$ cioè $f$ è continua in $x_0$.
+\end{proof}
+Non vale l'inverso: la funzione $\abs{x}$ non è derivabile in $x=0$, pur essendo continua in tale punto.
+Quando una funzione non è derivabile in un singolo punto, tale punto si chiama \emph{punto di non derivabilità}, e può essere di tre tipi:
+\begin{itemize}
+\item un punto angoloso, se esistono i limiti dei rapporti incrementali a sinistra e a destra del punto ma sono diversi;
+\item una cuspide, se i due limiti sono entrambi infiniti e discordi;
+\item un punto a tangente verticale (flesso), se i due limiti sono entrambi infiniti e concordi.
+\end{itemize}
+\section{Operazioni tra derivate}
+Per derivare una combinazione di più funzioni si ricorre alle seguenti regole, per le operazioni elementari: i seguenti teoremi garantiscono la derivabilità del risultato delle operazioni.
+\begin{teorema}
+Siano $f,g\colon A\to\R$ due funzioni derivabili in $x_0\in A$: allora la combinazione lineare $\alpha f+\beta g$ è derivabile in $x_0$ $\forall\alpha,\beta\in\R$ e si ha che
+\begin{equation}
+(\alpha f+\beta g)'(x_0)=\alpha f'(x_0)+\beta g'(x_0).
+\end{equation}
+\end{teorema}
+\begin{proof}
+Il teorema si dimostra perché l'operazione di limite è lineare, quindi il limite della somma equivale alla somma dei limiti. Infatti il rapporto incrementale, per $x\to x_0$, è
+\begin{align*}
+&\frac{\alpha f(x)+\beta g(x)-\alpha f(x_0)-\beta g(x_0)}{x-x_0}=\\
+&=\frac{\alpha f(x)-\alpha f(x_0)}{x-x_0}+\frac{\beta g(x)-\beta g(x_0)}{x-x_0}=\\
+&=\alpha\frac{f(x)-f(x_0)}{x-x_0}+\beta\frac{g(x)-g(x_0)}{x-x_0}\to\\
+&\to\alpha f'(x_0)+\beta g'(x_0).\qedhere
+\end{align*}
+\end{proof}
+\begin{teorema}[regola di Leibnitz]
+Siano $f,g\colon A\to\R$ due funzioni derivabili in $x_0\in A$: allora $fg$ è derivabile in $x_0$ e si ha che
+\begin{equation}
+(fg)'(x_0)=f'(x_0)g(x_0)+f(x_0)g'(x_0).
+\end{equation}
+\end{teorema}
+\begin{proof}
+Al prodotto incrementale per $x\to x_0$ si somma e sottrae il termine $f(x_0)g(x)$ al numeratore:
+\begin{align*}
+&\frac{f(x)g(x)-f(x_0)g(x_0)}{x-x_0}=\\
+&=\frac{f(x)g(x)-f(x_0)g(x_0)+f(x_0)g(x)-f(x_0)g(x)}{x-x_0}=\\
+&=\frac{f(x)g(x)-f(x_0)g(x)}{x-x_0}+\frac{f(x_0)g(x)-f(x_0)g(x_0)}{x-x_0}=\\
+&=\frac{f(x)-f(x_0)}{x-x_0}g(x)+\frac{g(x)-g(x_0)}{x-x_0}f(x_0)\to\\
+&\to f'(x_0)g(x_0)+f(x_0)g'(x_0).\qedhere
+\end{align*}
+\end{proof}
+\begin{teorema}
+Siano $f,g\colon A\to\R$ due funzioni derivabili in $x_0\in A$: allora $\frac{f}{g}$ è derivabile in $x_0$ se $g\neq 0$ nell'intorno di $x_0$ e si ha che
+\begin{equation}
+\bigg(\frac{f}{g}\bigg)'(x_0)=\frac{f'(x_0)g(x_0)-f(x_0)g'(x_0)}{g^2(x_0)}.
+\end{equation}
+\end{teorema}
+\begin{proof}
+Il rapporto incrementale per $x\to x_0$ è
+\[
+\frac{\dfrac{f(x)}{g(x)}-\dfrac{f(x_0)}{g(x_0)}}{x-x_0}=\frac{\dfrac{f(x)g(x_0)-f(x_0)g(x)}{g(x)g(x_0)}}{x-x_0}.
+\]
+A questo punto, come nel teorema precedente, si aggiunge e toglie il termine $f(x_0)g(x_0)$ al numeratore:
+\begin{align*}
+&\frac{f(x)g(x_0)-f(x_0)g(x)+f(x_0)g(x_0)-f(x_0)g(x_0)}{\big[g(x)g(x_0)\big](x-x_0)}=\\
+&=\frac{\dfrac{\big[f(x)-f(x_0)\big]g(x_0)-\big[g(x)-g(x_0)\big]f(x_0)}{x-x_0}}{g(x)g(x_0)}=\\
+&=\frac{\dfrac{f(x)-f(x_0)}{x-x_0}g(x_0)-\dfrac{g(x)-g(x_0)}{x-x_0}f(x_0)}{g(x)g(x_0)}\to\frac{f'(x_0)g(x_0)-f(x_0)g'(x_0)}{g^2(x_0)}.\qedhere
+\end{align*}
+\end{proof}
+\subsection{Funzioni composte}
+\begin{teorema}
+Sia $f\colon I\subseteq\R\to\R$ una funzione derivabile in $x_0\in\ I$, e sia $g\colon J\to\R$ derivabile in $y_0=f(x_0)$, con $f(I)\subseteq J$. La funzione $g\circ f\colon I\to\R$ è derivabile in $x_0$ e si ha
+\begin{equation}
+(g\circ f)'(x_0)=f'(x_0)g'\big(f(x_0)\big).
+\end{equation}
+\end{teorema}
+\begin{proof}
+Il rapporto incrementale per $x\to x_0$ della funzione composta è
+\[
+\frac{g\big(f(x)\big)-g\big(f(x_0)\big)}{x-x_0}=\frac{g\big(f(x)\big)-g\big(f(x_0)\big)}{f(x)-f(x_0)}\cdot\frac{f(x)-f(x_0)}{x-x_0},
+\]
+in cui $f(x)\neq f(x_0)$, per cui il rapporto incrementale sarebbe semplicemente nullo. Poiché $f$ è continua, $f(x)\to f(x_0)$ quando $x\to x_0$, quindi questa espressione tende a
+\[
+(g\circ f)'(x_0)=f'(x_0)g'\big(f(x_0)\big).\qedhere
+\]
+\end{proof}
+\subsection{Funzioni inverse}
+\begin{teorema}
+Siano $f\colon I\to\R$ e $x_0\in I$, con $f$ derivabile in $I$ e $f'(x_0)\neq 0$. Se $f$ è invertibile, allora $f^{-1}\colon f(I)\to I$ è derivabile in $y_0=f(x_0)$ e tale derivata è il reciproco di $f'(x_0)$.
+\begin{equation}
+(f^{-1})'(y_0)=\frac1{f'(x_0)}.
+\end{equation}
+\end{teorema}
+\begin{proof}
+Il rapporto incrementale della funzione inversa, per $y\to y_0$ (dove $y=f(x)$, quindi $f^{-1}(y)=x$) è
+\[
+\frac{f^{-1}(y)-f^{-1}(y_0)}{y-y_0}=\frac{x-x_0}{f(x)-f(x_0)}\to\frac1{f'(x_0)}.\qedhere
+\]
+\end{proof}
+\paragraph{Esempi}
+\begin{enumerate}
+\item $D(\log x)$ esiste $\forall x\in (0,\pinf)$ e vale
+\[
+\frac1{(e^x)'(\log x)}=\frac1{(e^x)(\log x)}=\frac1{x};
+\]
+\item $D(\arctan x)$ esiste $\forall x\in\R$ a valori in $\left(-\dfrac{\pi}2,\dfrac{\pi}2\right)$ e vale
+\[
+\frac1{(\tan x)'(\arctan x)}=\frac1{(1+\tan^2x)(\arctan x)}=\frac1{1+x^2}.
+\]
+\end{enumerate}
+\section{Teoremi sul calcolo differenziale}
+\begin{definizione}
+\label{d:pt_estremanti}
+Sia $f\colon I\to\R$ derivabile in $x_0\in I$. Si dice che $x_0$ è un punto di:
+\begin{itemize}
+\item \emph{massimo} (relativo per $f$ in $I$) se $\exists\delta>0\colon\forall x\in(x_0-\delta,x_0+\delta)\rightarrow f(x)\leq f(x_0)$;
+\item \emph{minimo} (relativo per $f$ in $I$) se $\exists\delta>0\colon\forall x\in(x_0-\delta,x_0+\delta)\rightarrow f(x)\geq f(x_0)$.
+\end{itemize}
+\end{definizione}
+\begin{teorema}[di Fermat]
+\label{t:fermat}
+Siano $f\colon I\to\R$, $I$ un intervallo e $x_0\in\mathring{I}$. Se $f$ è derivabile in $x_0$ ed esso è un punto estremante per $f$, allora $f'(x_0)=0$.
+\end{teorema}
+\begin{proof}
+Sia $x_0$ un punto di massimo. Dato che $x_0\in\mathring{I}$, per la definizione \ref{d:pt_estremanti} $\exists\delta>0\colon\forall x\in(x_0-\delta,x_0+\delta)$ si ha che $f(x)\leq f(x_0)$. Il rapporto incrementale,
+\[
+\frac{f(x)-f(x_0)}{x-x_0}
+\]
+è negativo per $x\to x_0^+$ e positivo per $x\to x_0^-$, quindi per il teorema \ref{t:permanenza_segno} di permanenza del segno risulta che il suo limite è rispettivamente minore o uguale a zero e maggiore o uguale a zero, quindi non può che essere nullo.
+Analogamente si dimostra se $x_0$ è un punto di minimo.
+\end{proof}
+Al di fuori delle ipotesi di questo teorema non si può affermare niente: ad esempio, per $f\colon[-1,3)\to\R=\abs{x}$, si ha che $-1$ è un punto di massimo relativo e 3 un punto di massimo assoluto, ma entrambi non sono interni all'intervallo di definizione, e il punto di minimo assoluto è 0, in cui $f$ non è derivabile.
+La condizione del teorema \ref{t:fermat} è inoltre solo necessaria, infatti $f(x)=x^3$ ha derivata nulla in $x=0$ ma tale punto non è estremante.
+\begin{definizione}
+Si dicono \emph{punti stazionari} i punti che soddisfano le ipotesi del teorema \ref{t:fermat} di Fermat. Ossia, data una funzione $f\colon I\to\R$, il punto $x_0$ è stazionario se $x_0\in\mathring{I}$ e $\exists f'(x_0)$ ed è nulla.
+\end{definizione}
+I punti estremanti di una funzione, quindi, possono solo essere punti stazionari, punti non interni all'intervallo di definizione oppure punti di non derivabilità.
+
+\begin{teorema}[di Rolle]
+\label{t:rolle}
+Sia $f\colon [a,b]\to\R$ una funzione continua in $[a,b]$ e derivabile in $(a,b)$. Se $f(a)=f(b)$, allora esiste un punto $x_0\in (a,b)$ per cui $f'(x_0)=0$.
+\end{teorema}
+\begin{proof}
+Se $f$ è costante tra $a$ e $b$, allora banalmente la derivata è nulla per ogni punto dell'intervallo (aperto).
+Se invece $f$ non è costante, per il teorema \ref{t:weierstrass} di Weierstrass assume almeno un punto estremante interno all'intervallo $(a,b)$. Per il teorema \ref{t:fermat} di Fermat, in tale punto la derivata è nulla.
+\end{proof}
+\input{grafici/rolle}
+
+\begin{teorema}[di Cauchy]
+\label{t:cauchy}
+Se $f,g\colon[a,b]\to\R$ sono due funzoni continue in $[a,b]$ e derivabili in $(a,b)$, esiste un punto $z\in(a,b)$ per cui
+\begin{equation}
+\label{eq:cauchy}
+\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(z)}{g'(z)},
+\end{equation}
+ossia le due derivate sono proporzionali di un fattore che dipende unicamente dagli estremi dell'intervallo.
+\end{teorema}
+\begin{proof}
+Si definisce la funzione ausiliaria $\phi(x)=\big(g(b)-g(a)\big)f(x)-\big(f(b)-f(a)\big)g(x)$, che soddisfa le ipotesi del teorema \ref{t:rolle} di Rolle: è una combinazione lineare di funzioni continue e derivabili, quindi è a sua volta continua e derivabile, e $\phi(a)=\phi(b)$. Allora $\exists z\in(a,b)$ per cui vale $\phi'(z)=0$, cioè per cui $\big(g(b)-g(a)\big)f'(z)-\big(f(b)-f(a)\big)g'(z)=0$, da cui si ottiene la \eqref{eq:cauchy}.
+\end{proof}
+\begin{teorema}[di Lagrange]
+\label{t:lagrange}
+Se $f\colon[a,b]\to\R$ è una funzione continua in $[a,b]$ e derivabile in $(a,b)$, esiste un punto $z\in(a,b)$ tale per cui
+\begin{equation}
+\label{eq:lagrange}
+f'(z)=\frac{f(b)-f(a)}{b-a}.
+\end{equation}
+\end{teorema}
+Il teorema di dimostra semplicemente ponendo $f(x)=f(x)$ e $g(x)=x$ nel teorema \ref{t:cauchy} di Cauchy, ottendo così la \eqref{eq:lagrange}.
+Da questo teorema, ponendo $a=x_0$ e $b=x_0+h$ si ottiene un'altra formula dell'incremento finito:
+\begin{equation}
+\label{eq:incr_finito_2}
+f(x_0+h)=f(x_0)+hf'(z).
+\end{equation}
+La principale differenza con la \ref{eq:incr_finito_1} è che in questo caso la funzione deve essere derivabile in tutto $(x_0,x_0+h)$ e non solo in un intorno di $x_0$. Inoltre il punto $z$ è solitamente sconosciuto.
+
+\section{Conseguenze del teorema di Lagrange}
+\begin{teorema}
+Se $f$ è una funzione derivabile in un intervallo $I$ e sia $\abs{f'(x)}\leq M$ per ogni $x\in I$, allora $f$ è lipschitziana in $I$.
+\end{teorema}
+\begin{proof}
+Siano $x_1,x_2\in I$ con $x_1<x_2$. Per il teorema \ref{t:lagrange} di Lagrange applicato all'intervallo $(x_1,x_2)$ si ha che $f(x_2)-f(x_1)=f'(z)(x_2-x_1)$ per qualche $z\in (x_1,x_2)$. Applicando i valori assoluti, si ottiene, con l'ipotesi che $\abs{f'(x)}\leq M$ nell'intervallo, che $\abs{f(x_2)-f(x_1)}\leq M\abs{x_2-x_1}$, cioè è lipschitziana.
+\end{proof}
+Come già visto per la definizione \ref{d:lipschitz} delle funzioni lispchitziane, si ha anche che ogni funzione con derivata limitata in un certo intervallo è in esso anche uniformemente continua.
+
+I seguenti teoremi sulla monotonia delle funzioni si applicano esclusivamente a degli intervalli.
+\begin{teorema}
+\label{t:monotonia_lagrange}
+Sia $f\colon I\to\R$ una funzione almeno derivabile in $\mathring{I}$ e continua in $I$. Essa è
+\begin{itemize}
+\item monotona crescente in $I$ se e solo se $f'(x)\geq 0$ $\forall x\in\mathring{I}$;
+\item monotona decrescente in $I$ se e solo se $f'(x)\leq 0$ $\forall x\in\mathring{I}$.
+\end{itemize}
+\end{teorema}
+\begin{proof}
+Si supponga che $f$ sia monotona crescente, e sia $x_0$ un punto interno all'intervallo $I$. Nel rapporto incrementale $\Delta f/h$, se $h>0$ il numeratore è positivo (è crescente, quindi $f(x_0+h)>f(x_0)$) e anche il denominatore, allora il rapporto incrementale è positivo e il suo limite per $h\to 0^+$ è positivo o nullo per il teorema \ref{t:permanenza_segno} di permanenza del segno.
+Analogamente, per $h<0$ numeratore e denominatore del rapporto incrementale sono entrambi negativi, e il limite per $h\to 0^-$ è positivo o nullo. Si conclude quindi che $f'(x)\geq 0$ in $I$.
+
+Si supponga ora che $f'(x)\geq 0$ e siano $x_1,x_2\in I$ con $x_1<x_2$. Per il teorema \ref{t:lagrange} di Lagrange nell'intervallo $(x_1,x_2)$ $\exists z\in (x_1,x_2)\colon f(x_2)-f(x_1)=f'(z)(x_2-x_1)$. Il secondo membro è positivo o nullo per le ipotesi fatte, quindi deve essere $f(x_2)\geq f(x_1)$ $\forall x\in I$, vale a dire che la funzione è crescente.
+
+La dimostrazione per il secondo caso è del tutto analoga.
+\end{proof}
+Vale inoltre che se $f'(x)>0$ ($f'(x)<0$) allora la funzione è monotona strettamente crescente (decrescente), ma non vale il teorema inverso: la funzione $x^3$, ad esempio, ha derivata nulla nell'origine, ma essa è crescente in tutto $\R$. Inoltre i punti in cui una funzione crescente, o decrescente, può avere derivata nulla possono essere al più un'infinità numerabile: non possono formare un intervallo, altrimenti in esso la funzione sarebbe costante.
+\begin{teorema}
+Sia $f\colon I\to\R$ una funzione continua in $I$ e derivabile in $\mathring{I}$. Essa è costante se e solo se $f'(x)=0$ $\forall x\in\mathring{I}$.
+\end{teorema}
+\begin{proof}
+Si supponga che $f$ sia costante: il rapporto incrementale è sempre nullo perché $f(x_0+h)=f(x_0)$ $\forall x\in\mathring{I}$, quindi la derivata è sempre nulla.
+Supposto invece che la derivata sia nulla, valgono entrambi i casi del teorema \ref{t:monotonia_lagrange}, quindi $f$ è sia crescente che decrescente, cioè deve essere costante.
+\end{proof}
+È importante che questo teorema sia verificato in un \emph{intervallo}: se infatti consideriamo la funzione $f(x)=\arctan x+\arctan\sfrac{1}{x}$, la sua derivata,
+\[
+f'(x)=\frac{1}{1+x^2}+\bigg(\!-\frac1{x^2}\bigg)\frac{1}{1+\frac1{x^2}}=\frac{1}{1+x^2}-\frac{1}{1+x^2}
+\]
+è nulla in ogni intervallo tutto a sinistra o tutto a destra dell'origine, ma non appena si considera un insieme che contiene sia ascisse negative che positive (nell'origine la funzione non è definita) il teorema non si può più applicare. Si verifica infatti che $f(x)=\frac{\pi}2$ $\forall x>0$, mentre $f(x)=-\frac{\pi}2$ $\forall x<0$, quindi non è sempre costante. 
+\begin{corollario}
+Sia $f\colon(x_0-\delta,x_0+\delta)\equiv I\to\R$ una funzione derivabile in $I$, con $f'(x_0)=0$. Il punto $x_0$ è un punto di:
+\begin{itemize}
+\item massimo relativo (a tale intorno), se $f'(x)\geq 0$ in $(x_0-\delta,x_0)$ e $f'(x)\leq 0$ in $(x_0,x_0+\delta)$;
+\item minimo relativo (a tale intorno), se $f'(x)\leq 0$ in $(x_0-\delta,x_0)$ e $f'(x)\geq 0$ in $(x_0,x_0+\delta)$.
+\end{itemize}
+\end{corollario}
+\begin{teorema} \label{t:derivata_solo_disc_seconda_specie}
+Sia $f\colon(x_0-\delta,x_0+\delta)\to\R$ una funzione derivabile in $(x_0-\delta,x_0)\cup(x_0,x_0+\delta)$. Se esiste (finito) $\lim_{x\to x_0} f'(x)\equiv\gamma\in\R$, allora $f$ è derivabile in $x_0$ e $f'(x_0)=\gamma$.
+\end{teorema}
+\begin{proof}
+Nell'intervallo $(x_0,x_0+h)$, $\exists z$ (in dipendenza da $h$) in tale intervallo per cui, dal teorema \ref{t:lagrange} di Lagrange il rapporto incrementale nell'intervallo è $\frac{f(x_0+h)-f(x_0)}{h}=f'(z)$. Quando $h\to 0$, dato che $z$ è nell'intervallo $(x_0,x_0+h)$, si ha che $z\to x_0$, e per ipotesi allora $f'(z)\to\gamma$, cioè la derivata di $f$ esiste ed è $\gamma$ quando l'intervallo si restringe a $x_0$.
+\end{proof}
+La condizione è solo sufficiente: se non esiste il limite della derivata, non si sa dire niente sul suo comportamento in quell'intorno.
+Da questo teorema inoltre si deduce che se una funzione è una derivata può ammettere solo discontinuità di seconda specie.
+\begin{teorema}[di De l'H\^opital]
+\label{t:hopital}
+Siano $f,g\colon(a,b)\to\R$, con $a<b$ anche infiniti, due funzioni derivabili in $(a,b)$ in cui sia $g$ che $g'$ non si annullino mai, cioè $g(x)g'(x)\neq 0$ $\forall x\in(a,b)$. Se
+\[
+\lim_{x\to a^+}f(x)=\lim_{x\to a^+}g(x)=0,
+\]
+oppure se
+\[
+\lim_{x\to a^+}\abs{g(x)}=\pinf,
+\]
+e se esiste il limite del rapporto delle due derivate di $f$ e $g$ per $x\to a^+$, allora esiste anche il limite del rapporto delle due funzioni e vale
+\begin{equation}
+\label{eq:hopital}
+\lim_{x\to a^+}\frac{f(x)}{g(x)}=\lim_{x\to a^+}\frac{f'(x)}{g'(x)}.
+\end{equation}
+\end{teorema}
+Questo teorema può essere utile per risolvere alcune forme di indecisione come $[0/0]$ oppure $[\infty /\infty]$, e si può iterare più volte se la forma di indecisione si ripresenta, continuando con le derivate seconde, terze e così via.
+%\section{Derivate successive}
+\section{Formula di Taylor}
+Il polinomio di Taylor fornisce una generalizzazione della formula della derivata prima per approssimare ad un ordine fissato l'andamento della funzione. La retta tangente è in effetti un'approssimazione tramite il polinomio di Taylor al primo ordine.
+\begin{definizione}
+\label{d:taylor}
+Siano $x,x_0\in(a,b)$ e $f\colon(a,b)\to\R$ una funzione derivabile almeno $n$ volte in $x_0$. Il polinomio di Taylor di grado $n$ centrato in $x_0$ è
+\begin{equation}
+\label{eq:taylor}
+%\begin{split}
+P_nf(x-x_0)\equiv %f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\dots+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n=
+\sum_{k=0}^n\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k.
+%\end{split}
+\end{equation}
+\end{definizione}
+Per approssimare una funzione nell'intorno del punto $x_0$, si utilizza questo polinomio appena definito, con l'aggiunta dell'errore che assume forme differenti a seconda del teorema utilizzato.
+\begin{teorema}[Formula di Taylor con resto secondo Peano]
+\label{t:taylor_peano}
+Sia $f\colon I\to\R$ una funzione derivabile $n$ volte in $x_0\in\mathring{I}$. Localmente, per $x\to x_0$, si ha
+\begin{equation}
+\label{eq:taylor_peano}
+f(x)=P_nf(x-x_0)+o\big((x-x_0)^n\big).
+\end{equation}
+\end{teorema}
+\begin{proof}
+Si dimostra per induzione, su $n$. Per $n=1$ si ha la definizione di derivata: quando $x\to x_0$, $f(x)=f(x_0)+f'(x_0)(x-x_0)+o(x-x_0)$ che se $f$ è derivabile in $x_0$ certamente è vera.
+Si supponga vera la tesi per $n$: ammesso che per ogni $f$ derivabile $n$ volte sia vera la \eqref{eq:taylor_peano}, si dimostra che è vera per $n+1$. Sia $f$ allora una funzione derivabile $n+1$ volte. Bisogna dimostrare che
+\begin{equation}
+\label{eq:dimostrazione-taylor}
+\frac{\displaystyle f(x)-\sum_{k=0}^{n+1}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k}{(x-x_0)^{n+1}}\to 0.
+\end{equation}
+Il limite del rapporto per $x\to x_0$ presenta la forma di indecisione $[0/0]$, perché il polinomio di Taylor tende a $f(x_0)$, inoltre $(x-x_0)^{n+1}\neq0$ nell'intorno di $x_0$ se $x\neq x_0$, quindi si può applicare il teorema \ref{t:hopital} di De l'H\^opital: la derivata del numeratore è
+\begin{multline*}
+f'(x)-f'(x_0)-f''(x_0)(x-x_0)-\frac{f'''(x_0)}{2!}(x-x_0)^2-\\
+-\frac{f^{(4)}(x_0)}{3!}(x-x_0)^3-\frac{f^{(5)}(x_0)}{4!}(x-x_0)^4-\dots-\frac{f^{(n+1)}(x_0)}{n!}(x-x_0)^n=\\
+=f'(x)-\sum_{k=1}^{n+1}\frac{f^{(k)}(x_0)}{(k-1)!}(x-x_0)^{k-1}.
+\end{multline*}
+Ponendo quindi $f'(x)\equiv g(x)$ si ottiene che $f^{(k)}(x)=g^{(k-1)}(x)$, e sostituendo $k-1=j$ l'equazione diventa
+\[
+g(x)-\sum_{k=1}^{n+1}\frac{g^{(k-1)}(x_0)}{(k-1)!}(x-x_0)^{k-1}=g(x)-\sum_{j=0}^{n}\frac{g^{(j)}(x_0)}{j!}(x-x_0)^j.
+\]
+La derivata del denominatore invece vale semplicemente $(n+1)(x-x_0)^n$, perciò si ottiene
+\begin{equation}
+\label{eq:dimostrazione-taylor-g}
+\frac{\displaystyle g(x)-\sum_{j=0}^{n}\frac{g^{(j)}(x_0)}{j!}(x-x_0)^j}{(n+1)(x-x_0)^n}.
+\end{equation}
+Se $f$ è derivabile $n+1$ volte in $x_0$, allora $g$ è in tale punto derivabile $n$ volte, allora per l'ipotesi di induzione poiché vale la tesi per $f'(x)=g(x)$, la \eqref{eq:dimostrazione-taylor-g} tende a 0, dato che è la stessa della tesi per $n$, ma divisa per $n+1$. Allora la \eqref{eq:dimostrazione-taylor} è vera, quindi si è dimostrato il teorema.
+\end{proof}
+\begin{teorema}[Formula di Taylor con resto secondo Lagrange]
+\label{t:taylor_lagrange}
+Siano $f\colon I\to\R$ e $x_0\in\mathring{I}$, con $f$ derivabile $n+1$ volte in $\mathring{I}$. Si ha per ogni $x\in I$ che
+\begin{equation}
+\label{eq:taylor_lagrange}
+f(x)=P_nf(x-x_0)+\frac{f^{(n+1)}(z)}{(n+1)!}(x-x_0)^{n+1}
+\end{equation}
+per qualche opportuno $z$ nell'intervallo di estremi $x_0$ e $x$.
+\end{teorema}
+Per $n=0$ si ottiene il teorema \ref{t:lagrange} di Lagrange.
+
+Le differenze tra i due teoremi principalmente sono che mentre il primo, secondo Peano, ha ipotesi locali (nell'intorno di $x_0$), quindi anche la tesi vale soltanto in tale intorno, per il secondo, secondo Lagrange, $x$ può trovarsi dovunque in $I$, non occorre che $x\to x_0$, ma devono solo appartenere entrambi a $I$.
+
+\section{Convessità di funzioni}
+\begin{definizione}
+\label{d:convessa}
+Una funzione $f\colon I\to\R$ si dice convessa (concava) in $I$ se per ogni terna di punti $x_1<x<x_2$ nell'intervallo si ha che $f(x)$ è minore (maggiore) dell'ordinata del punto che corrisponde all'ascissa $x$ sulla retta secante che congiunge $\big(x_1,f(x_1)\big)$ e $\big(x_2,f(x_2)\big)$, ossia:
+\begin{itemize}
+\item se $f(x)\leq f(x_1)+\dfrac{f(x_2)-f(x_1)}{x_2-x_1}(x-x_1)$ è convessa;
+\item se $f(x)\geq f(x_1)+\dfrac{f(x_2)-f(x_1)}{x_2-x_1}(x-x_1)$ è concava.
+\end{itemize}
+\end{definizione}
+Ad esempio la funzione $x^2$ è convessa in tutto $\R$, anche strettamente, mentre la funzione $\abs{x}$ è convessa in tutto $\R$ ma non strettamente, in quanto prendendo un intervallo tutto negativo o tutto positivo si ha il caso in cui è uguale.
+\input{grafici/funzione-convessa}
+
+Per le funzioni convesse valgono le seguenti proprietà:
+\begin{itemize}
+\item le funzioni convesse in un intervallo $(a,b)$ sono continue in $[a,b]$;
+\item per ogni punto interno all'intervallo in cui una funzione è convessa, esistono e sono finiti i limiti sinistro e destro del rapporto incrementale\footnote{Ma non sono necessariamente uguali, come per la funzione $\abs x$ in $x=0$.}, inoltre i due rapporti incrementali sono funzioni monotone crescenti;
+\item le derivate sinistre e destre sono monotone crescenti per ogni punto interno all'intervallo (vedi punto precedente), quindi la derivata prima ha al più un'infinità numerabile di punti di discontinuità solo di prima specie; quindi la funzione è derivabile nell'interno dell'intervallo tranne al più in un'infinità numerabile di punti, che sono tutti punti angolosi.
+\end{itemize}
+Tali proprietà valgono ovviamente anche per le funzioni concave, cambiando opportunamente verso o segno dove serve.
+\begin{teorema}
+Sia $f\colon(a,b)\to\R$ derivabile almeno due volte in $(a,b)$. $f$ è convessa in $(a,b)$ se e solo se $f''(x)\geq 0$ $\forall x\in(a,b)$.
+\end{teorema}
+\begin{teorema}
+Sia $f\colon(a,b)\to\R$ derivabile almeno una volta in $(a,b)$. $f$ è convessa in $(a,b)$ se e solo se $\forall x_0\in(a,b)$ il grafico della funzione è sopra al grafico della retta tangente in $x_0$, cioè se $\forall x_0,x\in(a,b)$ si ha che $f(x)\geq f(x_0)+f'(x_0)(x-x_0)$.
+\end{teorema}
+\begin{definizione}
+Siano $f\colon(a,b)\to\R$ derivabile in $(a,b)$ e $x_0\in(a,b)$. Se $\forall x\in(x_0-\delta,x_0)$ si ha $f(x)\leq f(x_0)+f'(x_0)(x-x_0)$ e $\forall x\in(x_0,x_0+\delta)$ si ha $f(x)\geq f(x_0)+f'(x_0)(x-x_0)$, cioè se prima di $x_0$ è concava e dopo e convessa, $x_0$ si dice punto di flesso ascendente.
+
+Se invece $\forall x\in(x_0-\delta,x_0)$ si ha $f(x)\geq f(x_0)+f'(x_0)(x-x_0)$ e $\forall x\in(x_0,x_0+\delta)$ si ha $f(x)\leq f(x_0)+f'(x_0)(x-x_0)$, cioè se prima di $x_0$ è convessa e dopo e concava, allora $x_0$ è un punto di flesso discendente.
+\end{definizione}
+\begin{teorema}
+Siano $f\colon(a,b)\to\R$ derivabile due volte in $(a,b)$ e $x_0\in(a,b)$. Se $x_0$ è un punto di flesso, allora $f''(x_0)=0$.
+\end{teorema}
+Il teorema inverso non vale ad esempio per le potenze pari, come $x^4$, che in $x=0$ hanno la derivata seconda evidentemente nulla, ma non hanno un flesso in tale punto.
+\begin{teorema}
+Sia $f\colon(a,b)\to\R$ una funzione derivabile $n$ volte in $x_0\in(a,b)$. Se $f'(x_0)=f''(x_0)=\dots=f^{(n-1)}(x_0)=0$, e $f^{(n)}(x_0)\neq0$, allora:
+\begin{itemize}
+\item se $n$ è pari, $x_0$ è un estremante, inoltre se $f^{(n)}(x_0)>0$ è punto di minimo, se $f^{(n)}(x_0)<0$ è di massimo;
+\item se $n$ è dispari, $x_0$ è un punto di flesso a tangente orizzontale.
+\end{itemize}
+\end{teorema}
+\begin{proof}
+La formula di Taylor per $f$ con resto secondo Peano al grado $n$ è
+\[
+f(x)=P_nf(x-x_0)+o\big((x-x_0)^n\big).
+\]
+Dato che tutte le derivate in $x_0$ prima della $n$-esima sono nulle, per $x\to x_0$
+\[
+f(x)=f(x_0)+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n+o\big((x-x_0)^n\big),
+\]
+quindi
+\[
+f(x)-f(x_0)=(x-x_0)^n\left[\frac{f^{(n)}(x_0)}{n!}+o(1)\right].
+\]
+Se $n$ è dispari, $(x-x_0)^n<0$ per $x<x_0$ e $(x-x_0)^n>0$ per $x>x_0$, quindi la differenza tra $f(x)$ e la retta tangente\footnote{$f(x_0)$ è sia il valore della funzione nel punto, sia l'equazione della retta tangente nel punto, che è orizzontale.} $f(x_0)$ cambia segno prima e dopo $x_0$, cioè $x_0$ è un punto di flesso, che è orizzontale dato che $f'(x_0)=0$.
+Se invece $n$ è pari, $(x-x_0)^n$ è sempre positivo, quindi il segno dipende da $f^{(n)}$: se è positivo, allora $f(x)-f(x_0)>0$, cioè la funzione è maggiore del valore in $x_0$, che quindi è un punto di minimo; se invece $f^{(n)}$ è negativo, analogamente, $x_0$ è un punto di massimo.
+\end{proof}

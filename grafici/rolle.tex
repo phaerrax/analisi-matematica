@@ -1,0 +1,22 @@
+\begin{figure}
+	\tikzsetnextfilename{rolle}
+	\centering
+	\begin{tikzpicture}
+		\draw[->] (0,0) -- (0,5) node[anchor=south]{$y$};
+		\draw[->] (0,0) -- (5,0) node[anchor=west]{$x$};
+		\draw (.5,2) to[in=180] (1.5,4);
+		\draw (1.5,4) to[out=0,in=180] (3.5,1);
+		\draw (3.5,1) to[out=0,in=245] (4.5,2);
+		\draw (1.5,4) node[pin={60:$f'(x)=0$}]{};
+		\draw[dashed] (1,4) -- (2,4);
+		\draw[dashed] (3,1) -- (4,1);
+		\draw[dotted] (0,2) -- (4.5,2);
+		\draw[dotted] (.5,0) -- (.5,2);
+		\draw[dotted] (4.5,0) -- (4.5,2);
+		\draw (0,2) node[anchor=east]{$f(a)=f(b)$};
+		\draw (.5,0) node[anchor=north]{$a$};
+		\draw (4.5,0) node[anchor=north]{$b$};
+	\end{tikzpicture}
+	\caption{Teorema di Rolle.}
+	\label{fig:rolle}
+\end{figure}
