@@ -1,0 +1,201 @@
+\chapter{Forme differenziali lineari}
+\section{Insiemi connessi}
+Prima di introdurre la teoria delle forme differenziali, introduciamo la definizione di insieme \emph{connesso}.
+\begin{definizione} \label{d:connesso}
+	Un insieme $A\subset\R^n$ aperto si dice connesso se laddove può essere scritto come unione di due insiemi aperti e disgiunti, uno dei due è vuoto, vale a dire
+	\begin{equation*}
+		A=A_1\cup A_2\text{ e }A_1\cap A_2=\emptyset\text{, allora }A_1=\emptyset\text{ o }A_2=\emptyset.
+	\end{equation*}
+\end{definizione}
+Un'altra definizione si ottiene se consideriamo gli archi che collegano due punti dell'insieme: se per qualsiasi coppia di punti l'arco è contenuto tutto nell'insieme, anche in questo caso l'insieme si dice connesso. Il seguente teorema mostra che queste due definizioni sono in realtà interscambiabili.
+\begin{teorema} \label{t:connessione-per-archi}
+	Sia $A$ un insieme aperto e connesso di $\R^n$. Per qualsiasi coppia di punti $P_1,P_2\in A$ esiste un arco poligonale con estremi $P_1$ e $P_2$ tutto contenuto in $A$.
+\end{teorema}
+\begin{proof}
+	Sia $P_1\in A$, e $A_1$ l'insieme dei punti in $A$ connessi a $P_1$ per archi, o archi poligonali, ossia l'insieme $\{\vec x\in A\colon\exists\mathscr P(\vec x) =\text{ arco che connette $\vec x$ a $P_1$}\}$.
+	Scegliamo un $\vec y\in B(\vec x,\delta)$, allora il segmento $[\vec x,\vec y]$ che lo congiunge a $\vec x$ è contenuto in $B(\vec x,\delta)$.
+	Unendo il segmento all'arco che connette $\vec x$ a $P_1$, otteniamo un nuovo arco che connette $P_1$ a $\vec y$.
+	Ma questo vale per ogni scelta di $\vec y\in B(\vec x,\delta)$, dunque questo intorno è tutto contenuto in $A_1$, che quindi è aperto.
+	Sia quindi $A_2\defeq A\setminus A_1$. Se questo insieme è vuoto, risulta $A\equiv A_1$ e il teorema è dimostrato.
+	Sia allora $A_2\neq\emptyset$, e $\vec x\in A_2$: L'insieme $A$ è aperto quindi esiste un intorno $B(\vec x,\delta)\subset A$.
+	Sia $\vec y$ un punto di questo intorno. Come prima, $[\vec x,\vec y]\subset B(\vec y\delta)$.
+	Supponiamo che $\vec y$ sia in $A_1$: allora risulterebbe che esiste un arco che lo connette a $P_1$, e di conseguenza un arco $\mathscr P\cup[\vec x,\vec y]$ connette $\vec x$ a $P_1$.
+	Ma $\vec x\in A_2$, e siamo giunti ad una contraddizione poiché $\vec x$ appartiene sia ad $A_1$ che $A_2$ ma non hanno punti in comune.
+	Non può essere dunque che $\vec y\in A_1$, di conseguenza $\vec y\in A_2$, e come prima $\exists B(\vec y,\delta)\subset A_2$ e anche $A_2$ è quindi aperto.
+	Poiché $A=A_1\cup A_2$ e $A_1\cap A_2=\emptyset$, dato che sono complementari rispetto ad $A$, sono aperti e $A$ è connesso, $A_2$ deve essere necessariamente vuoto, ma allora otteniamo che $A_1\equiv A$, ossia $A$ è connesso per archi.
+\end{proof}
+La proprietà di connessione di un insieme ci permette di estendere una conseguenza del teorema di Lagrange, che affermava che su un intervallo le funzioni sono costanti se e solo se hanno (almeno in tutto l'intervallo) derivata nulla, anche a funzioni di più variabili.
+\begin{corollario}
+	Se $A\subset\R^n$ è aperto e connesso, allora una funzione $f\colon A\to\R$ differenziabile è costante se e solo se $\grad f(\vec x)=\null$ per ogni $\vec x\in A$.
+\end{corollario}
+\begin{proof}
+	Se $f$ è costante ha tutte le derivate parziali nulle, e segue subito che $\grad f=\null$ in ogni punto di $A$.
+	Partiamo ora da $\grad f=\null$. Definiamo, per $\vec a\in A$, l'insieme $A_1\defeq\{\vec x\in A\colon f(\vec x)=f(\vec a)\}$, e $A_2\defeq A\setminus A_1$.
+	Prendiamo $\vec x_1\in A_1$ ed un suo intorno $U(\vec x_1)\subset A_1$ (è sempre possibile, perché $A$ è aperto).
+	Per il teorema di Lagrange esiste $\theta\in[0,1]$ tale per cui
+	\begin{equation*}
+		f(\vec x)-f(\vec x_1)=\scalar{\grad f\big(\vec x_1+\theta(\vec x-\vec x_1)\big)}{\vec x-\vec x_1}=0
+	\end{equation*}
+	perché il gradiente è nullo in tutto $A$, ma allora $f(\vec x)=f(\vec x_1)$ per ogni $\vec x_1\in A_1$, quindi $A_1$ è aperto.
+	Allo stesso tempo, però, è anche chiuso: infatti se $\tilde{\vec x}$ è un punto di accumulazione per $A_1$, allora esiste una successione $\{\vec x_n\}\subset A_1$ tale che $\vec x_n\to\tilde{\vec x}$, ma per la continuità di $f$ si ottiene che $f(\vec x_n)\to f(\tilde{\vec x})=f(\vec a)$ e dunque $\tilde{\vec x}\in A_1$.
+	Allora anche $A_2$ è aperto, ma $A$ è connesso, $A_1$ necessariamente non è vuoto e di conseguenza $A_2=\emptyset$.
+\end{proof}
+
+\section{Forme differenziali lineari}
+Prendiamo l'insieme $\{\dd x_1,\dd x_2,\dots,\dd x_n\}$ come base per lo spazio $\R^n_*$ duale di $\R^n$, definendola tramite la relazione $\dd x_i(\vec e_j)=\delta_{ij}$ per ogni $i,j\in\{1,\dots,n\}$.
+Per un vettore $\vec a\in\R^n$ si ha $\dd x_i(\vec a)=a_i$, ossia $\dd x_i$ fornisce la coordinata $i$-esima del vettore.
+Ogni elemento di $\R^n$ può essere scritto come combinazione lineare dei vettori della base canonica, cioè $\vec y=\sum_{i=1}^ny_i\vec e_i$: analogamente ogni funzionale lineare in $\R^n_*$ può essere espresso in termini della base appena descritta, ossia $L(\vec x)=\sum_{i=1}^nl_i\dd x_i(\vec x)$ o anche $L=\sum_{i=1}^nl_i\dd x_i$.
+
+\begin{definizione} \label{d:forma-diff-lineare}
+	Sia $A\subseteq\R^n$ aperto. Una mappa $\omega\colon A\to\R^n_*$ che porta $\vec x\in A$ nel funzionale lineare $\omega(\vec x)$ è detta \emph{forma differenziale lineare}.
+\end{definizione}
+Con la base duale scelta in precedenza si può esprimere questa mappa come una combinazione lineare
+\begin{equation*}
+	\omega(\vec x)=\sum_{i=1}^na_i(\vec x)\dd x_i)
+\end{equation*}
+dove per ogni $i=1,\dots,n$ la funzione $a_i\colon A\to\R$ è l'$i$-esimo coefficiente della forma differenziale.
+La regolarità di questi coefficienti determina quella della forma differenziale: si dice che essa è di classe $\cont{k}(A)$ se $a_i\in\cont{k}(A)$ $\forall i\in\{1,\dots,n\}$.
+
+\section{Integrale di forme differenziali}
+\begin{definizione}
+	Sia $A\subseteq\R^n$ aperto e $\omega\colon A\to\R^n_*$ una forma differenziale lineare continua, e $\vphi\colon[a,b]\to A$ una curva regolare (continua e differenziabile) a tratti.
+	Si definisce
+	\begin{equation} 
+		\int_{\vphi}\omega=\int_a^b\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\dd t.
+		\label{eq:integrale-forma-diff-lin}
+	\end{equation}
+\end{definizione}
+	La curva $\vphi$ è a valori in $A$, quindi anch'essa ha $n$ componenti.
+\begin{definizione}
+	Siano $\vphi\colon[a,b]\to\R^n$ e $\vpsi\colon[c,d]\to\R^n$ due curve regolari a tratti.
+	Esse si dicono \emph{equivalenti} ed \emph{equiorientate} se esiste una riparametrizzazione di $\vphi$ che porta in $\vpsi$, ossia una mappa $\tau\colon[a,b]\to[c,d]$ suriettiva, derivabile e con derivata positiva in ogni punto di $[a,b]$ tale per cui $\vphi=\vpsi\circ\tau$.
+\end{definizione}
+Poiché $\tau'(t)>0$ per ogni $t\in[a,b]$ segue che $\tau$ è anche iniettiva e dunque biunivoca tra $[a,b]$ e $[c,d]$.
+\begin{teorema}
+	Sia $\omega$ una forma differenziale dall'insieme aperto $A\subseteq\R^n$ a $R^n_*$, di classe $\cont{1}$, e $\vphi\colon[a,b]\to A$ e $\vpsi\colon [c,d]\to A$ due curve regolari a tratti, equivalenti e con sostegno in $A$.
+	Se sono equiorientate, si ha $\int_{\vphi}\omega=\int_{\vpsi}\omega$; se invece sono orientate in senso opposto, ossia (seguendo la definizione precedente) $\tau'(t)<0$ $\forall t\in[a,b]$, allora $\int_{\vphi}\omega=-\int_{\vpsi}\omega$.
+\end{teorema}
+\begin{proof}
+	Sia $\vphi=\vpsi\circ\tau$ in modo che le due curve siano equivalenti.
+	Se sono anche equiorientate, allora $\tau'(t)>0$ $\forall t\in[a,b]$ e $\tau(a)=c$ e $\tau(b)=d$.
+	Dunque risulta che
+	\begin{equation}
+		\int_{\vphi}\omega=\int_a^b\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\dd t
+		=\int_a^b\sum_{i=1}^na_i\big(\vpsi(\tau(t))\big)\psi_i'\big(\tau(t)\big)\tau'(t)\dd t,
+	\end{equation}
+	calcolando la derivata della funzione composta $\vphi=\vpsi\circ\tau$.
+	Chiamiamo allora $r\defeq\tau(t)$ e sostituiamo le variabili nell'integrale: otteniamo che $\tau'(t)\,\dd t=\dd r$, da cui risulta
+	\begin{equation}
+		\int_{\vphi}\omega=\int_{\tau(a)}^{\tau(b)}\sum_{i=1}^na_i\big(\vpsi(r)\big)\psi_i'(r)\,\dd r
+		=\int_c^d\sum_{i=1}^na_i\big(\vpsi(r)\big)\psi_i'(r)\,\dd t=\int_{\vpsi}\omega.
+	\end{equation}
+	
+	Se le due curve hanno invece verso opposto, si ha $\tau'(t)<0$ e dunque la mappa $\tau$ è decrescente, e di conseguenza\footnote{Si ricordi che $\tau\colon[a,b]\to[c,d]$ e di conseguenza deve sempre risultare, almeno, che $a<b$ e $c<d$.} $\tau(a)=d$ e $\tau(b)=c$. Basta ripetere i passaggi compiuti in precedenza, per trovarsi alla fine con gli estremi di integrazione invertiti rispetto a prima, da cui si ricava facilmente che
+	\begin{equation*}
+		\int_{\vphi}\omega=-\int_{\vpsi}\omega.
+	\end{equation*}
+\end{proof}
+Ritorniamo al differenziale di una funzione scalare $F\colon A\subseteq\R^n\to\R$: esso è una quantità che porta un punto di $\R^n$, che rappresenta l'incremento della variabile in una data direzione, in uno scalare ch è l'incremento della funzione associato a tale ``spostamento''.
+È dunque a tutti gli effetti un funzionale lineare, cioè un elemento di $\R^n_*$, infatti lo possiamo scrivere come
+\begin{equation*}
+	\dd F=\sum_{i=1}^n\drp{F}{x_i}\dd x_i.
+\end{equation*}
+Basta prendere la derivata $\drp{F}{x_i}$ come coefficiente $a_i$ per assimilare $\dd F$ ad una forma differenziale.
+Ovviamente la regolarità diminuisce: se $F\in\cont{k}(A)$, si avrà $\dd F\in\cont{k-1}(A)$.
+\begin{teorema}
+	 Siano $A$ un aperto di $\R^n$, $F\colon A\to\R$ di classe $\cont{1}(A)$ e $\vphi\colon[a,b]\to\R^n$ regolare a tratti. Allora
+\end{teorema}
+\begin{proof}
+	Dalle regole di derivazione di funzioni composte abbiamo
+	\begin{equation}
+		\int_{\vphi}\dd F=\int_a^b\sum_{i=1}^n\drp{F}{x_i}\big(\vphi(t)\big)\phi_i'(t)\,\dd t=\int_a^b\drv{}{t}F\big(\vphi(t)\big).
+	\end{equation}
+	Per il teorema fondamentale del calcolo integrale quest'ultimo è uguale a $F\big(\vphi(b)\big)-F\big(\vphi(a)\big)$.
+\end{proof}
+Notiamo che il risultato non cambierebbe se prendessimo un'altra curva con gli stessi estremi.
+
+\section{Forme differenziali esatte}
+Tra le forme differenziali lineari ne esistono alcune di determinata importanza, e facili da calcolare.
+\begin{definizione} \label{d:forma-diff-esatta}
+	Sia $A\subseteq\R^n$ aperto e $\omega\colon A\to\R^n_*$ una forma differenziale lineare continua in $A$.
+	Essa si dice \emph{esatta} se esiste una mappa $F\colon A\to\R$ di classe $\cont{1}(A)$ tale per cui $\dd F=\omega$.
+	In tal caso, la funzione $F$ è detta \emph{potenziale} di $\omega$.
+\end{definizione}
+\begin{osservazione}
+	Se $F$ è un potenziale di $\omega$ su $A$, allora anche $G=F+c$, dove $c$ è una qualsiasi costante, lo è.
+	D'altra parte, se $F_1$ e $F_2$ sono entrambi potenziali di una medesima forma differenziale su $A$, e $A$ è connesso, allora differiscono di una costante.%Infatti $\dd(F_1-F_2)=0$ da cui\dots
+	Una forma differenziale esatta ammette infiniti potenziali, tutti uguali ameno di una costante additiva (si può dunque determinare univocamente un potenziale a meno di tale costante).
+\end{osservazione}
+Introduciamo ora due classi di curve: $\Phi_{\vec a,\vec b}(A)\defeq\{\vphi\colon[\alpha,\beta]\to A\text{ regolari a tratti e per cui }\vphi(\alpha)=\vec a, \vphi(\beta)=\vec b\}$, ossia la classe delle curve regolari a tratti definite da uno stesso intervallo e con estremi dati nell'insieme $A$, e $\Phi_c(A)\defeq\{\vphi\colon[\alpha,\beta]\to A\text{ regolare a tratti e per cui }\vphi(\alpha)=\vphi(\beta)\}$, che è la classe delle curve chiuse, cioè con estremi coincidenti, in $A$.
+Sfruttiamo questa definizione per enunciare i seguenti teoremi.
+\begin{teorema}
+	Sia $A\subseteq\R^n$ aperto e connesso, $\omega\colon A\to\R^n_*$ una forma differenziale lineare continua.
+	Essa è esatta se e solo se $\int_{\vphi}\omega=0$ per ogni $\vphi\in\Phi_c(A)$.
+\end{teorema}
+\begin{teorema}
+	Sia $A\subseteq\R^n$ aperto e connesso e $\omega\colon A\to\R^n_*$ continua.
+	Essa è una forma differenziale esatta se e solo se $\int_{\vphi}\omega=\int_{\vpsi}\omega$ per qualsiasi coppia $\vphi,\vpsi$ nella classe $\Phi_{\vec a,\vec b}(A)$ e per ogni scelta di $\vec a$ e $\vec b$ in $A$.
+\end{teorema}
+\begin{proof}
+	Se $\omega$ è esatta, segue dalla definizione \ref{d:forma-diff-esatta} che esiste una funzione $f$ tale per cui $\dd f=\omega$, e allora risulta $\int_{\vphi}\dd f=f\big(\vphi(\beta)\big)-f(\big(\vphi(\alpha)\big)$.
+	Una curva $\vpsi\in\Phi_{\vec a,\vec b}(A)$ ha gli stessi estremi, siano essi $\vpsi(\gamma)=\vphi(\alpha)$ e $\vpsi(\delta)=\vphi(\beta)$, e dunque
+	\begin{equation}
+		\int_{\vpsi}\dd f=f\big(\vpsi(\delta)\big)-f\big(\vpsi(\gamma)\big)=\int_{\vphi}\dd f.
+	\end{equation}
+	
+	Sia ora $\vec p\in A$. Poiché l'insieme è connesso per archi, per ciascun punto $\vec x\in A$ esiste una curva $\vphi$ regolare a tratti che connette i due punti, vale a dire $\vphi\in\Phi_{\vec p,\vec x}(A)$.
+	Sia allora $F(\vec x)=\Int_{\vphi}\omega$: per ipotesi, l'integrale dipende soltanto dagli estremi della curva, quindi fissato $\vec p$ la $F$ è ben definita. $A$ è aperto, quindi esiste sempre un intorno $B(\vec x,\delta)\subset A$ per ogni $\vec x\in A$.
+	Prendiamo un versore $\vec v\in\R^n$, e per $h\in\R$ valutiamo l'incremento $\vec q=\vec x+h\vec v$.
+	Per $\norm{h}$ sufficientemente piccolo, anche $\vec q$ è in $A$. Chiamiamo allora $\vpsi$ la curva
+	\begin{equation*}
+		\vpsi(t)=
+		\begin{cases}
+			\phi(t)	&t\in[\alpha,\beta]\\
+			\vec x+(t-\beta)h\vec v	&t\in(\beta,\beta+1]
+		\end{cases}
+	\end{equation*}
+	Essa va da $\vpsi(\alpha)=\vec p$ a $\vpsi(\beta+1)=\vec x+(\beta+1-\beta)h\vec v=\vec q$, passando per $\vpsi(\beta)=\vec x$, ed è regolare a tratti con sostegno in $A$.
+	Calcoliamo dunque il rapporto incrementale di $F$, ossia $F(\vec x+h\vec v)-F(\vec x)=\Int_{\vpsi}\omega-\Int_{\vphi}\omega$, che per definizione è
+	\begin{equation}
+		\Int_\alpha^{\beta+1}\sum_{i=1}^na_i\big(\vpsi(t)\big)\psi_i'(t)\,\dd t-\Int_\alpha^\beta\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t.
+	\end{equation}
+	Nell'intervallo $[\alpha,\beta]$, però, le due curve $\vphi$ e $\vpsi$ coincidono, quindi $a_i\big(\vphi(t)\big)=a_i\big(\vpsi(t)\big)$ per ogni $t$ in tale intervallo e per ogni $i=1,\dots,n$.
+	Allora il rapporto incrementale di $F$ diventa
+	\begin{equation}
+		\begin{aligned}
+			&\int_\alpha^\beta\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t+\Int_\beta^{\beta+1}\sum_{i=1}^na_i\big(\vpsi(t)\big)\psi_i'(t)\,\dd t-\Int_\alpha^\beta\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t=\\
+			=&\Int_\beta^{\beta+1}\sum_{i=1}^na_i\big(\vpsi(t)\big)\psi_i'(t)\,\dd t=\\
+			=&\Int_\beta^{\beta+1}\sum_{i=1}^na_i\big(\vec x+(t-\beta)h\vec v)hv_i\,\dd t.
+		\end{aligned}
+	\end{equation}
+	Effettuiamo ora un cambio di variabile, ponendo $r=h(t-\beta)$, per cui si avrà $r(\beta)=0$, $r(\beta+1)=h$ e $\dd r=h\,\dd t$: l'integrale precedente diventa
+	\begin{equation}
+		\int_0^h\sum_{i=1}^na_i\big(\vec x+r\vec v)v_i\,\dd r.
+	\end{equation}
+	Dividendo per $h$ e passando al limite per $h\to0$, anche $r$ tende a zero, e dal teorema fondamentale del calcolo integrale otteniamo la derivata di $F$ in $\vec x$ lungo la direzione indicata da $\vec v$:
+	\begin{equation}
+		\lim_{h\to0}\frac{F(\vec x+h\vec v)-F(\vec x)}{h}=\lim_{h\to0}\frac1{h}\int_0^h\sum_{i=1}^na_i(\vec x+r\vec v)hv_i\,\dd r=\lim_{r\to 0}\sum_{i=1}^na_i(\vec x+r\vec v)v_i=\sum_{i=1}^na_i(\vec x)v_i,
+	\end{equation}
+	da cui si nota facilmente che, poiché la derivata direzionale si può ottenere come prodotto scalare tra il gradiente di $F$ e $\vec v$, che proprio $\grad F=(a_1,\dots,a_n)$. Segue allora che, se prendiamo la base duale introdotta all'inizio del capitolo, si ottiene
+	\begin{equation}
+		\dd F=\scalar{\grad F}{\dd \vec x}=\sum_{i=1}^na_i\dd x_i
+	\end{equation}
+	e che quindi la forma differenziale $\omega$ è il differenziale di una funzione scalare, cioè è esatta.
+\end{proof}
+
+\section{Forme differenziali chiuse}
+Se una forma differenziale è esatta in un insieme $A$ connesso e aperto, ed essa è continua, allora il suo potenziale è una funzione $F\in\cont{2}(A)$: per essa vale il teorema di Schwarz, per cui le derivate miste coincidono.
+Poiché la forma è esatta, $\drp{F}{x_i}(\vec x)=a_i(\vec x)$, perciò
+\begin{equation}
+	\drp{a_i}{x_j}(\vec x)=\frac{\partial^2 F}{\partial x_j\partial x_i}(\vec x)=\frac{\partial^2 F}{\partial x_i\partial x_j}(\vec x)=\drp{a_j}{x_i}(\vec x).
+\end{equation}
+Questa proprietà che le derivate miste ``incrociate'' sono uguali si ritrova nella seguente definizione.
+\begin{definizione} \label{d:forma-diff-chiusa}
+	Una forma differenziale lineare $\omega\in\cont{1}(A)$ per un insieme $A\in\R^n$ aperto si dice \emph{chiusa} in tale insieme se
+	\begin{equation}
+		\drp{a_i}{x_j}(\vec x)=\drp{a_j}{x_i}(\vec x)
+	\end{equation}
+	per ogni $\vec x\in A$ e $i,j\in\{1,\dots,n\}$ con $i\neq j$.
+\end{definizione}
+Da quanto appena detto è evidente che tutte le forme differenziali esatte sono anche chiuse.
+Questo però non è solo un altro modo di definirle, poiché non tutte le forme differenziali chiuse sono esatte.
