@@ -126,7 +126,7 @@ Tra le forme differenziali lineari ne esistono alcune di determinata importanza,
 	D'altra parte, se $F_1$ e $F_2$ sono entrambi potenziali di una medesima forma differenziale su $A$, e $A$ è connesso, allora differiscono di una costante.%Infatti $\dd(F_1-F_2)=0$ da cui\dots
 	Una forma differenziale esatta ammette infiniti potenziali, tutti uguali ameno di una costante additiva (si può dunque determinare univocamente un potenziale a meno di tale costante).
 \end{osservazione}
-Introduciamo ora due classi di curve: $\Phi_{\vec a,\vec b}(A)\defeq\{\vphi\colon[\alpha,\beta]\to A\text{ regolari a tratti e per cui }\vphi(\alpha)=\vec a, \vphi(\beta)=\vec b\}$, ossia la classe delle curve regolari a tratti definite da uno stesso intervallo e con estremi dati nell'insieme $A$, e $\Phi_c(A)\defeq\{\vphi\colon[\alpha,\beta]\to A\text{ regolare a tratti e per cui }\vphi(\alpha)=\vphi(\beta)\}$, che è la classe delle curve chiuse, cioè con estremi coincidenti, in $A$.
+Introduciamo ora due classi di curve: la classe delle curve regolari a tratti definite da uno stesso intervallo e con estremi dati nell'insieme $A$, ossia l'insieme $\Phi_{\vec a,\vec b}(A)\defeq\{\vphi\colon[\alpha,\beta]\to A\text{ regolari a tratti e con }\vphi(\alpha)=\vec a, \vphi(\beta)=\vec b\}$, e la classe delle curve chiuse $\Phi_c(A)\defeq\{\vphi\colon[\alpha,\beta]\to A\text{ regolare a tratti e per cui }\vphi(\alpha)=\vphi(\beta)\}$, cioè con estremi coincidenti, in $A$.
 Sfruttiamo questa definizione per enunciare i seguenti teoremi.
 \begin{teorema}
 	Sia $A\subseteq\R^n$ aperto e connesso, $\omega\colon A\to\R^n_*$ una forma differenziale lineare continua.
@@ -199,3 +199,99 @@ Questa proprietà che le derivate miste ``incrociate'' sono uguali si ritrova ne
 \end{definizione}
 Da quanto appena detto è evidente che tutte le forme differenziali esatte sono anche chiuse.
 Questo però non è solo un altro modo di definirle, poiché non tutte le forme differenziali chiuse sono esatte.
+Prendiamo ad esempio la forma
+\begin{equation*}
+	\omega(x,y)=a_1(x,y)\,\dd x+a_2(x,y)\,\dd y=\frac{y}{x^2+y^2}\,\dd x-\frac{x}{x^2+y^2}\,\dd y
+\end{equation*}
+in $A=\R^2\setminus\{\vec 0\}$.
+Essa è $\cont{\infty}(A)$, ed è chiusa, infatti
+\begin{equation}
+	\drp{}{y}\frac{y}{x^2+y^2}=\frac{x^2-y^2}{(x^2+y^2)^2}=\drp{}{x}\frac{-x}{x^2+y^2}
+\end{equation}
+Notiamo inoltre che la funzione $F(x,y)=\arctan\frac{x}{y}$, a meno di costanti arbitrarie, è tale per cui $\drp{F}{x}(x,y)=a_1(x,y)$ e $\drp{F}{y}(x,y)=a_2(x,y)$ per ogni $(x,y)\in A$, quindi se esiste un potenziale non può che essere della forma $F(x,y)+c$ con $c\in\R$.
+A causa della singolarità per $y=0$ dobbiamo però prima dividere $A$ nei due sottoinsiemi per $y<0$ e $y>0$, in cui avremo rispettivamente $F(x,y)+c$ e $F(x,y)+d$ (a priori non possiamo dire che sono uguali).
+Determiniamo queste costanti: fissato $x_0<0$, abbiamo i limiti
+\begin{equation}
+	\lim_{\substack{x\to x_0\\ y\to 0^+}}F(x,y)=c-\frac{\pi}2\qeq\lim_{\substack{x\to x_0\\ y\to 0^-}}F(x,y)=d+\frac{\pi}2,
+\end{equation}
+che devono coincidere, quindi $c=d+\pi$ e abbiamo la funzione
+\begin{equation}
+	F(x,y)=
+	\begin{cases}
+		\arctan\frac{x}{y}+c	&y>0\\
+		c-\frac{\pi}2			&y=0\\
+		\arctan\frac{x}{y}+c-\pi	&y<0
+	\end{cases}
+\end{equation}
+Però se prendiamo $x_1>0$, abbiamo i limiti
+\begin{equation}
+	\lim_{\substack{x\to x_1\\ y\to 0^+}}F(x,y)=\frac{\pi}2+c\qeq\lim_{\substack{x\to x_1\\ y\to 0^-}}F(x,y)=-\frac{3\pi}2+c,
+\end{equation}
+ma allora $F$ è discontinua in $A$, perciò non può essere il potenziale di $\omega$, che quindi non ammette potenziali e non è esatta.
+Il problema da superare non risiede tanto nella funzione, ma nell'insieme in cui la stiamo studiando: è ovvio che se al posto di $A$ avessimo preso solo, ad esempio, il suo sottoinsieme in cui $x>0$, non ci sarebbero stati problemi di continuità e avremmo senza problemi trovato un potenziale per $\omega$.
+Dobbiamo quindi restringere la classe degli insiemi ``buoni'' che ci permettano di dire che se una forma è chiusa è anche esatta: partiamo dagli insiemi \emph{stellati}.
+\begin{definizione} \label{d:insieme-stellato}
+	Un insieme $A\subseteq\R^n$ aperto si dice \emph{stellato} rispetto ad un suo punto $\vec x_0$ se per ogni $\vec x\in A$ si ha $[\vec x,\vec x_0]\subset A$, cioè il segmento che li unisce è tutto contenuto in $A$.
+\end{definizione}
+L'insieme dell'esempio precedente, avendo un buco nell'origine, non era stellato.
+\begin{teorema} \label{t:forma-chiusa-stellato}
+	Sia $A\subseteq\R^n$ un insieme aperto e stellato, e $\omega$ una forma differenziale lineare in $A$. Se $\omega$ è chiusa, allora è anche esatta.
+\end{teorema}
+\begin{proof}
+	Sia $\vec x_0\in A$, e per ogni $\vec x\in A$ prendiamo la parametrizzazione del segmento $\vphi(t)=\vec x_0+(\vec x-\vec x_0)t$, con $t\in[0,1]$: è una curva con sostegno contenuto in $A$, poich\'e è stellato.
+	Definiamo $F(\vec x)\defeq\int_{\vphi}\omega$. Allora calcolando l'integrale della forma otteniamo
+	\begin{equation}
+		F(\vec x)=\int_0^1\sum_{i=1}^na_i\big(\vec x_0+(\vec x-\vec x_0)t\big)(x_i-x_{0,i})\,\dd t.
+	\end{equation}
+	Si ha  che $\omega$ è almeno di classe $\cont{1}(A)$, in quanto chiusa, quindi per la sua continuità risulta
+	\begin{equation}
+		\begin{split}
+			\drp{F}{x_j}(\vec x)&=\drp{}{x_j}\int_0^1\sum_{i=1}^na_i\big(\vec x_0+(\vec x-\vec x_0)t\big)(x_i-x_{0,i})\,\dd t=\\
+			&=\int_0^1\sum_{i=1}^n\drp{}{x_j}\Big[a_i\big(\vec x_0+(\vec x-\vec x_0)t\big)(x_i-x_{0,i})\Big]\,\dd t=\\
+			&=\int_0^1\sum_{i=1}^n\drp{a_i}{x_j}\big(\vec x_0+(\vec x-\vec x_0)t\big)(x_i-x_{0,i})t\,\dd t+\int_0^1a_j\big(\vec x_0+(\vec x-\vec x_0)t\big)\,\dd t=\\
+			&=\int_0^1\sum_{i=1}^n\drp{a_j}{x_i}\big(\vec x_0+(\vec x-\vec x_0)t\big)(x_i-x_{0,i})t\,\dd t+\int_0^1a_j\big(\vec x_0+(\vec x-\vec x_0)t\big)\,\dd t=\\
+			&=\int_0^1t\drv{a_j}{t}\big(\vec x_0+(\vec x-\vec x_0)t\big)\,\dd t+\int_0^1a_j\big(\vec x_0+(\vec x-\vec x_0)t\big)\,\dd t=\\
+			&=\int_0^1\drv{}{t}\Big[ta_j\big(\vec x_0+(\vec x-\vec x_0)t\big)\Big]\,\dd t=\\
+			&=ta_j\big(\vec x_0+(\vec x-\vec x_0)t\big)\bigg|_0^1=a_j(\vec x).
+		\end{split}
+	\end{equation}
+	Poich\'e $\drp{F}{x_j}(\vec x)=a_j(\vec x)$, risulta $\omega=\dd F$ dunque è esatta.
+\end{proof}
+La dimostrazione appena eseguita indica anche un metodo per individuare, se esiste, il potenziale di una forma: si prende un punto arbitrario nell'insieme dato, e sicalcola l'integrale della forma lungo un segmento che connette tale punto ad un generico $\vec x$, sempre nell'insieme.
+Ad esempio, prendiamo in $A=\{(x,y)\in\R^2\colon y>x\}$ la forma differenziale
+\begin{equation*}
+	\omega(x,y)=a_1(x,y)\,\dd x+a_2(x,y)\,\dd y=\frac{2xy-2x^2-1}{y-x}\,\dd x+\frac{y-x+1}{y-x}\,\dd y.
+\end{equation*}
+Essa è di classe $\cont{\infty}(A)$, ed è chiusa: infatti
+\begin{equation}
+	\drp{a_1}{y}(x,y)=\drp{}{y}\bigg(2x-\frac1{y-x}\bigg)=\frac1{(y-x)^2}=\drp{a_2}{x}(x,y).
+\end{equation}
+L'insieme $A$ è stellato, quindi $\omega$ è anche esatta.
+Prendiamo il punto $(0,1)$ e la curva $\vphi(t)=\big(tx,1+(y-1)t\big)$ che lo connette con un generico $(x,y)\in A$, con $t\in[0,1]$. Allora
+\begin{equation}
+	\begin{split}
+		\int_{\vphi}\omega&=\int_0^1\bigg[2tx-\frac1{1+(y-1)t-tx}\bigg]x\,\dd t+\int_0^1\bigg[1+\frac1{1+(y-1)t-tx}\bigg](y-1)\,\dd t=\\
+		&=\int_0^12tx^2\,\dd t+\int_0^1(y-1)\,\dd t+\int_0^1\frac{y-x-1}{1+(y-1)t-t}\,\dd t=\\
+		&=x^2\int_0^12t\,\dd t+(y-1)\int_0^1\dd t+\int_0^1\frac{y-x-1}{1+(y-x-1)t}\,\dd t=\\
+		&=x^2+y-1+\log\big[1+(y-x-1)t\big]\bigg|_0^1=\\
+		&=x^2+y-1+\log(y-x)
+	\end{split}
+\end{equation}
+è il suo potenziale.
+
+Possiamo però andare oltre gli insiemi stellati e ampliare ancora la classe degli insiemi adatti, introducendo gli insiemi \emph{semplicemente connessi}: intuitivamente si possono pensare come insiemi ``senza buchi''.
+Diamone una definizione rigorosa, tramite il concetto di curve omotope.
+\begin{definizione} \label{d:curva-omotopica}
+	Siano $\vphi_1,\vphi_2\colon[a,b]\to A\subset\R^n$ due parametrizzazioni di curve chiuse e $\cont{2}\ab$.
+	La curva $\vphi_1$ si dice \emph{omotopica} a $\vphi_2$ se esiste una mappa (detta appunto \emph{omotopia}) $\vxi\colon[0,1]\times[a,b]\to A$, di classe $\cont{2}$, tale per cui $\vxi(0,t)=\vphi_1(t)$ e $\vxi(1,t)=\vphi_2(t)$, e per ogni $s\in[0,1]$ si abbia $\vxi(s,a)=\vxi(s,b)$.
+\end{definizione}
+La mappa dell'omotopia tra le due curve si può vedere più facilmente come una ``deformazione'' continua e derivabile che trasforma la prima curva, sempre chiusa, nella seconda.
+\begin{definizione} \label{d:insieme-semplicemente-connesso}
+	Un insieme $A\subseteq\R^n$ si dice \emph{semplicemente connesso} se ogni curva $\vphi\colon[a,b]\to A$, di classe $\cont{2}(A)$ e chiusa è omotopica ad un punto in $A$, ossia ad una curva degenere costante $\vpsi\colon[a,b]\to A$ per cui $\vpsi(t)=\vec c$, con $\vec c\in A$.
+\end{definizione}
+Con queste definizioni possiamo quindi enunciare il seguente teorema, che non dimostriamo.
+\begin{teorema}[Lemma di Poincar\'e] \label{t:poincare}
+	Sia $A\subseteq\R^n$ un insieme aperto e semplicemente connesso, e $\omega$ una forma differenziale lineare di classe $\cont{1}(A)$. Se $\omega$ è chiusa allora è anche esatta.
+\end{teorema}
+Questo risultato è molto importante, perch\'e fornisce le condizioni meno restrittive per affermare l'esattezza della forma.
+% Magari qualche esempio?
