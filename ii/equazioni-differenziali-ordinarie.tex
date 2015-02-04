@@ -61,10 +61,10 @@ Si nota subito che in quest'ultima equazione $\vec y(x_0)=\vec y_0$. Inoltre se 
 \begin{definizione} \label{d:volterra}
 Per ogni funzione $\vec y\in\cont{}(I)$, con $x_0\in I\subseteq\R$, $\vec y_0\in\R^n$ e $\vec f\colon E\subseteq\R^{n+1}\to\R^n$, si definisce l'\emph{operatore integrale di Volterra} come
 \begin{equation} \label{vol}
-\vol(\vec y)(x)=\vec y_0+\Int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t.
+\volterra(\vec y)(x)=\vec y_0+\Int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t.
 \end{equation}
 \end{definizione}
-Risolvere il problema di Cauchy equivale quindi a ricercare le \emph{soluzioni continue} dell'analogo problema $\vec y=\vol(\vec y)$, cioè a cercare i punti fissi dell'operatore di Volterra.
+Risolvere il problema di Cauchy equivale quindi a ricercare le \emph{soluzioni continue} dell'analogo problema $\vec y=\volterra(\vec y)$, cioè a cercare i punti fissi dell'operatore di Volterra.
 
 \section{Esistenza ed unicità delle soluzioni}
 \begin{definizione} \label{d:lipsy}
@@ -111,9 +111,9 @@ Poiché quindi $\lim_{x\to x_0^-}\vec y'(x)=\lim_{x\to x_0^+}\vec y'(x)$, per il
 Sia $S\subseteq\R^{n+1}$ una striscia verticale a base compatta, ossia $S=[a,b]\times\R^n$, e siano $(x_0,\vec y_0)\in S$, $\vec f\colon S\to\R^n$. Se $\vec f\in\cont{}(S)$ e, in $S$, $\vec f$ è lipschitziana rispetto a $\vec y$ e uniformemente rispetto a $x$, allora il problema di Cauchy \eqref{pc} ammette una e una sola soluzione, definita in tutto $[a,b]$.
 \end{teorema}
 \begin{proof}
-Si consideri soltanto l'intervallo $[x_0,b]$: si definisce $h=\min\{b-x_0,\frac1{2L}\}$, dove $L$ è la costante di Lipschitz per $\vec f$ rispetto alla variabile $\vec y$, e l'intervallo $I_0=[x_0,x_0+h]$. Lo spazio $X=\big(\cont{}_{\R^n}(I_0),d_\infty\big)$, con la distanza $d_{\infty}=\norm{\vec f-\vec g}_{\infty,I_0}$, è uno spazio metrico completo. Per ogni $\vec y\in X$, si applichi l'operatore di Volterra: $\vol(\vec y)\in\cont{}(I_0)$, quindi l'operatore è una mappa $\vol\colon X\to X$. In questo spazio metrico, date due funzioni $\vec y,\vec z\in X$, la norma della loro differenza è per ogni $x\in I_0$
+Si consideri soltanto l'intervallo $[x_0,b]$: si definisce $h=\min\{b-x_0,\frac1{2L}\}$, dove $L$ è la costante di Lipschitz per $\vec f$ rispetto alla variabile $\vec y$, e l'intervallo $I_0=[x_0,x_0+h]$. Lo spazio $X=\big(\cont{}_{\R^n}(I_0),d_\infty\big)$, con la distanza $d_{\infty}=\norm{\vec f-\vec g}_{\infty,I_0}$, è uno spazio metrico completo. Per ogni $\vec y\in X$, si applichi l'operatore di Volterra: $\volterra(\vec y)\in\cont{}(I_0)$, quindi l'operatore è una mappa $\volterra\colon X\to X$. In questo spazio metrico, date due funzioni $\vec y,\vec z\in X$, la norma della loro differenza è per ogni $x\in I_0$
 \begin{align*}
-&\norm{\vol(\vec y)(x)-\vol(\vec z)(x)}=\\
+&\norm{\volterra(\vec y)(x)-\volterra(\vec z)(x)}=\\
 &=\Big\|\Int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t-\Int_{x_0}^x\vec f\big(t,\vec z(t)\big)\,\dd t\Big\|=\\
 &=\Big\|\Int_{x_0}^x\Big[\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)\Big]\,\dd t\Big\|,
 \end{align*}
@@ -130,9 +130,9 @@ in cui la norma si intende in $\R^n$. Poiché in $I_0$ si ha sempre $x\geq x_0$,
 \end{align*}
 Questa disuguaglianza vale pe ogni $x\in I_0$, quindi passando all'estremo superiore in $x$ si ottiene che
 \[
-\sup_{x\in I_0}\norm{\vol(\vec y)(x)-\vol(\vec z)(x)}=\norm{\vol(\vec y)-\vol(\vec z)}_{\infty,I_0}\leq\frac12\norm{\vec y-\vec z}_{\infty,I_0}
+\sup_{x\in I_0}\norm{\volterra(\vec y)(x)-\volterra(\vec z)(x)}=\norm{\volterra(\vec y)-\volterra(\vec z)}_{\infty,I_0}\leq\frac12\norm{\vec y-\vec z}_{\infty,I_0}
 \]
-e ciò mostra che l'operatore $\vol$ è una contrazione. Allora esiste, ed è unico, un punto fisso in $X$, cioè una funzione continua $\vec y^*\colon I_0\to\R^n$ che risolve $\vol(\vec y^*)=\vec y^*$, che quindi è anche soluzione del problema di Cauchy in $[x_0,x_0+h]$.
+e ciò mostra che l'operatore $\volterra$ è una contrazione. Allora esiste, ed è unico, un punto fisso in $X$, cioè una funzione continua $\vec y^*\colon I_0\to\R^n$ che risolve $\volterra(\vec y^*)=\vec y^*$, che quindi è anche soluzione del problema di Cauchy in $[x_0,x_0+h]$.
 Se ora $x_0+h=b$, il problema ha una soluzione unica in tutto $[x_0,b]$, altrimenti si pone un nuovo problema di Cauchy nell'intervallo $[x_0+h,b]$ con un altro ``passo'' lungo almeno $1/2L$. Con un numero finito di queste iterazioni si giunge necessariamente a $b$, quindi si arriva in ogni caso a coprire l'intero $[x_0,b]$, poiché è compatto, e per il lemma \ref{l:saldatura} precedente la soluzione deve essere la medesima funzione, estesa all'intervallo ogni volta più ampio. Analogamente si ripete il procedimento in $[a,x_0]$, e sempre per il \ref{l:saldatura} la soluzione rimane la medesima. Si trova alla fine una soluzione unica al problema di Cauchy nell'intero $[a,b]$, e il teorema è quindi dimostrato.
 \end{proof}
 
