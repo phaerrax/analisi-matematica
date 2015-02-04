@@ -5,3 +5,123 @@ L'integrale di Lebesgue si comporta meglio su questo tipo di funzioni, permetten
 Le funzioni integrabili secondo Lebesgue comprendono anche casi una volta considerati ``patologici'' come la funzione di Dirichlet: essa ha un integrale di Lebesgue, che è anche piuttosto semplice da calcolare, ma non di Riemann.
 
 La costruzione dell'integrale di Lebesgue si fonda su una nuova teoria della misura, che permette di definire il concetto di insieme misurabile e funzione misurabile: si vedrà che trovare insiemi (e funzioni) non misurabili è molto difficile, ma comunque sarà essenziale distinguere tra le due classi.
+
+\section{Misura esterna}
+\label{sec:misura-esterna}
+Siano $\vec a=(a_1,a_2,\dots,a_n)$ e $\vec b=(b_1,b_2,\dots,b_n)$ due punti in $\R^n$: l'iperrettangolo individuato dai due punti è il prodotto cartesiano dei vari intervalli chiusi $I=[a_1,b_1]\times[a_2,b_2]\times\dots\times[a_n,b_n]$.
+Esso è un insieme compatto, e indicheremo il suo volume con $\vol{I}$, che vale
+\begin{equation*}
+	\vol{I}=\prod_{i=1}^n(b_i-a_i).
+\end{equation*}
+\begin{definizione} \label{d:ricoprimento-lebesgue}
+	Sia $A\subseteq\R^n$.
+	Un insieme numerabile di intervalli compatti $\{I_k\}_{k\in K}$, con $K\subseteq\N$, si dice \emph{ricoprimento di Lebesgue} di $A$ se $A\subseteq\bigcup_{k\in K}I_k$.
+\end{definizione}
+Esiste sempre un ricoprimento di Lebesgue per ogni insieme: se prendiamo $I_{\vec m}=[m_1,m_1+1]\times[m_2,m_2+1]\times\dots\times[m_n,m_n+1]$ ossia l'ipercubo con un vertice in $\vec m\in\R^n$ e spigolo unitario, l'unione (numerabile) $\bigcup_{\vec m\in\Z^n}I_{\vec m}$ ricopre qualsiasi insieme di $\R^n$.
+Cominciamo a dare una prima approssimazione di quella che sarà la misura di un insieme.
+\begin{definizione} \label{d:misura-esterna}
+	Si definisce \emph{misura esterna} di un insieme $A\subseteq\R^n$ la quantità
+	\begin{equation*}
+		\mu^*(A)=\inf\bigg\{\sum_{k\in K}\vol{I_k}\colon\{I_k\}_{k\in K}\text{ è un ricoprimento di Lebesgue di }A\bigg\},
+	\end{equation*}
+	dove $K$ è un insieme numerabile.
+\end{definizione}
+Chiaramente $\mu^*$ è un numero reale, ma può anche essere infinito, come ad esempio la misura esterna di $\R$.
+Dunque possiamo dire che $\mu^*$ è una funzione che associa ad un insieme di $\R^n$, quindi un elemendo dell'insieme delle parti un numero non negativo anche infinito, cioè $\mu^*\colon\mathcal P\to[0,+\infty]$.
+
+La misura esterna di un iperrettangolo di volume $\vol{I}$ è chiaramente $\vol{I}$ stesso, che è il più piccolo ricoprimento possibile.
+Infatti, per ogni iperrettangolo $I$ (non vuoto) ne esistono $\forall\epsilon>0$ inoltre altri due $H$ e $J$, con $H\subset\interior{I}\subset I\subset\interior{J}$ tali che $\vol{J}-\epsilon<\vol{I}<\vol{H}+\epsilon$.
+Dato un ricoprimento di Lebesgue $\{I_k\}_{k\in K}$ di $I$, prendiamo $\{J_k\}_{k\in K}$ tale che, per ogni $k\in K$, $I_k\subset\interior{J_k}$ e che $\vol{J_k}-\frac{\epsilon}{2^k}<\vol{I_k}$.
+Otteniamo che $I\subset\bigcup_{k\in K} I_k$, e allora anche $I\subset\bigcup_{k\in K}\interior{J_k}$.
+Però $I$ è compatto, perciò esiste un $N\in\N$ per cui $I\subset\bigcup_{k=1}^NI_k$.
+Allora
+\begin{equation}
+	\vol{I}\leq\sum_{i=1}^N\bigg(\vol{I_k}+\frac{\epsilon}{2^k}\bigg)=\sum_{i=1}^N(\vol{I_k}+\epsilon)\qqq\vol{I}\leq\epsilon+\inf\sum_{i=1}^N\vol{I_k}=\epsilon+\mu^*(I).
+\end{equation}
+
+\begin{proprieta} \label{pr:misura-esterna}
+	La misura esterna soddisfa la seguenti proprietà: dati $A,B,A_k\in\R^n$ per $k\in K\subseteq\N$,
+	\begin{enumerate}
+		\item $\mu^*(\emptyset)=0$;
+		\item $\mu^*(A)\in[0,+\infty]$ per qualsiasi $A$;
+		\item è monotona, cioè se $A\subseteq B$ allora $\mu^*(A)\leq\mu^*(B)$;
+		\item è subadditiva (numerabile), cioè $\mu^*\big(\bigcup_{k\in K}A_k\big)\leq\sum_{k\in K}\mu^*(A_k)$.
+	\end{enumerate}
+\end{proprieta}
+\begin{proof}
+	\begin{enumerate}
+		\item Per ogni $\epsilon>0$ la famiglia $\{I\}=\{[0,\epsilon]^n\}$ (è composta da un solo iperrettangolo) è un ricoprimento di Lebesgue per l'insieme vuoto di $\R^n$.
+			Poich\'e il suo volume è $\epsilon^n$, l'estremo inferiore tra tutti gli $\epsilon$ positivi dà $\mu^*(\emptyset)=0$.
+		\item Per qualsiasi insieme $\{I_k\}_{k\in K}$ di iperrettangoli ($K$ misurabile), risulta ovviamente $0\leq\vol{I_k}<+\infty$, di conseguenza la somma di tutti i volumi è
+			\begin{equation}
+				0\leq\sum_{k\in K}\vol{I_k}\leq+\infty
+			\end{equation}
+			quindi anche prendendo l'estremo inferiore tra tutti i ricoprimenti di un qualsiasi $A$ si può avere $0\leq\mu^*(A)\leq+\infty$.
+		\item Se $A\subseteq B$ allora ogni ricoprimento di Lebesgue di $B$ lo è anche di $A$, quindi i due insiemi dei ricoprimenti $\{I^A\}$ di $A$ e $\{I^B\}$ di $B$ soddisfano sempre $\{I^A\}\subseteq\{I^B\}$ quindi l'estremo inferiore del primo (cioè $\mu^*(A)$) non può essere maggiore dell'estremo inferiore del secondo.
+		\item Se per qualche $k\in K$ si ha $\mu^*(A_k)=+\infty$ la proprietà è immediata, dunque sia $\mu^*(A_k)<+\infty$.
+			Dalla definizione della misura, $\forall\epsilon>0$ esiste un ricoprimento di Lebesgue $\{I^k_j\}_{j\in J}$ di $A_k$ per cui
+			\begin{equation}
+				\sum_{j\in J}\vol{I^k_j}<\mu^*(A_k)+\frac{\epsilon}{2^k}.
+			\end{equation}
+			Unendo tutti i ricoprimenti per ogni $k\in K$ si ottiene che l'insieme $\{I^k_j\}_{j\in J,k\in K}$ è un ricoprimento di $\bigcup_{k\in K}A_k$, dunque
+			\begin{equation}
+				\mu^*\bigg(\bigcup_{k\in K}A_k\bigg)\leq\sum_{\substack{k\in K\\j\in J}}\vol{I^k_j}=\sum_{k\in K}\sum_{j\in J}\vol{I^k_j}\leq\sum_{k\in K}\bigg[\mu^*(A_k)+\frac{\epsilon}{2^k}\bigg]=\epsilon+\sum_{k\in K}\mu^*(A_k),
+			\end{equation}
+			potendo scegliere l'ordine della somma (prima su $j$ poi su $k$ o viceversa) poich\'e tutti gli addendi sono positivi.
+			Per l'arbitrarietà di $\epsilon$, l'estremo inferiore si ottiene per $\epsilon=0$ da cui la tesi.
+	\end{enumerate}
+\end{proof}
+Un insieme si dice di \emph{misura nulla} se la sua misura esterna è zero.
+Eccone alcuni esempi.
+\begin{itemize}
+	\item Se $I$ è dato dal prodotto di vari intervalli $[a_i,b_i]$ con $i\in\{1,\dots,n\}$, e per almeno un $j$ si ha $a_j=b_j$, allora
+		\begin{equation}
+			\mu^*(I)=\prod_{i=1}^n(b_i-a_i)=(a_j-a_j)\prod_{\substack{i=1\\i\neq j}}^n(b_i-a_i)=0.
+		\end{equation}
+	\item Se $A\in\R^n$ è composto di un solo punto, cioè $A=\{\vec a\}$, può essere scritto come $A=[a_1,a_1]\times\dots\times[a_n,a_n]$ quindi per il punto precedente $\mu^*(\{\vec a\})=0$.
+	\item Un insieme $B$ finito o numerabile è l'unione numerabile di tanti punti, cioè $B=\bigcup_{j\in J}\{\vec b_j\}$ con $J\in\N$, quindi per la subadditività della misura esterna e per il punto precedente risulta
+		\begin{equation}
+			\mu^*(B)=\mu^*\bigg(\bigcup_{j\in J}\{\vec b_j\}\bigg)\leq\sum_{j\in J}\mu^*(\{\vec b_j\})=0.
+		\end{equation}
+	\item L'insieme $\Q$ dei razionali è numerabile, quindi $\mu^*(\Q)=0$ cos\'i come $\mu^*(\Q^n)=0$, pur essendo densi in $\R$ e $\R^n$.
+	\item Ogni sottoinsieme di un insieme di misura nulla è a sua volta di misura nulla, per la monotonia della misura.
+	\item Il bordo $\partial I$ di un iperrettangolo di $\R^n$ può essere scritto come l'unione delle sue $2n$ facce $F_i$, che sono a loro volta iperrettangoli degeneri (come nel primo di questi esempi), dunque
+		\begin{equation}
+			\mu^*(\partial I)=\mu^*\bigg(\bigcup_{i=1}^{2n} F_i\bigg)\leq\sum_{i=1}^{2n}\mu^*(F_i)=0.
+		\end{equation}
+\end{itemize}
+
+Esistono anche insiemi non numerabili ma di misura nulla, come l'insieme di Cantor, definito come limite per induzione di
+\begin{equation}
+	\begin{aligned}
+		C_0&=[0,1]\\
+		C_1&=\Big[0,\frac13\Big]\cup\Big[\frac23,1\Big]\\
+		C_2&=\Big[0,\frac19\Big]\cup\Big[\frac29,\frac13\Big]\cup\Big[\frac23,\frac79\Big]\cup\Big[\frac89,1\Big]\\
+		\dots
+	\end{aligned}
+\end{equation}
+sottraendo ad ogni passo un terzo dell'insieme precedente.
+Al generico $n$ si hanno dunque $2^n$ intervalli chiusi, disgiunti ciascuno di diametro $3^{-n}$ e inclusi nell'insieme $C_{n-1}$.
+L'insieme di Cantor è l'insieme che si ottiene con
+\begin{equation}
+	C=\bigcap_{n=1}^{+\infty}C_n.
+\end{equation}
+Non dimostriamo che non è numerabile; si può verificare che ogni punto di $C$ è un punto di accumulazione.
+Si può però vedere intuitivamente che la misura di $C_n$ è $2^n/3^n$, quindi
+\begin{equation}
+	\mu^*(C)\leq\mu^*(C_n)=\frac{2^n}{3^n}\to 0
+\end{equation}
+cioè l'insieme è di misura nulla.
+
+Dovendo sfruttare questa teoria della misura per l'integrazione, è di fondamentale importanza (come già facevamo per l'integrale di Riemann) che l'integrale si possa scomporre nella somma di integrali su vari sottoinsiemi.
+Per avere questa proprietà per gli integrali bisogna chiaramente avere una proprietà \emph{additiva} per la misura degli insiemi, ossia che la misura dell'unione (numerabile) di due insiemi disgiunti corrisponda alla somma delle misure di ciascun insieme.
+In breve, per $A,B\in\R^n$ e $A\cap B=\emptyset$, vogliamo che $\mu^*(A\cup B)=\mu^*(A)+\mu^*(B)$.
+Per quello che abbiamo visto finora, la misura non gode di tale proprietà, ma di una più debole, la subadditività numerabile: in pratica sappiamo solo che $\mu^*(A\cup B)$ è minore o uguale della somma delle due misure, che quindi può essere più grande.
+Esistono infatti insiemi disgiunti per cui la disuguaglianza è stretta, come nel celebre paradosso di Banach-Tarski, secondo il quale data la sfera unitaria $S$ esistono due insiemi disgiunti $A_1,A_2$ per i quali
+\begin{equation}
+	S=A_1\cup A_2\qeq \mu^*(A_1)=\mu^*(A_2)=\mu^*(S) 
+\end{equation}
+e se valesse l'additività numerabile per la misura esterna si avrebbe $\mu^*(S)=\mu^*(A_1)+\mu^*(A_2)=2\mu^*(S)$.
+
+Per risolvere queste contraddizioni dobbiamo quindi rinunciare a poter misurare (con le proprietà volute) ogni sottoinsieme dello spazio, ossia dobbiamo accettare che esistono insiemi \emph{che non si possono misurare}.
+
