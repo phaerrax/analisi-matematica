@@ -349,3 +349,85 @@ Dalla definizione segue immediatamente che in uno spazio misurabile
 \end{itemize}
 Infine, dato uno spazio misurabile $(X,\mathfrak S)$ e una misura positiva $\lambda$ definita sulla $\sigma$-algebra $\mathfrak S$ (costituita dai sottoinsiemi misurabili di $X$), la terna $(X,\mathfrak S,\lambda)$ si chiama \emph{spazio di misura}.
 Per quanto detto finora, la terna $\big(\R^n,\mis(\R^n),\mu\big)$ è proprio uno spazio di misura.
+
+\section{Struttura degli insiemi misurabili}
+\label{sec:struttura-insiemi-misurabili}
+Abbiamo finora caratterizzato la misura di Lebesgue con le sue importanti proprietà, mostrando come si comporta con le operazioni tra gli insiemi.
+Abbiamo inoltre ridotto la classe degli insiemi ammissibili ad un sottoinsieme di $\R^n$, ma come sono fatti questi insiemi misurabili?
+\begin{teorema}
+	Ogni insieme aperto, chiuso o compatto di $\R^n$ è misurabile, e la misura di un insieme compatto è sempre finita.
+\end{teorema}
+\begin{proof}
+	Se $A\in\R^n$ è aperto, allora esiste sempre una famiglia di intervalli compatti, o iperrettangoli, $\{I_k\}_{k\in\N}$ separati, cioè per cui
+	\begin{equation*}
+		\interior{I_i}\cap\interior{I_j}=\emptyset\text{ per }i\neq j,\text{ e }\bigcup_{k\in\N}I_k=A.
+	\end{equation*}
+	Segue dalla proprietà additiva \ref{pr:additivita-numerabile-lebesgue} che $A$ è misurabile in quanto unione numerabile di insiemi numerabili.
+
+	Un insieme chiuso, in quanto complementare di un aperto, è anch'esso misurabile.
+	Infine un insieme compatto $K$ in $\R^n$ è chiuso e limitato, quindi è certamente misurabile.
+	Per la limitatezza inoltre si può sempre contenere in un iperrettangolo $\mathcal I$, per cui $\mu(K)\leq\mu(\mathcal I)<+\infty$.
+\end{proof}
+
+Introduciamo ora due particolari classi di insiemi, gli insiemi di tipo $G_\delta$ e di tipo $F_\sigma$, definite come:
+\begin{itemize}
+	\item un insieme $G\subset\R^n$ si dice di tipo $G_\delta$ se è risultato di un'intersezione numerabile di insiemi aperti, ossia se $G=\bigcap_{n\in\N}A_n$ con $A_n$ aperto per ogni $n$;
+	\item un insieme $F\subset\R^n$ si dice di tipo $F_\sigma$ se è risultato di un'unione numerabile di insiemi chiusi, cioè se $F=\bigcup_{n\in\N}C_n$ con $C_n$ chiuso per ogni $n$.
+\end{itemize}
+Si noti che gli insiemi di queste classi sono ovviamente misurabili, ma gli insiemi $G_\delta$ non sono necessariamente aperti, come i $F_\sigma$ non sono necessariamente chiusi.
+Tramite queste classi possiamo caratterizzare gli insiemi misurabili in generale.
+\begin{lemma} \label{l:aperti-chiusi-poco-differenti}
+	Sia $A\in\mis(\R^n)$ e $\epsilon$ un numero positivo arbitrario: allora
+	\begin{itemize}
+		\item esiste un insieme $U$ aperto (in dipendenza da $\epsilon$) tale per cui $A\subset U$ e $\mu(U\setminus A)<\epsilon$;
+		\item esiste un insieme $F$ chiuso (sempre in dipendenza da $\epsilon$) per il quale $F\subset A$ e $\mu(A\setminus F)<\epsilon$.
+	\end{itemize}
+\end{lemma}
+\begin{teorema} \label{t:gdelta-fsigma-misurabili}
+	Sia $E\subseteq\R^n$ un insieme misurabile qualsiasi.
+	Allora
+	\begin{itemize}
+		\item esistono un insieme $G$ di tipo $G_\delta$ e un insieme $Z$ di misura nulla tali che $E=G\setminus Z$;
+		\item esistono un insieme $F$ di tipo $F_\sigma$ e un insieme $Z$ di misura nulla tali che $E=F\cup Z$.
+	\end{itemize}
+\end{teorema}
+\begin{proof}
+	Scegliamo un $\epsilon=\frac1{k}$, e per il lemma precedente \ref{l:aperti-chiusi-poco-differenti} troviamo per ogni $k$ un insieme $G_k\supset E$ tale che $\mu(G_k\setminus E)<\frac1{k}$.
+	Poniamo $G\defeq\bigcap_{k\in\N}G_k$ e $Z=G\setminus E$.
+	Esso è misurabile, per come è costruito; inoltre risulta
+	\begin{equation}
+		G=(G\cap E)\cup(G\cap\compl E)=(G\cap E)\cup(G\setminus E)=E\cup Z,
+	\end{equation}
+	poich\'e $G\subseteq E$ e $G\setminus E=Z$.
+	Segue quindi che $E=G\setminus Z$, prendendo l'intersezione con $\compl Z$ in entrambi i membri.
+	La misura di $Z$ è quindi
+	\begin{equation}
+		\mu(Z)=\mu(G\setminus E)=\mu\Bigg(\bigg(\bigcap_{k\in\N}G_k\bigg)\setminus E\Bigg)=\mu\bigg(\bigcap_{k\in\N}(G_k\setminus E)\bigg)=\lim_{k\to+\infty}\mu(G_k\setminus E)<\lim_{k\to+\infty}\frac1{k}=0.
+	\end{equation}
+
+	Per dimostrare la seconda parte, prendiamo stavolta $F_k\subset E$ tali che $\mu(E\setminus F_k)<\frac1{k}$.
+	La dimostrazione è del tutto analoga al caso precedente.
+\end{proof}
+Il seguente teorema fornisce un'ulteriore caratterizzazione.
+\begin{teorema}
+	Un insieme $A\subseteq\R^n$ è misurabile se e solo se $\forall\epsilon>0$ esistono un insieme $F$ chiuso e un $U$ aperto tali che $F\subseteq A\subseteq U$ e $\mu(U\setminus F)<\epsilon$.
+\end{teorema}
+\begin{proof}
+	Dato $A$ misurabile, l'esistenza di $F$ e $U$ come dati nella tesi è garantita per il lemma \ref{l:aperti-chiusi-poco-differenti}, dunque esistono sempre $U$ aperto e $F$ chiuso per i quali $\mu(A\setminus F)<\epsilon$ e $\mu(U\setminus A)<\epsilon$ per qualsiasi scelta di $\epsilon>0$.
+	Poich\'e $\mu(U\setminus F)\leq\mu(U\setminus A)+\mu(A\setminus F)$, otteniamo $\mu(U\setminus F)<2\epsilon$, da cui la tesi per l'arbitrarietà di $\epsilon$.
+
+	Partiamo ora dall'ipotesi $\mu(U\setminus F)<\epsilon$.
+	Scegliamo $\epsilon=\frac1{n}$ con $n\in\N$, e per ciascun valore di $n$ prendiamo un $F_n$ chiuso e un $U_n$ aperto tali che $F_n\subseteq A\subseteq U_n$ e $\mu(U_n\setminus F_n)<\frac1{n}$.
+	Definiamo $H\defeq\bigcap_{j\in\N}U_j$ e $K\defeq\bigcup_{j\in\N}F_j$: notiamo che essi sono rispettivamente di tipo $G_\delta$ e $F_\sigma$.
+	Calcoliamo la misura esterna di $M\defeq H\setminus A$: risulta
+	\begin{equation}
+		\mu^*(M)=\mu^*(H\setminus A)\leq\mu^*(H\setminus K)\leq\mu^*(U_j\setminus F_j)<\frac1{j}
+	\end{equation}
+	per ogni $j\in\N$ ed è allora di misura nulla.
+	Poich\'e da $M=H\setminus A$ segue
+	\begin{equation}
+		M\cup A=H\qqq (M\cup A)\setminus M=H\setminus M\qqq A=H\setminus M,
+	\end{equation}
+	e $H$ è di tipo $G_\delta$ e $M$ ha misura nulla, $A$ soddisfa il primo punto del teorema \ref{t:gdelta-fsigma-misurabili} dunque è misurabile.
+	Una dimostrazione analoga si ha per $P\defeq A\setminus K$, anch'esso di misura nulla.
+\end{proof}
