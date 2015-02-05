@@ -125,3 +125,211 @@ e se valesse l'additività numerabile per la misura esterna si avrebbe $\mu^*(S)
 
 Per risolvere queste contraddizioni dobbiamo quindi rinunciare a poter misurare (con le proprietà volute) ogni sottoinsieme dello spazio, ossia dobbiamo accettare che esistono insiemi \emph{che non si possono misurare}.
 
+\section{Misura di Lebesgue}
+\label{sec:misura-lebesgue}
+Dobbiamo trovare dunque un criterio che ci permetta di capire quando un insieme si può misurare.
+La seguente costruzione della misura segue le idee di Carath\'eodory.
+\begin{definizione} \label{d:lebesgue-misurabile}
+	Un insieme $A\in\R^n$ si dice \emph{misurabile secondo Lebesgue} se vale la relazione
+	\begin{equation}
+		\mu^*(E)=\mu^*(A\cap E)+\mu^*(\compl A\cap E),
+		\label{eq:lebesgue-misurabile}
+	\end{equation}
+	per ogni insieme $E\in\R^n$.
+\end{definizione}
+Indicheremo la classe degli insiemi di $\R^n$ misurabili secondo Lebesgue con la scrittura $\mis(\R^n)$.
+\begin{definizione} \label{d:misura-lebesgue}
+	Si definisce \emph{misura di Lebesgue} la restrizione della misura esterna $\mu^*$ all'insieme $\mis(\R^n)$.
+\end{definizione}
+La misura di Lebesgue, che indicheremo con $\mu$, coincide (quando è definita) con la misura esterna definita nella \ref{d:misura-esterna}, quindi la definizione rimane la stessa, e ovviamente ne eredità le proprietà già dimostrate.
+Avendo ristretto però l'insieme di definizione ai soli insiemi che rispettano la \eqref{eq:lebesgue-misurabile}, possiamo aggiungerne altre molto importanti.
+Tra queste, ovviamente, figurerà la proprietà additiva.
+D'ora in poi con \emph{misurabile} intenderemo sempre misurabile secondo Lebesgue, e con \emph{misura} la misura di Lebesgue, dove non si presenteranno ambiguità.
+\begin{proprieta} \label{pr:complementare-misurabile}
+	Un insieme $A\in\R^n$ è misurabile se e solo se lo è il suo complementare.
+\end{proprieta}
+\begin{proof}
+	Usando direttamente la \eqref{eq:lebesgue-misurabile} abbiamo che $\compl A$ è misurabile se
+	\begin{equation}
+		\mu^*(B)=\mu^*(B\cap\compl A)+\mu^*\big(B\cap\compl{(\compl A)}\big),
+	\end{equation}
+	per ogni $B\in\R^n$.
+Poich\'e $\compl{(\compl A)}=A$, si ha esattamente la stessa equazione per $A$ anzich\'e per $\compl A$.
+\end{proof}
+Una nota per le seguenti dimostrazioni: sfrutteremo spesso la relazione \eqref{eq:lebesgue-misurabile} per dimostrare che un dato insieme $A$ è misurabile.
+Poich\'e si ha per qualsiasi $E\in\R^n$ che $E=(E\cap A)\cup(E\cap\compl A)$, per la subadditività della misura esterna si ha sempre $\mu^*(E)\leq\mu^*(E\cap A)+\mu^*(E\cap\compl A)$, indipendentemente che $A$ sia misurabile o meno.
+Quindi per mostrare la misurabilità di $A$ ci basterà dimostrare la disuguaglianza opposta, che è più significativa, cioè che
+\begin{equation}
+	\mu^*(E)\geq\mu^*(E\cap A)+\mu^*(E\cap\compl A).
+\end{equation}
+\begin{proprieta} \label{pr:misura-nulla}
+	Ogni insieme $Z\in\R^n$ tale che $\mu^*(Z)=0$ è misurabile, e la sua misura di Lebesgue è nulla.
+\end{proprieta}
+\begin{proof}
+	Poich\'e $E\cap\compl Z\subseteq E$, per la monotonia della misura esterna abbiamo
+	\begin{equation}
+		\mu^*(E)\geq\mu^*(E\cap\compl Z).
+	\end{equation}
+	Allo stesso modo, $E\cap Z\subseteq Z$, quindi $\mu^*(E\cap Z)\leq\mu^*(Z)$, ma $\mu^*(Z)=0$ per ipotesi, dunque anche $\mu^*(E\cap Z)=0$.
+	Allora aggiungiamo $0=\mu^*(E\cap Z)$ alla disequazione precedente, che ovviamente rimane vera: risulta quindi
+	\begin{equation}
+		\mu^*(E)\geq\mu^*(E\cap Z)+\mu^*(E\cap\compl Z)
+	\end{equation}
+	e ciò prova che $Z$ è misurabile.
+	Segue immediatamente che $\mu(Z)=\mu^*(Z)=0$.
+\end{proof}
+Non dimostriamo il seguente risultato, anch'esso decisamente intuitivo.
+\begin{proprieta} \label{pr:misura-iperrettangolo}
+	Ogni iperrettangolo, prodotto di intervalli compatti, è misurabile, e la sua misura coincide con il suo volume.
+\end{proprieta}
+Passiamo ora a dimostrare come si comporta la misura di Lebesgue rispetto alle operazioni insiemistiche, cioè il complementare di un insieme, la sottrazione e le unioni e intersezioni (anche infinite, purch\'e numerabili).
+\begin{proprieta} \label{pr:misura-unione-intersezione}
+	Siano $A,B\in\mis(\R^n)$:
+	\begin{enumerate}
+		\item $A\cup B$, $A\cap B$ e $A\setminus B$ sono numerabili;
+		\item se $A\cap B=\emptyset$, allora $\mu(A\cup B)=\mu(A)+\mu(B)$;
+		\item se $B\subseteq A$ e $\mu(B)<+\infty$, allora $\mu(A\setminus B)=\mu(A)-\mu(B)$.
+	\end{enumerate}
+\end{proprieta}
+\begin{proof}
+	\begin{enumerate}
+		\item Dimostriamo che l'unione è misurabile: preso un qualunque $E\in\R^n$, applicando la \eqref{eq:lebesgue-misurabile} ad $A$ abbiamo
+			\begin{equation}
+				\mu^*(E)=\mu^*(E\cap A)+\mu^*(E\cap\compl A).
+			\end{equation}
+			Anche $B$ è misurabile, e certamente $E\cap\compl A$ è un insieme di $\R^n$, quindi applicando ancora la definizione abbiamo
+			\begin{equation}
+				\mu^(E\cap\compl A)=\mu^*(E\compl A\cap B)+\mu^*(E\compl A\cap\compl B),
+			\end{equation}
+			e sostituendo nella prima si ha
+			\begin{equation}
+				\mu^*(E)=\mu^*(E\cap A)+\mu^*(E\cap\compl A\cap B)+\mu^*(E\compl A\cap\compl B).
+			\end{equation}
+			Ora, per la proprietà distributiva dell'unione rispetto all'intersezione abbiamo che
+			\begin{equation}
+				(E\cap A)\cup(E\cap\compl A\cap B)=E\cap\big[A\cup(\compl A\cap B)\big]=E\cap\big[(A\cup\compl A)\cap(A\cup B)\big]=E\cap(A\cup B),
+			\end{equation}
+			dunque per la subadditività della misura esterna $\mu^*(E\cap A)+\mu^*(E\cap\compl A\cap B)\leq\mu^*\big(E\cap(A\cup B)\big)$.
+			Allo stesso tempo, $\compl A\cap\compl B=\compl{(A\cup B)}$, quindi
+			\begin{equation}
+				\mu^(E)\geq\mu^*\big(E\cap(A\cup B)\big)+\mu^*\big(E\cap\compl{(A\cup B)}\big),
+			\end{equation}
+			e ciò prova che $A\cup B$ è misurabile.
+			
+			Dalla proprietà \ref{pr:complementare-misurabile} sappiamo che $\compl A$ e $\compl B$ sono misurabili, e per quanto appena visto lo è anche $\compl A\cup\compl B$.
+			Ma $\compl A\cup\compl B=\compl{(A\cap B)}$ quindi anche $A\cap B$ sempre per la proprietà \ref{pr:complementare-misurabile} è misurabile.
+
+			Per $A\setminus B$, basta ricordare che esso è uguale $A\cap\compl B$, quindi anch'esso è misurabile.
+		\item Poich\'e $A,B\in\mis(\R^n)$, $A\cup B$ è misurabile dunque $\mu(A\cup B)=\mu^*(A\cup B)$.
+			Usiamo questo insieme (che ovviamente è sottoinsieme di $\R^n$) nella \eqref{eq:lebesgue-misurabile} con $A$, anch'esso misurabile, per cui
+			\begin{equation}
+				\begin{split}
+					\mu(A\cup B)=\mu^*(A\cup B)&=\mu^*\big((A\cup B)\cap A\big)+\mu^*\big((A\cup B)\cap\compl A\big)=\\
+					&=\mu^*\big((A\cap A)\cup(A\cap B)\big)+\mu^*\big((A\cup B)\setminus A\big),
+				\end{split}
+			\end{equation}
+			e dato che $A\cap A=A$, $A\cap B=\emptyset$ e $(A\cup B)\setminus A=B$ troviamo che
+			\begin{equation}
+				\mu(A\cup B)=\mu^*(A\cup B)=\mu^*(A)+\mu^*(B)=\mu(A)+\mu(B).
+			\end{equation}
+		\item Poich\'e $B\subseteq A$, vale ovviamente $A=(A\setminus B)\cup B$.
+			Gli insiemi $A\setminus B$ e $B$ hanno intersezione vuota, perciò per il punto precedente
+			\begin{equation}
+				\mu(A)=\mu(A\setminus B)+\mu(B)
+			\end{equation}
+			da cui la tesi.
+	\end{enumerate}
+\end{proof}
+Per induzione, segue immediatamente da questo teorema che l'unione e intersezione \emph{finite} di insiemi sono ancora insiemi numerabili, e che la misura è additiva se tutti gli insiemi sono disgiunti.
+Procediamo finalmente a dimostrare la proprietà di additività numerabile che abbiamo annunciato all'inizio di questa sezione.
+\begin{proprieta} \label{pr:additivita-numerabile-lebesgue}
+	Sia $\{A_n\}_{n\in\N}$ una famiglia di insiemi misurabili di $\R^n$.
+	Allora l'unione e l'intersezione (numerabili) $\bigcup_{n=1}^{+\infty}+A_n$ e $\bigcap_{n=1}^{+\infty}A_n$ sono insiemi numerabili.
+	Se inoltre $A_i\cap A_j=\emptyset$ per ogni $i\neq j$, allora
+	\begin{equation}
+		\mu\bigg(\bigcup_{n=1}^{+\infty}A_n\bigg)=\sum_{n=1}^{+\infty}\mu(A_n).
+		\label{eq:additivita-numerabile-lebesgue}
+	\end{equation}
+\end{proprieta}
+\begin{proof}
+	Notiamo innanzitutto che possiamo considerare gli insiemi $A_n$ mutualmente disgiunti, senza perdere generalità: se già non lo fossero, ci basterebbe prendere la famiglia $\{B_n\}_{n\in\N}$ dove
+	\begin{equation}
+		B_1=A_1,\ B_2=A_2\setminus A_1, B_3=A_3\setminus(A_2\cup A_1),\dots,B_k=A_m\setminus(A_1\cup\dots\cup A_{m-1}),
+	\end{equation}
+	che sono per costruzione mutualmente disgiunti, e tali che
+	\begin{equation}
+		\bigcup_{n=1}^{+\infty}B_n=\bigcup_{n=1}^{+\infty}A_n
+	\end{equation}
+	quindi si perviene agli stessi risultati.
+	Consideriamo dunque $A_j\cap A_i=\emptyset$ per ogni $i\neq j$.
+
+	Definiamo $F_k\defeq\bigcup_{n=1}^kA_n$, per $k\in\N$, che è misurabile per quanto visto nella proprietà \ref{pr:misura-unione-intersezione}.
+	Per la \eqref{eq:lebesgue-misurabile} applicata ad $A_k$, che è misurabile per ipotesi, abbiamo $\forall k\in\N$
+	\begin{equation}
+		\begin{split}
+			\mu^*(E\cap F_k)&=\mu^*\big( (E\cap F_k)\cap A_k\big)+\mu^*\big( (E\cap F_k)\cap\compl{A_k}\big)=\\
+			&=\mu^*\big((E\cap(F_k\cap A_k)\big)+\mu^*\big(E\cap (F_k\setminus A_k)\big)=\\
+			&=\mu^*(E\cap A_k)+\mu^*(E\cap F_{k-1}).
+		\end{split}
+	\end{equation}
+	per qualsiasi $E\subseteq\R^n$.
+	Iterando il procedimento con $F_{k-1}$, anch'esso ovviamente misurabile, otteniamo che $\mu^*(E\cap F_{k-1})=\mu^*(E\cap A_{k-1})+\mu^*(E\cap F_{k-1})$.
+	Continuiamo dunque in questo modo fino a esaurire gli $A_n$, arrivando a $\mu^*(E\cap F_2)=\mu^*(E\cap A_2)+\mu^*(E\cap F_1)$, ma $F_1=A_1$ quindi infine
+	\begin{equation}
+		\mu^*(E\cap F_k)=\sum_{n=1}^k\mu^*(E\cap A_n).
+	\end{equation}
+	Passiamo a calcolare $\mu^*(E\cap\compl{F_k})$.
+	Definiamo $F\defeq\bigcup_{n=1}^{+\infty}A_n$.
+	Poich\'e $F_k\subseteq F$, passando ai complementari risulta $\compl F\subseteq\compl{F_k}$: intersecandoli entrambi con un $E\in\R^n$ qualsiasi allora $E\cap\compl F\subseteq E\cap\compl{F_k}$,  da cui per la monotonia della misura esterna $\mu^*(E\cap\compl F)\leq\mu^*(E\cap\compl{F_k})$.
+	Allora possiamo affermare che
+	\begin{equation}
+		\begin{split}
+			\mu^*(E)&=\mu^*(E\cap F_k)+\mu^*(E\cap\compl{F_k})\geq\\
+			&\geq\mu^*(E\cap F_k)+\mu^*(E\cap\compl F)=\\
+			&=\sum_{n=1}^k\mu^*(E\cap A_n)+\mu^*(E\cap\compl F)
+		\end{split}
+	\end{equation}
+	per ogni $E\subset\R^n$.
+	Poiche vale $\forall k\in\N$, passando al limite per $k\to+\infty$ continua a valere la disuguaglianza, cioè
+	\begin{equation}
+		\mu^*(E)\geq\sum_{n=1}^{+\infty}\mu^*(E\cap A_n)+\mu^*(E\cap\compl F).
+		\label{eq:dim-additivita-numerabile}
+	\end{equation}
+	Per la subadditività numerabile, inoltre, abbiamo che
+	\begin{equation}
+		E\cap F=E\cap\bigg(\bigcup_{n=1}^{+\infty}A_n\bigg)=\bigcup_{n=1}^{+\infty}(E\cap A_n)\quad\then\quad\mu^*(E\cap F)\leq\sum_{n=1}^{+\infty}\mu^*(E\cap A_n),
+	\end{equation}
+	dunque
+	\begin{equation}
+		\mu^*(E)\geq\mu^*(E\cap F)+\mu^*(E\cap\compl F)
+	\end{equation}
+	perciò $F$ è misurabile.
+	Per la seconda parte della testi, prendiamo nella \eqref{eq:dim-additivita-numerabile} proprio l'insieme $F$ al posto di $E$, per cui $\mu(F)=\mu^*(F)$ essendo misurabile:
+	\begin{equation}
+		\mu(F)=\mu^*(F)=\sum_{n=1}^{+\infty}\mu^*(F\cap A_n)+\mu^*(F\cap\compl F).
+	\end{equation}
+	Poich\'e $F\cap A_n=A_n$ e $F\cap\compl F=\emptyset$, otteniamo
+	\begin{equation}
+		\mu(F)=\mu\bigg(\bigcup_{n=1}^{+\infty}A_n\bigg)=\sum_{n=1}^{+\infty}\mu(A_n).
+	\end{equation}
+
+	Dimostrato il caso dell'unione, è immediato verificare anche la tesi per l'intersezione dato che
+	\begin{equation}
+		\bigcap_{n=1}^{+\infty}A_n=\compl{\bigg(\bigcup_{n=1}^{+\infty}\compl{A_n}\bigg)}.
+	\end{equation}
+\end{proof}
+Le proprietà dimostrate finora rendono la classe degli insiemi di $\R^n$ misurabili una \emph{$\sigma$-algebra}, ossia un insieme $\mathfrak S$ tale che
+\begin{enumerate}
+	\item l'insieme vuoto appartiene a $\mathfrak S$;
+	\item se un insieme è in $\mathfrak S$, allora anche il suo complementare è in $\mathfrak S$;
+	\item se gli elementi di una famiglia numerabile di insiemi $\{A_i\}_{i\in\N}$ sono in $\mathfrak S$, allora anche l'unione numerabile $\bigcup_{i\in\N}A_i$ appartiene a $\mathfrak S$.
+\end{enumerate}
+Se $\mathfrak S$ è una $\sigma$-algebra su un insieme $X$, la coppia $(X,\mathfrak S)$ si dice \emph{spazio misurabile}.
+Dalla definizione segue immediatamente che in uno spazio misurabile
+\begin{itemize}
+	\item $X\in\mathfrak S$, in quanto complementare di $\emptyset$ rispetto a s\'e stesso;
+	\item anche l'intersezione numerabile di insiemi di $\mathfrak S$ è un insieme di $\mathfrak S$, come visto nella dimostrazione della proprietà \ref{pr:additivita-numerabile-lebesgue} applicando le leggi di De Morgan;
+	\item se due insiemi appartengono a $\mathfrak S$, anche la loro opportuna sottrazione vi appartiene.
+\end{itemize}
+		Infine, dato uno spazio misurabile $(X,\mathfrak S)$ e una misura positiva $\lambda$ definita sulla $\sigma$-algebra $\mathfrak S$ (costituita dai sottoinsiemi misurabili di $X$), la terna $(X,\mathfrak S,\lambda)$ si chiama \emph{spazio di misura}.
+Per quanto detto finora, la terna $\big(\R^n,\mis(\R^n),\mu\big)$ è proprio uno spazio di misura.
