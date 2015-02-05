@@ -318,6 +318,22 @@ Procediamo finalmente a dimostrare la proprietà di additività numerabile che a
 		\bigcap_{n=1}^{+\infty}A_n=\compl{\bigg(\bigcup_{n=1}^{+\infty}\compl{A_n}\bigg)}.
 	\end{equation}
 \end{proof}
+
+Concludiamo la serie di teoremi con un corollario sulle successioni di insiemi monotone, da intendersi rispetto alle operazioni di inclusione: diremo che una successione $\{E_k\}_{k\in\N}$ di insiemi è \emph{crescente} se $A_k\subset A_{k+1}$ per ogni $k$, e analogamente diremo che è decrescente se $A_k\supseteq A_{k+1}$.
+\begin{corollario} \label{cor:misura-successioni-insiemi}
+	Sia $\{A_k\}_{k\in\N}$ una successione di insiemi misurabili:
+	\begin{itemize}
+		\item se la successione è crescente, allora
+			\begin{equation}
+				\mu\bigg(\bigcup_{k=1}^{+\infty}A_k\bigg)=\lim_{k\to+\infty}\mu(A_k);
+			\end{equation}
+		\item se la successione è decrescente, allora
+			\begin{equation}
+				\mu\bigg(\bigcap_{k=1}^{+\infty}A_k\bigg)=\lim_{k\to+\infty}\mu(A_k).
+			\end{equation}
+	\end{itemize}
+\end{corollario}
+
 Le proprietà dimostrate finora rendono la classe degli insiemi di $\R^n$ misurabili una \emph{$\sigma$-algebra}, ossia un insieme $\mathfrak S$ tale che
 \begin{enumerate}
 	\item l'insieme vuoto appartiene a $\mathfrak S$;
@@ -331,5 +347,5 @@ Dalla definizione segue immediatamente che in uno spazio misurabile
 	\item anche l'intersezione numerabile di insiemi di $\mathfrak S$ è un insieme di $\mathfrak S$, come visto nella dimostrazione della proprietà \ref{pr:additivita-numerabile-lebesgue} applicando le leggi di De Morgan;
 	\item se due insiemi appartengono a $\mathfrak S$, anche la loro opportuna sottrazione vi appartiene.
 \end{itemize}
-		Infine, dato uno spazio misurabile $(X,\mathfrak S)$ e una misura positiva $\lambda$ definita sulla $\sigma$-algebra $\mathfrak S$ (costituita dai sottoinsiemi misurabili di $X$), la terna $(X,\mathfrak S,\lambda)$ si chiama \emph{spazio di misura}.
+Infine, dato uno spazio misurabile $(X,\mathfrak S)$ e una misura positiva $\lambda$ definita sulla $\sigma$-algebra $\mathfrak S$ (costituita dai sottoinsiemi misurabili di $X$), la terna $(X,\mathfrak S,\lambda)$ si chiama \emph{spazio di misura}.
 Per quanto detto finora, la terna $\big(\R^n,\mis(\R^n),\mu\big)$ è proprio uno spazio di misura.
