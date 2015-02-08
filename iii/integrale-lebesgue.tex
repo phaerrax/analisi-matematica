@@ -431,3 +431,175 @@ Il seguente teorema fornisce un'ulteriore caratterizzazione.
 	e $H$ è di tipo $G_\delta$ e $M$ ha misura nulla, $A$ soddisfa il primo punto del teorema \ref{t:gdelta-fsigma-misurabili} dunque è misurabile.
 	Una dimostrazione analoga si ha per $P\defeq A\setminus K$, anch'esso di misura nulla.
 \end{proof}
+
+\section{Funzioni misurabili}
+\label{sec:funzioni-misurabili}
+\begin{definizione} \label{d:funzione-misurabile}
+	Dato un insieme $A\in\mis(\R^n)$, una funzione $f\colon A\to\Rex$ si dice \emph{misurabile} (su $A$) se l'insieme $\{\vec x\in A\colon f(\vec x)<c\}$ è misurabile per qualsiasi $c\in\Rex$.
+\end{definizione}
+Osserviamo che la scelta del segno $<$ è del tutto arbitraria ai fini della definizione: mostriamo che se $\{\vec x\in A\colon f(\vec x)<c\}$ è misurabile, allora anche gli insiemi $\{\vec x\in A\colon f(\vec x)\leq c\}$, $\{\vec x\in A\colon f(\vec x)>c\}$ e $\{\vec x\in A\colon f(\vec x)\geq c\}$ lo sono.
+\begin{itemize}
+	\item Se $c\in\R$ possiamo scrivere $\{f(\vec x)\leq c\}$ come $\bigcap_{k=1}^{+\infty}\{f(\vec x)<c+\frac1{k}\}$, che è un insieme di tipo $G_\delta$ e dunque misurabile.
+		Se $c=+\infty$, $\{f(\vec x)\leq c\}=A$ che è misurabile.
+		Se $c=-\infty$, infine, scriviamo $\{f(\vec x)\leq c\}=\bigcap_{k=1}^{+\infty}\{f(\vec x)<-k\}$ che è ancora di tipo $G_\delta$ quindi misurabile.
+	\item $\{f(\vec x)>c\}=A\setminus\{f(\vec x)\leq c\}$ quindi è misurabile essendo la differenza di insiemi misurabili.
+	\item Per $c\in\R$, $\{f(\vec x)\geq c\}=\bigcap_{k=1}^{+\infty}\{f(\vec x)>c+\frac1{k}\}$, quindi è di tipo $G_\delta$, e misurabile.
+		Se $c=+\infty$, $\{f(\vec x)\geq c\}=\bigcap_{k=1}^{+\infty}\{f(\vec x)>k\}$ che è ancora $G_\delta$, quindi misurabile.
+		Se $c=-\infty$, $\{f(\vec x)\geq c\}=A$ che è misurabile.
+	\item $\{f(\vec x)<c\}=A\setminus\{f(\vec x)\geq c\}$ quindi è misurabile come differenza di insiemi misurabili.
+\end{itemize}
+Le quattro definizioni sono quindi in realtà del tutto intercambiabili.
+Passiamo ora a considerare gli insiemi \emph{di livello} della funzione.
+\begin{teorema} \label{t:insiemi-livello-funzione-misurabile}
+	Sia $f\colon A\to\Rex$ misurabile, con $A\in\mis(\R^n)$.
+	Allora per ogni $c\in\Rex$ l'insieme $\{\vec x\in A\colon f(\vec x)=c\}$ è misurabile.
+\end{teorema}
+\begin{proof}
+	Individuiamo tre casi: se $c\in\R$, abbiamo che $\{f(\vec x)=c\}=\{f(\vec x)\geq c\}\cap\{f(\vec x)\leq c\}$ ed è quindi misurabile.
+	Se $c=+\infty$, $\{f(\vec x)=c\}=\bigcap_{k=1}^{+\infty}\{f(\vec x)\geq k\}$ mentre per $c=-\infty$ $\{f(\vec x)=c\}=\bigcap_{k=1}^{+\infty}\{f(\vec x)\leq -k\}$ dunque sono entrambi insiemi di tipo $G_\delta$, perciò misurabili.
+\end{proof}
+Come ci si può aspettare, non tutte le funzioni sono misurabili.
+Una semplice funzione misurabile è la funzione caratteristica di un insieme misurabile: se $E\notin\mis(\R^n)$, la funzione $f\colon E\to\Rex$ definita come $f(\vec x)=\chi_E(\vec x)$ non è misurabile perch\'e l'insieme di livello $\{x\in E\colon \chi_E(\vec x)=1\}$ è proprio l'insieme $E$, dunque non è misurabile, e non lo è nemmeno la funzione per il teorema appena enunciato.
+
+\begin{teorema} \label{t:funzioni-continue-misurabili}
+	Sia $A\in\mis(\R^n)$ e $f\colon A\to\R$.
+	Se $f$ è continua in $A$ allora è misurabile.
+\end{teorema}
+\begin{proof}
+	L'insieme $\{x\in A\colon f(\vec x)<c\}$ è aperto in quanto controimmagine dell'insieme aperto $(-\infty,c)$, dunque è misurabile, perciò è misurabile ache $f$.
+\end{proof}
+\begin{osservazione} \label{o:funzione-misurabile-su-insieme-nullo}
+	Se $A\in\mis(\R^n)$ è di misura nulla, qualsiasi funzione $f\colon A\to\Rex$ è misurabile.
+\end{osservazione}
+\begin{proof}
+	Prendiamo infatti per un $c\in\Rex$ qualsiasi l'insieme $Z_c=\{\vec x\in A\colon f(\vec x)<c\}$.
+	Poich\'e esso è incluso in $A$, risulta $\mu^*(Z_c)\leq\mu^*(A)=\mu(A)=0$, dunque $Z_c$ è misurabile per ogni $c\in\Rex$, ed è quindi misurabile $f$.
+\end{proof}
+Il seguente teorema ci permette di stabilire la misurabilità di una funzione a partire dalle sue restrizioni ad insiemi minori e viceversa.
+\begin{teorema} \label{t:funzione-misurabile-restrizioni}
+	Sia $f\colon A\to\Rex$ con $A=A_1\cup A_2$ dove $A_1$ e $A_2$ sono misurabili.
+	Allora $f$ è misurabile se e solo se $f|_{A_1}$ e $f|_{A_2}$ lo sono.
+\end{teorema}
+\begin{proof}
+	Sia $f$ misurabile: per ogni $c\in\Rex$, l'insieme $\{x\in A_1\colon f|_{A_1}<c\}=\{\vec x\in A\colon f(\vec x)<c\}\cap A_1$ è misurabile come intersezione di insiemi misurabili, dunque $f|_{A_1}$ è misurabile, e lo stesso per $f|_{A_2}$.
+
+	Siano ora le due restrizioni misurabili: allora $\forall c\in\Rex$ $\{\vec x\in A_1\colon f|_{A_1}(\vec x)<c\}$ e $\{\vec x\in A_2\colon f|_{A_2}(\vec x)<c\}$ sono misurabili, e lo è la loro unione, ma
+	\begin{equation}
+		\begin{aligned}
+			&\{\vec x\in A_1\colon f|_{A_1}(\vec x)<c\}\cup\{\vec x\in A_2\colon f|_{A_2}(\vec x)<c\}=\\
+			&=\big(\{\vec x\in A\colon f(\vec x)<c\}\cap A_1\big)\cup\big(\{\vec x\in A\colon f(\vec x)<c\}\cap A_2\big)=\\
+			&=\{\vec x\in A\colon f(\vec x)<c\}\cap(A_1\cup A_2)=\\
+			&=\{\vec x\in A\colon f(\vec x)<c\}\cap A=\\
+			&=\{\vec x\in A\colon f(\vec x)<c\}
+		\end{aligned}
+	\end{equation}
+	per ogni $c\in\Rex$, quindi anche $f$ è misurabile.
+\end{proof}
+Introduciamo inoltre un tipo di uguaglianza ``quasi ovunque'' all'interno dello spazio delle funzioni misurabili con il seguente teorema\footnote{Ricordiamo che una proprietà è verificata \emph{quasi ovunque} (spesso abbreviato con q.o.) in un certo insieme $A$ se il sottoinsieme $B\subset A$ in cui non si verifica ha misura nulla.}.
+\begin{teorema} \label{t:misurabile-qo}
+	Siano $f,g\colon A\to\Rex$, con $A\in\mis(\R^n)$, tali che $f(\vec x)=g(\vec x)$ per ogni $\vec x\in A\setminus Z$ dove $\mu(Z)=0$.
+	Allora $f$ è misurabile se e solo se lo è $g$.
+\end{teorema}
+\begin{proof}
+	Sia $f$ misurabile: poniamo $B=A\setminus Z$, da cui $A=B\cap Z$.
+	Sappiamo che $g|_Z$ è misurabile come visto nell'osservazione \ref{o:funzione-misurabile-su-insieme-nullo} poich\'e $\mu(Z)=0$.
+	D'altra parte $g|_{B}=f|_{B}$ per ipotesi, dunque se $f$ è misurabile lo è anche $g|_B$.
+	Per il teorema \ref{t:funzione-misurabile-restrizioni} $g$ è misurabile.
+	Se partiamo dalla misurabilità di $g$ anzich\'e da quella di $f$ la dimostrazione è del tutto analoga.
+\end{proof}
+Altri esempi di proprietà che posso verificarsi quasi ovunque sono la convergenza puntuale di una successione di funzioni, o il segno di una funzione.
+Mostriamo ora nei seguenti che operando con funzioni misurabili (anche attraverso limiti e estremi superiori e inferiori) otteniamo ancora una funzione misurabile, con un'eccezione solo per la composizione.
+\begin{lemma}
+	Siano $f,g\colon A\to\Rex$, con $A\in\mis(\R^n)$, due funzioni misurabili.
+	Allora l'insieme $\{\vec x\in A\colon f(\vec x)>g(\vec x)\}$ è misurabile.
+\end{lemma}
+\begin{proof}
+	Sia $E=\{\vec x\in A\colon f(\vec x)>g(\vec x)\}$, che è tale per cui $E\subseteq A$.
+	Preso $\vec x\in E$, $f(\vec x)>g(\vec x)$ quindi per la densità dei razionali nei reali possiamo individuare un numero $r\in\Q$ tale che $f(\vec x)>r>g(\vec x)$.
+	Allora $\vec x\in\{\vec x\in E\colon f(\vec x)>r\}\cap\{\vec x\in E\colon g(\vec x)<r\}$, dunque
+	\begin{equation}
+		E=\bigcup_{r\in\Q}\big(\{\vec x\in E\colon f(\vec x)>r\}\cap\{\vec x\in E\colon g(\vec x)<r\}\big)
+	\end{equation}
+	che è quindi misurabile come unione di aperti.
+\end{proof}
+\begin{proprieta} \label{pr:operazioni-funzioni-misurabili}
+	Se le funzioni $f,g\colon A\to\Rex$, con $A\in\mis(\R^n)$, sono misurabili in $A$, allora anche le funzioni $\lambda f$ (con $\lambda\in\R$), $f+g$, $fg$ e $f/g$ (se $g\neq0$ in $A$) lo sono.
+\end{proprieta}
+\begin{proof}
+	\begin{itemize}
+		\item Se $\lambda>0$, l'insieme $\{\vec x\in A\colon \lambda f(\vec x)<c\}$ equivale per ogni $c\in\R$ a $\{\vec x\in A\colon f(\vec x)<\frac{c}{\lambda}\}$ che è misurabile per la misurabilità di $f$.
+			Se $\lambda=0$ è invece equivalente all'insieme $\{\vec x\in A\colon 0<c\}$ che è o tutto $A$ se $c>0$ o l'insieme vuoto se $c\leq 0$, e in entrambi i casi sono insiemi misurabili.
+			Se $\lambda<0$ è equivalente a $\{\vec x\in A\colon f(\vec x)>\frac{c}{\lambda}\}$ che è ancora misurabile come nel primo caso.
+		\item L'insieme $\{\vec x\in A\colon (f+g)(\vec x)<c\}$ equivale a $\{\vec x\in A\colon f(\vec x)<c-g(\vec x)\}$.
+			Chiamiamo $c-g(\vec x)=h(\vec x)$, e per il lemma precedente l'insieme $\{\vec x\in A\colon f(\vec x)<h(\vec x)\}$ è misurabile, quindi lo è $f+g$.
+		\item Mostriamo prima che $f^2$ è misurabile, ossia che $\{\vec x\in A\colon f^2<c\}$ lo è per ogni $c\in\Rex$.
+			Se $c\geq 0$, è equivalente a $\{\{\vec x\in A\colon f(\vec x)>\sqrt{c}\}\cup\{\vec x\in A\colon f(\vec x)<-\sqrt{c}\}$ che è misurabile come unione di misurabili.
+			Se $c<0$, chiaramente $\{\vec x\in A\colon [f(\vec x)]^2>c\}=A$ quindi è ancora misurabile.
+			Dunque, poich\'e $(f+g)^2-(f-g)^2=f^2+g^2+2fg-f^2-g^2+2fg=4fg$, abbiamo $fg=\frac14[(f+g)^2-(f-g)^2]$ quindi è misurabile.
+		\item Lasciata come esercizio.\qedhere
+	\end{itemize}
+\end{proof}
+\begin{proprieta} \label{pr:estremi-successioni-funzioni-misurabili}
+	Sia $\{f_k\}_{k\in\N}$ una successione di funzioni misurabili su $A\in\mis(\R^n)$.
+	Allora sono misurabili le funzioni $\inf_{k\in\N}f_k$, $\sup_{k\in\N}f_k$, $\liminf_{k\to+\infty}f_k$ e $\limsup_{k\to+\infty}f_k$.
+\end{proprieta}
+\begin{proof}
+	Poich\'e $\mis(\R^n)$ è una $\sigma$-algebra, e
+	\begin{equation}
+		\bigg\{\vec x\in A\colon \sup_{k\in\N}f_k(\vec x)>c\bigg\}=\bigcup_{k\in\N}\{\vec x\in A\colon f_k(\vec x)>c\},
+	\end{equation}
+	$\sup_{k\in\N}f_k$ è misurabile in $A$.
+	Anche l'estremo inferiore è misurabile in $A$ perch\'e $\inf_{k\in\N}f_k=-\sup_{k\in\N}(-f_k)$.
+
+	Per i due limiti abbiamo infine
+	\begin{equation}
+		\liminf_{k\to+\infty}f_k=\sup_{j\in\N}\big(\inf_{k\geq j}f_k\big)\qeq\limsup_{k\in\N}f_k=\inf_{j\in\N}\big(\sup_{k\geq j}f_k\big)
+	\end{equation}
+	dunque anch'essi sono misurabili.
+\end{proof}
+Da queste proprietà segue immediatamente che se una successione di funzioni misurabili in un insieme $A$ converge puntualmente, la funzione limite è anch'essa misurabile in $A$, poich\'e il limite superiore e inferiore (che sono misurabili) coincidiono e sono uguali al limite.
+Questo vale anche se la convergenza è quasi ovunque, in virtù del teorema \ref{t:misurabile-qo}.
+
+Data una funzione $f$ misurabile, inoltre, per quest'ultimo teorema la sua parte positiva e la sua parte negativa sono misurabili, in quanto $F^+=\max\{f,0\}$ e $f^-=\max\{-f,0\}$, cos\'i come lo è il suo modulo $\abs{f}=f^+-f^-$ come somma di funzioni misurabili.
+\begin{proprieta} \label{pr:composizione-funzioni-misurabili}
+	Sia $f\colon A\to\R$, con $A\in\mis(\R^n)$, misurabile in $A$.
+	Se $g\colon B\to\R$, con $f(A)\subset B\subset\R$, è continua in $B$, allora $g\circ f\colon A\to\R$ è misurabile.
+\end{proprieta}
+\begin{proof}
+	L'insieme $\{\vec x\in A\colon (g\circ f)(\vec x)<c\}$ è la controimmagine dell'intervallo $(-\infty,c)$, cioè equivale a $(g\circ f)^{-1}\big( (-\infty,c)\big)=f^{-1}\big[g^{-1}\big((-\infty,c)\big)\big]$ per ogni $c\in\R$.
+	Per la continuità di $g$, l'insieme $g^{-1}\big( (-\infty,c)\big)$ è aperto perch\'e controimmagine di un aperto, dunque possiamo esprimerlo come unione numerabile di intervalli compatti:
+	\begin{equation}
+		g^{-1}\big( (-\infty,c)\big)=\bigcup_{n\in\N}[a_n,b_n],
+	\end{equation}
+	perciò prendendo la controimmagine di $f$ abbiamo
+	\begin{equation}
+		\begin{split}
+			\{\vec x\in A\colon (g\circ f)(\vec x)<c\}&=f^{-1}\Big((g^{-1}\big( (-\infty,c)\big)\Big)=\\
+			&=f^{-1}\bigg(\bigcup_{n\in\N}[a_n,b_n]\bigg)=\\
+			&=\bigcup_{n\in\N}f^{-1}\big([a_n,b_n]\big)=\\
+			&=\bigcup_{n\in\N}\big(\{\vec x\in A\colon f(\vec x)\geq a_n\}\cup\{\vec x\in A\colon f(\vec x)\leq b_n\}\big)
+		\end{split}
+	\end{equation}
+	che è un insieme misurabile, quindi $g\circ f$ è misurabile.
+\end{proof}
+Una facile conseguenza di questa proprietà è che se $A\in\mis(\R^n)$ e $f\colon A\to\R$ è misurabile, allora lo è anche $\abs{f}^p$ per ogni $p>0$.
+Infatti basta vederla come composizione $g\circ f$ dove $g\colon\R\to\R$ è definita come
+\begin{equation}
+	g(x)=
+	\begin{cases}
+		0&x\leq 0\\
+		x^p&x>0
+	\end{cases}
+\end{equation}
+che è evidentemente continua in tutto $\R$.
+\begin{osservazione} \label{o:funzione-caratteristica-misurabile}
+	La funzione caratteristica di un insieme $A$ è misurabile se e solo se $A$ è misurabile.
+\end{osservazione}
+\begin{proof}
+	Prendiamo $\chi_A\colon\R^n\to{0,1}$.
+	Se $c>1$, risulta $\{\vec x\in A\colon\chi_A(\vec x)<c\}=\R^n$.
+	Se $0<c\leq1$, $\{\vec x\in A\colon \chi_A(\vec x)<c\}=\compl A$, poich\'e $\chi_A(\vec x)=0$ se $\vec x\notin A\then\vec x\in\compl A$.
+	Se $c\leq 0$ infine $\{\vec x\in A\colon \chi_A(\vec x)<c\}=\emptyset$.
+	In tutti i tre i casi gli insiemi sono misurabili.
+\end{proof}
+
