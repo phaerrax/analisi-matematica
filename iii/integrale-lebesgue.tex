@@ -603,3 +603,129 @@ che è evidentemente continua in tutto $\R$.
 	In tutti i tre i casi gli insiemi sono misurabili.
 \end{proof}
 
+\section{Integrale di Lebesgue}
+Prima di definire l'integrale, ci serve prima capire come approssimare le funzioni misurabili con un tipo particolare di funzioni, dette \emph{semplici}.
+\begin{definizione} \label{d:funzione-semplice}
+	Una funzione $f\colon\R^n\to\R$ è detta \emph{semplice} se assume un numero finito di valori $\{c_1,\dots,c_n\}\subset\R$ con $n\in\N$ (finito) e $c_i\neq c_j$ se $i\neq j$.
+\end{definizione}
+Le funzioni semplici possono essere rappresentate in quella che è detta \emph{forma canonica} come una somma finita di funzioni caratteristiche: infatti se poniamo $A_i$ come la controimmagine di $c_i$ attraverso $f$, ossia $A_i=f^{-1}(\{c_i\})$ per ciascun $i\in\{1,\dots,n\}$, allora si deve avere necessariamente $A_i\cap A_j=\emptyset$ per $i\neq j$, poich\'e $f$ (è una funzione!) può avere solo un'immagine per ogni $\vec x\in\R^n$.
+In tale insieme $A_i$ la $f$ corrisponde alla funzione $c_i\chi_{A_i}$, quindi possiamo rappresentare la funzione semplice come
+\begin{equation}
+	f=\sum_{i=1}^nc_i\chi_{A_i},
+	\label{eq:rappresentazione-canonica-funzione-semplice}
+\end{equation}
+ossia come combinazione lineare di funzioni semplici, dove tutti gli insiemi $A_i$ sono mutualmente disgiunti e tali che $\bigcup_{i=1}^nA_i=\R^n$.
+Chiaramente una funzione semplice è misurabile se tutti gli $A_i$ sono insiemi misurabili.
+Una funzione semplice può essere definita anche solo su un sottoinsieme di $\R^n$, se essa è nulla al di fuori di tale sottoinsieme.
+
+\begin{teorema} \label{t:funzione-semplice-misurabile}
+	Sia $A\in\mis(\R^n)$: ogni funzione misurabile $f\colon A\to\Rex$ è il limite puntuale di una successione di funzioni semplici misurabili su $A$.
+	Inoltre, se $f$ non è negativa su $A$, tale successione può essere scelta non negativa e crescente.
+\end{teorema}
+\begin{proof}
+	Mostriamo prima che, posto vero il secondo punto, il primo ne è una conseguenza: poi dimostreremo il secondo punto.
+	Dividiamo la funzione $f$, misurabile, in parte positiva e negativa, $f=f^+-f^-$: entrambe sono non negative e misurabili.
+	Per il secondo punto, esistono dunque due successioni di funzioni semplici, che chiamiamo $\{s^+_k\}_{k\in\N}$ e $\{s^-_k\}_{k\in\N}$, crescenti e per le quali
+	$s^+_k\to f^+$ e $s^-_k\to f^-$.
+	Ma allora prendendo la loro differenza si ha una nuova successione, $s^+_k-s^-_k$, che converge a $f^+-f^+=f$ per $k\to+\infty$.
+
+	Dimostriamo ora il secondo punto: sia $f$ non negativa e misurabile su $A$.
+	Suddividiamo il codominio di $f$, ossia $[0,+\infty]$, in $4^k+1$ intervalli della forma
+	\begin{equation*}
+		B^j_k\defeq\Big[\frac{j-1}{2^k},\frac{j}{2^k}\Big]\text{ per ogni }j=1,\dots,4^k
+	\end{equation*}
+	e poniamo $B_k^{4^k+1}\defeq[2^k,+\infty]$.
+	Definiamo inoltre $A_k^j\defeq f^{-1}(B^j_k)$ per ogni $j=1,\dots,4^k+1$: essendo controimmagini (tramite una funzione misurabile) di intervalli, che sono insiemi misurabili, questi $A^j_k$ sono tutti misurabili.
+	Su questi insiemi approssimiamo $f$ per difetto, ossia poniamo
+	\begin{equation}
+		c^j_k=
+		\begin{cases}
+			\frac{j-1}{2^k} &j=1,\dots,4^k\\
+			2^k &j=4^k+1
+		\end{cases}.
+	\end{equation}
+	Prendiamo dunque la funzione
+	\begin{equation}
+		s_k=\sum_{j=1}^{4^k}\frac{j-1}{2^k}\chi_{A^j_k}+2^k\chi_{A^{k+1}_k},
+	\end{equation}
+	che chiaramente è una funzione semplice e non negativa.
+	Essa inoltre non è decrescente, dato che ogni coefficiente $c^j_k$ è crescente, quindi $0\leq s_k\leq s_{k+1}\leq f$ in $A$.
+	Verifichiamo infine che converge: se $f=+\infty$, allora $s_k(\vec x)=2^k$ è la successione convergente a $f$.
+	Se invece $f<+\infty$, allora $0\leq f(\vec x)-s_k(\vec x)\leq \frac1{2^k}\to 0$ dunque $s_k$ converge puntualmente a $f$ in $A$.
+\end{proof}
+
+Possiamo finalmente dare la definizione di integrale di Lebesgue: lo faremo in ``tre pezzi'', cominciando dall'integrale per le funzioni semplici, proseguendo con l'integrale per funzioni misurabili non negative, e infine per funzioni misurabili qualunque.
+Indicheremo, nella forma più generale, l'integrale di una funzione $f$ su un insieme $E$ con il simbolo $\int_Ef\dd\mu$, tralasciando la variabile $\vec x\in E$; il simbolo $\mu$ sottolinea che l'integrazione è svolta rispetto alla misura $\mu$ di Lebesgue.
+Definiamo inoltre convenzionalmente $0\cdot\infty=0$.
+\begin{definizione} \label{d:integrale-lebesgue-funzioni-semplici}
+	Sia $s\colon\R^n\to[0,+\infty)$ una funzione semplice e misurabile.
+	Data la sua rappresentazione canonica $s=\sum_{j=1}^n c_j\chi_{E_j}$ con $E_j\in\mis(\R^n)$ e $c_j\in\R$ e	$c_i\neq c_j$ per $i\neq j$, definiamo l'integrale di Lebesgue di $s$ su $\R^n$ come
+	\begin{equation}
+		\int_{\R^n}s\dd\mu\defeq \sum_{j=1}^nc_j\mu(E_j).
+		\label{eq:integrale-lebesgue-funzioni-semplici}
+	\end{equation}
+	Definiamo inoltre l'integrale di $s$ su $A\subset\R^n$ come
+	\begin{equation}
+		\int_As\dd\mu\defeq \sum_{j=1}^nc_j\mu(E_j\cap A).
+	\end{equation}
+\end{definizione}
+Esso è un numero in $[0,+\infty]$, dato che un $E_j$ potrebbe avere misura infinita.
+Con la convenzione introdotta prima di questa definizione abbiamo inoltre che se $c_i=0$, allora $c_i\mu(E_i)=0$ indipendentemente dalla misura di $A$.
+
+Un primo esempio immediato è la funzione di Dirichlet $\chi_{\Q}$: il suo integrale in $[0,1]$ è
+\begin{equation*}
+	\int_{[0,1]}\chi_{\Q}(x)\dd x=1\mu\big(\Q\cap[0,1]\big)+0\mu\big( (\Q\setminus\R)\cap[0,1]\big)
+\end{equation*}
+ma l'insieme $\Q\cap[0,1]$ ha misura nulla, dunque l'integrale è nullo.
+
+\begin{definizione} \label{d:integrale-lebesgue-funzioni-nonnegative}
+	Sia $f\colon A\to[0,+\infty]$ misurabile con $A\in\mis(\R^n)$.
+	L'integrale di Lebesgue di $f$ su $A$ è definito come
+	\begin{equation}
+		\int_Af\dd\mu\defeq \sup_{s\in\mathcal S_f}\int_As\dd\mu,
+		\label{eq:integrale-lebesgue-funzioni-nonnegative}
+	\end{equation}
+	dove $\mathcal S_f$ è l'insieme delle funzioni semplici misurabili per le quali $0\leq s(\vec x)\leq f(\vec x)$ $\forall\vec x\in A$.
+\end{definizione}
+Anche in questo caso l'integrale è un numero in $[0,+\infty]$.
+Eccone alcuni esempi:
+\begin{itemize}
+	\item se $\mu(A)=0$, l'integrale sarà sempre nullo.
+		Infatti per qualsiasi $f\geq 0$ misurabile, per ogni $s\in\mathcal S_f$ si ha
+		\begin{equation}
+			0\leq \sum_{j=1}^nc_j\mu(E_j\cap A)
+		\end{equation}
+		ma $E_j\cap A$ è un sottoinsieme di $A$ quindi $\mu(E_j\cap A)\leq\mu(A)=0$ per ogni $j\in\{1,\dots,n\}$.
+	\item Lo stesso discorso vale se $f$ è identicamente nulla su $A$, perch\'e in questo caso l'unica funzione semplice misurabile $s$ per cui $0\leq s\leq f$ in $A$ è anch'essa identicamente nulla, quindi $\int_Af\dd\mu=\int_As\dd\mu=0\mu(A)=0$ con la convenzione adottata.
+	\item Se $f$ è limitata superiormente e la misura di $A$ è finita, allora l'integrale è finito, perch\'e per ogni $s\in\mathcal S_f$
+		\begin{equation}
+			\int_Af\dd\mu\leq\max_{\vec x\in A}f(\vec x)\sum_{j=1}^n\mu(A\cap E_j)=\max_{\vec x\in A}f(\vec x)\mu(E)<+\infty.
+		\end{equation}
+\end{itemize}
+
+Concludiamo quindi con l'ultima definizione.
+\begin{definizione} \label{d:integrale-lebesgue-funzioni-qualunque}
+	Sia $f\colon A\to\R$ misurabile, con $A\in\mis(\R^n)$.
+	Essa si dice integrabile secondo Lebesgue su $A$ se esiste \emph{finito} almeno uno degli integrali della parte positiva o negativa, ossia uno tra
+	\begin{equation*}
+		\int_Af^+\dd\mu\text{ e }\int_Af^-\dd\mu.
+	\end{equation*}
+	In tal caso, l'integrale di Lebesgue di $f$ su $A$ è definito come
+	\begin{equation}
+		\int_Af\dd\mu=\int_Af^+\dd\mu-\int_Af^-\dd\mu.
+		\label{eq:integrale-lebesgue-funzioni-qualunque}
+	\end{equation}
+\end{definizione}
+In questo caso l'integrale è un numero di $\Rex$, ma esiste certamente in quanto si evita la forma indeterminata $+\infty-\infty$, dato che uno dei due addendi sicuramente è finito.
+Una funzione non negativa è sempre integrabile su qualunque insieme, perch\'e qualunque sia il valore di $f^+$ il suo integrale della parte negativa sarà sempre nullo.
+\begin{definizione} \label{d:funzione-sommabile}
+	Una funzione $f$ si dice \emph{sommabile} sull'insieme $A$ se entrambi gli integrali $\int_Af^+\dd\mu$ e $\int_Af^-\dd\mu$ sono finiti\footnote{L'uso di questi due termini non sempre è usata come ora: si possono trovare testi in cui ``integrabile'' significa quello che qui intendiamo come sommabile, e ``esiste l'integrale di Lebesgue'' dove qui diciamo che è integrabile.}.
+\end{definizione}
+In questo caso l'integrale è un numero finito, e ovviamente una funzione sommabile è integrabile ma non viceversa.
+Notiamo inoltre che la sommabilità di $f$ è equivalente a quella di $\abs{f}$, perciò per verificare se $f$ è sommabile basta studiare il suo valore assoluto.
+Si indica con $L(E)$ lo spazio delle funzioni sommabili su un insieme $E$ misurabile.
+
+L'integrale si può anche indicare, esplicitando le varie coordinate, con le scritture
+\begin{equation*}
+	\int_Af(x_1,\dots,x_n)\dd x_1\dots\dd x_n,\ \iint_Af(x,y)\dd x\dd y,\ \iiint_Af(x,y,z)\dd x\dd y\dd z,\ \idotsint_Af(x_1,\dots,x_n)\dd x_1\dots\dd x_n.
+\end{equation*}
