@@ -995,3 +995,49 @@ Poich\'e stiamo considerando il limite della successione, come al solito ci inte
 	cioè possiamo scambiare limite e integrale.
 \end{osservazione}
 
+\subsection{Confronto con l'integrale di Riemann}
+Alla fine della costruzione della teoria dell'integrazione, cosa rimane della teoria di Riemann?
+Possiamo usare quanto imparato in quel caso anche con l'integrale di Lebesgue?
+Vediamo ora come integrare il lavoro svolto per le due teorie. %PUN INTENDED.
+
+Innanzitutto, partiamo dal caso ovvio: tutte le funzioni integrabili secondo Riemann (in senso proprio) lo sono anche secondo Lebesgue.
+\begin{teorema} \label{t:integrale-riemann-lebesgue}
+	Se $f\colon[a,b]\to\R$ è integrabile secondo Riemann, allora è anche misurabile e sommabile in $[a,b]$, e gli integrali secondo Riemann e Lebesgue coincidono.
+\end{teorema}
+Di conseguenza, $\rie\ab\subset L\ab$, con un'inclusione stretta, dato che esistono funzioni integrabili secondo Lebesgue in un intervallo compatto, ma non secondo Riemann.
+Diverso è il discorso se si passa agli integrali generalizzati, lasciando gli intervalli compatti come insieme di integrazione.
+In questo caso il discorso è più complicato: esistono funzioni integrabili in senso improprio, ma non secondo Lebesgue nel medesimo insieme.
+Il seguente teorema collega i due integrali sotto l'ipotesi che la funzione non cambi segno.
+\begin{teorema} \label{t:integrale-improprio-lebesgue}
+	Se $f\colon[a,+\infty)\to\R$ ha segno costante in $[a,+\infty)$ ed è integrabile secondo Riemann in intervalli del tipo $[a,M]$ per ogni $M>a$, allora $f$ è misurabile in $[a,+\infty)$ e gli integrali improprio e di Lebesgue coincidono.
+	In particolare, se l'integrale improprio converge allora $f$ è sommabile in tale intervallo.
+\end{teorema}
+Il teorema è ovviamente equivalente anche per intervalli del tipo $(-\infty,a]$.
+
+Prendiamo una funzione che \emph{non} ha segno costante, come $\frac{\sin x}{x}$: essa è integrabile in senso improprio in $[\pi,+\infty)$, ma non è integrabile secondo Lebesgue.
+Calcoliamo l'integrale di Riemann:
+\begin{multline}
+	\int_\pi^{+\infty}\frac{\sin x}{x}\,\dd x=\lim_{M\to+\infty}\int_\pi^M\frac{\sin x}{x}\,\dd x=\lim_{M\to+\infty}\bigg[-\frac{\cos x}{x}\Big|_\pi^M-\int_\pi^M\frac{\cos x}{x^2}\,\dd x\bigg]=\\
+	=\lim_{M\to+\infty}\bigg(\frac{-\cos M}{M}-\frac1{M}-\int_\pi^M\frac{\cos x}{x^2}\,\dd x\bigg)=-\int_\pi^{+\infty}\frac{\cos x}{x^2}\,\dd x,
+\end{multline}
+che converge ad un valore finito poich\'e l'integranda è minore in modulo di $1/x^2$.
+Per l'integrale di Lebesgue, calcoliamolo per la parte positiva: essa vale $\frac{\sin x}{x}$ in $[2k\pi,\pi+2k\pi]$ per $k\in\N$, e zero altrove. 
+Allora l'integrale è
+\begin{equation}
+	\int_\pi^{+\infty}\max\Big\{\frac{\sin x}{x},0\Big\}\,\dd x=\ser{k}\int_{2k\pi}^{(1+2k)\pi}\frac{\sin x}{x}\,\dd x.
+\end{equation}
+Calcoliamo in uno degli intervalli: dato che in $[2k\pi,(1+2k)\pi]$ si ha chiaramente $\abs{x}\leq(1+2k)\pi$, risulta
+\begin{equation*}
+	\frac1{\abs{x}}\geq\frac1{(1+2k)\pi},
+\end{equation*}
+ma allora (tenendo conto che $x>0$) otteniamo
+\begin{equation}
+	\int_{2k\pi}^{(1+2k)\pi}\frac{\sin x}{x}\,\dd x\geq\frac1{(1+2k)\pi}\int_{2k\pi}^{(1+2k)\pi}\sin x\,\dd x.
+\end{equation}
+Per la periodicità del seno, l'ultimo integrale vale 2 indipendentemente da $k$.
+Di conseguenza l'integrale della parte positiva diventa maggiore di
+\begin{equation*}
+	\ser{k}\frac2{(1+2k)\pi},
+\end{equation*}
+che però è una serie divergente: allora l'integrale della parte positiva è $+\infty$.
+Analogamente possiamo dimostrare che anche la parte negativa ha integrale $+\infty$: la funzione non è dunque integrabile secondo Lebesgue.
