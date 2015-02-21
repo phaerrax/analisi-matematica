@@ -68,7 +68,7 @@ Allora
 				\mu^*\bigg(\bigcup_{k\in K}A_k\bigg)\leq\sum_{\substack{k\in K\\j\in J}}\vol{I^k_j}=\sum_{k\in K}\sum_{j\in J}\vol{I^k_j}\leq\sum_{k\in K}\bigg[\mu^*(A_k)+\frac{\epsilon}{2^k}\bigg]=\epsilon+\sum_{k\in K}\mu^*(A_k),
 			\end{equation}
 			potendo scegliere l'ordine della somma (prima su $j$ poi su $k$ o viceversa) poich\'e tutti gli addendi sono positivi.
-			Per l'arbitrarietà di $\epsilon$, l'estremo inferiore si ottiene per $\epsilon=0$ da cui la tesi.
+			Per l'arbitrarietà di $\epsilon$, l'estremo inferiore si ottiene per $\epsilon=0$ da cui la tesi.\qedhere
 	\end{enumerate}
 \end{proof}
 Un insieme si dice di \emph{misura nulla} se la sua misura esterna è zero.
@@ -237,7 +237,7 @@ Passiamo ora a dimostrare come si comporta la misura di Lebesgue rispetto alle o
 			\begin{equation}
 				\mu(A)=\mu(A\setminus B)+\mu(B)
 			\end{equation}
-			da cui la tesi.
+			da cui la tesi.\qedhere
 	\end{enumerate}
 \end{proof}
 Per induzione, segue immediatamente da questo teorema che l'unione e intersezione \emph{finite} di insiemi sono ancora insiemi numerabili, e che la misura è additiva se tutti gli insiemi sono disgiunti.
@@ -315,7 +315,7 @@ Procediamo finalmente a dimostrare la proprietà di additività numerabile che a
 
 	Dimostrato il caso dell'unione, è immediato verificare anche la tesi per l'intersezione dato che
 	\begin{equation}
-		\bigcap_{n=1}^{+\infty}A_n=\compl{\bigg(\bigcup_{n=1}^{+\infty}\compl{A_n}\bigg)}.
+		\bigcap_{n=1}^{+\infty}A_n=\compl{\bigg(\bigcup_{n=1}^{+\infty}\compl{A_n}\bigg)}.\qedhere
 	\end{equation}
 \end{proof}
 
@@ -466,7 +466,7 @@ Una semplice funzione misurabile è la funzione caratteristica di un insieme mis
 	Se $f$ è continua in $A$ allora è misurabile.
 \end{teorema}
 \begin{proof}
-	L'insieme $\{x\in A\colon f(\vec x)<c\}$ è aperto in quanto controimmagine dell'insieme aperto $(-\infty,c)$, dunque è misurabile, perciò è misurabile ache $f$.
+	L'insieme $\{x\in A\colon f(\vec x)<c\}$ è aperto in quanto controimmagine dell'insieme aperto $(-\infty,c)$, dunque è misurabile, perciò è misurabile anche $f$.
 \end{proof}
 \begin{osservazione} \label{o:funzione-misurabile-su-insieme-nullo}
 	Se $A\in\mis(\R^n)$ è di misura nulla, qualsiasi funzione $f\colon A\to\Rex$ è misurabile.
@@ -655,18 +655,18 @@ Una funzione semplice può essere definita anche solo su un sottoinsieme di $\R^
 \end{proof}
 
 Possiamo finalmente dare la definizione di integrale di Lebesgue: lo faremo in ``tre pezzi'', cominciando dall'integrale per le funzioni semplici, proseguendo con l'integrale per funzioni misurabili non negative, e infine per funzioni misurabili qualunque.
-Indicheremo, nella forma più generale, l'integrale di una funzione $f$ su un insieme $E$ con il simbolo $\int_Ef\dd\mu$, tralasciando la variabile $\vec x\in E$; il simbolo $\mu$ sottolinea che l'integrazione è svolta rispetto alla misura $\mu$ di Lebesgue.
+Indicheremo, nella forma più generale, l'integrale di una funzione $f$ su un insieme $E$ con il simbolo $\int_Ef\,\dd\mu$, tralasciando la variabile $\vec x\in E$; il simbolo $\mu$ sottolinea che l'integrazione è svolta rispetto alla misura $\mu$ di Lebesgue.
 Definiamo inoltre convenzionalmente $0\cdot\infty=0$.
 \begin{definizione} \label{d:integrale-lebesgue-funzioni-semplici}
 	Sia $s\colon\R^n\to[0,+\infty)$ una funzione semplice e misurabile.
 	Data la sua rappresentazione canonica $s=\sum_{j=1}^n c_j\chi_{E_j}$ con $E_j\in\mis(\R^n)$ e $c_j\in\R$ e	$c_i\neq c_j$ per $i\neq j$, definiamo l'integrale di Lebesgue di $s$ su $\R^n$ come
 	\begin{equation}
-		\int_{\R^n}s\dd\mu\defeq \sum_{j=1}^nc_j\mu(E_j).
+		\int_{\R^n}s\,\dd\mu\defeq \sum_{j=1}^nc_j\mu(E_j).
 		\label{eq:integrale-lebesgue-funzioni-semplici}
 	\end{equation}
 	Definiamo inoltre l'integrale di $s$ su $A\subset\R^n$ come
 	\begin{equation}
-		\int_As\dd\mu\defeq \sum_{j=1}^nc_j\mu(E_j\cap A).
+		\int_As\,\dd\mu\defeq \sum_{j=1}^nc_j\mu(E_j\cap A).
 	\end{equation}
 \end{definizione}
 Esso è un numero in $[0,+\infty]$, dato che un $E_j$ potrebbe avere misura infinita.
@@ -674,15 +674,55 @@ Con la convenzione introdotta prima di questa definizione abbiamo inoltre che se
 
 Un primo esempio immediato è la funzione di Dirichlet $\chi_{\Q}$: il suo integrale in $[0,1]$ è
 \begin{equation*}
-	\int_{[0,1]}\chi_{\Q}(x)\dd x=1\mu\big(\Q\cap[0,1]\big)+0\mu\big( (\Q\setminus\R)\cap[0,1]\big)
+	\int_{[0,1]}\chi_{\Q}(x)\dd x=1\cdot\mu\big(\Q\cap[0,1]\big)+0\cdot\mu\big( (\R\setminus\Q)\cap[0,1]\big)
 \end{equation*}
 ma l'insieme $\Q\cap[0,1]$ ha misura nulla, dunque l'integrale è nullo.
 
+Possiamo subito dimostrare alcune proprietà dell'integrale per funzioni semplici.
+\begin{teorema} \label{t:integrale-funzioni-semplici-additivita-numerabile-insieme}
+	Sia $s\colon A\to\R$ una funzione semplice e $A=\bigcup_{i=1}^{+\infty}A_i$, con $A_i\in\mis(\R^n)$ $\forall i\in\N$ e $A_i\cap A_j=\emptyset$ per $i\neq j$.
+	Allora
+	\begin{equation}
+		\int_As\,\dd\mu=\sum_{i=1}^{+\infty}\int_{A_i}s\,\dd\mu
+		\label{eq:integrale-funzioni-semplici-additivita-numerabile-insieme}
+	\end{equation}
+\end{teorema}
+\begin{proof}
+	Prendiamo la rappresentazione canonica di $s$ come $\sum_{j=1}^nc_j\chi_{B_j}$, con $B_j=\{\vec x\in\R^n\colon s(\vec x)=c_j\}$.
+	Dalla definizione \ref{d:integrale-lebesgue-funzioni-semplici} di integrale abbiamo $\int_As\,\dd\mu=\sum_{j=1}^nc_j\mu(B_j\cap A)$, dunque per l'additività della misura
+	\begin{equation}
+		\int_As\,\dd\mu=\sum_{j=1}^n\sum_{i=1}^{+\infty}c_j\mu(B_j\cap A_i)=\sum_{i=1}^{+\infty}\sum_{j=1}^nc_j\mu(B_j\cap A_i)=\sum_{i=1}^{+\infty}\int_{A_i}s\,\dd\mu.\qedhere
+	\end{equation}
+\end{proof}
+\begin{teorema} \label{t:integrale-funzioni-semplici-linearita}
+	Siano $s,t\colon\R^n\to\R$ due funzioni semplici e $A\in\mis(\R^n)$: allora
+	\begin{equation}
+		\int_E(s+t)\dd\mu=\int_Es\,\dd\mu+\int_Et\,\dd\mu.
+		\label{eq:integrale-funzioni-semplici-linearita}
+	\end{equation}
+\end{teorema}
+\begin{proof}
+	Siano $s=\sum_{i=1}^pc_i\chi_{A_i}$ e $t=\sum_{i=1}^qd_i\chi_{B_i}$ le rappresentazioni canoniche delle due funzioni, con $A_i$ e $B_i$ definiti come al solito come le controimmagini di $c_i$ e $d_i$ rispettivamente.
+	Risulta $\bigcup_{i=1}^pA_i=\bigcup_{i=1}^{q}B_i=\R^n$.
+	Ma allora dal teorema precedente possiamo scrivere
+	\begin{equation}
+		\begin{split}
+			\int_E(s+t)\dd\mu&=\sum_{i=1}^p\sum_{j=1}^q\int_{E\cap A_i\cap B_j}(s+t)\dd\mu=\\
+			&=\sum_{i=1}^p\sum_{j=1}^q(c_i+d_j)\mu(E\cap A_i\cap B_j)=\\
+			&=\sum_{i=1}^pc_i\sum_{j=1}^q\mu(E\cap A_i\cap B_j)+\sum_{i=1}^p\sum_{j=1}^qd_i\mu(E\cap A_i\cap B_j)=\\
+			&=\sum_{i=1}^pc_i\sum_{j=1}^q\mu(E\cap A_i\cap B_j)+\sum_{j=1}^qd_j\sum_{i=1}^p\mu(E\cap A_i\cap B_j)=\\
+			&=\sum_{i=1}^pc_i\mu(E\cap A_i)+\sum_{j=1}^qd_j\mu(E\cap B_j)=\\
+			&=\int_Es\,\dd\mu+\int_Et\,\dd\mu.\qedhere
+		\end{split}
+	\end{equation}
+\end{proof}
+
+Generalizziamo quindi l'integrale a funzioni misurabili non negative.
 \begin{definizione} \label{d:integrale-lebesgue-funzioni-nonnegative}
 	Sia $f\colon A\to[0,+\infty]$ misurabile con $A\in\mis(\R^n)$.
 	L'integrale di Lebesgue di $f$ su $A$ è definito come
 	\begin{equation}
-		\int_Af\dd\mu\defeq \sup_{s\in\mathcal S_f}\int_As\dd\mu,
+		\int_Af\,\dd\mu\defeq \sup_{s\in\mathcal S_f}\int_As\,\dd\mu,
 		\label{eq:integrale-lebesgue-funzioni-nonnegative}
 	\end{equation}
 	dove $\mathcal S_f$ è l'insieme delle funzioni semplici misurabili per le quali $0\leq s(\vec x)\leq f(\vec x)$ $\forall\vec x\in A$.
@@ -696,10 +736,10 @@ Eccone alcuni esempi:
 			0\leq \sum_{j=1}^nc_j\mu(E_j\cap A)
 		\end{equation}
 		ma $E_j\cap A$ è un sottoinsieme di $A$ quindi $\mu(E_j\cap A)\leq\mu(A)=0$ per ogni $j\in\{1,\dots,n\}$.
-	\item Lo stesso discorso vale se $f$ è identicamente nulla su $A$, perch\'e in questo caso l'unica funzione semplice misurabile $s$ per cui $0\leq s\leq f$ in $A$ è anch'essa identicamente nulla, quindi $\int_Af\dd\mu=\int_As\dd\mu=0\mu(A)=0$ con la convenzione adottata.
+	\item Lo stesso discorso vale se $f$ è identicamente nulla su $A$, perch\'e in questo caso l'unica funzione semplice misurabile $s$ per cui $0\leq s\leq f$ in $A$ è anch'essa identicamente nulla, quindi $\int_Af\,\dd\mu=\int_As\,\dd\mu=0\mu(A)=0$ con la convenzione adottata.
 	\item Se $f$ è limitata superiormente e la misura di $A$ è finita, allora l'integrale è finito, perch\'e per ogni $s\in\mathcal S_f$
 		\begin{equation}
-			\int_Af\dd\mu\leq\max_{\vec x\in A}f(\vec x)\sum_{j=1}^n\mu(A\cap E_j)=\max_{\vec x\in A}f(\vec x)\mu(E)<+\infty.
+			\int_Af\,\dd\mu\leq\max_{\vec x\in A}f(\vec x)\sum_{j=1}^n\mu(A\cap E_j)=\max_{\vec x\in A}f(\vec x)\mu(E)<+\infty.
 		\end{equation}
 \end{itemize}
 
@@ -712,7 +752,7 @@ Concludiamo quindi con l'ultima definizione.
 	\end{equation*}
 	In tal caso, l'integrale di Lebesgue di $f$ su $A$ è definito come
 	\begin{equation}
-		\int_Af\dd\mu=\int_Af^+\dd\mu-\int_Af^-\dd\mu.
+		\int_Af\,\dd\mu=\int_Af^+\dd\mu-\int_Af^-\dd\mu.
 		\label{eq:integrale-lebesgue-funzioni-qualunque}
 	\end{equation}
 \end{definizione}
@@ -723,9 +763,235 @@ Una funzione non negativa è sempre integrabile su qualunque insieme, perch\'e q
 \end{definizione}
 In questo caso l'integrale è un numero finito, e ovviamente una funzione sommabile è integrabile ma non viceversa.
 Notiamo inoltre che la sommabilità di $f$ è equivalente a quella di $\abs{f}$, perciò per verificare se $f$ è sommabile basta studiare il suo valore assoluto.
-Si indica con $L(E)$ lo spazio delle funzioni sommabili su un insieme $E$ misurabile.
+Indicheremo che una funzione $f$ è sommabile nell'insieme $E$ con la scrittura $f\in L(E)$.
 
 L'integrale si può anche indicare, esplicitando le varie coordinate, con le scritture
 \begin{equation*}
 	\int_Af(x_1,\dots,x_n)\dd x_1\dots\dd x_n,\ \iint_Af(x,y)\dd x\dd y,\ \iiint_Af(x,y,z)\dd x\dd y\dd z,\ \idotsint_Af(x_1,\dots,x_n)\dd x_1\dots\dd x_n.
 \end{equation*}
+
+Come ci si può aspettare, l'integrale di Lebesgue gode delle stesse proprietà dell'integrale di Riemann: si tratta ora di dimostrarle nuovamente in luce della nuova teoria.
+Lasceremo sottinteso d'ora in poi che $\mathcal S_f$ è l'insieme delle funzioni semplici $s$ tali che $0\leq s\leq f$ nell'insieme dato.
+\begin{proprieta} \label{pr:integrale-lebesgue}
+	Siano $f,g\colon\R^n\to\Rex$ misurabili, e $A\in\mis(\R^n)$.
+	\begin{enumerate}
+		\item $\int_Af\,\dd\mu=\int_{\R^n}f\chi_A\dd\mu$.
+		\item Se $f(\vec x)\leq g(\vec x)$ per ogni $\vec x\in A$, allora $\int_A f\,\dd\mu\leq\int_Ag\,\dd\mu$.
+		\item Se $f(\vec x)\geq 0$ per ogni $\vec x\in A$ e $c\in[0,+\infty)$, allora $\int_Acf\,\dd\mu=c\int_Af\,\dd\mu$, e se $f\in L(A)$ e $c\in\R$, allora $cf\in L(A)$.
+		\item Per $E\subseteq A$ misurabile, $\int_Ef\,\dd\mu\leq\int_Af\,\dd\mu$.
+	\end{enumerate}
+\end{proprieta}
+\begin{proof}
+	\begin{enumerate}
+		\item Poich\'e $\int_Af\,\dd\mu=\sup_{s\in\mathcal S_f}\int_As\,\dd\mu$, esso è anche uguale a $\sup\int_{\R^n}s\,\dd\mu$ per $0\leq s\leq f\chi_A$ in $A$, quindi è uguale a $\int_{\R^n}f\chi_A\dd\mu$.
+		\item Dato che $0\leq s\leq f\leq g$ in $A$, risulta $\mathcal S_f\subseteq\mathcal S_g$, quindi
+			\begin{equation}
+				\int_Ad\dd\mu=\sup_{s\in\mathcal S_f}\int_As\,\dd\mu\leq\sup_{s\in\mathcal S_g}\int_As\,\dd\mu=\int_Ag\,\dd\mu.
+			\end{equation}
+		\item Se $c=0$ la tesi è ovvia, quindi prendiamo $c\in(0,+\infty)$.
+			Risulta
+			\begin{multline}
+				\int_Acf\,\dd\mu=\sup_{s\in\mathcal S_{cf}}\int_As\,\dd\mu=\sup_{t\in\mathcal S_f}\int_Act\,\dd\mu=\\
+				=\sup\sum_{j=1}^ncd_j\mu(A_j)=c\sup\sum_{j=1}^nd_j\mu(A_j)=c\sup_{t\in\mathcal S_f}\int_At\,\dd\mu=c\int_Af\,\dd\mu,
+			\end{multline}
+			dove $\sum_{j=1}^nd_j\chi_{A_j}$ è la rappresentazione canonica delle funzioni semplici $t$.
+			A questo punto, per una generica funzione $f$ misurabile otteniamo $cf=c(f^+-f^-)=cf^+-cf^-$ da cui
+			\begin{equation}
+				\int_Acf\,\dd\mu=c\int_Af^+\dd\mu-c\int_Af^-\dd\mu=c\int_Af\,\dd\mu.
+			\end{equation}
+			È evidente a questo punto che se $f\in L(A)$ il suo integrale esiste finito, dunque è finito che l'integrale di $cf$, che quindi è a sua volta sommabile.
+			La proprietà vale anche, ovviamente se $c<0$: basta ricordarsi che $f=f^+-f^-$ dunque $cf=cf^+-cf^-$ e applicare quanto detto alla parte positiva e negativa, che sono entrambe funzioni non negative.
+		\item Si ha che $0\leq f\chi_E\leq f$ in $A$, perciò per il secondo punto
+			\begin{equation}
+				\int_Ef\,\dd\mu=\int_Af\chi_E\dd\mu\leq \int_Af\,\dd\mu.\qedhere
+			\end{equation}
+	\end{enumerate}
+\end{proof}
+Tra le proprietà principali manca la linearità dell'integrale, che finora abbiamo dimostrato solo per le funzioni semplici.
+Per dimostrarla ci serve però il teorema della convergenza monotona, quindi rimandiamo questo punto a più avanti.
+
+Come avevamo anticipato all'inizio del capitolo, uno dei motivi principali che hanno portato allo sviluppo dell'integrale di Lebesgue è giustificare il passaggio del limite nell'integrale con ipotesi meno restrittive che con l'integrale di Riemann.
+Passiamo dunque ad elencare i teoremi più importanti in questo ambito, che ci permetteranno lo scambio tra limite e integrale con solamente la convergenza puntuale e qualche altra ipotesi più semplice da verificare.
+\begin{teorema}[della convergenza monotona, di Beppo Levi] \label{t:convergenza-monotona}
+	Sia $\{f_n\}_{n=1}^{+\infty}$ una successione di funzioni con $f_n\colon A\to[0,+\infty)$ e $A\in\mis(\R^n)$.
+	Se la successione è crescente, cioè $f_n(\vec x)\leq f_{n+1}(\vec x)$ $\forall\vec x\in A$, e converge puntualmente in $A$ alla funzione $f$, allora
+	\begin{equation}
+		\lim_{n\to+\infty}\int_Af_n\dd\mu\int_Af\,\dd\mu
+		\label{eq:convergenza-monotona}
+	\end{equation}
+\end{teorema}
+\begin{proof}
+	Per la monotonia dell'integrale (proprietà \ref{pr:integrale-lebesgue}, punto 2) si ha $\int_Af_n\dd\mu\leq\int_Af_{n+1}\dd\mu$, dunque la successione degli integrali è anch'essa monotona crescente, che quindi ammette limite per $n\to+\infty$.
+	Allo stesso tempo, $f_n\leq f$ per ogni $n\in\N$: allora per il teorema di permanenza del segno
+	\begin{equation*}
+		\lim_{n\to+\infty}\int_Af_n\dd\mu\leq\int_Af\,\dd\mu.
+	\end{equation*}
+	Sia ora $s\in\mathcal S_f$, e definiamo $A_n\defeq\{\vec x\colon f_n(\vec x)\geq \alpha s(\vec x)\}$ con $0<\alpha<1$.
+	Tutti i punti $f_n(\vec x)$ saranno definitivamente ``al di sopra'' di $\alpha s$, dato che $A_n\subseteq A_{n+1}$ da cui $\bigcup_{n=1}^nA_n=A$.
+	Allora risulta
+	\begin{equation}
+		\int_Af_n\dd\mu\leq\int_{A_n}f\,\dd\mu\leq\alpha\int_{A_n}s\,\dd\mu=\sum_{i=1}^n\alpha\int_{A_i\setminus A_{i-1}}s\,\dd\mu.	
+	\end{equation}
+	Però per ogni $i>j$ si ha $(A_i\setminus A_{i-1})\cap(A_j\setminus A_{j-1})=\emptyset$, poich\'e $A_j\setminus A_{j-1}\subseteq A_{i-1}$, dunque abbiamo
+	\begin{equation}
+		\sum_{i=1}^n\alpha\int_{A_i\setminus A_{i-1}}s\,\dd\mu=\sum_{i=1}^{+\infty}\alpha\int_{A_i\setminus A_{i-1}}s\,\dd\mu=\alpha\int_As\,\dd\mu
+	\end{equation}
+	per ciascuna $s\leq f$ in $A$.
+	Per $\alpha\to 1^-$, si ottiene dunque
+	\begin{equation}
+		\lim_{n\to+\infty}\int_Af_n\dd\mu\geq\int_As\,\dd\mu,
+	\end{equation}
+	ma allora se è maggiore di tutti gli integrali per ogni $s\in\mathcal S_f$ è anche maggiore dell'estremo superiore, e per la definizione dell'integrale otteniamo quindi
+	\begin{equation}
+		\lim_{n\to+\infty}\int_Af_n\dd\mu\geq\sup_{s\in\mathcal S_f}\int_As\,\dd\mu=\int_Af\,\dd\mu.
+	\end{equation}
+	Abbiamo trovato che il limite dell'integrale della successione prima non è maggiore dell'integrale del limite, poi che non è minore: allora
+	\begin{equation}
+		\lim_{n\to+\infty}\int_af_n\dd\mu=\int_Af\,\dd\mu.\qedhere
+	\end{equation}
+\end{proof}
+\begin{corollario} \label{cor:serie-integrali}
+	Sia $\{f_n\}_{n=1}^{+\infty}$ una successione di funzioni $f_n\colon A\to[0,+\infty]$ con $A$ misurabile: allora
+	\begin{equation}
+		\int_A\ser{n}f_n\dd\mu=\ser{n}\int_Af_n\dd\mu.
+		\label{eq:serie-integrali}
+	\end{equation}
+\end{corollario}
+\begin{proof}
+	Poich\'e ogni $f_n$ non è negativa, la successione delle somme parziali $s_k=\sum_{n=1}^kf_n$ è monotona crescente, e ammette anche il limite per $n\to+\infty$ (eventualmente infinito).
+	Per il teorema della convergenza monotona allora
+	\begin{equation}
+		\int_a\ser{n}f_n\dd\mu=\int_A\lim_{k\to+\infty}\sum_{n=1}^kf_n\dd\mu=\lim_{k\to+\infty}\int_A\sum_{n=1}^kf_n\dd\mu=\lim_{k\to+\infty}\sum_{n=1}^k\int_Af_n\dd\mu=\ser{n}\int_Af_n\dd\mu.\qedhere
+	\end{equation}
+\end{proof}
+\begin{corollario}
+	Sia $f\colon\R^n\to[0,+\infty]$ misurabile, e $\{A_n\}_{n=1}^{+\infty}$ una successione di insiemi misurabili.
+	Detto $A\defeq\bigcup_{n=1}^{+\infty}$, risulta
+	\begin{enumerate}
+		\item se $A_i\cap A_j=\emptyset$ per $i\neq j$, $\int_Af\,\dd\mu=\ser{i}\int_{A_i}f\,\dd\mu$;
+		\item se $A_n\subseteq A_{n+1}$ per ogni $n\in\N$, $\int_Af\,\dd\mu=\lim_{n\to+\infty}\int_{A_n}f\,\dd\mu$;
+		\item se $A_n\supseteq A_{n+1}$ per ogni $n\in\N$, detto $B=\bigcap_{i=1}^{+\infty}$, se $\int_{A_1}f\,\dd\mu<+\infty$ allora $\int_Bf\,\dd\mu=\lim_{j\to+infty}\int_{A_j}f\,\dd\mu$.
+	\end{enumerate}
+\end{corollario}
+\begin{proof}
+	\begin{enumerate}
+		\item Poich\'e gli $A_i$ sono mutualmente disgiunti, definiamo una successione $\{f_n\}_{n=1}^{+\infty}$ come $f_n=f\chi_{A_n}$.
+			Per il corollario precedente allora
+			\begin{equation}
+				\int_Af\,\dd\mu=\int_A\ser{n}f_n\dd\mu=\ser{n}\int_Af_n\dd\mu=\ser{n}\int_{A_n}f\,\dd\mu.
+			\end{equation}
+		\item Definiamo ancora $f_n=f\chi_{A_n}$: poich\'e $A_n\subseteq A_{n+1}$, risulta $f_n\leq f_{n+1}$ in $A$ dunque la $\{f_n\}_{n=1}^{+\infty}$ è una successione monotona crescente.
+			Per il teorema della convergenza monotona allora
+			\begin{equation}
+				\int_Af\,\dd\mu=\lim_{n\to+\infty}\int_Af_n\dd\mu=\lim_{n\to+\infty}\int_{A_n}f\,\dd\mu.
+			\end{equation}
+		\item ?	\qedhere
+	\end{enumerate}
+\end{proof}
+
+Completiamo dunque la dimostrazione della linearità dell'integrale: ci manca da dimostrare che l'integrale della somma è la somma degli integrali (il resto è dimostrato nel punto 3 della \ref{pr:integrale-lebesgue}).
+\begin{proprieta} \label{pr:linearita-integrale-lebesgue}
+	Siano $f,g\colon A\to[0,+\infty]$ misurabili con $A\in\mis(\R^n)$.
+	Vale l'equazione
+	\begin{equation}
+		\int_A(f+g)\dd\mu=\int_Af\,\dd\mu+\int_Ag\,\dd\mu.
+		\label{eq:linearita-integrale-lebesgue}
+	\end{equation}
+\end{proprieta}
+\begin{proof}
+	Per la misurabilità delle due funzioni possiamo sempre trovare due successioni di funzioni semplici, $s_n$ e $t_n$, monotone crescenti e convergenti a $f$ e $g$ rispettivamente.
+	Anche il limite della loro somma esiste, e chiaramente vale $\lim_{n\to+\infty}(s_n+t_n)=f+g$.
+	Allora
+	\begin{equation}
+		\int_A(f+g)\dd\mu=\lim_{n\to+\infty}\int_A(s_n+t_n)\dd\mu=\lim_{n\to+\infty}\bigg(\int_As_n\dd\mu+\int_At_n\dd\mu\bigg)
+	\end{equation}
+	per il teorema \ref{t:integrale-funzioni-semplici-linearita}, dunque per il teorema della convergenza monotona risulta
+	\begin{equation}
+		\lim_{n\to+\infty}\bigg(\int_As_n\dd\mu+\int_At_n\dd\mu\bigg)=\int_Af\,\dd\mu+\int_Ag\,\dd\mu.\qedhere
+	\end{equation}
+\end{proof}
+
+\begin{lemma} \label{l:fatou}
+	Sia $\{f_n\}_{n=1}^{+\infty}$ una successione di funzioni $f_n\colon A\to[0,+\infty]$ con $A\in\mis(\R^n)$.
+	Vale la relazione
+	\begin{equation}
+		\int_A\liminf_{n\to+\infty}f_n\dd\mu\leq\liminf_{n\to+\infty}\int_Af_n\dd\mu.
+		\label{eq:fatou}
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	Chiamiamo $g_n\defeq\inf_{k\geq n}f_k$ per $n\in\N$: essa è chiaramente una successione crescente, perch\'e restringendo ad ogni $n$ l'insieme delle $f_k$ da cui prendere l'estremo inferiore, esso non può certamente diminuire.
+	Per come è definita, inoltre, $\lim_{n\to+\infty}g_n=\liminf_{n\to+\infty}f_n$.
+	Per la monotonia dell'integrale, dato che $g_n\leq f_k$ in $A$ per ogni $k\geq n$, risulta
+	\begin{equation}
+		\int_Ag_n\dd\mu\leq\int_Af_k\dd\mu
+	\end{equation}
+	sempre per ogni $k\geq n$.
+	Prendendo l'estremo inferiore rispetto a $k$ dei due membri (il primo membro non dipende da $k$ quindi rimane cos\'i com'è), e passando poi al limite per $n\to+\infty$, abbiamo
+	\begin{equation}
+		\lim_{n\to+\infty}\int_Ag_n\dd\mu\leq\lim_{n\to+\infty}\inf_{k\geq n}\int_Af_k\dd\mu=\liminf_{k\to+\infty}\int_Af_k\dd\mu.
+	\end{equation}
+	Applicando infine il teorema della convergenza monotona al primo membro troviamo
+	\begin{equation}
+		\int_A\lim_{n\to+\infty}g_n\dd\mu=\int_A\liminf_{n\to+\infty}f_n\dd\mu\leq\liminf_{n\to+\infty}\int_Af_n\dd\mu.\qedhere
+	\end{equation}
+\end{proof}
+Con questo lemma abbiamo tolto l'ipotesi di monotonia della successione, ottenendo però una disuguaglianza e non più un'uguaglianza.
+Notiamo inoltre che nel lemma di Fatou non è nemmeno richiesta la convergenza puntuale della successione.
+La monotonia è un'ipotesi essenziale in questi casi: guardiamo ad esempio alla successione di $f_n\colon\R\to[0,+\infty)$ definite come $f_n=\frac1{k}\chi_{[0,k]}$.
+Il limite puntuale (ma anche uniforme) è certamente la funzione nulla, ma la convergenza non è monotona, e infatti abbiamo
+\begin{gather*}
+	\lim_{n\to+\infty}\int_{\R}f_n(x)\,\dd x=\lim_{n\to+\infty}1\\
+	\int_{\R}\lim_{n\to+\infty}f_n(x)\,\dd x=\int_A0\,\dd x=0.
+\end{gather*}
+
+\begin{osservazione}
+	Poich\'e, per $f\colon A\to[0,+\infty]$ misurabile e $A,Z\in\mis(\R^n)$ con $\mu(Z)=0$, risulta
+	\begin{equation*}
+		\int_{A\cup Z}f\,\dd\mu=\int_Af\,\dd\mu=\int_{A\setminus Z}f\,\dd\mu,
+	\end{equation*}
+nei risultati visti finora possiamo senza problemi sostituire alle condizioni che valgono in tutto l'insieme $A$ il meno restrittivo ``quasi ovunque in $A$''.
+	Ad esempio nel teorema di Beppo Levi la convergenza può essere monotona anche solo quasi ovunque, ossia se l'insieme $Z_n=\{\vec x\in A\colon f_n(\vec x)>f_{n+1}(\vec x)\}$ ha misura nulla, ma il risultato sarà lo stesso.
+	Si noti che $Z_n$ non deve necessariamente essere uguale al suo successivo $Z_{n+1}$ affinch\'e questo valga: tutti questi $Z_i$ sono infatti di misura nulla, e in quanto numerabili anche la loro unione $\bigcup_{i=1}^{+\infty}Z_i$ lo è.
+\end{osservazione}
+Concludiamo infine la trattazione dei limiti con gli integrali con il seguente risultato.
+\begin{teorema}[della convergenza dominata, di Lebesgue] \label{t:convergenza-dominata}
+	Sia $\{f_n\}_{n\in\N}$ una successione di funzioni sommabili su $A\subseteq\R^n$.
+	Se esiste quasi ovunque in $A$ il limite puntuale $f$ della successione, ed esiste una funzione $g\colon A\to\R$ sommabile tale che $\abs{f_n(\vec x)}\leq g(\vec x)$ $\forall n\in\N$ e quasi ovunque in $A$, allora
+	\begin{equation}
+		\lim_{n\to+\infty}\int_A\abs{f_n-f}\dd\mu=0
+		\label{eq:convergenza-dominata}
+	\end{equation}
+\end{teorema}
+\begin{proof}
+	Poich\'e $g$ maggiora ogni termine della successione indipendentemente da $n\in\N$, per il teorema di permamenza del segno avremo anche $f\leq g$, quindi $\abs{f_n-f}\leq\abs{f_n}+\abs{f}\leq 2g$ quasi ovunque in $A$.
+	Se prendiamo la successione $2g-\abs{f_n-f}$, applicando ad essa il lemma di Fatou troviamo
+	\begin{equation}
+		\int_A\liminf_{n\to+\infty}(2g-\abs{f_n-f})\dd\mu\leq\liminf_{n\to+\infty}\int_A(2g-\abs{f_n-f})\dd\mu,
+		\label{eq:dim-lebesgue1}
+	\end{equation}
+	ma poich\'e $f_n\to f$ quasi ovunque, $\abs{f_n-f}\to 0$ cioè anche $\liminf_{n\to+\infty}\abs{f_n-f}=0$.
+	Allora $\liminf_{n\to+\infty}(2g-\abs{f_n-f})=2g-\liminf_{n\to+\infty}\abs{f_n-f}=2g$, dunque la \eqref{eq:dim-lebesgue1} diventa
+	\begin{equation}
+		\int_A2g\,\dd\mu\leq\liminf_{n\to+\infty}\int_A(2g-\abs{f_n-f})\dd\mu=\int_A2g\,\dd\mu-\limsup_{n\to+\infty}\int_A\abs{f_n-f}\dd\mu
+	\end{equation}
+	ma allora $\limsup_{n\to+\infty}\int_A\abs{f_n-f}\dd\mu\leq 0$.
+	Poich\'e l'integranda è positiva o nulla, chiaramente tale limite non potrà essere negativo, ma allora è nullo, perciò
+	\begin{equation}
+		0\leq\lim_{n\to+\infty}\int_A\abs{f_n-f}\dd\mu\leq\limsup_{n\to+\infty}\int_A\abs{f_n-f}\dd\mu=0.\qedhere
+	\end{equation}
+\end{proof}
+Poich\'e stiamo considerando il limite della successione, come al solito ci interessa sapere soltanto il suo comportamento per $n$ che tende all'infinito, quindi non è strettamente necessario che le $f_n$ siano sommabili \emph{per ogni} $n$: basta ai fini del teorema che lo siano almeno definitivamente.
+È importante però che la maggiorante sommabile $g$ sia indipendente da $n$.
+\begin{osservazione} \label{o:convergenza-dominata}
+	Poich\'e per le note proprietà degli integrali
+	\begin{equation*}
+		\abs{\int_Af_n\dd\mu-\int_Af\,\dd\mu}=\abs{\int_A(f_n-f)\dd\mu}\leq\int_A\abs{f_n-f}\dd\mu,
+	\end{equation*}
+	da questo teorema si ha anche che
+	\begin{equation}
+		\lim_{n\to+\infty}\abs{\int_Af_n\dd\mu-\int_Af\,\dd\mu}=0
+	\end{equation}
+	cioè possiamo scambiare limite e integrale.
+\end{osservazione}
+
