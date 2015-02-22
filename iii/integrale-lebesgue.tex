@@ -1041,3 +1041,192 @@ Di conseguenza l'integrale della parte positiva diventa maggiore di
 \end{equation*}
 che però è una serie divergente: allora l'integrale della parte positiva è $+\infty$.
 Analogamente possiamo dimostrare che anche la parte negativa ha integrale $+\infty$: la funzione non è dunque integrabile secondo Lebesgue.
+
+\section{Integrali multipli}
+Occupiamoci ora delle tecniche per passare da un integrale \emph{multiplo}, ossia dove l'insieme di integrazione è in $\R^n$ con $n\geq 2$ (quindi in più variabili), ad un integrale in una sola dimensione a cui possiamo applicare le note formule per risolverlo.
+Queste sono chiamate \emph{formule di riduzione}, in quando permettono di ``ridurre la dimensione'' dell'integrale.
+
+Indicheremo con $\vec z=(\vec x,\vec y)\in\R^m\times\R^k$ il punto $\vec z=(x_1,\dots,x_m,y_1,\dots,y_k)\in\R^{m+k}$, e per brevità abbrevieremo
+\begin{equation*}
+	\int f(\vec z)\,\dd\vec z=\int f(\vec z)\,\dd z_1\,\dd z_2\dots\dd z_n.
+\end{equation*}
+
+\begin{teorema}[di Fubini] \label{t:fubini}
+	Sia $f\in L(\R^n)$, con $n=m+k$ ($m,k\geq 1$).
+	Detto $(\vec x,\vec y)\in\R^n$ come definito prima, allora:
+	\begin{itemize}
+		\item per quasi ogni $\vec x\in\R^m$, la funzione $\vec y\mapsto f(\vec x,\vec y)\colon\R^k\to\R$ è sommabile in $\R^k$, e lo stesso per $\vec x\mapsto f(\vec x,\vec y)$;\footnote{Con \emph{per quasi ogni $\vec x\in\R^m$} intendiamo \emph{quasi ovunque in $\R^m$}: usiamo questa scrittura per specificare la variabile $\vec x$ a cui applicare la proprietà.}
+		\item le funzioni
+			\begin{equation*}
+				\vec x\mapsto\int_{\R^k}f(\vec x,\vec y)\,\dd\vec y\qeq\vec y\mapsto\int_{\R^m}f(\vec x,\vec y)\,\dd\vec x
+			\end{equation*}
+			sono sommabili in $\R^m$ e $\R^k$ rispettivamente;
+		\item si ha
+			\begin{equation*}
+				\int_{\R^m}\bigg[\int_{\R^k}f(\vec x,\vec y)\,\dd\vec y\bigg]\dd\vec x=\int_{\R^k}\bigg[\int_{\R^m}f(\vec x,\vec y)\,\dd\vec x\bigg]\dd\vec y.
+			\end{equation*}
+	\end{itemize}
+\end{teorema}
+Grazie a questo teorema possiamo dunque scomporre l'integrale multiplo in una serie di integrali \emph{iterati}, ossia da risolvere una variabile alla volta.
+Chiaramente si scompongono gli integrali fino ad arrivare ad integrali in una dimensione: detto ad esempio $\vec z=(z_1,\dots,z_n)\in\R^n$ si ha
+\begin{equation*}
+	\int_{\R^n}f(\vec z)\,\dd\vec z=\int_\R\bigg[\int_\R\bigg[\dots\int_\R\bigg[\int_\R f(\vec z)\,\dd z_1\bigg]\dd z_2\bigg]\dots\dd z_{n-1}\bigg]\dd z_n
+\end{equation*}
+e non importa l'ordine in cui lo si scompone.
+
+Tra le tecniche di riduzione più usate in $\R^3$ ci sono l'integrazione \emph{per fili} o \emph{per strati}: come suggerisce il nome, la prima consiste nel fissare prima due variabili, e integrare prima lungo una sola variabile, poi nelle altre due; la seconda invece fa l'opposto, ossia fissa una variabile e integra prima sulle altre due, in un certo senso calcolando la misura della ``fetta'' di volume ottenuta tagliandolo lungo la variabile fissata.
+Vediamo che queste sezioni che si ottengono tagliando l'insieme di integrazione sono misurabili.
+\begin{lemma} \label{l:sezioni-misurabili}
+	Sia $A\in\mis(\R^n)$, con $\R^n=\R^m\times\R^k$.
+	Detto $A(\vec x)$, per $\vec x\in\R^m$, l'insieme $\{\vec y\in\R^k\colon(\vec x,\vec y)\in A\}$, allora anche $A(\vec x)\in\mis(\R^k)$ per quasi ogni $\vec x\in\R^m$.
+\end{lemma}
+\begin{proof}
+	Se prendiamo la funzione caratteristica $\chi_A$, essa è misurabile perch\'e lo è $A$, dunque sono misurabili anche le funzioni $\vec x\mapsto\chi_A(\vec x,\vec y)$ e $\vec y\mapsto\chi_A(\vec x,\vec y)$ quasi ovunque, rispettivamente, in $\R^k$ e $\R^m$.
+	Allora anche l'insieme di arrivo $\{\vec y\in\R^k\colon\chi_A(\vec x,\vec y)=1\}$, che è proprio $A(\vec x)$, lo è.
+\end{proof}
+Potendo estendere una funzione definita in un sottoinsieme $A\subset\R^n$ a tutto $\R^n$ moltiplicandola per la funzione caratteristica di $A$, possiamo passare facilmente dal teorema di Fubini in tutto lo spazio ad un teorema solo in un dato insieme.
+\begin{teorema} \label{t:fubini2}
+	Siano $A\in\mis(\R^n)$, $\R^n=\R^m\times\R^k$ e $f\colon A\to\Rex$.
+	Allora $f$ è misurabile sulle sezioni $A(\vec x)$, come definite prima, quasi ovunque in $\R^m$.
+	Inoltre se $f\in L(A)$ allora $\vec y\mapsto f(\vec x,\vec y)$ è a sua volta sommabile su $A(\vec x)$ quasi ovunque in $\R^n$, e $\vec x\mapsto\int_{A(\vec x)}f(\vec x,\vec y)\,\dd\vec y$ è sommabile in $\R^m$.
+	Infine si può scomporre l'integrale come
+	\begin{equation}
+		\int_Af(\vec x,\vec y)\,\dd\vec x\,\dd\vec y=\int_{R^m}\bigg[\int_{A(\vec x)}f(\vec x,\vec y)\,\dd\vec y\bigg]\dd\vec x.
+	\end{equation}
+\end{teorema}
+Anche in questo caso ovviamente si possono scambiare i ruoli delle due variabili ottenendo lo stesso risultato.
+
+Vediamo ora due esempi che mostrano cosa succede se la funzione non è sommabile.
+Prendiamo $f\colon E\defeq(0,1]\times(0,1]\to\R$ definita come
+\begin{equation*}
+	f(x,y)=
+	\begin{dcases}
+		-\frac1{y^2} &y\geq x\\
+		\frac1{x^2} &0<y<x.
+	\end{dcases}
+\end{equation*}
+Se separiamo le variabili, otteniamo
+\begin{equation}
+	\int_Ef(x,y)\,\dd x\,\dd y=\int_0^1\bigg(\int_0^x\frac1{x^2}\,\dd y+\int_x^1-\frac1{y^2}\,\dd y\bigg)\dd x=\int_0^1\bigg(\frac1{x}+\frac1{y}\bigg|_x^1\bigg)\dd x=\int_0^1\bigg(\frac1{x}+1-\frac1{x}\bigg)\dd x=1,
+\end{equation}
+ma allo stesso tempo, scambiando l'ordine,
+\begin{equation}
+	\int_0^1\bigg[\int_0^1f(x,y)\,dd x\bigg]\dd y=-1
+\end{equation}
+e i risultati non coincidono proprio perch\'e $f$ non è sommabile in $E$.
+
+Prendiamo invece la funzione $f\colon\R^2\to\R$ definita, per $k\in\Z$, come
+\begin{equation*}
+	f(x,y)=
+	\begin{cases}
+		1 &(x,y)\in(k,k+1)\times(k,k+1)\\
+		-1 &(x,y)\in(k,k+1)\times(-k-1,-k)\\
+		0 &\text{altrove}
+	\end{cases}.
+\end{equation*}
+Se separiamo le variabili, essendo una funzione dispari l'integrale è nullo sia integrando prima in $x$ sia integrando prima in $y$, quindi coincidono.
+Come si può chiaramente vedere, però, sia la parte positiva sia quella negativa sono funzioni costanti su intervalli illimitati, quindi l'integrale di entrambi vale $+\infty$: ma allora la $f$ non è nemmeno integrabile!
+
+Se la funzione ha segno costante, vediamo che questo non può accadere.
+\begin{teorema}[di Tonelli] \label{t:tonelli}
+	Date $f\colon\R^n\to[0,+\infty]$ misurabile, con $\R^n=\R^m\times\R^k$, allora la funzione $\vec x\mapsto\int_{\R^k}f(\vec x,\vec y)\,\dd\vec y$, definita quasi ovunque da $\R^m$ a $\R$, è misurabile, e lo stesso per la $\vec y\mapsto\int_{\R^m}f(\vec x,\vec y)\,\dd x$ da $\R^k$ a $\R$, e si può scambiare l'ordine di integrazione.
+\end{teorema}
+\begin{proof}
+	Innanzitutto, per il segno costante di $f$, l'integrale $\int_{\R^n}f\,\dd\mu$ esiste certamente, poich\'e la parte negativa è identicamente nulla.
+	Per il resto, ci può riportare al teorema \ref{t:fubini} di Fubini: le funzioni $\vec x\mapsto f(\vec x,\vec y)$ e $\vec y\mapsto f(\vec x,\vec y)$ sono misurabili quasi ovunque in $\R^m$ e $\R^k$ rispettivamente, cos\'i come lo sono le
+	\begin{equation*}
+		\vec x\mapsto\int_{\R^k}f(\vec x,\vec y)\,\dd\vec y\qqq\vec y\mapsto\int_{\R^m}f(\vec x,\vec y)\,\dd\vec x
+	\end{equation*}
+	\dots
+\end{proof}
+
+Verificato quando è possibile scambiare l'ordine di integrazione e ridurre l'integrale, certe volte ci si trova ad integrare una funzione in un cerchio, in una sfera, o in altri insiemi dotati di particolari simmetrie.
+Risulterebbe comodo, ad esempio, nei primi due casi, porsi in un sistema di coordinate polari (piane o sferiche) per svolgere i nostri calcoli.
+Vediamo ora quando è possibile applicare questi cambiamenti di coordinate.
+\begin{teorema}
+	Sia $U\subset\R^n$ compatto e $\vec F\colon U\to\R^p$, con $p\geq n$, che sia lipschitziana su ogni sottoinsieme compatto di $U$.\footnote{Ricordiamo che una funzione $\vec f$ è lipschitziana in un insieme $A$ se vale $\norm{\vec f(\vec x)-\vec f(\vec y)}\leq c\norm{\vec x-\vec y}$ per ogni $\vec x,\vec y\in A$ e un $c\in\R$.}
+	Allora per ogni $A\subseteq U$ misurabile vale che
+	\begin{itemize}
+		\item $\vec F(A)$ è misurabile in $\R^p$;
+		\item se $p>n$, allora $\mu\big(\vec F(A)\big)=0$ in $\R^p$.
+	\end{itemize}
+\end{teorema}
+Ad esempio l'immagine di una curva in $\R^n$ con $n\geq 2$ ha sempre misura nulla, in quanto una curva è sempre funzione di una sola variabile.
+
+Tra le trasformazioni tra due aperti di $\R^n$, avevamo visto i diffeomorfismi, ossia delle trasformazioni biunivoche, differenziabili e con inversa differenziabile. La jacobiana di un diffeomorfismo non è mai singolare (almeno in ogni punto degli insiemi considerati).
+Inoltre, essendo differenziabile, possiamo scrivere lo sviluppo al primo ordine in ogni punto $\vec x_0$ dell'insieme di partenza
+\begin{equation}
+	\vec g(\vec x)=\vec g(\vec x_0)+\jac\vec g(\vec x_0)(\vec x-\vec x_0)+\rho(\vec x),
+\end{equation}
+dove $\rho(\vec x)$ è il resto di Peano per il quale $\rho(\vec x)=o(\norm{\vec x-\vec x_0})$, che tende a zero per $\vec x\to\vec x_0$.
+Dunque possiamo approssimare linearmente nell'intorno di $\vec x_0$ il nostro diffeomorfismo con una mappa affine (ossia lineare a meno di una costante, che è $\vec g(\vec x_0)$) rappresentata dalla matrice jacobiana.
+Abbiamo inoltre il seguente teorema.
+\begin{teorema} \label{t:diffeomorfismo-globale}
+	Una funzione $\vec g\colon U\to V$, con $U,V$ aperti in $\R^n$, biunivoca e tale che $\vec g\in\cont{1}(U)$ e $\det\jac\vec g(\vec x)\neq 0$ per ogni $\vec x\in U$ è un diffeomorfismo \emph{globale} tra $U$ e $V$.
+\end{teorema}
+La proprietà di non singolarità della jacobiana è solamente locale, quindi da sola non basta ad affermare che il diffeomorfismo sia anche globale, ma serve provarne la biunivocità.
+
+\begin{teorema} \label{t:diffeomorfismo-misurabilita-insieme}
+	Siano $U,V\subseteq\R^n$ aperti e $\vec g\colon U\to V$ un diffeomorfismo globale tra essi.
+	Allora un insieme $B\subseteq V$ è misurabile se e solo se $\vec g^{-1}(B)\subseteq U$ lo è.
+\end{teorema}
+\begin{teorema} \label{t:composizione-diffeomorfismo-misurabile}
+	Siano $U,V\subseteq\R^n$ aperti e $\vphi\colon U\to V$ un diffeomorfismo globale tra essi.
+	Sia $B\subseteq V$ misurabile, e $A\defeq\vphi^{-1}(B)$, e $f\colon V\to\Rex$ e $g\defeq f\circ\vphi\colon U\to\Rex$.
+	Allora:
+	\begin{itemize}
+		\item $f$ è misurabile in $V$ se e solo se lo è $g$ in $U$;
+		\item $f$ è sommabile in $B$ se e solo se lo è $g\abs{\det\jac\vphi}$ in $A$, e inoltre vale
+			\begin{equation}
+				\int_Bf(\vec y)\,\dd\vec y=\int_Ag(\vec x)\abs{\det\jac\vphi(\vec x)}\dd\vec x=\int_A(f\circ\vphi)(\vec x)\abs{\det\jac\vphi(\vec x)}\dd\vec x;
+			\end{equation}
+		\item se $f\geq 0$ in $V$, allora
+			\begin{equation}
+				\int_Bf(\vec y)\,\dd\vec y<+\infty\text{ se e solo se }\int_A(f\circ\vphi)(\vec x)\abs{\det\jac\vphi(\vec x)}\dd\vec x.
+			\end{equation}
+	\end{itemize}
+\end{teorema}
+Se prendiamo la funzione caratteristica di $B$, in particolare, troviamo che
+\begin{equation}
+	\int_B\chi_B(\vec y)\,\dd\vec y=\int_B\dd\vec y=\int_A(\chi_B\circ\vphi)(\vec x)\abs{\det\jac\vphi(\vec x)}\dd\vec x=\int_A\abs{\det\jac\vphi(\vec x)}\dd\vec x
+\end{equation}
+ossia il determinante della jacobiana ci dice (nell'approssimazione lineare) come si trasforma la misura cambiando le coordinate: in particolare se la trasformazione è lineare la jacobiana sarà costante, di conseguenza avremmo $\mu(B)=\mu\big(\vphi(A)\big)=\abs{\det\jac\vphi}\mu(A)$.
+Sfruttando lo sviluppo in serie al primo ordine, il fattore $\abs{\det\jac\vphi}$ indica la trasformazione solo a livello infinitesimo: possiamo vedere $\dd\vec y$ ad esempio come un ``elemento infinitesimo di volume'' (o di area), e il risultante $\abs{\det\jac\vphi(\vec x)}\dd\vec x$ come l'elemento di volume nelle nuove coordinate.
+
+Prendiamo il celebre esempio delle coordinate polari in $\R^2$: possiamo passare dalle coordinate cartesiane ortogonali a queste con la trasformazione
+\begin{equation}
+	\begin{pmatrix}
+		x\\y
+	\end{pmatrix}
+	=\vec g
+	\begin{pmatrix}
+		\rho\\\theta
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\rho\cos\theta\\\rho\sin\theta
+	\end{pmatrix},
+\end{equation}
+ma affinch\'e sia un diffeomorfismo dobbiamo prendere degli insiemi di partenza e di arrivo \emph{aperti} e in modo che $\vec g$ sia biunivoca.
+Prendiamo dunque $U=(0,+\infty)\times(0,2\pi)$ e $V=\R^2\setminus\{(x,0)\in\R^2\colon x\geq 0\}$: abbiamo che $\vec g\colon U\to V$ è biunivoca.
+Questa trasformazione in realtà lascia ``scoperto'' il semiasse positivo delle ascisse, che non è incluso in $V$ (e chiaramente non ha una controimmagine in $U$): ai fini dell'integrazione in $\R^2$, però, questa esclusione non porta ad alcun cambiamento, perch\'e tale semiretta ha misura nulla in $\R^2$ quindi non influisce sull'integrale.
+Il determinante della jacobiana di $\vec g$ è inoltre
+\begin{equation}
+	\det\jac\vec g(\rho,\theta)=
+	\begin{vmatrix}
+		\cos\theta &-\rho\sin\theta\\
+		\sin\theta &\rho\cos\theta
+	\end{vmatrix}
+	=\rho
+\end{equation}
+che per come è definito $U$ è compreso in $(0,+\infty)$ quindi non è mai nullo.
+
+Le coordinate polari sono naturalmente centrate nell'origine degli assi, ma potrebbe servirci centrarle in un altro punto nel piano, quindi dobbiamo comporre la trasformazione in polari con una traslazione: la traslazione è ovviamente un diffeomorfismo tra tutto $\R^2$ e se stesso, e ha come jacobiana l'identità.
+Usiamo ancora $\vec g$ per la trasformazione in coordinate polari e chiamiamo $\vec t$ la traslazione.
+Si può vedere facilmente che $\jac\vec t(x,y)$ è la matrice identità per ogni $(x,y)\in\R^2$.
+Ricordandoci che componendo due funzioni la jacobiana della risultante è il prodotto delle due jacobiane delle funzioni di partenza, risulta
+\begin{equation}
+	\jac(\vec g\circ\vec t)=\jac\vec g\jac\vec t=\jac\vec g\quad\then\quad\det\jac(\vec g\circ\vec t)=\rho
+\end{equation}
+anche in questo caso.
+Più in generale, usando la formula di Binet dei determinanti troviamo che componendo due diffeomorfismi, il determinante della jacobiana della trasformazione risultante non è altro che il prodotto dei determinanti dei singoli diffeomorfismi; inoltre anche se scambiando l'ordine della composizione la jacobiana ``finale'' potrebbe cambiare, non varia invece il suo determinante.
