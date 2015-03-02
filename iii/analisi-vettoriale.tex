@@ -2,3 +2,38 @@
 In questo capitolo studieremo come e quando è possibile estendere il teorema fondamentale del calcolo integrale, visto in uno dei precedenti capitoli, in più dimensioni, ovvero quando possiamo passare dall'integrazione di un insieme all'integrazione sulla sua frontiera.
 Vedremo i principali risultati che si applicano all'analisi vettoriale in $\R^2$ e $\R^3$, in particolare i teoremi della divergenza (Gauss, Ostrogradskij) e del rotore (Green, Stokes), tutti casi particolari di un teorema di carattere generale noto come \emph{teorema di Stokes}, che riguarda anche le forme differenziali.
 
+\section{Formule di Gauss-Green}
+Cominciamo prima dagli integrali in due dimensioni, per poi introdurre gli integrali di superficie e passare anche a quelli in tre dimensioni.
+Per studiare questi teoremi dobbiamo innanzitutto introdurre nuove definizioni per gli insiemi, come quelle di \emph{dominio} e di \emph{orientazione}.
+\begin{definizione} \label{d:dominio}
+	Un insieme $D\subseteq\R^2$ chiuso si dice \emph{dominio} se è la chiusura di un insieme aperto; si dice inoltre \emph{connesso} se l'aperto di cui è chiusura è connesso.
+
+	Un dominio si dice \emph{normale} (e anche regolare) rispetto alla variabile $x$ se, dato un intervallo $[a,b]$ e due funzioni $f,g\colon[a,b]\to\R$ di $\cont{1}\ab$, esso è della forma $\{(x,y)\in\R^2\colon f(x)\leq y\leq g(x) \forall x\in[a,b]\}$; analogamente si definisce per la variabile $y$.
+
+	Infine, un insieme è un \emph{dominio regolare} se è l'unione di domini $D_i$ normali separati, ossia $\mathring{D_j}\cap\mathring{D_k}=\emptyset$ per ogni $j\neq k$.
+\end{definizione}
+Ogni dominio, essendo chiuso e limitato, è chiaramente anche compatto.
+
+Prendiamo ora una curva $\vphi$, regolare e definita da $[a,b]$ in $\R^2$: essa è differenziabile in ogni suo punto, dunque esiste il vettore $\vphi'$ per ogni $t\in[a,b]$.
+Normalizzando questo vettore otteniamo un versore che indica la direzione tangente alla curva in ogni punto: definiamo dunque il \emph{versore tangente} alla curva $\vphi$ come la funzione $\vphi'/\norm{\vphi'}$, anch'essa da $[a,b]$ a $\R^2$.
+A questo punto possiamo definire il \emph{versore normale}, che indicheremo spesso con $\vnu$, come il vettore ottenuto ruotando il versore tangente di $-\pi/2$, ossia
+\begin{equation*}
+	\vnu(t)=\frac1{\norm{\vphi'(t)}}
+	\begin{bmatrix}
+		0&1\\-1&0
+	\end{bmatrix}
+	\begin{bmatrix}
+		\phi_1(t)\\\phi_2(t)
+	\end{bmatrix}
+	=\frac1{\norm{\vphi'(t)}}
+	\begin{bmatrix}
+		\phi_2(t)\\-\phi_1(t)
+	\end{bmatrix}
+\end{equation*}
+Chiaramente i due versori sono ortogonali per ogni $t\in[a,b]$.
+Se $D$ è un dominio regolare, si può dimostrare che $\partial D$ è l'unione finita di sostegni di curve regolari a tratti: allora possiamo affermare l'esistenza di un versore tangente e normale alla frontiera di un dominio regolare, tranne al più in un numero finito di punti.
+
+Questo ci porta al problema di trovare un'orientazione delle curve, e più precisamente del bordo di un insieme.
+Diremo che la frontiera è orientata in senso \emph{positivo} (e scriveremo $+\partial D$) se il versore normale ``punta'' all'esterno del dominio.
+Questo indica anche il verso di percorrenza della frontiera: percorrendola in senso positivo il dominio si troverà sempre alla sinistra del versore tangente.
+
