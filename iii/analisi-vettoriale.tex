@@ -14,7 +14,7 @@ Per studiare questi teoremi dobbiamo innanzitutto introdurre nuove definizioni p
 \end{definizione}
 Ogni dominio, essendo chiuso e limitato, è chiaramente anche compatto.
 
-Prendiamo ora una curva $\vphi$, regolare e definita da $[a,b]$ in $\R^2$: essa è differenziabile in ogni suo punto, dunque esiste il vettore $\vphi'$ per ogni $t\in[a,b]$.
+Prendiamo ora la parametrizzazione $\vphi$ di una curva, che sia regolare e definita da $[a,b]$ in $\R^2$: essa è differenziabile in ogni suo punto, dunque esiste il vettore $\vphi'$ per ogni $t\in[a,b]$.
 Normalizzando questo vettore otteniamo un versore che indica la direzione tangente alla curva in ogni punto: definiamo dunque il \emph{versore tangente} alla curva $\vphi$ come la funzione $\vphi'/\norm{\vphi'}$, anch'essa da $[a,b]$ a $\R^2$.
 A questo punto possiamo definire il \emph{versore normale}, che indicheremo spesso con $\vnu$, come il vettore ottenuto ruotando il versore tangente di $-\pi/2$, ossia
 \begin{equation*}
@@ -23,11 +23,11 @@ A questo punto possiamo definire il \emph{versore normale}, che indicheremo spes
 		0&1\\-1&0
 	\end{bmatrix}
 	\begin{bmatrix}
-		\phi_1(t)\\\phi_2(t)
+		\phi'_1(t)\\\phi'_2(t)
 	\end{bmatrix}
 	=\frac1{\norm{\vphi'(t)}}
 	\begin{bmatrix}
-		\phi_2(t)\\-\phi_1(t)
+		\phi'_2(t)\\-\phi'_1(t)
 	\end{bmatrix}
 \end{equation*}
 Chiaramente i due versori sono ortogonali per ogni $t\in[a,b]$.
@@ -36,4 +36,111 @@ Se $D$ è un dominio regolare, si può dimostrare che $\partial D$ è l'unione f
 Questo ci porta al problema di trovare un'orientazione delle curve, e più precisamente del bordo di un insieme.
 Diremo che la frontiera è orientata in senso \emph{positivo} (e scriveremo $+\partial D$) se il versore normale ``punta'' all'esterno del dominio.
 Questo indica anche il verso di percorrenza della frontiera: percorrendola in senso positivo il dominio si troverà sempre alla sinistra del versore tangente.
+
+Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato da Gauss e Green.
+\begin{teorema}[di Gauss-Green] \label{t:gauss-green}
+	Sia $D\subseteq\R^2$ un dominio regolare e $f\colon D\to\R$ una funzione in $\cont{1}(D)$.
+	Allora valgono
+	\begin{gather}
+		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\int_{+\partial D}f(x,y)\,\dd y
+		\label{eq:gauss-green-y}\\
+		\int_D\drp{f}{y}(x,y)\,\dd x\,\dd y=-\int_{+\partial D}f(x,y)\,\dd x
+		\label{eq:gauss-green-x}
+	\end{gather}
+\end{teorema}
+\begin{proof}
+	Supponiamo che esista un insieme $U$ tale che $D\subset U$ e che $f\in\cont{1}(U)$.
+	Distinguiamo tre casi: $D$ normale rispetto a $y$, normale rispetto a $x$ e regolare.
+
+	Sia $D$ un dominio normale rispetto alla variabile $y$: lo scriviamo allora come $D=\{(x,y)\in\R\times[c,d]\colon \alpha(y)\leq x\leq\beta(y)\}$.
+	Suddividiamo il bordo di $D$ nei quattro sottoinsiemi $\gamma_i$ ($i=1,2,3,4$) parametrizzati con
+	\begin{gather*}
+		\vgamma_1(t)=
+		\begin{bmatrix}
+			\alpha(t)\\t
+		\end{bmatrix}, t\in[d,c],\quad
+		\vgamma_2(t)=
+		\begin{bmatrix}
+			\alpha(c)\\c
+		\end{bmatrix}, t\in[c,c],\\
+		\vgamma_3(t)=
+		\begin{bmatrix}
+			\beta(t)\\t
+		\end{bmatrix}, t\in[c,d],\quad 
+		\vgamma_4(t)=
+		\begin{bmatrix}
+			\beta(d)\\d
+		\end{bmatrix}, t\in[d,d].
+	\end{gather*}
+	Dimostriamo che entrambi i membri si possono riportare ad una stessa grandezza: cominciamo dal primo, usando il teorema di Fubini ($f\in\cont{1}(D)$ quindi è anche sommabile), per il quale
+	\begin{equation}
+		\int_D\drp{f}{x}\,\dd x\,\dd y=\int_c^d\int_{\alpha(y)}^{\beta(y)}\drp{f}{x}\,\dd x\,\dd y=\int_c^df(x,y)\bigg|_{x=\alpha(y)}^{x=\beta(y)}\dd y=\int_c^d\Big[f\big(\beta(y),y\big)-f\big(\alpha(y),y\big)\Big]\,\dd y.
+	\end{equation}
+	Per il secondo membro, invece, scomponiamo l'integrale della forma differenziale sulle quattro curve, ottenendo
+	\begin{equation}
+		\begin{split}
+			\int_{+\partial D}f(xmy)\,\dd y&=\int_d^cf\big(\alpha(t),t\big)\,\dd t+\int_c^cf\big(\alpha(c),c\big)\,\dd t+\int_c^df\big(\beta(t),t\big)\,\dd t+\int_d^df\big(\beta(d),d\big)\,\dd t=\\
+			&=\int_c^d\Big[f\big(\beta(t),t\big)-f\big(\alpha(t),t\big)\Big]\,\dd t
+		\end{split}
+	\end{equation}
+	che è lo stesso risultato precedente.
+
+	Sia ora $D$ normale rispetto a $x$: rappresentiamolo come $\{(x,y)\in[a,b]\times\R\colon\delta(x)\leq y\leq\eta(y)\}$.
+	Per $(x,y)\in D$, consideriamo la curva $\gamma\subset D$ parametrizzata con la funzione
+	\begin{equation*}
+		\vgamma(t)=
+		\begin{cases}
+			\big(t,\delta(t)\big) &t\in[a,x]\\
+			(x,t) &t\in[\delta(x),y]
+		\end{cases}
+	\end{equation*}
+	che è regolare a tratti, e collega $\big(a,\delta(a)\big)$ ad un generico punto in $D$.
+	Definiamo
+	\begin{equation*}
+		G(x,y)\defeq\int_{\gamma}f(x,y)\,\dd x\,\dd y:
+	\end{equation*}
+	risulta spezzando l'integrale nelle due curve che
+	\begin{equation}
+		G(x,y)=\int_a^xf\big(t,\delta(t)\big)\,\dd t+\int_{\delta(x)}^yf(x,t)\,\dd t.
+	\end{equation}
+	Calcoliamone le derivate parziali: troviamo
+	\begin{equation}
+		\drp{G}{x}(x,y)=f\big(x,\delta(x)\big)\delta'(x)+\int_{\delta(x)}^y\drp{f}{x}(x,t)\,\dd t-f\big(x,\delta(x)\delta'(t)=\int_{\delta(x)}^y\drp{f}{x}(x,y)\,\dd t.
+	\end{equation}
+	La derivata rispetto a $y$ invece è semplicemente $\drp{G}{y}(x,y)=f(x,y)$, dato che il primo dei due integrali addendi non dipende da $y$ e il secondo è una funzione integrale con estremo inferiore costante in $y$.
+	Prendiamo la forma differenziale $\dd G=\drp{G}{x}\,\dd x+\drp{G}{y}\,\dd y$: essa è ovviamente esatta.
+	Inoltre $\partial D$ è chiusa e regolare a tratti, dunque l'integrale di $\dd G$ lungo di essa è nullo: allora
+	\begin{equation}
+		\int_{+\partial D}\drp{G}{x}\,\dd x=-\int_{+\partial D}\drp{G}{y}\,\dd y.
+		\label{eq:dim-gauss-green-forma-esatta}
+	\end{equation}
+	Calcoliamo il primo membro: scomponendo nei quattro tratti regolari di $\partial D$ abbiamo
+	\begin{equation}
+		\begin{split}
+			\int_{+\partial D}\drp{G}{x}\,\dd x&=\int_a^b\drp{G}{x}(x,y)\,\dd x+\int_b^b\drp{G}{x}(x,y)\dd x+\int_b^a\drp{G}{x}(x,y)\,\dd x+\int_a^a\drp{G}{x}(x,y)\,\dd x=\\
+			&=\int_a^b\int_{\delta(x)}^{\eta(x)}\drp{f}{x}(x,t)\,\dd t\,\dd x+\int_b^a\int_{\delta(x)}^{\eta(x)}\drp{f}{x}(x,t)\,\dd t\,\dd x=\\
+			&=-\int_a^b\int_{\delta(x)}^{\eta(x)}\drp{f}{x}(x,t)\,\dd t\,\dd x. (?)
+		\end{split}
+	\end{equation}
+	Sostituendo infine quanto ricavato precedentemente per le derivate parziali di $G$ la \eqref{eq:dim-gauss-green-forma-esatta} diventa
+	\begin{equation}
+		-\int_a^b\int_{\delta(x)}^{\eta(x)}\drp{f}{x}(x,t)\,\dd t\,\dd x=-\int_{+\partial D}f(x,y)\,\dd y
+	\end{equation}
+	cioè applicando il teorema di Fubini ``al contrario'', cioè passando all'integrale di area,
+	\begin{equation}
+		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\int_{+\partial D}f(x,y)\,\dd y.
+	\end{equation}
+
+	Se infine $D$ è un dominio regolare, ma non è normale rispetto ad una delle due variabili, possiamo comunque scomporlo in vari domini normali $D_i$ separati.
+	Per ciascuno di essi vale quanto detto precedentemente, perciò
+	\begin{equation}
+		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\sum_i\int_{D_i}\drp{f}{x}(x,y)\,\dd x\,\dd y=\sum_i\int_{+\partial D_i}f\,\dd y.
+	\end{equation}
+	Poich\'e le frontiere dei vari $D_i$ sono in comune, in ciascun addendo di quest'ultima somma ciascuna porzione di frontiera che si trova tra due $D_i$ viene percorsa, integrando, una volta in un senso e una volta nell'altro.
+	Chiaramente ciascuna delle due volte la funzione integranda è la stessa, quindi i due integrali hanno segno opposto e si annullano.
+	Rimane nel conto quindi solo le parti delle frontiere che sono esterni, ossia proprio $\partial D$, quindi
+	\begin{equation}
+		\sum_i\int_{+\partial D_i}f\,\dd y=\int_{+\partial D}f\,\dd y.\qedhere
+	\end{equation}
+\end{proof}
 
