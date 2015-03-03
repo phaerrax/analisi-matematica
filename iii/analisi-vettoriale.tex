@@ -79,7 +79,7 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	Per il secondo membro, invece, scomponiamo l'integrale della forma differenziale sulle quattro curve, ottenendo
 	\begin{equation}
 		\begin{split}
-			\int_{+\partial D}f(xmy)\,\dd y&=\int_d^cf\big(\alpha(t),t\big)\,\dd t+\int_c^cf\big(\alpha(c),c\big)\,\dd t+\int_c^df\big(\beta(t),t\big)\,\dd t+\int_d^df\big(\beta(d),d\big)\,\dd t=\\
+			\int_{+\partial D}f(x,y)\,\dd y&=\int_d^cf\big(\alpha(t),t\big)\,\dd t+\int_c^cf\big(\alpha(c),c\big)\,\dd t+\int_c^df\big(\beta(t),t\big)\,\dd t+\int_d^df\big(\beta(d),d\big)\,\dd t=\\
 			&=\int_c^d\Big[f\big(\beta(t),t\big)-f\big(\alpha(t),t\big)\Big]\,\dd t
 		\end{split}
 	\end{equation}
@@ -143,4 +143,82 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 		\sum_i\int_{+\partial D_i}f\,\dd y=\int_{+\partial D}f\,\dd y.\qedhere
 	\end{equation}
 \end{proof}
+
+\begin{teorema}[della divergenza] \label{t:divergenza-R2}
+	Sia $D\subset\R^2$ un dominio regolare e $\vec F\colon D\to\R^2$ un campo vettoriale di classe $\cont{1}(D)$.
+	Se $\vnu(x,y)$ è il versore normale al bordo di $D$ uscente da esso, allora
+	\begin{equation}
+		\int_D\div\vec F\,\dd x\,\dd y=\int_{\partial D}\scalar{\vec F}{\vnu}\,\dd s
+		\label{eq:divergenza-R2}
+	\end{equation}
+\end{teorema}
+\begin{proof}
+	Parametrizziamo $\partial D$, che è regolare a tratti, con una funzione $\cont{1}$ a tratti $\vphi(t)=\big(x(t),y(t)\big)$, con $t\in[a,b]$.
+	Il versore normale con questa scelta assume quindi la forma
+	\begin{equation*}
+		\vnu(t)=\frac1{\sqrt{x'^2(t)+y'^2(t)}}
+		\begin{bmatrix}
+			y'(t)\\-x'(t)
+		\end{bmatrix}
+	\end{equation*}
+	L'integrale curvilineo al secondo membro della \eqref{eq:divergenza-R2} è dunque
+	\begin{equation}
+		\begin{split}
+			\int_{\partial D}\scalar{\vec F}{\vnu}\,\dd s&=\int_a^b\bigg(\frac{F_1\big(\vphi(t)\big)y'(t)}{\sqrt{x'^2(t)+y'^2(t)}}-\frac{F_2\big(\vphi(t)\big)x'(t)}{\sqrt{x'^2(t)+y'^2(t)}}\bigg)\sqrt{x'^2(t)+y'^2(t)}\,\dd t=\\
+			&=\int_a^b\big[(F_1\big(\vphi(t)\big)y'(t)-F_2\big(\vphi(t)\big)x'(t)\big]\,\dd t=\\
+			&=\int_{\partial D}\big[F_2\big(\vphi(t)\big)\,\dd y-F_2\big(\vphi(t)\big)\,\dd x\big]
+		\end{split}
+	\end{equation}
+	che per il teorema \ref{t:gauss-green} è uguale a
+	\begin{equation}
+		\int_D\drp{F_1}{x}(x,y)\,\dd x\,\dd y+\int_D\drp{F_2}{y}(x,y)\,\dd x\,\dd y=\int_D\div\vec F(x,y)\,\dd x\,\dd y.\qedhere
+	\end{equation}
+\end{proof}
+\begin{teorema}[del rotore, di Stokes] \label{t:rotore-R2}
+	Sia $\vec F\colon D\to\R^2$ un campo vettoriale di classe $\cont{1}(D)$ e $D\subset\R^2$ un dominio regolare.
+	Allora
+	\begin{equation}
+		\int_{+\partial D}\big(F_1(x,y)\,\dd x+F_2(x,y)\,\dd y\big)=\int_D\bigg(\drp{F_2}{x}(x,y)-\drp{F_1}{y}(x,y)\bigg)\,\dd x\,\dd y.
+		\label{eq:rotore-R2}
+	\end{equation}
+\end{teorema}
+\begin{proof}
+	La dimostrazione è immediata se applichiamo il teorema della divergenza \ref{t:divergenza-R2} al campo $\vec F(x,y)=\big(F_2(x,y),-F_1(x,y)\big)$, per il quale
+	\begin{equation}
+		\int_{+\partial D}\scalar{\vec F}{\vnu}\,\dd s=\int_{+\partial D}(F_2(x,y)\,\dd y+F_1(x,y)\,\dd x)=\int_D\drp{F_2}{x}(x,y)\,\dd x\,\dd y-\int_D\drp{F_1}{x}(x,y)\,\dd x\,\dd y
+	\end{equation}
+	da cui la tesi.
+\end{proof}
+Grazie a questi teoremi appena dimostrati possiamo portare in più dimensioni la formula di integrazione per parti: si ha, dati $f,g\colon D\to\R$ e $D\subset\R^2$ dominio regolare,
+\begin{gather}
+	\int_D f(x,y)\drp{g}{x}(x,y)\,\dd x\,\dd y=\int_{+\partial D}f(x,y)g(x,y)\,\dd y-\int_D\drp{f}{x}(x,y)g(x,y)\,\dd x\,\dd y\\
+	\int_D f(x,y)\drp{g}{y}(x,y)\,\dd x\,\dd y=-\int_{+\partial D}f(x,y)g(x,y)\,\dd x-\int_D\drp{f}{y}(x,y)g(x,y)\,\dd x\,\dd y
+\end{gather}
+Per dimostrarlo è sufficiente applicare il teorema di Gauss-Green \ref{t:gauss-green} alla funzione $fg$.
+
+Dato un versore $\vec w$ di $\R^2$, possiamo anche dare una formulazione del \ref{t:gauss-green} per le derivate direzionali: assumendo sempre $D$ dominio regolare,
+\begin{equation}
+	\int_DD_{\vec w}f\,\dd x\,\dd y=\int_{\partial D}f\scalar{\vec w}{\vnu}\,\dd s.
+\end{equation}
+Infatti, applicando il teorema della divergenza \ref{t:divergenza-R2} al campo $f\vec w=(fw_1,fw_2)$, si ottiene
+\begin{equation}
+	\begin{split}
+		\int_D\div(f\vec w)\,\dd x\,\dd y&=\int_D\bigg[\drp{fw_1}{x}(x,y)+\drp{fw_2}{y}(x,y)\bigg]\,\dd x\,\dd y=\\
+		&=\int_D\bigg[w_1\drp{f}{x}(x,y)+w_2\drp{f}{y}(x,y)\bigg]\,\dd x\,\dd y=\\
+		&=\int_D\scalar{\vec w}{\grad f}\,\dd x\,\dd y=\int_DD_{\vec w}f(x,y)\,\dd x\,\dd y
+	\end{split}
+\end{equation}
+ma allo stesso tempo
+\begin{equation}
+	\int_D\div(f\vec w)\,\dd x\,\dd y=\int_{\partial D}\scalar{(f\vec w)}{\vnu}\,\dd s=\int_{\partial D}f(\scalar{\vec w}{\vnu})\,\dd s.
+\end{equation}
+
+Un'ultima applicazione di questi risultati è il calcolo dell'area di $D$: notiamo che in $\int_D\dd x,\dd y$ possiamo prendere l'integranda come derivata parziale di $f(x,y)=x$ rispetto a $x$ (che quindi vale 1), perciò per il teorema di Gauss-Green \ref{t:gauss-green} abbiamo
+\begin{equation}
+	\mu(D)=\int_D\dd x\,\dd y=\int_{+\partial D}x\,\dd y\text{ o anche }-\int_{+\partial D}y\,\dd x.
+\end{equation}
+Possiamo quindi prendere una combinazione arbitraria delle due, in cui presi $\alpha$ e $\beta$ tali che $\alpha+\beta=1$ si ha
+\begin{equation}
+	\int_{+\partial D}(\alpha x\,\dd y-\beta y\,\dd x)=(\alpha+\beta)\int_D\dd x\,\dd y=\int_D\dd x\,\dd y=\mu(D)
+\end{equation}
 
