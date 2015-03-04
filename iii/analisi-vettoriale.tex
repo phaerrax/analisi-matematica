@@ -302,3 +302,79 @@ Valgono ovviamente anche in questo caso le solite proprietà di integrazione, in
 \end{equation}
 dove $\sigma(S)$ è l'area di $S$.
 
+\section{Teorema della divergenza e del rotore in $\R^3$}
+Cominciamo adattando quanto detto sui domini e l'orientazione di curve anche a insiemi in $\R^3$.
+\begin{definizione} \label{d:dominio-R3}
+	Un insieme $D\subset\R^3$ si dice:
+	\begin{itemize}
+		\item \emph{dominio normale} rispetto alla coppia di variabili $x,y$ se si può scrivere come $\{(x,y,z)\in\R^3\colon(x,y)\in E, \alpha(x,y)\leq z\leq\beta(x,y)\}$, dove $E\subset\R^2$ è un dominio regolare, $\alpha,\beta\colon E\to\R$ sono di classe $\cont{1}(E)$ e $\alpha(x,y)\leq\beta(x,y)\forall(x,y)\in E$;
+		\item \emph{dominio regolare} se è unione di un numero finito di domini $\{D_i\}_{i=1}^n$, $n\in\N$, ciascuno normale rispetto ad una coppia di variabili (non necessariamente la stessa per tutti), e tali per cui $\mathring{D_i}\cap\mathring{D_j}=\emptyset$ per $i\neq j$.
+	\end{itemize}
+\end{definizione}
+\begin{osservazione}
+	Se $T\subset\R^3$ è un dominio regolare, allora è connesso e compatto, dunque la sua frontiera ha misura nulla.
+	Inoltre esiste un numero finito di superfici regolari $\{S_i\}_{i=1}^n$, $n\in\N$, ciascuna parametrizzabile con $\vphi_i\colon D_i\to\R^3$ per $i=1,\dots,n$ (tali quindi che $\vphi_i(D_i)=S_i$), per le quali\footnote{Con \emph{superficie regolare} intendiamo un concetto analogo a quello di curva regolare: se nel secondo caso  chiediamo che la derivata della parametrizzazione della curva non sia mai un vettore nullo, per le superfici chiediamo che la jacobiana della parametrizzazione abbia sempre rango massimo (ma in realtà si può vedere che sono la stessa condizione).}
+	\begin{equation*}
+		\partial T=\bigcup_{i=1}^n\vphi_i(D_i)
+	\end{equation*}
+	con $\vphi_i(\mathring{D_i})\cap\vphi_j(\mathring{D_j})=\emptyset$ per $i\neq j$.
+\end{osservazione}
+Possiamo estendere il concetto di integrale di superficie anche a queste frontiere, dato che sono unione numerabile di insiemi disgiunti, a meno di insiemi di misura nulla: infatti l'intersezione di due superfici di cui è composta la frontiera è al più una curva, che ha misura (superficiale) nulla, quindi non influisce sull'integrale.
+Se le superfici hanno in comune solo la frontiera, allora
+\begin{equation*}
+	\int_{\partial T}f\,\dd\sigma=\sum_{i=1}^n\int_{S_i}f\,\dd\sigma
+\end{equation*}
+usando la notazione della predecente osservazione.
+
+Vediamo ora come è possibile assegnare un'orientazione anche alle superfici.
+Se $\vphi\colon D\subset\R^2\to\R^3$ è la parametrizzazione di una superficie regolare $S$ immersa in $R^3$, cioè per cui $\vphi(D)=S$, chiamiamo $S_o\defeq\vphi(\mathring{D})$ che è tale per cui la restrizione $\vphi\colon\mathring{D}\to S_o$ sia biunivoca.\footnote{Nonostante la scrittura possa suggerirlo, non è vero che $S_o=\mathring{S}$, infatti dato che $S$ è una superficie regolare in $\R^3$ essa coincide con la sua frontiera, perciò $\mathring{S}=\emptyset$.}
+Per ogni $\vec x\in S_o$ possiamo associare un versore normale $\vnu(\vec x)$, definito come
+\begin{equation}
+	\vnu(\vec x)=\frac{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}{\norm{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}}
+\end{equation}
+con $(u,v)=\vphi^{-1}(\vec x)$.
+La mappa $\vnu\colon S_o\to\R^3$ è continua, e dipende ``in modo continuo'' dall'inclinazione della superficie.
+\begin{definizione} \label{d:superficie-orientabile}
+	Sia $S\subset\R^3$ una superficie regolare parametrizzata da $\vphi\colon D\to\R^3$, e chiamiamo $S_o=\vphi(\mathring{D})$.
+	La superficie $S$ si dice orientabile se il campo del versore normale $\vnu$ si può estendere con continuità da $S_o$ a tutta $S$.
+\end{definizione}
+Possiamo quindi anche trovare una \emph{riparametrizzazione} di una superficie: prese le parametrizzazioni $\vphi\colon D\to\R^3$ e $\vpsi\colon T\to\R^3$, esse sono equivalenti tramite $\vtau\colon D\to T$ (una riparametrizzazione) se $S_o=\vphi(\mathring{D})=\vpsi(\mathring{T})$ e se ovviamente dato $\vec x\in S_o$ si ha $\vec x=\vphi(\vec u)=\vpsi(\vec v)$, per $\vec u\in D$ e $\vec v\in T$.
+Il versore normale nella nuova parametrizzazione è dunque
+\begin{equation}
+	\vnu_{\vpsi}\big(\vpsi(\vec u)\big)=\sgn\big(\det\jac\vtau(\vec u)\big)\vnu_{\vphi}\big(\vphi(\vec v)\big)
+\end{equation}
+Per la continuità il segno può essere o 1 o $-1$ in tutto il dominio.
+Si indica $\vphi\sim\vpsi$ se esse hanno lo stesso sostegno con una riparametrizzazione, e ulteriormente $\vphi\overset{o}{\sim}\vpsi$ se sono anche equiorientate, cioè se il versore normale coincide.
+
+\begin{osservazione} \label{o:superfici-cartesiane}
+	Il grafico di una funzione $f\colon D\subset\R^2\to\R$ (detto anche \emph{superficie cartesiana}) è sempre orientabile: esso può essere parametrizzato con $\vphi=\big(u,v,f(u,v)\big)^t$, la cui matrice jacobiana è
+	\begin{equation*}
+		J\vphi(u,v)=
+		\begin{bmatrix}
+			1&0\\
+			0&1\\
+			\drp{f}{u}(u,v)&\drp{f}{v}(u,v)
+		\end{bmatrix},
+	\end{equation*}
+	che ha sempre rango massimo, qualsiasi sia la funzione $f$, perch\'e il minore dato dalle prime due righe è sempre 1.
+	Un vettore normale alla superficie assume una semplice forma, che è
+	\begin{equation*}
+		\vnu\big(\vphi(u,v)\big)=\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)=\bigg(-\drp{f}{u}(u,v),\drp{f}{v}(u,v),1\bigg)^t.
+	\end{equation*}
+\end{osservazione}
+Un'altra superficie facile da orientare è una superficie sferica: essa ammette in particolare sempre due orientazioni, una uscente e una entrante, facili da visualizzare.
+Data la sua equazione $x^2+y^2+z^2=r^2$, inoltre, il versore normale è sempre di tipo radiale, ossia $\vnu(x,y,z)=\pm\frac1{r^2}(x,y,z)^t$.
+
+Una classica superficie non orientabile è invece il \emph{nastro di M\"obius}: per parametrizzarlo si dovrebbe tagliare il nastro in un punto, in cui il versore normale ``salta'' da una faccia all'altra.
+Ma allora è evidente che $\vnu$, pur essendo ben definito in tutto $S_o$, non può essere esteso con continuità anche sul resto di $S$, perch\'e proprio nel punto del taglio si ha necessariamente una discontinuità.
+In realtà, non sarebbe corretto dire che $\vnu$ salta da una faccia all'altra\dots perch\'e il nastro di M\"obius ha soltanto una faccia.
+Sebbene localmente si possano individuare due facce (e quindi due versori normali opposti), globalmente in tutto il nastro la faccia è soltanto una!
+
+\begin{definizione} \label{d:superfici-con-bordo}
+	Sia $\vphi\colon D\to\R^3$ la parametrizzazione di una superficie $S$ regolare, con $D$ dominio regolare connesso: essa si dice \emph{superficie con bordo} se $\vphi$ è iniettiva su $D$ e se si può individuare un insieme $E\supset D$ aperto e una funzione $\tilde{\vphi}\colon E\to\R^3$, di classe $\cont{1}(E)$, tale che la sua restrizione in $D$ coincida con $\vphi$.
+\end{definizione}
+Per queste superfici definiamo allora $\partial S\defeq\vphi(\partial D)$.
+Il bordo di $D$, che è un dominio regolare, si può esprimere sempre come unione di curve semplici, regolari e tutte disgiunte.
+Se dunque $\vgamma$ è una parametrizzazione di $+\partial D$ (cioè il versore normale al bordo di $D$ è esterno all'insieme), allora componendo la parametrizzazione della superficie, $\vphi$, con essa si ottiene $\vphi\circ\vgamma$ la quale è appunto una parametrizzazione del bordo di $S$, ed è una curva in $\R^3$.
+Anche in questo caso si scrive $+\partial S$, ossia $\partial S$ diventa orientata in senso antiorario (e si dice che l'orientazione è indotta da $\partial D$).
+
