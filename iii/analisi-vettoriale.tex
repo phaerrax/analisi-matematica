@@ -222,3 +222,83 @@ Possiamo quindi prendere una combinazione arbitraria delle due, in cui presi $\a
 	\int_{+\partial D}(\alpha x\,\dd y-\beta y\,\dd x)=(\alpha+\beta)\int_D\dd x\,\dd y=\int_D\dd x\,\dd y=\mu(D)
 \end{equation}
 
+\section{Integrali di superficie}
+Per continuare lo studio dei teoremi analoghi a quelli appena visti ma in $\R^3$, dobbiamo prima introdurre la teoria delle superfici e degli integrali su di esse.
+Vedremo, data una superficie immersa in $\R^3$, come possiamo parametrizzarla con una mappa $\vphi\colon E\to\R^2$.
+
+Cominciamo introducendo il prodotto vettoriale tra due vettori di $\R^3$.
+\begin{definizione} \label{d:prodotto-vettoriale}
+	Siano $\vec u,\vec v\in\R^3$: si definisce \emph{prodotto vettoriale} tra di essi il vettore
+	\begin{equation}
+		\vec u\times\vec v=
+		\begin{vmatrix}
+			u_2& v_2\\u_3&v_3
+		\end{vmatrix}\ii+
+		\begin{vmatrix}
+			u_3&v_3\\u_1&v_1
+		\end{vmatrix}\jj+
+		\begin{vmatrix}
+			u_1&v_1\\u_2&v_2
+		\end{vmatrix}\kk
+		\label{eq:prodotto-vettoriale}
+	\end{equation}
+	dove $\{\ii,\jj,\kk\}$ è la base canonica di $\R^3$.
+\end{definizione}
+Notiamo che i tre determinanti sono i minori della matrice ottenuta affiancando $\vec u$ e $\vec v$: in particolare, il coefficiente dell'$i$-esimo elemento della base è il minore di tale matrice eliminando la $i$-esima riga.
+Possiamo quindi scrivere in forma più compatta, anche se formalmente sbagliata, una formula mnemonica per calcolare il prodotto vettoriale tramite il falso determinante
+\begin{equation*}
+	\vec u\times\vec v=
+	\begin{vmatrix}
+		\ii& u_1& v_1\\
+		\jj& u_2& v_2\\
+		\kk& u_3& v_3
+	\end{vmatrix}.
+\end{equation*}
+Il prodotto vettoriale gode delle seguenti proprietà, facilmente dimostrabili dalla proprietà dei determinanti:
+\begin{itemize}
+	\item è lineare nelle due variabili: $(a\vec v)\times(b\vec u)=ab(\vec v\times\vec u)$, e $(a\vec v+b\vec u)\times\vec w=a\vec v\times\vec w+b\vec u\times\vec w$;
+	\item è nullo se i due vettori sono linearmente dipendenti;
+	\item se $\vec v\times\vec w\neq\vec 0$, allora $\vec v\times\vec w\perp\gen{\{\vec v,\vec w\}}$, ossia il prodotto vettoriale è ortogonale al piano individuato dai due vettori, inoltre $\{\vec v,\vec w,\vec v\times\vec w\}$ è una base destrorsa di $\R^3$;
+	\item $\ii\times\jj=\kk$, $\jj\times\kk=\ii$ e $\kk\times\ii=\jj$ (permutazioni cicliche);
+	\item $\norm{\vec v\times\vec u}=\norm{\vec v}\norm{\vec u}\sin\alpha$, dove $\alpha\in[0,\pi]$ è l'angolo compreso tra i due vettori nel piano, cioè
+		\begin{equation}
+			\norm{\vec v\times\vec u}=\norm{\vec v}\norm{\vec u}\sin\bigg(\arccos\frac{\scalar{\vec v}{\vec u}}{\norm{\vec v}\norm{\vec u}}\bigg).
+		\end{equation}
+	\item il prodotto è indipendente dalla scelta del sistema di coordinate.
+\end{itemize}
+Il prodotto vettoriale indica anche come si trasformano le superfici tramite delle funzioni.
+Prendiamo ad esempio una funzione $\vphi\colon\R^2\to\R^3$ che sia lineare: la sua immagine in $\R^3$ è quindi proprio un piano.
+La sua matrice jacobiana è quindi costante, e può anche essere vista come la matrice associata all'applicazione lineare che è $\vphi$, ossia moltiplicando un vettore del dominio di $\vphi$ per $\jac{\vphi}$ otteniamo proprio l'immagine di tale vettore attraverso la funzione.
+Chiamiamo ora $\drp{\vphi}{x}$ e $\drp{\vphi}{y}$ le due colonne della jacobiana (sono rispettivamente la colonna delle derivate rispetto ad $x$ e ad $y$).
+Poich\'e $\ii$ e $\jj$ sono linearmente indipendenti, anche $\vphi(\ii)=\drp{\vphi}{x}$ e $\vphi(\jj)=\drp{\vphi}{y}$ lo sono, quindi la jacobiana ha rango massimo (pari a 2).
+Allora per le proprietà viste precedentemente il loro prodotto vettoriale non è nullo, quindi $\gen{\{\drp{\vphi}{x},\drp{\vphi}{y}\}}$ è un piano in $\R^3$, che è anche il sostegno di $\vphi$.
+
+Abbiamo visto che gli integrali di linea sono del tipo $\int_\gamma f\,\dd s$, dove $\dd s$ è la misura (infinitesima) della linea lungo su cui vogliamo integrare.
+Essi sono equivalenti a $\int_\gamma f\big(\vgamma(t)\big)\norm{\vgamma'(t)}\,\dd t$, in cui $\vgamma(t)$ è una parametrizzazione di $\gamma$.
+Gli integrali di superficie si scrivono in maniera analoga come $\int_S f\,\dd\sigma$, dove questa volta chiaramente $\dd\sigma$ è la misura di superficie di $S$.
+Vogliamo anche in questo caso trovare un modo di esprimere questa misura superficiale in termini di una parametrizzazione scelta per $S$, come per gli integrali di linea, e ci viene in aiuto il prodotto vettoriale.
+Infatti partiamo dal rettangolo $T$ esteso dai vettori $a\ii$ e $b\jj$ in $\R^2$, e $P$ la sua immagine attraverso la funzione $\vphi\colon\R^2\to\R^3$.
+Ovviamente $\mu(T)=\abs{ab}$.
+Per come abbiamo visto finora, le immagini dei due vettori che individuano $T$ sono $a\drp{\vphi}{x}$ e $b\drp{\vphi}{y}$, quindi finch\'e $\vphi$ è lineare abbiamo
+\begin{equation*}
+	\mu(P)=\norm{a\drp{\vphi}{x}\times b\drp{\vphi}{y}}=\abs{ab}\norm{\drp{\vphi}{x}\times\drp{\vphi}{y}}=\mu(T)\norm{\drp{\vphi}{x}\times\drp{\vphi}{y}}.
+\end{equation*}
+Preso un qualsiasi insieme misurabile, il ragionamento appena fatto si applica anche ad esso, e non solo ai rettangoli.
+Quando abbiamo detto finora ovviamente non si applica globalmente a funzioni qualunque, ma dato che ci interessa calcolare la misura di superficie infinitesima possiamo sfruttare uno sviluppo al primo ordine (quindi lineare, o affine) della funzione di parametrizzazione, e ottenere gli stessi risultati.
+Abbiamo trovato dunque che, data $f\colon A\to\R$, e data $\vpsi\colon D\to\R^3$ come parametrizazione di $A$, l'integrale di superficie è
+\begin{equation}
+	\int_Af\,\dd\sigma=\int_Df\big(\vpsi(u,v)\big)\norm{\drp{\vpsi}{u}(u,v)\times\drp{\vpsi}{v}(x,y)}\,\dd u\,\dd v.
+\end{equation}
+
+Si può vedere che l'integrale $\int_Sf\,\dd\sigma$ non dipende dalla parametrizzazione scelta per $S$, ma dipende soltanto (ovviamente) dal suo sostegno, che è $S$.
+Diciamo infine che un sottoinsieme $E\subseteq S$ è $\sigma$-misurabile, dove $\sigma$ è la misura di superficie su $S$, se la sua funzione caratteristica è integrabile su $S$, e vale
+\begin{equation}
+	\sigma(E)=\int_S\chi_E\,\dd\sigma
+\end{equation}
+Per trovare l'area di $S$ si integra quindi la funzione caratteristica di tutto $S$.
+Valgono ovviamente anche in questo caso le solite proprietà di integrazione, in particolare
+\begin{equation}
+	\abs{\int_Sf\,\dd\sigma}\leq\int_S\abs{f}\dd\sigma\leq\sup_S\abs{f}\sigma(S)
+\end{equation}
+dove $\sigma(S)$ è l'area di $S$.
+
