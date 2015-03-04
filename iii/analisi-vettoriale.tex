@@ -378,3 +378,41 @@ Il bordo di $D$, che è un dominio regolare, si può esprimere sempre come union
 Se dunque $\vgamma$ è una parametrizzazione di $+\partial D$ (cioè il versore normale al bordo di $D$ è esterno all'insieme), allora componendo la parametrizzazione della superficie, $\vphi$, con essa si ottiene $\vphi\circ\vgamma$ la quale è appunto una parametrizzazione del bordo di $S$, ed è una curva in $\R^3$.
 Anche in questo caso si scrive $+\partial S$, ossia $\partial S$ diventa orientata in senso antiorario (e si dice che l'orientazione è indotta da $\partial D$).
 
+Possiamo dunque concludere con le versioni dei teoremi del rotore e della divergenza per campi vettoriali in $\R^3$, di cui non diamo la dimostrazione.
+\begin{teorema}[della divergenza] \label{t:divergenza-R3}
+	Se $D\subset\R^3$ un dominio regolare e $\vec F\colon D\to\R^3$ un campo vettoriale $\cont{1}(D)$, allora
+	\begin{equation}
+		\int_{\partial D}\scalar{\vec F}{\vnu}\,\dd\sigma=\int_D\div\vec F\,\dd x\,\dd y\,\dd z.
+		\label{eq:divergenza-R3}
+	\end{equation}
+	dove $\vnu$ è il versore normale a $\partial D$ \emph{uscente} da $D$.
+\end{teorema}
+\begin{corollario}
+	Sia $D\subset\R^3$ regolare, $f\colon D\to\R$ una funzione $\cont{1}(D)$, e $\vec w\in\R^3$ un versore.
+	Allora
+	\begin{equation}
+		\int_DD_{\vec w}f\,\dd x\,\dd y\,\dd z=\int_{\partial D}f\scalar{\vec w}{\vnu}\,\dd\sigma.
+	\end{equation}
+\end{corollario}
+\begin{proof}
+	Il campo $f\vec w$ è una funzione da $D$ a $\R^3$, e la sua divergenza è $\div(f\vec w)=\sum_{i=1}^3\drp{f}{x_i}w_i=\scalar{\vec w}{\grad f}=D_{\vec w}f$, mentre $\scalar{f\vec w}{\vnu}=\sum_{i=1}^3fw_i\nu_i=f\scalar{\vec w}{\vnu}$, e il resto segue immediatamente dal teorema precedente.
+\end{proof}
+Un altro caso particolare, che discende da questo corollario, è la formula di integrazione per parti: sempre in generale con le derivate direzionali, applicando il teorema della divergenza a $\vec F=fg\vec w$ otteniamo
+\begin{equation}
+	\int_Df(D_{\vec w}g)\,\dd x\,\dd y\,\dd z=\int_{\partial D}fg\scalar{\vec w}{\vnu}\,\dd\sigma-\int_D(D_{\vec w}f)g\,\dd x\,\dd y\,\dd z.
+\end{equation}
+
+Prendendo invece per $\vec w$ un versore della base canonica abbiamo
+\begin{equation}
+	\int_D\drp{f}{x_i}\,\dd x\,\dd y\,\dd z=\int_{\partial D}f\nu_i\,\dd\sigma.
+\end{equation}
+\begin{teorema}[del rotore] \label{t:rotore-R3}
+	Sia $S\subset\R^3$ una superficie regolare con bordo e $\vphi\colon D\to\R^3$ una sua parametrizzazione, con $D\subset\R^2$ dominio regolare.
+	Sia inoltre $A$ un aperto di $\R^3$ tale che $S\subset A$, e $\vec F\colon A\to\R^3$ un campo di classe $\cont{1}(A)$.
+	Allora
+	\begin{equation}
+		\int_S\scalar{\rot\vec F}{\vnu}\,\dd\sigma=\int_{+\partial S}\scalar{\vec F}{\vec t}\,\dd s
+		\label{eq:rotore-R3}
+	\end{equation}
+	dove $\vec t$ è il versore tangente a $+\partial S$.
+\end{teorema}
