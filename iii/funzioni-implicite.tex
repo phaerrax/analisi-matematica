@@ -122,46 +122,56 @@ La condizione è ovviamente soltanto sufficiente.
 	Siano $A,B\subset\R^n$ insiemi aperti, $\vec x_0$ un punto di $A$ e $\vec f\colon A\to B$ una funzione di classe $\cont{1}(A)$. La funzione $\vec f$ si dice \emph{diffeomorfismo locale} in $\vec x_0$ se esiste un opportuno intorno $U$ di tale punto per il quale la $\vec f$ ristretta a $U$ e alla sua immagine, ossia $\vec f\colon U\to \vec f(U)$, è un diffeomorfismo.
 \end{definizione}
 Il seguente teorema mostra una condizione sufficiente a determinare se una funzione è un diffeomorfismo locale.
-\begin{teorema} \label{t:diffeomorfismo-locale}
-	Siano $A,B$ due insiemi aperti di $\R^n$, $\vec x_0$ un punto di $A$, e $\vec f$ una funzione da $A$ a $B$. La $\vec f$ è un diffeomorfismo locale in $\vec x_0$ se la matrice jacobiana in tale punto non è singolare, cioè se
+\begin{teorema}[di invertibilità locale] \label{t:invertibilita-locale}
+	Siano $A,B$ due insiemi aperti di $\R^n$, $\vec x_0$ un punto di $A$, e $\vec f$ una funzione da $A$ a $B$.
+	La funzione $\vec f$ è un diffeomorfismo locale in $\vec x_0$ se la matrice jacobiana in tale punto non è singolare, cioè se
 	\begin{equation} 
 		\det\jac\vec f(\vec x_0)\neq 0.
-		\label{eq:condiz-nec-diffeomorfismo}
+		\label{eq:invertibilita-locale-determinante-jacobiana}
 	\end{equation}
 \end{teorema}
 \begin{proof}
-	Supponiamo che $\vec f$ non sia iniettiva in qualsiasi intorno di $\vec x_0$. Allora si può scegliere un intorno in cui due punti in esso hanno la stessa immagine: siano essi $\vec x_n$ e $\tilde{\vec x_n}$, allora $\vec f(\vec x_n)=\vec f(\tilde{\vec x_n})$.
-	Questo vale per ogni intorno di $\vec x_0$, perciò posiamo immaginare che $\vec x_n$ e $\tilde{\vec x_n}$ siano due successioni convergenti a $\vec x_0$.
-	Per il teorema di Lagrange, per ogni $i$-esima componente $\vec f$ si ha che esiste un punto $\vxi_i$ appartenente al segmento $[\vec x_n, \tilde{\vec x_n}]$ tale per cui abbiamo che
+	Dobbiamo dimostrare le proprietà di diffeomorfismo nell'intorno del punto dato, cioè dobbiamo mostrare che è invertibile, cioè iniettiva, e che la sua inversa è di classe $\cont{1}$ nell'intorno.
+	Supponiamo che per assurdo $\vec f$ non sia iniettiva in qualsiasi intorno di $\vec x_0$, e vediamo che ciò contrasta con l'ipotesi fatta sul determinante.
+	Possiamo scegliere un intorno in cui due punti in esso, che chiameremo $\vec x_n$ e $\tilde{\vec x}_n$, hanno la stessa immagine: allora $\vec f(\vec x_n)=\vec f(\tilde{\vec x}_n)$.
+	Almeno due punti di questo tipo esistono certamente, perch\'e abbiamo detto che $\vec f$ non è iniettiva.
+	Questo vale per ogni intorno di $\vec x_0$, perciò possiamo immaginare che $\vec x_n$ e $\tilde{\vec x}_n$ siano due successioni convergenti a $\vec x_0$.
+	Per il teorema di Lagrange, per ogni $i$-esima componente $\vec f$ si ha che esiste un punto $\vxi_i$ appartenente al segmento $[\vec x_n, \tilde{\vec x}_n]$ tale per cui risulti
 	\begin{equation}
-		f_i(\vec x_n)-f_i(\tilde{\vec x_n})=\scalar{\grad f_i(\vxi_i)}{\vec x_n-\tilde{\vec x_n}}
+		f_i(\vec x_n)-f_i(\tilde{\vec x}_n)=\scalar{\grad f_i(\vxi_i)}{(\vec x_n-\tilde{\vec x}_n)}
 		\label{eq:lagrange-in-diffeomorfismo-locale}
 	\end{equation}
-	Per quanto detto prima, però, questo è nullo perché $\vec f(\vec x_n)=\vec f(\tilde{\vec x_n})$.
-	Allora possiamo dividere per $\norm{\vec x_n-\tilde{\vec x_n}}$ ottenendo che
+	Per quanto detto prima, però, questo è nullo perché $\vec f(\vec x_n)=\vec f(\tilde{\vec x}_n)$.
+	Allora possiamo dividere per $\norm{\vec x_n-\tilde{\vec x}_n}$ ottenendo che
 	\begin{equation}
-		\scalar{\grad f_i(\vxi_i)}{ \frac{\vec x_n-\tilde{\vec x_n}} {\norm{\vec x_n-\tilde{\vec x_n}}} }=0.
+		\scalar{\grad f_i(\vxi_i)}{\frac{\vec x_n-\tilde{\vec x}_n}{\norm{\vec x_n-\tilde{\vec x}_n}}}=0.
 		\label{eq:vettori-ortogonali-diffeomorfismo}
 	\end{equation}
-	Chiamiamo $\vec v_n$ il vettore $\vec x_n-\tilde{\vec x_n}$ normalizzato: esso è un versore, che appartiene dunque alla sfera $n$ dimensionale $S^{n+1}\subset\R^n$.
+	Chiamiamo $\vec v_n$ il vettore $\vec x_n-\tilde{\vec x}_n$ normalizzato: esso ha norma 1, dunque appartiene alla sfera $n$ dimensionale $S^{n-1}\subset\R^n$.\footnote{Si distingue in matematica tra la \emph{sfera}, che è la superficie chiusa $n$-dimensionale immersa in $\R^{n+1}$, e la \emph{palla} che è l'insieme la cui frontiera è la sfera, cioè comprende anche i punti interni. La sfera in $\R^n$ è indicata spesso con $S^{n-1}$.}
 	Essa è un insieme compatto dunque $\vec v_n$, che è una successione in esso contenuta, deve convergere ad un elemento di $S^{n-1}$.
 	Allora $\scalar{\grad f(\vxi_i)}{\vec v}=0$ per ogni $i$, vale a dire $\jac\vec f(\vec x_0)\vec v=\vec 0$.
 	Questo però è assurdo, poiché $\vec v$ non è nullo e $\det\jac\vec f(\vec x_0)\neq 0$.
 	Allora $\vec f$ deve essere iniettiva\footnote{Poiché $\det\jac\vec f(\vec x_0)\neq 0$, essa individua un operatore lineare iniettivo, ossia $\ker\jac\vec f(\vec x_0)=\{\vec 0\}$, quindi l'unico vettore che può dare il vettore nullo è solo il vettore nullo stesso (e $\vec v$ non lo è!).}.
 
-	Poniamo adesso $\vec F(\vec x,\vec y)=\vec y-\vec f(\vec x)$, dove $\vec F$ è una funzione da $W\times\R^n$ a $\R^n$, dove $W$ è un intorno di $\vec x_0$, e sia inoltre $\vec y_0=\vec f(\vec x_0)$.
+	Troviamo adesso l'inversa della nostra funzione.
+	Consideriamo una funzione $\vec F\colon W\times\R^n\to\R^n$, dove $W$ è un intorno di $\vec x_0$, definita come $\vec F(\vec x,\vec y)=\vec y-\vec f(\vec x)$, e sia inoltre $\vec y_0=\vec f(\vec x_0)$.
 	Sicuramente $\vec F\in\cont{1}$, e $\vec F(\vec x_0,\vec y_0)=\vec 0$.
-	Risulta che $\det\jac\vec F(\vec x_0,\vec y_0)=-\det\jac\vec f(\vec x_0)\neq 0$.
-	Il teorema di Dini afferma che esiste un intorno $V$ di $\vec y_0$ tale che esiste una funzione $\vphi\colon V\to W$ di classe $\cont{1}(V)$ per cui vale $\vec F(\vphi(\vec y),\vec y)=\vec 0$ per ogni $\vec v\in V$.
-	Allora $\vec y=\vec f\big(\vphi(\vec y)\big)$, cioè $\vec y=\vec f\circ \vphi(\vec y)$ ossia $\vphi$ è l'inversa di $\vec f$, ammesso che una sua inversa esista: dimostriamolo.
-	Chiamiamo $U\defeq W\cap\vec f^{-1}(V)$. Per tale insieme vale che $\vec f(\vec x)=\vec y\in V$, quindi
+	Per come abbiamo costruito la funzione inoltre risulta
+	\begin{equation}
+		\det\jac\vec F(\vec x_0,\vec y_0)=-\det\jac\vec f(\vec x_0),
+	\end{equation}
+	che non è nullo per quanto detto nella prima parte della dimostrazione.
+	Possiamo allora applicare il teorema di Dini per una funzione implicita $\vec x=\vphi(\vec y)$: esso afferma che esiste un intorno $V$ di $\vec y_0$ tale che esiste una funzione $\vphi\colon V\to W$ di classe $\cont{1}(V)$ per cui vale $\vec F(\vphi(\vec y),\vec y)=\vec 0$ per ogni $\vec v\in V$.
+	Allora, se esiste una funzione inversa di $\vec f$, essa deve essere proprio $\vphi$, perch\'e $\vec y=\vec f\big(\vphi(\vec y)\big)$, cioè $\vec y=\vec f\circ \vphi(\vec y)$.
+	Dimostriamo quindi che l'inversa di $\vec f$ esiste: prendiamo l'intorno $W$ di $\vec x_0$ e la controimmagine in $\vec f$ di $V$, e chiamiamo $U\defeq W\cap\vec f^{-1}(V)$.
+	Per tale insieme vale $\vec f(\vec x)=\vec y\in V$, quindi
 	\begin{equation*}
-		\vec f\big(\vphi(\vec y)\big)=\vec f\Big(\vphi\big(\vec f(\vec x)\big)\Big)=\vec f(\vec x).
+		\vec f\big(\vphi(\vec y)\big)=\vec f\big(\vphi\big(\vec f(\vec x)\big)\big)=\vec f(\vec x).
 	\end{equation*}
-	Poiché $U\subseteq W$, dove $\vec f$ è iniettiva, dunque se le immagini sono uguali anche le preimmagini devono esserlo, cioè $\vphi\big(\vec f(\vec x)\big)=\vec x$ ossia $\vphi=\vec f^{-1}$ ed è di classe $\cont{1}$ per il teorema di Dini, dato che lo era anche $\vec F$.
+	Poiché $U$ è un sottoinsieme di $W$, dove $\vec f$ è iniettiva, se le immagini sono uguali anche le preimmagini devono esserlo, cioè $\vphi\big(\vec f(\vec x)\big)=\vec x$ ossia $\vphi=\vec f^{-1}$ ed è di classe $\cont{1}$ per il teorema di Dini, dato che lo era anche $\vec F$.
 	Allora $\vec F$ è un diffeomorfismo in un intorno di $\vec x_0$.
 \end{proof}
-Anche qui possiamo affermare qualcosa sulle derivate: $\jac\vphi(\vec y)=\jac\vec f^{-1}(\vec y)$ e combinandolo il teorema \ref{t:dini-Rn} di Dini troviamo che
+Anche qui possiamo affermare qualcosa sulle derivate: $\jac\vphi(\vec y)=\jac\vec f^{-1}(\vec y)$, e con il teorema \ref{t:dini-Rn} di Dini troviamo che
 \begin{equation}
 	\jac\vec f^{-1}(\vec y)=\bigg[\drp{\vec F}{\vec x}\big(\vec f^{-1}(\vec y)\big)\bigg]^{-1}\cdot I.
 \end{equation}
