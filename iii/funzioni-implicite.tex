@@ -14,7 +14,8 @@ Una funzione $f\colon[a,b]\to\R$ di classe $\cont{1}$ può essere considerata co
 Spesso però una curva non è data in rappresentazione parametrica, ma tramite un'equazione cartesiana che lega le coordinate nella formula $F(x,y)=0$. Ad esempio, la circonferenza unitaria è data dalla funzione $F(x,y)=x^2+y^2-1$: i punti soluzioni dell'equazione $F(x,y)=0$ sono i punti della circonferenza.
 Questo esempio è un caso piuttosto facile, ma come facciamo a capire cosa rappresenta l'equazione $x^2(4x+1)-y^2=0$? Non sappiamo, così a priori, se è nemmeno una curva. Il seguente teorema, che è il teorema delle funzioni implicite, fornisce delle condizioni sufficienti a rappresentare certe curve ``nascoste'' in equazioni come queste.
 \begin{teorema}[di Dini] \label{t:dini-R2}
-	Sia $A\subset\R^2$ un aperto e $F\colon A\to\R$ una funzione di classe $\cont{1}(A)$, e sia $(x_0,y_0)\in A$ uno zero di questa funzione tale che $\drp{F}{y}(x_0,y_0)\neq 0$. Allora esistono degli intorni $U(x_0)$ e $V(y_0)$ per i quali $\forall x\in U$ $\exists! y=f(x)\in V$ tale che $F(x,y)=0$. Inoltre, la mappa $x\mapsto f(x)$ è di classe $\cont{1}$ e vale la relazione
+	Sia $A\subset\R^2$ un aperto e $F\colon A\to\R$ una funzione di classe $\cont{1}(A)$, e sia $(x_0,y_0)\in A$ uno zero di questa funzione tale che $\drp{F}{y}(x_0,y_0)\neq 0$.
+	Allora esistono degli intorni $U(x_0)$ e $V(y_0)$ per i quali $\forall x\in U$ $\exists! y=f(x)\in V$ tale che $F(x,y)=0$. Inoltre, la mappa $x\mapsto f(x)$ è di classe $\cont{1}$ e vale la relazione
 	\begin{equation}
 		f'(x)=-\dfrac{\drp{F}{x}\big(x,f(x)\big)}{\drp{F}{y}\big(x,f(x)\big)}.
 		\label{eq:dini-R2}
@@ -22,30 +23,43 @@ Questo esempio è un caso piuttosto facile, ma come facciamo a capire cosa rappr
 \end{teorema}
 Localmente nell'intorno dato, quindi, si può rappresentare la curva come funzione $y(x)$ come nell'osservazione precedente.
 \begin{proof}
-	Supponiamo $\drp{F}{y}(x_0,y_0)>0$: per la continuità di $F$ deve esistere un rettangolo (arbitrariamente piccolo) $R=W\times V$ che contiene $(x_0,y_0)$ e in cui $\drp{F}{y}(x,y)>0$ per ogni $(x,y)\in R$.
-	Sia $V=[y_0-h,y_0+h]$, con $h>0$. Fissato un punto qualunque $x$ in $W$, possiamo affermare che la mappa $y\mapsto F(x,y)$ è crescente in $V$ perché la derivata rispetto a $y$ è ivi sempre positiva.
-	Di conseguenza abbiamo che $F(x_0,y_0+h)>0$ e $F(x_0,y_0-h)<0$; ma sempre perché $F$ è continua possiamo individuare un intorno $U\subset W$ di $x_0$ tale che $\forall x\in U$ si ha $F(x,y_0+h)>0$ e $F(x,y_0-h)<0$, dunque per queste due ultime disuguaglianze e per il fatto che $F$ è crescente lungo $y$ deve necessariamente esistere un unico zero di $F$ in ogni segmento $x\times V$, con sempre $x\in U$.
+	Supponiamo $\drp{F}{y}(x_0,y_0)>0$: per la continuità di $F$ deve esistere un rettangolo (arbitrariamente piccolo) $T=W\times V$ che contiene $(x_0,y_0)$ e in cui $\drp{F}{y}(x,y)>0$ per ogni $(x,y)\in T$.
+	Sia $V=[y_0-h,y_0+h]$, con $h>0$. Fissato un punto qualunque $x$ in $W$, possiamo affermare che la mappa $y\mapsto F(x,y)$ è crescente in $V$ perché la derivata rispetto a $y$ è sempre positiva in $T$.
+	Poich\'e $F(x_0,y_0)=0$, per la monotonia abbiamo quindi che $F(x_0,y_0+h)>0$ e $F(x_0,y_0-h)<0$; ma sempre perché $F$ è continua possiamo individuare un intorno $U\subset W$ di $x_0$ tale che per \emph{tutti} gli $x\in U$, e non solo per $x_0$, si abbia $F(x,y_0+h)>0$ e $F(x,y_0-h)<0$
+	Allora per queste due ultime disuguaglianze e per il fatto che $F$ è crescente lungo $y$ deve necessariamente esistere un unico zero di $F$ in ogni segmento $\{x\}\times V$, per $x\in U$.
 	L'insieme di questi zeri forma il grafico della funzione $f(x)=y(x)$ cercata.
 
-	Siano ora $x,x_1\in U$ con $f(x),f(x_1)\in V$; i punti $\big(x,f(x)\big)$ e $\big(x_1,f(x_1)\big)$ sono quindi in $R$. Poiché $F\in\cont{1}$, per il teorema di Lagrange esiste un punto $(a,b)$, appartenente al segmento con estremi questi due punti, in cui
+	Calcoliamo ora la derivata della funzione implicita.
+	Siano $x,x_1\in U$ con $f(x),f(x_1)\in V$; i punti $\big(x,f(x)\big)$ e $\big(x_1,f(x_1)\big)$ sono quindi in $T$.
+	Poiché $F\in\cont{1}(T)$, per il teorema di Lagrange esiste un punto $(a,b)$, appartenente al segmento avente questi due punti come estremi, in cui
 	\begin{equation}
-		F\big(x,f(x)\big)-F\big(x_1,f(x_1)\big)=\drp{F}{x}(a,b)(x-x_1)+\drp{F}{y}(a,b)\big(f(x)-f(x_1)\big).
+		F\big(x,f(x)\big)-F\big(x_1,f(x_1)\big)=\grad F(a,b)
+		\begin{bmatrix}
+			x-x_1\\
+			f(x)-f(x_1)
+		\end{bmatrix}
+		=\drp{F}{x}(a,b)(x-x_1)+\drp{F}{y}(a,b)\big(f(x)-f(x_1)\big).
 	\end{equation}
-	Ma i due punti in cui è valutata $F$ sono dei suoi zeri, e d'altra parte abbiamo $\drp{F}{y}(x,y)>0$ in pgni punto di $R$, quindi anche in questi due punti. Allora
-	\begin{gather*} \label{eq:dini-dim1}
-		\drp{F}{x}(a,b)(x-x_1)=-\drp{F}{y}(a,b)\big(f(x)-f(x_1)\big)\\
+	Ma i due punti in cui è valutata $F$ sono dei suoi zeri, e d'altra parte abbiamo $\drp{F}{y}(x,y)>0$ in ogni punto di $T$, quindi anche in questi due punti.
+	Allora
+	\begin{equation} \label{eq:dini-dim1}
+		\drp{F}{x}(a,b)(x-x_1)=-\drp{F}{y}(a,b)\big(f(x)-f(x_1)\big)\qqq
 		\frac{\big(f(x)-f(x_1)\big)}{x-x_1}=-\dfrac{\drp{F}{x}(a,b)}{\drp{F}{y}(a,b)}
-	\end{gather*}
-	Inoltre, le derivate parziali di $F$ sono continue (e lo sono perciò anche i loro moduli) quindi per il teorema \ref{t:weierstrass} di Weierstrass entrambe ammettono massimo e minimo in $R$, che è chiuso e limitato, cioè compatto. Dunque possiamo affermare che
+	\end{equation}
+	Inoltre, le derivate parziali di $F$ sono continue (e lo sono perciò anche i loro moduli) quindi per il teorema \ref{t:weierstrass} di Weierstrass entrambe ammettono massimo e minimo assoluti in $T$, che è chiuso e limitato, cioè compatto.
+	Dunque possiamo maggiorare il secondo membro sostituendo il numeratore, $\drp{F}{x}(a,b)$, (ricordiamo che $(a,b)$ è un punto che ancora non conosciamo) con il suo massimo $\max_{(x,y)\in T}\drp{F}{x}(x,y)$, e sostituendo poi al denominatore $\drp{F}{y}(a,b)$ questa volta con il minimo in $T$.
+	Troviamo quindi che
 	\begin{equation}
-		\abs{f(x)-f(x_1)}\leq\frac{\max_{(x,y)\in R}\abs{\drp{F}{x}(x,y)}}{\min_{(x,y)\in R}\abs{\drp{F}{y}(x,y)}}(x-x_1)
+		\abs{f(x)-f(x_1)}\leq\frac{\max_{(x,y)\in T}\abs{\drp{F}{x}(x,y)}}{\min_{(x,y)\in T}\abs{\drp{F}{y}(x,y)}}(x-x_1)
 	\end{equation}
 	e questo mostra che $f$ è lipschitziana, quindi (uniformemente) continua.
-	Passando al limite per $x_1\to x$ nella \eqref{eq:dini-dim1} inoltre otteniamo, dato che $f(x_1)\to f(x)$ per continuità e che $(a,b)\to\big(x,f(x)\big)$, l'equazione \eqref{eq:dini-R2} della tesi.
+	Passando al limite per $x_1\to x$ nella \eqref{eq:dini-dim1} inoltre otteniamo, dato che $f(x_1)\to f(x)$ per continuità e che, per il teorema del confronto dei limiti, $x\leq a\leq x_1$ e $f(x)\leq b\leq f(x_1)$ quindi $(a,b)\to\big(x,f(x)\big)$, l'equazione \eqref{eq:dini-R2} della tesi.
 \end{proof}
 Passiamo ora ad una versione di questo teorema in tre dimensioni, relativamente simile al precedente, quindi ad una generalizzazione in un numero arbitrario di dimensioni.
 \begin{teorema} \label{t:dini-R3}
-	Sia $A\subset\R^3$ un aperto e $F\colon A\to\R$ una funzione di classe $\cont{1}(A)$, e sia $(x_0,y_0,z_0)\in A$ uno zero di questa funzione tale che $\drp{F}{z}(x_0,y_0,z_0)\neq 0$. Allora esiste un intorno $U(x_0,y_0,z_0)$ nel quale i punti per cui $F(x,y,z)=0$ si possono scrivere come funzione $z=f(x,y)$. Inoltre, la mappa $x\mapsto f(x)$ è di classe $\cont{1}$ e vale la relazione
+	Sia $A\subset\R^3$ un aperto e $F\colon A\to\R$ una funzione di classe $\cont{1}(A)$, e sia $(x_0,y_0,z_0)\in A$ uno zero di questa funzione tale che $\drp{F}{z}(x_0,y_0,z_0)\neq 0$.
+	Allora esiste un intorno $U(x_0,y_0,z_0)$ nel quale i punti per cui $F(x,y,z)=0$ si possono scrivere come funzione $z=f(x,y)$.
+	Inoltre, la mappa $x\mapsto f(x)$ è di classe $\cont{1}$ e vale la relazione
 	\begin{equation}
 		\drp{f}{x}(x,y)=-\dfrac{\drp{F}{x}\big(x,y,f(x,y)\big)}{\drp{F}{z}\big(x,y,f(x,y)\big)},
 	\label{eq:dini-R3}
@@ -53,7 +67,9 @@ Passiamo ora ad una versione di questo teorema in tre dimensioni, relativamente 
 	e analogamente per la derivata nella variabile $y$.
 \end{teorema}
 \begin{teorema} \label{t:dini-Rn}
-	Sia $A\subset\R^n\times\R^m$ un aperto, e $(\vec x,\vec y)=(x_1,\dots,x_m,y_1,\dots,y_n)$ un suo punto. Sia $\vec F\colon A\to\R^n$ una funzione di classe $\cont{1}(A)$. Si definiscono le matrici $F_x$ e $F_y$, rispettivamente di dimensioni $n\times m$ e $n\times n$, come
+	Sia $A\subset\R^n\times\R^m$ un aperto, e $(\vec x,\vec y)=(x_1,\dots,x_m,y_1,\dots,y_n)$ un suo punto.
+	Sia $\vec F\colon A\to\R^n$ una funzione di classe $\cont{1}(A)$.
+	Denotiamo con $F_x$ e $F_y$ le matrici, rispettivamente di dimensioni $n\times m$ e $n\times n$, che sono le colonne della jacobiana di $F$ rispetto alle variabili $\vec x$ e a $\vec y$, ossia
 	\[
 	F_x=
 		\begin{bmatrix}
@@ -61,7 +77,7 @@ Passiamo ora ad una versione di questo teorema in tre dimensioni, relativamente 
 		\vdots			&\ddots	&\vdots\\
 		\drp{F_n}{x_1}	&\cdots	&\drp{F_n}{x_m}
 		\end{bmatrix}
-	\qqq
+	\qeq
 	F_y=
 		\begin{bmatrix}
 		\drp{F_1}{y_1}	&\cdots	&\drp{F_1}{y_n}\\
@@ -69,7 +85,9 @@ Passiamo ora ad una versione di questo teorema in tre dimensioni, relativamente 
 		\drp{F_n}{y_1}	&\cdots	&\drp{F_n}{y_n}
 		\end{bmatrix}.
 	\]
-	Sia infine $(\vec x_0,\vec y_0)$ un punto di $A$ tale che $\vec F(\vec x_0,\vec y_0)=\vec 0$ e che $\det F_y(\vec x_0,\vec y_0)\neq 0$. Allora esistono degli intorni $U\in\R^m$ di $\vec x_0$ e $V\in\R^n$ di $\vec y_0$ per i quali $\forall\vec x\in U$ $\exists! \vec y=\vec f(\vec x)\in V$ tale che $\vec F\big(\vec x,\vec f(\vec x)\big)=\vec 0$. Inoltre la funzione $\vec f\colon U\to\R^n$ è di classe $\cont{1}$ e vale la relazione
+	Sia infine $(\vec x_0,\vec y_0)$ un punto di $A$ tale che $\vec F(\vec x_0,\vec y_0)=\vec 0$ e che $\det F_y(\vec x_0,\vec y_0)\neq 0$.
+	Allora esistono degli intorni $U\in\R^m$ di $\vec x_0$ e $V\in\R^n$ di $\vec y_0$ per i quali $\forall\vec x\in U$ $\exists! \vec y=\vec f(\vec x)\in V$ tale che $\vec F\big(\vec x,\vec f(\vec x)\big)=\vec 0$.
+	Inoltre la funzione $\vec f\colon U\to\R^n$ è di classe $\cont{1}$ e vale la relazione
 	\begin{equation} \label{eq:dini-Rn}
 		\jac\vec f(\vec x)=-\Big[F_y\big(\vec x,\vec f(\vec x)\big)\Big]^{-1}F_x\big(\vec x,\vec f(\vec x)\big).
 	\end{equation}
@@ -78,15 +96,16 @@ Passiamo ora ad una versione di questo teorema in tre dimensioni, relativamente 
 	Se la funzione $F$ è di classe $\cont{k}$ nell'insieme $A$, allora la funzione implicita $f$ del teorema di Dini eredita la regolarità ed è anch'essa di classe $\cont{k}$ nell'intorno $U$ di $x_0$.
 \end{corollario}
 \begin{proof}
-	Semplicemente, poiché la derivata parziale di $F$ in $y$ non è mai nulla, possiamo continuare a derivare la $f'(x)$ per ottenere quelle di grado superiore: al denominatore troveremo sempre una potenza di questa derivata. Gli altri termini saranno le varie derivate parziali, dei vari ordini fino a quello a cui si vuole derivare $f$, che certamente esistono dato che $F\in\cont{k}$, quindi tutte le sue derivate parziali fino al $k$-esimo ordine esistono.
+	Semplicemente, poiché la derivata parziale di $F$ in $y$ non è mai nulla, possiamo continuare a derivare la $f'(x)$ per ottenere quelle di grado superiore: al denominatore troveremo sempre una potenza di questa derivata.
+	Gli altri termini saranno le varie derivate parziali, dei vari ordini fino a quello a cui si vuole derivare $f$, che certamente esistono dato che $F\in\cont{k}$, quindi tutte le sue derivate parziali fino al $k$-esimo ordine esistono.
 \end{proof}
 Se abbiamo $F\in\cont{2}$ che rispetta le ipotesi del teorema di Dini, la derivata seconda di $f$ è
 \begin{equation}
-	f''(x)=-\frac{\partial_{xx}F+\partial_{xy}Ff'}{\partial_yF+\frac1{(\partial_yF)^2}\partial_xF(\partial_{yx}F+\partial_{yy}Ff')}
+	f''(x)=-\frac{(\partial_{xx}F)(\partial_{xy}F)f'}{(\partial_yF)+\frac1{(\partial_yF)^2}(\partial_xF)[(\partial_{yx}F)+(\partial_{yy}F)f']}
 \end{equation}
 valutata in $\big(x,f(x)\big)$. Sostituendo a $f(x)$ l'espressione della \eqref{eq:dini-R2} si semplifica nella
 \begin{equation} 
-	f''(x)=-\frac{\partial_{xx}F(\partial_yF)^2-2\partial_xF\partial_{xy}F\partial_yF+\partial_{yy}F(\partial_xF)^2}{(\partial_yF)^3},
+	f''(x)=-\frac{(\partial_{xx}F)(\partial_yF)^2-2(\partial_xF)(\partial_{xy}F)(\partial_yF)+(\partial_{yy}F)(\partial_xF)^2}{(\partial_yF)^3},
 	\label{eq:dini-derivata-seconda}
 \end{equation}
 sfruttando il fatto che $\partial_{xy}F=\partial_{yx}F$ per il teorema di Schwartz, dato che la funzione è di classe $\cont{2}$ le derivate miste coincidono.
