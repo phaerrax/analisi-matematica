@@ -7,22 +7,29 @@ Prima di introdurre la teoria delle forme differenziali, introduciamo la definiz
 		A=A_1\cup A_2\text{ e }A_1\cap A_2=\emptyset\text{, allora }A_1=\emptyset\text{ o }A_2=\emptyset.
 	\end{equation*}
 \end{definizione}
-Un'altra definizione si ottiene se consideriamo gli archi che collegano due punti dell'insieme: se per qualsiasi coppia di punti l'arco è contenuto tutto nell'insieme, anche in questo caso l'insieme si dice connesso. Il seguente teorema mostra che queste due definizioni sono in realtà interscambiabili.
+Un'altra definizione si ottiene se consideriamo gli archi che collegano due punti dell'insieme: se per qualsiasi coppia di punti l'arco è contenuto tutto nell'insieme, anche in questo caso l'insieme si dice connesso
+Il seguente teorema mostra che queste due definizioni sono in realtà interscambiabili.
 \begin{teorema} \label{t:connessione-per-archi}
-	Sia $A$ un insieme aperto e connesso di $\R^n$. Per qualsiasi coppia di punti $P_1,P_2\in A$ esiste un arco poligonale con estremi $P_1$ e $P_2$ tutto contenuto in $A$.
+	Sia $A$ un insieme aperto e connesso di $\R^n$.
+	Per qualsiasi coppia di punti $\vec p_1,\vec p_2\in A$ esiste un arco poligonale con estremi $\vec p_1$ e $\vec p_2$ tutto contenuto in $A$.
 \end{teorema}
 \begin{proof}
-	Sia $P_1\in A$, e $A_1$ l'insieme dei punti in $A$ connessi a $P_1$ per archi, o archi poligonali, ossia l'insieme $\{\vec x\in A\colon\exists\mathscr P(\vec x) =\text{ arco che connette $\vec x$ a $P_1$}\}$.
-	Scegliamo un $\vec y\in B(\vec x,\delta)$, allora il segmento $[\vec x,\vec y]$ che lo congiunge a $\vec x$ è contenuto in $B(\vec x,\delta)$.
-	Unendo il segmento all'arco che connette $\vec x$ a $P_1$, otteniamo un nuovo arco che connette $P_1$ a $\vec y$.
-	Ma questo vale per ogni scelta di $\vec y\in B(\vec x,\delta)$, dunque questo intorno è tutto contenuto in $A_1$, che quindi è aperto.
-	Sia quindi $A_2\defeq A\setminus A_1$. Se questo insieme è vuoto, risulta $A\equiv A_1$ e il teorema è dimostrato.
-	Sia allora $A_2\neq\emptyset$, e $\vec x\in A_2$: L'insieme $A$ è aperto quindi esiste un intorno $B(\vec x,\delta)\subset A$.
-	Sia $\vec y$ un punto di questo intorno. Come prima, $[\vec x,\vec y]\subset B(\vec y\delta)$.
-	Supponiamo che $\vec y$ sia in $A_1$: allora risulterebbe che esiste un arco che lo connette a $P_1$, e di conseguenza un arco $\mathscr P\cup[\vec x,\vec y]$ connette $\vec x$ a $P_1$.
-	Ma $\vec x\in A_2$, e siamo giunti ad una contraddizione poiché $\vec x$ appartiene sia ad $A_1$ che $A_2$ ma non hanno punti in comune.
-	Non può essere dunque che $\vec y\in A_1$, di conseguenza $\vec y\in A_2$, e come prima $\exists B(\vec y,\delta)\subset A_2$ e anche $A_2$ è quindi aperto.
-	Poiché $A=A_1\cup A_2$ e $A_1\cap A_2=\emptyset$, dato che sono complementari rispetto ad $A$, sono aperti e $A$ è connesso, $A_2$ deve essere necessariamente vuoto, ma allora otteniamo che $A_1\equiv A$, ossia $A$ è connesso per archi.
+	Sia $\vec p_1\in A$, e chiamiamo $A_1$ l'insieme dei punti in $A$ che sono connessi a $\vec p_1$ per archi (anche poligonali).
+	Esso non può essere già vuoto, dato che sicuramente contiene almeno un punto, che è $\vec p_1$ stesso.
+	Chiamiamo $\mathscr P(\vec q_1,\vec q_2)$ un generico arco che connette i due punti $\vec q_1$ e $\vec q_2$: allora possiamo scrivere $A_1=\{\vec x\in A\colon\exists\mathscr P(\vec x,\vec p_1)\}$.
+	Consideriamo un intorno $B(\vec x,\delta)$ e un punto $\vec y$ in esso: il segmento $[\vec x,\vec y]$ che lo congiunge a $\vec x$ è quindi tutto contenuto in tale intorno.
+	Tale segmento può essere visto chiaramente come un arco $\mathscr P(\vec x,\vec y)$ che li connette, quindi collegando $\vec x$ a $\vec y$ e $\vec x$ a $\vec p_1$ avremo un arco che connette $\vec p_1$ a $\vec y$; in breve, $\mathscr P(\vec p_1,\vec x)\cup[\vec x,\vec y]=\mathscr P(\vec p_1,\vec y)$.
+	Poich\'e questo ragionamento vale per ogni scelta di $\vec y\in B(\vec x,\delta)$, questo intorno è tutto contenuto in $A_1$, che quindi risulta aperto.
+
+	Definiamo ora $A_2\defeq A\setminus A_1$.
+	Sia $A_2\neq\emptyset$ (altrimenti il teorema è subito dimostrato), e $\vec x\in A_2$: L'insieme $A$ è aperto, quindi esiste un intorno $B(\vec x,\delta)$ che è contenuto in $A$: sia $\vec y$ un punto di questo intorno.
+	Come prima, $[\vec x,\vec y]\subset B(\vec y,\delta)$.
+	Supponiamo che $\vec y$ sia in $A_1$: risulterebbe allora che esiste un arco che lo connette a $\vec p_1$, e di conseguenza un arco $\mathscr P(\vec p_1,\vec y)\cup[\vec x,\vec y]$ che connette $\vec x$ a $\vec p_1$.
+	Però $\vec x\in A_2$, quindi siamo giunti ad una contraddizione poiché $\vec x$ appartiene sia ad $A_1$ che $A_2$ ma per come li abbiamo definiti essi non possono avere punti in comune.
+	Dobbiamo quindi eliminare l'ipotesi fatta che $\vec y\in A_1$, ma allora $\vec y\in A_2$, e come prima $\exists B(\vec y,\delta)$ contenuto in $A_2$, e anche $A_2$ è quindi aperto.
+
+	Alla fine abbiamo quindi che $A=A_1\cup A_2$ e $A_1\cap A_2=\emptyset$, dato che sono complementari rispetto ad $A$.
+	Questi due sottoinsiemi sono aperti, e $A$ è connesso, quindi proprio per la definizione di insieme connesso $A_2$ deve essere vuoto (avevamo visto che $A_1$ non lo può essere), ma allora $A_1\equiv A$, che quindi è connesso per archi.
 \end{proof}
 La proprietà di connessione di un insieme ci permette di estendere una conseguenza del teorema di Lagrange, che affermava che su un intervallo le funzioni sono costanti se e solo se hanno (almeno in tutto l'intervallo) derivata nulla, anche a funzioni di più variabili.
 \begin{corollario}
