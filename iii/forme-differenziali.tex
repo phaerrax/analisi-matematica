@@ -32,20 +32,25 @@ Il seguente teorema mostra che queste due definizioni sono in realtà interscamb
 	Questi due sottoinsiemi sono aperti, e $A$ è connesso, quindi proprio per la definizione di insieme connesso $A_2$ deve essere vuoto (avevamo visto che $A_1$ non lo può essere), ma allora $A_1\equiv A$, che quindi è connesso per archi.
 \end{proof}
 La proprietà di connessione di un insieme ci permette di estendere una conseguenza del teorema di Lagrange, che affermava che su un intervallo le funzioni sono costanti se e solo se hanno (almeno in tutto l'intervallo) derivata nulla, anche a funzioni di più variabili.
+Un insieme connesso prende qui il posto dell'intervallo, che pure è anch'esso un insieme connesso ma solo in $\R$.
 \begin{corollario}
-	Se $A\subset\R^n$ è aperto e connesso, allora una funzione $f\colon A\to\R$ differenziabile è costante se e solo se $\grad f(\vec x)=\null$ per ogni $\vec x\in A$.
+	Se $A\subseteq\R^n$ è aperto e connesso, allora una funzione $f\colon A\to\R$ differenziabile è costante se e solo se $\grad f(\vec x)=\vec 0$ per ogni $\vec x\in A$.
 \end{corollario}
 \begin{proof}
-	Se $f$ è costante ha tutte le derivate parziali nulle, e segue subito che $\grad f=\null$ in ogni punto di $A$.
-	Partiamo ora da $\grad f=\null$. Definiamo, per $\vec a\in A$, l'insieme $A_1\defeq\{\vec x\in A\colon f(\vec x)=f(\vec a)\}$, e $A_2\defeq A\setminus A_1$.
-	Prendiamo $\vec x_1\in A_1$ ed un suo intorno $U(\vec x_1)\subset A_1$ (è sempre possibile, perché $A$ è aperto).
-	Per il teorema di Lagrange esiste $\theta\in[0,1]$ tale per cui
+	Se $f$ è costante ha tutte le derivate parziali nulle, quindi segue subito che $\grad f=\vec 0$ in ogni punto di $A$.
+
+	Sia $\grad f=\vec 0$: definiamo, per un $\vec a\in A$, l'insieme di livello $A_1\defeq\{\vec x\in A\colon f(\vec x)=f(\vec a)\}$, e $A_2\defeq A\setminus A_1$ (quest'ultimo sarà quindi l'insieme dei punti la cui immagine \emph{non} è $f(\vec a)$).
+	Prendiamo un punto qualsiasi $\vec x'\in A_1$ e un suo intorno $\mathcal U(\vec x')$ che sia tutto contenuto in $A$ (un tale intorno esiste, perch\'e $A$è aperto).
+	Per ogni $\vec x\in\mathcal U(\vec x')$, dunque, per il teorema di Lagrange
 	\begin{equation*}
-		f(\vec x)-f(\vec x_1)=\scalar{\grad f\big(\vec x_1+\theta(\vec x-\vec x_1)\big)}{\vec x-\vec x_1}=0
+		f(\vec x)-f(\vec x')=\scalar{\grad f\big(\vec x'+c(\vec x-\vec x')\big)}{(\vec x-\vec x')}
 	\end{equation*}
-	perché il gradiente è nullo in tutto $A$, ma allora $f(\vec x)=f(\vec x_1)$ per ogni $\vec x_1\in A_1$, quindi $A_1$ è aperto.
+	per $c\in[0,1]$.
+	Ma $\mathcal U(\vec x')\subset A$, quindi per tutti questi punti il gradiente è nullo, quindi $f(\vec x)=f(\vec x')$ $\forall\vec x\in\mathcal U(\vec x')$, ossia $\mathcal U(\vec x')\subset A_1$.
+	Poich\'e questo vale per ogni $\vec x'\in A_1$, $A_1$ risulta aperto.
 	Allo stesso tempo, però, è anche chiuso: infatti se $\tilde{\vec x}$ è un punto di accumulazione per $A_1$, allora esiste una successione $\{\vec x_n\}\subset A_1$ tale che $\vec x_n\to\tilde{\vec x}$, ma per la continuità di $f$ si ottiene che $f(\vec x_n)\to f(\tilde{\vec x})=f(\vec a)$ e dunque $\tilde{\vec x}\in A_1$.
-	Allora anche $A_2$ è aperto, ma $A$ è connesso, $A_1$ necessariamente non è vuoto e di conseguenza $A_2=\emptyset$.
+	Allora anche $A_2$ è aperto, poich\'e è il complementare di un insieme chiuso rispetto ad uno aperto.
+	Abbiamo trovato quindi che $A_1$ e $A_2$ sono aperti, e per come li abbiamo costruiti $A_1\cap A_2=\emptyset$; ma $A=A_1\cup A_2$ è connesso, quindi per la definizione $A_2$ deve essere vuoto, vale a dire che $\forall \vec x\in A$ si ha $f(\vec x)=f(\vec a)$, cioè $f$ è costante in $A$.
 \end{proof}
 
 \section{Forme differenziali lineari}
