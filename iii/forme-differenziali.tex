@@ -138,7 +138,7 @@ Definiamo ora l'integrale di una forma differenziale lineare lungo una curva di 
 \end{definizione}
 Poiché $\tau'(t)>0$ per ogni $t\in[a,b]$ segue che $\tau$ è anche iniettiva e dunque biunivoca tra $[a,b]$ e $[c,d]$.
 \begin{teorema}
-	Sia $\omega=\sum_{i=1}^na_i\,\dd x_i$ una forma differenziale dall'insieme aperto $A\subseteq\R^n$ a $R^n_*$, di classe $\cont{1}$, e $\vphi\colon[a,b]\to A$ e $\vpsi\colon [c,d]\to A$ due curve regolari a tratti, equivalenti e con sostegno in $A$.
+	Sia $\omega=\sum_{i=1}^na_i\,\dd x_i$ una forma differenziale dall'insieme aperto $A\subseteq\R^n$ a $\R^n_*$, di classe $\cont{1}$, e $\vphi\colon[a,b]\to A$ e $\vpsi\colon [c,d]\to A$ due curve regolari a tratti, equivalenti e con sostegno in $A$.
 	Se le due curve sono equiorientate, si ha $\int_{\vphi}\omega=\int_{\vpsi}\omega$; se invece sono orientate in senso opposto, allora $\int_{\vphi}\omega=-\int_{\vpsi}\omega$.
 \end{teorema}
 \begin{proof}
@@ -161,36 +161,29 @@ Poiché $\tau'(t)>0$ per ogni $t\in[a,b]$ segue che $\tau$ è anche iniettiva e 
 		\int_{\vphi}\omega=-\int_{\vpsi}\omega.\qedhere
 	\end{equation*}
 \end{proof}
-Ritorniamo al differenziale di una funzione scalare $F\colon A\subseteq\R^n\to\R$: esso è una quantità che porta un punto di $\R^n$, che rappresenta l'incremento della variabile in una data direzione, in uno scalare ch è l'incremento della funzione associato a tale ``spostamento''.
-È dunque a tutti gli effetti un funzionale lineare, cioè un elemento di $\R^n_*$, infatti lo possiamo scrivere come
-\begin{equation*}
-	\dd F=\sum_{i=1}^n\drp{F}{x_i}\dd x_i.
-\end{equation*}
-Basta prendere la derivata $\drp{F}{x_i}$ come coefficiente $a_i$ per assimilare $\dd F$ ad una forma differenziale.
-Ovviamente la regolarità diminuisce: se $F\in\cont{k}(A)$, si avrà $\dd F\in\cont{k-1}(A)$.
-\begin{teorema}
-	 Siano $A$ un aperto di $\R^n$, $F\colon A\to\R$ di classe $\cont{1}(A)$ e $\vphi\colon[a,b]\to\R^n$ regolare a tratti. Allora
-\end{teorema}
-\begin{proof}
-	Dalle regole di derivazione di funzioni composte abbiamo
-	\begin{equation}
-		\int_{\vphi}\dd F=\int_a^b\sum_{i=1}^n\drp{F}{x_i}\big(\vphi(t)\big)\phi_i'(t)\,\dd t=\int_a^b\drv{}{t}F\big(\vphi(t)\big).
-	\end{equation}
-	Per il teorema fondamentale del calcolo integrale quest'ultimo è uguale a $F\big(\vphi(b)\big)-F\big(\vphi(a)\big)$.
-\end{proof}
-Notiamo che il risultato non cambierebbe se prendessimo un'altra curva con gli stessi estremi.
 
 \section{Forme differenziali esatte}
-Tra le forme differenziali lineari ne esistono alcune di determinata importanza, e facili da calcolare.
-\begin{definizione} \label{d:forma-diff-esatta}
+Quando abbiamo introdotto le forme differenziali lineari, eravamo partiti dai differenziali di funzioni scalari, che possiamo vedere come particolari forme differenziali i cui coefficienti sono le derivate parziali di una (stessa) funzione:
+\begin{equation}
+	\dd f=\sum_{i=1}^n\drp{f}{x_i}\dd x_i.
+\end{equation}
+Gli integrali di queste forme sono semplicissimi da calcolare: infatti dati $A$ aperto di $\R^n$, $F\colon A\to\R$ di classe $\cont{1}(A)$ e $\vphi\colon[a,b]\to\R^n$ regolare a tratti, risulta
+\begin{equation}
+	\int_{\vphi}\dd f=\int_a^b\sum_{i=1}^n\drp{f}{x_i}\big(\vphi(t)\big)\phi_i'(t)\,\dd t=\int_a^b\drv{}{t}f\big(\vphi(t)\big)\,\dd t.
+\end{equation}
+Per il teorema fondamentale del calcolo integrale quest'ultimo è uguale a $f\big(\vphi(b)\big)-f\big(\vphi(a)\big)$.
+Notiamo che il risultato non cambierebbe se prendessimo un'altra curva con gli stessi estremi.
+I differenziali di funzioni sono quindi delle forme differenziali lineari con l'importante proprietà che \emph{il loro integrale non dipende dal cammino scelto, ma solo dagli estremi}.
+Questo semplifica di molto il calcolo di questi integrali, perciò vogliamo capire quando possiamo assicurarci che una forma sia di questo tipo.
+In una sola dimensione tutte le forme differenziali lineari continue sono anche dei differenziali di funzioni, ma questo non è più vero in più dimensioni.
+\begin{definizione} \label{d:forma-differenziale-esatta}
 	Sia $A\subseteq\R^n$ aperto e $\omega\colon A\to\R^n_*$ una forma differenziale lineare continua in $A$.
-	Essa si dice \emph{esatta} se esiste una mappa $F\colon A\to\R$ di classe $\cont{1}(A)$ tale per cui $\dd F=\omega$.
-	In tal caso, la funzione $F$ è detta \emph{potenziale} di $\omega$.
+	Essa si dice \emph{esatta} se esiste una funzione (detta \emph{potenziale}) $F\colon A\to\R$ di classe $\cont{1}(A)$ tale per cui $\dd F=\omega$.
 \end{definizione}
 \begin{osservazione}
 	Se $F$ è un potenziale di $\omega$ su $A$, allora anche $G=F+c$, dove $c$ è una qualsiasi costante, lo è.
 	D'altra parte, se $F_1$ e $F_2$ sono entrambi potenziali di una medesima forma differenziale su $A$, e $A$ è connesso, allora differiscono di una costante.%Infatti $\dd(F_1-F_2)=0$ da cui\dots
-	Una forma differenziale esatta ammette infiniti potenziali, tutti uguali ameno di una costante additiva (si può dunque determinare univocamente un potenziale a meno di tale costante).
+	Una forma differenziale esatta ammette quindi infiniti potenziali, ma tutti sono uguali a meno di una costante additiva (si può dunque determinare univocamente un potenziale a meno di tale costante).
 \end{osservazione}
 Introduciamo ora due classi di curve: la classe delle curve regolari a tratti definite da uno stesso intervallo e con estremi dati nell'insieme $A$, ossia l'insieme $\Phi_{\vec a,\vec b}(A)\defeq\{\vphi\colon[\alpha,\beta]\to A\text{ regolari a tratti e con }\vphi(\alpha)=\vec a, \vphi(\beta)=\vec b\}$, e la classe delle curve chiuse $\Phi_c(A)\defeq\{\vphi\colon[\alpha,\beta]\to A\text{ regolare a tratti e per cui }\vphi(\alpha)=\vphi(\beta)\}$, cioè con estremi coincidenti, in $A$.
 Sfruttiamo questa definizione per enunciare i seguenti teoremi.
@@ -203,30 +196,33 @@ Sfruttiamo questa definizione per enunciare i seguenti teoremi.
 	Essa è una forma differenziale esatta se e solo se $\int_{\vphi}\omega=\int_{\vpsi}\omega$ per qualsiasi coppia $\vphi,\vpsi$ nella classe $\Phi_{\vec a,\vec b}(A)$ e per ogni scelta di $\vec a$ e $\vec b$ in $A$.
 \end{teorema}
 \begin{proof}
-	Se $\omega$ è esatta, segue dalla definizione \ref{d:forma-diff-esatta} che esiste una funzione $f$ tale per cui $\dd f=\omega$, e allora risulta $\int_{\vphi}\dd f=f\big(\vphi(\beta)\big)-f(\big(\vphi(\alpha)\big)$.
+	Se $\omega$ è esatta, segue dalla definizione \ref{d:forma-differenziale-esatta} che esiste una funzione $f$ tale per cui $\dd f=\omega$, e allora risulta $\int_{\vphi}\dd f=f\big(\vphi(\beta)\big)-f\big(\vphi(\alpha)\big)$.
 	Una curva $\vpsi\in\Phi_{\vec a,\vec b}(A)$ ha gli stessi estremi, siano essi $\vpsi(\gamma)=\vphi(\alpha)$ e $\vpsi(\delta)=\vphi(\beta)$, e dunque
 	\begin{equation}
-		\int_{\vpsi}\dd f=f\big(\vpsi(\delta)\big)-f\big(\vpsi(\gamma)\big)=\int_{\vphi}\dd f.
+		\int_{\vpsi}\dd f=f\big(\vpsi(\delta)\big)-f\big(\vpsi(\gamma)\big)=f\big(\vphi(\beta)\big)-f\big(\vphi(\alpha)\big)=\int_{\vphi}\dd f.
 	\end{equation}
 	
-	Sia ora $\vec p\in A$. Poiché l'insieme è connesso per archi, per ciascun punto $\vec x\in A$ esiste una curva $\vphi$ regolare a tratti che connette i due punti, vale a dire $\vphi\in\Phi_{\vec p,\vec x}(A)$.
-	Sia allora $F(\vec x)=\Int_{\vphi}\omega$: per ipotesi, l'integrale dipende soltanto dagli estremi della curva, quindi fissato $\vec p$ la $F$ è ben definita. $A$ è aperto, quindi esiste sempre un intorno $B(\vec x,\delta)\subset A$ per ogni $\vec x\in A$.
+	Sia ora $\vec p\in A$: poiché l'insieme è connesso per archi, per ciascun punto $\vec x\in A$ esiste una curva $\vphi$ regolare a tratti che connette i due punti, vale a dire $\vphi\in\Phi_{\vec p,\vec x}(A)$.
+	Sia allora $F(\vec x)=\Int_{\vphi}\omega$: per ipotesi, l'integrale dipende soltanto dagli estremi della curva, quindi fissato $\vec p$ la $F$ è ben definita.
+	L'insieme $A$ è aperto, quindi esiste sempre un intorno $B(\vec x,\delta)\subset A$ per ogni $\vec x\in A$.
+	Vogliamo ora calcolare il rapporto incrementale di $F$ lungo una direzione arbitraria, ai fini di calcolare la derivata direzionale, e vedremo che i coefficienti $a_i$ della forma sono le derivate parziali di $F$.
 	Prendiamo un versore $\vec v\in\R^n$, e per $h\in\R$ valutiamo l'incremento $\vec q=\vec x+h\vec v$.
-	Per $\norm{h}$ sufficientemente piccolo, anche $\vec q$ è in $A$. Chiamiamo allora $\vpsi$ la curva
+	Per $\abs{h}$ sufficientemente piccolo, anche $\vec q$ è in $A$.
+	Chiamiamo allora $\vpsi$ la curva
 	\begin{equation*}
 		\vpsi(t)=
 		\begin{cases}
-			\phi(t)	&t\in[\alpha,\beta]\\
+			\vphi(t)	&t\in[\alpha,\beta]\\
 			\vec x+(t-\beta)h\vec v	&t\in(\beta,\beta+1]
 		\end{cases}
 	\end{equation*}
 	Essa va da $\vpsi(\alpha)=\vec p$ a $\vpsi(\beta+1)=\vec x+(\beta+1-\beta)h\vec v=\vec q$, passando per $\vpsi(\beta)=\vec x$, ed è regolare a tratti con sostegno in $A$.
-	Calcoliamo dunque il rapporto incrementale di $F$, ossia $F(\vec x+h\vec v)-F(\vec x)=\Int_{\vpsi}\omega-\Int_{\vphi}\omega$, che per definizione è
+	Calcoliamo dunque l'incremento di $F$, ossia $F(\vec x+h\vec v)-F(\vec x)=\Int_{\vpsi}\omega-\Int_{\vphi}\omega$, che per definizione è
 	\begin{equation}
 		\Int_\alpha^{\beta+1}\sum_{i=1}^na_i\big(\vpsi(t)\big)\psi_i'(t)\,\dd t-\Int_\alpha^\beta\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t.
 	\end{equation}
 	Nell'intervallo $[\alpha,\beta]$, però, le due curve $\vphi$ e $\vpsi$ coincidono, quindi $a_i\big(\vphi(t)\big)=a_i\big(\vpsi(t)\big)$ per ogni $t$ in tale intervallo e per ogni $i=1,\dots,n$.
-	Allora il rapporto incrementale di $F$ diventa
+	Allora l'incremento di $F$ diventa
 	\begin{equation}
 		\begin{aligned}
 			&\int_\alpha^\beta\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t+\Int_\beta^{\beta+1}\sum_{i=1}^na_i\big(\vpsi(t)\big)\psi_i'(t)\,\dd t-\Int_\alpha^\beta\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t=\\
@@ -238,15 +234,18 @@ Sfruttiamo questa definizione per enunciare i seguenti teoremi.
 	\begin{equation}
 		\int_0^h\sum_{i=1}^na_i\big(\vec x+r\vec v)v_i\,\dd r.
 	\end{equation}
-	Dividendo per $h$ e passando al limite per $h\to0$, anche $r$ tende a zero, e dal teorema fondamentale del calcolo integrale otteniamo la derivata di $F$ in $\vec x$ lungo la direzione indicata da $\vec v$:
+	Dividendo per $h$ e passando al limite per $h\to0$, anche $r$ tende a zero, quindi possiamo passare dal limite per $h$ al limite per $r$.
+	Dal teorema fondamentale del calcolo integrale otteniamo la derivata di $F$ in $\vec x$ lungo la direzione indicata da $\vec v$:
 	\begin{equation}
-		\lim_{h\to0}\frac{F(\vec x+h\vec v)-F(\vec x)}{h}=\lim_{h\to0}\frac1{h}\int_0^h\sum_{i=1}^na_i(\vec x+r\vec v)hv_i\,\dd r=\lim_{r\to 0}\sum_{i=1}^na_i(\vec x+r\vec v)v_i=\sum_{i=1}^na_i(\vec x)v_i,
+		\lim_{h\to0}\frac{F(\vec x+h\vec v)-F(\vec x)}{h}=\lim_{h\to0}\frac1{h}\int_0^h\sum_{i=1}^na_i(\vec x+r\vec v)v_i\,\dd r=\lim_{r\to 0}\sum_{i=1}^na_i(\vec x+r\vec v)v_i=\sum_{i=1}^na_i(\vec x)v_i.
 	\end{equation}
-	da cui si nota facilmente che, poiché la derivata direzionale si può ottenere come prodotto scalare tra il gradiente di $F$ e $\vec v$, che proprio $\grad F=(a_1,\dots,a_n)$. Segue allora che, se prendiamo la base duale introdotta all'inizio del capitolo, si ottiene
+	Possiamo vederlo anche con il teorema di De L'H\^opital, derivando rispetto ad $h$ poich\'e numeratore e denominatore tendono entrambi a zero: la derivata del numeratore $h$ è chiaramente 1, quella del numeratore, che è una funzione integrale, per il teorema fondamentale del calcolo integrale è invece è la funzione integranda valutata in $h$ (a questo punto non sarebbe nemmeno necessario passare al limite in $r$).
+	In ogni caso, notiamo che, poiché la derivata direzionale si può ottenere come prodotto scalare tra il gradiente di $F$ e $\vec v$, che proprio $\grad F=(a_1,\dots,a_n)$.
+	Allora si ottiene
 	\begin{equation}
-		\dd F=\scalar{\grad F}{\dd \vec x}=\sum_{i=1}^na_i\dd x_i
+		\omega=\sum_{i=1}^na_i\dd x_i=\scalar{\grad F}{\dd \vec x}=\dd F,
 	\end{equation}
-	e che quindi la forma differenziale $\omega$ è il differenziale di una funzione scalare, cioè è esatta.
+	ossia $\omega$ è esatta.
 \end{proof}
 
 \section{Forme differenziali chiuse}
