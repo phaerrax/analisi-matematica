@@ -54,20 +54,71 @@ Un insieme connesso prende qui il posto dell'intervallo, che pure è anch'esso u
 \end{proof}
 
 \section{Forme differenziali lineari}
-Prendiamo l'insieme $\{\dd x_1,\dd x_2,\dots,\dd x_n\}$ come base per lo spazio $\R^n_*$ duale di $\R^n$, definendola tramite la relazione $\dd x_i(\vec e_j)=\delta_{ij}$ per ogni $i,j\in\{1,\dots,n\}$.
-Per un vettore $\vec a\in\R^n$ si ha $\dd x_i(\vec a)=a_i$, ossia $\dd x_i$ fornisce la coordinata $i$-esima del vettore.
-Ogni elemento di $\R^n$ può essere scritto come combinazione lineare dei vettori della base canonica, cioè $\vec y=\sum_{i=1}^ny_i\vec e_i$: analogamente ogni funzionale lineare in $\R^n_*$ può essere espresso in termini della base appena descritta, ossia $L(\vec x)=\sum_{i=1}^nl_i\dd x_i(\vec x)$ o anche $L=\sum_{i=1}^nl_i\dd x_i$.
-
-\begin{definizione} \label{d:forma-diff-lineare}
-	Sia $A\subseteq\R^n$ aperto. Una mappa $\omega\colon A\to\R^n_*$ che porta $\vec x\in A$ nel funzionale lineare $\omega(\vec x)$ è detta \emph{forma differenziale lineare}.
-\end{definizione}
-Con la base duale scelta in precedenza si può esprimere questa mappa come una combinazione lineare
+Se $V$ e $W$ sono due spazi vettoriali sul medesimo campo generico $K$, sappiamo dal corso di Geometria che lo spazio delle applicazioni lineari da $V$ a $W$, che possiamo indicare con $\lin(V,W)$, ha una struttura di spazio vettoriale: la somma di due elementi $T_1,T_2\in\lin(V,W)$ e il prodotto di un elemento $T\in\lin(V,W)$ per uno scalare $a\in K$ sono ancora delle applicazioni lineari in $\lin(V,W)$, definite per $v\in V$ da
 \begin{equation*}
-	\omega(\vec x)=\sum_{i=1}^na_i(\vec x)\dd x_i)
+	(T_1+T_2)(v)=T_1(v)+T_2(v)\qeq (aT)(v)=aT(v).
 \end{equation*}
-dove per ogni $i=1,\dots,n$ la funzione $a_i\colon A\to\R$ è l'$i$-esimo coefficiente della forma differenziale.
-La regolarità di questi coefficienti determina quella della forma differenziale: si dice che essa è di classe $\cont{k}(A)$ se $a_i\in\cont{k}(A)$ $\forall i\in\{1,\dots,n\}$.
+La struttura di spazio vettoriale di questo spazio segue in modo naturale dalla linearità delle operazioni.
+In particolare, tra queste applicazioni troviamo quelle che da $V$ portano in $K$ (anch'esso è uno spazio vettoriale), dette anche \emph{funzioniali lineari}, che quindi appartengono a $\lin(V,K)$.
+Questo spazio vettoriale è detto \emph{spazio duale} di $V$ e solitamente si indica anche con $V^*$.
 
+Prendiamo lo spazio vettoriale sul campo dei reali in cui abbiamo sempre lavorato, $\R^n$, e di conseguenza il suo duale, che indicheremo con $\R^n_*$.
+Vogliamo individuare una relazione che ci permetta di scrivere una base del duale a partire da una base di $\R^n$, che per semplicità sarà per noi la base canonica.
+Infatti esiste sempre un isomorfismo che lega i due spazi tra loro, però tale isomorfismo non è \emph{canonico}, ossia dipende sempre dalla base che scegliamo per $\R^n$: basti pensare che per trovare la matrice associata ad un'applicazione lineare è fondamentale la scelta della base (tanto che al cambiare della base la matrice non rimane la stessa), e che dopotutto gli elementi del duale non sono che particolari applicazioni lineari.
+Siano $\{\vec e_i\}_{i=1}^n$ e $\{\vec w_i\}_{i=1}^n$ rispettivamente le basi di $\R^n$ e $\R^n_*$: scelta la prima, possiamo determinare la seconda in modo che\footnote{Il duale $V^*$ ha la stessa dimensione di $V$, quindi anche le due basi avranno lo stesso numero di elementi.}
+\begin{equation}
+	\vec w_i(\vec e_j)=\delta_{ij}.
+	\label{eq:funzionale-base-canonica}
+\end{equation}
+In particolare, data la base canonica di $\R^n$, la base corrispondente di $\R^n_*$ (definita come prima dalla sua azione sulla base di $\R^n$) diventa una base di vettori tali che $\vec w_i(\vec a)=a_i$, per $\vec a=(a_1,\dots,a_n)\in\R^n$, ossia restituisce la $i$-esima coordinata dei vettori di $\R^n$.
+
+Detto ciò, abbiamo già incontrato in precedenza alcuni elementi di $\R^n_*$: i differenziali di funzioni (scalari).
+Nel capitolo in cui abbiamo trattato della differenziabilità in più dimensioni avevamo visto che data una $f\in A\subseteq\R^n\to\R$ differenziabile, il suo differenziale $\dd f$ si comporta come un funzionale lineare: preso un punto $\vec x_0\in A$, restituisce un numero reale che è l'incremento di $f$ dal punto $\vec x_0$ relativo all'incremento $\vec h$ della variabile.
+Sappiamo inoltre che questo differenziale si può esprimere con il gradiente di $f$, cioè $\dd f=\grad f(\vec x_0)\dd\vec x$, dove abbiamo scritto $\dd\vec x=(\dd x_1,\dots,\dd x_n)$, ossia
+\begin{equation}
+	\dd f(\vec x_0)=\drp{f}{x_1}(\vec x_0)\,\dd x_1+\drp{f}{x_2}(\vec x_0)\,\dd x_2+\dots+\drp{f}{x_n}(\vec x_0)\,\dd x_n.
+	\label{eq:differenziale-duale}
+\end{equation}
+Ma se il primo membro è proprio il differenziale di $f$, cioè l'applicazione $\vec h\mapsto\grad f(\vec x_0)\vec h$, allora la notazione ci induce a considerare $\dd x_i$ come l'applicazione che porta $\vec h$ nella sua componente $h_i$.
+Infatti, guardando alla \eqref{eq:differenziale-duale} come un funzionale lineare da applicare all'incremento $\vec h$, con la regola che $\dd x_i(\vec h)=h_i$ troviamo
+\begin{equation}
+	\begin{split}
+		\dd f(\vec x_0)(\vec h)&=\drp{f}{x_1}(\vec x_0)\,\dd x_1(\vec h)+\dots+\drp{f}{x_n}\,\dd x_n(\vec h)=\\
+		&=\drp{f}{x_1}h_1+\dots+\drp{f}{x_n}h_n
+	\end{split}
+\end{equation}
+che è proprio l'espressione dell'incremento di $f$ associato all'incremento $\vec h$ della variabile.
+È naturale allora pensare all'insieme $\{\dd x_1,\dots,\dd x_n\}$ come una base per $\R^n_*$: con le combinazioni lineari di elementi di questa base possiamo costruire gli elementi dello spazio (in particolare, i differenziali delle funzioni hanno come coefficienti le rispettive derivate parziali).
+Abbiamo anche verificato la proprietà dell'equazione \eqref{eq:funzionale-base-canonica}, ossia risulta
+\begin{equation}
+	\dd x_j(\vec e_k)=\delta_{jk}
+\end{equation}
+dove $\{\vec e_i\}_{i=1}^n$ è la base canonica di $\R^n$.
+La notazione con gli indici $1,2,3,\dots,n$ è ovviamente arbitraria: se ad esempio in $\R^3$ denotiamo le variabili con $x,y,z$, sarà naturale indicare la base del duale $\R^3_*$ con $\{\dd x,\dd y,\dd z\}$.
+
+Lasciamo da parte ora quei particolari elementi del duale che sono i differenziali di funzioni, e guardiamo a tutto lo spazio: un suo elemento generico sarà scritto, in termini della base appena introdotta, come combinazione lineare
+\begin{equation*}
+	\sum_{i=1}^na_i\,\dd x_i.
+\end{equation*}
+Possiamo ulteriormente pensare i coefficienti $a_i$ come funzioni dipendenti da una variabile $\vec x$ in $\R^n$: otteniamo dunque una funzione che porta punti di un certo insieme $A\subseteq\R^n$ nel funzionale lineare
+\begin{equation*}
+	\sum_{i=1}^na_i(\vec x)\,\dd x_i.
+\end{equation*}
+Queste particolari funzioni sono dette \emph{forme differenziali lineari}.
+
+\begin{definizione} \label{d:forma-differenziale-lineare}
+	Sia $A\subseteq\R^n$ aperto.
+	Una mappa $\omega\colon A\to\R^n_*$ che porta $\vec x\in A$ nel funzionale lineare $\omega(\vec x)$ è detta \emph{forma differenziale lineare}.
+\end{definizione}
+Le forme differenziali lineari sono anche dette 1-forme.
+Ogni forma differenziale lineare si può rappresentare come $\omega=\sum_{i=1}^n\omega_i\,\dd x_i$, e questa scrittura è unica poich\'e la scrittura di un elemento di uno spazio vettoriale in termini di una sua base è sempre univoca.
+Le funzioni $\omega_i$, che sono funzioni da $A$ a $\R$, si dicono componenti, o coefficienti della forma, ed esse determinano la regolarità della forma differenziale.
+\begin{definizione} \label{d:regolarita-1forme}
+	Una forma differenziale lineare $\omega\colon A\subseteq\R^n\to\R^n_*$ si dice di classe $\cont{k}$ se tutte le sue componenti lo sono.
+\end{definizione}
+
+Un esempio immediato di forma differenziale, come si può intuire dal discorso svolto finora, è il differenziale di una funzione $f\colon\R\to\R$: avremo semplicemente $\omega=\dd f$.
+Notiamo subito un'importante differenza nelle notazioni: da una parte abbiamo $\dd f$, che è la 1-forma, cioè un'applicazione di $A$ in $\R^n_*$, dall'altra abbiamo invece $\dd f(x)$ che è il differenziale della funzione, ossia un elemento di $\R^n_*$ (che è poi l'immagine di $x$ attraverso $\omega$).
 \section{Integrale di forme differenziali}
 \begin{definizione}
 	Sia $A\subseteq\R^n$ aperto e $\omega\colon A\to\R^n_*$ una forma differenziale lineare continua, e $\vphi\colon[a,b]\to A$ una curva regolare (continua e differenziabile) a tratti.
