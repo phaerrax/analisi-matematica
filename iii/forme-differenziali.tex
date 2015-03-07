@@ -120,31 +120,34 @@ Le funzioni $\omega_i$, che sono funzioni da $A$ a $\R$, si dicono componenti, o
 Un esempio immediato di forma differenziale, come si può intuire dal discorso svolto finora, è il differenziale di una funzione $f\colon\R\to\R$: avremo semplicemente $\omega=\dd f$.
 Notiamo subito un'importante differenza nelle notazioni: da una parte abbiamo $\dd f$, che è la 1-forma, cioè un'applicazione di $A$ in $\R^n_*$, dall'altra abbiamo invece $\dd f(x)$ che è il differenziale della funzione, ossia un elemento di $\R^n_*$ (che è poi l'immagine di $x$ attraverso $\omega$).
 \section{Integrale di forme differenziali}
-\begin{definizione}
-	Sia $A\subseteq\R^n$ aperto e $\omega\colon A\to\R^n_*$ una forma differenziale lineare continua, e $\vphi\colon[a,b]\to A$ una curva regolare (continua e differenziabile) a tratti.
-	Si definisce
+Definiamo ora l'integrale di una forma differenziale lineare lungo una curva di $\R^n$.
+\begin{definizione} \label{d:integrale-1forma}
+	Sia $A\subseteq\R^n$ aperto e $\omega\colon A\to\R^n_*$ una forma differenziale lineare continua.
+	Sia inoltre $\vphi\colon[a,b]\to A$ una parametrizzazione di una curva regolare a tratti.
+	Si definisce l'integrale di $\omega$ lungo $\vphi$ come
 	\begin{equation} 
-		\int_{\vphi}\omega=\int_a^b\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\dd t.
-		\label{eq:integrale-forma-diff-lin}
+		\int_{\vphi}\omega=\int_a^b\scalar{\omega\big(\vphi(t)\big)}{\vphi'(t)}\,\dd t=\int_a^b\sum_{i=1}^n\omega_i\big(\vphi(t)\big)\phi_i'(t)\dd t.
+		\label{eq:integrale-1forma}
 	\end{equation}
 \end{definizione}
-	La curva $\vphi$ è a valori in $A$, quindi anch'essa ha $n$ componenti.
+	La curva $\vphi$ ha $n$ componenti perch\'e è a valori in $A$, quindi è lecito sostituirla alla variabile delle componenti della forma.
+	È facile vedere che l'integrale in realtà non dipende dalla parametrizzazione scelta per la curva, ma solo dal suo sostegno: introduciamo quindi il concetto di equivalenza e equiorientazione.
 \begin{definizione}
 	Siano $\vphi\colon[a,b]\to\R^n$ e $\vpsi\colon[c,d]\to\R^n$ due curve regolari a tratti.
 	Esse si dicono \emph{equivalenti} ed \emph{equiorientate} se esiste una riparametrizzazione di $\vphi$ che porta in $\vpsi$, ossia una mappa $\tau\colon[a,b]\to[c,d]$ suriettiva, derivabile e con derivata positiva in ogni punto di $[a,b]$ tale per cui $\vphi=\vpsi\circ\tau$.
 \end{definizione}
 Poiché $\tau'(t)>0$ per ogni $t\in[a,b]$ segue che $\tau$ è anche iniettiva e dunque biunivoca tra $[a,b]$ e $[c,d]$.
 \begin{teorema}
-	Sia $\omega$ una forma differenziale dall'insieme aperto $A\subseteq\R^n$ a $R^n_*$, di classe $\cont{1}$, e $\vphi\colon[a,b]\to A$ e $\vpsi\colon [c,d]\to A$ due curve regolari a tratti, equivalenti e con sostegno in $A$.
-	Se sono equiorientate, si ha $\int_{\vphi}\omega=\int_{\vpsi}\omega$; se invece sono orientate in senso opposto, ossia (seguendo la definizione precedente) $\tau'(t)<0$ $\forall t\in[a,b]$, allora $\int_{\vphi}\omega=-\int_{\vpsi}\omega$.
+	Sia $\omega=\sum_{i=1}^na_i\,\dd x_i$ una forma differenziale dall'insieme aperto $A\subseteq\R^n$ a $R^n_*$, di classe $\cont{1}$, e $\vphi\colon[a,b]\to A$ e $\vpsi\colon [c,d]\to A$ due curve regolari a tratti, equivalenti e con sostegno in $A$.
+	Se le due curve sono equiorientate, si ha $\int_{\vphi}\omega=\int_{\vpsi}\omega$; se invece sono orientate in senso opposto, allora $\int_{\vphi}\omega=-\int_{\vpsi}\omega$.
 \end{teorema}
 \begin{proof}
 	Sia $\vphi=\vpsi\circ\tau$ in modo che le due curve siano equivalenti.
 	Se sono anche equiorientate, allora $\tau'(t)>0$ $\forall t\in[a,b]$ e $\tau(a)=c$ e $\tau(b)=d$.
 	Dunque risulta che
 	\begin{equation}
-		\int_{\vphi}\omega=\int_a^b\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\dd t
-		=\int_a^b\sum_{i=1}^na_i\big(\vpsi(\tau(t))\big)\psi_i'\big(\tau(t)\big)\tau'(t)\dd t,
+		\int_{\vphi}\omega=\int_a^b\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t
+		=\int_a^b\sum_{i=1}^na_i\big(\vpsi(\tau(t))\big)\psi_i'\big(\tau(t)\big)\tau'(t)\,\dd t,
 	\end{equation}
 	calcolando la derivata della funzione composta $\vphi=\vpsi\circ\tau$.
 	Chiamiamo allora $r\defeq\tau(t)$ e sostituiamo le variabili nell'integrale: otteniamo che $\tau'(t)\,\dd t=\dd r$, da cui risulta
@@ -155,7 +158,7 @@ Poiché $\tau'(t)>0$ per ogni $t\in[a,b]$ segue che $\tau$ è anche iniettiva e 
 	
 	Se le due curve hanno invece verso opposto, si ha $\tau'(t)<0$ e dunque la mappa $\tau$ è decrescente, e di conseguenza\footnote{Si ricordi che $\tau\colon[a,b]\to[c,d]$ e di conseguenza deve sempre risultare, almeno, che $a<b$ e $c<d$.} $\tau(a)=d$ e $\tau(b)=c$. Basta ripetere i passaggi compiuti in precedenza, per trovarsi alla fine con gli estremi di integrazione invertiti rispetto a prima, da cui si ricava facilmente che
 	\begin{equation*}
-		\int_{\vphi}\omega=-\int_{\vpsi}\omega.
+		\int_{\vphi}\omega=-\int_{\vpsi}\omega.\qedhere
 	\end{equation*}
 \end{proof}
 Ritorniamo al differenziale di una funzione scalare $F\colon A\subseteq\R^n\to\R$: esso è una quantità che porta un punto di $\R^n$, che rappresenta l'incremento della variabile in una data direzione, in uno scalare ch è l'incremento della funzione associato a tale ``spostamento''.
