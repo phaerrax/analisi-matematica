@@ -297,35 +297,77 @@ Però se prendiamo $x_1>0$, abbiamo i limiti
 ma allora $F$ è discontinua in $A$, perciò non può essere il potenziale di $\omega$, che quindi non ammette potenziali e non è esatta.
 Il problema da superare non risiede tanto nella funzione, ma nell'insieme in cui la stiamo studiando: è ovvio che se al posto di $A$ avessimo preso solo, ad esempio, il suo sottoinsieme in cui $x>0$, non ci sarebbero stati problemi di continuità e avremmo senza problemi trovato un potenziale per $\omega$.
 
-Dobbiamo quindi restringere la classe degli insiemi ``buoni'' che ci permettano di dire quando una forma è chiusa è anche esatta: partiamo dagli insiemi \emph{stellati}.
+Dobbiamo quindi restringere la classe degli insiemi ``buoni'' che ci permettano di dire quando una forma è chiusa è anche esatta: tali insiemi sono gli insiemi \emph{semplicemente connessi}, che intuitivamente si possono pensare come insiemi ``senza buchi''.
+Una definizione rigorosa può essere data tramite il concetto di curve omotopiche.
+\begin{definizione} \label{d:curva-omotopica}
+	Siano $\vphi_1,\vphi_2\colon[a,b]\to A\subset\R^n$ due parametrizzazioni di curve chiuse e $\cont{2}\ab$.
+	La curva $\vphi_1$ si dice \emph{omotopica} a $\vphi_2$ se esiste una mappa (detta appunto \emph{omotopia}) $\vxi\colon[0,1]\times[a,b]\to A$, di classe $\cont{2}$, tale per cui $\vxi(0,t)=\vphi_1(t)$ e $\vxi(1,t)=\vphi_2(t)$, e per ogni $s\in[0,1]$ si abbia $\vxi(s,a)=\vxi(s,b)$.
+\end{definizione}
+La mappa dell'omotopia tra le due curve si può vedere più facilmente come una deformazione continua (quindi ``senza strappi'') e differenziabile che trasforma curve chiuse in curve chiuse nello stesso insieme.
+\begin{definizione} \label{d:insieme-semplicemente-connesso}
+	Un insieme $A\subseteq\R^n$ si dice \emph{semplicemente connesso} se ogni curva $\vphi\colon[a,b]\to A$, di classe $\cont{2}(A)$ e chiusa è omotopica ad un punto in $A$, ossia ad una curva (degenere) costante $\vpsi\colon[a,b]\to A$ per cui $\vpsi(t)=\vec c$, con $\vec c\in A$.
+\end{definizione}
+Con queste definizioni possiamo quindi enunciare il seguente importante teorema.
+\begin{teorema}[Lemma di Poincar\'e] \label{t:poincare}
+	Sia $A\subseteq\R^n$ un insieme aperto e semplicemente connesso, e $\omega$ una forma differenziale lineare di classe $\cont{1}(A)$.
+	Se $\omega$ è chiusa in $A$, allora è anche esatta in tale insieme.
+\end{teorema}
+La forma vista nell'esempio precedente non può essere esatta in $\R^2\setminus\{\vec 0\}$ perch\'e l'insieme non è semplicemente connesso: ogni curva che circonda l'origine non può essere deformata in un punto (dell'insieme) tramite un'omotopia, perch\'e abbiamo il ``buco'' nell'origine che lo impedisce.
+Questo risultato è molto importante, perch\'e fornisce le condizioni meno restrittive per affermare l'esattezza della forma.
+La sua dimostrazione però è piuttosto complicata, e non la trattiamo: possiamo però verificarne la validità su insiemi più semplici, come gli insiemi cosiddetti \emph{stellati} o gli insiemi convessi, che sono tutti semplicemente connessi quindi per le forme in tali insiemi vale il lemma di Poincar\'e.
 \begin{definizione} \label{d:insieme-stellato}
 	Un insieme $A\subseteq\R^n$ aperto si dice \emph{stellato} rispetto ad un suo punto $\vec x_0$ se per ogni $\vec x\in A$ si ha $[\vec x,\vec x_0]\subset A$, cioè il segmento che li unisce è tutto contenuto in $A$.
 \end{definizione}
-L'insieme dell'esempio precedente, avendo un buco nell'origine, non era stellato.
-\begin{teorema} \label{t:forma-chiusa-stellato}
-	Sia $A\subseteq\R^n$ un insieme aperto e stellato, e $\omega$ una forma differenziale lineare in $A$. Se $\omega$ è chiusa, allora è anche esatta.
+Alcuni semplici insiemi stellati sono gli insiemi convessi, per i quali il segmento che unisce \emph{qualsiasi} suoi due punti è interno all'insieme, dunque sono stellati rispetto a tutti i loro punti.
+Vediamo quindi una dimostrazione del lemma di Poincar\'e per questi insiemi stellati.
+\begin{teorema} \label{t:poincare-stellato}
+	Sia $A\subseteq\R^n$ un insieme aperto e stellato, e $\omega$ una forma differenziale lineare in $A$.
+	Se $\omega$ è chiusa in $A$, allora è anche esatta in tale insieme.
 \end{teorema}
-\begin{proof}
-	Sia $\vec x_0\in A$, e per ogni $\vec x\in A$ prendiamo la parametrizzazione del segmento $\vphi(t)=\vec x_0+(\vec x-\vec x_0)t$, con $t\in[0,1]$: è una curva con sostegno contenuto in $A$, poich\'e è stellato.
-	Definiamo $F(\vec x)\defeq\int_{\vphi}\omega$. Allora calcolando l'integrale della forma otteniamo
+\begin{proof} Prendiamo un punto $\vec x_0\in A$ rispetto al quale l'insieme è stellato, e per ogni $\vec x\in A$ parametrizziamo il segmento $[\vec x_0,\vec x]$ con la funzione $\vphi(t)=\vec x_0+(\vec x-\vec x_0)t$, con $t\in[0,1]$: chiaramente è una curva con sostegno in $A$.
+	Per mostrare l'esattezza della forma, definiamo $F(\vec x)\defeq\int_{\vphi}\omega$ e verifichiamo che ne è il potenziale.
+	Calcolando l'integrale della forma lungo il segmento dato otteniamo
 	\begin{equation}
 		F(\vec x)=\int_0^1\sum_{i=1}^na_i\big(\vec x_0+(\vec x-\vec x_0)t\big)(x_i-x_{0,i})\,\dd t.
 	\end{equation}
-	Si ha  che $\omega$ è almeno di classe $\cont{1}(A)$, in quanto chiusa, quindi per la sua continuità risulta
+	Si ha che $\omega$ è almeno di classe $\cont{1}(A)$, in quanto chiusa, quindi per la sua continuità e per la linearità della derivazione risulta
 	\begin{equation}
 		\begin{split}
-			\drp{F}{x_j}(\vec x)&=\drp{}{x_j}\int_0^1\sum_{i=1}^na_i\big(\vec x_0+(\vec x-\vec x_0)t\big)(x_i-x_{0,i})\,\dd t=\\
-			&=\int_0^1\sum_{i=1}^n\drp{}{x_j}\Big[a_i\big(\vec x_0+(\vec x-\vec x_0)t\big)(x_i-x_{0,i})\Big]\,\dd t=\\
-			&=\int_0^1\sum_{i=1}^n\drp{a_i}{x_j}\big(\vec x_0+(\vec x-\vec x_0)t\big)(x_i-x_{0,i})t\,\dd t+\int_0^1a_j\big(\vec x_0+(\vec x-\vec x_0)t\big)\,\dd t=\\
-			&=\int_0^1\sum_{i=1}^n\drp{a_j}{x_i}\big(\vec x_0+(\vec x-\vec x_0)t\big)(x_i-x_{0,i})t\,\dd t+\int_0^1a_j\big(\vec x_0+(\vec x-\vec x_0)t\big)\,\dd t=\\
-			&=\int_0^1t\drv{a_j}{t}\big(\vec x_0+(\vec x-\vec x_0)t\big)\,\dd t+\int_0^1a_j\big(\vec x_0+(\vec x-\vec x_0)t\big)\,\dd t=\\
-			&=\int_0^1\drv{}{t}\Big[ta_j\big(\vec x_0+(\vec x-\vec x_0)t\big)\Big]\,\dd t=\\
-			&=ta_j\big(\vec x_0+(\vec x-\vec x_0)t\big)\bigg|_0^1=a_j(\vec x).
+			\drp{F}{x_j}(\vec x)&=\drp{}{x_j}\int_0^1\sum_{i=1}^na_i\big(\vphi(t)\big)(x_i-x_{0,i})\,\dd t=\\
+			&=\int_0^1\sum_{i=1}^n\drp{}{x_j}\Big[a_i\big(\vphi(t)\big)(x_i-x_{0,i})\Big]\,\dd t.
 		\end{split}
 	\end{equation}
-	Poich\'e $\drp{F}{x_j}(\vec x)=a_j(\vec x)$, risulta $\omega=\dd F$ dunque è esatta.
+	Svolgendo la derivata del prodotto, troviamo
+	\begin{equation}
+		\begin{split}
+			\drp{F}{x_j}(\vec x)&=\int_0^1\sum_{i=1}^n(x_i-x_{0,i})\drp{a_i}{x_j}\big(\vphi(t)\big)\,\dd t+\int_0^1\sum_{i=1}^na_i\big(\vphi(t)\big)\drp{}{x_j}(x_i-x_{0,i})\,\dd t=\\
+			&=\int_0^1\sum_{i=1}^n(x_i-x_{0,i})\drp{a_i}{x_j}\big(\vphi(t)\big)\,\dd t+\int_0^1\sum_{i=1}^na_i\big(\vphi(t)\big)\delta_{ij}\,\dd t=\\
+			&=\int_0^1\sum_{i=1}^n(x_i-x_{0,i})\drp{a_i}{x_j}\big(\vphi(t)\big)\,\dd t+\int_0^1a_j\big(\vphi(t)\big)\,\dd t.
+		\end{split}
+	\end{equation}
+	Possiamo dunque scambiare $\drp{a_i}{x_j}$ con $\drp{a_j}{x_i}$ in virtù della chiusura della forma.
+	Inoltre, sviluppiamo la derivata di $a_j$ nel prodotto delle derivate delle due funzioni composte, $a_j$ e $\vphi$:
+	\begin{equation}
+		\begin{split}
+			\drp{F}{x_j}(\vec x)&=\int_0^1\sum_{i=1}^n\drp{a_j}{x_i}\big(\vphi(t)\big)(x_i-x_{0,i})\,\dd t+\int_0^1a_j\big(\vphi(t)\big)\,\dd t=\\
+			&=\int_0^1\sum_{i=1}^n(x_i-x_{0,i})\grad a_j\big(\vphi(t)\big)\drp{\vphi}{x_i}(t)\,\dd t+\int_0^1a_j\big(\vphi(t)\big)\,\dd t=\\
+			&=\int_0^1\sum_{i=1}^n(x_i-x_{0,i})\sum_{k=1}^n\drp{a_j}{x_k}\big(\vphi(t)\big)\drp{\phi_k}{x_i}(t)\,\dd t+\int_0^1a_j\big(\vphi(t)\big)\,\dd t=\\
+			&=\int_0^1\sum_{i=1}^n(x_i-x_{0,i})\sum_{k=1}^n\drp{a_j}{x_k}\big(\vphi(t)\big)\drp{}{x_i}\big(t(x_k-x_{0,k})\big)\,\dd t+\int_0^1a_j\big(\vphi(t)\big)\,\dd t=\\
+			&=\int_0^1\sum_{i=1}^n(x_i-x_{0,i})\sum_{k=1}^n\drp{a_j}{x_k}\big(\vphi(t)\big)t\delta_{ik}\,\dd t+\int_0^1a_j\big(\vphi(t)\big)\,\dd t=\\
+			&=\int_0^1\sum_{i=1}^n(x_i-x_{0,i})\drp{a_j}{x_i}\big(\vphi(t)\big)t\,\dd t+\int_0^1a_j\big(\vphi(t)\big)\,\dd t.
+		\end{split}
+	\end{equation}
+	Riconosciamo ora nel termine della sommatoria, a meno del fattore $t$, la derivata totale rispetto al tempo della funzione $a_j\big(\vphi(t)\big)$, per cui
+	\begin{equation}
+		\drp{F}{x_j}(\vec x)=\int_0^1t\drv{a_j}{t}\big(\vphi(t)\big)\,\dd t+\int_0^1a_j\big(\vphi(t)\big)\,\dd t,
+	\end{equation}
+	e riunendo gli integrali abbiamo la derivata temporale del prodotto $ta_j\big(\vphi(t)\big)$, quindi
+	\begin{equation}
+		\drp{F}{x_j}(\vec x)=\int_0^1\drv{}{t}\Big[ta_j\big(\vphi(t)\big)\Big]\,\dd t=ta_j\big(\vec x_0+(\vec x-\vec x_0)t\big)\bigg|_0^1=a_j(\vec x),
+	\end{equation}
+	ma allora $F$ è il potenziale di $\omega$, che dunque è esatta.
 \end{proof}
-La dimostrazione appena eseguita indica anche un metodo per individuare, se esiste, il potenziale di una forma: si prende un punto arbitrario nell'insieme dato, e sicalcola l'integrale della forma lungo un segmento che connette tale punto ad un generico $\vec x$, sempre nell'insieme.
+La dimostrazione appena eseguita indica anche un metodo per individuare, se esiste, il potenziale di una forma su un insieme stellato: si prende un punto nell'insieme dato (rispetto al quale l'insieme è stellato!), e si calcola l'integrale della forma lungo un segmento che connette tale punto ad un generico $\vec x$, sempre nell'insieme.
 Ad esempio, prendiamo in $A=\{(x,y)\in\R^2\colon y>x\}$ la forma differenziale
 \begin{equation*}
 	\omega(x,y)=a_1(x,y)\,\dd x+a_2(x,y)\,\dd y=\frac{2xy-2x^2-1}{y-x}\,\dd x+\frac{y-x+1}{y-x}\,\dd y.
@@ -334,32 +376,21 @@ Essa è di classe $\cont{\infty}(A)$, ed è chiusa: infatti
 \begin{equation}
 	\drp{a_1}{y}(x,y)=\drp{}{y}\bigg(2x-\frac1{y-x}\bigg)=\frac1{(y-x)^2}=\drp{a_2}{x}(x,y).
 \end{equation}
-L'insieme $A$ è stellato, quindi $\omega$ è anche esatta.
-Prendiamo il punto $(0,1)$ e la curva $\vphi(t)=\big(tx,1+(y-1)t\big)$ che lo connette con un generico $(x,y)\in A$, con $t\in[0,1]$. Allora
+L'insieme $A$ è convesso, quindi $\omega$ è anche esatta.
+Prendiamo il punto $(0,1)$ e la curva $\vphi(t)=\big(tx,1+(y-1)t\big)$ che lo connette con un generico $(x,y)\in A$, con $t\in[0,1]$.
+Il suo potenziale è la funzione $F\colon A\to\R$ determinata da
 \begin{equation}
 	\begin{split}
-		\int_{\vphi}\omega&=\int_0^1\bigg[2tx-\frac1{1+(y-1)t-tx}\bigg]x\,\dd t+\int_0^1\bigg[1+\frac1{1+(y-1)t-tx}\bigg](y-1)\,\dd t=\\
+		F(\vec x)&=\int_{\vphi}\omega=\int_0^1\bigg[2tx-\frac1{1+(y-1)t-tx}\bigg]x\,\dd t+\int_0^1\bigg[1+\frac1{1+(y-1)t-tx}\bigg](y-1)\,\dd t=\\
 		&=\int_0^12tx^2\,\dd t+\int_0^1(y-1)\,\dd t+\int_0^1\frac{y-x-1}{1+(y-1)t-t}\,\dd t=\\
 		&=x^2\int_0^12t\,\dd t+(y-1)\int_0^1\dd t+\int_0^1\frac{y-x-1}{1+(y-x-1)t}\,\dd t=\\
-		&=x^2+y-1+\log\big[1+(y-x-1)t\big]\bigg|_0^1=\\
-		&=x^2+y-1+\log(y-x)
+		&=x^2+y-1+\log\big[1+(y-x-1)t\big]\bigg|_0^1=x^2+y-1+\log(y-x).
 	\end{split}
 \end{equation}
-è il suo potenziale.
-
-Possiamo però andare oltre gli insiemi stellati e ampliare ancora la classe degli insiemi adatti, introducendo gli insiemi \emph{semplicemente connessi}: intuitivamente si possono pensare come insiemi ``senza buchi''.
-Diamone una definizione rigorosa, tramite il concetto di curve omotope.
-\begin{definizione} \label{d:curva-omotopica}
-	Siano $\vphi_1,\vphi_2\colon[a,b]\to A\subset\R^n$ due parametrizzazioni di curve chiuse e $\cont{2}\ab$.
-	La curva $\vphi_1$ si dice \emph{omotopica} a $\vphi_2$ se esiste una mappa (detta appunto \emph{omotopia}) $\vxi\colon[0,1]\times[a,b]\to A$, di classe $\cont{2}$, tale per cui $\vxi(0,t)=\vphi_1(t)$ e $\vxi(1,t)=\vphi_2(t)$, e per ogni $s\in[0,1]$ si abbia $\vxi(s,a)=\vxi(s,b)$.
-\end{definizione}
-La mappa dell'omotopia tra le due curve si può vedere più facilmente come una ``deformazione'' continua e derivabile che trasforma la prima curva, sempre chiusa, nella seconda.
-\begin{definizione} \label{d:insieme-semplicemente-connesso}
-	Un insieme $A\subseteq\R^n$ si dice \emph{semplicemente connesso} se ogni curva $\vphi\colon[a,b]\to A$, di classe $\cont{2}(A)$ e chiusa è omotopica ad un punto in $A$, ossia ad una curva degenere costante $\vpsi\colon[a,b]\to A$ per cui $\vpsi(t)=\vec c$, con $\vec c\in A$.
-\end{definizione}
-Con queste definizioni possiamo quindi enunciare il seguente teorema, che non dimostriamo.
-\begin{teorema}[Lemma di Poincar\'e] \label{t:poincare}
-	Sia $A\subseteq\R^n$ un insieme aperto e semplicemente connesso, e $\omega$ una forma differenziale lineare di classe $\cont{1}(A)$. Se $\omega$ è chiusa allora è anche esatta.
-\end{teorema}
-Questo risultato è molto importante, perch\'e fornisce le condizioni meno restrittive per affermare l'esattezza della forma.
-% Magari qualche esempio?
+Più rigorosamente, questa funzione è solo una dei potenziali di $\omega$, che sono della forma $F+c$ per qualsiasi $c\in\R$.
+La scelta di calcolare l'integrale dal punto $(0,1)$ ci ha dato un potenziale che si annulla in tale punto.
+Questo è utile quando è espressamente richiesto che il potenziale soddisfi una condizione di questo tipo: se vogliamo che $F$ valga $F_0\in\R$ in un dato punto $\vec x'$, troveremo subito il potenziale richiesto con la formula
+\begin{equation}
+	F(\vec x)=F_0+\int_{[\vec x',\vec x]}\omega
+\end{equation}
+assicurandoci chiaramente che l'insieme sia stellato rispetto a $\vec x'$.
