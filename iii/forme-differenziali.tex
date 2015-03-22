@@ -249,7 +249,10 @@ Sfruttiamo questa definizione per enunciare i seguenti teoremi.
 \end{proof}
 
 \section{Forme differenziali chiuse}
-Se una forma differenziale è esatta in un insieme $A$ connesso e aperto, ed essa è continua, allora il suo potenziale è una funzione $F\in\cont{2}(A)$: per essa vale il teorema di Schwarz, per cui le derivate miste coincidono.
+Le forme esatte sono importanti, ma i teoremi che abbiamo visto finora sono poco utili a individuarle: è chiaramente impossibile verificare che l'integrale sia nullo lungo \emph{ogni} curva chiusa.
+Dobbiamo quindi cercare delle condizioni più facili da verificare, e sufficienti ad affermare che una forma è esatta.
+
+Se una forma differenziale è esatta in un insieme $A$ connesso e aperto ed è continua, allora il suo potenziale è una funzione $F\in\cont{2}(A)$: per essa vale il teorema di Schwarz, per cui le derivate miste coincidono.
 Poiché la forma è esatta, $\drp{F}{x_i}(\vec x)=a_i(\vec x)$, perciò
 \begin{equation}
 	\drp{a_i}{x_j}(\vec x)=\frac{\partial^2 F}{\partial x_j\partial x_i}(\vec x)=\frac{\partial^2 F}{\partial x_i\partial x_j}(\vec x)=\drp{a_j}{x_i}(\vec x).
@@ -262,8 +265,7 @@ Questa proprietà che le derivate miste ``incrociate'' sono uguali si ritrova ne
 	\end{equation}
 	per ogni $\vec x\in A$ e $i,j\in\{1,\dots,n\}$ con $i\neq j$.
 \end{definizione}
-Da quanto appena detto è evidente che tutte le forme differenziali esatte sono anche chiuse.
-Questo però non è solo un altro modo di definirle, poiché non tutte le forme differenziali chiuse sono esatte.
+Da quanto appena detto è evidente che tutte le forme differenziali esatte sono anche chiuse, ma questa proprietà si ritrova anche in altre forme, per cui non vale l'inverso.
 Prendiamo ad esempio la forma
 \begin{equation*}
 	\omega(x,y)=a_1(x,y)\,\dd x+a_2(x,y)\,\dd y=\frac{y}{x^2+y^2}\,\dd x-\frac{x}{x^2+y^2}\,\dd y
@@ -294,7 +296,8 @@ Però se prendiamo $x_1>0$, abbiamo i limiti
 \end{equation}
 ma allora $F$ è discontinua in $A$, perciò non può essere il potenziale di $\omega$, che quindi non ammette potenziali e non è esatta.
 Il problema da superare non risiede tanto nella funzione, ma nell'insieme in cui la stiamo studiando: è ovvio che se al posto di $A$ avessimo preso solo, ad esempio, il suo sottoinsieme in cui $x>0$, non ci sarebbero stati problemi di continuità e avremmo senza problemi trovato un potenziale per $\omega$.
-Dobbiamo quindi restringere la classe degli insiemi ``buoni'' che ci permettano di dire che se una forma è chiusa è anche esatta: partiamo dagli insiemi \emph{stellati}.
+
+Dobbiamo quindi restringere la classe degli insiemi ``buoni'' che ci permettano di dire quando una forma è chiusa è anche esatta: partiamo dagli insiemi \emph{stellati}.
 \begin{definizione} \label{d:insieme-stellato}
 	Un insieme $A\subseteq\R^n$ aperto si dice \emph{stellato} rispetto ad un suo punto $\vec x_0$ se per ogni $\vec x\in A$ si ha $[\vec x,\vec x_0]\subset A$, cioè il segmento che li unisce è tutto contenuto in $A$.
 \end{definizione}
