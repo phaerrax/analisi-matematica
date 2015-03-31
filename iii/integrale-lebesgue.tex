@@ -156,12 +156,14 @@ D'ora in poi con \emph{misurabile} intenderemo sempre misurabile secondo Lebesgu
 	per ogni $B\in\R^n$.
 Poich\'e $\compl{(\compl A)}=A$, si ha esattamente la stessa equazione per $A$ anzich\'e per $\compl A$.
 \end{proof}
-Una nota per le seguenti dimostrazioni: sfrutteremo spesso la relazione \eqref{eq:lebesgue-misurabile} per dimostrare che un dato insieme $A$ è misurabile.
-Poich\'e si ha per qualsiasi $E\in\R^n$ che $E=(E\cap A)\cup(E\cap\compl A)$, per la subadditività della misura esterna si ha sempre $\mu^*(E)\leq\mu^*(E\cap A)+\mu^*(E\cap\compl A)$, indipendentemente che $A$ sia misurabile o meno.
-Quindi per mostrare la misurabilità di $A$ ci basterà dimostrare la disuguaglianza opposta, che è più significativa, cioè che
-\begin{equation}
-	\mu^*(E)\geq\mu^*(E\cap A)+\mu^*(E\cap\compl A).
-\end{equation}
+\begin{osservazione}
+	Per dimostrare l'uguaglianza \eqref{eq:lebesgue-misurabile} per un insieme $A$ si è soliti dimostrare che vale sia $\mu^*(E)\geq\mu^*(A\cap E)+\mu^*(\compl A\cap E)$ che $\mu^*(E)\leq\mu^*(A\cap E)+\mu^*(\compl A\cap E)$ $\forall B\subseteq\R^n$.
+	Per qualsiasi $E\in\R^n$, però, vale $E=(E\cap A)\cup(E\cap\compl A)$, dunque per la subadditività della misura esterna si ha sempre $\mu^*(E)\leq\mu^*(E\cap A)+\mu^*(E\cap\compl A)$, questo indipendentemente che $A$ sia misurabile o meno.
+	Quindi per dimostrare la \eqref{eq:lebesgue-misurabile}  ci basterà dimostrare soltanto che
+	\begin{equation}
+		\mu^*(E)\geq\mu^*(E\cap A)+\mu^*(E\cap\compl A).
+	\end{equation}
+\end{osservazione}
 \begin{proprieta} \label{pr:misura-nulla}
 	Ogni insieme $Z\in\R^n$ tale che $\mu^*(Z)=0$ è misurabile, e la sua misura di Lebesgue è nulla.
 \end{proprieta}
