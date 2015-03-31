@@ -156,6 +156,7 @@ D'ora in poi con \emph{misurabile} intenderemo sempre misurabile secondo Lebesgu
 	per ogni $B\in\R^n$.
 Poich\'e $\compl{(\compl A)}=A$, si ha esattamente la stessa equazione per $A$ anzich\'e per $\compl A$.
 \end{proof}
+Un esempio immediato: l'insieme vuoto è misurabile, perch\'e per ogni $A\subseteq\R^n$ si ha $\mu^*(A\cap\emptyset)+\mu^*(A\cap\compl{\emptyset})=\mu^*(A\cap\R^n)=\mu^*(A)$; di conseguenza lo è anche $\R^n$, in quanto suo complementare.
 \begin{osservazione}
 	Per dimostrare l'uguaglianza \eqref{eq:lebesgue-misurabile} per un insieme $A$ si è soliti dimostrare che vale sia $\mu^*(E)\geq\mu^*(A\cap E)+\mu^*(\compl A\cap E)$ che $\mu^*(E)\leq\mu^*(A\cap E)+\mu^*(\compl A\cap E)$ $\forall B\subseteq\R^n$.
 	Per qualsiasi $E\in\R^n$, però, vale $E=(E\cap A)\cup(E\cap\compl A)$, dunque per la subadditività della misura esterna si ha sempre $\mu^*(E)\leq\mu^*(E\cap A)+\mu^*(E\cap\compl A)$, questo indipendentemente che $A$ sia misurabile o meno.
