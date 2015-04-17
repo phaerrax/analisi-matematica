@@ -1,10 +1,81 @@
 \chapter{Misura e integrale di Lebesgue}
-Avevamo visto nel capitolo \ref{ch:integrale-riemann} la teoria dell'integrazione sviluppata da Riemann.
-Essa è utile nel calcolo integrale di molte funzioni comuni, ma risulta ancora limitata: la classe delle funzioni integrabili secondo Riemann è ampia, ma non comprende ad esempio i limiti delle successioni, difficili da analizzare in tale contesto.
-L'integrale di Lebesgue si comporta meglio su questo tipo di funzioni, permettendo condizioni meno restrittive, e per questo risulta molto più adatta in questo campo.
-Le funzioni integrabili secondo Lebesgue comprendono anche casi una volta considerati ``patologici'' come la funzione di Dirichlet: essa ha un integrale di Lebesgue, che è anche piuttosto semplice da calcolare, ma non di Riemann.
+Come misuriamo il ``volume'' di un insieme di $\R^n$?
+Partiamo dai più semplici, gli intervalli sulla retta reale: associamo in modo del tutto naturale ad un intervallo $I$ di estremi $a$ e $b$ la sua \emph{lunghezza}, che definiamo come $b-a$.
+Un passo ulteriore è la generalizzazione degli intervalli a dimensioni maggiori, ottenendo dei rettangoli, o anche \emph{iperrettangoli}: essi saranno individuati da due punti nello spazio, $\vec a=(a_1,\dots,a_n)$ e $\vec b=(b_1,\dots,b_n)$, e possiamo definire il suo volume come il prodotto delle lunghezze $b_i-a_i$ di ciascun suo lato (preso singolarmente).
+Potremmo anche prendere intervalli non limitati, e dire che il loro volume è infinito.
 
-La costruzione dell'integrale di Lebesgue si fonda su una nuova teoria della misura, che permette di definire il concetto di insieme misurabile e funzione misurabile: si vedrà che trovare insiemi (e funzioni) non misurabili è molto difficile, ma comunque sarà essenziale distinguere tra le due classi.
+Come possiamo definire però il volume per insiemi che non sono intervalli?
+È facile estendere il risultato all'unione di intervalli, ma per un insieme qualunque è meno ovvio.
+Ad esempio, come misuriamo la lunghezza dell'insieme dei numeri razionali in $[0,1]$?
+Possiamo estendere questo concetto di ``volume'' per insiemi qualsiasi di $\R^n$?
+I modi di farlo esistono e sono tanti: la \emph{misura di Lebesgue} è uno di questi.
+Vedremo inoltre come questa \emph{teoria della misura} ci permetterà di ampliare anche la teoria dell'integrazione di Riemann: quest'ultima, pur comprendendo una vasta gamma di insiemi e funzioni, non è sufficiente a trattare facilmente ad esempio i limiti di successioni di funzioni, per funzioni sempre più irregolari.
+
+\section{Spazi di misura}
+Passiamo ad un livello più astratto, e vediamo come definire rigorosamente questo ``volume'': innanzitutto, è lecito aspettarsi che esso sia un numero reale e positivo o nullo, semmai anche infinito.
+Definiamo dunque una funzione che associ ad ogni insieme un numero in $[0,+\infty]$.
+Questi insiemi li peschiamo da una collezione di insiemi $\mathcal C$, che per il momento non definiamo: abbiamo dunque una funzione $\lambda\colon\mathcal C\to[0,+\infty]$.
+Vediamo man mano come definire bene $\mathcal C$ in modo da avere delle proprietà ottimali per il nostro concetto di volume.
+Per prima cosa, l'insieme vuoto avrà certamente una misura (che sarà chiaramente zero), dunque $\mathcal C$ lo dovrà includere.
+Ci aspettiamo inoltre che $\mathcal C$ sia chiusa rispetto alle operazioni ``di base'' di insiemistica, cioè l'unione, l'intersezione e il complemento; in sostanza, $\mathcal C$ dovrà essere un'\emph{algebra} di insiemi.
+\begin{definizione} \label{d:algebra}
+	Una collezione $\mathcal A$ di insiemi di $X$ è detta \emph{algebra} se:
+	\begin{itemize}
+		\item $\emptyset\in\mathcal A$;
+		\item se $A,B\in\mathcal A$ allora $A\cup B\in\mathcal A$;
+		\item se $A\in\mathcal A$ allora $\compl A\in\mathcal A$.
+	\end{itemize}
+\end{definizione}
+Due esempi facili di algebre, con $X=\R^n$, sono $\mathcal A=\{\emptyset,\R^n\}$ e l'insieme delle parti $\mathcal P(\R^n)$.
+Queste due sono rispettivamente la più piccola e la più grande algebra su $\R^n$, e sono solitamente chiamate \emph{algebre banali}.
+
+Ecco le proprietà principali che vogliamo che $\lambda$ abbia.
+\begin{enumerate}
+	\item Generalizza il volume: per un intervallo o iperrettangolo $I$, $\lambda(I)$ deve coincidere con il suo volume;
+	\item Monotonia: se $A\subseteq B\subseteq\R^n$, allora $\lambda(A)\leq\lambda(B)$;
+	\item Additiva numerabile: se $A$ e $B$ sono sottoinsiemi disgiunti di $\R^n$, allora $\lambda(A+B)=\lambda(A)+\lambda(B)$, e se $\{A_i\}$ è una famiglia di insiemi (anche infinita, purch\'e numerabile) tutti disgiunti allora $\lambda\big(\bigcup_{i\in\N}A_i\big)=\sum_{i\in\N}\lambda(A_i)$.
+\end{enumerate}
+Mentre le prima due sono del tutto plausibili, la terza può sembrare forse eccessiva.
+La ragione per richiederla è che l'additività \emph{finita} (cioè per un numero finito di insiemi) è troppo debole come proprietà per giustificare i passaggi al limite degli integrali di successioni che vogliamo studiare nella nuova teoria.
+D'altro canto, l'additività \emph{non numerabile} sarebbe eccessiva, perch\'e se la ammettessimo otterremmo che poich\'e un punto ha (come vedremo) un volume nullo, allora qualsiasi insieme di $\R^n$ avrebbe volume nullo.
+
+Quest'ultima proprietà ci porta dunque dalle algebre di insiemi alle cosiddette \emph{$\sigma$-algebre}.
+\begin{definizione} \label{d:sigma-algebra}
+	Una collezione $\mathfrak S$ di insiemi di $X$ è detta \emph{$\sigma$-algebra} se
+	\begin{itemize}
+		\item $\emptyset\in\mathfrak S$;
+		\item se $\{A_n\}$ con $n\in\N$ è una famiglia (al più numerabile) di insiemi di $\mathfrak S$, allora $\bigcup_{n\in\N}A_i\in\mathfrak S$;
+		\item se $A\in\mathfrak S$ allora $\compl A\in\mathfrak S$.
+	\end{itemize}
+\end{definizione}
+In pratica, una $\sigma$-algebra non è altro che un'algebra chiusa anche rispetto all'unione numerabile.
+La collezione $\mathcal C$ di insiemi su cui definire $\lambda$ dovrà essere di questo tipo.
+Possiamo dare quindi una definizione su cui basare il concetto di volume generalizzato, detto volgarmente \emph{misura}.
+\begin{definizione} \label{d:misura}
+	Sia $\mathfrak F$ una $\sigma$-algebra di sottoinsiemi di $X$.
+	Una funzione $\mu\colon\mathfrak F\to[0,+\infty]$ è detta \emph{misura} se:
+	\begin{enumerate}
+		\item $\mu(\emptyset)=0$;
+		\item presa una famiglia numerabile di insiemi tutti disgiunti $\{A_i\}_{n\in\N}$, risulta
+			\begin{equation}
+				\mu\Big(\bigcup_{n\in\N}A_i\Big)=\sum_{n\in\N}\mu(A_i).
+				\label{eq:sigma-addivita}
+			\end{equation}
+	\end{enumerate}
+\end{definizione}
+Chiamiamo inoltre $(X,\mathfrak F,\mu)$ \emph{spazio di misura}.
+L'immagine di $\mu$ non deve necessariamente essere tutto $[0,+\infty]$: un caso molto importante è quello in cui $\mu\colon\mathfrak F\to[0,1]$, per cui quindi $\mu(X)=1$.
+Questo tipo di misura è detto solitamente \emph{misura di probabilità}, mentre la $\sigma$-algebra $\mathfrak F$ rappresenta lo spazio degli eventi possibili.
+
+Sfortunatamente, non è possibile definire una tale funzione su tutto l'insieme delle parti di $\R^n$ in una maniera ragionevole.
+Questo inconveniente è al centro del paradosso di Banach-Tarski: essi mostrarono che in $\R^3$ o dimensioni maggiori si può suddividere una palla in un numero finito di pezzi e, tramite delle isometrie (ossia delle rototraslazioni), riassemblare i pezzi per ottenere una palla di volume \emph{qualunque}, ad esempio due palle ciascuna uguale a quella di partenza.
+Si giunge a situazioni assurde, come questa, in cui $\mu(A)=\mu(A)+\mu(A)$, senza che $\mu(A)$ sia nulla.
+La ``morale'' di tutto ciò è che esistono insiemi \emph{troppo irregolari} per definire una misura su tutti i sottoinsiemi di $\R^n$ che soddisfi tutte le proprietà elencate finora, e che sia invariante per traslazioni.
+Tra i rimedi applicabili possiamo abbandonare alcune proprietà, come l'additività numerabile o l'invarianza per isometrie: fare ciò porterebbe però ad una teoria poco intuitiva (come può il volume di un solido cambiare se lo si ruota?) o non sufficiente ai nostri bisogni.
+Invece, possiamo semplicemente definire la misura di Lebesgue, anzich\'e su tutto l'insieme delle parti, soltanto su un suo sottoinsieme: esso sarà tale da escludere quegli insiemi perversi che portano a risultati come questo paradosso, ma sarà comunque grande abbastanza da contenere tutti gli insiemi ``di uso quotidiano'' nell'analisi matematica.
+
+Esistono molte maniere di costruire la misura di Lebesgue, tutte le quali portano al medesimo risultato.
+Il nostro approccio segue la costruzione di Carath\'eodory: definiremo prima una \emph{misura esterna} su tutti i sottoinsiemi di $\R^n$ (che non godrà dell'addività numerabile), approssimandola con il volume degli iperrettangoli, dunque la restringeremo ad un opportuno sottoinsieme di $\mathcal P(\R^n)$ che soddisfi certe proprietà.
 
 \section{Misura esterna}
 \label{sec:misura-esterna}

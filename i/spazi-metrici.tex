@@ -166,7 +166,7 @@ Sia $A'\subseteq A$ e $p$ un qualsiasi punto del complementare. Per ipotesi $p$ 
 \item Ogni intorno è aperto, per definizione, perché tutti i suoi punti sono interni.
 \item In uno spazio metrico discreto, ogni insieme $A\subseteq X$ è aperto, perché ogni suo punto è interno, ma allo stesso tempo tutti i punti sono isolati, quindi $A'=\emptyset$, quindi $A$ (che ovviamente contiene l'insieme vuoto) è anche chiuso.
 \end{itemize}
-\begin{teorema}
+\begin{teorema} \label{t:unione-intersezione-aperti}
 Siano $(X,d)$ uno spazio metrico e $\{A_i\}_{i\in I}$ una famiglia qualunque di sottoinsiemi aperti di tale spazio metrico. Allora
 \begin{enumerate}
 \item\[
@@ -186,7 +186,7 @@ A=\bigcap_{i=1}^n A_i\text{ è aperto}.
 \end{proof}
 In generale, l'intersezione infinita di aperti non è aperta: ad esempio, sia $A_i=(0,1+\sfrac{1}{k})$, per $i\in\N$, l'intersezione dà come risultato $\bigcap_{i=1}^{\pinf}A_i=(0,1]$, che non è aperto né chiuso.
 Vale anche il seguente teorema, la cui dimostrazione si ricava dal precedente.
-\begin{teorema}
+\begin{teorema} \label{t:unione-intersezione-chiusi}
 Siano $(X,d)$ uno spazio metrico e $\{C_j\}_{j\in J}$ un una famiglia qualunque di sottoinsiemi chiusi di tale spazio metrico. Allora
 \begin{enumerate}
 \item\[
