@@ -16,7 +16,7 @@ Passiamo ad un livello più astratto, e vediamo come definire rigorosamente ques
 Definiamo dunque una funzione che associ ad ogni insieme un numero in $[0,+\infty]$.
 Questi insiemi li peschiamo da una collezione di insiemi $\mathcal C$, che per il momento non definiamo: abbiamo dunque una funzione $\lambda\colon\mathcal C\to[0,+\infty]$.
 Vediamo man mano come definire bene $\mathcal C$ in modo da avere delle proprietà ottimali per il nostro concetto di volume.
-Per prima cosa, l'insieme vuoto avrà certamente una misura (che sarà chiaramente zero), dunque $\mathcal C$ lo dovrà includere.
+Per prima cosa, l'insieme vuoto avrà certamente un volume (che sarà chiaramente zero), dunque $\mathcal C$ lo dovrà includere.
 Ci aspettiamo inoltre che $\mathcal C$ sia chiusa rispetto alle operazioni ``di base'' di insiemistica, cioè l'unione, l'intersezione e il complemento; in sostanza, $\mathcal C$ dovrà essere un'\emph{algebra} di insiemi.
 \begin{definizione} \label{d:algebra}
 	Una collezione $\mathcal A$ di insiemi di $X$ è detta \emph{algebra} se:
@@ -49,8 +49,7 @@ Quest'ultima proprietà ci porta dunque dalle algebre di insiemi alle cosiddette
 	\end{itemize}
 \end{definizione}
 In pratica, una $\sigma$-algebra non è altro che un'algebra chiusa anche rispetto all'unione numerabile.
-La collezione $\mathcal C$ di insiemi su cui definire $\lambda$ dovrà essere di questo tipo.
-Possiamo dare quindi una definizione su cui basare il concetto di volume generalizzato, detto volgarmente \emph{misura}.
+La collezione $\mathcal C$ di insiemi su cui definire $\lambda$ sarà allora di questo tipo: insieme alle altre proprietà desiderate, tale funzione $\lambda$ dovrà dunque essere ciò che rigorosamente si chiama \emph{misura}.
 \begin{definizione} \label{d:misura}
 	Sia $\mathfrak F$ una $\sigma$-algebra di sottoinsiemi di $X$.
 	Una funzione $\mu\colon\mathfrak F\to[0,+\infty]$ è detta \emph{misura} se:
@@ -184,22 +183,10 @@ Si può però vedere intuitivamente che la misura di $C_n$ è $2^n/3^n$, quindi
 \end{equation}
 cioè l'insieme è di misura nulla.
 
-Dovendo sfruttare questa teoria della misura per l'integrazione, è di fondamentale importanza (come già facevamo per l'integrale di Riemann) che l'integrale si possa scomporre nella somma di integrali su vari sottoinsiemi.
-Per avere questa proprietà per gli integrali bisogna chiaramente avere una proprietà \emph{additiva} per la misura degli insiemi, ossia che la misura dell'unione (numerabile) di due insiemi disgiunti corrisponda alla somma delle misure di ciascun insieme.
-In breve, per $A,B\in\R^n$ e $A\cap B=\emptyset$, vogliamo che $\mu^*(A\cup B)=\mu^*(A)+\mu^*(B)$.
-Per quello che abbiamo visto finora, la misura non gode di tale proprietà, ma di una più debole, la subadditività numerabile: in pratica sappiamo solo che $\mu^*(A\cup B)$ è minore o uguale della somma delle due misure, che quindi può essere più grande.
-Esistono infatti insiemi disgiunti per cui la disuguaglianza è stretta, come nel celebre paradosso di Banach-Tarski, secondo il quale data la sfera unitaria $S$ esistono due insiemi disgiunti $A_1,A_2$ per i quali
-\begin{equation}
-	S=A_1\cup A_2\qeq \mu^*(A_1)=\mu^*(A_2)=\mu^*(S) 
-\end{equation}
-e se valesse l'additività numerabile per la misura esterna si avrebbe $\mu^*(S)=\mu^*(A_1)+\mu^*(A_2)=2\mu^*(S)$.
-
-Per risolvere queste contraddizioni dobbiamo quindi rinunciare a poter misurare (con le proprietà volute) ogni sottoinsieme dello spazio, ossia dobbiamo accettare che esistono insiemi \emph{che non si possono misurare}.
-
 \section{Misura di Lebesgue}
 \label{sec:misura-lebesgue}
-Dobbiamo trovare dunque un criterio che ci permetta di capire quando un insieme si può misurare.
-La seguente costruzione della misura segue le idee di Carath\'eodory.
+Avendo approssimato il volume di un insieme con la misura esterna, dobbiamo trovare ora un criterio che ci permetta di capire quando un insieme si può misurare in modo che questa sua misura soddisfi tutte le proprietà che abbiamo elencato all'inizio del capitolo.
+Nella costruzione della misura di Lebesgue sviluppata da Carath\'eodory, consideriamo misurabili quegli insiemi che, in gergo, ``tagliano bene'' tutti gli insiemi di $\R^n$.
 \begin{definizione} \label{d:lebesgue-misurabile}
 	Un insieme $A\in\R^n$ si dice \emph{misurabile secondo Lebesgue} se vale la relazione
 	\begin{equation}
@@ -213,8 +200,6 @@ Indicheremo la classe degli insiemi di $\R^n$ misurabili secondo Lebesgue con la
 	Si definisce \emph{misura di Lebesgue} la restrizione della misura esterna $\mu^*$ all'insieme $\mis(\R^n)$.
 \end{definizione}
 La misura di Lebesgue, che indicheremo con $\mu$, coincide (quando è definita) con la misura esterna definita nella \ref{d:misura-esterna}, quindi la definizione rimane la stessa, e ovviamente ne eredità le proprietà già dimostrate.
-Avendo ristretto però l'insieme di definizione ai soli insiemi che rispettano la \eqref{eq:lebesgue-misurabile}, possiamo aggiungerne altre molto importanti.
-Tra queste, ovviamente, figurerà la proprietà additiva.
 D'ora in poi con \emph{misurabile} intenderemo sempre misurabile secondo Lebesgue, e con \emph{misura} la misura di Lebesgue, dove non si presenteranno ambiguità.
 \begin{proprieta} \label{pr:complementare-misurabile}
 	Un insieme $A\in\R^n$ è misurabile se e solo se lo è il suo complementare.
@@ -317,7 +302,6 @@ Passiamo ora a dimostrare come si comporta la misura di Lebesgue rispetto alle o
 	\end{enumerate}
 \end{proof}
 Per induzione, segue immediatamente da questo teorema che l'unione e intersezione \emph{finite} di insiemi sono ancora insiemi numerabili, e che la misura è additiva se tutti gli insiemi sono disgiunti.
-Per le unioni o intersezioni infinite (numerabili) non vale più il teorema dimostrato, ma dobbiamo dimostrarlo nuovamente: dimostriamo finalmente, quindi, la proprietà di additività numerabile che abbiamo annunciato all'inizio di questa sezione.
 \begin{proprieta} \label{pr:additivita-numerabile-lebesgue}
 	Sia $\{A_n\}_{n\in\N}$ una famiglia di insiemi misurabili di $\R^n$.
 	Allora l'unione e l'intersezione (numerabili) $\bigcup_{n=1}^{+\infty}+A_n$ e $\bigcap_{n=1}^{+\infty}A_n$ sono insiemi numerabili.
@@ -407,26 +391,12 @@ Concludiamo la serie di teoremi con un corollario sulle successioni di insiemi m
 	\end{itemize}
 \end{corollario}
 
-Le proprietà dimostrate finora rendono la classe degli insiemi di $\R^n$ misurabili una \emph{$\sigma$-algebra}, ossia un insieme $\mathfrak S$ tale che
-\begin{enumerate}
-	\item l'insieme vuoto appartiene a $\mathfrak S$;
-	\item se un insieme è in $\mathfrak S$, allora anche il suo complementare è in $\mathfrak S$;
-	\item se gli elementi di una famiglia numerabile di insiemi $\{A_i\}_{i\in\N}$ sono in $\mathfrak S$, allora anche l'unione numerabile $\bigcup_{i\in\N}A_i$ appartiene a $\mathfrak S$.
-\end{enumerate}
-Se $\mathfrak S$ è una $\sigma$-algebra su un insieme $X$, la coppia $(X,\mathfrak S)$ si dice \emph{spazio misurabile}.
-Dalla definizione segue immediatamente che in uno spazio misurabile
-\begin{itemize}
-	\item $X\in\mathfrak S$, in quanto complementare di $\emptyset$ rispetto a s\'e stesso;
-	\item anche l'intersezione numerabile di insiemi di $\mathfrak S$ è un insieme di $\mathfrak S$, come visto nella dimostrazione della proprietà \ref{pr:additivita-numerabile-lebesgue} applicando le leggi di De Morgan;
-	\item se due insiemi appartengono a $\mathfrak S$, anche la loro opportuna sottrazione vi appartiene.
-\end{itemize}
-Infine, dato uno spazio misurabile $(X,\mathfrak S)$ e una misura positiva $\lambda$ definita sulla $\sigma$-algebra $\mathfrak S$ (costituita dai sottoinsiemi misurabili di $X$), la terna $(X,\mathfrak S,\lambda)$ si chiama \emph{spazio di misura}.
-Per quanto detto finora, la terna $\big(\R^n,\mis(\R^n),\mu\big)$ è proprio uno spazio di misura.
+Raggiunta la fine di questa sezione, abbiamo dimostrato le proprietà che rendono la classe degli insiemi di $\R^n$ misurabili una \emph{$\sigma$-algebra}.
+Per quanto detto finora, la terna $\big(\R^n,\mis(\R^n),\mu\big)$ è dunque uno spazio di misura.
 
 \section{Caratterizzazione degli insiemi misurabili}
 \label{sec:caratterizzazione-insiemi-misurabili}
-Abbiamo finora caratterizzato la misura di Lebesgue con le sue importanti proprietà, mostrando come si comporta con le operazioni tra gli insiemi.
-Abbiamo inoltre ridotto la classe degli insiemi ammissibili ad un sottoinsieme di $\R^n$, ma come sono fatti questi insiemi misurabili?
+Come sono fatti questi insiemi misurabili? Sappiamo bene la loro definizione, ma come li possiamo collegare alle caratteristiche che già conosciamo sui vari insiemi aperti, chiusi e compatti?
 \begin{teorema}
 	Ogni insieme aperto, chiuso o compatto di $\R^n$ è misurabile, e la misura di un insieme compatto è sempre finita.
 \end{teorema}
