@@ -1179,14 +1179,12 @@ Se la funzione ha segno costante, vediamo che questo non può accadere.
 \begin{teorema}[di Tonelli] \label{t:tonelli}
 	Date $f\colon\R^n\to[0,+\infty]$ misurabile, con $\R^n=\R^m\times\R^k$, allora la funzione $\vec x\mapsto\int_{\R^k}f(\vec x,\vec y)\,\dd\vec y$, definita quasi ovunque da $\R^m$ a $\R$, è misurabile, e lo stesso per la $\vec y\mapsto\int_{\R^m}f(\vec x,\vec y)\,\dd x$ da $\R^k$ a $\R$, e si può scambiare l'ordine di integrazione.
 \end{teorema}
-\begin{proof}
-	Innanzitutto, per il segno costante di $f$, l'integrale $\int_{\R^n}f\,\dd\mu$ esiste certamente, poich\'e la parte negativa è identicamente nulla.
-	Per il resto, ci può riportare al teorema \ref{t:fubini} di Fubini: le funzioni $\vec x\mapsto f(\vec x,\vec y)$ e $\vec y\mapsto f(\vec x,\vec y)$ sono misurabili quasi ovunque in $\R^m$ e $\R^k$ rispettivamente, cos\'i come lo sono le
-	\begin{equation*}
-		\vec x\mapsto\int_{\R^k}f(\vec x,\vec y)\,\dd\vec y\qqq\vec y\mapsto\int_{\R^m}f(\vec x,\vec y)\,\dd\vec x
-	\end{equation*}
-	\dots
-\end{proof}
+Se dobbiamo integrare una funzione, se essa è sommabile o non negativa in partenza, possiamo direttamente applicare il teorema di Fubini o di Tonelli.
+Se ciò non accade, possiamo comunque sfruttarli nel seguente metodo.
+\begin{enumerate}
+	\item Si calcola l'integrale del modulo della funzione: dato che è sempre positivo o nullo, per calcolare questo integrale si può usare il teorema di Tonelli;
+	\item Se tale integrale è finito, significa che la funzione è sommabile, quindi possiamo calcolare l'integrale della funzione di partenza separando le variabili con il teorema di Fubini.
+\end{enumerate}
 
 Verificato quando è possibile scambiare l'ordine di integrazione e ridurre l'integrale, certe volte ci si trova ad integrare una funzione in un cerchio, in una sfera, o in altri insiemi dotati di particolari simmetrie.
 Risulterebbe comodo, ad esempio, nei primi due casi, porsi in un sistema di coordinate polari (piane o sferiche) per svolgere i nostri calcoli.
