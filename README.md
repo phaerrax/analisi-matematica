@@ -1,13 +1,16 @@
-### Analisi Matematica
+#### Analisi Matematica
 
-Questo volume è principalmente la trascrizione degli appunti dei tre corsi di **Analisi Matematica**, rispettivamente
+Questo volume nasce come la trascrizione degli appunti dei tre corsi di **Analisi Matematica**, rispettivamente
 * Analisi Matematica 1, A.A. 2013-2014, tenuto dalla prof.ssa Maura Salvatori;
 * Analisi Matematica 2, A.A. 2013-2014, tenuto dal prof. Marco Vignati;
 * Analisi Matematica 3, A.A. 2014-2015, tenuto dal prof. Bernhard Ruf.
-Oltre a questi, la trattazione degli argomenti è arricchita da alcuni approfondimenti (di gusto personale), di carattere discorsivo e non troppo rigoroso.
 
-Le lezioni sono terminate, ma il lavoro non è ancora completato: mancano ancora alcuni piccoli punti, e in generale è sotto una continua opera di perfezionamento.
+Da qui è cresciuto ed è diventato un volume di raccolta, oltre gli scopi didattici, degli argomenti di Analisi Matematica incontrati negli anni di studio, arricchito da approfondimenti personali (spesso di carattere discorsivo e non troppo rigorosi).
+È in programma un'estensione con altre due parti, una di analisi complessa e una di analisi funzionale (di base), basate sul corso di **Metodi Matematici della Fisica** (prof. Luca Molinari, A.A 2014-2015).
+
+Il lavoro non è ancora completato, ed è sotto una continua opera di perfezionamento.
 Correzioni e consigli sono sempre i benvenuti.
+Buona lettura!
 
 Informazioni tecniche
 ---------------------
