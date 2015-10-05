@@ -9,7 +9,7 @@ Una funzione $f\colon[a,b]\to\R$ di classe $\cont{1}$ può essere considerata co
 \begin{proof}
 	Sia $\phi[a,b]\to\R^2$ regolare, cioè sia $\big(x'(t),y'(t)\big)\neq(0,0)$: ciò signfica che $x'(t)$ o $y'(t)$ non è nulla.
 	Sia $t_0$ un punto di $[a,b]$ e poniamo per ipotesi $x'(t_0)>0$: per la continuità di $\phi$ deve esistere un intorno $U(t_0)\subset[a,b]$ in cui ancora $x'(t)>0$ $\forall t\in U(t_0)$.
-	Definiamo allora $\psi(t)$ la curva $\phi(t)$ ristretta a $U(t_0)$. Poiché in $U(t_0)$ la $x'(t)$ è sempre positiva, significa che $x(t)$ è monotona crescente, quindi invertibile nell'intorno. Chiamiamo l'inversa $t(x)$: allora possiamo rappresentare $\psi(t)$ come la funzione $y=f\big(t(x)\big)=f(t)$.
+	Definiamo allora $\psi(t)$ la curva $\phi(t)$ ristretta a $U(t_0)$. Poiché in $U(t_0)$ la $x'(t)$ è sempre positiva, significa che $x(t)$ è monotona crescente, quindi invertibile nell'intorno. Chiamiamo l'inversa $t(x)$: allora possiamo rappresentare $\psi(t)$ come la funzione $y=f\big(t(x)\big)=f(x)$.
 	\end{proof}
 Spesso però una curva non è data in rappresentazione parametrica, ma tramite un'equazione cartesiana che lega le coordinate nella formula $F(x,y)=0$. Ad esempio, la circonferenza unitaria è data dalla funzione $F(x,y)=x^2+y^2-1$: i punti soluzioni dell'equazione $F(x,y)=0$ sono i punti della circonferenza.
 Questo esempio è un caso piuttosto facile, ma come facciamo a capire cosa rappresenta l'equazione $x^2(4x+1)-y^2=0$? Non sappiamo, così a priori, se è nemmeno una curva. Il seguente teorema, che è il teorema delle funzioni implicite, fornisce delle condizioni sufficienti a rappresentare certe curve ``nascoste'' in equazioni come queste.
@@ -69,7 +69,7 @@ Passiamo ora ad una versione di questo teorema in tre dimensioni, relativamente 
 \begin{teorema} \label{t:dini-Rn}
 	Sia $A\subset\R^n\times\R^m$ un aperto, e $(\vec x,\vec y)=(x_1,\dots,x_m,y_1,\dots,y_n)$ un suo punto.
 	Sia $\vec F\colon A\to\R^n$ una funzione di classe $\cont{1}(A)$.
-	Denotiamo con $F_x$ e $F_y$ le matrici, rispettivamente di dimensioni $n\times m$ e $n\times n$, che sono le colonne della jacobiana di $F$ rispetto alle variabili $\vec x$ e a $\vec y$, ossia
+	Denotiamo con $F_x$ e $F_y$ le matrici, rispettivamente di dimensioni $n\times m$ e $n\times n$, che sono le colonne della jacobiana di $F$ rispetto alle variabili $\vec x$ e $\vec y$, ossia
 	\[
 	F_x=
 		\begin{bmatrix}
