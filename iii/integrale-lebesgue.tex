@@ -1095,11 +1095,6 @@ Analogamente possiamo dimostrare che anche la parte negativa ha integrale $+\inf
 Occupiamoci ora delle tecniche per passare da un integrale \emph{multiplo}, ossia dove l'insieme di integrazione è in $\R^n$ con $n\geq 2$ (quindi in più variabili), ad un integrale in una sola dimensione a cui possiamo applicare le note formule per risolverlo.
 Queste sono chiamate \emph{formule di riduzione}, in quando permettono di ``ridurre la dimensione'' dell'integrale.
 
-Indicheremo con $\vec z=(\vec x,\vec y)\in\R^m\times\R^k$ il punto $\vec z=(x_1,\dots,x_m,y_1,\dots,y_k)\in\R^{m+k}$, e per brevità abbrevieremo
-\begin{equation*}
-	\int f(\vec z)\,\dd\vec z=\int f(\vec z)\,\dd z_1\,\dd z_2\dots\dd z_n.
-\end{equation*}
-
 \begin{teorema}[di Fubini] \label{t:fubini}
 	Sia $f\in L(\R^n)$, con $n=m+k$ ($m,k\geq 1$).
 	Detto $(\vec x,\vec y)\in\R^n$ come definito prima, allora:
@@ -1119,9 +1114,9 @@ Indicheremo con $\vec z=(\vec x,\vec y)\in\R^m\times\R^k$ il punto $\vec z=(x_1,
 Grazie a questo teorema possiamo dunque scomporre l'integrale multiplo in una serie di integrali \emph{iterati}, ossia da risolvere una variabile alla volta.
 Chiaramente si scompongono gli integrali fino ad arrivare ad integrali in una dimensione: detto ad esempio $\vec z=(z_1,\dots,z_n)\in\R^n$ si ha
 \begin{equation*}
-	\int_{\R^n}f(\vec z)\,\dd\vec z=\int_\R\bigg[\int_\R\bigg[\dots\int_\R\bigg[\int_\R f(\vec z)\,\dd z_1\bigg]\dd z_2\bigg]\dots\dd z_{n-1}\bigg]\dd z_n
+	\int_{\R^n}f(\vec z)\,\dd\vec z=\int_\R\bigg[\int_\R\bigg[\cdots\int_\R\bigg[\int_\R f(\vec z)\,\dd z_1\bigg]\dd z_2\bigg]\cdots\dd z_{n-1}\bigg]\dd z_n
 \end{equation*}
-e non importa l'ordine in cui lo si scompone.
+che si calcola risolvendo man mano tutti gli integrali partendo dal più interno; non importa inoltre l'ordine in cui lo si scompone.
 
 Tra le tecniche di riduzione più usate in $\R^3$ ci sono l'integrazione \emph{per fili} o \emph{per strati}: come suggerisce il nome, la prima consiste nel fissare prima due variabili, e integrare prima lungo una sola variabile, poi nelle altre due; la seconda invece fa l'opposto, ossia fissa una variabile e integra prima sulle altre due, in un certo senso calcolando la misura della ``fetta'' di volume ottenuta tagliandolo lungo la variabile fissata.
 Vediamo che queste sezioni che si ottengono tagliando l'insieme di integrazione sono misurabili.
@@ -1140,7 +1135,7 @@ Potendo estendere una funzione definita in un sottoinsieme $A\subset\R^n$ a tutt
 	Inoltre se $f\in L(A)$ allora $\vec y\mapsto f(\vec x,\vec y)$ è a sua volta sommabile su $A(\vec x)$ quasi ovunque in $\R^n$, e $\vec x\mapsto\int_{A(\vec x)}f(\vec x,\vec y)\,\dd\vec y$ è sommabile in $\R^m$.
 	Infine si può scomporre l'integrale come
 	\begin{equation}
-		\int_Af(\vec x,\vec y)\,\dd\vec x\,\dd\vec y=\int_{R^m}\bigg[\int_{A(\vec x)}f(\vec x,\vec y)\,\dd\vec y\bigg]\dd\vec x.
+		\int_Af(\vec x,\vec y)\,\dd\vec x\,\dd\vec y=\int_{\R^m}\bigg[\int_{A(\vec x)}f(\vec x,\vec y)\,\dd\vec y\bigg]\dd\vec x.
 	\end{equation}
 \end{teorema}
 Anche in questo caso ovviamente si possono scambiare i ruoli delle due variabili ottenendo lo stesso risultato.
@@ -1160,7 +1155,7 @@ Se separiamo le variabili, otteniamo
 \end{equation}
 ma allo stesso tempo, scambiando l'ordine,
 \begin{equation}
-	\int_0^1\bigg[\int_0^1f(x,y)\,dd x\bigg]\dd y=-1
+	\int_0^1\bigg[\int_0^1f(x,y)\,\dd x\bigg]\dd y=-1
 \end{equation}
 e i risultati non coincidono proprio perch\'e $f$ non è sommabile in $E$.
 
@@ -1205,7 +1200,7 @@ Inoltre, essendo differenziabile, possiamo scrivere lo sviluppo al primo ordine 
 \begin{equation}
 	\vec g(\vec x)=\vec g(\vec x_0)+\jac\vec g(\vec x_0)(\vec x-\vec x_0)+\rho(\vec x),
 \end{equation}
-dove $\rho(\vec x)$ è il resto di Peano per il quale $\rho(\vec x)=o(\norm{\vec x-\vec x_0})$, che tende a zero per $\vec x\to\vec x_0$.
+dove $\rho(\vec x)$ è il resto di Peano, del tipo $o(\norm{\vec x-\vec x_0})$, che tende a zero per $\vec x\to\vec x_0$.
 Dunque possiamo approssimare linearmente nell'intorno di $\vec x_0$ il nostro diffeomorfismo con una mappa affine (ossia lineare a meno di una costante, che è $\vec g(\vec x_0)$) rappresentata dalla matrice jacobiana.
 Abbiamo inoltre il seguente teorema.
 \begin{teorema} \label{t:diffeomorfismo-globale}
@@ -1229,18 +1224,14 @@ La proprietà di non singolarità della jacobiana è solamente locale, quindi da
 			\end{equation}
 		\item se $f\geq 0$ in $V$, allora
 			\begin{equation}
-				\int_Bf(\vec y)\,\dd\vec y<+\infty\text{ se e solo se }\int_A(f\circ\vphi)(\vec x)\abs{\det\jac\vphi(\vec x)}\dd\vec x.
+				\int_Bf(\vec y)\,\dd\vec y<+\infty\text{ se e solo se }\int_A(f\circ\vphi)(\vec x)\abs{\det\jac\vphi(\vec x)}\dd\vec x<+\infty.
 			\end{equation}
 	\end{itemize}
 \end{teorema}
-Se prendiamo la funzione caratteristica di $B$, in particolare, troviamo che
-\begin{equation}
-	\int_B\chi_B(\vec y)\,\dd\vec y=\int_B\dd\vec y=\int_A(\chi_B\circ\vphi)(\vec x)\abs{\det\jac\vphi(\vec x)}\dd\vec x=\int_A\abs{\det\jac\vphi(\vec x)}\dd\vec x
-\end{equation}
-ossia il determinante della jacobiana ci dice (nell'approssimazione lineare) come si trasforma la misura cambiando le coordinate: in particolare se la trasformazione è lineare la jacobiana sarà costante, di conseguenza avremmo $\mu(B)=\mu\big(\vphi(A)\big)=\abs{\det\jac\vphi}\mu(A)$.
-Sfruttando lo sviluppo in serie al primo ordine, il fattore $\abs{\det\jac\vphi}$ indica la trasformazione solo a livello infinitesimo: possiamo vedere $\dd\vec y$ ad esempio come un ``elemento infinitesimo di volume'' (o di area), e il risultante $\abs{\det\jac\vphi(\vec x)}\dd\vec x$ come l'elemento di volume nelle nuove coordinate.
+Questo risultato mostra come cambia la misura di integrazione con un cambiamento di coordinate (il diffeomorfismo): in particolare, se la trasformazione è lineare, la jacobiana sarà costante, di conseguenza avremmo $\mu(B)=\mu\big(\vphi(A)\big)=\abs{\det\jac\vphi}\mu(A)$.
+Possiamo vedere $\dd\vec y$ ad esempio come un ``elemento infinitesimo di volume'' (o di area), e il risultante $\abs{\det\jac\vphi(\vec x)}\dd\vec x$ come il medesimo elemento di volume visto nelle nuove coordinate.
 
-Prendiamo il celebre esempio delle coordinate polari in $\R^2$: possiamo passare dalle coordinate cartesiane ortogonali a queste con la trasformazione
+Prendiamo l'esempio delle coordinate polari in $\R^2$: possiamo passare a queste dalle coordinate cartesiane ortogonali con la trasformazione
 \begin{equation}
 	\begin{pmatrix}
 		x\\y
