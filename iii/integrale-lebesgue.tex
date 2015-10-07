@@ -808,15 +808,15 @@ Concludiamo quindi con l'ultima definizione.
 In questo caso l'integrale è un numero di $\Rex$, ma esiste certamente in quanto si evita la forma indeterminata $+\infty-\infty$, dato che uno dei due addendi sicuramente è finito.
 Una funzione non negativa è sempre integrabile su qualunque insieme, perch\'e qualunque sia il valore di $f^+$ il suo integrale della parte negativa sarà sempre nullo.
 \begin{definizione} \label{d:funzione-sommabile}
-	Una funzione $f$ si dice \emph{sommabile} sull'insieme $A$ se entrambi gli integrali $\int_Af^+\dd\mu$ e $\int_Af^-\dd\mu$ sono finiti\footnote{L'uso di questi due termini non sempre è usata come ora: si possono trovare testi in cui ``integrabile'' significa quello che qui intendiamo come sommabile, e ``esiste l'integrale di Lebesgue'' dove qui diciamo che è integrabile.}.
+	Una funzione $f$ si dice \emph{sommabile} sull'insieme $A$ se entrambi gli integrali $\int_Af^+\dd\mu$ e $\int_Af^-\dd\mu$ sono finiti.\footnote{L'uso di questi due termini non sempre è usata come ora: si possono trovare testi in cui ``integrabile'' significa quello che qui intendiamo come sommabile, e ``esiste l'integrale di Lebesgue'' dove qui diciamo che è integrabile.}
 \end{definizione}
 In questo caso l'integrale è un numero finito, e ovviamente una funzione sommabile è integrabile ma non viceversa.
 Notiamo inoltre che la sommabilità di $f$ è equivalente a quella di $\abs{f}$, perciò per verificare se $f$ è sommabile basta studiare il suo valore assoluto.
-Indicheremo che una funzione $f$ è sommabile nell'insieme $E$ con la scrittura $f\in L(E)$.
+Indicheremo che una funzione $f$ è sommabile nell'insieme $E$ con la scrittura $f\in L(E)$.\footnote{Lo spazio $L(E)$ in realtà non è semplicemente l'insieme delle funzioni sommabili definite in $E$, ma più precisamente è lo spazio quoziente di tale insieme (che è uno spazio vettoriale) rispetto alla relazione di equivalenza data dall'uguaglianza ``quasi ovunque'' in $E$: $L(E)$ non contiene dunque funzioni, ma le loro \emph{classi di equivalenza}. Spesso si è soliti indicare, infatti, lo spazio generico delle funzioni sommabili con un altro simbolo, come $\mathscr L(E)$. D'altro canto, se $f\in\mathscr L(E)$ allora esiste una classe di equivalenza $F\in L(E)$ tale per cui $f\in F$. Per questo motivo, ignoreremo qui la distinzione tra i due spazi e scriveremo direttamente $f\in L(E)$.}
 
-L'integrale si può anche indicare, esplicitando le varie coordinate, con le scritture
+L'integrale si può anche indicare esplicitando le varie coordinate, e con uno o più simboli di integrale, come in
 \begin{equation*}
-	\int_Af(x_1,\dots,x_n)\dd x_1\dots\dd x_n,\ \iint_Af(x,y)\dd x\dd y,\ \iiint_Af(x,y,z)\dd x\dd y\dd z,\ \idotsint_Af(x_1,\dots,x_n)\dd x_1\dots\dd x_n.
+	\int_Af(x_1,\dots,x_n)\dd x_1\cdots\dd x_n,\quad \iint_Af(x,y)\dd x\dd y,\quad \idotsint_Af(x_1,\dots,x_n)\dd x_1\cdots\dd x_n.
 \end{equation*}
 
 Come ci si può aspettare, l'integrale di Lebesgue gode delle stesse proprietà dell'integrale di Riemann: si tratta ora di dimostrarle nuovamente in luce della nuova teoria.
