@@ -220,7 +220,8 @@ Il vettore $\vphi'(t)$ è sempre tangente a $\vphi(t)$ in ogni punto, quindi que
 Questa è una condizione necessaria affinché $P=\vphi(t_0)$ sia un estremante per $f$ sulla frontiera $\partial K$.
 Ciò inoltre significa che il gradiente di $f$ in $P$ è un multiplo del versore normale a $\vphi$ in $t_0$.
 
-Può capitare che la frontiera dell'insieme sia espressa non come parametrizzazione di una curva ma, implicitamente, come luogo di zeri di una certa funzione $\vec F$: essa rappresenta un vincolo a cui ci si restringe per calcolare gli estremi. Abbiamo dunque la seguente definizione.
+Può capitare che la frontiera dell'insieme sia espressa non come parametrizzazione di una curva ma, implicitamente, come luogo di zeri di una certa funzione $\vec F$: essa rappresenta un vincolo a cui ci si restringe per calcolare gli estremi.
+Abbiamo dunque la seguente definizione.
 \begin{definizione} \label{d:estremi-vincolati}
 	Siano $A$ un insieme di $\R^n$ e $f$ una funzione da esso a $\R$, un'altra funzione $\vec F\colon A\to\R^m$ (con $m<n$) ed $E$ il luogo degli zeri di quest'ultimo, ossia $E=\{\vec x\in A\colon \vec F(\vec x)=\vec 0\}$.
 	Un punto $\vec x_0\in A$ si dice punto di massimo (minimo) \emph{vincolato} di $f$, con $\vec F(\vec x)=\vec 0$ come vincolo, se è un punto di massimo (minimo) per $f|_E$ (cioè per $f$ ristretta all'insieme $E$ come dominio), ossia se esiste un intorno $U(\vec x_0)$ tale che
@@ -230,7 +231,7 @@ Può capitare che la frontiera dell'insieme sia espressa non come parametrizzazi
 \end{definizione}
 Abbiamo visto che quando il vincolo è rappresentabile come una curva, in presenza di un punto estremante vincolato il gradiente è proporzionale alla normale a tale curva.
 Il seguente teorema mostra una condizione sufficiente ad individuare i punti \emph{stazionari} vincolati (che andranno poi studiati man mano per discernerli).
-\begin{teorema}[dei moltiplicatori di Lagrange] \label{t:moltiplicatori-lagrange}
+\begin{teorema}[dei moltiplicatori di Lagrange] \label{t:moltiplicatori-lagrange-R2}
 	Sia $A\in\R^2$ aperto, $f\colon A\to\R$ e $F\colon A\to\R$, entrambe di classe $\cont{1}$ in $A$. Sia $E$ il luogo degli zeri di $F$ in $A$. Se $(x_0,y_0)\in A$ è un punto estremante per $f|_E$, e $\grad F(x_0,y_0)\neq(0,0)$, allora esiste un numero $\lambda\in\R$ tale per cui
 	\begin{equation} 
 		\grad f(x_0,y_0)=\lambda\grad F(x_0,y_0),
@@ -239,7 +240,7 @@ Il seguente teorema mostra una condizione sufficiente ad individuare i punti \em
 	ossia $\drp{f}{x}(x_0,y_0)=\lambda\drp{F}{x}(x_0,y_0)$ e $\drp{f}{y}(x_0,y_0)=\lambda\drp{F}{y}(x_0,y_0)$.
 \end{teorema}
 \begin{proof}
-	Possiamo supporre che $\drp{F}{y}(x_0,y_0)\neq 0$ senza ledere la generalità del teorema (sicuramente una tra questa o la derivata rispetto a $x$ deve essere nulla).
+	Possiamo supporre che $\drp{F}{y}(x_0,y_0)\neq 0$ senza ledere la generalità del teorema: sicuramente una tra questa o la derivata rispetto a $x$ deve essere non nulla.
 	Per il teorema di Dini, l'insieme $E$ in $U(x_0,y_0)$ coincide con il sostegno di una funzione $y=h(x)$ di classe $\cont{1}$, ossia $E\cap U(x_0,y_0)=\{\big(x,h(x)\big)\colon x\in I(x_0)\}$.
 	Inoltre, la derivata $h'(x_0)$, che segue sempre dal teorema di Dini, si può scrivere in modo che
 	\begin{equation}
@@ -248,9 +249,9 @@ Il seguente teorema mostra una condizione sufficiente ad individuare i punti \em
 	Questo può essere visto come un prodotto tra il gradiente di $F$ in $(x_0,y_0)$ e il vettore $\big(1,h'(x_0)\big)^t$, e dato che è nullo significa che sono ortogonali nel punto $(x_0,y_0)$.
 	D'altra parte il punto è vincolato, cioè è un estremante per $f\big(x,h(x)\big)$, che è la stessa cosa che dire di restringere la $f$ a $E\cap U(x_0,y_0)$.
 	Derivando la $f$ in questa forma otteniamo
-	\begin{equation*}
+	\begin{equation}
 		f'\big(x_0,h(x_0)\big)=\drp{f}{x}\big(x_0,h(x_0)\big)+\drp{f}{y}\big(x_0,h(x_0)\big)h'(x_0),
-	\end{equation*}
+	\end{equation}
 	che dev'essere nulla se il punto è un estremo (per il teorema di Fermat: $f$ è differenziabile in $E$).
 	Ancora una volta si può interpretare come una relazione di ortogonalità tra il gradiente di $f$ nel punto $(x_0,y_0)=\big(x_0,h(x_0)\big)$ e il vettore $\big(1,h'(x_0)\big)^t$.
 	Abbiamo dunque che i gradienti di $f$ e $F$ nel punto sono ortogonali allo stesso vettore: ciò implica che essi sono proporzionali (hanno la stessa direzione), vale a dire $\grad f(x_0,y_0)=\lambda\grad F(x_0,y_0)$ per un certo numero $\lambda\in\R$.
