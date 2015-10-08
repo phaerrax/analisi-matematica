@@ -1,18 +1,28 @@
 \chapter{Funzioni implicite}
+Concentreremo il nostro studio delle funzioni implicite sul piano cartesiano $\R^2$: è essenziale, prima di iniziare, sapere la definizione di una curva con immagine appunto in $\R^2$, e le sue proprietà di base.
 \begin{definizione}
-	Una curva è una mappa $\phi\colon I\to\R^2$ che associa a $t$ la coppia ordinata $\big(x(t),y(t)\big)$. Essa si dice regolare se è di classe $\cont{1}$ e se $\phi'(t)=\big(x'(t),y'(t)\big)\neq(0,0)$ $\forall t\in I$.
+	Una curva è una mappa $\vphi\colon I\to\R^2$ che associa a $t$ la coppia ordinata $\big(x(t),y(t)\big)$.
+	Essa si dice regolare se è di classe $\cont{1}$ e se $\vphi'(t)=\big(x'(t),y'(t)\big)\neq(0,0)$ $\forall t\in I$.
 \end{definizione}
-Una funzione $f\colon[a,b]\to\R$ di classe $\cont{1}$ può essere considerata come una curva in $\R^2$ parametrizzata come $\big(t,f(t)\big)$. Essa è sempre regolare, qualunque sia la sua forma analitica, poiché la sua derivata è $\big(1,f'(t)\big)$ che non può ovviamente mai essere uguale a $(0,0)$.
+Una funzione $f\colon[a,b]\to\R$ di classe $\cont{1}$ può essere considerata come una curva in $\R^2$ parametrizzata come $\big(t,f(t)\big)$.
+Essa è sempre regolare, qualunque sia la sua forma analitica, poiché la sua derivata è $\big(1,f'(t)\big)$ che non può ovviamente mai essere uguale a $(0,0)$.
 \begin{osservazione}
 	Una curva semplice e regolare può essere localmente rappresentata come grafico di una funzione.
 \end{osservazione}
 \begin{proof}
-	Sia $\phi[a,b]\to\R^2$ regolare, cioè sia $\big(x'(t),y'(t)\big)\neq(0,0)$: ciò signfica che $x'(t)$ o $y'(t)$ non è nulla.
-	Sia $t_0$ un punto di $[a,b]$ e poniamo per ipotesi $x'(t_0)>0$: per la continuità di $\phi$ deve esistere un intorno $U(t_0)\subset[a,b]$ in cui ancora $x'(t)>0$ $\forall t\in U(t_0)$.
-	Definiamo allora $\psi(t)$ la curva $\phi(t)$ ristretta a $U(t_0)$. Poiché in $U(t_0)$ la $x'(t)$ è sempre positiva, significa che $x(t)$ è monotona crescente, quindi invertibile nell'intorno. Chiamiamo l'inversa $t(x)$: allora possiamo rappresentare $\psi(t)$ come la funzione $y=f\big(t(x)\big)=f(x)$.
-	\end{proof}
-Spesso però una curva non è data in rappresentazione parametrica, ma tramite un'equazione cartesiana che lega le coordinate nella formula $F(x,y)=0$. Ad esempio, la circonferenza unitaria è data dalla funzione $F(x,y)=x^2+y^2-1$: i punti soluzioni dell'equazione $F(x,y)=0$ sono i punti della circonferenza.
-Questo esempio è un caso piuttosto facile, ma come facciamo a capire cosa rappresenta l'equazione $x^2(4x+1)-y^2=0$? Non sappiamo, così a priori, se è nemmeno una curva. Il seguente teorema, che è il teorema delle funzioni implicite, fornisce delle condizioni sufficienti a rappresentare certe curve ``nascoste'' in equazioni come queste.
+	Sia $\vphi[a,b]\to\R^2$ regolare, cioè sia $\big(x'(t),y'(t)\big)\neq(0,0)$: ciò signfica che $x'(t)$ o $y'(t)$ non è nulla.
+	Sia $t_0$ un punto di $[a,b]$ e poniamo per ipotesi $x'(t_0)>0$: per la continuità di $\vphi$ deve esistere un intorno $U(t_0)\subset[a,b]$ in cui ancora $x'(t)>0$ $\forall t\in U(t_0)$.
+	Definiamo allora $\vpsi(t)$ la curva $\vphi(t)$ ristretta a $U(t_0)$.
+	Poiché in $U(t_0)$ la $x'(t)$ è sempre positiva, significa che $x(t)$ è monotona crescente, quindi invertibile nell'intorno.
+	Chiamiamo l'inversa $t(x)$: allora possiamo rappresentare $\vpsi(t)$ come la funzione $y=f\big(t(x)\big)=f(x)$.
+\end{proof}
+Spesso però una curva non è data in rappresentazione parametrica, ma tramite un'equazione cartesiana che lega le coordinate nella formula $F(x,y)=0$.
+Ad esempio, la circonferenza unitaria è data dalla funzione $F(x,y)=x^2+y^2-1$: i punti soluzioni dell'equazione $F(x,y)=0$ sono i punti della circonferenza.
+Questo esempio è un caso piuttosto facile, ma come facciamo a capire cosa rappresenta l'equazione $x^2(4x+1)-y^2=0$?
+Non sappiamo, così a priori, se è nemmeno una curva.
+Il seguente teorema, che è il teorema delle funzioni implicite, fornisce delle condizioni sufficienti a rappresentare certe curve ``nascoste'' in equazioni come queste.
+Ne daremo la dimostrazione nel caso di funzioni in $\R^2$, che incontreremo più spesso.
+Esiste ovviamente una versione del teorema per un numero arbitrario di dimensioni, che enunceremo successivamente.
 \begin{teorema}[di Dini] \label{t:dini-R2}
 	Sia $A\subset\R^2$ un aperto e $F\colon A\to\R$ una funzione di classe $\cont{1}(A)$, e sia $(x_0,y_0)\in A$ uno zero di questa funzione tale che $\drp{F}{y}(x_0,y_0)\neq 0$.
 	Allora esistono degli intorni $U(x_0)$ e $V(y_0)$ per i quali $\forall x\in U$ $\exists! y=f(x)\in V$ tale che $F(x,y)=0$. Inoltre, la mappa $x\mapsto f(x)$ è di classe $\cont{1}$ e vale la relazione
@@ -109,12 +119,16 @@ valutata in $\big(x,f(x)\big)$. Sostituendo a $f(x)$ l'espressione della \eqref{
 	\label{eq:dini-derivata-seconda}
 \end{equation}
 sfruttando il fatto che $\partial_{xy}F=\partial_{yx}F$ per il teorema di Schwartz, dato che la funzione è di classe $\cont{2}$ le derivate miste coincidono.
-Possiamo dunque verificare, se $F(x_0,y_0)$ è nulla, se abbiamo un punto di massimo o minimo (locale) per la funzione implicita. Sappiamo già che la $f$ deve essere derivabile, dato che come conseguenza del teorema di Dini è di classe $\cont{1}$. Allora per il teorema di Fermat in ogni punto estremante la derivata prima deve essere nulla. Se $f'(x_0)=0$, dalla \eqref{eq:dini-R2} segue che $\partial_xF(x_0,y_0)=0$, quindi sostituendolo nella \eqref{eq:dini-derivata-seconda} otteniamo
+Possiamo dunque verificare, se $F(x_0,y_0)$ è nulla, se abbiamo un punto di massimo o minimo (locale) per la funzione implicita.
+Sappiamo già che la $f$ deve essere derivabile, dato che come conseguenza del teorema di Dini è di classe $\cont{1}$.
+Allora per il teorema di Fermat in ogni punto estremante la derivata prima deve essere nulla.
+Se $f'(x_0)=0$, dalla \eqref{eq:dini-R2} segue che $\partial_xF(x_0,y_0)=0$, quindi sostituendolo nella \eqref{eq:dini-derivata-seconda} otteniamo
 \begin{equation} 
 	f''(x_0)=-\frac{\partial_{xx}F(x_0,y_0)}{\partial_yF(x_0,y_0)},
 	\label{eq:derivata-seconda-semplificata-dini}
 \end{equation}
-da cui segue immediatamente che se è positiva si ha un minimo, se è negativa un massimo. Il punto $x_0$ allora è di minimo locale se $\partial_{xx}F(x_0,y_0)/\partial_yF(x_0,y_0)<0$, un massimo locale se $F(x_0,y_0)/\partial_yF(x_0,y_0)>0$.
+da cui segue immediatamente che se è positiva si ha un minimo, se è negativa un massimo.
+Il punto $x_0$ allora è di minimo locale se $\partial_{xx}F(x_0,y_0)/\partial_yF(x_0,y_0)<0$, un massimo locale se $F(x_0,y_0)/\partial_yF(x_0,y_0)>0$.
 La condizione è ovviamente soltanto sufficiente.
 
 \section{Diffeomorfismi}
