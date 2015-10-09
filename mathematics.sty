@@ -23,7 +23,6 @@
 \usepackage{mathrsfs}
 \usepackage{xfrac}
 \usepackage{graphicx}
-\usepackage{eufrak} %math fraktur font
 \usepackage[usenames,dvipsnames]{xcolor}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -105,10 +104,10 @@
 
 \renewcommand{\Re}[1]{\mathfrak{R}\!\left({#1}\right)} %parte reale
 \renewcommand{\Im}[1]{\mathfrak{I}\!\left({#1}\right)} %parte immaginaria
-\newcommand{\pinf}{+\infty} %simbolo del +inf
-\newcommand{\minf}{-\infty} %simbolo del -inf
+\newcommand{\pinf}{+\infty} %simbolo del +inf (deprecated)
+\newcommand{\minf}{-\infty} %simbolo del -inf (deprecated)
 \newcommand{\partint}[1]{\left\lfloor{#1}\right\rfloor} %parte intera di un numero
-%\newcommand{\conj}[1]{{#1}^*} %coniugato
+%\newcommand{\conj}[1]{{#1}^*} %coniugato (alt)
 \newcommand{\conj}[1]{\overline{#1}} %coniugato (versione alternativa)
 \newcommand{\intinf}{\underline{\Int_a^b}} %integrale inferiore (Riemann)
 \newcommand{\intsup}{\overline{\Int_a^b}} %integrale superiore (Riemann)
@@ -121,29 +120,25 @@
 \renewcommand{\div}{\nabla\cdot}
 \newcommand{\rot}{\nabla\times}
 \newcommand{\lap}{\nabla^2}
-\newcommand{\lin}{\mathscr L} %spazio delle app lineari
+\newcommand{\lin}{\mathscr L} %spazio delle applicazioni lineari
 \newcommand{\gen}[1]{\left\langle{#1}\right\rangle} %spazio generato (da cosa è generato, è definito nell'argomento del comando)
 \newcommand{\scalar}[2]{{#1}\cdot{#2}} %prodotto scalare tra i due argomenti specificati (con il punto) (old: \psc, please update)
 \newcommand{\intern}[2]{\left\langle{#1},{#2}\right\rangle} %prodotto interno tra due vettori
 \newcommand{\hermit}[2]{\left({#1},{#2}\right)} %prodotto hermitiano tra due vettori
 \newcommand{\adj}[1]{{#1}^*} %coniugato trasposto (aka "aggiunto") di matrice/vettore/operatore
-%\newcommand{\adj}[1]{{#1}^\dagger} %coniugato trasposto (aka "aggiunto") di matrice/vettore/operatore (versione alternativa)
+%\newcommand{\adj}[1]{{#1}^\dagger} %coniugato trasposto (aka "aggiunto") di matrice/vettore/operatore (alt)
 \newcommand{\divides}{\!\mid\!} %simbolo di "divide" (in "x divide y")
 \newcommand{\quot}{\,/\,} %simbolo per indicare lo spazio quoziente
 \newcommand{\angl}[1]{\widehat{#1}} %indica gli angoli (tre lettere)
 \newcommand{\seg}[1]{\overline{#1}} %linea sopra le lettere per indicare la lunghezza di un segmento
 \newcommand{\drv}[2]{\frac{\dd {#1}}{\dd {#2}}} %derivata prima
 \newcommand{\ddrv}[2]{\frac{\dd^2 {#1}}{\dd {#2}^2}} %derivata seconda
-\newcommand{\drp}[2]{\frac{\partial {#1}}{\partial {#2}}} %partial derivative
-\newcommand{\ddrp}[2]{\frac{\partial^2 {#1}}{\partial {#2}^2}} %second partial derivative (non mista)
+\newcommand{\drp}[2]{\frac{\partial {#1}}{\partial {#2}}} %derivata parziale
+\newcommand{\ddrp}[2]{\frac{\partial^2 {#1}}{\partial {#2}^2}} %derivata parziale seconda, non mista
 %simbolo di uguaglianza per definizione
 \newcommand*{\defeq}{
 	\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt \hbox{\scriptsize.} \hbox{\scriptsize.}}} =
 }
-\newcommand{\sve}{(V,\intern{\cdot}{\cdot})}
-\newcommand{\bra}[1]{\left\langle{#1}\right|}
-\newcommand{\ket}[1]{\left|{#1}\right\rangle}
-\newcommand{\braket}[2]{\left\langle{#1}\middle|{#2}\right\rangle}
 \newcommand{\vol}[1]{\left|{#1}\right|} %volume di un iperrettangolo
 \newcommand{\interior}[1]{\mathring{#1}} %interno di un insieme
 \newcommand{\clos}[1]{\overline{#1}} %chiusura di un insieme
@@ -163,25 +158,6 @@
 \DeclareMathOperator{\cha}{char} %caratteristica di un campo
 \DeclareMathOperator{\rk}{rk} %rango di una matrice/operatore
 \DeclareMathOperator{\id}{id} %operatore identità di uno spazio
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Grandezze fisiche
-% (Alcune di queste sono usate solo in certi documenti e non hanno un carattere generale, pertanto dovrebbero essere spostate nei rispettivi documenti .tex)
-\newcommand{\pulse}{\omega_\textup{p}} %pulsazione
-\newcommand{\OPL}{\textup{OPL}} %lunghezza del cammino ottico
-\newcommand{\FI}{\vec F^{(I)}} %forza interna (in un sist. di punti)
-\newcommand{\FE}{\vec F^{(E)}} %forza esterna
-\newcommand{\ME}{\vec M^{(E)}} %momento delle forze esterne
-\newcommand{\MI}{\vec M^{(I)}} %momento delle forze interne
-\newcommand{\WE}{W^{(E)}} %lavoro delle forze esterne
-\newcommand{\WI}{W^{(I)}} %lavoro delle forze interne
-\newcommand{\eki}{E_{\textup{K},i}} %en. cinetica iniziale
-\newcommand{\ekf}{E_{\textup{K},f}} %en. cinetica finale
-\newcommand{\CM}{_\textup{CM}} %pedice per indicare il centro di massa
-\newcommand{\sys}{\sum_{i=1}^n} %?
-\newcommand{\epot}{E_\textup{P}} %en. potenziale
-\newcommand{\ekin}{E_\textup{K}} %en. cinetica
-\newcommand{\emec}{E_\textup{M}} %en. meccanica
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Vettori di lettere greche (per renderle in grassetto come le lettere latine)
@@ -246,15 +222,6 @@
 \newcommand{\rhovers}{\vec{\hat{\uprho}}}
 \newcommand{\phivers}{\vec{\hat{\upphi}}}
 %trovare altri nomi per gli ultimi tre ASAP
-
-% muovere le segg. definizioni in meccanica.tex
-\newcommand{\ux}{\vec u_x} %x unit vector
-\newcommand{\uy}{\vec u_y} %y unit vector
-\newcommand{\uz}{\vec u_z} %z unit vector
-\newcommand{\ur}{\vec u_r} %radial unit vector
-\newcommand{\uth}{\vec u_{\theta}} %trasverse unit vector???
-\newcommand{\uT}{\vec u_\textup{T}} %tangent unit vector
-\newcommand{\uN}{\vec u_\textup{N}} %perpendicular unit 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Inizia l'indice nella pagina indicata e non in una pag. a parte
