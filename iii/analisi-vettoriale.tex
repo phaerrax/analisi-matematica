@@ -3,6 +3,44 @@ In questo capitolo studieremo come e quando è possibile estendere il teorema fo
 Vedremo i principali risultati che si applicano all'analisi vettoriale in $\R^2$ e $\R^3$, in particolare i teoremi della divergenza (Gauss, Ostrogradskij) e del rotore (Green, Stokes).
 Per cominciare, vediamo le definizioni degli integrali su linee e superfici in $\R^3$.
 
+\section{Integrali di linea}
+Abbiamo già incontrato le curve, anche se solo in $\R^2$, trattando le funzioni implicite.
+Vediamone una definizione più generale.
+Una \emph{curva} è una funzione $\vphi\colon [a,b]\to\R^n$: diciamo che è regolare se $\vphi\in\cont{1}\ab$, è iniettiva su $(a,b)$ e $\vphi(t)\ne\vec 0$ per ogni $t\in(a,b)$.
+Spesso è detta curva anche la sua immagine $\vphi(I)$, mentre $\vphi$ è detta \emph{parametrizzazione}.
+
+\begin{definizione} \label{d:lunghezza-curva}
+	Data una curva $\vphi\colon[a,b]\to\R^n$, definiamo la sua lunghezza $\ell(\vphi)$ come
+	\begin{equation}
+		\ell(\vphi)=\sup\bigg\{\sum_{i=1}^N\norm{\vphi(t_i)-\vphi(t_i)},\ n\in\N\text{ e }a=t_0<t_1<\cdots<t_N=b\bigg\}
+		\label{eq:lunghezza-curva}
+	\end{equation}
+	dove l'estremo superiore è preso tra tutte le possibili partizioni dell'intervallo $[a,b]$.
+	La curva è detta \emph{rettificabile} se $\ell(\vphi)<+\infty$.
+\end{definizione}
+
+Definiamo infine la misura infinitesima (o elementare) di una curva come
+\begin{equation}
+	\dd s\defeq\norm{\drv{\vphi}{t}(t)}\,\dd t
+	\label{eq:misura-curva}
+\end{equation}
+dove $\vphi$ è la sua parametrizzazione.
+Con questa definizione, otteniamo la lunghezza della curva parametrizzata da $\vphi$ con l'integrale
+\begin{equation}
+	\int_\phi\,\dd s=\int_a^b\norm{\drv{\vphi}{t}(t)}\,\dd t
+\end{equation}
+dove $\phi=\vphi\ab$ è l'immagine della curva.
+L'integrale di linea di una funzione scalare $g$ definita da $\phi$ a valori in $\R$ è definito come
+\begin{equation}
+	\int_\phi f\,\dd s=\int_a^b(f\circ\vphi)(t)\norm{\drv{\vphi}{t}(t)}\,\dd t.
+\end{equation}
+Notiamo che $f\circ\vphi$ è una funzione da $[a,b]$ a $\R$ quindi l'integrale risultante si interpreta senza problemi come un integrale di Lebesgue.
+
+Nel caso in cui una curva regolare sia il grafico di una funzione $\vec f\colon[a,b]\to\R^{n-1}$ di classe $\cont{1}\ab$, allora la parametrizzazione $\vphi\colon[a,b]\to\R^n$ si scrive facilmente come $\vphi(t)=\big(t,\vec f(t)\big)$, e la misura infinitesima diventa
+\begin{equation}
+	\dd s=\sqrt{1+\norm{\vec f'(t)}^2}\,\dd t.
+\end{equation}
+
 \section{Integrali di superficie}
 Cominciamo introducendo il prodotto vettoriale tra due vettori di $\R^3$.
 \begin{definizione} \label{d:prodotto-vettoriale}
