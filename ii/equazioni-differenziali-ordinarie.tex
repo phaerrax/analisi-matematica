@@ -67,48 +67,56 @@ Per ogni funzione $\vec y\in\cont{}(I)$, con $x_0\in I\subseteq\R$, $\vec y_0\in
 Risolvere il problema di Cauchy equivale quindi a ricercare le \emph{soluzioni continue} dell'analogo problema $\vec y=\volterra(\vec y)$, cioè a cercare i punti fissi dell'operatore di Volterra.
 
 \section{Esistenza ed unicità delle soluzioni}
-\begin{definizione} \label{d:lipsy}
-Sia $\vec f\colon E\subseteq\R^{n+1}\to\R^n$; essa si dice \emph{lipschitziana} in $\vec y$ uniformemente rispetto a $x$ se $\exists L>0$ tale per cui $\forall(x,\vec y),(x,\vec z)\in E$ accade che
-\begin{equation}
-\norm{\vec f(x,\vec y)-\vec f(x,\vec z)}\leq L\norm{\vec y-\vec z}.
-\end{equation}
+\begin{definizione} \label{d:lipschitziana-uniformemente}
+	Sia $\vec f\colon E\subseteq\R^{n+1}\to\R^n$; essa si dice \emph{lipschitziana} in $\vec y$ uniformemente rispetto a $x$ se $\exists L>0$ tale per cui $\forall(x,\vec y),(x,\vec z)\in E$ accade che
+	\begin{equation}
+		\norm{\vec f(x,\vec y)-\vec f(x,\vec z)}\leq L\norm{\vec y-\vec z}.
+	\end{equation}
 \end{definizione}
+In pratica questa definizione è simile alla classica definizione di lipschitzianità, se non per il fatto che una variabile (qui la $x$) è tenuta fissa.
 \paragraph{Esempi}
 Sia $g\colon I\subseteq\R\to\R$ una funzione limitata in $I$:
 \begin{itemize}
-\item la funzione $f(x,y)=g(x)\abs{y}$ è lipschitziana in $y$ uniformemente rispetto a $x$ nell'insieme $I\times\R$;
-\item la funzione $f(x,y)=g(x)\sqrt[3]{y}$ soddisfa la \ref{d:lipsy} in ogni insieme $I\times\{y\colon\abs{y}\geq\epsilon>0\}$, poiché per $y\to 0$ la derivata di $f$ rispetto a $y$ cresce illimitatamente;
-\item la funzione $f(x,y)=g(x)y^2$ soddisfa la \ref{d:lipsy} in ogni insieme compatto di $\R^2$, poiché al crescere indefinito di $y$ la derivata di $f$ rispetto a tale variabile cresce illimitatamente.
+	\item la funzione $f(x,y)=g(x)\abs{y}$ è lipschitziana in $y$ uniformemente rispetto a $x$ nell'insieme $I\times\R$;
+	\item la funzione $f(x,y)=g(x)\sqrt[3]{y}$ soddisfa la \ref{d:lipschitziana-uniformemente} in ogni insieme $I\times\{y\colon\abs{y}\geq\epsilon>0\}$, poiché per $y\to 0$ la derivata di $f$ rispetto a $y$ cresce illimitatamente;
+	\item la funzione $f(x,y)=g(x)y^2$ soddisfa la \ref{d:lipschitziana-uniformemente} in ogni insieme compatto di $\R^2$, poiché al crescere indefinito di $y$ la derivata di $f$ rispetto a tale variabile cresce illimitatamente.
 \end{itemize}
 \begin{osservazione}
-Sia $\Omega$ un insieme aperto e convesso\footnote{Si dice \emph{convesso} un insieme tale che per ogni coppia di punti appartenenti ad esso, il segmento che li unisce appartiene ancora all'insieme.} di $\R^{n+1}$, e $\vec f$ una funzione definita in $\Omega$, a valori in $\R^n$. Se tutte le derivate parziali $\partial f_i/\partial y_j$ esistono e sono limitate, allora la $\vec f$ è lipschitziana in $\Omega$ nella variabile $\vec y$ e uniformemente rispetto ad $x$.
+	Sia $\Omega$ un insieme aperto e convesso\footnote{È \emph{convesso} un insieme tale che per ogni coppia di punti appartenenti ad esso, il segmento che li unisce appartiene ancora all'insieme.} di $\R^{n+1}$, e $\vec f$ una funzione definita in $\Omega$, a valori in $\R^n$.
+	Se tutte le derivate parziali $\partial f_i/\partial y_j$ esistono e sono limitate, allora la $\vec f$ è lipschitziana in $\Omega$ nella variabile $\vec y$ e uniformemente rispetto ad $x$.
 \end{osservazione}
 \begin{lemma}[di saldatura] \label{l:saldatura}
-Siano $(x_0,\vec y_0)\in E\subseteq\R^{n+1}$ e la funzione $\vec f\colon E\to\R^n$ continua in $E$. Sia dato il problema di Cauchy \eqref{pc}. Se una funzione $\vec y_1$ risolve il problema di Cauchy nell'intervallo $[a,x_0]$ mentre un'altra funzione $\vec y_2$ lo risolve in $[x_0,b]$, allora la funzione
-\[
-\vec y(x)=\begin{cases*}
-\vec y_1&per $x\in[a,x_0]$\\
-\vec y_2&per $x\in[x_0,b]$
-\end{cases*}\]
-risolve il problema di Cauchy nell'intervallo $[a,b]$.
+	Siano $(x_0,\vec y_0)\in E\subseteq\R^{n+1}$ e la funzione $\vec f\colon E\to\R^n$ continua in $E$.
+	Sia dato il problema di Cauchy \eqref{pc}.
+	Se una funzione $\vec y_1$ risolve il problema di Cauchy nell'intervallo $[a,x_0]$ mentre un'altra funzione $\vec y_2$ lo risolve in $[x_0,b]$, allora la funzione
+	\begin{equation*}
+		\vec y(x)=
+		\begin{cases*}
+			\vec y_1&per $x\in[a,x_0]$\\
+			\vec y_2&per $x\in[x_0,b]$
+		\end{cases*}
+	\end{equation*}
+	risolve il problema di Cauchy nell'intervallo $[a,b]$.
 \end{lemma}
 \begin{proof}
-Per ogni punto $x\neq x_0$, la $\vec y$ è derivabile poiché le due funzioni risolvono, separatamente nei rispettivi intervalli, il problema di Cauchy. Risulta certamente che
-\[
-\lim_{x\to x_0^-}\vec y'(x)=\lim_{x\to x_0^-}\vec y_1'(x)=\lim_{x\to x_0^-}\vec f\big(x,\vec y_1(x)\big).
-\]
-Ma $\vec f$ è continua in $[a,x_0]$, quindi 
-\[
-\lim_{x\to x_0^-}\vec f\big(x,\vec y_1(x)\big)=\vec f\big(x_0,\vec y_1(x_0)\big)=\vec f(x_0,\vec y_0).
-\]
-Con lo stesso procedimento si ottiene anche che
-\[
-\lim_{x\to x_0^+}\vec y'(x)=\lim_{x\to x_0^+}\vec y_2'(x)=\vec f\big(x_0,\vec y_2(x_0)\big)=\vec f(x_0,\vec y_0).
-\]
-Poiché quindi $\lim_{x\to x_0^-}\vec y'(x)=\lim_{x\to x_0^+}\vec y'(x)$, per il teorema \ref{t:derivata_solo_disc_seconda_specie} è derivabile in $x_0$ e vale $\vec y'(x_0)=\vec f\big(x_0,\vec y(x_0)\big)$, cioè $\vec y$ risolve il problema di Cauchy anche in $x_0$.
+	Per ogni punto $x\neq x_0$, la $\vec y$ è derivabile poiché le due funzioni risolvono, separatamente nei rispettivi intervalli, il problema di Cauchy.
+	Risulta
+	\begin{equation}
+		\lim_{x\to x_0^-}\vec y'(x)=\lim_{x\to x_0^-}\vec y_1'(x)=\lim_{x\to x_0^-}\vec f\big(x,\vec y_1(x)\big).
+	\end{equation}
+	Ma $\vec f$ è continua in $[a,x_0]$, quindi 
+	\begin{equation}
+		\lim_{x\to x_0^-}\vec f\big(x,\vec y_1(x)\big)=\vec f\big(x_0,\vec y_1(x_0)\big)=\vec f(x_0,\vec y_0).
+	\end{equation}
+	Con lo stesso procedimento si ottiene anche che
+	\begin{equation}
+		\lim_{x\to x_0^+}\vec y'(x)=\lim_{x\to x_0^+}\vec y_2'(x)=\vec f\big(x_0,\vec y_2(x_0)\big)=\vec f(x_0,\vec y_0).
+	\end{equation}
+	Poiché quindi $\lim_{x\to x_0^-}\vec y'(x)=\lim_{x\to x_0^+}\vec y'(x)$, per il teorema \ref{t:derivata_solo_disc_seconda_specie} è derivabile in $x_0$ e vale $\vec y'(x_0)=\vec f\big(x_0,\vec y(x_0)\big)$, cioè $\vec y$ risolve il problema di Cauchy anche in $x_0$.
 \end{proof}
+
 \begin{teorema}[di esistenza e unicità globale] \label{t:E-globale}
-Sia $S\subseteq\R^{n+1}$ una striscia verticale a base compatta, ossia $S=[a,b]\times\R^n$, e siano $(x_0,\vec y_0)\in S$, $\vec f\colon S\to\R^n$. Se $\vec f\in\cont{}(S)$ e, in $S$, $\vec f$ è lipschitziana rispetto a $\vec y$ e uniformemente rispetto a $x$, allora il problema di Cauchy \eqref{pc} ammette una e una sola soluzione, definita in tutto $[a,b]$.
+	Sia $S\subseteq\R^{n+1}$ una striscia verticale a base compatta, ossia $S=[a,b]\times\R^n$, e siano $(x_0,\vec y_0)\in S$, $\vec f\colon S\to\R^n$. Se $\vec f\in\cont{}(S)$ e, in $S$, $\vec f$ è lipschitziana rispetto a $\vec y$ e uniformemente rispetto a $x$, allora il problema di Cauchy \eqref{pc} ammette una e una sola soluzione, definita in tutto $[a,b]$.
 \end{teorema}
 \begin{proof}
 Si consideri soltanto l'intervallo $[x_0,b]$: si definisce $h=\min\{b-x_0,\frac1{2L}\}$, dove $L$ è la costante di Lipschitz per $\vec f$ rispetto alla variabile $\vec y$, e l'intervallo $I_0=[x_0,x_0+h]$. Lo spazio $X=\big(\cont{}_{\R^n}(I_0),d_\infty\big)$, con la distanza $d_{\infty}=\norm{\vec f-\vec g}_{\infty,I_0}$, è uno spazio metrico completo. Per ogni $\vec y\in X$, si applichi l'operatore di Volterra: $\volterra(\vec y)\in\cont{}(I_0)$, quindi l'operatore è una mappa $\volterra\colon X\to X$. In questo spazio metrico, date due funzioni $\vec y,\vec z\in X$, la norma della loro differenza è per ogni $x\in I_0$
@@ -223,7 +231,7 @@ Si è mostrato allora come dalla \eqref{eq:diff-k}, equazione differenziale di u
 \[
 z_k'(x)=f\big(x,\vec z(x)\big)
 \]
-da cui ponendo $z_i(x)=y^{(i-1)}(x)$ per ogni $i\in\{1,\dots,k\}$ si ottiene esattamente la \eqref{eq:diff-k}, quindi da un'equazione differenziale vettoriale in $\R^k$ si ottiene un'equazione differenziale scalare di ordine $k$. I due tipi di equazioni sono allora del tutto analogi, quindi si possono utilizzare per entrambi i medesimi teoremi.
+da cui ponendo $z_i(x)=y^{(i-1)}(x)$ per ogni $i\in\{1,\dots,k\}$ si ottiene esattamente la \eqref{eq:diff-k}, quindi da un'equazione differenziale vettoriale in $\R^k$ si ottiene un'equazione differenziale scalare di ordine $k$. I due tipi di equazioni sono allora del tutto analoghi, quindi si possono utilizzare per entrambi i medesimi teoremi.
 
 \section{Esistenza e unicità delle soluzioni}
 All'ordine $k$, il problema di Cauchy dovrà quindi completare la \eqref{eq:diff-k} con $k$ condizioni al contorno, una per ogni ordine di derivazione: sarà quindi un sistema della forma
@@ -232,7 +240,7 @@ All'ordine $k$, il problema di Cauchy dovrà quindi completare la \eqref{eq:diff
 \vec z'=\vec F(x,\vec z)\\\vec z(x_0)=\valpha,
 \end{cases}
 \end{equation}
-con $vec z\colon\R\to\R^k$ e $\valpha\in\R^k$, che si traduce in
+con $\vec z\colon\R\to\R^k$ e $\valpha\in\R^k$, che si traduce in
 \begin{equation} \label{pck}
 \begin{cases}
 y^{(k)}=f(x,y,y',\dots,y^{(k-1)})\\
@@ -291,55 +299,60 @@ Sia $\lin\colon\cont{k}(I)\to\cont{}(I)$ definito come nella \eqref{eq:L}, con $
 \end{teorema}
 \begin{proof}
 Sia $x_0\in I$. Si costruiscono $k$ distinti problemi di Cauchy fissando le condizioni al contorno in $x_0$.
-\[
-\begin{cases}
-\lin(y)=0\\y(x_0)=1\\y'(x_0)=0\\\vdots\\y^{(k-2)}(x_0)=0\\y^{(k-1)}(x_0)=0
-\end{cases}\qquad
-\begin{cases}
-\lin(y)=0\\y(x_0)=0\\y'(x_0)=1\\\vdots\\y^{(k-2)}(x_0)=0\\y^{(k-1)}(x_0)=0
-\end{cases}\qquad\dots\qquad
-\begin{cases}
-\lin(y)=0\\y(x_0)=0\\y'(x_0)=0\\\vdots\\y^{(k-2)}(x_0)=0\\y^{(k-1)}(x_0)=1
-\end{cases}
-\]
+\begin{equation*}
+	\begin{cases}
+		\lin(y)=0\\y(x_0)=1\\y'(x_0)=0\\\vdots\\y^{(k-2)}(x_0)=0\\y^{(k-1)}(x_0)=0
+	\end{cases}
+	\qquad
+	\begin{cases}
+		\lin(y)=0\\y(x_0)=0\\y'(x_0)=1\\\vdots\\y^{(k-2)}(x_0)=0\\y^{(k-1)}(x_0)=0
+	\end{cases}
+	\qquad\dots\qquad
+	\begin{cases}
+		\lin(y)=0\\y(x_0)=0\\y'(x_0)=0\\\vdots\\y^{(k-2)}(x_0)=0\\y^{(k-1)}(x_0)=1
+	\end{cases}
+\end{equation*}
 ciascuno con soluzione rispettivamente $u_1,u_2,\dots,u_k$.
 Se fosse $\sum_{j=1}^k\lambda_ju_j\equiv 0$, poché è una funzione identicamente nulla lo sono anche tutte le sue derivate: allora derivando ogni volta si otterrebbe che
-\[
-\sum_{j=1}^k\lambda_ju_j=\sum_{j=1}^k\lambda_ju'_j=\dots=\sum_{j=1}^k\lambda_ju^{(k-1)}_j\equiv 0.
-\]
+\begin{equation*}
+	\sum_{j=1}^k\lambda_ju_j=\sum_{j=1}^k\lambda_ju'_j=\dots=\sum_{j=1}^k\lambda_ju^{(k-1)}_j\equiv 0.
+\end{equation*}
 In tal caso, nel punto $x_0$, si ha
-\[
-0=\sum_{j=1}^k\lambda_ju_j(x_0)=\lambda_1u_1(x_0)=\lambda_1,
-\]
+\begin{equation*}
+	0=\sum_{j=1}^k\lambda_ju_j(x_0)=\lambda_1u_1(x_0)=\lambda_1,
+\end{equation*}
 perché per costruzione $u_1(x_0)=0$ e $u_2(x_0)=\dots=u_k(x_0)=0$. Analogamente, per le derivate superiori, risulta $\sum_{j=1}^k\lambda_ju'_j(x_0)=\lambda_2=0$ e così via fino a $\sum_{j=1}^k\lambda_ju^{(k-1)}_j(x_0)=\lambda_k=0$. Poiché quindi $\sum_{j=1}^k\lambda_ju_j\equiv 0$ accade soltanto per $\lambda_1=\dots=\lambda_k=0$, l'insieme $\{u_1,\dots,u_k\}$ è linearmente indipendente.
 
 Sia ora $\tilde{y}\in\Ker\lin$: calcolando le sue derivate in $x_0$, si ha l'insieme $\{\tilde{y}(x_0),\tilde{y}'(x_0),\dots,\tilde{y}^{(k-1)}(x_0)\}$. Da questo insieme si costruisce una funzione
-\[
-z(x)=\tilde{y}(x_0)u_1(x)+\tilde{y}'(x_0)u_2(x)+\dots+\tilde{y}^{(k-1)}u_k(x_0).
-\]
+\begin{equation*}
+	z(x)=\tilde{y}(x_0)u_1(x)+\tilde{y}'(x_0)u_2(x)+\dots+\tilde{y}^{(k-1)}u_k(x_0).
+\end{equation*}
 Dato che $z(x)$ è combinazione lineare di elementi del nucleo di $\lin$, anche $z\in\Ker\lin$, quindi è soluzione dell'equazione omogenea associata. Si costruisce dunque il problema di Cauchy
-\[
-\begin{cases}
-\lin(z)=0\\z(x_0)=\tilde{y}(x_0)\\z'(x_0)=\tilde{y}'(x_0)\\\vdots\\z^{(k-1)}(x_0)=\tilde{y}^{(k-1)}(x_0)
-\end{cases}
-\]
+\begin{equation*}
+	\begin{cases}
+		\lin(z)=0\\z(x_0)=\tilde{y}(x_0)\\
+		z'(x_0)=\tilde{y}'(x_0)\\
+		\vdots\\
+		z^{(k-1)}(x_0)=\tilde{y}^{(k-1)}(x_0)
+	\end{cases}
+\end{equation*}
 Poiché le condizioni al contorno coincidono, e ovviamente $\lin(\tilde{y})=0$, $z$ e $\tilde{y}$ risolvono il medesimo problema di Cauchy, il quale però può ammettere una sola soluzione: segue necessariamente che $z\equiv\tilde{y}$. Dato che $\tilde{y}$ è una generica soluzione del problema di Cauchy, ed è una combinazione lineare di elementi dell'insieme $\{u_1,\dots,u_k\}$, significa che
-\[
-\Ker\lin=\gen{u_1,u_2,\dots,u_k},
-\]
+\begin{equation*}
+	\Ker\lin=\gen{\{u_1,u_2,\dots,u_k\}},
+\end{equation*}
 vale a dire che $\{u_1,\dots,u_k\}$ è una base di $\Ker\lin$, che quindi ha dimensione $k$.
 \end{proof}
 
 \section{Equazioni lineari complete}
 \begin{teorema}
 Tutte e sole le soluzioni dell'equazione differenziale lineare completa di ordine $k$ sono della forma
-\begin{equation} \label{eq:ypyh}
-y=y_p+y_h,
+\begin{equation} \label{eq:soluzione-somma-particolare-omogenea}
+	y=y_p+y_h,
 \end{equation}
 dove $y_p$ è una soluzione di $\lin(y)=b$ e $y_h(y)$ sono tutte e sole le soluzioni dell'equazione omogenea associata $\lin(y)=0$.
 \end{teorema}
 \begin{proof}
-Applicando $\lin$ alla \eqref{eq:ypyh} si ha $\lin(y_p)+\lin(y_h)=b+0=b$, e viceversa $\lin(y-y_p-y_h)=\lin(y)-\lin(y_p)-\lin(y_h)=b-b-0=0$ quindi $y=y_p+y_h$.
+Applicando $\lin$ alla \eqref{eq:soluzione-somma-particolare-omogenea} si ha $\lin(y_p)+\lin(y_h)=b+0=b$, e viceversa $\lin(y-y_p-y_h)=\lin(y)-\lin(y_p)-\lin(y_h)=b-b-0=0$ quindi $y=y_p+y_h$.
 \end{proof}
 Non esistono metodi generali per calcolare tutte le soluzioni di una qualsiasi equazione di ordine maggiore o uguale a 2.
 
@@ -385,7 +398,7 @@ u_1c'_1+u_2c'_1=0\\u'_1c'_1+u'_2c'_2=b
 \begin{bmatrix}u_1&u_2\\u'_1&u'_2\end{bmatrix}\begin{pmatrix}c'_1\\c'_2\end{pmatrix}=
 \begin{pmatrix}0\\b\end{pmatrix}.
 \end{equation}
-La soluzione sarà data dunque, secondo la \eqref{eq:ypyh}, da $y(x)=y_p(x)+\gamma_1u_1(x)+\gamma_2u_2(x)$, con $\gamma_1,\gamma_2\in\R$.
+La soluzione sarà data dunque, secondo la \eqref{eq:soluzione-somma-particolare-omogenea}, da $y(x)=y_p(x)+\gamma_1u_1(x)+\gamma_2u_2(x)$, con $\gamma_1,\gamma_2\in\R$.
 
 \subsection*{Metodo per le equazioni lineari del secondo ordine}
 Conoscendo una soluzione $w(x)$ della omogenea associata, si ricercano soluzioni della lineare completa della forma $y(x)=w(x)u(x)$. Infatti (ancora tralasciando da qui in poi la notazione $(x)$ per le funzioni) derivando questa soluzione $y$ si ottiene $y'=w'u+wu'$ e $y''=w''u+2w'u'+wu''$. Risulta quindi, sostituendola nella \eqref{eq:lin-2}, che

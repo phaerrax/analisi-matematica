@@ -121,23 +121,16 @@ Poiché il secondo membro è limitato, essendo composto da termini definiti (rea
 Sia $\{f_n\}$ una successione di funzioni definite da $J$ in $\R$, e $x_0\in J$. Se $f_n$ è continua in $x_0$ per ogni $n$, e $\{f_n\}$ converge uniformemente a $f$ in $J$, allora $f$ è a sua volta continua in $x_0$.
 \end{teorema}
 \begin{proof}
-Per $x\in J$ qualunque, vale la relazione
-\begin{equation}
-\abs{f(x)-f(x_0)}\leq\abs{f_n(x)-f(x)}+\abs{f_n(x)-f_n(x_0)}+\abs{f_n(x_0)+f(x_0)}.
-\end{equation}
-Poiché la convergenza è uniforme, fissato un $\epsilon>0$ esiste $\overline{n}$ per cui $\forall n\geq\overline{n}$ si ha $\norm{f_n-f}_{\infty,J}<\epsilon$, cioè $\abs{f_n(t)-f(t)}<\epsilon$ per ogni $t\in J$; quindi vale anche per i punti $x_0$ e $x$ nella prima equazione. Preso dunque un valore di $n\geq\overline{n}$, ad esempio proprio $\overline{n}$, si ha quindi
-\[
-\abs{f(x)-f(x_0)}\leq\epsilon+\abs{f_{\overline n}(x)-f_{\overline n}(x_0)}+\epsilon=\abs{f_{\overline n}(x)-f_{\overline n}(x_0)}+2\epsilon.
-\]
-La singola funzione $f_{\overline n}(x)$ è continua, per le ipotesi, in $x_0$, quindi in un intorno di tale punto $\exists\delta>0$ per cui
-\[
-\forall x\in(x_0-\delta,x_0+\delta)\ \abs{f_{\overline n}(x)-f_{\overline n}(x_0)}<\epsilon.
-\]
-Allora, in tale intorno, si ha
-\[
-\abs{f(x)-f(x_0)}<3\epsilon,
-\]
-quindi la funzione limite è continua.
+	Per $x\in J$ qualunque, vale la relazione
+	\begin{equation}
+		\abs{f(x)-f(x_0)}\leq\abs{f_n(x)-f(x)}+\abs{f_n(x)-f_n(x_0)}+\abs{f_n(x_0)-f(x_0)}.
+	\end{equation}
+	Poiché la convergenza è uniforme, fissato un $\epsilon>0$ esiste $\overline{n}$ per cui $\forall n\geq\overline{n}$ si ha $\norm{f_n-f}_{\infty,J}<\epsilon$, cioè $\abs{f_n(t)-f(t)}<\epsilon$ per ogni $t\in J$; quindi vale anche per i punti $x_0$ e $x$ nella prima equazione. Preso dunque un valore di $n\geq\overline{n}$, ad esempio proprio $\overline{n}$, si ha quindi
+	\begin{equation}
+		\abs{f(x)-f(x_0)}\leq\epsilon+\abs{f_{\overline n}(x)-f_{\overline n}(x_0)}+\epsilon=\abs{f_{\overline n}(x)-f_{\overline n}(x_0)}+2\epsilon.
+	\end{equation}
+	La singola funzione $f_{\overline n}(x)$ è continua, per le ipotesi, in $x_0$, quindi in un intorno di tale punto esiste $\delta>0$ tale che per ogni $x\in(x_0-\delta,x_0+\delta)$ si ha $\abs{f_{\overline n}(x)-f_{\overline n}(x_0)}<\epsilon$.
+	Allora in tale intorno si ha $\abs{f(x)-f(x_0)}<3\epsilon$, quindi la funzione limite è continua.
 \end{proof}
 \begin{teorema}[del doppio limite] \label{t:doppio_limite}
 Sia $\{f_n\}$ una successione di funzione definite da $J$ a $\R$, e $x_0\in J'$. Se per ogni $n$ esiste $\lim_{x\to x_0}f_n(x)=\ell_n\in\R$, e $\{f_n\}$ converge a $f$ uniformemente in $J$, allora esiste anche $\lim_{n\to\pinf}\ell_n$, che è finito, e coincide con $\lim_{x\to x_0}f(x)$, ossia
@@ -171,7 +164,7 @@ f_n(x)=\begin{cases}\frac2{n}-\frac2{n^2}x&x<n\\0&x\geq n\end{cases}
 converge uniformemente alla funzione $f(x)=0$ (figura \ref{fig:succ_integrazione_illimitata}). L'integrale di ogni $f_n(x)$ in $[0,\pinf)$ vale 1, per ogni $n$, poiché la curva descritta dalla funzione è un triangolo di base $n$ e altezza $2/n$, ma l'integrale della funzione limite è chiaramente nullo.
 \input{grafici/succ-integrazione-illimitata.tex}
 
-La derivabilità di una successione di funzioni è una questione più complicata dell'integrabilità: si è già visto in un precedente esempio che anche se la successione converge uniformemente, non è sempre vero che converge anche la successione delle derivate, come per $f_n(x)=\sqrt{x^2+\frac1{n^2}}$ la derivata della funzione limite della quale non esiste nemmeno in $x=0$.
+La derivabilità di una successione di funzioni è una questione più complicata dell'integrabilità: si è già visto in un precedente esempio che anche se la successione converge uniformemente, non è sempre vero che converge anche la successione delle derivate, come per $f_n(x)=\sqrt{x^2+\frac1{n^2}}$, la cui derivata della funzione limite non esiste nemmeno, in $x=0$.
 \begin{teorema} \label{t:scambio_derivata_limite}
 Sia $\{f_n\}$ una successione di funzioni definite da $[a,b]$ in $\R$ e derivabili in tale intervallo. Se esiste un punto $x_0\in[a,b]$ per cui $\{f_n(x_0)\}$ converge, e se la successione delle derivate $\{f_n'\}$ converge uniformemente in $[a,b]$ ad una funzione $g$, allora esiste una funzione $f\colon[a,b]\to\R$ derivabile, tale che
 \begin{itemize}
@@ -199,7 +192,7 @@ Essa è derivabile, poiché l'integranda $g$ è continua, $f$ è derivabile per 
 				&\leq\abs{f(x_0)-f_n(x_0)}+\abs{x-x_0}\norm{g-f_n'}_{\infty,[a,b]}\leq\\
 				&\leq\abs{f(x_0)-f_n(x_0)}+(b-a)\norm{g-f_n'}_{\infty,[a,b]},
 \end{split}\]
-e poiché per le ipotesi $f_n(x_0)\to f(x_0)$ per $n\to\pinf$, ed $\{f_n'\}$ converge a $g$, si ha che $\{f_n\}$ converge a $f$; la convergenza è infine uniforme in quanto non dipende affatto dalla scelta di $x$, come si nota nell'ultima riga dell'equazione ce la variabile non compare più.
+e poiché per le ipotesi $f_n(x_0)\to f(x_0)$ per $n\to\pinf$, ed $\{f_n'\}$ converge a $g$, si ha che $\{f_n\}$ converge a $f$; la convergenza è infine uniforme in quanto non dipende affatto dalla scelta di $x$, come si nota nell'ultima riga dell'equazione dove la variabile non compare più.
 \end{proof}
 È importante che la successione $\{f_n\}$ converga almeno in un punto: se si guarda alla successione $f_n(x)=n$, che è costante, la successione delle derivate è $f_n'(x)=0$, cioè sono tutte identicamente nulle ($f_n$ infatti è costante), quindi ovviamente $\{f_n'\}$ converge uniformemente alla funzione identicamente nulla. Ma si nota facilmente che $f_n$ non converge in nessun punto dell'asse reale, nemmeno puntualmente, quindi non esistono nemmeno la funzione limite $f$ né la sua derivata $f'$.
 
@@ -209,18 +202,20 @@ Si indica con la scrittura $\boun{F}{E}$, dove $E\subseteq\R^m$ e $F\subset\R^p$
 \[
 d(\vec f,\vec g)=\sup_{\vec x\in E}\norm{\vec f(\vec x)-\vec g(\vec x)}_F,
 \]
-in cui la norma si intende la norma euclidea in $\R^p$. È un'operazione binaria definita come $d\colon\boun{F}{E}\times\boun{F}{E}\to\R$.
+dove $\norm{\cdot}_F$ è la norma euclidea in $\R^p$. È un'operazione binaria definita come $d\colon\boun{F}{E}\times\boun{F}{E}\to\R$.
 Tale distanza è ben definita, perché tutte le $p$ componenti di $\vec f$ e $\vec g$ sono limitate, quindi $\norm{\vec f(\vec x)}_F\leq M$ e $\norm{\vec g(\vec x)}_F\leq K$ $\forall\vec x\in E$, quindi per la disuguaglianza triangolare risulta $\norm{\vec f(\vec x)-\vec g(\vec x)}_F\leq M+K$, cioè $d(\vec f,\vec g)\leq M+K<\pinf$.
 Inoltre soddisfa le proprietà che definiscono una distanza, ossia:
 \begin{itemize}
-\item $d(\vec f,\vec g)\leq 0$ $\forall\vec x\in E$ in quanto è una norma euclidea, e $d(\vec f,\vec g)=0$ se e solo se $\norm{\vec f(\vec x)-\vec g(\vec x)}_F=0$ per ogni punto $\vec x\in E$, vale a dire che per tutti i punti $\vec x_0\in E$ risulta $\vec f(\vec x_0)=\vec g(\vec x_0)$, cioè le funzioni coincidono.
-\item $d(\vec f,\vec g)=d(\vec g,\vec f)$ per la simmetria della norma euclidea.
-\item Date tre funzioni $\vec f,\vec g,\vec h\in\boun{F}{E}$, per la disuguaglianza triangolare della norma euclidea si ha
-\[\begin{split}
-\norm{\vec f(\vec x)-\vec g(\vec x)}_F&\leq\norm{\vec f(\vec x)-\vec h(\vec x)+\vec h(\vec x)-\vec g(\vec x)}_F\leq\\
-&\leq\norm{\vec f(\vec x)-\vec h(\vec x)}_F+\norm{\vec h(\vec x)-\vec g(\vec x)}_F\leq\\
-&\leq d(\vec f,\vec h)+d(\vec h,\vec g).
-\end{split}\]
+	\item $d(\vec f,\vec g)\ge 0$ $\forall\vec x\in E$ in quanto è una norma euclidea, e $d(\vec f,\vec g)=0$ se e solo se $\norm{\vec f(\vec x)-\vec g(\vec x)}_F=0$ per ogni punto $\vec x\in E$, vale a dire che per tutti i punti $\vec x_0\in E$ risulta $\vec f(\vec x_0)=\vec g(\vec x_0)$, cioè le funzioni coincidono.
+	\item $d(\vec f,\vec g)=d(\vec g,\vec f)$ per la simmetria della norma euclidea.
+	\item Date tre funzioni $\vec f,\vec g,\vec h\in\boun{F}{E}$, per la disuguaglianza triangolare della norma euclidea si ha
+	\begin{equation}
+		\begin{split}
+			\norm{\vec f(\vec x)-\vec g(\vec x)}_F&\leq\norm{\vec f(\vec x)-\vec h(\vec x)+\vec h(\vec x)-\vec g(\vec x)}_F\leq\\
+			&\leq\norm{\vec f(\vec x)-\vec h(\vec x)}_F+\norm{\vec h(\vec x)-\vec g(\vec x)}_F\leq\\
+			&\leq d(\vec f,\vec h)+d(\vec h,\vec g).
+		\end{split}
+	\end{equation}
 Poiché quindi per ogni punto $\vec x\in E$ la norma $\norm{\vec f(\vec x)-\vec g(\vec x)}_F$ non supera questa somma delle distanze, anche il suo estremo superiore non la potrà superare, dunque
 \[
 \sup_{\vec x\in E}\norm{\vec f(\vec x)-\vec g(\vec x)}_F=d(\vec f,\vec g)\leq d(\vec f,\vec h)+d(\vec h,\vec g).

@@ -132,7 +132,7 @@ Un altro teorema garantisce una ancora più semplice condizione sufficiente affi
 Sia una funzione $f\colon[a,b]\to\R$. Se $f\in\cont{}\ab$, allora $f\in\rie\ab$.
 \end{teorema}
 \begin{proof}
-Poiché $[a,b]$ è compatto, essendo $f$ continua in questo intervallo si ha che per il teorema \ref{t:weierstrass} di Weierstra\ss\ ammette massimo e minimo in $[a,b]$, e per il teorema \ref{t:heine-cantor} è uniformemente continua, quindi $\forall\epsilon>0$ $\exists\delta>0$ tale che per $\abs{x-y}<\delta$ si abbia $\abs{f(x)-f(y)}<\epsilon$.
+Poiché $[a,b]$ è compatto, essendo $f$ continua in questo intervallo si ha che per il teorema \ref{t:weierstrass} di Weierstrass ammette massimo e minimo in $[a,b]$, e per il teorema \ref{t:heine-cantor} è uniformemente continua, quindi $\forall\epsilon>0$ $\exists\delta>0$ tale che per $\abs{x-y}<\delta$ si abbia $\abs{f(x)-f(y)}<\epsilon$.
 Allora fissato $\epsilon>0$ si trova un $\delta>0$, per il quale prendo una partizione $\partz[a,b]$ con ``passo'' (ampiezza dei sottointervalli) minore di $\delta$. In ogni $I_j=[x_{j-1},x_j]$, con $j\in\{1,2,\dots,n\}$ tale che $x_0=a$ e $x_n=b$, $f$ ammette un massimo e un minimo perché è limitata, quindi esistono $u_j$ e $t_j$ tali che $f(u_j)=\max f(I_j)\defeq M_j$ e $f(t_j)=\min f(I_j)\defeq m_j$. La differenza tra le somme superiori e inferiori è
 \begin{multline}
 S(f,\partz)-s(f,\partz)=\sum_{j=1}^nM_j(x_j-x_{j-1})-\sum_{j=1}^nm_j(x_j-x_{j-1})=\\
@@ -313,7 +313,9 @@ Questo è il caso di funzioni con singolarità in un punto interno all'intervall
 Se $f$ è già Riemann-integrabile su $[a,b]$, si sa che la funzione integrale $F_b(x)=\int_x^bf(t)\,\dd t$ è continua per il teorema \ref{t:tfci1} fondamentale del calcolo integrale, quindi $F_b(a)=\lim_{x\to a^+}F_b(x)$, che per la continuità di $F$ coincidono.
 \end{osservazione}
 \paragraph{Seconda specie}
-In questo caso l'intervallo di integrazione non è pià limitato: sia ad esempio $[a,\pinf)$. Sia $f$ una funzione definita come $f\colon[a,\pinf)\to\R$ che sia Riemann-integrabile in ogni intervallo compatto $I\subset[a,\pinf)$: allora esiste l'integrale $\int_a^xf(t)\,\dd t$ per ogni $x>a$. Se esiste ed è finito il limite
+In questo caso l'intervallo di integrazione non è più limitato: sia ad esempio $[a,\pinf)$.
+Sia $f$ una funzione definita come $f\colon[a,\pinf)\to\R$ che sia Riemann-integrabile in ogni intervallo compatto $I\subset[a,\pinf)$: allora esiste l'integrale $\int_a^xf(t)\,\dd t$ per ogni $x>a$.
+Se esiste ed è finito il limite
 \[
 \int_a^{\pinf} f(t)\,\dd t\equiv\lim_{x\to\pinf}\int_a^xf(t)\,\dd t,
 \]
@@ -332,19 +334,21 @@ Allora l'integrale converge (a $\frac1{1-p}$) per $p>1$, mentre diverge a $\pinf
 
 Il calcolo di un integrale improprio è talvolta difficoltoso, e spesso interessa soltanto stabilire soltanto la sua convergenza, ossia la sua esistenza. A questo scopo, laddove l'integrale non sia fin da subito immediato, tornano utili alcuni criteri per la convergenza. Con $I$ si indicheranno dei generici intervalli della forma $(a,b]$, $[a,b)$, $[a,\pinf)$ e $(\minf,b]$.
 \begin{teorema}[del confronto] \label{t:confronto_int1}
-Siano $f,g\colon I\to\R$ tali che, per ogni $J\subset I$ compatto, $f\in\rie(J)$. Allora se $\forall x\in I$ si ha che $0\leq f(x)\leq g(x)$
-\begin{itemize}
-\item ed esiste l'integrale improprio di $g$, allora esiste anche l'integrale improprio di $f$;
-\item se non esiste l'integrale improprio di $f$ diverge, allora non esiste neanche l'integrale improprio di $g$.
-\end{itemize}
+	Siano $f,g\colon I\to\R$ tali che, per ogni $J\subset I$ compatto, $f\in\rie(J)$. Allora se $\forall x\in I$ si ha che $0\leq f(x)\leq g(x)$
+	\begin{itemize}
+		\item ed esiste l'integrale improprio di $g$, allora esiste anche l'integrale improprio di $f$;
+		\item se non esiste l'integrale improprio di $f$, allora non esiste neanche l'integrale improprio di $g$.
+	\end{itemize}
 \end{teorema}
 Nel secondo punto si potrebbe anche parlare di divergenza: se infatti le due funzioni sono entrambe positive, il loro integrale improprio può soltanto convergere o divergere a $\pinf$, come già accadeva per le serie.
 \begin{proof}
-Sia $I=[a,b)$. Per le proprietà dell'integrale di Riemann vale la disuguaglianza
-\[
-0\leq\Int_a^xf(t)\,\dd t\leq\Int_a^xg(t)\,\dd t,
-\]
-ed entrambe le funzioni integrali sono positive, perché $f,g\geq 0$, continue per il teorema \ref{t:tfci1} fondamentale del calcolo integrale, e monotone non decrescenti, quindi devono ammettere limite. Dal teorema del confronto del limiti si ottiene allora che se il limite di $G_a(x)$ è finito, lo è anche il limite di $F_a(x)$, mentre se $F_a(x)$ non converge, e allora non può che divergere perché $F_a(x)\geq 0$, anche $G_a(x)$ diverge. La dimostrazione per gli altri tipi di intervalli è del tutto analoga.
+	Sia $I=[a,b)$. Per le proprietà dell'integrale di Riemann vale la disuguaglianza
+	\[
+	0\leq\Int_a^xf(t)\,\dd t\leq\Int_a^xg(t)\,\dd t,
+	\]
+	ed entrambe le funzioni integrali sono positive, perché $f,g\geq 0$, continue per il teorema \ref{t:tfci1} fondamentale del calcolo integrale, e monotone non decrescenti, quindi devono ammettere limite.
+	Dette $F_a$ e $G_a$ le rispettive funzioni integrali di $f$ e $g$ con estremo inferiore $a$, dal teorema del confronto del limiti si ottiene che se il limite di $G_a$ è finito, lo è anche il limite di $F_a$; se invece $F_a$ non converge, non può che divergere perché $f\ge 0$, dunque anche $G_a(x)$ diverge.
+	La dimostrazione per gli altri tipi di intervalli è del tutto analoga.
 \end{proof}
 \begin{definizione}
 Sia $f\colon I\to\R$: si definisce \emph{parte positiva} di $f$ la funzione
@@ -384,31 +388,31 @@ Siano $f,g\colon I\to\R$ non negative in $I$. Se $f\sim g$, allora gli integrali
 \end{corollario}
 La convergenza dell'integrale improprio non implica, come si era visto per le serie numeriche, come condizione necessaria la convergenza a zero della funzione! Il limite potrebbe anche non esistere, ma l'integrale improprio sì; se però la funzione è regolare, allora il limite non può che essere 0. Le serie hanno comunque un legame stretto con gli integrali impropri, come dimostra il seguente teorema che lega le serie agli integrali su $[0,\pinf)$.
 \begin{teorema} \label{t:intserie}
-Sia $f\colon[n,\pinf)\to[0,\pinf)$, con $n\in\N$, una funzione monotona decrescente: allora vale
-\begin{equation} \label{eq:intserie}
-\int_n^{\pinf} f(x)\,\dd x\leq\ser{j}f(j)\leq f(n)+\Int_n^{\pinf} f(x)\,\dd x.
-\end{equation}
+	Sia $f\colon[n,\pinf)\to[0,\pinf)$, con $n\in\N$, una funzione monotona decrescente: allora vale
+	\begin{equation} \label{eq:intserie}
+		\int_n^{\pinf} f(x)\,\dd x\leq\ser{j}f(j)\leq f(n)+\Int_n^{\pinf} f(x)\,\dd x.
+	\end{equation}
 \end{teorema}
 \begin{proof}
-Sia $m>n$ intero: l'integrale in $[n,m+1]$ è la somma di integrali in intervalli più piccoli, ossia
-\[
-\int_n^{m+1}f(x)\,\dd x=\sum_{j=n}^{m}\Int_j^{j+1}f(x)\,\dd x.
-\]
-Poiché $f$ è decrescente, per ogni $x\in[j,j+1]$ si ha che $f(j+1)\leq f(x)\leq f(j)$, quindi integrando in $[j,j+1]$ si mantiene la relazione d'ordine anche tra gli integrali, cioè
-\begin{gather*}
-\Int_j^{j+1}f(j+1)\leq\Int_j^{j+1}f(x)\,\dd x\leq\Int_j^{j+1}f(j)\\
-(j+1-j)f(j+1)\leq\Int_j^{j+1}f(x)\,\dd x\leq(j+1-j)f(j)\\
-f(j+1)\leq\Int_j^{j+1}f(x)\,\dd x\leq f(j).
-\end{gather*}
-Allora sommando i termini da $n$ a $m-1$ risulta
-\[
-\sum_{j=n}^{m-1}f(j+1)\leq\Int_n^m f(x)\,\dd x\leq\sum_{j=n}^{m-1},
-\]
-da cui si ottiene
-\[
-\sum_{j=n}^{m-1}f(j)-f(n)\leq\Int_n^m f(x)\,\dd x\leq\sum_{j=n}^{m-1}f(j),
-\]
-da cui per $m\to\pinf$ si ottiene la \eqref{eq:intserie}.
+	Sia $m>n$ intero: l'integrale in $[n,m+1]$ è la somma di integrali in intervalli più piccoli, ossia
+	\begin{equation}
+		\int_n^{m+1}f(x)\,\dd x=\sum_{j=n}^{m}\Int_j^{j+1}f(x)\,\dd x.
+	\end{equation}
+	Poiché $f$ è decrescente, per ogni $x\in[j,j+1]$ si ha che $f(j+1)\leq f(x)\leq f(j)$, quindi integrando in $[j,j+1]$ si mantiene la relazione d'ordine anche tra gli integrali, cioè
+	\begin{gather*}
+		\Int_j^{j+1}f(j+1)\leq\Int_j^{j+1}f(x)\,\dd x\leq\Int_j^{j+1}f(j)\\
+		(j+1-j)f(j+1)\leq\Int_j^{j+1}f(x)\,\dd x\leq(j+1-j)f(j)\\
+		f(j+1)\leq\Int_j^{j+1}f(x)\,\dd x\leq f(j).
+	\end{gather*}
+	Sommando i termini da $n$ a $m-1$ risulta
+	\begin{equation}
+		\sum_{j=n}^{m-1}f(j+1)\leq\Int_n^m f(x)\,\dd x\leq\sum_{j=n}^{m-1}f(j),
+	\end{equation}
+	e possiamo riscrivere la somma più a sinistra (posto $k=j+1$) come $\sum_{k=n+1}^mf(k)=\sum_{k=n}^mf(k)-f(n)$, perciò
+	\begin{equation}
+		\sum_{j=n}^{m-1}f(j)-f(n)\le\Int_n^m f(x)\,\dd x\le\sum_{j=n}^{m-1}f(j),
+	\end{equation}
+	da cui, nel limite per $m\to\pinf$, si ottiene la \eqref{eq:intserie}.
 \end{proof}
 Con questo teorema si può valutare l'integrale
 \[

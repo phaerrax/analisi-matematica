@@ -30,9 +30,9 @@ Nel capitolo \ref{sec:spazi-funz} si era visto che lo spazo metrico delle funzio
 \item se $f_n$ è limitata per ogni $n$, allora $S_k$ è limitata;
 \item se $f_n\in\cont{p}$ per ogni $n$, allora anche $S_k\in\cont{p}$.
 \end{itemize}
-Infine queste proprietà sono ereditate dalla funzione somma quando la convergenza è uniforme, come dal teorema \dots.
+Chiaramente la somma (finita) di funzioni limitate o continue è ancora limitata o continua: non sempre lo stesso vale per la funzione somma, per la quale si applica il seguente teorema.
 \begin{teorema}
-Se $f_n(x)\in\cont{J}$ $\forall n$ e $S(x)=\ser{n}f_n(x)$ converge uniformemente in $J$, allora $S\in\cont{}(J)$.
+	Se $f_n(x)\in\cont{}(J)$ $\forall n$ e $S(x)=\ser{n}f_n(x)$ converge uniformemente in $J$, allora $S\in\cont{}(J)$.
 \end{teorema}
 \begin{teorema} \label{t:continuita_serie_conv_uniforme}
 Se esiste finito il $\lim_{x\to x_0}f_n(x)=\ell_n\in\R$, per ogni $n$, e $S(x)=\ser{n}f_n(x)$ converge uniformemente in $J$, allora la serie $\ser{n}\ell_n$ converge e vale
@@ -79,7 +79,7 @@ La condizione appena data è ovviamente solamente necessaria: la serie $\ser{n}\
 Si dice che la serie $\ser{n}f_n(x)$ converge \emph{totalmente} in $J$ se esiste una successione numerica $\{M_n\}\subset\R$ tale che $\abs{f_n(x)}\leq M_n$ per ogni $n$ e $x\in J$, e per cui la serie $\ser{n}M_n$ converga.
 \end{definizione}
 La definizione continua a valere se come successione $\{M_n\}$ si prende il minimo dei maggioranti di $f_n(x)$ in $J$, che è proprio la norma uniforme: allora la convergenza é totale anche quando la serie $\ser{n}\norm{f_n}_{\infty,J}$ converge.
-\begin{teorema}[di Weierstra\ss]
+\begin{teorema}[di Weierstrass]
 Se $\ser{n}f_n(x)$ converge totalmente in $J$, allora converge anche uniformemente.
 \end{teorema}
 \begin{proof}
@@ -152,7 +152,7 @@ Per il criterio \ref{t:criterio_radice_serie} della radice si ha
 \[
 \limsup_{n\to\pinf}\sqrt[n]{\abs{a_nx^n}}=\abs{x}\limsup_{n\to\pinf}\sqrt[n]{\abs{a_n}}\equiv \abs{x}\ell.
 \]
-che deve essere minore di 1, quindi $\abs{x}<1/\ell$, cioè $\rho=1/\ell$ è il raggio di convergenza.
+che deve essere minore di 1, quindi $\abs{x}<1/\ell$: allora $\rho=1/\ell$ è il raggio di convergenza.
 \end{proof}
 Questo criterio è sempre utilizzabile, in quanto il limite superiore di una successione, in $\Rex$, esiste sempre (teorema \ref{t:classe_limite_mai_vuota}).
 \begin{teorema}[Criterio di d'Alembert]
@@ -187,17 +187,20 @@ Come conseguenza, la serie è anche continua sul bordo di $(-\rho,\rho)$, dove c
 \lim_{x\to\rho^-}\serz{n}a_nx^n=\serz{n}a_n\rho^n.
 \]
 È possibile calcolare l'integrale di una serie di potenze trasformandolo in una serie numerica grazie al teorema seguente.
-\begin{teorema}
-Sia $\serz{n}a_nx^n$ con raggio di convergenza $\rho$. Per $[\alpha,\beta]\subset(-\rho,\rho)$ vale l'uguaglianza
-\[
-\int_\alpha^\beta\serz{n}a_nx^n\,\dd x=\serz{n}a_n\frac{\beta^{n+1}-\alpha^{n+1}}{n+1}.
-\]
+\begin{teorema} \label{t:integrale-serie-potenze}
+	Sia $\serz{n}a_nx^n$ con raggio di convergenza $\rho$.
+	Per $[\alpha,\beta]\subset(-\rho,\rho)$ vale l'uguaglianza
+	\begin{equation}
+		\int_\alpha^\beta\serz{n}a_nx^n\,\dd x=\serz{n}a_n\frac{\beta^{n+1}-\alpha^{n+1}}{n+1}.
+	\end{equation}
 \end{teorema}
 \begin{proof}
-L'intervallo $[\alpha,\beta]$ è un sottoinsieme compatto dell'intervallo di convergenza, in cui quindi la serie converge uniformemente, e il termine $anx^n$ è certamente integrabile secondo Riemann. È quindi possibile applicare il teorema \ref{t:scambio_integrale_serie} che permette di scambiare l'ordine di serie ed integrale. Integrando la serie termine a termine si ottiene
-\[
-\int_\alpha^\beta\serz{n}a_nx^n\,\dd x=\serz{n}\int_\alpha^\beta a_nx^n\,\dd x=\serz{n}a_n\int_\alpha^\beta x^n\,\dd x=\serz{n}a_n\frac{\beta^{n+1}-\alpha^{n+1}}{n+1}.
-\]
+	L'intervallo $[\alpha,\beta]$ è un sottoinsieme compatto dell'intervallo di convergenza, in cui quindi la serie converge uniformemente, e il termine $a_nx^n$ è certamente integrabile secondo Riemann.
+	È quindi possibile applicare il teorema \ref{t:scambio_integrale_serie} che permette di scambiare l'ordine di serie ed integrale.
+	Integrando la serie termine a termine si ottiene
+	\begin{equation}
+		\int_\alpha^\beta\serz{n}a_nx^n\,\dd x=\serz{n}\int_\alpha^\beta a_nx^n\,\dd x=\serz{n}a_n\int_\alpha^\beta x^n\,\dd x=\serz{n}a_n\frac{\beta^{n+1}-\alpha^{n+1}}{n+1}.
+	\end{equation}
 \end{proof}
 
 Dove la convergenza è uniforme, si può calcolare la derivata di una serie di potenze termine a termine: la derivata di $\serz{n}a_nx^n$ è dunque
@@ -244,10 +247,10 @@ a_k=\frac{f^{(k)}(0)}{k!}.
 \]
 I coefficienti della serie sono quindi univocamente determinati dalle derivate della funzione somma, tramite l'equazione precedente.
 \begin{teorema}
-Data la serie di potenze $S(x)\serz{n}a_n(x-x_0)^n$ con raggio di convergenza $\rho$ non nullo, si ha che $S\in\cont{\infty}\big((x_0-\rho,x_0+\rho)\big)$ e per ogni punto $x$ in tale intervallo risulta
-\begin{equation} \label{eq:serie_potenze_taylor}
-S(x)=\serz{n}\frac{S^{(n)}(x_0)}{n!}(x-x_0)^n.
-\end{equation}
+	Data la serie di potenze $S(x)=\serz{n}a_n(x-x_0)^n$ con raggio di convergenza $\rho\ne 0$, si ha che $S\in\cont{\infty}\big((x_0-\rho,x_0+\rho)\big)$ e per ogni punto $x$ in tale intervallo risulta
+	\begin{equation} \label{eq:serie_potenze_taylor}
+		S(x)=\serz{n}\frac{S^{(n)}(x_0)}{n!}(x-x_0)^n.
+	\end{equation}
 \end{teorema}
 \paragraph{Esempi}
 \begin{itemize}

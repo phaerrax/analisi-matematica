@@ -96,7 +96,7 @@ Sia $f$ differenziabile in $\vec a$ per due vettori distinti $\vlambda_1$ e $\vl
 Trascurando il membro centrale si trova che $\scalar{\vlambda_1-\vlambda_2}{\vec h}=o(\norm{\vec h})$. Dividendo per $\norm{\vec h}$, si ottiene $\vec h/\norm{\vec h}$ che è un versore, che sarà indicato con $\vec v$; dunque $\scalar{\vlambda_1-\vlambda_2}{\vec v}=o(1)$, cioè per ogni $\vec v$ si ha che $\scalar{\vlambda_1-\vlambda_2}{\vec v}=0$, dato che l'espressione non dipende da $\norm{\vec h}$. Allora $\vlambda_1-\vlambda_2$ è ortogonale a $\vec v$: poiché l'unico vettore ortogonale ad infiniti vettori (la relazione vale infatti per qualunque $\vec v\in\R^n$) è il vettore nullo, risulta $\vlambda_1=\vlambda_2$.
 \end{proof}
 
-La differenziabilità della funzione permette di evitare spacevoli inconvenienti come la discontinuità. Il teorema seguente dimostra la regolarità della funzione differenziabile, oltre a mostrare che $\vlambda$ non è proprio un vettore qualsiasi.
+La differenziabilità della funzione permette di evitare spiacevoli inconvenienti come la discontinuità. Il teorema seguente dimostra la regolarità della funzione differenziabile, oltre a mostrare che $\vlambda$ non è proprio un vettore qualsiasi.
 \begin{teorema} \label{t:conseguenze_differenziabilita}
 Siano $\Omega$ un aperto di $\R^n$, e la funzione $f\colon\Omega\to\R$. Preso un punto $\vec a\in\Omega$, se $f$ è differenziabile in tale punto allora:
 \begin{enumerate}
@@ -171,7 +171,7 @@ La funzione $\vec f\colon\Omega\subset\R^n\to\R^m$ si dice differenziabile nel p
 \end{definizione}
 Quindi $\vec f$ è differenziabile in $\vec a$ se e solo se lo sono tutte le sue componenti $f_1,f_2,\dots,f_m$.
 A questa applicazione $L$ %vedere se bisogna fissare una base prima di associarla ad una matrice!
-si può associare una matrice, fissata, $\Lambda\in\mat_{m,n}(\R)$, cioè con $m$ righe e $n$ colonne, tale che $L(\vec h)=\Lambda\vec h$. Si riscrive dunque la definizione precedente questa volta richiedendo che esista una tale matrice $\Lambda$ per cui valga
+si può associare una matrice, fissata, $\Lambda\in\mat(m,n,\R)$, cioè con $m$ righe e $n$ colonne, tale che $L(\vec h)=\Lambda\vec h$. Si riscrive dunque la definizione precedente questa volta richiedendo che esista una tale matrice $\Lambda$ per cui valga
 \begin{equation} \label{eq:differenziabilita-vett}
 \lim_{\vec h\to\vec 0}\frac{\vec f(\vec a+\vec h)-\vec f(\vec a)-\Lambda\vec h}{\norm{\vec h}}=0.
 \end{equation}
@@ -197,31 +197,35 @@ Siano $\Omega$ un aperto in $\R^n$, $\vec a$ un suo punto e la funzione $f\colon
 \end{teorema}
 Nel caso di $\R^2$ si dà la seguente dimostrazione, generalizzabile eventualmente per $\R^n$ con $n$ qualunque.
 \begin{proof}
-Siano $\vec x=(x,y)\in B(\vec a,r)$ e $\vec a=(a_1,a_2)$. Si dimostra che
-\begin{equation} \label{eq:difftot}
-\frac{f(x,y)-f(a_1,a_2)-\scalar{\grad f(\vec a)}{\vec x-\vec a}}{\norm{\vec x-\vec a}}\to 0,
-\end{equation}
-in modo che $f$ sia differenziabile in $\vec a$.
+	Siano $\vec x=(x,y)\in B(\vec a,r)$ e $\vec a=(a_1,a_2)$.
+	Si dimostra che
+	\begin{equation} \label{eq:difftot}
+		\frac{f(x,y)-f(a_1,a_2)-\scalar{\grad f(\vec a)}{\vec x-\vec a}}{\norm{\vec x-\vec a}}\to 0,
+	\end{equation}
+	per $\vec x\to\vec a$, in modo che $f$ sia differenziabile in $\vec a$.
 
-Si può calcolare $f(x,y)-f(a_1,a_2)$ come $f(x,y)-f(a_1,y)+f(a_1,y)-f(a_1,a_2)$. I primi due termini corrispondono all'incremento di $f$ fissato $y$ (quindi lungo la direzione di $x$), mentre i secondi due all'incremento fissato $a_1$ (quindi lungo $y$). Il risultato è ancora ovviamente un punto interno a $\Omega$ (figura \ref{fig:differenziale_totale}).
-\input{grafici/differenziale-totale.tex}
-Applicando il teorema di Lagrange a $f(\cdot,y)$ e $f(a_1,\cdot)$, che sono entrambe derivabili per ipotesi, dato che corrispondono alle derivate parziali rispettivamente in $x$ e $y$, si ottiene che
-\[
-f(x,y)-f(a_1,y)=(x-a_1)\drp{f}{x}(\xi,y)\qeq f(a_1,y)-f(a_1,a_2)=(y-a_2)\drp{f}{y}(a_1,\eta)
-\]
-per qualche $(\xi,y)$ e $(a_1,\eta)$ in $\Omega$.
-Il numeratore della \eqref{eq:difftot} si riscrive quindi come
-\begin{align*}
-&(x-a_1)\drp{f}{x}(\xi,y)+(y-a_2)\drp{f}{y}(a_1,\eta)-\bigg[(x-a_1)\drp{f}{x}(a_1,a_2)+(y-a_2)\drp{f}{y}(a_1,a_2)\bigg]=\\
-=&(x-a_1)\bigg[\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)\bigg]+(y-a_2)\bigg[\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)\bigg],
-\end{align*}
-il cui modulo è minore della somma dei moduli dei termini, quindi
-\begin{align*}
-\leq&\abs{x-a_1}\abs{\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)}+\abs{y-a_2}\abs{\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)}\leq\\
-\leq&\norm{\vec x-\vec a}\abs{\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)}+\norm{\vec x-\vec a}\abs{\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)}=\\
-\leq&\norm{\vec x-\vec a}\left[\abs{\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)}+\abs{\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)}\right].
-\end{align*}
-Allora la \eqref{eq:difftot} è maggiorata dal termine tra parentesi quadre. Per $\vec x\to\vec a$ si ha $(\xi,y)\to\vec a$ e anche $(a_1,\eta)\to\vec a$, e poiché le derivate parziali per ipotesi sono continue risulta che la \eqref{eq:difftot} tende a 0, quindi la $f$ è differenziabile in $\vec a$.
+	Si può calcolare $f(x,y)-f(a_1,a_2)$ come $f(x,y)-f(a_1,y)+f(a_1,y)-f(a_1,a_2)$.
+	I primi due termini corrispondono all'incremento di $f$ fissato $y$ (quindi lungo la direzione di $x$), mentre i secondi due all'incremento fissato $a_1$ (quindi lungo $y$).
+	Il risultato è ancora ovviamente un punto interno a $\Omega$ (figura \ref{fig:differenziale_totale}).
+	\input{grafici/differenziale-totale.tex}
+	Applicando il teorema di Lagrange a $f(\cdot,y)$ e $f(a_1,\cdot)$, che sono entrambe derivabili per ipotesi, dato che corrispondono alle derivate parziali rispettivamente in $x$ e $y$, si ottiene che
+	\begin{equation}
+		f(x,y)-f(a_1,y)=(x-a_1)\drp{f}{x}(\xi,y)\qeq f(a_1,y)-f(a_1,a_2)=(y-a_2)\drp{f}{y}(a_1,\eta)
+	\end{equation}
+	per qualche $(\xi,y)$ e $(a_1,\eta)$ in $\Omega$.
+	Il numeratore della \eqref{eq:difftot} si riscrive quindi come
+	\begin{align*}
+		&(x-a_1)\drp{f}{x}(\xi,y)+(y-a_2)\drp{f}{y}(a_1,\eta)-\bigg[(x-a_1)\drp{f}{x}(a_1,a_2)+(y-a_2)\drp{f}{y}(a_1,a_2)\bigg]=\\
+		=&(x-a_1)\bigg[\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)\bigg]+(y-a_2)\bigg[\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)\bigg],
+	\end{align*}
+	il cui modulo è minore della somma dei moduli dei termini, quindi
+	\begin{align*}
+		\leq&\abs{x-a_1}\abs{\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)}+\abs{y-a_2}\abs{\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)}\leq\\
+		\leq&\norm{\vec x-\vec a}\abs{\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)}+\norm{\vec x-\vec a}\abs{\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)}=\\
+		=&\norm{\vec x-\vec a}\left[\abs{\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)}+\abs{\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)}\right].
+	\end{align*}
+	Allora la \eqref{eq:difftot} è maggiorata dal termine tra parentesi quadre.
+	Per $\vec x\to\vec a$ si ha $(\xi,y)\to\vec a$ e anche $(a_1,\eta)\to\vec a$, e poiché le derivate parziali per ipotesi sono continue risulta che la \eqref{eq:difftot} tende a 0, quindi la $f$ è differenziabile in $\vec a$.
 \end{proof}
 Se $f$ è una funzione vettoriale da $\R^n$ a $\R^m$, il teorema richiede che tutte le derivate parziali $\frac{\ddp f_i}{\ddp x_j}$ con $1\leq i\leq m$ e $1\leq j\leq n$ siano continue in $\vec a$.
 
@@ -235,16 +239,16 @@ La dimostrazione segue immediatamente dal teorema precedente.
 
 \section{Differenziazione di funzioni composte}
 \begin{teorema}
-Sia $\Omega$ un insieme aperto in $\R^n$, $\vec a\in\Omega$ e $\vec f\in\Omega\to\R^m$ differenziabile in $\vec a$; sia quindi $\vec g\in\R^m\to\R^p$ differenziabile in $\vec b=\vec f(\vec a)$.
-Allora la funzione composta $\vec h=\vec g\circ\vec f\colon\R^n\to\R^p$ è differenziabile in $\vec a$, e vale la relazione
-\begin{equation} \label{eq:composizione_differenziali}
-\dd\vec h(\vec a;\cdot)=\dd\vec g(\vec b;\cdot)\circ\dd\vec f(\vec a;\cdot)=\dd\vec g\big(\vec b;\dd\vec f(\vec a;\cdot)\big),
-\end{equation}
-vale a dire che la jacobiana di $\vec h$ in $\vec a$ è il prodotto ordinato della jacobiana di $\vec g$ per quella di $\vec f$:
-\[
-\jac\vec h(\vec a)=\jac\vec g\big(\vec f(\vec a)\big)\jac\vec f(\vec a).
-\]
-Il prodotto tra queste matrici è possibile, dato che sono rispettivamente $p\times m$ e $m\times n$, e si ottiene quindi che la jacobiana di $\vec h$ ha $p$ righe e $n$ colonne. Il prodotto \emph{non} è commutativo, in quanto non è nemmeno possibile eseguirlo scambiando l'ordine dei fattori, diversamente dal caso di funzioni da $\R$ in $\R$.
+	Sia $\Omega$ un insieme aperto in $\R^n$, $\vec a\in\Omega$ e $\vec f\colon\Omega\to\R^m$ differenziabile in $\vec a$; sia quindi $\vec g\colon\vec f(\Omega)\to\R^p$ differenziabile in $\vec b=\vec f(\vec a)$.
+	Allora la funzione composta $\vec h=\vec g\circ\vec f\colon\Omega\to\R^p$ è differenziabile in $\vec a$, e vale la relazione
+	\begin{equation} \label{eq:composizione_differenziali}
+		\dd\vec h(\vec a;\cdot)=\dd\vec g(\vec b;\cdot)\circ\dd\vec f(\vec a;\cdot)=\dd\vec g\big(\vec b;\dd\vec f(\vec a;\cdot)\big),
+	\end{equation}
+	vale a dire che la jacobiana di $\vec h$ in $\vec a$ è il prodotto ordinato della jacobiana di $\vec g$ per quella di $\vec f$:
+	\begin{equation}
+		\jac\vec h(\vec a)=\jac\vec g\big(\vec f(\vec a)\big)\jac\vec f(\vec a).
+	\end{equation}
+	Il prodotto tra queste matrici è possibile, dato che sono rispettivamente $p\times m$ e $m\times n$, e si ottiene quindi che la jacobiana di $\vec h$ ha $p$ righe e $n$ colonne. Il prodotto \emph{non} è commutativo, in quanto non è nemmeno possibile eseguirlo scambiando l'ordine dei fattori, diversamente dal caso di funzioni da $\R$ in $\R$.
 \end{teorema}
 Sviluppando il prodotto tra le due matrici si ha che la componente della jacobiana di $\vec h$ è, con $1\leq i\leq p$ e $1\leq j\leq n$,
 \[
@@ -255,7 +259,7 @@ dove $y_k$ è la variabile relativa a $\vec g$, ossia $y_k=f_k(\vec a)$.
 Sia $\Omega$ un aperto di $\R^n$, $\vec a$ e $\vec b$ due punti interni ad esso tali che $[\vec a,\vec b]\subset\Omega$, e $g\colon\Omega\to\R$ una funzione differenziabile in tutto $\Omega$. Allora esiste un punto $\vxi\in[\vec a,\vec b]$ per il quale $g(\vec b)-g(\vec a)=\scalar{\grad g(\vxi)}{\vec b-\vec a}$.
 \end{teorema}
 \begin{proof}
-Sul segmento $\vec b-\vec a$ si costruisce una funzione vettoriale $\vec f(t)=\vec a+t(\vec b-\vec a)$, con $t\in[0,1]$\footnote{Dato che tale segmento è interno ad $\Omega$, anche ``sporgendo'' un poco oltre gli estremi si resterà sempre nell'insieme, quindi volendo si può limitare $t$ anche a $(-\epsilon,1+\epsilon)$}: componendola con $g$ si ottiene che $(g\circ\vec f)(t)=g[\vec a+t(\vec b-\vec a)]$, tale che $g\circ\vec f\colon[0,1]\to\R$ e le si applica il teorema \ref{t:lagrange} di Lagrange per funzioni reali a variabili reali nell'intervallo $[0,1]$, ottenendo che esiste $\theta\in(0,1)$ tale per cui $(g\circ\vec f)(1)-(g\circ\vec f)(0)=(g\circ\vec f)'(\theta)$, cioè
+Sul segmento $\vec b-\vec a$ si costruisce una funzione vettoriale $\vec f(t)=\vec a+t(\vec b-\vec a)$, con $t\in[0,1]$\footnote{Dato che tale segmento è chiuso e interno ad $\Omega$, anche ``sporgendo'' un poco oltre gli estremi si resterà sempre nell'insieme, quindi volendo si può limitare $t$ anche a $(-\epsilon,1+\epsilon)$}: componendola con $g$ si ottiene che $(g\circ\vec f)(t)=g[\vec a+t(\vec b-\vec a)]$, tale che $g\circ\vec f\colon[0,1]\to\R$ e le si applica il teorema \ref{t:lagrange} di Lagrange per funzioni reali a variabili reali nell'intervallo $[0,1]$, ottenendo che esiste $\theta\in(0,1)$ tale per cui $(g\circ\vec f)(1)-(g\circ\vec f)(0)=(g\circ\vec f)'(\theta)$, cioè
 \[
 g(\vec b)-g(\vec a)=\jac g\big(\vec f(\theta)\big)\jac\vec f=\scalar{\grad g\big(\vec f(\theta)\big)}{\vec b-\vec a}.
 \]
@@ -272,9 +276,10 @@ Il problema sta nel fatto che sebbene sia realmente possibile applicare il teore
 Sia $\Omega\in\R^m$ un aperto e $\vec g\colon\Omega\to\R^p$ differenziabile in $[\vec a,\vec b]\subset\Omega$. Allora esiste $c\geq 0$ tale per cui $\norm{\vec g(\vec b)-\vec g(\vec a)}\leq c\norm{\vec b-\vec a}$.
 \end{teorema}
 Un ``buon'' valore di questa quantità $c$ è ad esempio
-\[
-c=\sqrt{mp}\max_{\substack{1\leq i\leq p\\1\leq j\leq m}}\sup_{\vec x\in[\vec a,\vec b]}\abs{\drp{g_i}{x_j}(\vec x)}.
-\]
+\begin{equation*}
+	c=\sqrt{mp}\max_{\substack{1\leq i\leq p\\1\leq j\leq m}}\sup_{\vec x\in[\vec a,\vec b]}\abs{\drp{g_i}{x_j}(\vec x)}.
+\end{equation*}
+ossia il valore maggiore tra tutte le derivate parziali, nell'intervallo dato, tra tutte le componenti di $\vec g$.
 Se tutte le derivate parziali sono nulle, si ha $c=0$ quindi la funzione è costante.
 
 \section{Diffeomorfismi}
@@ -486,7 +491,7 @@ Dividendo il differenziale per $\norm{\vec h}^k$ si ottiene dunque un polinomio 
 \]
 che è indipendente da $t$ quindi costante su tutta la semiretta.
 
-Siano ora $\vec w\neq\vec 0$ e $f\in\cont{k}(\Omega)$. Per $t$ sufficientemente piccolo, $\vec a+\vec w\in\Omega$, quindi la funzione $F(t)\defeq f(\vec a+t\vec w)$ è di classe $\cont{k}$ in un intorno di $t=0$, dove è assicurato che sia composta da due funzioni una, $f$, di classe $\cont{k}$ per definizione, e l'altra, $\vec a+t\vec w$, di classe $\cont{\infty}$. Al di fuori di $\mathcal U(0)$ non è più certo che $\vec a+t\vec w$ appartenga ancora a $\Omega$, al di fuori del quale $f\notin\cont{k}$. Dunque la $F$ è una funzione definita da $\mathcal U(0)$ a $\R$. Nel centro $t=0$ si può dunque sviluppare in serie di Taylor fino all'ordine $k$: le sue derivate sono
+Siano ora $\vec w\neq\vec 0$ e $f\in\cont{k}(\Omega)$. Per $t$ sufficientemente piccolo, $\vec a+t\vec w\in\Omega$, quindi la funzione $F(t)\defeq f(\vec a+t\vec w)$ è di classe $\cont{k}$ in un intorno di $t=0$, dove è assicurato che sia composta da due funzioni una, $f$, di classe $\cont{k}$ per definizione, e l'altra, $\vec a+t\vec w$, di classe $\cont{\infty}$. Al di fuori di $\mathcal U(0)$ non è più certo che $\vec a+t\vec w$ appartenga ancora a $\Omega$, al di fuori del quale $f\notin\cont{k}$. Dunque la $F$ è una funzione definita da $\mathcal U(0)$ a $\R$. Nel centro $t=0$ si può dunque sviluppare in serie di Taylor fino all'ordine $k$: le sue derivate sono
 \begin{equation}\begin{aligned}
 F'(t)	&=\scalar{\grad f(\vec a+t\vec w)}{\vec w}=\sum_{j=1}^n\drp{f}{x_j}(\vec a+t\vec w)w_j=\dd f(\vec a+t\vec w;\vec w)\\
 F''(t)	&=\sum_{j=1}^nw_j\bigg[\sum_{i=1}^n\drp{}{x_i}\Big(\drp{f}{x_j}(\vec a+t\vec w)w_i\Big)\bigg]=\\
@@ -536,7 +541,7 @@ g_i(t)=f(\vec a+t\vec e_i).
 Sia ora $\vec a$ un punto di massimo: allora $f(\vec a)\geq f(\vec a+t\vec e_i)$ per ogni $t$ opportunamente contenuto in un intervallo $(-\delta,\delta)$ tale che $f$ sia ancora differenziabile in $\vec a\pm\delta\vec e_i$, quindi per cui $g_i$ è derivabile in $(-\delta,\delta)$.
 Dunque si ha $g_i(t)-g_i(0)\leq 0$, sia per $-\delta<t<0$ che per $0<t<\delta$; dividendo entrambi gli incrementi per $t$ e passando al limite rispettivamente per $t\to0^\mp$, si ottiene la derivata sinistra e destra di $g_i$ in $0$, che per il teorema di permanenza del segno sono rispettivamente non negativa e non positiva. Poiché $g$ è derivabile in $0$, le derivate devono coincidere e non può che risultare
 \[
-\lim_{t\to 0^-}g_i(t)=\lim_{t\to 0^+}g_i(t)=g_i'(0)=\drp{f}{x_i}(\vec a)=0,
+\lim_{t\to 0^-}g'_i(t)=\lim_{t\to 0^+}g'_i(t)=g_i'(0)=\drp{f}{x_i}(\vec a)=0,
 \]
 questo naturalmente per ogni $i\in\{1,\dots,n\}$, cioè tutte le derivate parziali di $f$ sono nulle in $\vec a$: allora $\grad f(\vec a)=\vec 0$.
 \end{proof}
@@ -584,7 +589,7 @@ e
 					&=\sum_{j=1}^n\big(\hes f(\vec a)\big)_{kj}x_j+\sum_{i=1}^n\big(\hes f(\vec a)\big)_{ik}x_i=\\
 					&=\sum_{j=1}^n\big(\hes f(\vec a)\big)_{kj}x_j+\sum_{i=1}^n\big(\hes f(\vec a)\big)_{ki}x_i=\\
 					&=2\sum_{j=1}^n\big(\hes f(\vec a)\big)_{kj}x_j=\\
-					&=2\big(\hes f(\vec a)\vec x\big)_j,
+					&=2\big(\hes f(\vec a)\vec x\big)_j
 \end{split}\]
 dove si è potuto cambiare gli indici dell'hessiana da $ik$ a $ki$ poiché è simmetrica.
 Allora risulta
@@ -625,13 +630,13 @@ Si giunge quindi ai seguenti risultati:
 Se $f$ è una funzione a due sole variabili, ha due autovalori per quanto detto in precedenza: il polinomio caratteristico dell'hessiana è
 \begin{equation}\begin{split}
 P(\lambda)=\det(\hes f(\vec a)-\lambda I_n)	&=\begin{vmatrix}f_{xx}(\vec a)-\lambda&f_{xy}(\vec a)\\f_{xy}(\vec a)&f_{yy}(\vec a)-\lambda\end{vmatrix}=\\
-										&=\lambda^2-(f_{xx}-f_{yy})\lambda+(f_{xx}f_{yy}-f_{xy}^2)=\\
+										&=\lambda^2-(f_{xx}+f_{yy})\lambda+(f_{xx}f_{yy}-f_{xy}^2)=\\
 										&=\lambda^2-\big(\tr\hes f(\vec a)\big)\lambda+\det\hes f(\vec a).
 \end{split}\end{equation}
 Poiché è utile ai fini di conoscere la natura del punto estremante solo sapere il segno degli autovalori, cioè delle due radici del polinomio, e dato che $P(\lambda)=(\lambda-m)(\lambda-M)$, si ha che $m+M=\tr\hes f(\vec a)$ e $mM=\det\hes f(\vec a)$, quindi:
 \begin{itemize}
 \item se $\det\hes f(\vec a)=0$, non si può affermare niente;
-\item se $\det\hes f(\vec a)>0$, si passa considerare la somma delle radici, perciò
+\item se $\det\hes f(\vec a)>0$, si considera la somma delle radici, perciò
 	\begin{itemize}
 	\item se $\tr\hes f(\vec a)>0$, $\vec a$ è un punto di minimo;
 	\item se $\tr\hes f(\vec a)<0$, $\vec a$ è un punto di massimo;
