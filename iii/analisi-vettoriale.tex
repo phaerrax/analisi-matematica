@@ -167,9 +167,9 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 \end{teorema}
 \begin{proof}
 	Supponiamo che esista un insieme $U$ tale che $D\subset U$ e che $f\in\cont{1}(U)$.
-	Distinguiamo tre casi: $D$ normale rispetto a $y$, normale rispetto a $x$ e regolare.
+	Distinguiamo tre casi: (i) $D$ è normale rispetto a $y$, (ii) $D$ è normale rispetto a $x$ e (iii) $D$ è un generico insieme regolare.
 
-	Sia $D$ un dominio normale rispetto alla variabile $y$: lo scriviamo allora come $D=\{(x,y)\in\R\times[c,d]\colon \alpha(y)\leq x\leq\beta(y)\}$.
+	(i) Sia $D$ un dominio normale rispetto alla variabile $y$: lo scriviamo allora come $D=\{(x,y)\in\R\times[c,d]\colon \alpha(y)\leq x\leq\beta(y)\}$.
 	Suddividiamo il bordo di $D$ nei quattro sottoinsiemi $\gamma_i$ ($i=1,2,3,4$) parametrizzati con
 	\begin{gather*}
 		\vgamma_1(t)=
@@ -202,7 +202,7 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	\end{equation}
 	che è lo stesso risultato precedente.
 
-	Sia ora $D$ normale rispetto a $x$: rappresentiamolo come $\{(x,y)\in[a,b]\times\R\colon\delta(x)\leq y\leq\eta(y)\}$.
+	(ii) Sia ora $D$ normale rispetto a $x$: rappresentiamolo come $\{(x,y)\in[a,b]\times\R\colon\delta(x)\leq y\leq\eta(y)\}$.
 	Per $(x,y)\in D$, consideriamo la curva $\gamma\subset D$ parametrizzata con la funzione
 	\begin{equation*}
 		\vgamma(t)=
@@ -222,42 +222,63 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	\end{equation}
 	Calcoliamone le derivate parziali: troviamo
 	\begin{equation}
-		\drp{G}{x}(x,y)=f\big(x,\delta(x)\big)\delta'(x)+\int_{\delta(x)}^y\drp{f}{x}(x,t)\,\dd t-f\big(x,\delta(x)\delta'(t)=\int_{\delta(x)}^y\drp{f}{x}(x,y)\,\dd t.
+		\drp{G}{x}(x,y)=f\big(x,\delta(x)\big)\delta'(x)+\int_{\delta(x)}^y\drp{f}{x}(x,t)\,\dd t-f\big(x,\delta(x)\big)\delta'(t)=\int_{\delta(x)}^y\drp{f}{x}(x,t)\,\dd t.
 	\end{equation}
-	La derivata rispetto a $y$ invece è semplicemente $\drp{G}{y}(x,y)=f(x,y)$, dato che il primo dei due integrali addendi non dipende da $y$ e il secondo è una funzione integrale con estremo inferiore costante in $y$.
+	La derivata rispetto a $y$ invece è semplicemente $\drp{G}{y}(x,y)=f(x,y)$, dato che il primo dei due integrali addendi non dipende da $y$ e il secondo è una funzione integrale con estremo inferiore costante rispetto a $y$.
 	Prendiamo la forma differenziale $\dd G=\drp{G}{x}\,\dd x+\drp{G}{y}\,\dd y$: essa è ovviamente esatta.
 	Inoltre $\partial D$ è chiusa e regolare a tratti, dunque l'integrale di $\dd G$ lungo di essa è nullo: allora
 	\begin{equation}
 		\int_{+\partial D}\drp{G}{x}\,\dd x=-\int_{+\partial D}\drp{G}{y}\,\dd y.
 		\label{eq:dim-gauss-green-forma-esatta}
 	\end{equation}
-	Calcoliamo il primo membro: scomponendo nei quattro tratti regolari di $\partial D$ abbiamo
+	Parametrizziamo il bordo di $D$ con le quattro curve
+	\begin{gather*}
+		\vgamma_1(t)=
+		\begin{bmatrix}
+			t\\\delta(t)
+		\end{bmatrix}, t\in[a,b],\quad
+		\vgamma_2(t)=
+		\begin{bmatrix}
+			b\\t
+		\end{bmatrix}, t\in[\delta(b),\eta(b)],\\
+		\vgamma_3^-(t)=
+		\begin{bmatrix}
+			t\\\eta(t)
+		\end{bmatrix}, t\in[a,b],\quad 
+		\vgamma_4(t)=
+		\begin{bmatrix}
+			a\\t
+		\end{bmatrix}, t\in[\delta(a),\eta(a)].
+	\end{gather*}
+	Abbiamo scritto $\vgamma_3^-(t)$ perché con questa parametrizzazione la curva è percorsa nel senso opposto all'orientazione positiva di $\partial D$, quindi dovremo cambiare il segno all'integrale.
+	Il primo membro di \eqref{eq:dim-gauss-green-forma-esatta} vale
 	\begin{equation}
 		\begin{split}
-			\int_{+\partial D}\drp{G}{x}\,\dd x&=\int_a^b\drp{G}{x}(x,y)\,\dd x+\int_b^b\drp{G}{x}(x,y)\dd x+\int_b^a\drp{G}{x}(x,y)\,\dd x+\int_a^a\drp{G}{x}(x,y)\,\dd x=\\
-			&=\int_a^b\int_{\delta(x)}^{\eta(x)}\drp{f}{x}(x,t)\,\dd t\,\dd x+\int_b^a\int_{\delta(x)}^{\eta(x)}\drp{f}{x}(x,t)\,\dd t\,\dd x=\\
-			&=-\int_a^b\int_{\delta(x)}^{\eta(x)}\drp{f}{x}(x,t)\,\dd t\,\dd x. (?)
+			\int_{+\partial D}\drp{G}{x}(x,y)\,\dd x&=\int_{\vgamma_1}\drp{G}{x}(x,y)\,\dd x+\int_{\vgamma_2}\drp{G}{x}(x,y)\,\dd x-\int_{\vgamma_3}\drp{G}{x}(x,y)\,\dd x+\int_{\vgamma_4}\drp{G}{x}(x,y)\,\dd x=\\
+			&=\int_a^b\drp{G}{x}\big(s,\delta(s)\big)\,\dd s-\int_a^b\drp{G}{x}\big(s,\eta(s)\big)\,\dd s=\\
+			&=\int_a^b\int_{\delta(s)}^{\delta(s)}\drp{f}{x}(s,t)\,\dd t\,\dd s-\int_a^b\int_{\delta(s)}^{\eta(s)}\drp{f}{x}(s,t)\,\dd t\,\dd s=\\
+			&=-\int_a^b\int_{\delta(s)}^{\eta(s)}\drp{f}{x}(s,t)\,\dd t\,\dd s.
 		\end{split}
 	\end{equation}
-	Sostituendo infine quanto ricavato precedentemente per le derivate parziali di $G$ la \eqref{eq:dim-gauss-green-forma-esatta} diventa
+	Sostituendo poi $\drp{G}{y}(x,y)=f(x,y)$ nella \eqref{eq:dim-gauss-green-forma-esatta} otteniamo\footnote{La variabile $s$ è muta perché è una delle variabili di integrazione, quindi possiamo senza alcun problema porre $x=s$ cambiandone il nome.}
 	\begin{equation}
 		-\int_a^b\int_{\delta(x)}^{\eta(x)}\drp{f}{x}(x,t)\,\dd t\,\dd x=-\int_{+\partial D}f(x,y)\,\dd y
 	\end{equation}
-	cioè applicando il teorema di Fubini ``al contrario'', cioè passando all'integrale di area,
+	e applicando il teorema di Fubini ``al contrario'', cioè passando all'integrale in $D$, troviamo
 	\begin{equation}
 		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\int_{+\partial D}f(x,y)\,\dd y.
 	\end{equation}
 
-	Se infine $D$ è un dominio regolare, ma non è normale rispetto ad una delle due variabili, possiamo comunque scomporlo in vari domini normali $D_i$ separati.
+	(iii) Se infine $D$ è un dominio regolare, ma non è normale rispetto ad una delle due variabili, possiamo comunque scomporlo in un insieme di domini normali $\{D_i\}_{i\in I}$ separati.
 	Per ciascuno di essi vale quanto detto precedentemente, perciò
 	\begin{equation}
-		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\sum_i\int_{D_i}\drp{f}{x}(x,y)\,\dd x\,\dd y=\sum_i\int_{+\partial D_i}f\,\dd y.
+		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\sum_{i\in I}\int_{D_i}\drp{f}{x}(x,y)\,\dd x\,\dd y=\sum_{i\in I}\int_{+\partial D_i}f\,\dd y.
 	\end{equation}
 	Poich\'e le frontiere dei vari $D_i$ sono in comune, in ciascun addendo di quest'ultima somma ciascuna porzione di frontiera che si trova tra due $D_i$ viene percorsa, integrando, una volta in un senso e una volta nell'altro.
 	Chiaramente ciascuna delle due volte la funzione integranda è la stessa, quindi i due integrali hanno segno opposto e si annullano.
-	Rimane nel conto quindi solo le parti delle frontiere che sono esterni, ossia proprio $\partial D$, quindi
+	Rimangono nel conto quindi solo le parti delle frontiere che sono esterni, ossia proprio $\partial D$, quindi
 	\begin{equation}
-		\sum_i\int_{+\partial D_i}f\,\dd y=\int_{+\partial D}f\,\dd y.\qedhere
+		\sum_{i\in I}\int_{+\partial D_i}f\,\dd y=\int_{+\partial D}f\,\dd y.\qedhere
 	\end{equation}
 \end{proof}
 
