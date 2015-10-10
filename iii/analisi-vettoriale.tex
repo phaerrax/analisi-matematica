@@ -159,9 +159,9 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	Sia $D\subseteq\R^2$ un dominio regolare e $f\colon D\to\R$ una funzione in $\cont{1}(D)$.
 	Allora valgono
 	\begin{gather}
-		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\int_{+\partial D}f(x,y)\,\dd y
+		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\int_{+\partial D}f(x,y)\,\dd y;
 		\label{eq:gauss-green-y}\\
-		\int_D\drp{f}{y}(x,y)\,\dd x\,\dd y=-\int_{+\partial D}f(x,y)\,\dd x
+		\int_D\drp{f}{y}(x,y)\,\dd x\,\dd y=-\int_{+\partial D}f(x,y)\,\dd x.
 		\label{eq:gauss-green-x}
 	\end{gather}
 \end{teorema}
@@ -286,7 +286,7 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	Sia $D\subset\R^2$ un dominio regolare e $\vec F\colon D\to\R^2$ un campo vettoriale di classe $\cont{1}(D)$.
 	Se $\vnu(x,y)$ è il versore normale al bordo di $D$ uscente da esso, allora
 	\begin{equation}
-		\int_D\div\vec F\,\dd x\,\dd y=\int_{\partial D}\scalar{\vec F}{\vnu}\,\dd s
+		\int_D\div\vec F\,\dd x\,\dd y=\int_{\partial D}\scalar{\vec F}{\vnu}\,\dd s.
 		\label{eq:divergenza-R2}
 	\end{equation}
 \end{teorema}
@@ -329,8 +329,8 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 \end{proof}
 Grazie a questi teoremi appena dimostrati possiamo portare in più dimensioni la formula di integrazione per parti: si ha, dati $f,g\colon D\to\R$ e $D\subset\R^2$ dominio regolare,
 \begin{gather}
-	\int_D f(x,y)\drp{g}{x}(x,y)\,\dd x\,\dd y=\int_{+\partial D}f(x,y)g(x,y)\,\dd y-\int_D\drp{f}{x}(x,y)g(x,y)\,\dd x\,\dd y\\
-	\int_D f(x,y)\drp{g}{y}(x,y)\,\dd x\,\dd y=-\int_{+\partial D}f(x,y)g(x,y)\,\dd x-\int_D\drp{f}{y}(x,y)g(x,y)\,\dd x\,\dd y
+	\int_D f(x,y)\drp{g}{x}(x,y)\,\dd x\,\dd y=\int_{+\partial D}f(x,y)g(x,y)\,\dd y-\int_D\drp{f}{x}(x,y)g(x,y)\,\dd x\,\dd y;\\
+	\int_D f(x,y)\drp{g}{y}(x,y)\,\dd x\,\dd y=-\int_{+\partial D}f(x,y)g(x,y)\,\dd x-\int_D\drp{f}{y}(x,y)g(x,y)\,\dd x\,\dd y.
 \end{gather}
 Per dimostrarlo è sufficiente applicare il teorema di Gauss-Green \ref{t:gauss-green} alla funzione $fg$.
 
@@ -357,7 +357,7 @@ Un'ultima applicazione di questi risultati è il calcolo dell'area di $D$: notia
 \end{equation}
 Possiamo quindi prendere una combinazione arbitraria delle due, in cui presi $\alpha$ e $\beta$ tali che $\alpha+\beta=1$ si ha
 \begin{equation}
-	\int_{+\partial D}(\alpha x\,\dd y-\beta y\,\dd x)=(\alpha+\beta)\int_D\dd x\,\dd y=\int_D\dd x\,\dd y=\mu(D)
+	\int_{+\partial D}(\alpha x\,\dd y-\beta y\,\dd x)=(\alpha+\beta)\int_D\dd x\,\dd y=\int_D\dd x\,\dd y=\mu(D).
 \end{equation}
 
 \section{Teorema della divergenza e del rotore in $\R^3$}
@@ -371,7 +371,7 @@ Cominciamo adattando quanto detto sui domini e l'orientazione di curve anche a i
 \end{definizione}
 \begin{osservazione}
 	Se $T\subset\R^3$ è un dominio regolare, allora è connesso e compatto, dunque la sua frontiera ha misura nulla.
-	Inoltre esiste un numero finito di superfici regolari $\{S_i\}_{i=1}^n$, $n\in\N$, ciascuna parametrizzabile con $\vphi_i\colon D_i\to\R^3$ per $i=1,\dots,n$ (tali quindi che $\vphi_i(D_i)=S_i$), per le quali\footnote{Con \emph{superficie regolare} intendiamo un concetto analogo a quello di curva regolare: se nel secondo caso  chiediamo che la derivata della parametrizzazione della curva non sia mai un vettore nullo, per le superfici chiediamo che la jacobiana della parametrizzazione abbia sempre rango massimo (ma in realtà si può vedere che sono la stessa condizione).}
+	Inoltre esiste un numero finito di superfici regolari $\{S_i\}_{i=1}^n$, $n\in\N$, ciascuna parametrizzabile con $\vphi_i\colon D_i\to\R^3$ per $i=1,\dots,n$ (tali quindi che $\vphi_i(D_i)=S_i$), per le quali
 	\begin{equation*}
 		\partial T=\bigcup_{i=1}^n\vphi_i(D_i)
 	\end{equation*}
@@ -399,7 +399,7 @@ La mappa $\vnu\colon S_o\to\R^3$ è continua, e dipende ``in modo continuo'' dal
 Possiamo quindi anche trovare una \emph{riparametrizzazione} di una superficie: prese le parametrizzazioni $\vphi\colon D\to\R^3$ e $\vpsi\colon T\to\R^3$, esse sono equivalenti tramite $\vtau\colon D\to T$ (una riparametrizzazione) se $S_o=\vphi(\mathring{D})=\vpsi(\mathring{T})$ e se ovviamente dato $\vec x\in S_o$ si ha $\vec x=\vphi(\vec u)=\vpsi(\vec v)$, per $\vec u\in D$ e $\vec v\in T$.
 Il versore normale nella nuova parametrizzazione è dunque
 \begin{equation}
-	\vnu_{\vpsi}\big(\vpsi(\vec u)\big)=\sgn\big(\det\jac\vtau(\vec u)\big)\vnu_{\vphi}\big(\vphi(\vec v)\big)
+	\vnu_{\vpsi}\big(\vpsi(\vec u)\big)=\sgn\big(\det\jac\vtau(\vec u)\big)\vnu_{\vphi}\big(\vphi(\vec v)\big).
 \end{equation}
 Per la continuità il segno può essere o 1 o $-1$ in tutto il dominio.
 Si indica $\vphi\sim\vpsi$ se esse hanno lo stesso sostegno con una riparametrizzazione, e ulteriormente $\vphi\overset{o}{\sim}\vpsi$ se sono anche equiorientate, cioè se il versore normale coincide.
