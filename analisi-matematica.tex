@@ -25,6 +25,8 @@
 \pagestyle{headings}
 \usepackage{comment}
 
+\addbibresource{analisi-matematica.bib}
+
 \begin{document}
 \maketitle
 
@@ -65,6 +67,12 @@
 \include{iii/integrale-lebesgue}
 \include{iii/analisi-vettoriale}
 \stopcontents[parts]
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{part}{\bibname}
+\nocite{*}
+\printbibliography
 
 \cleardoublepage
 \pdfbookmark[-1]{Indice}{contents}
