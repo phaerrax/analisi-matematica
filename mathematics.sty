@@ -25,6 +25,8 @@
 \usepackage{graphicx}
 \usepackage{titlesec,titletoc}
 \usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{svg}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Impostazioni e caricamento di pgfplots
@@ -224,8 +226,9 @@
 % fa anche il pacchetto titlesec, quindi è meglio che hyperref
 % stia dopo di esso, altrimenti comandi come \pdfbookmark non
 % funzionano correttamente.
+\usepackage{hyperxmp}
 \usepackage{hyperref}
-	\hypersetup{
+	\hypersetup{ % Impostazioni generali di hyperref
 		bookmarksnumbered=true,
 		bookmarksopen=true,
 		bookmarksopenlevel=1,

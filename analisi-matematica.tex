@@ -1,11 +1,15 @@
-\documentclass[a4paper,notitlepage]{book}
+\documentclass[a4paper]{book}
 \usepackage{mathematics}
 \hypersetup{
 	pdftitle={Analisi Matematica},
-	pdfauthor={Ferracin Davide},
-	pdfcreator={Ferracin Davide},
+	pdfauthor={Davide Ferracin},
+	pdflang={it},
 	pdfsubject={Appunti dei corsi di Analisi Matematica},
-	pdfproducer={Rompileballealprossimo Editore}
+	pdfcreator={Davide Ferracin},
+	pdfcaptionwriter={Davide Ferracin}
+	pdfcopyright={Creative Commons Attribution-ShareAlike 4.0 International},	
+	pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
+	pdfmetalang={it}
 }
 
 \usetikzlibrary{external}
@@ -16,14 +20,23 @@
 	{\sffamily\fontsize{35}{42}\selectfont Analisi Matematica}
 }
 \author{}
-\date{\today}
+\date{}
 
 \pagestyle{headings}
 \usepackage{comment}
 
 \begin{document}
 \maketitle
-\vspace{2cm}
+
+\null % Serve scrivere qualcosa prima di \vfill altrimenti non funziona
+\vfill % Riempie lo spazio verticale della pagina
+\hspace*{-1.5em}\includegraphics[scale=.7]{by-sa-icon.pdf}
+\begin{flushleft}
+	Quest'opera è stata rilasciata con licenza \emph{Creative Commons} Attribuzione - Condividi allo stesso modo 4.0 Internazionale. Per leggere una copia della licenza visita il sito web \url{http://creativecommons.org/licenses/by-sa/4.0/}.\\
+	2015, Davide Ferracin (\href{mailto:davide.ferracin@studenti.unimi.it}{\ttfamily davide.ferracin@studenti.unimi.it})\\[1cm]
+	Versione aggiornata al \today.
+\end{flushleft}
+
 \part{}
 \startcontents[parts]
 \printcontents[parts]{}{-1}{\setcounter{tocdepth}{1}}
