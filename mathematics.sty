@@ -23,6 +23,7 @@
 \usepackage{mathrsfs}
 \usepackage{xfrac}
 \usepackage{graphicx}
+\usepackage{titlesec,titletoc}
 \usepackage[usenames,dvipsnames]{xcolor}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,25 +54,18 @@
 	\subsubsectionfont{\itshape}
 	\paragraphfont{\normalsize}
 
-\usepackage{hyperref}
-	\hypersetup{
-		bookmarksnumbered=true,
-		bookmarksopen=true,
-		bookmarksopenlevel=1,
-		colorlinks=true,
-		linkcolor=blue!50!black,
-		pdfstartview=Fit,
-		pdfpagemode=UseOutlines
-	}
-	
 %font di dimensione più piccola in apici e pedici
 \makeatletter
 \DeclareMathSizes{\@xpt}{\@xpt}{6}{5}
 \makeatother
 
-%chapter header style
-\usepackage{titlesec}
+%chapter header style (with titlesec package)
 \titleformat{\chapter}[display]{\bfseries\Large}{Capitolo \thechapter}{12pt}{\bfseries\Huge}
+
+%part header style
+\titleclass{\part}{top}
+\titleformat{\part}{\centering\Huge\bfseries}{Parte \thepart}{0pt}{}
+\titlespacing*{\part}{0pt}{0pt}{2cm}
 
 %altro (spaziatura, font, lettere greche etc.)
 \renewcommand{\epsilon}{\varepsilon}
@@ -224,9 +218,20 @@
 %trovare altri nomi per gli ultimi tre ASAP
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Inizia l'indice nella pagina indicata e non in una pag. a parte
-\setcounter{tocdepth}{1}
-\makeatletter
-\newcommand*{\toccontents}{\@starttoc{toc}}
-\makeatother
-
+% Personalizzazione di collegamenti e segnalibri
+% Il pacchetto hyperref è da caricare per ultimo, dato che
+% sovrascrive alcuni dei comandi di LaTeX. In particolare, lo
+% fa anche il pacchetto titlesec, quindi è meglio che hyperref
+% stia dopo di esso, altrimenti comandi come \pdfbookmark non
+% funzionano correttamente.
+\usepackage{hyperref}
+	\hypersetup{
+		bookmarksnumbered=true,
+		bookmarksopen=true,
+		bookmarksopenlevel=1,
+		colorlinks=true,
+		linkcolor=blue!50!black,
+		pdfstartview=Fit,
+		pdfpagemode=UseOutlines
+	}
+	
