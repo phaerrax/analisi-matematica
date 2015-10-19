@@ -2,7 +2,7 @@
 \section{Insiemi connessi}
 Prima di introdurre la teoria delle forme differenziali, introduciamo la definizione di insieme \emph{connesso}.
 \begin{definizione} \label{d:connesso}
-	Un insieme $A\subset\R^n$ aperto si dice connesso se laddove può essere scritto come unione di due insiemi aperti e disgiunti, uno dei due è vuoto, vale a dire
+	Un insieme $A\subset\R^n$ aperto si dice connesso se, laddove può essere scritto come unione di due insiemi aperti e disgiunti, uno dei due è vuoto, vale a dire
 	\begin{equation*}
 		A=A_1\cup A_2\text{ e }A_1\cap A_2=\emptyset\text{, allora }A_1=\emptyset\text{ o }A_2=\emptyset.
 	\end{equation*}
@@ -15,7 +15,7 @@ Il seguente teorema mostra che queste due definizioni sono in realtà interscamb
 \end{teorema}
 \begin{proof}
 	Sia $\vec p_1\in A$, e chiamiamo $A_1$ l'insieme dei punti in $A$ che sono connessi a $\vec p_1$ per archi (anche poligonali).
-	Esso non può essere già vuoto, dato che sicuramente contiene almeno un punto, che è $\vec p_1$ stesso.
+	Esso non può essere vuoto, dato che sicuramente contiene almeno un punto, che è $\vec p_1$ stesso.
 	Chiamiamo $\mathscr P(\vec q_1,\vec q_2)$ un generico arco che connette i due punti $\vec q_1$ e $\vec q_2$: allora possiamo scrivere $A_1=\{\vec x\in A\colon\exists\mathscr P(\vec x,\vec p_1)\}$.
 	Consideriamo un intorno $B(\vec x,\delta)$ e un punto $\vec y$ in esso: il segmento $[\vec x,\vec y]$ che lo congiunge a $\vec x$ è quindi tutto contenuto in tale intorno.
 	Tale segmento può essere visto chiaramente come un arco $\mathscr P(\vec x,\vec y)$ che li connette, quindi collegando $\vec x$ a $\vec y$ e $\vec x$ a $\vec p_1$ avremo un arco che connette $\vec p_1$ a $\vec y$; in breve, $\mathscr P(\vec p_1,\vec x)\cup[\vec x,\vec y]=\mathscr P(\vec p_1,\vec y)$.
@@ -40,7 +40,7 @@ Un insieme connesso prende qui il posto dell'intervallo, che pure è anch'esso u
 	Se $f$ è costante ha tutte le derivate parziali nulle, quindi segue subito che $\grad f=\vec 0$ in ogni punto di $A$.
 
 	Sia $\grad f=\vec 0$: definiamo, per un $\vec a\in A$, l'insieme di livello $A_1\defeq\{\vec x\in A\colon f(\vec x)=f(\vec a)\}$, e $A_2\defeq A\setminus A_1$ (quest'ultimo sarà quindi l'insieme dei punti la cui immagine \emph{non} è $f(\vec a)$).
-	Prendiamo un punto qualsiasi $\vec x'\in A_1$ e un suo intorno $\mathcal U(\vec x')$ che sia tutto contenuto in $A$ (un tale intorno esiste, perch\'e $A$è aperto).
+	Prendiamo un punto qualsiasi $\vec x'\in A_1$ e un suo intorno $\mathcal U(\vec x')$ che sia tutto contenuto in $A$ (un tale intorno esiste, perch\'e $A$ è aperto).
 	Per ogni $\vec x\in\mathcal U(\vec x')$, dunque, per il teorema di Lagrange
 	\begin{equation*}
 		f(\vec x)-f(\vec x')=\scalar{\grad f\big(\vec x'+c(\vec x-\vec x')\big)}{(\vec x-\vec x')}
@@ -59,7 +59,7 @@ Se $V$ e $W$ sono due spazi vettoriali sul medesimo campo generico $K$, sappiamo
 	(T_1+T_2)(v)=T_1(v)+T_2(v)\qeq (aT)(v)=aT(v).
 \end{equation*}
 La struttura di spazio vettoriale di questo spazio segue in modo naturale dalla linearità delle operazioni.
-In particolare, tra queste applicazioni troviamo quelle che da $V$ portano in $K$ (anch'esso è uno spazio vettoriale), dette anche \emph{funzioniali lineari}, che quindi appartengono a $\lin(V,K)$.
+In particolare, tra queste applicazioni troviamo quelle che da $V$ portano in $K$ (anch'esso è uno spazio vettoriale), dette anche \emph{funzionali lineari}, che quindi appartengono a $\lin(V,K)$.
 Questo spazio vettoriale è detto \emph{spazio duale} di $V$ e solitamente si indica anche con $V^*$.
 
 Prendiamo lo spazio vettoriale sul campo dei reali in cui abbiamo sempre lavorato, $\R^n$, e di conseguenza il suo duale, che indicheremo con $(\R^n)^*$.
@@ -118,7 +118,7 @@ Le funzioni $\omega_i$, che sono funzioni da $A$ a $\R$, si dicono componenti, o
 \end{definizione}
 
 Un esempio immediato di forma differenziale, come si può intuire dal discorso svolto finora, è il differenziale di una funzione $f\colon\R\to\R$: avremo semplicemente $\omega=\dd f$.
-Notiamo subito un'importante differenza nelle notazioni: da una parte abbiamo $\dd f$, che è la 1-forma, cioè un'applicazione di $A$ in $(\R^n)^*$, dall'altra abbiamo invece $\dd f(x)$ che è il differenziale della funzione, ossia un elemento di $(\R^n)^*$ (che è poi l'immagine di $x$ attraverso $\omega$).
+Notiamo subito un'importante differenza nelle notazioni: da una parte abbiamo $\dd f$, che è la 1-forma, cioè un'applicazione da $A$ in $(\R^n)^*$, dall'altra abbiamo invece $\dd f(x)$ che è il differenziale della funzione, ossia un elemento di $(\R^n)^*$ (che è poi l'immagine di $\vec x$ attraverso $\omega$).
 \section{Integrale di forme differenziali}
 Definiamo ora l'integrale di una forma differenziale lineare lungo una curva di $\R^n$.
 \begin{definizione} \label{d:integrale-1forma}
