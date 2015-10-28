@@ -74,7 +74,7 @@ In particolare, data la base canonica di $\R^n$, la base corrispondente di $(\R^
 
 Detto ciò, abbiamo già incontrato in precedenza alcuni elementi di $(\R^n)^*$: i differenziali di funzioni (scalari).
 Nel capitolo in cui abbiamo trattato della differenziabilità in più dimensioni avevamo visto che data una $f\in A\subseteq\R^n\to\R$ differenziabile, il suo differenziale $\dd f$ si comporta come un funzionale lineare: preso un punto $\vec x_0\in A$, restituisce un numero reale che è l'incremento di $f$ dal punto $\vec x_0$ relativo all'incremento $\vec h$ della variabile.
-Sappiamo inoltre che questo differenziale si può esprimere con il gradiente di $f$, cioè $\dd f=\grad f(\vec x_0)\dd\vec x$, dove abbiamo scritto $\dd\vec x=(\dd x_1,\dots,\dd x_n)$, ossia
+Sappiamo inoltre che questo differenziale si può esprimere con il gradiente di $f$, cioè $\dd f(\vec x_0)=\grad f(\vec x_0)\dd\vec x$, dove abbiamo scritto $\dd\vec x=(\dd x_1,\dots,\dd x_n)$, ossia
 \begin{equation}
 	\dd f(\vec x_0)=\drp{f}{x_1}(\vec x_0)\,\dd x_1+\drp{f}{x_2}(\vec x_0)\,\dd x_2+\dots+\drp{f}{x_n}(\vec x_0)\,\dd x_n.
 	\label{eq:differenziale-duale}
@@ -382,9 +382,9 @@ Il suo potenziale è la funzione $F\colon A\to\R$ determinata da
 \begin{equation}
 	\begin{split}
 		F(\vec x)&=\int_{\vphi}\omega=\int_0^1\bigg[2tx-\frac1{1+(y-1)t-tx}\bigg]x\,\dd t+\int_0^1\bigg[1+\frac1{1+(y-1)t-tx}\bigg](y-1)\,\dd t=\\
-		&=\int_0^12tx^2\,\dd t+\int_0^1(y-1)\,\dd t+\int_0^1\frac{y-x-1}{1+(y-1)t-t}\,\dd t=\\
-		&=x^2\int_0^12t\,\dd t+(y-1)\int_0^1\dd t+\int_0^1\frac{y-x-1}{1+(y-x-1)t}\,\dd t=\\
-		&=x^2+y-1+\log\big[1+(y-x-1)t\big]\bigg|_0^1=x^2+y-1+\log(y-x).
+		&=\int_0^12tx^2\,\dd t+\int_0^1(y-1)\,\dd t+\int_0^1\frac{y-x-1}{1+(y-1)t-tx}\,\dd t=\\
+		&=2x^2\int_0^12t\,\dd t+(y-1)\int_0^1\dd t+\int_0^1\frac{y-x-1}{1+(y-x-1)t}\,\dd t=\\
+		&=2x^2+y-1+\log\big[1+(y-x-1)t\big]\bigg|_0^1=x^2+y-1+\log(y-x).
 	\end{split}
 \end{equation}
 Più rigorosamente, questa funzione è solo una dei potenziali di $\omega$, che sono della forma $F+c$ per qualsiasi $c\in\R$.
