@@ -97,16 +97,16 @@ Cominciamo a dare una prima approssimazione di quella che sarà la misura di un 
 	dove $K$ è un insieme numerabile.
 \end{definizione}
 Chiaramente $\mu^*$ è un numero reale, ma può anche essere infinito, come ad esempio la misura esterna di $\R$.
-Dunque possiamo dire che $\mu^*$ è una funzione che associa ad un insieme di $\R^n$, quindi un elemendo dell'insieme delle parti un numero non negativo anche infinito, cioè $\mu^*\colon\mathcal P\to[0,+\infty]$.
+Dunque possiamo dire che $\mu^*$ è una funzione che associa ad un insieme di $\R^n$, quindi un elemendo dell'insieme delle parti, un numero non negativo anche infinito, cioè $\mu^*\colon\mathcal P\to[0,+\infty]$.
 
 La misura esterna di un iperrettangolo di volume $\vol{I}$ è chiaramente $\vol{I}$ stesso, che è il più piccolo ricoprimento possibile.
-Infatti, per ogni iperrettangolo $I$ (non vuoto) ne esistono $\forall\epsilon>0$ inoltre altri due $H$ e $J$, con $H\subset\interior{I}\subset I\subset\interior{J}$ tali che $\vol{J}-\epsilon<\vol{I}<\vol{H}+\epsilon$.
+Infatti, per ogni iperrettangolo $I$ (non vuoto) ne esistono $\forall\epsilon>0$ altri due $H$ e $J$, con $H\subset\interior{I}\subset I\subset\interior{J}$ tali che $\vol{J}-\epsilon<\vol{I}<\vol{H}+\epsilon$.
 Dato un ricoprimento di Lebesgue $\{I_k\}_{k\in K}$ di $I$, prendiamo $\{J_k\}_{k\in K}$ tale che, per ogni $k\in K$, $I_k\subset\interior{J_k}$ e che $\vol{J_k}-\frac{\epsilon}{2^k}<\vol{I_k}$.
 Otteniamo che $I\subset\bigcup_{k\in K} I_k$, e allora anche $I\subset\bigcup_{k\in K}\interior{J_k}$.
 Però $I$ è compatto, perciò esiste un $N\in\N$ per cui $I\subset\bigcup_{k=1}^NI_k$.
 Allora
 \begin{equation}
-	\vol{I}\leq\sum_{i=1}^N\bigg(\vol{I_k}+\frac{\epsilon}{2^k}\bigg)=\sum_{i=1}^N(\vol{I_k}+\epsilon)\qqq\vol{I}\leq\epsilon+\inf\sum_{i=1}^N\vol{I_k}=\epsilon+\mu^*(I).
+	\vol{I}\leq\sum_{k=1}^N\bigg(\vol{I_k}+\frac{\epsilon}{2^k}\bigg)\leq\epsilon\sum_{k=1}^N\vol{I_k}\qqq\vol{I}\leq\epsilon+\inf\sum_{k=1}^N\vol{I_k}=\epsilon+\mu^*(I).
 \end{equation}
 
 \begin{proprieta} \label{pr:misura-esterna}
@@ -122,7 +122,7 @@ Allora
 	\begin{enumerate}
 		\item Per ogni $\epsilon>0$ la famiglia $\{I\}=\{[0,\epsilon]^n\}$ (è composta da un solo iperrettangolo) è un ricoprimento di Lebesgue per l'insieme vuoto di $\R^n$.
 			Poich\'e il suo volume è $\epsilon^n$, l'estremo inferiore tra tutti gli $\epsilon$ positivi dà $\mu^*(\emptyset)=0$.
-		\item Per qualsiasi insieme $\{I_k\}_{k\in K}$ di iperrettangoli ($K$ misurabile), risulta ovviamente $0\leq\vol{I_k}<+\infty$, di conseguenza la somma di tutti i volumi è
+		\item Per qualsiasi insieme $\{I_k\}_{k\in K}$ di iperrettangoli ($K$ numerabile), risulta ovviamente $0\leq\vol{I_k}<+\infty$, di conseguenza la somma di tutti i volumi è
 			\begin{equation}
 				0\leq\sum_{k\in K}\vol{I_k}\leq+\infty
 			\end{equation}
@@ -135,7 +135,7 @@ Allora
 			\end{equation}
 			Unendo tutti i ricoprimenti per ogni $k\in K$ si ottiene che l'insieme $\{I^k_j\}_{j\in J,k\in K}$ è un ricoprimento di $\bigcup_{k\in K}A_k$, dunque
 			\begin{equation}
-				\mu^*\bigg(\bigcup_{k\in K}A_k\bigg)\leq\sum_{\substack{k\in K\\j\in J}}\vol{I^k_j}=\sum_{k\in K}\sum_{j\in J}\vol{I^k_j}\leq\sum_{k\in K}\bigg[\mu^*(A_k)+\frac{\epsilon}{2^k}\bigg]=\epsilon+\sum_{k\in K}\mu^*(A_k),
+				\mu^*\bigg(\bigcup_{k\in K}A_k\bigg)\leq\sum_{\substack{k\in K\\j\in J}}\vol{I^k_j}=\sum_{k\in K}\sum_{j\in J}\vol{I^k_j}\leq\sum_{k\in K}\bigg[\mu^*(A_k)+\frac{\epsilon}{2^k}\bigg]\leq\epsilon+\sum_{k\in K}\mu^*(A_k),
 			\end{equation}
 			potendo scegliere l'ordine della somma (prima su $j$ poi su $k$ o viceversa) poich\'e tutti gli addendi sono positivi.
 			Per l'arbitrarietà di $\epsilon$, l'estremo inferiore si ottiene per $\epsilon=0$ da cui la tesi.\qedhere
@@ -149,7 +149,7 @@ Eccone alcuni esempi.
 			\mu^*(I)=\prod_{i=1}^n(b_i-a_i)=(a_j-a_j)\prod_{\substack{i=1\\i\neq j}}^n(b_i-a_i)=0.
 		\end{equation}
 	\item Se $A\in\R^n$ è composto di un solo punto, cioè $A=\{\vec a\}$, può essere scritto come $A=[a_1,a_1]\times\dots\times[a_n,a_n]$ quindi per il punto precedente $\mu^*(\{\vec a\})=0$.
-	\item Un insieme $B$ finito o numerabile è l'unione numerabile di tanti punti, cioè $B=\bigcup_{j\in J}\{\vec b_j\}$ con $J\in\N$, quindi per la subadditività della misura esterna e per il punto precedente risulta
+	\item Un insieme $B$ finito o numerabile è l'unione numerabile di tanti punti, cioè $B=\bigcup_{j\in J}\{\vec b_j\}$ con $J\subseteq\N$, quindi per la subadditività della misura esterna e per il punto precedente risulta
 		\begin{equation}
 			\mu^*(B)=\mu^*\bigg(\bigcup_{j\in J}\{\vec b_j\}\bigg)\leq\sum_{j\in J}\mu^*(\{\vec b_j\})=0.
 		\end{equation}
