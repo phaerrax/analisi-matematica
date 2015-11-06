@@ -97,17 +97,22 @@ Cominciamo a dare una prima approssimazione di quella che sarà la misura di un 
 	dove $K$ è un insieme numerabile.
 \end{definizione}
 Chiaramente $\mu^*$ è un numero reale, ma può anche essere infinito, come ad esempio la misura esterna di $\R$.
-Dunque possiamo dire che $\mu^*$ è una funzione che associa ad un insieme di $\R^n$, quindi un elemendo dell'insieme delle parti, un numero non negativo anche infinito, cioè $\mu^*\colon\mathcal P\to[0,+\infty]$.
+Dunque possiamo dire che $\mu^*$ è una funzione che associa ad un insieme di $\R^n$, quindi un elemento dell'insieme delle parti, un numero non negativo anche infinito, cioè $\mu^*\colon\mathcal P\to[0,+\infty]$.
 
 La misura esterna di un iperrettangolo di volume $\vol{I}$ è chiaramente $\vol{I}$ stesso, che è il più piccolo ricoprimento possibile.
 Infatti, per ogni iperrettangolo $I$ (non vuoto) ne esistono $\forall\epsilon>0$ altri due $H$ e $J$, con $H\subset\interior{I}\subset I\subset\interior{J}$ tali che $\vol{J}-\epsilon<\vol{I}<\vol{H}+\epsilon$.
 Dato un ricoprimento di Lebesgue $\{I_k\}_{k\in K}$ di $I$, prendiamo $\{J_k\}_{k\in K}$ tale che, per ogni $k\in K$, $I_k\subset\interior{J_k}$ e che $\vol{J_k}-\frac{\epsilon}{2^k}<\vol{I_k}$.
 Otteniamo che $I\subset\bigcup_{k\in K} I_k$, e allora anche $I\subset\bigcup_{k\in K}\interior{J_k}$.
 Però $I$ è compatto, perciò esiste un $N\in\N$ per cui $I\subset\bigcup_{k=1}^NI_k$.
-Allora
+Allora\footnote{Sfruttiamo la disuguaglianza $\sum_{k=1}^N\frac1{2^k}=\sum_{k=0}^N\frac1{2^k}-1=2-\frac1{2^N}-1<1$ per ogni $N\in\N$.}
 \begin{equation}
-	\vol{I}\leq\sum_{k=1}^N\bigg(\vol{I_k}+\frac{\epsilon}{2^k}\bigg)\leq\epsilon\sum_{k=1}^N\vol{I_k}\qqq\vol{I}\leq\epsilon+\inf\sum_{k=1}^N\vol{I_k}=\epsilon+\mu^*(I).
+	\vol{I}\leq\sum_{k=1}^N\bigg(\vol{I_k}+\frac{\epsilon}{2^k}\bigg)<\epsilon+\sum_{k=1}^N\vol{I_k}
 \end{equation}
+e prendendo l'estremo inferiore tra tutti i ricoprimenti troviamo
+\begin{equation}
+	\vol{I}\leq\epsilon+\inf\sum_{k=1}^N\vol{I_k}=\epsilon+\mu^*(I)
+\end{equation}
+da cui $\vol{I}=\mu^*(I)$ per l'arbitrarietà di $\epsilon$.
 
 \begin{proprieta} \label{pr:misura-esterna}
 	La misura esterna soddisfa la seguenti proprietà: dati $A,B,A_k\in\R^n$ per $k\in K\subseteq\N$,
@@ -129,13 +134,13 @@ Allora
 			quindi anche prendendo l'estremo inferiore tra tutti i ricoprimenti di un qualsiasi $A$ si può avere $0\leq\mu^*(A)\leq+\infty$.
 		\item Se $A\subseteq B$ allora ogni ricoprimento di Lebesgue di $B$ lo è anche di $A$, quindi i due insiemi dei ricoprimenti $\{I^A\}$ di $A$ e $\{I^B\}$ di $B$ soddisfano sempre $\{I^A\}\subseteq\{I^B\}$ quindi l'estremo inferiore del primo (cioè $\mu^*(A)$) non può essere maggiore dell'estremo inferiore del secondo.
 		\item Se per qualche $k\in K$ si ha $\mu^*(A_k)=+\infty$ la proprietà è immediata, dunque sia $\mu^*(A_k)<+\infty$.
-			Dalla definizione della misura, $\forall\epsilon>0$ esiste un ricoprimento di Lebesgue $\{I^k_j\}_{j\in J}$ di $A_k$ per cui
+			Dalla definizione della misura, $\forall\epsilon>0$ esiste un ricoprimento di Lebesgue $\{I^{(k)}_j\}_{j\in J}$ di $A_k$ tale per cui
 			\begin{equation}
-				\sum_{j\in J}\vol{I^k_j}<\mu^*(A_k)+\frac{\epsilon}{2^k}.
+				\sum_{j\in J}\vol{I^{(k)}_j}<\mu^*(A_k)+\frac{\epsilon}{2^k}.
 			\end{equation}
-			Unendo tutti i ricoprimenti per ogni $k\in K$ si ottiene che l'insieme $\{I^k_j\}_{j\in J,k\in K}$ è un ricoprimento di $\bigcup_{k\in K}A_k$, dunque
+			Unendo tutti i ricoprimenti per ogni $k\in K$ si ottiene che l'insieme $\{I^{(k)}_j\}_{j\in J,k\in K}$ è un ricoprimento di $\bigcup_{k\in K}A_k$, dunque
 			\begin{equation}
-				\mu^*\bigg(\bigcup_{k\in K}A_k\bigg)\leq\sum_{\substack{k\in K\\j\in J}}\vol{I^k_j}=\sum_{k\in K}\sum_{j\in J}\vol{I^k_j}\leq\sum_{k\in K}\bigg[\mu^*(A_k)+\frac{\epsilon}{2^k}\bigg]\leq\epsilon+\sum_{k\in K}\mu^*(A_k),
+				\mu^*\bigg(\bigcup_{k\in K}A_k\bigg)\leq\sum_{k\in K}\sum_{j\in J}\vol{I^{(k)}_j}<\sum_{k\in K}\bigg[\mu^*(A_k)+\frac{\epsilon}{2^k}\bigg]<\epsilon+\sum_{k\in K}\mu^*(A_k),
 			\end{equation}
 			potendo scegliere l'ordine della somma (prima su $j$ poi su $k$ o viceversa) poich\'e tutti gli addendi sono positivi.
 			Per l'arbitrarietà di $\epsilon$, l'estremo inferiore si ottiene per $\epsilon=0$ da cui la tesi.\qedhere
