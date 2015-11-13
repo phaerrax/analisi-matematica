@@ -250,7 +250,7 @@ Passiamo ora a dimostrare come si comporta la misura di Lebesgue rispetto alle o
 \begin{proprieta} \label{pr:misura-unione-intersezione}
 	Siano $A,B\in\mis(\R^n)$:
 	\begin{enumerate}
-		\item $A\cup B$, $A\cap B$ e $A\setminus B$ sono numerabili;
+		\item $A\cup B$, $A\cap B$ e $A\setminus B$ sono misurabili;
 		\item se $A\cap B=\emptyset$, allora $\mu(A\cup B)=\mu(A)+\mu(B)$;
 		\item se $B\subseteq A$ e $\mu(B)<+\infty$, allora $\mu(A\setminus B)=\mu(A)-\mu(B)$.
 	\end{enumerate}
@@ -275,7 +275,7 @@ Passiamo ora a dimostrare come si comporta la misura di Lebesgue rispetto alle o
 			\begin{equation}
 				(E\cap A)\cup(E\cap\compl A\cap B)=E\cap\big[A\cup(\compl A\cap B)\big]=E\cap\big[(A\cup\compl A)\cap(A\cup B)\big]=E\cap(A\cup B),
 			\end{equation}
-			dunque per la subadditività della misura esterna $\mu^*(E\cap A)+\mu^*(E\cap\compl A\cap B)\leq\mu^*\big(E\cap(A\cup B)\big)$.
+			dunque per la subadditività della misura esterna $\mu^*(E\cap A)+\mu^*(E\cap\compl A\cap B)\geq\mu^*\big(E\cap(A\cup B)\big)$.
 			Sostituendo nella \eqref{eq:dim-unione-misurabile} troviamo allora che
 			\begin{equation}
 				\mu^*(E)\geq\mu^*\big(E\cap(A\cup B)\big)+\mu^*\big(E\cap\compl{(A\cup B)}\big),
