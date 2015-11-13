@@ -250,7 +250,7 @@ Passiamo ora a dimostrare come si comporta la misura di Lebesgue rispetto alle o
 \begin{proprieta} \label{pr:misura-unione-intersezione}
 	Siano $A,B\in\mis(\R^n)$:
 	\begin{enumerate}
-		\item $A\cup B$, $A\cap B$ e $A\setminus B$ sono numerabili;
+		\item $A\cup B$, $A\cap B$ e $A\setminus B$ sono misurabili;
 		\item se $A\cap B=\emptyset$, allora $\mu(A\cup B)=\mu(A)+\mu(B)$;
 		\item se $B\subseteq A$ e $\mu(B)<+\infty$, allora $\mu(A\setminus B)=\mu(A)-\mu(B)$.
 	\end{enumerate}
@@ -275,7 +275,7 @@ Passiamo ora a dimostrare come si comporta la misura di Lebesgue rispetto alle o
 			\begin{equation}
 				(E\cap A)\cup(E\cap\compl A\cap B)=E\cap\big[A\cup(\compl A\cap B)\big]=E\cap\big[(A\cup\compl A)\cap(A\cup B)\big]=E\cap(A\cup B),
 			\end{equation}
-			dunque per la subadditività della misura esterna $\mu^*(E\cap A)+\mu^*(E\cap\compl A\cap B)\leq\mu^*\big(E\cap(A\cup B)\big)$.
+			dunque per la subadditività della misura esterna $\mu^*(E\cap A)+\mu^*(E\cap\compl A\cap B)\geq\mu^*\big(E\cap(A\cup B)\big)$.
 			Sostituendo nella \eqref{eq:dim-unione-misurabile} troviamo allora che
 			\begin{equation}
 				\mu^*(E)\geq\mu^*\big(E\cap(A\cup B)\big)+\mu^*\big(E\cap\compl{(A\cup B)}\big),
@@ -306,10 +306,10 @@ Passiamo ora a dimostrare come si comporta la misura di Lebesgue rispetto alle o
 			da cui la tesi.\qedhere
 	\end{enumerate}
 \end{proof}
-Per induzione, segue immediatamente da questo teorema che l'unione e intersezione \emph{finite} di insiemi sono ancora insiemi numerabili, e che la misura è additiva se tutti gli insiemi sono disgiunti.
+Per induzione, segue immediatamente da questo teorema che l'unione e intersezione \emph{finite} di insiemi sono ancora insiemi misurabili, e che la misura è additiva se tutti gli insiemi sono disgiunti.
 \begin{proprieta} \label{pr:additivita-numerabile-lebesgue}
 	Sia $\{A_n\}_{n\in\N}$ una famiglia di insiemi misurabili di $\R^n$.
-	Allora l'unione e l'intersezione (numerabili) $\bigcup_{n=1}^{+\infty}+A_n$ e $\bigcap_{n=1}^{+\infty}A_n$ sono insiemi numerabili.
+	Allora l'unione e l'intersezione (numerabili) $\bigcup_{n=1}^{+\infty}+A_n$ e $\bigcap_{n=1}^{+\infty}A_n$ sono insiemi misurabili.
 	Se inoltre $A_i\cap A_j=\emptyset$ per ogni $i\neq j$, allora
 	\begin{equation}
 		\mu\bigg(\bigcup_{n=1}^{+\infty}A_n\bigg)=\sum_{n=1}^{+\infty}\mu(A_n).
@@ -339,7 +339,7 @@ Per induzione, segue immediatamente da questo teorema che l'unione e intersezion
 	\end{equation}
 	per qualsiasi $E\subseteq\R^n$.
 	Iterando il procedimento con $F_{k-1}$, anch'esso ovviamente misurabile, otteniamo che $\mu^*(E\cap F_{k-1})=\mu^*(E\cap A_{k-1})+\mu^*(E\cap F_{k-2})$.
-	Continuiamo dunque in questo modo fino a esaurire gli $A_n$, arrivando a $\mu^*(E\cap F_2)=\mu^*(E\cap A_2)+\mu^*(E\cap F_1)$, ma $F_1=A_1$ quindi alla fine
+	Continuiamo dunque in questo modo fino ad esaurire gli $A_n$, arrivando a $\mu^*(E\cap F_2)=\mu^*(E\cap A_2)+\mu^*(E\cap F_1)$, ma $F_1=A_1$ quindi alla fine
 	\begin{equation}
 		\mu^*(E\cap F_k)=\sum_{n=1}^k\mu^*(E\cap A_n).
 	\end{equation}
@@ -381,7 +381,7 @@ Per induzione, segue immediatamente da questo teorema che l'unione e intersezion
 	\end{equation}
 \end{proof}
 
-Concludiamo la serie di teoremi con un corollario sulle successioni di insiemi monotone, da intendersi rispetto alle operazioni di inclusione: diremo che una successione $\{A_k\}_{k\in\N}$ di insiemi è \emph{crescente} se $A_k\subset A_{k+1}$ per ogni $k$, e analogamente diremo che è decrescente se $A_k\supseteq A_{k+1}$.
+Concludiamo la serie di teoremi con un corollario sulle successioni di insiemi monotone, da intendersi rispetto alle operazioni di inclusione: diremo che una successione $\{A_k\}_{k\in\N}$ di insiemi è \emph{crescente} se $A_k\subseteq A_{k+1}$ per ogni $k$, e analogamente diremo che è \emph{decrescente} se $A_k\supseteq A_{k+1}$.
 \begin{corollario} \label{cor:misura-successioni-insiemi}
 	Sia $\{A_k\}_{k\in\N}$ una successione di insiemi misurabili:
 	\begin{itemize}
@@ -408,9 +408,9 @@ Come sono fatti questi insiemi misurabili? Sappiamo bene la loro definizione, ma
 \begin{proof}
 	Se $A\in\R^n$ è aperto, allora esiste sempre una famiglia di intervalli compatti, o iperrettangoli, $\{I_k\}_{k\in\N}$ separati, cioè per cui
 	\begin{equation*}
-		\interior{I_i}\cap\interior{I_j}=\emptyset\text{ per }i\neq j,\text{ e }\bigcup_{k\in\N}I_k=A.
+		\interior{I_i}\cap\interior{I_j}=\emptyset\text{ per }i\neq j,\text{ e tali che }\bigcup_{k\in\N}I_k=A.
 	\end{equation*}
-	Segue dalla proprietà additiva \ref{pr:additivita-numerabile-lebesgue} che $A$ è misurabile in quanto unione numerabile di insiemi numerabili.
+	Segue dalla proprietà additiva \ref{pr:additivita-numerabile-lebesgue} che $A$ è misurabile in quanto unione numerabile di insiemi misurabili.
 
 	Un insieme chiuso, in quanto complementare di un aperto, è anch'esso misurabile.
 	Infine un insieme compatto $K$ in $\R^n$ è chiuso e limitato, quindi è certamente misurabile.
@@ -457,7 +457,7 @@ Si verifica facilmente inoltre che il complementare di un insieme $G_\delta$ è 
 	Per la seconda parte della tesi, se $E=G\setminus Z$ è misurabile lo è anche il suo complementare, che è $\compl{E}=\compl{(G\cap\compl{Z})}=\compl{G}\cup Z$, ma $\compl{G}$ è di tipo $F_\sigma$, poich\'e complementare di $G$ che è di tipo $G_\delta$ (l'insieme $\compl{G}$ è l'equivalente di $F$ nella tesi).
 \end{proof}
 \begin{teorema}
-	Un insieme $A\subseteq\R^n$ è misurabile se e solo se $\forall\epsilon>0$ esistono un insieme $F$ chiuso e un $U$ aperto tali che $F\subseteq A\subseteq U$ e $\mu(U\setminus F)<\epsilon$.
+	Un insieme $A\subseteq\R^n$ è misurabile se e solo se $\forall\epsilon>0$ esistono un insieme $F$ chiuso ed un insieme $U$ aperto tali che $F\subseteq A\subseteq U$ e $\mu(U\setminus F)<\epsilon$.
 \end{teorema}
 \begin{proof}
 	Dati $A$ misurabile e $\epsilon>0$, per il lemma \ref{l:aperti-chiusi-poco-differenti} esistono sempre $U$ aperto e $F$ chiuso per i quali $\mu(A\setminus F)<\epsilon$ e $\mu(U\setminus A)<\epsilon$ per qualsiasi scelta di $\epsilon>0$.
@@ -512,7 +512,7 @@ Passiamo ora a considerare gli insiemi \emph{di livello} della funzione.
 	Se $c=+\infty$, $\{f(\vec x)=c\}=\bigcap_{k=1}^{+\infty}\{f(\vec x)\geq k\}$ mentre per $c=-\infty$ $\{f(\vec x)=c\}=\bigcap_{k=1}^{+\infty}\{f(\vec x)\leq -k\}$ dunque sono entrambi insiemi di tipo $G_\delta$, perciò misurabili.
 \end{proof}
 Come ci si può aspettare, non tutte le funzioni sono misurabili.
-Una semplice funzione misurabile è la funzione caratteristica di un insieme misurabile: se $E\notin\mis(\R^n)$, la funzione $f\colon E\to\Rex$ definita come $f(\vec x)=\chi_E(\vec x)$ non è misurabile perch\'e l'insieme di livello $\{x\in E\colon \chi_E(\vec x)=1\}$ è proprio l'insieme $E$, dunque non è misurabile, e non lo è nemmeno la funzione per il teorema appena enunciato.
+Una semplice funzione non misurabile è la funzione caratteristica di un insieme non misurabile: se $E\notin\mis(\R^n)$, la funzione $f\colon E\to\Rex$ definita come $f(\vec x)=\chi_E(\vec x)$ non è misurabile perch\'e l'insieme di livello $\{x\in E\colon \chi_E(\vec x)=1\}$ è proprio l'insieme $E$, dunque non è misurabile, e non lo è nemmeno la funzione per il teorema appena enunciato.
 
 \begin{teorema} \label{t:funzioni-continue-misurabili}
 	Sia $A\in\mis(\R^n)$ e $f\colon A\to\R$.
@@ -555,14 +555,14 @@ Ad esempio, se diciamo che $f=g$ quasi ovunque in $A$, detto $N$ l'insieme di pu
 	Allora $f$ è misurabile se e solo se lo è $g$.
 \end{teorema}
 \begin{proof}
-	Sia $f$ misurabile: poniamo $B=A\setminus Z$, da cui $A=B\cap Z$.
+	Sia $f$ misurabile: poniamo $B=A\setminus Z$, da cui $A=B\cup Z$.
 	Sappiamo che $g|_Z$ è misurabile come visto nell'osservazione \ref{o:funzione-misurabile-su-insieme-nullo} poich\'e $\mu(Z)=0$.
 	D'altra parte $g|_{B}=f|_{B}$ per ipotesi, dunque se $f$ è misurabile lo è anche $g|_B$.
 	Per il teorema \ref{t:funzione-misurabile-restrizioni} $g$ è misurabile.
 	Se partiamo dalla misurabilità di $g$ anzich\'e da quella di $f$ la dimostrazione è del tutto analoga.
 \end{proof}
 Altri esempi di proprietà che posso verificarsi quasi ovunque sono la convergenza puntuale di una successione di funzioni, o il segno di una funzione.
-Mostriamo ora nei seguenti che operando con funzioni misurabili (anche attraverso limiti e estremi superiori e inferiori) otteniamo ancora una funzione misurabile, con un'eccezione solo per la composizione.
+Mostriamo ora con le seguenti proprietà che operando con funzioni misurabili (anche attraverso limiti ed estremi superiori e inferiori) otteniamo ancora una funzione misurabile, con un'eccezione solo per la composizione.
 \begin{lemma}
 	Siano $f,g\colon A\to\Rex$, con $A\in\mis(\R^n)$, due funzioni misurabili.
 	Allora l'insieme $\{\vec x\in A\colon f(\vec x)>g(\vec x)\}$ è misurabile.
@@ -611,10 +611,10 @@ Mostriamo ora nei seguenti che operando con funzioni misurabili (anche attravers
 	\end{equation}
 	dunque anch'essi sono misurabili.
 \end{proof}
-Da queste proprietà segue immediatamente che se una successione di funzioni misurabili in un insieme $A$ converge puntualmente, la funzione limite è anch'essa misurabile in $A$, poich\'e il limite superiore e inferiore (che sono misurabili) coincidiono e sono uguali al limite.
+Da queste proprietà segue immediatamente che se una successione di funzioni misurabili in un insieme $A$ converge puntualmente, la funzione limite è anch'essa misurabile in $A$, poich\'e il limite superiore e inferiore (che sono misurabili) coincidono e sono uguali al limite.
 Questo vale anche se la convergenza è quasi ovunque, in virtù del teorema \ref{t:misurabile-qo}.
 
-Data una funzione $f$ misurabile, inoltre, per quest'ultimo teorema la sua parte positiva e la sua parte negativa sono misurabili, in quanto $F^+=\max\{f,0\}$ e $f^-=\max\{-f,0\}$, cos\'i come lo è il suo modulo $\abs{f}=f^+-f^-$ come somma di funzioni misurabili.
+Data una funzione $f$ misurabile, inoltre, per quest'ultimo teorema la sua parte positiva e la sua parte negativa sono misurabili, in quanto $f^+=\max\{f,0\}$ e $f^-=\max\{-f,0\}$, cos\'i come lo è il suo modulo $\abs{f}=f^+-f^-$ come somma di funzioni misurabili.
 \begin{proprieta} \label{pr:composizione-funzioni-misurabili}
 	Sia $f\colon A\to\R$, con $A\in\mis(\R^n)$, misurabile in $A$.
 	Se $g\colon B\to\R$, con $f(A)\subset B\subset\R$, è continua in $B$, allora $g\circ f\colon A\to\R$ è misurabile.
@@ -651,9 +651,9 @@ che è evidentemente continua in tutto $\R$.
 \end{osservazione}
 \begin{proof}
 	Prendiamo $\chi_A\colon\R^n\to{0,1}$.
-	Se $c>1$, risulta $\{\vec x\in A\colon\chi_A(\vec x)<c\}=\R^n$.
-	Se $0<c\leq1$, $\{\vec x\in A\colon \chi_A(\vec x)<c\}=\compl A$, poich\'e $\chi_A(\vec x)=0$ se $\vec x\notin A\then\vec x\in\compl A$.
-	Se $c\leq 0$ infine $\{\vec x\in A\colon \chi_A(\vec x)<c\}=\emptyset$.
+	Se $c>1$, risulta $\{\vec x\in \R^n\colon\chi_A(\vec x)<c\}=\R^n$.
+	Se $0<c\leq1$, $\{\vec x\in \R^n\colon \chi_A(\vec x)<c\}=\compl A$, poich\'e $\chi_A(\vec x)=0$ se $\vec x\notin A\then\vec x\in\compl A$.
+	Se $c\leq 0$ infine $\{\vec x\in R^n\colon \chi_A(\vec x)<c\}=\emptyset$.
 	In tutti i tre i casi gli insiemi sono misurabili.
 \end{proof}
 
