@@ -681,7 +681,7 @@ Una funzione semplice può essere definita anche solo su un sottoinsieme di $\R^
 	Dividiamo la funzione $f$, misurabile, in parte positiva e negativa, $f=f^+-f^-$: entrambe sono non negative e misurabili.
 	Per il secondo punto, esistono dunque due successioni di funzioni semplici, che chiamiamo $\{s^+_k\}_{k\in\N}$ e $\{s^-_k\}_{k\in\N}$, crescenti e per le quali
 	$s^+_k\to f^+$ e $s^-_k\to f^-$.
-	Ma allora prendendo la loro differenza si ha una nuova successione, $s^+_k-s^-_k$, che converge a $f^+-f^+=f$ per $k\to+\infty$.
+	Ma allora prendendo la loro differenza si ha una nuova successione, $s^+_k-s^-_k$, che converge a $f^+-f^-=f$ per $k\to+\infty$.
 
 	Dimostriamo ora il secondo punto: sia $f$ non negativa e misurabile su $A$.
 	Suddividiamo il codominio di $f$, ossia $[0,+\infty]$, in $4^k+1$ intervalli della forma
@@ -700,7 +700,7 @@ Una funzione semplice può essere definita anche solo su un sottoinsieme di $\R^
 	\end{equation}
 	Prendiamo dunque la funzione
 	\begin{equation}
-		s_k=\sum_{j=1}^{4^k}\frac{j-1}{2^k}\chi_{A^j_k}+2^k\chi_{A^{k+1}_k},
+		s_k=\sum_{j=1}^{4^k}c^j_k\chi_{A^j_k}+c^{4^k+1}_k\chi_{A^{4^k+1}_k},
 	\end{equation}
 	che chiaramente è una funzione semplice e non negativa.
 	Essa inoltre non è decrescente, dato che ogni coefficiente $c^j_k$ è crescente, quindi $0\leq s_k\leq s_{k+1}\leq f$ in $A$.
@@ -749,15 +749,15 @@ Possiamo subito dimostrare alcune proprietà dell'integrale per funzioni semplic
 	\end{equation}
 \end{proof}
 \begin{teorema} \label{t:integrale-funzioni-semplici-linearita}
-	Siano $s,t\colon\R^n\to\R$ due funzioni semplici e $A\in\mis(\R^n)$: allora
+	Siano $s,t\colon\R^n\to\R$ due funzioni semplici e $E\in\mis(\R^n)$: allora
 	\begin{equation}
 		\int_E(s+t)\dd\mu=\int_Es\,\dd\mu+\int_Et\,\dd\mu.
 		\label{eq:integrale-funzioni-semplici-linearita}
 	\end{equation}
 \end{teorema}
 \begin{proof}
-	Siano $s=\sum_{i=1}^pc_i\chi_{A_i}$ e $t=\sum_{i=1}^qd_i\chi_{B_i}$ le rappresentazioni canoniche delle due funzioni, con $A_i$ e $B_i$ definiti come al solito come le controimmagini di $c_i$ e $d_i$ rispettivamente.
-	Risulta $\bigcup_{i=1}^pA_i=\bigcup_{i=1}^{q}B_i=\R^n$.
+	Siano $s=\sum_{i=1}^pc_i\chi_{A_i}$ e $t=\sum_{j=1}^qd_j\chi_{B_j}$ le rappresentazioni canoniche delle due funzioni, con $A_i$ e $B_j$ definiti come al solito come le controimmagini di $c_i$ e $d_j$ rispettivamente.
+	Risulta $\bigcup_{i=1}^pA_i=\bigcup_{j=1}^{q}B_j=\R^n$.
 	Ma allora dal teorema precedente possiamo scrivere
 	\begin{equation}
 		\begin{split}
