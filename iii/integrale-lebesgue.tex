@@ -813,7 +813,7 @@ Concludiamo quindi con l'ultima definizione.
 In questo caso l'integrale è un numero di $\Rex$, ma esiste certamente in quanto si evita la forma indeterminata $+\infty-\infty$, dato che uno dei due addendi sicuramente è finito.
 Una funzione non negativa è sempre integrabile su qualunque insieme, perch\'e qualunque sia il valore di $f^+$ il suo integrale della parte negativa sarà sempre nullo.
 \begin{definizione} \label{d:funzione-sommabile}
-	Una funzione $f$ si dice \emph{sommabile} sull'insieme $A$ se entrambi gli integrali $\int_Af^+\dd\mu$ e $\int_Af^-\dd\mu$ sono finiti.\footnote{L'uso di questi due termini non sempre è usata come ora: si possono trovare testi in cui ``integrabile'' significa quello che qui intendiamo come sommabile, e ``esiste l'integrale di Lebesgue'' dove qui diciamo che è integrabile.}
+	Una funzione $f$ si dice \emph{sommabile} sull'insieme $A$ se entrambi gli integrali $\int_Af^+\dd\mu$ e $\int_Af^-\dd\mu$ sono finiti.\footnote{L'uso di questi due termini non sempre è inteso allo stesso modo: si possono trovare testi in cui ``integrabile'' significa quello che qui intendiamo come sommabile, e si indica che ``esiste l'integrale di Lebesgue'' quando qui diciamo che è integrabile.}
 \end{definizione}
 In questo caso l'integrale è un numero finito, e ovviamente una funzione sommabile è integrabile ma non viceversa.
 Notiamo inoltre che la sommabilità di $f$ è equivalente a quella di $\abs{f}$, perciò per verificare se $f$ è sommabile basta studiare il suo valore assoluto.
@@ -853,7 +853,7 @@ Lasceremo sottinteso d'ora in poi che $\mathcal S_f$ è l'insieme delle funzioni
 			\begin{equation}
 				\int_Acf\,\dd\mu=c\int_Af^+\dd\mu-c\int_Af^-\dd\mu=c\int_Af\,\dd\mu.
 			\end{equation}
-			È evidente a questo punto che se $f\in L(A)$ il suo integrale esiste finito, dunque è finito che l'integrale di $cf$, che quindi è a sua volta sommabile.
+			È evidente a questo punto che se $f\in L(A)$ il suo integrale esiste finito, dunque è finito anche l'integrale di $cf$, che quindi è a sua volta sommabile.
 			La proprietà vale anche, ovviamente se $c<0$: basta ricordarsi che $f=f^+-f^-$ dunque $cf=cf^+-cf^-$ e applicare quanto detto alla parte positiva e negativa, che sono entrambe funzioni non negative.
 		\item Si ha che $0\leq f\chi_E\leq f$ in $A$, perciò per il secondo punto
 			\begin{equation}
@@ -862,29 +862,29 @@ Lasceremo sottinteso d'ora in poi che $\mathcal S_f$ è l'insieme delle funzioni
 	\end{enumerate}
 \end{proof}
 Tra le proprietà principali manca la linearità dell'integrale, che finora abbiamo dimostrato solo per le funzioni semplici.
-Per dimostrarla ci serve però il teorema della convergenza monotona, quindi rimandiamo questo punto a più avanti.
+Per dimostrarla ci serve però il teorema della convergenza monotona, questo punto sarà quindi trattato successivamente.
 
-Come avevamo anticipato all'inizio del capitolo, uno dei motivi principali che hanno portato allo sviluppo dell'integrale di Lebesgue è giustificare il passaggio del limite nell'integrale con ipotesi meno restrittive che con l'integrale di Riemann.
+Come avevamo anticipato all'inizio del capitolo, uno dei motivi principali che hanno portato allo sviluppo dell'integrale di Lebesgue è giustificare il passaggio al limite nell'integrale con ipotesi meno restrittive che con l'integrale di Riemann.
 Passiamo dunque ad elencare i teoremi più importanti in questo ambito, che ci permetteranno lo scambio tra limite e integrale con solamente la convergenza puntuale e qualche altra ipotesi più semplice da verificare.
 \begin{teorema}[della convergenza monotona, di Beppo Levi] \label{t:convergenza-monotona}
 	Sia $\{f_n\}_{n=1}^{+\infty}$ una successione di funzioni con $f_n\colon A\to[0,+\infty)$ e $A\in\mis(\R^n)$.
 	Se la successione è crescente, cioè $f_n(\vec x)\leq f_{n+1}(\vec x)$ $\forall\vec x\in A$, e converge puntualmente in $A$ alla funzione $f$, allora
 	\begin{equation}
-		\lim_{n\to+\infty}\int_Af_n\dd\mu\int_Af\,\dd\mu
+		\lim_{n\to+\infty}\int_Af_n\dd\mu=\int_Af\,\dd\mu
 		\label{eq:convergenza-monotona}
 	\end{equation}
 \end{teorema}
 \begin{proof}
-	Per la monotonia dell'integrale (proprietà \ref{pr:integrale-lebesgue}, punto 2) si ha $\int_Af_n\dd\mu\leq\int_Af_{n+1}\dd\mu$, dunque la successione degli integrali è anch'essa monotona crescente, che quindi ammette limite per $n\to+\infty$.
+	Per la monotonia dell'integrale (proprietà \ref{pr:integrale-lebesgue}, punto 2) si ha $\int_Af_n\dd\mu\leq\int_Af_{n+1}\dd\mu$, dunque la successione degli integrali è anch'essa monotona crescente, quindi ammette limite per $n\to+\infty$.
 	Allo stesso tempo, $f_n\leq f$ per ogni $n\in\N$: allora per il teorema di permanenza del segno
 	\begin{equation*}
 		\lim_{n\to+\infty}\int_Af_n\dd\mu\leq\int_Af\,\dd\mu.
 	\end{equation*}
 	Sia ora $s\in\mathcal S_f$, e definiamo $A_n\defeq\{\vec x\colon f_n(\vec x)\geq \alpha s(\vec x)\}$ con $0<\alpha<1$.
-	Tutti i punti $f_n(\vec x)$ saranno definitivamente ``al di sopra'' di $\alpha s$, dato che $A_n\subseteq A_{n+1}$ da cui $\bigcup_{n=1}^nA_n=A$.
+	Tutti i punti $f_n(\vec x)$ saranno definitivamente ``al di sopra'' di $\alpha s$, dato che $A_n\subseteq A_{n+1}$ da cui $\bigcup_{n=1}^{+\infty}A_n=A$.
 	Allora risulta
 	\begin{equation}
-		\int_Af_n\dd\mu\leq\int_{A_n}f\,\dd\mu\leq\alpha\int_{A_n}s\,\dd\mu=\sum_{i=1}^n\alpha\int_{A_i\setminus A_{i-1}}s\,\dd\mu.	
+		\int_Af_n\dd\mu\req\int_{A_n}f_n\,\dd\mu\req\alpha\int_{A_n}s\,\dd\mu=\sum_{i=1}^n\alpha\int_{A_i\setminus A_{i-1}}s\,\dd\mu.	
 	\end{equation}
 	Però per ogni $i>j$ si ha $(A_i\setminus A_{i-1})\cap(A_j\setminus A_{j-1})=\emptyset$, poich\'e $A_j\setminus A_{j-1}\subseteq A_{i-1}$, dunque abbiamo
 	\begin{equation}
@@ -899,9 +899,9 @@ Passiamo dunque ad elencare i teoremi più importanti in questo ambito, che ci p
 	\begin{equation}
 		\lim_{n\to+\infty}\int_Af_n\dd\mu\geq\sup_{s\in\mathcal S_f}\int_As\,\dd\mu=\int_Af\,\dd\mu.
 	\end{equation}
-	Abbiamo trovato che il limite dell'integrale della successione prima non è maggiore dell'integrale del limite, poi che non è minore: allora
+	Abbiamo trovato che il limite dell'integrale della successione non è maggiore dell'integrale del limite, ma non è nemmeno minore: allora
 	\begin{equation}
-		\lim_{n\to+\infty}\int_af_n\dd\mu=\int_Af\,\dd\mu.\qedhere
+		\lim_{n\to+\infty}\int_Af_n\dd\mu=\int_Af\,\dd\mu.\qedhere
 	\end{equation}
 \end{proof}
 \begin{corollario} \label{cor:serie-integrali}
@@ -915,16 +915,16 @@ Passiamo dunque ad elencare i teoremi più importanti in questo ambito, che ci p
 	Poich\'e ogni $f_n$ non è negativa, la successione delle somme parziali $s_k=\sum_{n=1}^kf_n$ è monotona crescente, e ammette anche il limite per $n\to+\infty$ (eventualmente infinito).
 	Per il teorema della convergenza monotona allora
 	\begin{equation}
-		\int_a\ser{n}f_n\dd\mu=\int_A\lim_{k\to+\infty}\sum_{n=1}^kf_n\dd\mu=\lim_{k\to+\infty}\int_A\sum_{n=1}^kf_n\dd\mu=\lim_{k\to+\infty}\sum_{n=1}^k\int_Af_n\dd\mu=\ser{n}\int_Af_n\dd\mu.\qedhere
+		\int_A\ser{n}f_n\dd\mu=\int_A\lim_{k\to+\infty}\sum_{n=1}^kf_n\dd\mu=\lim_{k\to+\infty}\int_A\sum_{n=1}^kf_n\dd\mu=\lim_{k\to+\infty}\sum_{n=1}^k\int_Af_n\dd\mu=\ser{n}\int_Af_n\dd\mu.\qedhere
 	\end{equation}
 \end{proof}
 \begin{corollario}
 	Sia $f\colon\R^n\to[0,+\infty]$ misurabile, e $\{A_n\}_{n=1}^{+\infty}$ una successione di insiemi misurabili.
-	Detto $A\defeq\bigcup_{n=1}^{+\infty}$, risulta
+	Detto $A\defeq\bigcup_{n=1}^{+\infty}A_n$, risulta
 	\begin{enumerate}
 		\item se $A_i\cap A_j=\emptyset$ per $i\neq j$, $\int_Af\,\dd\mu=\ser{i}\int_{A_i}f\,\dd\mu$;
 		\item se $A_n\subseteq A_{n+1}$ per ogni $n\in\N$, $\int_Af\,\dd\mu=\lim_{n\to+\infty}\int_{A_n}f\,\dd\mu$;
-		\item se $A_n\supseteq A_{n+1}$ per ogni $n\in\N$, detto $B=\bigcap_{i=1}^{+\infty}$, se $\int_{A_1}f\,\dd\mu<+\infty$ allora $\int_Bf\,\dd\mu=\lim_{j\to+infty}\int_{A_j}f\,\dd\mu$.
+		\item se $A_n\supseteq A_{n+1}$ per ogni $n\in\N$, detto $B=\bigcap_{i=1}^{+\infty}A_i$, se $\int_{A_1}f\,\dd\mu<+\infty$ allora $\int_Bf\,\dd\mu=\lim_{j\to+\infty}\int_{A_j}f\,\dd\mu$.
 	\end{enumerate}
 \end{corollario}
 \begin{proof}
