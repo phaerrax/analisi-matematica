@@ -992,7 +992,7 @@ Completiamo dunque la dimostrazione della linearità dell'integrale: ci manca da
 \end{proof}
 Con questo lemma abbiamo tolto l'ipotesi di monotonia della successione, ottenendo però una disuguaglianza e non più un'uguaglianza.
 Notiamo inoltre che nel lemma di Fatou non è nemmeno richiesta la convergenza puntuale della successione.
-La monotonia è un'ipotesi essenziale in questi casi: guardiamo ad esempio alla successione di $f_n\colon\R\to[0,+\infty)$ definite come $f_n=\frac1{k}\chi_{[0,k]}$.
+La monotonia è un'ipotesi essenziale in questi casi: guardiamo ad esempio alla successione di $f_n\colon\R\to[0,+\infty)$ definita come $f_n=\frac1{n}\chi_{[0,n]}$.
 Il limite puntuale (ma anche uniforme) è certamente la funzione nulla, ma la convergenza non è monotona, e infatti abbiamo
 \begin{gather*}
 	\lim_{n\to+\infty}\int_{\R}f_n(x)\,\dd x=\lim_{n\to+\infty}1\\
@@ -1018,7 +1018,7 @@ Concludiamo infine la trattazione dei limiti con gli integrali con il seguente r
 	\end{equation}
 \end{teorema}
 \begin{proof}
-	Poich\'e $g$ maggiora ogni termine della successione indipendentemente da $n\in\N$, per il teorema di permamenza del segno avremo anche $f\leq g$, quindi $\abs{f_n-f}\leq\abs{f_n}+\abs{f}\leq 2g$ quasi ovunque in $A$.
+	Poich\'e $g$ maggiora ogni termine della successione indipendentemente da $n\in\N$, per il teorema di permanenza del segno avremo anche $f\leq g$, quindi $\abs{f_n-f}\leq\abs{f_n}+\abs{f}\leq 2g$ quasi ovunque in $A$.
 	Se prendiamo la successione $2g-\abs{f_n-f}$, applicando ad essa il lemma di Fatou troviamo
 	\begin{equation}
 		\int_A\liminf_{n\to+\infty}(2g-\abs{f_n-f})\dd\mu\leq\liminf_{n\to+\infty}\int_A(2g-\abs{f_n-f})\dd\mu,
@@ -1133,7 +1133,7 @@ Vediamo che queste sezioni che si ottengono tagliando l'insieme di integrazione 
 	Se prendiamo la funzione caratteristica $\chi_A$, essa è misurabile perch\'e lo è $A$, dunque sono misurabili anche le funzioni $\vec x\mapsto\chi_A(\vec x,\vec y)$ e $\vec y\mapsto\chi_A(\vec x,\vec y)$ quasi ovunque, rispettivamente, in $\R^k$ e $\R^m$.
 	Allora anche l'insieme di arrivo $\{\vec y\in\R^k\colon\chi_A(\vec x,\vec y)=1\}$, che è proprio $A(\vec x)$, lo è.
 \end{proof}
-Potendo estendere una funzione definita in un sottoinsieme $A\subset\R^n$ a tutto $\R^n$ moltiplicandola per la funzione caratteristica di $A$, possiamo passare facilmente dal teorema di Fubini in tutto lo spazio ad un teorema solo in un dato insieme.
+Potendo restringere una funzione definita in tutto $\R^n$ ad un sottoinsieme $A\subset\R^n$ moltiplicandola per la funzione caratteristica di $A$, possiamo passare facilmente dal teorema di Fubini in tutto lo spazio ad un teorema solo in un dato insieme.
 \begin{teorema} \label{t:fubini2}
 	Siano $A\in\mis(\R^n)$, $\R^n=\R^m\times\R^k$ e $f\colon A\to\Rex$.
 	Allora $f$ è misurabile sulle sezioni $A(\vec x)$, come definite prima, quasi ovunque in $\R^m$.
@@ -1178,7 +1178,7 @@ Come si può chiaramente vedere, però, sia la parte positiva sia quella negativ
 
 Se la funzione ha segno costante, vediamo che questo non può accadere.
 \begin{teorema}[di Tonelli] \label{t:tonelli}
-	Date $f\colon\R^n\to[0,+\infty]$ misurabile, con $\R^n=\R^m\times\R^k$, allora la funzione $\vec x\mapsto\int_{\R^k}f(\vec x,\vec y)\,\dd\vec y$, definita quasi ovunque da $\R^m$ a $\R$, è misurabile, e lo stesso per la $\vec y\mapsto\int_{\R^m}f(\vec x,\vec y)\,\dd x$ da $\R^k$ a $\R$, e si può scambiare l'ordine di integrazione.
+	Data $f\colon\R^n\to[0,+\infty]$ misurabile, con $\R^n=\R^m\times\R^k$, allora la funzione $\vec x\mapsto\int_{\R^k}f(\vec x,\vec y)\,\dd\vec y$, definita quasi ovunque da $\R^m$ a $\R$, è misurabile, e lo stesso per la $\vec y\mapsto\int_{\R^m}f(\vec x,\vec y)\,\dd\vec x$ da $\R^k$ a $\R$, e si può scambiare l'ordine di integrazione.
 \end{teorema}
 Se dobbiamo integrare una funzione, se essa è sommabile o non negativa in partenza, possiamo direttamente applicare il teorema di Fubini o di Tonelli.
 Se ciò non accade, possiamo comunque sfruttarli nel seguente metodo.
@@ -1209,7 +1209,7 @@ dove $\rho(\vec x)$ è il resto di Peano, del tipo $o(\norm{\vec x-\vec x_0})$, 
 Dunque possiamo approssimare linearmente nell'intorno di $\vec x_0$ il nostro diffeomorfismo con una mappa affine (ossia lineare a meno di una costante, che è $\vec g(\vec x_0)$) rappresentata dalla matrice jacobiana.
 Abbiamo inoltre il seguente teorema.
 \begin{teorema} \label{t:diffeomorfismo-globale}
-	Una funzione $\vec g\colon U\to V$, con $U,V$ aperti in $\R^n$, biunivoca e tale che $\vec g\in\cont{1}(U)$ e $\det\jac\vec g(\vec x)\neq 0$ per ogni $\vec x\in U$ è un diffeomorfismo \emph{globale} tra $U$ e $V$.
+	Una funzione $\vec g\colon U\to V$, con $U,V$ aperti in $\R^n$, biunivoca e tale che $\vec g\in\cont{1}(U)$ e $\det\jac\vec g(\vec x)\neq 0$ per ogni $\vec x\in U$, è un diffeomorfismo \emph{globale} tra $U$ e $V$.
 \end{teorema}
 La proprietà di non singolarità della jacobiana è solamente locale, quindi da sola non basta ad affermare che il diffeomorfismo sia anche globale, ma serve provarne la biunivocità.
 
