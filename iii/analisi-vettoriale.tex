@@ -7,12 +7,12 @@ Per cominciare, vediamo le definizioni degli integrali su linee e superfici in $
 Abbiamo già incontrato le curve, anche se solo in $\R^2$, trattando le funzioni implicite.
 Vediamone una definizione più generale.
 Una \emph{curva} è una funzione $\vphi\colon [a,b]\to\R^n$: diciamo che è regolare se $\vphi\in\cont{1}\ab$, è iniettiva su $(a,b)$ e $\vphi(t)\ne\vec 0$ per ogni $t\in(a,b)$.
-Spesso è detta curva anche la sua immagine $\vphi(I)$, mentre $\vphi$ è detta \emph{parametrizzazione}.
+Spesso è detta curva anche la sua immagine, anche chiamata \emph{sostegno}, $\vphi(I)$, mentre $\vphi$ è detta \emph{parametrizzazione}.
 
 \begin{definizione} \label{d:lunghezza-curva}
 	Data una curva $\vphi\colon[a,b]\to\R^n$, definiamo la sua lunghezza $\ell(\vphi)$ come
 	\begin{equation}
-		\ell(\vphi)=\sup\bigg\{\sum_{i=1}^N\norm{\vphi(t_i)-\vphi(t_i)},\ n\in\N\text{ e }a=t_0<t_1<\cdots<t_N=b\bigg\}
+		\ell(\vphi)=\sup\bigg\{\sum_{i=1}^n\norm{\vphi(t_i)-\vphi(t_{i-1})},\ n\in\N\text{ e }a=t_0<t_1<\cdots<t_n=b\bigg\}
 		\label{eq:lunghezza-curva}
 	\end{equation}
 	dove l'estremo superiore è preso tra tutte le possibili partizioni dell'intervallo $[a,b]$.
@@ -25,12 +25,12 @@ Definiamo infine la misura infinitesima (o elementare) di una curva come
 	\label{eq:misura-curva}
 \end{equation}
 dove $\vphi$ è la sua parametrizzazione.
-Con questa definizione, otteniamo la lunghezza della curva parametrizzata da $\vphi$ con l'integrale
+Con questa definizione, otteniamo la lunghezza della curva parametrizzata da $\vphi$ tramite l'integrale
 \begin{equation}
 	\int_\phi\,\dd s=\int_a^b\norm{\drv{\vphi}{t}(t)}\,\dd t
 \end{equation}
 dove $\phi=\vphi\ab$ è l'immagine della curva.
-L'integrale di linea di una funzione scalare $g$ definita da $\phi$ a valori in $\R$ è definito come
+L'integrale di linea di una funzione scalare $f$ definita da $\phi$ a valori in $\R$ è definito come
 \begin{equation}
 	\int_\phi f\,\dd s=\int_a^b(f\circ\vphi)(t)\norm{\drv{\vphi}{t}(t)}\,\dd t.
 \end{equation}
@@ -44,7 +44,7 @@ Nel caso in cui una curva regolare sia il grafico di una funzione $\vec f\colon[
 \section{Integrali di superficie}
 Innanzitutto, una superficie in $\R^3$ è una funzione $\vphi\colon D\to\R^3$, dove $D$ è un insieme di $\R^2$.\footnote{Anche qui, il termine \emph{superficie} talvolta indica l'immagine della funzione e non la funzione stessa.}
 \begin{definizione} \label{d:superficie-regolare}
-	Una \emph{superficie regolare} in $\R^3$ è una funzione $\phi\colon D\to\R^3$ dove $D$ è un insieme connesso di $\R^2$, $\vphi\in\cont{1}(D)$, è iniettiva in $\mathring{D}$ e il rango della jacobiana $\jac\vphi$ è massimo in ogni punto di $\mathring{D}$.
+	Una \emph{superficie regolare} in $\R^3$ è una funzione $\vphi\colon D\to\R^3$ dove $D$ è un insieme connesso di $\R^2$, $\vphi\in\cont{1}(D)$, è iniettiva in $\mathring{D}$ e il rango della jacobiana $\jac\vphi$ è massimo in ogni punto di $\mathring{D}$.
 \end{definizione}
 
 \paragraph{Prodotto vettoriale}
@@ -110,7 +110,7 @@ L'area della superficie $S=\vphi(D)$ si calcola dunque come
 \end{equation}
 dove $\vphi\colon D\to\R^3$ è la sua parametrizzazione regolare; l'integrale di superficie di una funzione $f\colon S\to\R$ è
 \begin{equation}
-	\int_Sf\,\dd\sigma=\int_D(f\circ\vphi)(u,v)\norm{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(x,y)}\,\dd u\dd v.
+	\int_Sf\,\dd\sigma=\int_D(f\circ\vphi)(u,v)\norm{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}\,\dd u\dd v.
 \end{equation}
 Anche in questo caso $f\circ\vphi\colon D\to\R$ quindi troviamo un integrale di Lebesgue.
 
@@ -124,10 +124,13 @@ Cominciamo prima dagli integrali in due dimensioni, per poi introdurre gli integ
 Per studiare questi teoremi dobbiamo innanzitutto introdurre nuove definizioni per gli insiemi, come quelle di \emph{dominio} e di \emph{orientazione}.
 \begin{definizione} \label{d:dominio}
 	Un insieme $D\subseteq\R^2$ chiuso si dice \emph{dominio} se è la chiusura di un insieme aperto; si dice inoltre \emph{connesso} se l'aperto di cui è chiusura è connesso.
-
-	Un dominio si dice \emph{normale} (e anche regolare) rispetto alla variabile $x$ se, dato un intervallo $[a,b]$ e due funzioni $f,g\colon[a,b]\to\R$ di $\cont{1}\ab$, esso è della forma $\{(x,y)\in\R^2\colon f(x)\leq y\leq g(x) \forall x\in[a,b]\}$; analogamente si definisce per la variabile $y$.
-
-	Infine, un insieme è un \emph{dominio regolare} se è l'unione di domini $D_i$ normali separati, ossia $\mathring{D_j}\cap\mathring{D_k}=\emptyset$ per ogni $j\neq k$.
+\end{definizione}
+\begin{definizione} \label{d:dominio-norm-reg}
+	Un dominio si dice \emph{normale} rispetto alla variabile $x$ se, dato un intervallo $[a,b]$ e due funzioni $f,g\colon[a,b]\to\R$ continue, tali che $f(x)\leq g(x) \forall x\in[a,b]$, esso è della forma $\{(x,y)\in\R^2\colon f(x)\leq y\leq g(x) \forall x\in[a,b]\}$; analogamente si definisce per la variabile $y$.
+	Si dice \emph{normale} e \emph{regolare} se le funzioni $f$ e $g$ sono di $\cont{1}\ab$ e se $f(x)<g(x) \forall x\in(a,b)$.
+\end{definizione}
+\begin{definizione} \label{d:dominio-regolare}
+	Un insieme è un \emph{dominio regolare} se è l'unione di un numero finito di domini $D_i$ normali e regolari (rispetto a x oppure a y) separati, ossia $\mathring{D_j}\cap\mathring{D_k}=\emptyset$ per ogni $j\neq k$.
 \end{definizione}
 Ogni dominio, essendo chiuso e limitato, è chiaramente anche compatto.
 
@@ -150,7 +153,7 @@ A questo punto possiamo definire il \emph{versore normale}, che indicheremo spes
 Chiaramente i due versori sono ortogonali per ogni $t\in[a,b]$.
 Se $D$ è un dominio regolare, si può dimostrare che $\partial D$ è l'unione finita di sostegni di curve regolari a tratti: allora possiamo affermare l'esistenza di un versore tangente e normale alla frontiera di un dominio regolare, tranne al più in un numero finito di punti.
 
-Questo ci porta al problema di trovare un'orientazione delle curve, e più precisamente del bordo di un insieme.
+Questo ci porta al problema di trovare un'orientazione delle curve, e più precisamente del bordo di un dominio.
 Diremo che la frontiera è orientata in senso \emph{positivo} (e scriveremo $+\partial D$) se il versore normale ``punta'' all'esterno del dominio.
 Questo indica anche il verso di percorrenza della frontiera: percorrendola in senso positivo il dominio si troverà sempre alla sinistra del versore tangente.
 
