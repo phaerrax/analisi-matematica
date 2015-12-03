@@ -172,40 +172,49 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	Supponiamo che esista un insieme $U$ tale che $D\subset U$ e che $f\in\cont{1}(U)$.
 	Distinguiamo tre casi: (i) $D$ è normale rispetto a $y$, (ii) $D$ è normale rispetto a $x$ e (iii) $D$ è un generico insieme regolare.
 
+	\input{grafici/gauss-green-normale-y}
 	(i) Sia $D$ un dominio normale rispetto alla variabile $y$: lo scriviamo allora come $D=\{(x,y)\in\R\times[c,d]\colon \alpha(y)\leq x\leq\beta(y)\}$.
-	Suddividiamo il bordo di $D$ nei quattro sottoinsiemi $\gamma_i$ ($i=1,2,3,4$) parametrizzati con
+	Suddividiamo il bordo di $D$ nei quattro sottoinsiemi $\gamma_i$ ($i=1,2,3,4$) parametrizzati (come nella figura \ref{fig:gauss-green-normale-y}) con
 	\begin{gather*}
-		\vgamma_1(t)=
+		\vgamma_1^-(t)=
 		\begin{bmatrix}
 			\alpha(t)\\t
-		\end{bmatrix}, t\in[d,c],\quad
+		\end{bmatrix}, t\in[c,d],\quad
 		\vgamma_2(t)=
 		\begin{bmatrix}
-			\alpha(c)\\c
-		\end{bmatrix}, t\in[c,c],\\
+			t\\c
+		\end{bmatrix}, t\in[\alpha(c),\beta(c)],\\
 		\vgamma_3(t)=
 		\begin{bmatrix}
 			\beta(t)\\t
 		\end{bmatrix}, t\in[c,d],\quad 
-		\vgamma_4(t)=
+		\vgamma_4^-(t)=
 		\begin{bmatrix}
-			\beta(d)\\d
-		\end{bmatrix}, t\in[d,d].
+			t\\d
+		\end{bmatrix}, t\in[\alpha(d),\beta(d)].
 	\end{gather*}
+	Scriviamo $\vgamma_1^-$ e $\vgamma_4^-$ perch\'e la parametrizzazione data è tale che le due curve sono percorse nel senso opposto all'orientazione di $+\partial D$: nel calcolo dell'integrale dovremo tener conto di questo cambio di segno.
 	Dimostriamo che entrambi i membri si possono riportare ad una stessa grandezza: cominciamo dal primo, usando il teorema di Fubini ($f\in\cont{1}(D)$ quindi è anche sommabile), per il quale
 	\begin{equation}
 		\int_D\drp{f}{x}\,\dd x\,\dd y=\int_c^d\int_{\alpha(y)}^{\beta(y)}\drp{f}{x}\,\dd x\,\dd y=\int_c^df(x,y)\bigg|_{x=\alpha(y)}^{x=\beta(y)}\dd y=\int_c^d\Big[f\big(\beta(y),y\big)-f\big(\alpha(y),y\big)\Big]\,\dd y.
 	\end{equation}
-	Per il secondo membro, invece, scomponiamo l'integrale della forma differenziale sulle quattro curve, ottenendo
+	Per il secondo membro, invece, scomponiamo l'integrale della forma differenziale sulle quattro curve ottenendo
+	\begin{multline}
+		\int_{+\partial D}f(x,y)\,\dd y=
+		-\int_c^d(f\circ\vgamma_1)(t)\gamma'_{1,2}(t)\,\dd t
+		+\int_{\alpha(c)}^{\beta(c)}(f\circ\vgamma_2)(t)\gamma'_{2,2}(t)\,\dd t+\\
+		+\int_c^d(f\circ\vgamma_3)(t)\gamma'_{3,2}(t)\,\dd t
+		-\int_{\alpha(d)}^{\beta(d)}(f\circ\vgamma_4)(t)\gamma'_{4,2}(t),\dd t
+	\end{multline}
+	dove $\gamma_{k,2}$ è la seconda componente della curva $\vgamma_k$ (per $k=1,2,3,4$).
+	Siccome $\gamma'_{1,2}(t)=\gamma'_{3,2}(t)=1$ e $\gamma'_{2,2}(t)=\gamma'_{4,2}(t)=0$ si ha
 	\begin{equation}
-		\begin{split}
-			\int_{+\partial D}f(x,y)\,\dd y&=\int_d^cf\big(\alpha(t),t\big)\,\dd t+\int_c^cf\big(\alpha(c),c\big)\,\dd t+\int_c^df\big(\beta(t),t\big)\,\dd t+\int_d^df\big(\beta(d),d\big)\,\dd t=\\
-			&=\int_c^d\Big[f\big(\beta(t),t\big)-f\big(\alpha(t),t\big)\Big]\,\dd t
-		\end{split}
+		\int_{+\partial D}f(x,y)\,\dd y=\int_c^d\Big[f\big(\beta(t),t\big)-f\big(\alpha(t),t\big)\Big]\,\dd t
 	\end{equation}
 	che è lo stesso risultato precedente.
 
-	(ii) Sia ora $D$ normale rispetto a $x$: rappresentiamolo come $\{(x,y)\in[a,b]\times\R\colon\delta(x)\leq y\leq\eta(y)\}$.
+	\input{grafici/gauss-green-normale-x}
+	(ii) Sia ora $D$ normale rispetto a $x$: rappresentiamolo come $\{(x,y)\in[a,b]\times\R\colon\delta(x)\leq y\leq\eta(y)\}$, come in figura \ref{fig:gauss-green-normale-x}.
 	Per $(x,y)\in D$, consideriamo la curva $\gamma\subset D$ parametrizzata con la funzione
 	\begin{equation*}
 		\vgamma(t)=
@@ -248,16 +257,16 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 		\begin{bmatrix}
 			t\\\eta(t)
 		\end{bmatrix}, t\in[a,b],\quad 
-		\vgamma_4(t)=
+		\vgamma_4^-(t)=
 		\begin{bmatrix}
 			a\\t
 		\end{bmatrix}, t\in[\delta(a),\eta(a)].
 	\end{gather*}
-	Abbiamo scritto $\vgamma_3^-(t)$ perché con questa parametrizzazione la curva è percorsa nel senso opposto all'orientazione positiva di $\partial D$, quindi dovremo cambiare il segno all'integrale.
+	Anche qui abbiamo scritto $\vgamma_3^-$ e $\vgamma_4^-$ perché con queste parametrizzazioni le due curve sono percorse nel senso opposto all'orientazione positiva di $\partial D$, e dovremo cambiare il segno all'integrale.
 	Il primo membro di \eqref{eq:dim-gauss-green-forma-esatta} vale
 	\begin{equation}
 		\begin{split}
-			\int_{+\partial D}\drp{G}{x}(x,y)\,\dd x&=\int_{\vgamma_1}\drp{G}{x}(x,y)\,\dd x+\int_{\vgamma_2}\drp{G}{x}(x,y)\,\dd x-\int_{\vgamma_3}\drp{G}{x}(x,y)\,\dd x+\int_{\vgamma_4}\drp{G}{x}(x,y)\,\dd x=\\
+			\int_{+\partial D}\drp{G}{x}(x,y)\,\dd x&=\int_{\vgamma_1}\drp{G}{x}(x,y)\,\dd x+\int_{\vgamma_2}\drp{G}{x}(x,y)\,\dd x-\int_{\vgamma_3}\drp{G}{x}(x,y)\,\dd x-\int_{\vgamma_4}\drp{G}{x}(x,y)\,\dd x=\\
 			&=\int_a^b\drp{G}{x}\big(s,\delta(s)\big)\,\dd s-\int_a^b\drp{G}{x}\big(s,\eta(s)\big)\,\dd s=\\
 			&=\int_a^b\int_{\delta(s)}^{\delta(s)}\drp{f}{x}(s,t)\,\dd t\,\dd s-\int_a^b\int_{\delta(s)}^{\eta(s)}\drp{f}{x}(s,t)\,\dd t\,\dd s=\\
 			&=-\int_a^b\int_{\delta(s)}^{\eta(s)}\drp{f}{x}(s,t)\,\dd t\,\dd s.
