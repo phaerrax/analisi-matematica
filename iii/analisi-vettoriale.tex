@@ -169,6 +169,7 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	\end{gather}
 \end{teorema}
 \begin{proof}
+	Verrà dimostrata solo la prima legge, la dimostrazione della seconda è del tutto analoga.
 	Supponiamo che esista un insieme $U$ tale che $D\subset U$ e che $f\in\cont{1}(U)$.
 	Distinguiamo tre casi: (i) $D$ è normale rispetto a $y$, (ii) $D$ è normale rispetto a $x$ e (iii) $D$ è un generico insieme regolare.
 
@@ -228,13 +229,13 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	\begin{equation*}
 		G(x,y)\defeq\int_{\gamma}f(x,y)\,\dd x\,\dd y:
 	\end{equation*}
-	risulta spezzando l'integrale nelle due curve che
+	risulta, spezzando l'integrale nelle due curve, che
 	\begin{equation}
 		G(x,y)=\int_a^xf\big(t,\delta(t)\big)\,\dd t+\int_{\delta(x)}^yf(x,t)\,\dd t.
 	\end{equation}
 	Calcoliamone le derivate parziali: troviamo
 	\begin{equation}
-		\drp{G}{x}(x,y)=f\big(x,\delta(x)\big)\delta'(x)+\int_{\delta(x)}^y\drp{f}{x}(x,t)\,\dd t-f\big(x,\delta(x)\big)\delta'(t)=\int_{\delta(x)}^y\drp{f}{x}(x,t)\,\dd t.
+		\drp{G}{x}(x,y)=f\big(x,\delta(x)\big)\delta'(x)+\int_{\delta(x)}^y\drp{f}{x}(x,t)\,\dd t-f\big(x,\delta(x)\big)\delta'(x)=\int_{\delta(x)}^y\drp{f}{x}(x,t)\,\dd t.
 	\end{equation}
 	La derivata rispetto a $y$ invece è semplicemente $\drp{G}{y}(x,y)=f(x,y)$, dato che il primo dei due integrali addendi non dipende da $y$ e il secondo è una funzione integrale con estremo inferiore costante rispetto a $y$.
 	Prendiamo la forma differenziale $\dd G=\drp{G}{x}\,\dd x+\drp{G}{y}\,\dd y$: essa è ovviamente esatta.
