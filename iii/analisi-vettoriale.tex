@@ -27,7 +27,7 @@ Definiamo infine la misura infinitesima (o elementare) di una curva come
 dove $\vphi$ è la sua parametrizzazione.
 Con questa definizione, otteniamo la lunghezza della curva parametrizzata da $\vphi$ tramite l'integrale
 \begin{equation}
-	\int_\phi\,\dd s=\int_a^b\norm{\drv{\vphi}{t}(t)}\,\dd t
+	\ell(\vphi)=\int_\phi\,\dd s=\int_a^b\norm{\drv{\vphi}{t}(t)}\,\dd t
 \end{equation}
 dove $\phi=\vphi\ab$ è l'immagine della curva.
 L'integrale di linea di una funzione scalare $f$ definita da $\phi$ a valori in $\R$ è definito come
@@ -46,6 +46,7 @@ Innanzitutto, una superficie in $\R^3$ è una funzione $\vphi\colon D\to\R^3$, d
 \begin{definizione} \label{d:superficie-regolare}
 	Una \emph{superficie regolare} in $\R^3$ è una funzione $\vphi\colon D\to\R^3$ dove $D$ è un insieme connesso di $\R^2$, $\vphi\in\cont{1}(D)$, è iniettiva in $\mathring{D}$ e il rango della jacobiana $\jac\vphi$ è massimo in ogni punto di $\mathring{D}$.
 \end{definizione}
+La condizione sul rango della jacobiana è del tutto analoga a quanto già visto per le linee: in tal caso, la jacobiana è composta da una sola colonna, e il rango di una matrice con una sola colonna è 1 (il massimo) se essa è linearmente indipendente, ossia se non è nulla.
 
 \paragraph{Prodotto vettoriale}
 Prima di introdurre la misura infinitesima delle superfici, rivediamo le proprietà del prodotto vettoriale.
@@ -87,12 +88,16 @@ Il prodotto vettoriale gode delle seguenti proprietà, facilmente dimostrabili c
 	\item il prodotto è indipendente dalla scelta del sistema di coordinate.
 \end{itemize}
 
-La misura infinitesima di una superficie parametrizzata tramite $\vphi$ è dunque definita da
+Con questo possiamo caratterizzare la misura delle superfici.
+Se $\vphi\colon D\to\R^3$ è la parametrizzazione scelta per la superficie, la sua misura infinitesima è definita da
 \begin{equation}
 	\dd\sigma\defeq\norm{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}\,\dd u\dd v
 	\label{eq:misura-superficie}
 \end{equation}
 dove abbiamo chiamato $\drp{\vphi}{u}$ e $\drp{\vphi}{v}$ le due colonne che affiancate formano $\jac\vphi$ (sono rispettivamente la colonna delle derivate rispetto alle due variabili $u$ e $v$).
+Notiamo che la regolarità della superficie implica che $\dd\sigma\ne 0$ $\forall(u,v)\in D$.
+
+Possiamo vedere una motivazione di questa definizione con l'esempio seguente.
 Prendiamo una parametrizzazione $\vphi$ lineare: la sua matrice jacobiana è costante, e può anche essere vista come la matrice associata all'applicazione lineare che è $\vphi$: moltiplicando un vettore del dominio di $\vphi$ per $\jac{\vphi}$ otteniamo proprio l'immagine di tale vettore attraverso la funzione.
 Prendiamo il rettangolo $T$ esteso dai vettori $a\vec e_1$ e $b\vec e_2$ in $\R^2$, e sia $P$ la sua immagine attraverso $\vphi$.
 Ovviamente $\mu(T)=\abs{ab}$.
@@ -114,7 +119,38 @@ dove $\vphi\colon D\to\R^3$ è la sua parametrizzazione regolare; l'integrale di
 \end{equation}
 Anche in questo caso $f\circ\vphi\colon D\to\R$ quindi troviamo un integrale di Lebesgue.
 
-Se una superficie regolare è il grafico di una funzione $g\colon D\subseteq\R^2\to\R$ di classe $\cont{1}(D)$, possiamo scegliere la parametrizzazione $\vphi\colon D\to\R^3$ della forma $\vphi(u,v)=\big(u,v,g(u,v)\big)$, e la misura infinitesima è
+Se una superficie regolare è il grafico di una funzione $g\colon D\subseteq\R^2\to\R$ di classe $\cont{1}(D)$ (si dice in questo caso che è una \emph{superficie cartesiana}), possiamo scegliere la parametrizzazione $\vphi\colon D\to\R^3$ della forma $\vphi(u,v)=\big(u,v,g(u,v)\big)$: la matrice jacobiana è
+\begin{equation}
+	\begin{bmatrix}
+		1&0\\
+		0&1\\
+		\drp{g}{u}&\drp{g}{v}
+	\end{bmatrix}
+\end{equation}
+da cui
+\begin{equation}
+	\begin{split}
+		\drp{\vphi}{u}\times\drp{\vphi}{v}&=
+		\begin{vmatrix}
+			0&1\\
+			\drp{g}{u}&\drp{g}{v}
+		\end{vmatrix}
+		\vec e_1+
+		\begin{vmatrix}
+			\drp{g}{u}&\drp{g}{v}\\
+			1&0
+		\end{vmatrix}
+		\vec e_2+\
+		\begin{vmatrix}
+			1&0\\
+			0&1
+		\end{vmatrix}
+		\vec e_3=\\
+		&=-\drp{g}{u}\vec e_1-\drp{g}{v}\vec e_2+\vec e_3
+	\end{split}
+	\label{eq:versore-normale-superficie-cartesiana}
+\end{equation}
+da cui otteniamo la misura infinitesima
 \begin{equation}
 	\dd\sigma=\sqrt{1+\norm{\grad g(u,v)}^2}\,\dd u\dd v.
 \end{equation}
@@ -126,7 +162,7 @@ Per studiare questi teoremi dobbiamo innanzitutto introdurre nuove definizioni p
 	Un insieme $D\subseteq\R^2$ chiuso si dice \emph{dominio} se è la chiusura di un insieme aperto; si dice inoltre \emph{connesso} se l'aperto di cui è chiusura è connesso.
 \end{definizione}
 \begin{definizione} \label{d:dominio-norm-reg}
-	Un dominio si dice \emph{normale} rispetto alla variabile $x$ se, dato un intervallo $[a,b]$ e due funzioni $f,g\colon[a,b]\to\R$ continue, tali che $f(x)\leq g(x) \forall x\in[a,b]$, esso è della forma $\{(x,y)\in\R^2\colon f(x)\leq y\leq g(x) \forall x\in[a,b]\}$; analogamente si definisce per la variabile $y$.
+	Un dominio si dice \emph{normale} rispetto alla variabile $x$ se, dato un intervallo $[a,b]$ e due funzioni $f,g\colon[a,b]\to\R$ continue, tali che $f(x)\leq g(x)$ $\forall x\in[a,b]$, esso è della forma $\{(x,y)\in[a,b]\times\R\colon f(x)\leq y\leq g(x)\}$; si definisce in modo analogo per la variabile $y$.
 	Si dice \emph{normale} e \emph{regolare} se le funzioni $f$ e $g$ sono di $\cont{1}\ab$ e se $f(x)<g(x) \forall x\in(a,b)$.
 \end{definizione}
 \begin{definizione} \label{d:dominio-regolare}
@@ -315,12 +351,12 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	L'integrale curvilineo al secondo membro della \eqref{eq:divergenza-R2} è dunque
 	\begin{equation}
 		\begin{split}
-			\int_{\partial D}\scalar{\vec F}{\vnu}\,\dd s&=\int_a^b\bigg(\frac{F_1\big(\vphi(t)\big)y'(t)}{\sqrt{x'^2(t)+y'^2(t)}}-\frac{F_2\big(\vphi(t)\big)x'(t)}{\sqrt{x'^2(t)+y'^2(t)}}\bigg)\sqrt{x'^2(t)+y'^2(t)}\,\dd t=\\
-			&=\int_a^b\big[(F_1\big(\vphi(t)\big)y'(t)-F_2\big(\vphi(t)\big)x'(t)\big]\,\dd t=\\
-			&=\int_{\partial D}\big[F_2\big(\vphi(t)\big)\,\dd y-F_2\big(\vphi(t)\big)\,\dd x\big]
+			\int_{\partial D}\scalar{\vec F}{\vnu}\,\dd s&=\int_a^b\bigg(\frac{(F_1\circ\vphi)(t)y'(t)}{\sqrt{x'^2(t)+y'^2(t)}}-\frac{(F_2\circ\vphi)(t)x'(t)}{\sqrt{x'^2(t)+y'^2(t)}}\bigg)\sqrt{x'^2(t)+y'^2(t)}\,\dd t=\\
+			&=\int_a^b\big[(F_1\circ\vphi)(t)y'(t)-(F_2\circ\vphi)(t)x'(t)\big]\,\dd t=\\
+			&=\int_{\partial D}[F_1(x,y)\,\dd y-F_2(x,y)\,\dd x]
 		\end{split}
 	\end{equation}
-	che per il teorema \ref{t:gauss-green} è uguale a
+	che per il teorema \ref{t:gauss-green} di Gauss-Green è uguale a
 	\begin{equation}
 		\int_D\drp{F_1}{x}(x,y)\,\dd x\,\dd y+\int_D\drp{F_2}{y}(x,y)\,\dd x\,\dd y=\int_D\div\vec F(x,y)\,\dd x\,\dd y.\qedhere
 	\end{equation}
@@ -398,7 +434,9 @@ Se le superfici hanno in comune solo la frontiera, allora
 usando la notazione della predecente osservazione.
 
 Vediamo ora come è possibile assegnare un'orientazione anche alle superfici.
-Se $\vphi\colon D\subset\R^2\to\R^3$ è la parametrizzazione di una superficie regolare $S$ immersa in $R^3$, cioè per cui $\vphi(D)=S$, chiamiamo $S_o\defeq\vphi(\mathring{D})$ che è tale per cui la restrizione $\vphi\colon\mathring{D}\to S_o$ sia biunivoca.\footnote{Nonostante la scrittura possa suggerirlo, non è vero che $S_o=\mathring{S}$, infatti dato che $S$ è una superficie regolare in $\R^3$ essa coincide con la sua frontiera, perciò $\mathring{S}=\emptyset$.}
+Se $\vphi\colon D\subset\R^2\to\R^3$ è la parametrizzazione di una superficie regolare $S$ immersa in $R^3$, cioè per cui $\vphi(D)=S$, chiamiamo $S_o\defeq\vphi(\mathring{D})$ che è tale per cui la restrizione $\vphi\colon\mathring{D}\to S_o$ sia biunivoca.\footnote{
+	Nonostante la scrittura possa suggerirlo, non è vero che $S_o=\mathring{S}$: infatti $S$ è una superficie regolare in $\R^3$ per cui $\mathring{S}=\emptyset$.
+}
 Per ogni $\vec x\in S_o$ possiamo associare un versore normale $\vnu(\vec x)$, definito come
 \begin{equation}
 	\vnu(\vec x)=\frac{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}{\norm{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}}
@@ -409,18 +447,19 @@ La mappa $\vnu\colon S_o\to\R^3$ è continua, e dipende ``in modo continuo'' dal
 	Sia $S\subset\R^3$ una superficie regolare parametrizzata da $\vphi\colon D\to\R^3$, e chiamiamo $S_o=\vphi(\mathring{D})$.
 	La superficie $S$ si dice orientabile se il campo del versore normale $\vnu$ si può estendere con continuità da $S_o$ a tutta $S$.
 \end{definizione}
-Possiamo quindi anche trovare una \emph{riparametrizzazione} di una superficie: prese le parametrizzazioni $\vphi\colon D\to\R^3$ e $\vpsi\colon T\to\R^3$, esse sono equivalenti tramite $\vtau\colon D\to T$ (una riparametrizzazione) se $S_o=\vphi(\mathring{D})=\vpsi(\mathring{T})$ e se ovviamente dato $\vec x\in S_o$ si ha $\vec x=\vphi(\vec u)=\vpsi(\vec v)$, per $\vec u\in D$ e $\vec v\in T$.
+Possiamo quindi anche trovare una \emph{riparametrizzazione} di una superficie: prese le parametrizzazioni $\vphi\colon D\to\R^3$ e $\vpsi\colon T\to\R^3$, esse sono equivalenti tramite la funzione $\vtau\colon D\to T$ se $S_o=\vphi(\mathring{D})=\vpsi(\mathring{T})$ e se, ovviamente, dato $\vec x\in S_o$ si ha $\vec x=\vphi(\vec y)=\vpsi\big(\vtau(\vec y)\big)$, per ogni $\vec y\in D$.
 Il versore normale nella nuova parametrizzazione è dunque
 \begin{equation}
-	\vnu_{\vpsi}\big(\vpsi(\vec u)\big)=\sgn\big(\det\jac\vtau(\vec u)\big)\vnu_{\vphi}\big(\vphi(\vec v)\big).
+	\vnu_{\vpsi}\big(\vpsi(\vec z)\big)=\sgn\big(\!\det\jac\vtau(\vec y)\big)\vnu_{\vphi}\big(\vphi(\vec y)\big)
 \end{equation}
-Per la continuità il segno può essere o 1 o $-1$ in tutto il dominio.
-Si indica $\vphi\sim\vpsi$ se esse hanno lo stesso sostegno con una riparametrizzazione, e ulteriormente $\vphi\overset{o}{\sim}\vpsi$ se sono anche equiorientate, cioè se il versore normale coincide.
+dove $\vec z=\vtau(\vec y)$.
+Per la continuità del versore normale $\vnu_{\vpsi}$, il segno della matrice jacobiana può essere quindi o 1 o $-1$ in tutto il dominio, perciò vale $\vnu_{\vpsi}(\vec x)=\pm\vnu_{\phi}(\vec x)$ per ogni $\vec x\in S_o$.
+Si indica allora $\vphi\sim\vpsi$ se esse hanno lo stesso sostegno con differenti parametrizzazioni, e ulteriormente $\vphi\overset{o}{\sim}\vpsi$ se sono anche equiorientate, cioè se il versore normale coincide (ha lo stesso segno).
 
 \begin{osservazione} \label{o:superfici-cartesiane}
-	Il grafico di una funzione $f\colon D\subset\R^2\to\R$ (detto anche \emph{superficie cartesiana}) è sempre orientabile: esso può essere parametrizzato con $\vphi=\big(u,v,f(u,v)\big)^t$, la cui matrice jacobiana è
+	Il grafico di una superficie cartesiana individuata dalla funzione $f\colon D\subset\R^2\to\R$ è sempre orientabile: esso può essere parametrizzato con $\vphi=\big(u,v,f(u,v)\big)$ la cui matrice jacobiana è 
 	\begin{equation*}
-		J\vphi(u,v)=
+		\jac\vphi(u,v)=
 		\begin{bmatrix}
 			1&0\\
 			0&1\\
@@ -428,13 +467,14 @@ Si indica $\vphi\sim\vpsi$ se esse hanno lo stesso sostegno con una riparametriz
 		\end{bmatrix},
 	\end{equation*}
 	che ha sempre rango massimo, qualsiasi sia la funzione $f$, perch\'e il minore dato dalle prime due righe è sempre 1.
-	Un vettore normale alla superficie assume una semplice forma, che è
+	Come già visto nella \eqref{eq:versore-normale-superficie-cartesiana}, il vettore normale alla superficie è
 	\begin{equation*}
-		\vnu\big(\vphi(u,v)\big)=\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)=\bigg(-\drp{f}{u}(u,v),\drp{f}{v}(u,v),1\bigg)^t.
+		\vnu\big(\vphi(u,v)\big)=\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)=\bigg(-\drp{f}{u}(u,v),-\drp{f}{v}(u,v),1\bigg)
 	\end{equation*}
+	da normalizzare.
 \end{osservazione}
-Un'altra superficie facile da orientare è una superficie sferica: essa ammette in particolare sempre due orientazioni, una uscente e una entrante, facili da visualizzare.
-Data la sua equazione $x^2+y^2+z^2=r^2$, inoltre, il versore normale è sempre di tipo radiale, ossia $\vnu(x,y,z)=\pm\frac1{r^2}(x,y,z)^t$.
+Un'altra superficie facile da orientare è una superficie sferica: essa ammette in particolare sempre due orientazioni, una uscente e una entrante.
+Data la sua equazione $x^2+y^2+z^2=R^2$, inoltre, il versore normale è sempre di tipo radiale, ossia $\vnu(x,y,z)=\pm\frac1{R}(x,y,z)$.
 
 Una classica superficie non orientabile è invece il \emph{nastro di M\"obius}: per parametrizzarlo si dovrebbe tagliare il nastro in un punto, in cui il versore normale ``salta'' da una faccia all'altra.
 Ma allora è evidente che $\vnu$, pur essendo ben definito in tutto $S_o$, non può essere esteso con continuità anche sul resto di $S$, perch\'e proprio nel punto del taglio si ha necessariamente una discontinuità.
