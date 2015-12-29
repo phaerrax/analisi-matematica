@@ -400,7 +400,7 @@ ma allo stesso tempo
 	\int_D\div(f\vec w)\,\dd x\,\dd y=\int_{\partial D}\scalar{(f\vec w)}{\vnu}\,\dd s=\int_{\partial D}f(\scalar{\vec w}{\vnu})\,\dd s.
 \end{equation}
 
-Un'ultima applicazione di questi risultati è il calcolo dell'area di $D$: notiamo che in $\int_D\dd x,\dd y$ possiamo prendere l'integranda come derivata parziale di $f(x,y)=x$ rispetto a $x$ (che quindi vale 1), perciò per il teorema di Gauss-Green \ref{t:gauss-green} abbiamo
+Un'ultima applicazione di questi risultati è il calcolo dell'area di $D$: notiamo che in $\int_D\dd x\dd y$ possiamo prendere l'integranda come derivata parziale di $f(x,y)=x$ rispetto a $x$ (che quindi vale 1), perciò per il teorema di Gauss-Green \ref{t:gauss-green} abbiamo
 \begin{equation}
 	\mu(D)=\int_D\dd x\,\dd y=\int_{+\partial D}x\,\dd y\text{ o anche }-\int_{+\partial D}y\,\dd x.
 \end{equation}
@@ -414,7 +414,8 @@ Cominciamo adattando quanto detto sui domini e l'orientazione di curve anche a i
 \begin{definizione} \label{d:dominio-R3}
 	Un insieme $D\subset\R^3$ si dice:
 	\begin{itemize}
-		\item \emph{dominio normale} rispetto alla coppia di variabili $x,y$ se si può scrivere come $\{(x,y,z)\in\R^3\colon(x,y)\in E, \alpha(x,y)\leq z\leq\beta(x,y)\}$, dove $E\subset\R^2$ è un dominio regolare, $\alpha,\beta\colon E\to\R$ sono di classe $\cont{1}(E)$ e $\alpha(x,y)\leq\beta(x,y)\forall(x,y)\in E$;
+		\item \emph{dominio normale} rispetto alla coppia di variabili $x,y$ se si può scrivere come $\{(x,y,z)\in\R^3\colon(x,y)\in E, \alpha(x,y)\leq z\leq\beta(x,y)\}$, dove $E\subset\R^2$ è un dominio regolare, $\alpha,\beta\colon E\to\R$ sono continue e $\alpha(x,y)\leq\beta(x,y)\forall(x,y)\in E$;
+		\item \emph{dominio normale e regolare} rispetto alla coppia di variabili $x,y$ se ha le caratteristiche di un dominio normale ma le funzioni $\alpha,\beta\colon E\to\R$ sono di classe $\cont{1}(E)$ e $\alpha(x,y)<\beta(x,y)\forall(x,y)\in E$;
 		\item \emph{dominio regolare} se è unione di un numero finito di domini $\{D_i\}_{i=1}^n$, $n\in\N$, ciascuno normale rispetto ad una coppia di variabili (non necessariamente la stessa per tutti), e tali per cui $\mathring{D_i}\cap\mathring{D_j}=\emptyset$ per $i\neq j$.
 	\end{itemize}
 \end{definizione}
