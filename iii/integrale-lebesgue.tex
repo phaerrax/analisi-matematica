@@ -44,7 +44,7 @@ Quest'ultima proprietà ci porta dunque dalle algebre di insiemi alle cosiddette
 	Una collezione $\mathfrak S$ di insiemi di $X$ è detta \emph{$\sigma$-algebra} se
 	\begin{itemize}
 		\item $\emptyset\in\mathfrak S$;
-		\item se $\{A_n\}$ con $n\in\N$ è una famiglia (al più numerabile) di insiemi di $\mathfrak S$, allora $\bigcup_{n\in\N}A_i\in\mathfrak S$;
+		\item se $\{A_n\}$ con $n\in\N$ è una famiglia (al più numerabile) di insiemi di $\mathfrak S$, allora $\bigcup_{n\in\N}A_n\in\mathfrak S$;
 		\item se $A\in\mathfrak S$ allora $\compl A\in\mathfrak S$.
 	\end{itemize}
 \end{definizione}
@@ -55,9 +55,9 @@ La collezione $\mathcal C$ di insiemi su cui definire $\lambda$ sarà allora di 
 	Una funzione $\mu\colon\mathfrak F\to[0,+\infty]$ è detta \emph{misura} se:
 	\begin{enumerate}
 		\item $\mu(\emptyset)=0$;
-		\item presa una famiglia numerabile di insiemi tutti disgiunti $\{A_i\}_{n\in\N}$, risulta
+		\item presa una famiglia numerabile di insiemi tutti disgiunti $\{A_n\}_{n\in\N}$, risulta
 			\begin{equation}
-				\mu\Big(\bigcup_{n\in\N}A_i\Big)=\sum_{n\in\N}\mu(A_i).
+				\mu\Big(\bigcup_{n\in\N}A_n\Big)=\sum_{n\in\N}\mu(A_n).
 				\label{eq:sigma-addivita}
 			\end{equation}
 	\end{enumerate}
