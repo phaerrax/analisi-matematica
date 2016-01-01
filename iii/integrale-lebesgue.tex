@@ -660,15 +660,15 @@ che è evidentemente continua in tutto $\R$.
 \section{Integrale di Lebesgue}
 Prima di definire l'integrale, ci serve prima capire come approssimare le funzioni misurabili con un tipo particolare di funzioni, dette \emph{semplici}.
 \begin{definizione} \label{d:funzione-semplice}
-	Una funzione $f\colon\R^n\to\R$ è detta \emph{semplice} se assume un numero finito di valori $\{c_1,\dots,c_n\}\subset\R$ con $n\in\N$ (finito) e $c_i\neq c_j$ se $i\neq j$.
+	Una funzione $f\colon\R^n\to\R$ è detta \emph{semplice} se assume un numero finito di valori $\{c_1,\dots,c_p\}\subset\R$ con $p\in\N$ (finito) e $c_i\neq c_j$ se $i\neq j$.
 \end{definizione}
-Le funzioni semplici possono essere rappresentate in quella che è detta \emph{forma canonica} come una somma finita di funzioni caratteristiche: infatti se poniamo $A_i$ come la controimmagine di $c_i$ attraverso $f$, ossia $A_i=f^{-1}(\{c_i\})$ per ciascun $i\in\{1,\dots,n\}$, allora si deve avere necessariamente $A_i\cap A_j=\emptyset$ per $i\neq j$, poich\'e $f$ (è una funzione!) può avere solo un'immagine per ogni $\vec x\in\R^n$.
+Le funzioni semplici possono essere rappresentate in quella che è detta \emph{forma canonica} come una somma finita di funzioni caratteristiche: infatti se poniamo $A_i$ come la controimmagine di $c_i$ attraverso $f$, ossia $A_i=f^{-1}(\{c_i\})$ per ciascun $i\in\{1,\dots,p\}$, allora si deve avere necessariamente $A_i\cap A_j=\emptyset$ per $i\neq j$, poich\'e $f$ (è una funzione!) può avere solo un'immagine per ogni $\vec x\in\R^n$.
 In tale insieme $A_i$ la $f$ corrisponde alla funzione $c_i\chi_{A_i}$, quindi possiamo rappresentare la funzione semplice come
 \begin{equation}
-	f=\sum_{i=1}^nc_i\chi_{A_i},
+	f=\sum_{i=1}^pc_i\chi_{A_i},
 	\label{eq:rappresentazione-canonica-funzione-semplice}
 \end{equation}
-ossia come combinazione lineare di funzioni semplici, dove tutti gli insiemi $A_i$ sono mutualmente disgiunti e tali che $\bigcup_{i=1}^nA_i=\R^n$.
+ossia come combinazione lineare di funzioni semplici, dove tutti gli insiemi $A_i$ sono mutualmente disgiunti e tali che $\bigcup_{i=1}^pA_i=\R^n$.
 Chiaramente una funzione semplice è misurabile se tutti gli $A_i$ sono insiemi misurabili.
 Una funzione semplice può essere definita anche solo su un sottoinsieme di $\R^n$, se essa è nulla al di fuori di tale sottoinsieme.
 
@@ -713,14 +713,14 @@ Indicheremo, nella forma più generale, l'integrale di una funzione $f$ su un in
 Definiamo inoltre convenzionalmente $0\cdot\infty=0$.
 \begin{definizione} \label{d:integrale-lebesgue-funzioni-semplici}
 	Sia $s\colon\R^n\to[0,+\infty)$ una funzione semplice e misurabile.
-	Data la sua rappresentazione canonica $s=\sum_{j=1}^n c_j\chi_{E_j}$ con $E_j\in\mis(\R^n)$ e $c_j\in\R$ e	$c_i\neq c_j$ per $i\neq j$, definiamo l'integrale di Lebesgue di $s$ su $\R^n$ come
+	Data la sua rappresentazione canonica $s=\sum_{j=1}^p c_j\chi_{E_j}$ con $E_j\in\mis(\R^n)$ e $c_j\in\R$ e	$c_i\neq c_j$ per $i\neq j$, definiamo l'integrale di Lebesgue di $s$ su $\R^n$ come
 	\begin{equation}
-		\int_{\R^n}s\,\dd\mu\defeq \sum_{j=1}^nc_j\mu(E_j).
+		\int_{\R^n}s\,\dd\mu\defeq \sum_{j=1}^pc_j\mu(E_j).
 		\label{eq:integrale-lebesgue-funzioni-semplici}
 	\end{equation}
 	Definiamo inoltre l'integrale di $s$ su $A\subset\R^n$ come
 	\begin{equation}
-		\int_As\,\dd\mu\defeq \sum_{j=1}^nc_j\mu(E_j\cap A).
+		\int_As\,\dd\mu\defeq \sum_{j=1}^pc_j\mu(E_j\cap A).
 	\end{equation}
 \end{definizione}
 Esso è un numero in $[0,+\infty]$, dato che un $E_j$ potrebbe avere misura infinita.
