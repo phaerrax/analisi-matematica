@@ -886,9 +886,9 @@ Passiamo dunque ad elencare i teoremi più importanti in questo ambito, che ci p
 	\begin{equation}
 		\int_Af_n\dd\mu\geq\int_{A_n}f_n\,\dd\mu\geq\alpha\int_{A_n}s\,\dd\mu=\sum_{i=1}^n\alpha\int_{A_i\setminus A_{i-1}}s\,\dd\mu.	
 	\end{equation}
-	Però per ogni $i>j$ si ha $(A_i\setminus A_{i-1})\cap(A_j\setminus A_{j-1})=\emptyset$, poich\'e $A_j\setminus A_{j-1}\subseteq A_{i-1}$, dunque abbiamo
+	in quanto ogni $i>j$ si ha $(A_i\setminus A_{i-1})\cap(A_j\setminus A_{j-1})=\emptyset$, poich\'e $A_j\setminus A_{j-1}\subseteq A_{i-1}$. Passando al limite,
 	\begin{equation}
-		\sum_{i=1}^n\alpha\int_{A_i\setminus A_{i-1}}s\,\dd\mu=\sum_{i=1}^{+\infty}\alpha\int_{A_i\setminus A_{i-1}}s\,\dd\mu=\alpha\int_As\,\dd\mu
+		\lim_{n\to+\infty}\sum_{i=1}^n\alpha\int_{A_i\setminus A_{i-1}}s\,\dd\mu=\sum_{i=1}^{+\infty}\alpha\int_{A_i\setminus A_{i-1}}s\,\dd\mu=\alpha\int_As\,\dd\mu
 	\end{equation}
 	per ciascuna $s\leq f$ in $A$.
 	Per $\alpha\to 1^-$, si ottiene dunque
