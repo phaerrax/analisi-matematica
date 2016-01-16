@@ -435,26 +435,47 @@ Se le superfici hanno in comune solo la frontiera, allora
 usando la notazione della predecente osservazione.
 
 Vediamo ora come è possibile assegnare un'orientazione anche alle superfici.
-Se $\vphi\colon D\subset\R^2\to\R^3$ è la parametrizzazione di una superficie regolare $S$ immersa in $R^3$, cioè per cui $\vphi(D)=S$, chiamiamo $S_o\defeq\vphi(\mathring{D})$ che è tale per cui la restrizione $\vphi\colon\mathring{D}\to S_o$ sia biunivoca.\footnote{
-	Nonostante la scrittura possa suggerirlo, non è vero che $S_o=\mathring{S}$: infatti $S$ è una superficie regolare in $\R^3$ per cui $\mathring{S}=\emptyset$.
+Come al solito, prendiamo la parametrizzazione $\vphi\colon D\subset\R^2\to\R^3$ di una superficie regolare $S$ immersa in $\R^3$, cioè tale per cui $\vphi(D)=S$: definiamo l'insieme $S_\circ\defeq\vphi(\mathring{D})$.\footnote{
+	Nonostante la scrittura possa suggerirlo, non è vero che $S_\circ=\mathring{S}$: infatti $S$ è una superficie regolare in $\R^3$, quindi $\mathring{S}=\emptyset$.
 }
-Per ogni $\vec x\in S_o$ possiamo associare un versore normale $\vnu(\vec x)$, definito come
+Esso è tale che la restrizione della parametrizzazione $\vphi|_{\mathring{D}}\colon\mathring{D}\to S_\circ$ è biunivoca.
+L'iniettività infatti discende dalla definizione di regolarità della superficie ($\vphi\colon D\to S$ è iniettiva) mentre la suriettività è ovvia per come è stata definita la funzione, poich\'e $S_\circ=\vphi(\mathring{D})=\vphi|_{\mathring{D}}(\mathring{D})$.\footnote{
+	L'insieme $S_\circ$ può essere visto come l'interno della superficie, ma con una precisazione: certamente non è aperto come sottoinsieme di $\R^3$, poich\'e ogni intorno di un punto di $S_\circ$ contiene punti che non appartengono a $S_\circ$.
+	È vero però che se $B$ è un intorno di un punto di $S_\circ$ allora $B\cap S_\circ$ è tutto contenuto in $S_\circ$, dunque $S_\circ$ è aperto \emph{nella topologia indotta su $S$} dalla usuale topologia di $\R^n$.
+}
+
+Si può vedere che $S_\circ$ non è univoco, ma dipende dalla parametrizzazione.
+Prendiamo ad esempio la sfera unitaria $S^2\subset\R^3$, parametrizzata in coordinare polari.
+Per coprire tutta $S^2$ dobbiamo prendere le due variabili angolari $(\theta,\phi)\in D=[0,\pi]\times[0,2\pi]$, con
+\begin{equation}
+	\vphi(\theta,\phi)=
+	\begin{bmatrix}
+		\sin\theta\cos\phi\\
+		\sin\theta\sin\phi\\
+		\cos\theta
+	\end{bmatrix}.
+\end{equation}
+L'insieme $S^2_\circ$ in questo caso è l'immagine di $(0,\pi)\times(0,2\pi)$, che è $S^2\setminus\{(x,y,z)\in\R^3\colon y=0,x\ge 0\}$.
+Se scegliamo come dominio l'insieme $[0,\pi]\times[\pi,3\pi]$ (la parametrizzazione è \emph{diversa} dalla precedente) troviamo invece $S^2_\circ=S^2\setminus\{(x,y,z)\in\R^3\colon y=0,x\le 0\}$.
+
+Per ogni $\vec x\in S_\circ$ possiamo associare un versore normale $\vnu(\vec x)$, definito come
 \begin{equation}
 	\vnu(\vec x)=\frac{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}{\norm{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}}
 \end{equation}
-con $(u,v)=\vphi^{-1}(\vec x)$.
-La mappa $\vnu\colon S_o\to\R^3$ è continua, e dipende ``in modo continuo'' dall'inclinazione della superficie.
+con $(u,v)=\vphi^{-1}(\vec x)$: tale inversa è ben definita perch\'e $\vphi|_{\mathring{D}}$ è biiettiva.
+Solo per i punti di $S_\circ$ ha senso definire in questo modo il versore normale: se $D$ è chiuso, sulla sua frontiera non ha senso parlare di differenziabilità, perciò le derivate parziali di $\vphi$ sono definite solo per $(u,v)\in\mathring{D}$, ossia $\vec x\in S_\circ$.
+La mappa $\vnu\colon S_\circ\to\R^3$ è continua, e dipende ``in modo continuo'' dall'inclinazione della superficie.
 \begin{definizione} \label{d:superficie-orientabile}
-	Sia $S\subset\R^3$ una superficie regolare parametrizzata da $\vphi\colon D\to\R^3$, e chiamiamo $S_o=\vphi(\mathring{D})$.
-	La superficie $S$ si dice orientabile se il campo del versore normale $\vnu$ si può estendere con continuità da $S_o$ a tutta $S$.
+	Sia $S\subset\R^3$ una superficie regolare parametrizzata da $\vphi\colon D\to\R^3$, e chiamiamo $S_\circ=\vphi(\mathring{D})$.
+	La superficie $S$ si dice orientabile se il campo del versore normale $\vnu$ si può estendere con continuità da $S_\circ$ a tutta $S$.
 \end{definizione}
-Possiamo quindi anche trovare una \emph{riparametrizzazione} di una superficie: prese le parametrizzazioni $\vphi\colon D\to\R^3$ e $\vpsi\colon T\to\R^3$, esse sono equivalenti tramite la funzione $\vtau\colon D\to T$ se $S_o=\vphi(\mathring{D})=\vpsi(\mathring{T})$ e se, ovviamente, dato $\vec x\in S_o$ si ha $\vec x=\vphi(\vec y)=\vpsi\big(\vtau(\vec y)\big)$, per ogni $\vec y\in D$.
+Possiamo quindi anche trovare una \emph{riparametrizzazione} di una superficie: prese le parametrizzazioni $\vphi\colon D\to\R^3$ e $\vpsi\colon T\to\R^3$, esse sono equivalenti tramite la funzione $\vtau\colon D\to T$ se $S_\circ=\vphi(\mathring{D})=\vpsi(\mathring{T})$ e se, ovviamente, dato $\vec x\in S_\circ$ si ha $\vec x=\vphi(\vec y)=\vpsi\big(\vtau(\vec y)\big)$, per ogni $\vec y\in D$.
 Il versore normale nella nuova parametrizzazione è dunque
 \begin{equation}
 	\vnu_{\vpsi}\big(\vpsi(\vec z)\big)=\sgn\big(\!\det\jac\vtau(\vec y)\big)\vnu_{\vphi}\big(\vphi(\vec y)\big)
 \end{equation}
 dove $\vec z=\vtau(\vec y)$.
-Per la continuità del versore normale $\vnu_{\vpsi}$, il segno della matrice jacobiana può essere quindi o 1 o $-1$ in tutto il dominio, perciò vale $\vnu_{\vpsi}(\vec x)=\pm\vnu_{\phi}(\vec x)$ per ogni $\vec x\in S_o$.
+Per la continuità del versore normale $\vnu_{\vpsi}$, il segno della matrice jacobiana può essere quindi o 1 o $-1$ in tutto il dominio, perciò vale $\vnu_{\vpsi}(\vec x)=\pm\vnu_{\phi}(\vec x)$ per ogni $\vec x\in S_\circ$.
 Si indica allora $\vphi\sim\vpsi$ se esse hanno lo stesso sostegno con differenti parametrizzazioni, e ulteriormente $\vphi\overset{o}{\sim}\vpsi$ se sono anche equiorientate, cioè se il versore normale coincide (ha lo stesso segno).
 
 \begin{osservazione} \label{o:superfici-cartesiane}
@@ -478,7 +499,7 @@ Un'altra superficie facile da orientare è una superficie sferica: essa ammette 
 Data la sua equazione $x^2+y^2+z^2=R^2$, inoltre, il versore normale è sempre di tipo radiale, ossia $\vnu(x,y,z)=\pm\frac1{R}(x,y,z)$.
 
 Una classica superficie non orientabile è invece il \emph{nastro di M\"obius}: per parametrizzarlo si dovrebbe tagliare il nastro in un punto, in cui il versore normale ``salta'' da una faccia all'altra.
-Ma allora è evidente che $\vnu$, pur essendo ben definito in tutto $S_o$, non può essere esteso con continuità anche sul resto di $S$, perch\'e proprio nel punto del taglio si ha necessariamente una discontinuità.
+Ma allora è evidente che $\vnu$, pur essendo ben definito in tutto $S_\circ$, non può essere esteso con continuità anche sul resto di $S$, perch\'e proprio nel punto del taglio si ha necessariamente una discontinuità.
 In realtà, non sarebbe corretto dire che $\vnu$ salta da una faccia all'altra\dots perch\'e il nastro di M\"obius ha soltanto una faccia.
 Sebbene localmente si possano individuare due facce (e quindi due versori normali opposti), globalmente in tutto il nastro la faccia è soltanto una!
 
