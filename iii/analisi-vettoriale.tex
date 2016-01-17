@@ -458,16 +458,67 @@ Per coprire tutta $S^2$ dobbiamo prendere le due variabili angolari $(\theta,\ph
 L'insieme $S^2_\circ$ in questo caso è l'immagine di $(0,\pi)\times(0,2\pi)$, che è $S^2\setminus\{(x,y,z)\in\R^3\colon y=0,x\ge 0\}$.
 Se scegliamo come dominio l'insieme $[0,\pi]\times[\pi,3\pi]$ (la parametrizzazione è \emph{diversa} dalla precedente) troviamo invece $S^2_\circ=S^2\setminus\{(x,y,z)\in\R^3\colon y=0,x\le 0\}$.
 
-Per ogni $\vec x\in S_\circ$ possiamo associare un versore normale $\vnu(\vec x)$, definito come
+\paragraph{Spazio tangente}
+Intuitivamente, se abbiamo una curva che corre sulla superficie, un vettore ad essa tangente in un punto è anche tangente alla superficie.
+Fissato dunque il punto $\vec x\in S_\circ$, l'insieme dei vettori tangenti a tutte le curve passanti per tale punto forma quello che è chiamato lo \emph{spazio tangente} a $S_\circ$ in $\vec x$.
+\begin{definizione} \label{d:spazio-tangente}
+	Sia $\vphi\colon D\to S\subset\R^3$ una superficie regolare, e $\vec x$ un punto di $S_\circ$.
+	Si definisce \emph{spazio tangente} a $S_\circ$ nel punto $\vec x$ l'insieme, indicato con $T_{\vec x}S_\circ$, formato dai vettori $\vec p\in\R^3$ tali che esiste $\epsilon>0$ e una mappa $\vgamma\colon(-\epsilon,\epsilon)\to\R^3$ di classe $\cont{1}$ per cui $\vgamma(t)\in S_\circ$ $\forall t\in(-\epsilon,\epsilon)$, $\vgamma(0)=\vec x$, e $\vgamma'(0)=\vec p$.
+\end{definizione}
+Se $\valpha=(\alpha_1,\alpha_2)\colon I\to\mathring{D}$ è una curva regolare, con $I$ intervallo reale (possiamo sceglierlo arbitrariamente in modo che contenga lo zero), allora possiamo prenderne l'immagine attraverso la parametrizzazione ottenendo una curva su $S_\circ$, che è ancora regolare.
+Essendo $\mathring{D}$ aperto, scelto un punto $(u_0,v_0)$ al suo interno esiste sempre (posto $\valpha(0)=(u_0,v_0)$) un $\epsilon>0$ tale che $\valpha(t)\in\mathring{D}$ per ogni $t\in(-\epsilon,\epsilon)$.
+Analogamente $(\vphi\circ\valpha)(t)\in S_\circ$ per ogni $t$ in tale intervallo.
+Detta $\vec x$ l'immagine di $(u_0,v_0)$ attraverso la parametrizzazione, evidentemente si ha $(\vphi\circ\valpha)(0)=\vec x$.
+Allora differenziando la funzione composta otteniamo
 \begin{equation}
-	\vnu(\vec x)=\frac{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}{\norm{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}}
+	(\vphi\circ\valpha)'(0)=\jac\vphi\big(u_0,v_0)\valpha'(0)=\alpha_1(0)\drp{\vphi}{u}(u_0,v_0)+\alpha_2(0)\drp{\vphi}{v}(u_0,v_0).
 \end{equation}
-con $(u,v)=\vphi^{-1}(\vec x)$: tale inversa è ben definita perch\'e $\vphi|_{\mathring{D}}$ è biiettiva.
+Si può dimostrare che questa è in effetti la generica espressione di un vettore tangente a una curva di classe $\cont{1}$ (come richiesto nella definizione \ref{d:spazio-tangente}) passante per il punto $\vec x$: di conseguenza tutti questi vettori tangenti al punto $\vec x$ sono la somma di $\vec x$ e una combinazione lineare delle colonne della matrice jacobiana di $\vphi$.
+Riassumendo,
+\begin{equation}
+	T_{\vec x}S_\circ=\bigg\{\vec x'\in\R^3\colon \vec x'=\vec x+a\drp{\vphi}{u}\big(\vphi^{-1}(\vec x)\big)+b\drp{\vphi}{v}\big(\vphi^{-1}(\vec x)\big),\ \forall a,b\in\R\bigg\}.
+	\label{eq:spazio-tangente}
+\end{equation}
+Tecnicamente $T_{\vec x}S_\circ$ è un \emph{sottospazio affine} di $\R^3$: non è un sottospazio vettoriale, dato che non contiene necessariamente l'origine (possiamo vederlo come un sottospazio vettoriale la cui origine è ``traslata'' in $\vec x$).
+
+\paragraph{Versore normale}
+Sapendo ora che lo spazio tangente alla superficie parametrizzata da $\vphi\colon D\to S$ ha come base le due colonne della matrice jacobiana di $\vphi$ (nel senso della \eqref{eq:spazio-tangente}, come sottospazio affine), per ogni $\vec x\in S_\circ$ il vettore $\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)$, con $(u,v)=\vphi^{-1}(\vec x)$, è ortogonale a tale spazio, quindi anche alla superficie in tale punto.
+Possiamo dunque definire per ogni $\vec x\in S_\circ$ un versore normale $\vnu(\vec x)$, definito come\footnote{
+		Non distinguiamo qui in modo rigoroso la natura dello spazio tangente come sottospazio vettoriale o sottospazio affine.
+		Si spera che sia chiaro dal contesto quando i vettori di tale spazio sono spiccati dall'origine oppure dal relativo punto sulla superficie: ad esempio, il versore normale cos\`i definito è da intendersi spiccato dall'origine, cos\`i come i vettori che diremo ortogonali ad esso.
+		In parole povere, molti dei vettori relativi agli spazi tangenti sono da interpretarsi ``a meno di una costante'', dove tale costante è il vettore $\vec x$ in cui lo spazio è tangente alla superficie.
+	}
+\begin{equation}
+	\vnu(\vec x)=\frac{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}{\norm{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}}.
+\end{equation}
 Solo per i punti di $S_\circ$ ha senso definire in questo modo il versore normale: se $D$ è chiuso, sulla sua frontiera non ha senso parlare di differenziabilità, perciò le derivate parziali di $\vphi$ sono definite solo per $(u,v)\in\mathring{D}$, ossia $\vec x\in S_\circ$.
-La mappa $\vnu\colon S_\circ\to\R^3$ è continua, e dipende ``in modo continuo'' dall'inclinazione della superficie.
+\begin{osservazione} \label{o:spazio-tangente-superficie-implicita}
+	Se una superficie è descritta implicitamente come luogo degli zeri di una funzione $F(x,y,z)$, se le ipotesi del teorema di Dini \ref{t:dini-R3} sono soddisfatte allora possiamo parametrizzarla in un opportuno insieme $A$ con una funzione $\vphi(x,y)=\big(x,y,f(x,y)\big)^T$, come una superficie cartesiana.
+	Il versore normale alla superficie è allora
+	\begin{equation}
+		\vnu(x,y)=-\drp{f}{x}(x,y)\vec e_1-\drp{f}{y}(x,y)\vec e_2+\vec e_3
+	\end{equation}
+	come già avevamo visto calcolando la misura infinitesima della superficie; un elemento dello spazio tangente in $\vec p_0=\vphi(x_0,y_0)=\big(x_0,y_0,z_0=f(x_0,y_0)\big)^T$ è del tipo $\vec p-\vec p_0$, dove $\vec p=(x,y,z)$, ed è dunque caratterizzato dal fatto di essere ortogonale a tale versore normale, ossia
+	\begin{equation}
+		0=\scalar{(\vec p-\vec p_0)}{\bigg(\drp{\vphi}{x}(x_0,y_0)\times\drp{\vphi}{y}(x_0,y_0)\bigg)}=
+		-(x-x_0)\drp{f}{x}(x_0,y_0)-(y-y_0)\drp{f}{y}(x_0,y_0)+z-z_0
+	\end{equation}
+	ma sempre per il teorema di Dini esprimiamo le derivate parziali di $f$ in termini delle derivate parziali di $F$ ottenendo
+	\begin{equation}
+		0=(x-x_0)\dfrac{\drp{F}{x}(x_0,y_0,z_0)}{\drp{F}{z}(x_0,y_0,z_0)}+(y-y_0)\dfrac{\drp{F}{y}(x_0,y_0,z_0)}{\drp{F}{z}(x_0,y_0,z_0)}+z-z_0
+	\end{equation}
+	da cui ricaviamo l'equazione dello spazio tangente in $\vec p_0$:
+	\begin{equation}
+		\drp{F}{x}(\vec p_0)(x-x_0)+\drp{F}{y}(\vec p_0)(y-y_0)+\drp{F}{z}(\vec p_0)(z-z_0)=0
+		\label{eq:spazio-tangente-superficie-implicita}
+	\end{equation}
+	o anche in breve, $\scalar{\grad F(\vec p_0)}{(\vec p-\vec p_0)}=0$.
+	Questo mostra tra l'altro che il gradiente di $F$ è ortogonale alla superficie in tale punto.
+\end{osservazione}
+
+Con questa definizione possiamo controllare quando una superficie ammette un'orientazione, con la seguente definizione.
 \begin{definizione} \label{d:superficie-orientabile}
-	Sia $S\subset\R^3$ una superficie regolare parametrizzata da $\vphi\colon D\to\R^3$, e chiamiamo $S_\circ=\vphi(\mathring{D})$.
-	La superficie $S$ si dice orientabile se il campo del versore normale $\vnu$ si può estendere con continuità da $S_\circ$ a tutta $S$.
+	Sia $S\subset\R^3$ una superficie regolare parametrizzata da $\vphi\colon D\to\R^3$: essa si dice orientabile se il campo del versore normale $\vnu$ si può estendere con continuità da $S_\circ$ a tutta $S$.
 \end{definizione}
 Possiamo quindi anche trovare una \emph{riparametrizzazione} di una superficie: prese le parametrizzazioni $\vphi\colon D\to\R^3$ e $\vpsi\colon T\to\R^3$, esse sono equivalenti tramite la funzione $\vtau\colon D\to T$ se $S_\circ=\vphi(\mathring{D})=\vpsi(\mathring{T})$ e se, ovviamente, dato $\vec x\in S_\circ$ si ha $\vec x=\vphi(\vec y)=\vpsi\big(\vtau(\vec y)\big)$, per ogni $\vec y\in D$.
 Il versore normale nella nuova parametrizzazione è dunque
@@ -478,25 +529,14 @@ dove $\vec z=\vtau(\vec y)$.
 Per la continuità del versore normale $\vnu_{\vpsi}$, il segno della matrice jacobiana può essere quindi o 1 o $-1$ in tutto il dominio, perciò vale $\vnu_{\vpsi}(\vec x)=\pm\vnu_{\phi}(\vec x)$ per ogni $\vec x\in S_\circ$.
 Si indica allora $\vphi\sim\vpsi$ se esse hanno lo stesso sostegno con differenti parametrizzazioni, e ulteriormente $\vphi\overset{o}{\sim}\vpsi$ se sono anche equiorientate, cioè se il versore normale coincide (ha lo stesso segno).
 
-\begin{osservazione} \label{o:superfici-cartesiane}
-	Il grafico di una superficie cartesiana individuata dalla funzione $f\colon D\subset\R^2\to\R$ è sempre orientabile: esso può essere parametrizzato con $\vphi=\big(u,v,f(u,v)\big)$ la cui matrice jacobiana è 
-	\begin{equation*}
-		\jac\vphi(u,v)=
-		\begin{bmatrix}
-			1&0\\
-			0&1\\
-			\drp{f}{u}(u,v)&\drp{f}{v}(u,v)
-		\end{bmatrix},
-	\end{equation*}
-	che ha sempre rango massimo, qualsiasi sia la funzione $f$, perch\'e il minore dato dalle prime due righe è sempre 1.
-	Come già visto nella \eqref{eq:versore-normale-superficie-cartesiana}, il vettore normale alla superficie è
-	\begin{equation*}
-		\vnu\big(\vphi(u,v)\big)=\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)=\bigg(-\drp{f}{u}(u,v),-\drp{f}{v}(u,v),1\bigg)
-	\end{equation*}
-	da normalizzare.
-\end{osservazione}
-Un'altra superficie facile da orientare è una superficie sferica: essa ammette in particolare sempre due orientazioni, una uscente e una entrante.
-Data la sua equazione $x^2+y^2+z^2=R^2$, inoltre, il versore normale è sempre di tipo radiale, ossia $\vnu(x,y,z)=\pm\frac1{R}(x,y,z)$.
+Prendiamo ad esempio una sfera di raggio $R$, centrata nell'origine: è il luogo degli zeri della funzione $F(x,y,z)=x^2+y^2+z^2-R^2$, e prendendo solo l'emisfero per $z>0$ possiamo applicare il teorema di Dini.
+Per quanto visto nell'osservazione \ref{o:spazio-tangente-superficie-implicita}, il versore normale è
+\begin{equation}
+	\vnu(x,y,z)=\frac{\grad F(x,y,z)}{\norm{\grad F(x,y,z)}}=\frac1{\sqrt{4x^2+4y^2+4z^2}}(2x,2y,2z)^T=\frac1{R}(x,y,z)^T
+\end{equation}
+quindi punta sempre nella direzione radiale.
+L'estensione di $\vnu$ a tutta la superficie si vede subito sfruttandone la simmetria.
+Essa è evidentemente sempre orientabile, e le due orientazioni possibili sono quella uscente ($\vnu$) o quella entrante ($-\vnu$).
 
 Una classica superficie non orientabile è invece il \emph{nastro di M\"obius}: per parametrizzarlo si dovrebbe tagliare il nastro in un punto, in cui il versore normale ``salta'' da una faccia all'altra.
 Ma allora è evidente che $\vnu$, pur essendo ben definito in tutto $S_\circ$, non può essere esteso con continuità anche sul resto di $S$, perch\'e proprio nel punto del taglio si ha necessariamente una discontinuità.
