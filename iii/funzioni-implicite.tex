@@ -69,7 +69,7 @@ Passiamo ora ad una versione di questo teorema in tre dimensioni, relativamente 
 \begin{teorema} \label{t:dini-R3}
 	Sia $A\subset\R^3$ un aperto e $F\colon A\to\R$ una funzione di classe $\cont{1}(A)$, e sia $(x_0,y_0,z_0)\in A$ uno zero di questa funzione tale che $\drp{F}{z}(x_0,y_0,z_0)\neq 0$.
 	Allora esiste un intorno $U(x_0,y_0,z_0)$ nel quale i punti per cui $F(x,y,z)=0$ si possono scrivere come funzione $z=f(x,y)$.
-	Inoltre, la mappa $x\mapsto f(x)$ è di classe $\cont{1}$ e vale la relazione
+	Inoltre, la mappa $(x,y)\mapsto f(x,y)$ è di classe $\cont{1}$ e vale la relazione
 	\begin{equation}
 		\drp{f}{x}(x,y)=-\dfrac{\drp{F}{x}\big(x,y,f(x,y)\big)}{\drp{F}{z}\big(x,y,f(x,y)\big)},
 	\label{eq:dini-R3}
@@ -113,14 +113,14 @@ Se abbiamo $F\in\cont{2}$ che rispetta le ipotesi del teorema di Dini, la deriva
 \begin{equation}
 	f''(x)=-\frac{(\partial_{xx}F)(\partial_{xy}F)f'}{(\partial_yF)+\frac1{(\partial_yF)^2}(\partial_xF)[(\partial_{yx}F)+(\partial_{yy}F)f']}
 \end{equation}
-valutata in $\big(x,f(x)\big)$. Sostituendo a $f(x)$ l'espressione della \eqref{eq:dini-R2} si semplifica nella
+valutata in $\big(x,f(x)\big)$. Sostituendo a $f'(x)$ l'espressione della \eqref{eq:dini-R2} si semplifica nella
 \begin{equation} 
 	f''(x)=-\frac{(\partial_{xx}F)(\partial_yF)^2-2(\partial_xF)(\partial_{xy}F)(\partial_yF)+(\partial_{yy}F)(\partial_xF)^2}{(\partial_yF)^3},
 	\label{eq:dini-derivata-seconda}
 \end{equation}
 sfruttando il fatto che $\partial_{xy}F=\partial_{yx}F$ per il teorema di Schwartz, dato che la funzione è di classe $\cont{2}$ le derivate miste coincidono.
 Possiamo dunque verificare, se $F(x_0,y_0)$ è nulla, se abbiamo un punto di massimo o minimo (locale) per la funzione implicita.
-Sappiamo già che la $f$ deve essere derivabile, dato che come conseguenza del teorema di Dini è di classe $\cont{1}$.
+Sappiamo già che la $f$ deve essere derivabile, dato che come conseguenza del teorema di Dini è di classe $\cont{2}$.
 Allora per il teorema di Fermat in ogni punto estremante la derivata prima deve essere nulla.
 Se $f'(x_0)=0$, dalla \eqref{eq:dini-R2} segue che $\partial_xF(x_0,y_0)=0$, quindi sostituendolo nella \eqref{eq:dini-derivata-seconda} otteniamo
 \begin{equation} 
