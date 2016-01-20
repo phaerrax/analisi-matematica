@@ -163,7 +163,7 @@ Il seguente teorema mostra una condizione sufficiente a determinare se una funzi
 	\end{equation}
 	Chiamiamo $\vec v_n$ il vettore $\vec x_n-\tilde{\vec x}_n$ normalizzato: esso ha norma 1, dunque appartiene alla sfera $n$ dimensionale $S^{n-1}\subset\R^n$.\footnote{Si distingue in matematica tra la \emph{sfera}, che è la superficie chiusa $n$-dimensionale immersa in $\R^{n+1}$, e la \emph{palla} che è l'insieme la cui frontiera è la sfera, cioè comprende anche i punti interni. La sfera in $\R^n$ è indicata spesso con $S^{n-1}$.}
 	Essa è un insieme compatto dunque $\vec v_n$, che è una successione in esso contenuta, deve convergere ad un elemento di $S^{n-1}$, che indichiamo con $\vec v$.
-	Allora $\scalar{\grad f(\vxi_i)}{\vec v}=0$ per ogni $i$, vale a dire $\jac\vec f(\vec x_0)\vec v=\vec 0$.
+	Allora $\scalar{\grad f_i(\vxi_i)}{\vec v}=0$ per ogni $i$, ricordando che $\vec x_n$ e $\tilde{\vec x}_n$ convergono a $\vec x_0$ questo equivale a dire $\jac\vec f(\vec x_0)\vec v=\vec 0$.
 	Questo però è assurdo, poiché $\vec v$ non è nullo e $\det\jac\vec f(\vec x_0)\neq 0$.
 	Allora $\vec f$ deve essere iniettiva\footnote{Poiché $\det\jac\vec f(\vec x_0)\neq 0$, essa individua un operatore lineare iniettivo, ossia $\ker\jac\vec f(\vec x_0)=\{\vec 0\}$, quindi l'unico vettore che può dare il vettore nullo è solo il vettore nullo stesso (e $\vec v$ non lo è!).}.
 
@@ -176,7 +176,7 @@ Il seguente teorema mostra una condizione sufficiente a determinare se una funzi
 	\end{equation}
 	che non è nullo per quanto detto nella prima parte della dimostrazione.
 	Possiamo allora applicare il teorema di Dini per una funzione implicita $\vec x=\vphi(\vec y)$: esso afferma che esiste un intorno $V$ di $\vec y_0$ tale che esiste una funzione $\vphi\colon V\to W$ di classe $\cont{1}(V)$ per cui vale $\vec F(\vphi(\vec y),\vec y)=\vec 0$ per ogni $\vec y\in V$.
-	Allora, se esiste una funzione inversa di $\vec f$, essa deve essere proprio $\vphi$, perch\'e $\vec y=\vec f\big(\vphi(\vec y)\big)$, cioè $\vec y=\vec f\circ \vphi(\vec y)$.
+	Allora, se esiste una funzione inversa di $\vec f$, essa deve essere proprio $\vphi$, perch\'e $\vec y=\vec f\big(\vphi(\vec y)\big)$, cioè $\vec y=(\vec f\circ \vphi)(\vec y)$.
 	Dimostriamo quindi che l'inversa di $\vec f$ esiste: prendiamo l'intorno $W$ di $\vec x_0$ e la controimmagine in $\vec f$ di $V$, e chiamiamo $U\defeq W\cap\vec f^{-1}(V)$.
 	Per tale insieme vale $\vec f(\vec x)=\vec y\in V$, quindi
 	\begin{equation*}
