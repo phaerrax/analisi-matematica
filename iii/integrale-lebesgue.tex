@@ -1,7 +1,7 @@
 \chapter{Misura e integrale di Lebesgue}
 Come misuriamo il ``volume'' di un insieme di $\R^n$?
 Partiamo dai più semplici, gli intervalli sulla retta reale: associamo in modo del tutto naturale ad un intervallo $I$ di estremi $a$ e $b$ la sua \emph{lunghezza}, che definiamo come $b-a$.
-Un passo ulteriore è la generalizzazione degli intervalli a dimensioni maggiori, ottenendo dei rettangoli, o anche \emph{iperrettangoli}: essi saranno individuati da due punti nello spazio, $\vec a=(a_1,\dots,a_n)$ e $\vec b=(b_1,\dots,b_n)$, e possiamo definire il suo volume come il prodotto delle lunghezze $b_i-a_i$ di ciascun suo lato (preso singolarmente).
+Un passo ulteriore è la generalizzazione degli intervalli a dimensioni maggiori, ottenendo dei rettangoli, o anche \emph{iperrettangoli}: essi saranno individuati da due punti nello spazio, $\vec a=(a_1,\dots,a_n)$ e $\vec b=(b_1,\dots,b_n)$, e possiamo definire il volume di un iperrettangolo come il prodotto delle lunghezze $b_i-a_i$ di ciascun suo lato (preso singolarmente).
 Potremmo anche prendere intervalli non limitati, e dire che il loro volume è infinito.
 
 Come possiamo definire però il volume per insiemi che non sono intervalli?
@@ -17,7 +17,7 @@ Definiamo dunque una funzione che associ ad ogni insieme un numero in $[0,+\inft
 Questi insiemi li peschiamo da una collezione di insiemi $\mathcal C$, che per il momento non definiamo: abbiamo dunque una funzione $\lambda\colon\mathcal C\to[0,+\infty]$.
 Vediamo man mano come definire bene $\mathcal C$ in modo da avere delle proprietà ottimali per il nostro concetto di volume.
 Per prima cosa, l'insieme vuoto avrà certamente un volume (che sarà chiaramente zero), dunque $\mathcal C$ lo dovrà includere.
-Ci aspettiamo inoltre che $\mathcal C$ sia chiusa rispetto alle operazioni ``di base'' di insiemistica, cioè l'unione, l'intersezione e il complemento; in sostanza, $\mathcal C$ dovrà essere un'\emph{algebra} di insiemi.
+Ci aspettiamo inoltre che $\mathcal C$ sia chiusa rispetto alle operazioni ``di base'' dell'insiemistica, cioè l'unione, l'intersezione e il complemento; in sostanza, $\mathcal C$ dovrà essere un'\emph{algebra} di insiemi.
 \begin{definizione} \label{d:algebra}
 	Una collezione $\mathcal A$ di insiemi di $X$ è detta \emph{algebra} se:
 	\begin{itemize}
@@ -48,8 +48,7 @@ Quest'ultima proprietà ci porta dunque dalle algebre di insiemi alle cosiddette
 		\item se $A\in\mathfrak S$ allora $\compl A\in\mathfrak S$.
 	\end{itemize}
 \end{definizione}
-In pratica, una $\sigma$-algebra non è altro che un'algebra chiusa anche rispetto all'unione numerabile.
-La collezione $\mathcal C$ di insiemi su cui definire $\lambda$ sarà allora di questo tipo: insieme alle altre proprietà desiderate, tale funzione $\lambda$ dovrà dunque essere ciò che rigorosamente si chiama \emph{misura}.
+In pratica, una $\sigma$-algebra non è altro che un'algebra chiusa anche rispetto all'unione numerabile, la collezione $\mathcal C$ di insiemi su cui definire $\lambda$ sarà allora di questo tipo. Insieme alle altre proprietà desiderate, tale funzione $\lambda$ dovrà dunque essere ciò che rigorosamente si chiama \emph{misura}.
 \begin{definizione} \label{d:misura}
 	Sia $\mathfrak F$ una $\sigma$-algebra di sottoinsiemi di $X$.
 	Una funzione $\mu\colon\mathfrak F\to[0,+\infty]$ è detta \emph{misura} se:
@@ -204,7 +203,7 @@ Indicheremo la classe degli insiemi di $\R^n$ misurabili secondo Lebesgue con la
 \begin{definizione} \label{d:misura-lebesgue}
 	Si definisce \emph{misura di Lebesgue} la restrizione della misura esterna $\mu^*$ all'insieme $\mis(\R^n)$.
 \end{definizione}
-La misura di Lebesgue, che indicheremo con $\mu$, coincide (quando è definita) con la misura esterna definita nella \ref{d:misura-esterna}, quindi la definizione rimane la stessa, e ovviamente ne eredità le proprietà già dimostrate.
+La misura di Lebesgue, che indicheremo con $\mu$, coincide (quando è definita) con la misura esterna definita nella \ref{d:misura-esterna}, quindi la definizione rimane la stessa, e ovviamente ne eredita le proprietà già dimostrate.
 D'ora in poi con \emph{misurabile} intenderemo sempre misurabile secondo Lebesgue, e con \emph{misura} la misura di Lebesgue, dove non si presenteranno ambiguità.
 \begin{proprieta} \label{pr:complementare-misurabile}
 	Un insieme $A\in\R^n$ è misurabile se e solo se lo è il suo complementare.
@@ -219,7 +218,7 @@ Poich\'e $\compl{(\compl A)}=A$, si ha esattamente la stessa equazione per $A$ a
 \end{proof}
 Un esempio immediato: l'insieme vuoto è misurabile, perch\'e per ogni $A\subseteq\R^n$ si ha $\mu^*(A\cap\emptyset)+\mu^*(A\cap\compl{\emptyset})=\mu^*(A\cap\R^n)=\mu^*(A)$; di conseguenza lo è anche $\R^n$, in quanto suo complementare.
 \begin{osservazione}
-	Per dimostrare l'uguaglianza \eqref{eq:lebesgue-misurabile} per un insieme $A$ si è soliti dimostrare che vale sia $\mu^*(E)\geq\mu^*(A\cap E)+\mu^*(\compl A\cap E)$ che $\mu^*(E)\leq\mu^*(A\cap E)+\mu^*(\compl A\cap E)$ $\forall B\subseteq\R^n$.
+	Per dimostrare l'uguaglianza \eqref{eq:lebesgue-misurabile} per un insieme $A$ si è soliti dimostrare che vale sia $\mu^*(E)\geq\mu^*(A\cap E)+\mu^*(\compl A\cap E)$ che $\mu^*(E)\leq\mu^*(A\cap E)+\mu^*(\compl A\cap E)$ $\forall E\subseteq\R^n$.
 	Per qualsiasi $E\in\R^n$, però, vale $E=(E\cap A)\cup(E\cap\compl A)$, dunque per la subadditività della misura esterna si ha sempre $\mu^*(E)\leq\mu^*(E\cap A)+\mu^*(E\cap\compl A)$, questo indipendentemente che $A$ sia misurabile o meno.
 	Quindi per dimostrare la \eqref{eq:lebesgue-misurabile}  ci basterà dimostrare soltanto che
 	\begin{equation}
