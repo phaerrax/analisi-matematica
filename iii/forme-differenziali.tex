@@ -74,7 +74,7 @@ In particolare, data la base canonica di $\R^n$, la base corrispondente di $(\R^
 
 Detto ciò, abbiamo già incontrato in precedenza alcuni elementi di $(\R^n)^*$: i differenziali di funzioni (scalari).
 Nel capitolo in cui abbiamo trattato della differenziabilità in più dimensioni avevamo visto che data una $f\in A\subseteq\R^n\to\R$ differenziabile, il suo differenziale $\dd f$ si comporta come un funzionale lineare: preso un punto $\vec x_0\in A$, restituisce un numero reale che è l'incremento di $f$ dal punto $\vec x_0$ relativo all'incremento $\vec h$ della variabile.
-Sappiamo inoltre che questo differenziale si può esprimere con il gradiente di $f$, cioè $\dd f=\grad f(\vec x_0)\dd\vec x$, dove abbiamo scritto $\dd\vec x=(\dd x_1,\dots,\dd x_n)$, ossia
+Sappiamo inoltre che questo differenziale si può esprimere con il gradiente di $f$, cioè $\dd f(\vec x_0)=\grad f(\vec x_0)\dd\vec x$, dove abbiamo scritto $\dd\vec x=(\dd x_1,\dots,\dd x_n)$, ossia
 \begin{equation}
 	\dd f(\vec x_0)=\drp{f}{x_1}(\vec x_0)\,\dd x_1+\drp{f}{x_2}(\vec x_0)\,\dd x_2+\dots+\drp{f}{x_n}(\vec x_0)\,\dd x_n.
 	\label{eq:differenziale-duale}
@@ -117,8 +117,8 @@ Le funzioni $\omega_i$, che sono funzioni da $A$ a $\R$, si dicono componenti, o
 	Una forma differenziale lineare $\omega\colon A\subseteq\R^n\to(\R^n)^*$ si dice di classe $\cont{k}$ se tutte le sue componenti lo sono.
 \end{definizione}
 
-Un esempio immediato di forma differenziale, come si può intuire dal discorso svolto finora, è il differenziale di una funzione $f\colon\R\to\R$: avremo semplicemente $\omega=\dd f$.
-Notiamo subito un'importante differenza nelle notazioni: da una parte abbiamo $\dd f$, che è la 1-forma, cioè un'applicazione da $A$ in $(\R^n)^*$, dall'altra abbiamo invece $\dd f(x)$ che è il differenziale della funzione, ossia un elemento di $(\R^n)^*$ (che è poi l'immagine di $\vec x$ attraverso $\omega$).
+Un esempio immediato di forma differenziale, come si può intuire dal discorso svolto finora, è il differenziale di una funzione $f\colon\R^n\to\R$: avremo semplicemente $\omega=\dd f$.
+Notiamo subito un'importante differenza nelle notazioni: da una parte abbiamo $\dd f$, che è la 1-forma, cioè un'applicazione da $A$ in $(\R^n)^*$, dall'altra abbiamo invece $\dd f(\vec x)$ che è il differenziale della funzione, ossia un elemento di $(\R^n)^*$ (che è poi l'immagine di $\vec x$ attraverso $\omega$).
 \section{Integrale di forme differenziali}
 Definiamo ora l'integrale di una forma differenziale lineare lungo una curva di $\R^n$.
 \begin{definizione} \label{d:integrale-1forma}
@@ -134,7 +134,8 @@ Definiamo ora l'integrale di una forma differenziale lineare lungo una curva di 
 	È facile vedere che l'integrale in realtà non dipende dalla parametrizzazione scelta per la curva, ma solo dal suo sostegno: introduciamo quindi il concetto di equivalenza e equiorientazione.
 \begin{definizione}
 	Siano $\vphi\colon[a,b]\to\R^n$ e $\vpsi\colon[c,d]\to\R^n$ due curve regolari a tratti.
-	Esse si dicono \emph{equivalenti} ed \emph{equiorientate} se esiste una riparametrizzazione di $\vphi$ che porta in $\vpsi$, ossia una mappa $\tau\colon[a,b]\to[c,d]$ suriettiva, derivabile e con derivata positiva in ogni punto di $[a,b]$ tale per cui $\vphi=\vpsi\circ\tau$.
+	Esse si dicono \emph{equivalenti} se esiste una riparametrizzazione di $\vphi$ che porta in $\vpsi$, ossia una mappa $\tau\colon[a,b]\to[c,d]$ suriettiva e derivabile in ogni punto di $[a,b]$ tale per cui $\vphi=\vpsi\circ\tau$. 
+	Si definiscono inoltre \emph{equiorientate} se la mappa $\tau$ ha derivata positiva in ogni punto di $[a,b]$.
 \end{definizione}
 Poiché $\tau'(t)>0$ per ogni $t\in[a,b]$ segue che $\tau$ è anche iniettiva e dunque biunivoca tra $[a,b]$ e $[c,d]$.
 \begin{teorema}
@@ -239,8 +240,8 @@ Sfruttiamo questa definizione per enunciare i seguenti teoremi.
 	\begin{equation}
 		\lim_{h\to0}\frac{F(\vec x+h\vec v)-F(\vec x)}{h}=\lim_{h\to0}\frac1{h}\int_0^h\sum_{i=1}^na_i(\vec x+r\vec v)v_i\,\dd r=\lim_{r\to 0}\sum_{i=1}^na_i(\vec x+r\vec v)v_i=\sum_{i=1}^na_i(\vec x)v_i.
 	\end{equation}
-	Possiamo vederlo anche con il teorema di De L'H\^opital, derivando rispetto ad $h$ poich\'e numeratore e denominatore tendono entrambi a zero: la derivata del numeratore $h$ è chiaramente 1, quella del numeratore, che è una funzione integrale, per il teorema fondamentale del calcolo integrale è invece è la funzione integranda valutata in $h$ (a questo punto non sarebbe nemmeno necessario passare al limite in $r$).
-	In ogni caso, notiamo che, poiché la derivata direzionale si può ottenere come prodotto scalare tra il gradiente di $F$ e $\vec v$, che proprio $\grad F=(a_1,\dots,a_n)$.
+	Possiamo vederlo anche con il teorema di De L'H\^opital, derivando rispetto ad $h$ poich\'e numeratore e denominatore tendono entrambi a zero: la derivata del denominatore $h$ è chiaramente 1, quella del numeratore, che è una funzione integrale, per il teorema fondamentale del calcolo integrale è invece è la funzione integranda valutata in $h$ (a questo punto non sarebbe nemmeno necessario passare al limite in $r$).
+	In ogni caso, notiamo che, poiché la derivata direzionale si può ottenere come prodotto scalare tra il gradiente di $F$ e $\vec v$, è proprio $\grad F=(a_1,\dots,a_n)$.
 	Allora si ottiene
 	\begin{equation}
 		\omega=\sum_{i=1}^na_i\dd x_i=\scalar{\grad F}{\dd \vec x}=\dd F,
@@ -314,11 +315,11 @@ Con queste definizioni possiamo quindi enunciare il seguente importante teorema.
 \end{teorema}
 La forma vista nell'esempio precedente può non essere esatta in $\R^2\setminus\{\vec 0\}$ perch\'e l'insieme non è semplicemente connesso: ogni curva che circonda l'origine non può essere deformata in un punto (dell'insieme) tramite un'omotopia, perch\'e abbiamo il ``buco'' nell'origine che lo impedisce.
 Questo risultato è molto importante, perch\'e fornisce le condizioni meno restrittive per affermare l'esattezza della forma.
-La sua dimostrazione però è piuttosto complicata, e non la trattiamo: possiamo però verificarne la validità su insiemi più semplici, come gli insiemi cosiddetti \emph{stellati} o gli insiemi convessi, che sono tutti semplicemente connessi quindi per le forme in tali insiemi vale il lemma di Poincar\'e.
+La sua dimostrazione però è piuttosto complicata, e non la trattiamo: possiamo invece verificarne la validità su insiemi più semplici, come gli insiemi cosiddetti \emph{stellati} o gli insiemi convessi, che sono tutti semplicemente connessi quindi per le forme in tali insiemi vale il lemma di Poincar\'e.
 \begin{definizione} \label{d:insieme-stellato}
 	Un insieme $A\subseteq\R^n$ aperto si dice \emph{stellato} rispetto ad un suo punto $\vec x_0$ se per ogni $\vec x\in A$ si ha $[\vec x,\vec x_0]\subset A$, cioè il segmento che li unisce è tutto contenuto in $A$.
 \end{definizione}
-Alcuni semplici insiemi stellati sono gli insiemi convessi, per i quali il segmento che unisce \emph{qualsiasi} suoi due punti è interno all'insieme, dunque sono stellati rispetto a tutti i loro punti.
+Alcuni semplici insiemi stellati sono gli insiemi convessi, per i quali il segmento che unisce due punti \emph{qualsiasi} dell'insieme è interno ad esso, dunque sono stellati rispetto a tutti i loro punti.
 Vediamo quindi una dimostrazione del lemma di Poincar\'e per questi insiemi stellati.
 \begin{teorema} \label{t:poincare-stellato}
 	Sia $A\subseteq\R^n$ un insieme aperto e stellato, e $\omega$ una forma differenziale lineare in $A$.
