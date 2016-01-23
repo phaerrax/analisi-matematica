@@ -308,7 +308,7 @@ Passiamo ora a dimostrare come si comporta la misura di Lebesgue rispetto alle o
 Per induzione, segue immediatamente da questo teorema che l'unione e intersezione \emph{finite} di insiemi sono ancora insiemi misurabili, e che la misura è additiva se tutti gli insiemi sono disgiunti.
 \begin{proprieta} \label{pr:additivita-numerabile-lebesgue}
 	Sia $\{A_n\}_{n\in\N}$ una famiglia di insiemi misurabili di $\R^n$.
-	Allora l'unione e l'intersezione (numerabili) $\bigcup_{n=1}^{+\infty}+A_n$ e $\bigcap_{n=1}^{+\infty}A_n$ sono insiemi misurabili.
+	Allora l'unione e l'intersezione (numerabili) $\bigcup_{n=1}^{+\infty}A_n$ e $\bigcap_{n=1}^{+\infty}A_n$ sono insiemi misurabili.
 	Se inoltre $A_i\cap A_j=\emptyset$ per ogni $i\neq j$, allora
 	\begin{equation}
 		\mu\bigg(\bigcup_{n=1}^{+\infty}A_n\bigg)=\sum_{n=1}^{+\infty}\mu(A_n).
@@ -420,7 +420,7 @@ Dalle proprietà di base degli insiemi aperti e chiusi (teoremi \ref{t:unione-in
 Rimangono esclusi l'intersezione numerabile di aperti e l'unione numerabile di chiusi, che in generale non sono n\'e aperti n\'e chiusi.
 Questi tipi di insiemi hanno un ruolo nella teoria della misura: formalizziamo quindi la definizione e vediamone le applicazioni.
 \begin{definizione} \label{d:gdelta-fsigma}
-	Un insieme $G\subset\R^n$ si dice di tipo $G_\delta$ se è risultato di un'intersezione numerabile di insiemi aperti, ossia se $G=\bigcap_{n\in\N}A_n$ con $A_n$ aperto per ogni $n$;
+	Un insieme $G\subset\R^n$ si dice di tipo $G_\delta$ se è risultato di un'intersezione numerabile di insiemi aperti, ossia se $G=\bigcap_{n\in\N}A_n$ con $A_n$ aperto per ogni $n$.
 	Un insieme $F\subset\R^n$ si dice di tipo $F_\sigma$ se è risultato di un'unione numerabile di insiemi chiusi, cioè se $F=\bigcup_{n\in\N}C_n$ con $C_n$ chiuso per ogni $n$.
 \end{definizione}
 Gli insiemi di queste classi sono ovviamente misurabili, ma gli insiemi $G_\delta$ non sono necessariamente aperti, come i $F_\sigma$ non sono necessariamente chiusi; però ogni aperto di $\R^n$ è di tipo $F_\sigma$, mentre ogni chiuso è di tipo $G_\delta$.
@@ -518,7 +518,7 @@ Una semplice funzione non misurabile è la funzione caratteristica di un insieme
 	Se $f$ è continua in $A$ allora è misurabile.
 \end{teorema}
 \begin{proof}
-	L'insieme $\{x\in A\colon f(\vec x)<c\}$ è aperto in quanto controimmagine dell'insieme aperto $(-\infty,c)$, dunque è misurabile, perciò è misurabile anche $f$.
+	L'insieme $\{\vec x\in A\colon f(\vec x)<c\}$ è aperto in quanto controimmagine dell'insieme aperto $(-\infty,c)$ attraverso funzione continua, dunque è misurabile, perciò è misurabile anche $f$.
 \end{proof}
 \begin{osservazione} \label{o:funzione-misurabile-su-insieme-nullo}
 	Se $A\in\mis(\R^n)$ è di misura nulla, qualsiasi funzione $f\colon A\to\Rex$ è misurabile.
@@ -533,7 +533,7 @@ Il seguente teorema ci permette di stabilire la misurabilità di una funzione a 
 	Allora $f$ è misurabile se e solo se $f|_{A_1}$ e $f|_{A_2}$ lo sono.
 \end{teorema}
 \begin{proof}
-	Sia $f$ misurabile: per ogni $c\in\Rex$, l'insieme $\{x\in A_1\colon f|_{A_1}<c\}=\{\vec x\in A\colon f(\vec x)<c\}\cap A_1$ è misurabile come intersezione di insiemi misurabili, dunque $f|_{A_1}$ è misurabile, e lo stesso per $f|_{A_2}$.
+	Sia $f$ misurabile: per ogni $c\in\Rex$, l'insieme $\{\vec x\in A_1\colon f|_{A_1}<c\}=\{\vec x\in A\colon f(\vec x)<c\}\cap A_1$ è misurabile come intersezione di insiemi misurabili, dunque $f|_{A_1}$ è misurabile, e lo stesso per $f|_{A_2}$.
 
 	Siano ora le due restrizioni misurabili: allora $\forall c\in\Rex$ $\{\vec x\in A_1\colon f|_{A_1}(\vec x)<c\}$ e $\{\vec x\in A_2\colon f|_{A_2}(\vec x)<c\}$ sono misurabili, e lo è la loro unione, ma
 	\begin{equation}
@@ -548,7 +548,7 @@ Il seguente teorema ci permette di stabilire la misurabilità di una funzione a 
 	per ogni $c\in\Rex$, quindi anche $f$ è misurabile.
 \end{proof}
 Introduciamo inoltre un tipo di uguaglianza all'interno dello spazio delle funzioni misurabili: diciamo che una proprietà è verificata \emph{quasi ovunque} (spesso abbreviato con q.o.) in un certo insieme $A$ se il sottoinsieme $B\subset A$ in cui non si verifica ha misura nulla.
-Ad esempio, se diciamo che $f=g$ quasi ovunque in $A$, detto $N$ l'insieme di punti $\vec x$ tali per cui $f(\vec x)\ne g(\vec x)$, allora $\mu(Z\cap A)=0$.
+Ad esempio, se diciamo che $f=g$ quasi ovunque in $A$, detto $Z$ l'insieme di punti $\vec x$ tali per cui $f(\vec x)\ne g(\vec x)$, allora $\mu(Z\cap A)=0$.
 \begin{teorema} \label{t:misurabile-qo}
 	Siano $f,g\colon A\to\Rex$, con $A\in\mis(\R^n)$, tali che $f(\vec x)=g(\vec x)$ per ogni $\vec x\in A\setminus Z$ dove $\mu(Z)=0$.
 	Allora $f$ è misurabile se e solo se lo è $g$.
@@ -586,7 +586,7 @@ Mostriamo ora con le seguenti proprietà che operando con funzioni misurabili (a
 		\item L'insieme $\{\vec x\in A\colon (f+g)(\vec x)<c\}$ equivale a $\{\vec x\in A\colon f(\vec x)<c-g(\vec x)\}$.
 			Chiamiamo $c-g(\vec x)=h(\vec x)$, e per il lemma precedente l'insieme $\{\vec x\in A\colon f(\vec x)<h(\vec x)\}$ è misurabile, quindi lo è $f+g$.
 		\item Mostriamo prima che $f^2$ è misurabile, ossia che $\{\vec x\in A\colon f^2<c\}$ lo è per ogni $c\in\Rex$.
-			Se $c\geq 0$, è equivalente a $\{\{\vec x\in A\colon f(\vec x)>\sqrt{c}\}\cup\{\vec x\in A\colon f(\vec x)<-\sqrt{c}\}$ che è misurabile come unione di misurabili.
+			Se $c\geq 0$, è equivalente a $\{\vec x\in A\colon f(\vec x)>\sqrt{c}\}\cup\{\vec x\in A\colon f(\vec x)<-\sqrt{c}\}$ che è misurabile come unione di misurabili.
 			Se $c<0$, chiaramente $\{\vec x\in A\colon [f(\vec x)]^2>c\}=A$ quindi è ancora misurabile.
 			Dunque, poich\'e $(f+g)^2-(f-g)^2=f^2+g^2+2fg-f^2-g^2+2fg=4fg$, abbiamo $fg=\frac14[(f+g)^2-(f-g)^2]$ quindi è misurabile.
 		\item Lasciata come esercizio.\qedhere
@@ -792,7 +792,7 @@ Eccone alcuni esempi:
 	\item Lo stesso discorso vale se $f$ è identicamente nulla su $A$, perch\'e in questo caso l'unica funzione semplice misurabile $s$ per cui $0\leq s\leq f$ in $A$ è anch'essa identicamente nulla, quindi $\int_Af\,\dd\mu=\int_As\,\dd\mu=0\mu(A)=0$ con la convenzione adottata.
 	\item Se $f$ è limitata superiormente e la misura di $A$ è finita, allora l'integrale è finito, perch\'e per ogni $s\in\mathcal S_f$
 		\begin{equation}
-			\int_Af\,\dd\mu\leq\max_{\vec x\in A}f(\vec x)\sum_{j=1}^n\mu(A\cap E_j)=\max_{\vec x\in A}f(\vec x)\mu(E)<+\infty.
+			\int_Af\,\dd\mu\leq\max_{\vec x\in A}f(\vec x)\sum_{j=1}^n\mu(A\cap E_j)=\max_{\vec x\in A}f(\vec x)\mu(A)<+\infty.
 		\end{equation}
 \end{itemize}
 
@@ -839,15 +839,15 @@ Lasceremo sottinteso d'ora in poi che $\mathcal S_f$ è l'insieme delle funzioni
 		\item Poich\'e $\int_Af\,\dd\mu=\sup_{s\in\mathcal S_f}\int_As\,\dd\mu$, esso è anche uguale a $\sup\int_{\R^n}s\,\dd\mu$ per $0\leq s\leq f\chi_A$ in $A$, quindi è uguale a $\int_{\R^n}f\chi_A\dd\mu$.
 		\item Dato che $0\leq s\leq f\leq g$ in $A$, risulta $\mathcal S_f\subseteq\mathcal S_g$, quindi
 			\begin{equation}
-				\int_Ad\dd\mu=\sup_{s\in\mathcal S_f}\int_As\,\dd\mu\leq\sup_{s\in\mathcal S_g}\int_As\,\dd\mu=\int_Ag\,\dd\mu.
+				\int_Af\dd\mu=\sup_{s\in\mathcal S_f}\int_As\,\dd\mu\leq\sup_{s\in\mathcal S_g}\int_As\,\dd\mu=\int_Ag\,\dd\mu.
 			\end{equation}
 		\item Se $c=0$ la tesi è ovvia, quindi prendiamo $c\in(0,+\infty)$.
 			Risulta
 			\begin{multline}
 				\int_Acf\,\dd\mu=\sup_{s\in\mathcal S_{cf}}\int_As\,\dd\mu=\sup_{t\in\mathcal S_f}\int_Act\,\dd\mu=\\
-				=\sup\sum_{j=1}^ncd_j\mu(A_j)=c\sup\sum_{j=1}^nd_j\mu(A_j)=c\sup_{t\in\mathcal S_f}\int_At\,\dd\mu=c\int_Af\,\dd\mu,
+				=\sup\sum_{j=1}^ncb_j\mu(A_j)=c\sup\sum_{j=1}^nb_j\mu(A_j)=c\sup_{t\in\mathcal S_f}\int_At\,\dd\mu=c\int_Af\,\dd\mu,
 			\end{multline}
-			dove $\sum_{j=1}^nd_j\chi_{A_j}$ è la rappresentazione canonica delle funzioni semplici $t$.
+			dove $\sum_{j=1}^nb_j\chi_{A_j}$ è la rappresentazione canonica delle funzioni semplici $t$.
 			A questo punto, per una generica funzione $f$ misurabile otteniamo $cf=c(f^+-f^-)=cf^+-cf^-$ da cui
 			\begin{equation}
 				\int_Acf\,\dd\mu=c\int_Af^+\dd\mu-c\int_Af^-\dd\mu=c\int_Af\,\dd\mu.
