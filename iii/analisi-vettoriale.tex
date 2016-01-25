@@ -206,7 +206,7 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 \end{teorema}
 \begin{proof}
 	Verrà dimostrata solo la prima legge, la dimostrazione della seconda è del tutto analoga.
-	Supponiamo che esista un insieme $U$ tale che $D\subset U$ e che $f\in\cont{1}(U)$.
+	Supponiamo che esista un insieme $U$ aperto tale che $D\subset U$ e che $f\in\cont{1}(U)$.
 	Distinguiamo tre casi: (i) $D$ è normale rispetto a $y$, (ii) $D$ è normale rispetto a $x$ e (iii) $D$ è un generico insieme regolare.
 
 	\input{grafici/gauss-green-normale-y}
@@ -251,7 +251,7 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	che è lo stesso risultato precedente.
 
 	\input{grafici/gauss-green-normale-x}
-	(ii) Sia ora $D$ normale rispetto a $x$: rappresentiamolo come $\{(x,y)\in[a,b]\times\R\colon\delta(x)\leq y\leq\eta(y)\}$, come in figura \ref{fig:gauss-green-normale-x}.
+	(ii) Sia ora $D$ normale rispetto a $x$: rappresentiamolo come $\{(x,y)\in[a,b]\times\R\colon\delta(x)\leq y\leq\eta(x)\}$, come in figura \ref{fig:gauss-green-normale-x}.
 	Per $(x,y)\in D$, consideriamo la curva $\gamma\subset D$ parametrizzata con la funzione
 	\begin{equation*}
 		\vgamma(t)=
@@ -263,11 +263,11 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	che è regolare a tratti, e collega $\big(a,\delta(a)\big)$ ad un generico punto in $D$.
 	Definiamo
 	\begin{equation*}
-		G(x,y)\defeq\int_{\gamma}f(x,y)\,\dd x\,\dd y:
+		G(x,y)\defeq\int_{\gamma}f(x,y)\,\dd y:
 	\end{equation*}
 	risulta, spezzando l'integrale nelle due curve, che
 	\begin{equation}
-		G(x,y)=\int_a^xf\big(t,\delta(t)\big)\,\dd t+\int_{\delta(x)}^yf(x,t)\,\dd t.
+		G(x,y)=\int_a^xf\big(t,\delta(t)\big)\delta'(t)\,\dd t+\int_{\delta(x)}^yf(x,t)\,\dd t.
 	\end{equation}
 	Calcoliamone le derivate parziali: troviamo
 	\begin{equation}
@@ -300,7 +300,7 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 		\end{bmatrix}, t\in[\delta(a),\eta(a)].
 	\end{gather*}
 	Anche qui abbiamo scritto $\vgamma_3^-$ e $\vgamma_4^-$ perché con queste parametrizzazioni le due curve sono percorse nel senso opposto all'orientazione positiva di $\partial D$, e dovremo cambiare il segno all'integrale.
-	Il primo membro di \eqref{eq:dim-gauss-green-forma-esatta} vale
+	Il primo membro di \eqref{eq:dim-gauss-green-forma-esatta}, sostituendo $\drp{G}{x}(x,y)$ trovato prima, vale
 	\begin{equation}
 		\begin{split}
 			\int_{+\partial D}\drp{G}{x}(x,y)\,\dd x&=\int_{\vgamma_1}\drp{G}{x}(x,y)\,\dd x+\int_{\vgamma_2}\drp{G}{x}(x,y)\,\dd x-\int_{\vgamma_3}\drp{G}{x}(x,y)\,\dd x-\int_{\vgamma_4}\drp{G}{x}(x,y)\,\dd x=\\
@@ -380,7 +380,7 @@ La divergenza si definisce anche in dimensione qualunque come, dato $\vec F=(F_1
 \begin{proof}
 	La dimostrazione è immediata se applichiamo il teorema della divergenza \ref{t:divergenza-R2} al campo $\vec F(x,y)=\big(F_2(x,y),-F_1(x,y)\big)$, per il quale
 	\begin{equation}
-		\int_{+\partial D}\scalar{\vec F}{\vnu}\,\dd s=\int_{+\partial D}(F_2(x,y)\,\dd y+F_1(x,y)\,\dd x)=\int_D\drp{F_2}{x}(x,y)\,\dd x\,\dd y-\int_D\drp{F_1}{x}(x,y)\,\dd x\,\dd y
+		\int_{+\partial D}\scalar{\vec F}{\vnu}\,\dd s=\int_{+\partial D}(F_2(x,y)\,\dd y+F_1(x,y)\,\dd x)=\int_D\drp{F_2}{x}(x,y)\,\dd x\,\dd y-\int_D\drp{F_1}{y}(x,y)\,\dd x\,\dd y
 	\end{equation}
 	da cui la tesi.
 \end{proof}
@@ -476,7 +476,7 @@ Analogamente $(\vphi\circ\valpha)(t)\in S_\circ$ per ogni $t$ in tale intervallo
 Detta $\vec x$ l'immagine di $(u_0,v_0)$ attraverso la parametrizzazione, evidentemente si ha $(\vphi\circ\valpha)(0)=\vec x$.
 Allora differenziando la funzione composta otteniamo
 \begin{equation}
-	(\vphi\circ\valpha)'(0)=\jac\vphi\big(u_0,v_0)\valpha'(0)=\alpha_1(0)\drp{\vphi}{u}(u_0,v_0)+\alpha_2(0)\drp{\vphi}{v}(u_0,v_0).
+	(\vphi\circ\valpha)'(0)=\jac\vphi\big(u_0,v_0)\valpha'(0)=\alpha_1'(0)\drp{\vphi}{u}(u_0,v_0)+\alpha_2'(0)\drp{\vphi}{v}(u_0,v_0).
 \end{equation}
 Si può dimostrare che questa è in effetti la generica espressione di un vettore tangente a una curva di classe $\cont{1}$ (come richiesto nella definizione \ref{d:spazio-tangente}) passante per il punto $\vec x$: di conseguenza tutti questi vettori tangenti al punto $\vec x$ sono la somma di $\vec x$ e una combinazione lineare delle colonne della matrice jacobiana di $\vphi$.
 Riassumendo,
@@ -557,7 +557,7 @@ In realtà, non sarebbe corretto dire che $\vnu$ salta da una faccia all'altra\d
 Sebbene localmente si possano individuare due facce (e quindi due versori normali opposti), globalmente in tutto il nastro la faccia è soltanto una!
 
 \begin{definizione} \label{d:superfici-con-bordo}
-	Sia $\vphi\colon D\to\R^3$ la parametrizzazione di una superficie $S$ regolare, con $D$ dominio regolare connesso: essa si dice \emph{superficie con bordo} se $\vphi$ è iniettiva su $D$ e se si può individuare un insieme $E\supset D$ aperto e una funzione $\tilde{\vphi}\colon E\to\R^3$, di classe $\cont{1}(E)$, tale che la sua restrizione in $D$ coincida con $\vphi$.
+	Sia $\vphi\colon D\to\R^3$ la parametrizzazione di una superficie $S$ regolare, con $D$ dominio regolare connesso: essa si dice \emph{superficie con bordo} se $\vphi$ è iniettiva su $D$ e se si può individuare un insieme $E\supset D$ aperto e una funzione $\tilde{\vphi}\colon E\to\R^3$, di classe $\cont{1}(E)$, tale che la sua restrizione in $D$ coincida con $\vphi$. Il rango della jacobiana $\jac\vphi$ deve essere massimo $\forall (u,v)\in D$.
 \end{definizione}
 Per queste superfici definiamo allora $\partial S\defeq\vphi(\partial D)$.
 Il bordo di $D$, che è un dominio regolare, si può esprimere sempre come unione di curve semplici, regolari a tratti.
