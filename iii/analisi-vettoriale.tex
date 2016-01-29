@@ -534,13 +534,23 @@ Diciamo che le due superfici sono equivalenti se:
 	\item hanno la stessa immagine, ossia $\vphi_1(D_1)=\vphi_2(D_2)$. 
 \end{itemize}
 L'equivalenza tra le due superfici si indica con $\vphi_1\sim\vphi_2$.
-In seguito al cambiamento di coordinate, il versore normale nella nuova parametrizzazione è
+Vediamo come varia il versore normale quando cambiamo la parametrizzazione: siano $\vphi=\vphi(u,v)\colon D\to S$ e $\tilde{\vphi}=\tilde{\vphi}(s,t)\colon\tilde{D}\to S$ due superfici regolari, e sia $\vpsi\colon\tilde{A}\to A$ un diffeomorfismo $(s,t)\mapsto(u,v)$ tra i due aperti $A\supset D$ e $\tilde{A}\supset\tilde{D}$.
+Allora, detto $\vnu$ il versore normale a $S$ con la parametrizzazione $\vphi$ e $\tilde{\vnu}$ quello con $\tilde{\vphi}$, risulta
 \begin{equation}
-	\vnu_2\big(\vphi_2(\vec z)\big)=\sgn\big(\!\det\jac\vtau(\vec y)\big)\vnu_1\big(\vphi_1(\vec y)\big)
+	\begin{split}
+		\drp{\tilde{\vphi}}{s}\times\drp{\tilde{\vphi}}{t}&=\bigg(\drp{\vphi}{u}\drp{\psi_1}{s}+\drp{\vphi}{v}\drp{\psi_2}{s}\bigg)\times\bigg(\drp{\vphi}{u}\drp{\psi_1}{t}+\drp{\vphi}{v}\drp{\psi_2}{t}\bigg)=\\
+		&=\drp{\vphi}{u}\drp{\psi_1}{s}\times\drp{\vphi}{v}\drp{\psi_2}{t}+\drp{\vphi}{v}\drp{\psi_2}{s}\times\drp{\vphi}{u}\drp{\psi_1}{t}=\\
+		&=\drp{\psi_1}{s}\drp{\psi_2}{t}\bigg(\drp{\vphi}{u}\times\drp{\vphi}{v}\bigg)-\drp{\psi_2}{s}\drp{\psi_1}{t}\bigg(\drp{\vphi}{u}\times\drp{\vphi}{v}\bigg)=\\
+		&=\det(\jac\vpsi)\bigg(\drp{\vphi}{u}\times\drp{\vphi}{v}\bigg)=\\
+	\end{split}
 \end{equation}
-dove $\vec z=\vtau(\vec y)$, con $\vec z\in D_2$ e $\vec y\in D_1$.
-Per la continuità del versore normale $\vnu_2$, il segno della matrice jacobiana può essere quindi o 1 o $-1$ in tutto il dominio, perciò vale $\vnu_2(\vec x)=\pm\vnu_1(\vec x)$ per ogni $\vec x\in S_\circ$.
-Si indica quindi con $\vphi_1\overset{\circ}{\sim}\vphi_2$ se le due superfici sono anche equiorientate, cioè se il versore normale coincide (ha lo stesso segno).
+dunque normalizzando si ha
+\begin{equation}
+	\tilde{\vnu}=\sgn\big(\!\det(\jac\vpsi)\big)\vnu.
+	\label{eq:versore-normale-riparametrizzazione}
+\end{equation}
+Per la continuità del versore normale, il segno della matrice jacobiana può essere quindi o 1 o $-1$ in tutto il dominio, perciò vale $\tilde{\vnu}(\vec x)=\pm\vnu(\vec x)$ per ogni $\vec x\in S_\circ$.
+Indichiamo quindi con $\vphi_1\overset{\circ}{\sim}\vphi_2$ se le due superfici sono anche equiorientate, cioè se il versore normale coincide (ha lo stesso segno).
 
 Prendiamo ad esempio una sfera di raggio $R$, centrata nell'origine: è il luogo degli zeri della funzione $F(x,y,z)=x^2+y^2+z^2-R^2$, e prendendo solo l'emisfero per $z>0$ possiamo applicare il teorema di Dini.
 Per quanto visto nell'osservazione \ref{o:spazio-tangente-superficie-implicita}, il versore normale è
