@@ -83,8 +83,8 @@ Ma se il primo membro è proprio il differenziale di $f$, cioè l'applicazione $
 Infatti, guardando alla \eqref{eq:differenziale-duale} come un funzionale lineare da applicare all'incremento $\vec h$, con la regola che $\dd x_i(\vec h)=h_i$ troviamo
 \begin{equation}
 	\begin{split}
-		\dd f(\vec x_0)(\vec h)&=\drp{f}{x_1}(\vec x_0)\,\dd x_1(\vec h)+\dots+\drp{f}{x_n}\,\dd x_n(\vec h)=\\
-		&=\drp{f}{x_1}h_1+\dots+\drp{f}{x_n}h_n
+		\dd f(\vec x_0)(\vec h)&=\drp{f}{x_1}(\vec x_0)\,\dd x_1(\vec h)+\dots+\drp{f}{x_n}(\vec x_0)\,\dd x_n(\vec h)=\\
+		&=\drp{f}{x_1}(\vec x_0)h_1+\dots+\drp{f}{x_n}(\vec x_0)h_n
 	\end{split}
 \end{equation}
 che è proprio l'espressione dell'incremento di $f$ associato all'incremento $\vec h$ della variabile.
@@ -154,7 +154,7 @@ Poiché $\tau'(t)>0$ per ogni $t\in[a,b]$ segue che $\tau$ è anche iniettiva e 
 	Chiamiamo allora $r\defeq\tau(t)$ e sostituiamo le variabili nell'integrale: otteniamo che $\tau'(t)\,\dd t=\dd r$, da cui risulta
 	\begin{equation}
 		\int_{\vphi}\omega=\int_{\tau(a)}^{\tau(b)}\sum_{i=1}^na_i\big(\vpsi(r)\big)\psi_i'(r)\,\dd r
-		=\int_c^d\sum_{i=1}^na_i\big(\vpsi(r)\big)\psi_i'(r)\,\dd t=\int_{\vpsi}\omega.
+		=\int_c^d\sum_{i=1}^na_i\big(\vpsi(r)\big)\psi_i'(r)\,\dd r=\int_{\vpsi}\omega.
 	\end{equation}
 	
 	Se le due curve hanno invece verso opposto, si ha $\tau'(t)<0$ e dunque la mappa $\tau$ è decrescente, e di conseguenza\footnote{Si ricordi che $\tau\colon[a,b]\to[c,d]$ e di conseguenza deve sempre risultare, almeno, che $a<b$ e $c<d$.} $\tau(a)=d$ e $\tau(b)=c$. Basta ripetere i passaggi compiuti in precedenza, per trovarsi alla fine con gli estremi di integrazione invertiti rispetto a prima, da cui si ricava facilmente che

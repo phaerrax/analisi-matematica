@@ -318,7 +318,7 @@ Per induzione, segue immediatamente da questo teorema che l'unione e intersezion
 \begin{proof}
 	Notiamo innanzitutto che possiamo considerare gli insiemi $A_n$ mutualmente disgiunti, senza perdere generalità: se già non lo fossero, ci basterebbe prendere la famiglia $\{B_n\}_{n\in\N}$ dove
 	\begin{equation}
-		B_1=A_1,\ B_2=A_2\setminus A_1, B_3=A_3\setminus(A_2\cup A_1),\dots,B_k=A_m\setminus(A_1\cup\dots\cup A_{m-1}),
+		B_1=A_1,\ B_2=A_2\setminus A_1, B_3=A_3\setminus(A_2\cup A_1),\dots,B_m=A_m\setminus(A_1\cup\dots\cup A_{m-1}),
 	\end{equation}
 	che sono per costruzione mutualmente disgiunti, e tali che
 	\begin{equation}
@@ -723,7 +723,7 @@ Definiamo inoltre convenzionalmente $0\cdot\infty=0$.
 	\end{equation}
 \end{definizione}
 Esso è un numero in $[0,+\infty]$, dato che un $E_j$ potrebbe avere misura infinita.
-Con la convenzione introdotta prima di questa definizione abbiamo inoltre che se $c_i=0$, allora $c_i\mu(E_i)=0$ indipendentemente dalla misura di $A$.
+Con la convenzione introdotta prima di questa definizione abbiamo inoltre che se $c_i=0$, allora $c_i\mu(E_i)=0$ indipendentemente dalla misura di $E_i$.
 
 Un primo esempio immediato è la funzione di Dirichlet $\chi_{\Q}$: il suo integrale in $[0,1]$ è
 \begin{equation*}
@@ -762,7 +762,7 @@ Possiamo subito dimostrare alcune proprietà dell'integrale per funzioni semplic
 		\begin{split}
 			\int_E(s+t)\dd\mu&=\sum_{i=1}^p\sum_{j=1}^q\int_{E\cap A_i\cap B_j}(s+t)\dd\mu=\\
 			&=\sum_{i=1}^p\sum_{j=1}^q(c_i+d_j)\mu(E\cap A_i\cap B_j)=\\
-			&=\sum_{i=1}^pc_i\sum_{j=1}^q\mu(E\cap A_i\cap B_j)+\sum_{i=1}^p\sum_{j=1}^qd_i\mu(E\cap A_i\cap B_j)=\\
+			&=\sum_{i=1}^pc_i\sum_{j=1}^q\mu(E\cap A_i\cap B_j)+\sum_{i=1}^p\sum_{j=1}^qd_j\mu(E\cap A_i\cap B_j)=\\
 			&=\sum_{i=1}^pc_i\sum_{j=1}^q\mu(E\cap A_i\cap B_j)+\sum_{j=1}^qd_j\sum_{i=1}^p\mu(E\cap A_i\cap B_j)=\\
 			&=\sum_{i=1}^pc_i\mu(E\cap A_i)+\sum_{j=1}^qd_j\mu(E\cap B_j)=\\
 			&=\int_Es\,\dd\mu+\int_Et\,\dd\mu.\qedhere
@@ -964,7 +964,7 @@ Completiamo dunque la dimostrazione della linearità dell'integrale: ci manca da
 	\end{equation}
 \end{proof}
 
-\begin{lemma} \label{l:fatou}
+\begin{lemma}[di Fatou] \label{l:fatou}
 	Sia $\{f_n\}_{n=1}^{+\infty}$ una successione di funzioni $f_n\colon A\to[0,+\infty]$ con $A\in\mis(\R^n)$.
 	Vale la relazione
 	\begin{equation}
@@ -1136,7 +1136,7 @@ Potendo restringere una funzione definita in tutto $\R^n$ ad un sottoinsieme $A\
 \begin{teorema} \label{t:fubini2}
 	Siano $A\in\mis(\R^n)$, $\R^n=\R^m\times\R^k$ e $f\colon A\to\Rex$.
 	Allora $f$ è misurabile sulle sezioni $A(\vec x)$, come definite prima, quasi ovunque in $\R^m$.
-	Inoltre se $f\in L(A)$ allora $\vec y\mapsto f(\vec x,\vec y)$ è a sua volta sommabile su $A(\vec x)$ quasi ovunque in $\R^n$, e $\vec x\mapsto\int_{A(\vec x)}f(\vec x,\vec y)\,\dd\vec y$ è sommabile in $\R^m$.
+	Inoltre se $f\in L(A)$ allora $\vec y\mapsto f(\vec x,\vec y)$ è a sua volta sommabile su $A(\vec x)$ quasi ovunque in $\R^k$, e $\vec x\mapsto\int_{A(\vec x)}f(\vec x,\vec y)\,\dd\vec y$ è sommabile in $\R^m$.
 	Infine si può scomporre l'integrale come
 	\begin{equation}
 		\int_Af(\vec x,\vec y)\,\dd\vec x\,\dd\vec y=\int_{\R^m}\bigg[\int_{A(\vec x)}f(\vec x,\vec y)\,\dd\vec y\bigg]\dd\vec x.
