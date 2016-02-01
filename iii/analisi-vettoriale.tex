@@ -561,10 +561,32 @@ quindi punta sempre nella direzione radiale.
 L'estensione di $\vnu$ a tutta la superficie si vede subito sfruttandone la simmetria.
 Essa è evidentemente sempre orientabile, e le due orientazioni possibili sono quella uscente ($\vnu$) o quella entrante ($-\vnu$).
 
-Una classica superficie non orientabile è invece il \emph{nastro di M\"obius}: per parametrizzarlo si dovrebbe tagliare il nastro in un punto, in cui il versore normale ``salta'' da una faccia all'altra.
-Ma allora è evidente che $\vnu$, pur essendo ben definito in tutto $S_\circ$, non può essere esteso con continuità anche sul resto di $S$, perch\'e proprio nel punto del taglio si ha necessariamente una discontinuità.
-In realtà, non sarebbe corretto dire che $\vnu$ salta da una faccia all'altra\dots perch\'e il nastro di M\"obius ha soltanto una faccia.
-Sebbene localmente si possano individuare due facce (e quindi due versori normali opposti), globalmente in tutto il nastro la faccia è soltanto una!
+Una superficie non orientabile è il nastro di M\"obius, dato dalla parametrizzazione
+\begin{equation}
+	\vphi(u,v)=\bigg(
+		\Big(r+\dfrac{v}2\cos\dfrac{u}2\Big)\cos\dfrac{u}2,\
+		\Big(r+\dfrac{v}2\cos\dfrac{u}2\Big)\sin\dfrac{u}2,\
+		\dfrac{v}2\sin\dfrac{u}2
+	\bigg)^T
+	\label{eq:nastro-moebius}
+\end{equation}
+per $(u,v)\in[-a,a]\times[0,2\pi]$, con $a,r\in\R$ fissati: essa descrive un nastro di larghezza $a$ il cui punto medio percorre una circonferenza (centrata nell'origine) di raggio $r$.
+Se $a<r$ la superficie non si interseca ed è dunque una superficie regolare.
+\input{grafici/nastro-moebius}
+Per semplicità, calcoliamo un vettore normale, senza normalizzarlo, solo nella circonferenza di mezzo, vale a dire per $v=0$: esso vale
+\begin{equation}
+	\vnu(u,0)=\bigg(
+		\dfrac14\cos\dfrac{u}2\sin u,\
+		\dfrac14\sin\dfrac{u}2\sin u,\
+		-\dfrac14\cos\dfrac{u}2
+	\bigg)^T
+	\label{eq:vettore-normale-centro-nastro-mobius}
+\end{equation}
+Vediamo che quando $u$ varia da 0 a $2\pi$ $\vnu$ cambia segno, dato che le funzioni sono periodiche di $4\pi$: ma dalla \eqref{eq:nastro-moebius} è chiaro che $\vphi(0,0)$ e $\vphi(2\pi,0)$ \emph{sono lo stesso punto}, perciò il vettore normale non può essere ben definito su tutta la superficie.
+Chiaramente possiamo avere un vettore normale ben definito per $(u,v)\in(-1,1)\times(0,2\pi)$: il problema si ha quando vogliamo aggiungere il bordo, in cui il vettore normale ``salta'' da una faccia all'altra.\footnote{
+	In realtà è sbagliato parlare di ``facce'' del nastro di M\"obius, in quanto (come uno sguardo alla figura può subito far capire) di faccia ce n'è \emph{una sola}.
+	Se localmente, in un intorno di un qualsiasi punto (non sul bordo) del nastro, sembra che ci possano essere due facce, questo non può più essere vero globalmente.
+}
 
 \begin{definizione} \label{d:superfici-con-bordo}
 	Sia $\vphi\colon D\to\R^3$ la parametrizzazione di una superficie $S$ regolare, con $D$ dominio regolare connesso: essa si dice \emph{superficie con bordo} se $\vphi$ è iniettiva su $D$ e se si può individuare un insieme $E\supset D$ aperto e una funzione $\tilde{\vphi}\colon E\to\R^3$, di classe $\cont{1}(E)$, tale che la sua restrizione in $D$ coincida con $\vphi$. Il rango della jacobiana $\jac\vphi$ deve essere massimo $\forall (u,v)\in D$.
