@@ -533,23 +533,23 @@ Diciamo che le due superfici sono equivalenti se:
 	}
 	\item hanno la stessa immagine, ossia $\vphi_1(D_1)=\vphi_2(D_2)$. 
 \end{itemize}
+\input{grafici/riparametrizzazione-superfici}
 L'equivalenza tra le due superfici si indica con $\vphi_1\sim\vphi_2$.
-Vediamo come varia il versore normale quando cambiamo la parametrizzazione: siano $\vphi=\vphi(u,v)\colon D\to S$ e $\tilde{\vphi}=\tilde{\vphi}(s,t)\colon\tilde{D}\to S$ due superfici regolari, e sia $\vpsi\colon\tilde{A}\to A$ un diffeomorfismo $(s,t)\mapsto(u,v)$ tra i due aperti $A\supset D$ e $\tilde{A}\supset\tilde{D}$.
-Allora, detto $\vnu$ il versore normale a $S$ con la parametrizzazione $\vphi$ e $\tilde{\vnu}$ quello con $\tilde{\vphi}$, risulta
+Vediamo come varia il versore normale quando cambiamo la parametrizzazione: usiamo la notazione appena introdotta, con il diffeomorfismo $\vtau=(\tau_1,\tau_2)$ tra l'aperto $E\supset D_1$ e la sua immagine, indicando con $(u,v)$ le coordinate in $D_1$ e con $(s,t)$ quelle in $D_2$ (cosicch\'e $\vtau\colon(u,v)\mapsto(s,t)$); detto $\vnu_1$ il versore normale a $S$ con la parametrizzazione $\vphi_1$ e $\vnu_2$ quello con $\vphi_2$, risulta
 \begin{equation}
 	\begin{split}
-		\drp{\tilde{\vphi}}{s}\times\drp{\tilde{\vphi}}{t}&=\bigg(\drp{\vphi}{u}\drp{\psi_1}{s}+\drp{\vphi}{v}\drp{\psi_2}{s}\bigg)\times\bigg(\drp{\vphi}{u}\drp{\psi_1}{t}+\drp{\vphi}{v}\drp{\psi_2}{t}\bigg)=\\
-		&=\drp{\vphi}{u}\drp{\psi_1}{s}\times\drp{\vphi}{v}\drp{\psi_2}{t}+\drp{\vphi}{v}\drp{\psi_2}{s}\times\drp{\vphi}{u}\drp{\psi_1}{t}=\\
-		&=\drp{\psi_1}{s}\drp{\psi_2}{t}\bigg(\drp{\vphi}{u}\times\drp{\vphi}{v}\bigg)-\drp{\psi_2}{s}\drp{\psi_1}{t}\bigg(\drp{\vphi}{u}\times\drp{\vphi}{v}\bigg)=\\
-		&=\det(\jac\vpsi)\bigg(\drp{\vphi}{u}\times\drp{\vphi}{v}\bigg)=\\
+		\drp{\vphi_1}{u}\times\drp{\vphi_1}{v}&=\bigg(\drp{\vphi_2}{s}\drp{\tau_1}{u}+\drp{\vphi_2}{t}\drp{\tau_2}{u}\bigg)\times\bigg(\drp{\vphi_2}{s}\drp{\tau_1}{v}+\drp{\vphi_2}{t}\drp{\tau_2}{v}\bigg)=\\
+		&=\drp{\vphi_2}{s}\drp{\tau_1}{u}\times\drp{\vphi_2}{t}\drp{\tau_2}{v}+\drp{\vphi_2}{t}\drp{\tau_2}{u}\times\drp{\vphi_2}{s}\drp{\tau_1}{v}=\\
+		&=\drp{\tau_1}{u}\drp{\tau_2}{v}\bigg(\drp{\vphi_2}{s}\times\drp{\vphi_2}{t}\bigg)-\drp{\tau_2}{u}\drp{\tau_1}{v}\bigg(\drp{\vphi_2}{s}\times\drp{\vphi_2}{t}\bigg)=\\
+		&=\det(\jac\vtau)\bigg(\drp{\vphi_2}{s}\times\drp{\vphi_2}{t}\bigg)
 	\end{split}
 \end{equation}
 dunque normalizzando si ha
 \begin{equation}
-	\tilde{\vnu}=\sgn\big(\!\det(\jac\vpsi)\big)\vnu.
+	\vnu_1=\sgn\big(\!\det(\jac\vtau)\big)\vnu_2.
 	\label{eq:versore-normale-riparametrizzazione}
 \end{equation}
-Per la continuità del versore normale, il segno della matrice jacobiana può essere quindi o 1 o $-1$ in tutto il dominio, perciò vale $\tilde{\vnu}(\vec x)=\pm\vnu(\vec x)$ per ogni $\vec x\in S_\circ$.
+Per la continuità del versore normale, il segno della matrice jacobiana può essere quindi o 1 o $-1$ in tutto il dominio, perciò o vale $\vnu_2(\vec x)=\vnu_1(\vec x)$ o vale $\vnu_2(\vec x)=-\vnu_1(\vec x)$ per ogni $\vec x\in S_\circ$.
 Indichiamo quindi con $\vphi_1\overset{\circ}{\sim}\vphi_2$ se le due superfici sono anche equiorientate, cioè se il versore normale coincide (ha lo stesso segno).
 
 Prendiamo ad esempio una sfera di raggio $R$, centrata nell'origine: è il luogo degli zeri della funzione $F(x,y,z)=x^2+y^2+z^2-R^2$, e prendendo solo l'emisfero per $z>0$ possiamo applicare il teorema di Dini.
