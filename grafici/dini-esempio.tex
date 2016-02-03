@@ -1,0 +1,48 @@
+\begin{figure}
+	\tikzsetnextfilename{dini-esempio}
+	\centering
+	% Il codice di gnuplot per generare il grafico della funzione implicita è tratto da
+	% gnuplot-surprising.blogspot.it/2011/09/assume-three-is-equation-fxygxy-and-we.html
+	% (grazie cubanpit per averlo portato alla luce!)
+	\begin{tikzpicture}
+		\selectcolormodel{gray}
+		% Non sapendo come cambiare il colore della linea disegnata da gnuplot,
+		% questo comando forza il bianco/nero su tutto il grafico
+		\begin{axis}[
+				standard,
+				xtick={0.6,1,2},
+				xticklabels={$\bar{x}$,1,2},
+				ytick={-2,-1,0.927},
+				yticklabels={-2,-1,$\bar{y}$},
+				xmin=-.2, xmax=2,
+				ymin=-2, ymax=1.1, % Aggiungo .1 al massimo altrimenti la linea
+									% appare tagliata a metà
+				xlabel=$x$,
+				ylabel=$y$
+			]
+			\addplot+[
+				no markers,
+				raw gnuplot,
+				empty line=jump
+			] gnuplot {
+				set contour;
+				set cntrparam levels discrete 0;
+				set view map;
+				unset surface;
+				unset key;
+				set isosamples 1000,1000;
+				set xrange [0:2];
+				set yrange [-2:1];
+				splot cos(y)-x**3*y+x-1 with points lc variable;
+			};
+			% Le coordinate del punto "di massimo" a circa y=1 sono ~(0.6, 0.927)
+			% (trovate risolvendo le equazioni con WolframAlpha)
+			\draw[densely dotted] (.6,0) -- (.6,.927) -- (0,.927);
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Grafico (in parte) del luogo degli zeri di $F(x,y)=\cos y-x^3y+x-1$.
+		Possiamo definire una funzione implicita $y=g(x)$ per ogni intorno di $(x,y)\ne(0,0)$, dato che nell'origine $\drp{F}{y}=0$; allo stesso modo però possiamo ottenere una funzione implicita $x=h(y)$ per $(x,y)\ne(\bar{x},\bar{y})$, poich\'e in tale punto si ha $\drp{F}{x}=0$.
+		Nel secondo caso, ad esempio, in un intorno (qualunque) del punto è impossibile definire una funzione, dato che ad ogni $y$ corrisponderebbero due valori di $x$, uno a sinistra e uno a destra della retta $x=\bar{x}$.}
+	\label{fig:dini-esempio}
+\end{figure}
+
