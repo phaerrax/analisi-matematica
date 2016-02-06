@@ -575,8 +575,9 @@ Mostriamo ora con le seguenti proprietà che operando con funzioni misurabili (a
 	\end{equation}
 	che è quindi misurabile come unione di aperti.
 \end{proof}
+Nella prossima proprietà, trattando le operazioni aritmetiche tra funzioni, prenderemo come loro codominio soltanto $\R$ e non tutto $\Rex$, in modo da evitare forme come $\infty-\infty$ o $\infty/\infty$ che non possiamo determinare.
 \begin{proprieta} \label{pr:operazioni-funzioni-misurabili}
-	Se le funzioni $f,g\colon A\to\Rex$, con $A\in\mis(\R^n)$, sono misurabili in $A$, allora anche le funzioni $\lambda f$ (con $\lambda\in\R$), $f+g$, $fg$ e $f/g$ (se $g\neq0$ in $A$) lo sono.
+	Se le funzioni $f,g\colon A\to\R$, con $A\in\mis(\R^n)$, sono misurabili in $A$, allora anche le funzioni $\lambda f$ (con $\lambda\in\R$), $f+g$, $fg$ e $f/g$ (se $g\neq0$ in $A$) lo sono.
 \end{proprieta}
 \begin{proof}
 	\begin{itemize}
@@ -589,7 +590,21 @@ Mostriamo ora con le seguenti proprietà che operando con funzioni misurabili (a
 			Se $c\geq 0$, è equivalente a $\{\vec x\in A\colon f(\vec x)>\sqrt{c}\}\cup\{\vec x\in A\colon f(\vec x)<-\sqrt{c}\}$ che è misurabile come unione di misurabili.
 			Se $c<0$, chiaramente $\{\vec x\in A\colon [f(\vec x)]^2>c\}=A$ quindi è ancora misurabile.
 			Dunque, poich\'e $(f+g)^2-(f-g)^2=f^2+g^2+2fg-f^2-g^2+2fg=4fg$, abbiamo $fg=\frac14[(f+g)^2-(f-g)^2]$ quindi è misurabile.
-		\item Lasciata come esercizio.\qedhere
+		\item Definiamo gli insiemi $A_+\defeq\{\vec x\in A\colon g(\vec x)>0\}$ e $A_-\defeq\{\vec x\in A\colon g(\vec x)<0\}$.
+			Dato che per ipotesi $g\ne 0$ in $A$, si ha $A_+\cup A_-=A$.\footnote{
+				Ovviamente $A_+$ e $A_-$ sono misurabili: se per assurdo infatti non lo fossero, poich\'e $A_+\cap A_-=\emptyset$ e $A_+\cup A_-=A$ nemmeno $A$ lo sarebbe.
+			}
+			Restringiamo $g$ alla funzione $\tilde g_+\colon A_+\to\R$, tale ovviamente che $\tilde g_+(\vec x)=g(\vec x)$ (e quindi $f/{\tilde g_+}=f/g$) $\forall\vec x\in A_+$.
+			Tale funzione $\tilde g_+$ è misurabile per il teorema \ref{t:funzione-misurabile-restrizioni}.
+			Ora, per valutare l'insieme $E\defeq\{\vec x\in A_+\colon f(\vec x)/{\tilde g_+(\vec x)}<c\}$ distinguiamo quattro casi:
+			\begin{itemize}
+				\item se $c\in\R$, allora $f/{\tilde g_+}<c$ equivale a $f<c\tilde g_+$ ossia $f-c\tilde g_+<0$, e l'insieme $\{\vec x\in A_+\colon f(\vec x)-c\tilde g_+(\vec x)<0\}$ è misurabile poich\'e $f$ e $\tilde g_+$ lo sono.
+				\item se $c=+\infty$, $f/{\tilde g_+}<+\infty$ equivale a $f<+\infty$, perciò $\{\vec x\in A_+\colon f(\vec x)<+\infty\}=A_+$ ed è quindi misurabile.
+				\item se $c=-\infty$, allora $f/{\tilde g_+}<-\infty$ equivale a $f<-\infty$ e $\{\vec x\in A_+\colon f(\vec x)<-\infty\}=\emptyset$ che è misurabile.
+			\end{itemize}
+			In conclusione, per qualsiasi $c\in\Rex$ l'insieme $E$ prima definito è misurabile, vale a dire che $f/{\tilde g_+}$ lo è in $A_+$.
+			Lo stesso argomento si applica se anzich\'e $\tilde g_+$ prendiamo la restrizione $\tilde g_-=g|_{A_-}$, con qualche semplice modifica al verso delle disuguaglianze, quindi anch'essa è misurabile.
+			Abbiamo dunque che $f/{\tilde g_+}$ è misurabile in $A_+$ e $f/{\tilde g_-}$ lo è in $A_-$: per il teorema \ref{t:funzione-misurabile-restrizioni} allora $f/g$ è misurabile in $A$.\qedhere
 	\end{itemize}
 \end{proof}
 \begin{proprieta} \label{pr:estremi-successioni-funzioni-misurabili}
