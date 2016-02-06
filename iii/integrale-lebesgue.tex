@@ -96,7 +96,7 @@ Cominciamo a dare una prima approssimazione di quella che sarà la misura di un 
 	dove $K$ è un insieme numerabile.
 \end{definizione}
 Chiaramente $\mu^*$ è un numero reale, ma può anche essere infinito, come ad esempio la misura esterna di $\R$.
-Dunque possiamo dire che $\mu^*$ è una funzione che associa ad un insieme di $\R^n$, quindi un elemento dell'insieme delle parti, un numero non negativo anche infinito, cioè $\mu^*\colon\mathcal P\to[0,+\infty]$.
+Dunque possiamo dire che $\mu^*$ è una funzione che associa a un insieme di $\R^n$ (quindi a un elemento dell'insieme delle parti), un numero non negativo anche infinito: vale a dire, abbiamo una funzione $\mu^*\colon\mathcal P(\R^n)\to[0,+\infty]$.
 
 La misura esterna di un iperrettangolo di volume $\vol{I}$ è chiaramente $\vol{I}$ stesso, che è il più piccolo ricoprimento possibile.
 Infatti, per ogni iperrettangolo $I$ (non vuoto) ne esistono $\forall\epsilon>0$ altri due $H$ e $J$, con $H\subset\interior{I}\subset I\subset\interior{J}$ tali che $\vol{J}-\epsilon<\vol{I}<\vol{H}+\epsilon$.
@@ -490,6 +490,7 @@ Si verifica facilmente inoltre che il complementare di un insieme $G_\delta$ è 
 	Dato un insieme $A\in\mis(\R^n)$, una funzione $f\colon A\to\Rex$ si dice \emph{misurabile} (su $A$) se l'insieme $\{\vec x\in A\colon f(\vec x)<c\}$ è misurabile per qualsiasi $c\in\Rex$.
 \end{definizione}
 Osserviamo che la scelta del segno $<$ è del tutto arbitraria ai fini della definizione: mostriamo che se $\{\vec x\in A\colon f(\vec x)<c\}$ è misurabile, allora anche gli insiemi $\{\vec x\in A\colon f(\vec x)\leq c\}$, $\{\vec x\in A\colon f(\vec x)>c\}$ e $\{\vec x\in A\colon f(\vec x)\geq c\}$ lo sono.
+Per brevità spesso sottintenderemo l'insieme di appartenenza di $\vec x$, scrivendo ad esempio soltanto $\{f(\vec x)<c\}$.
 \begin{itemize}
 	\item Se $c\in\R$ possiamo scrivere $\{f(\vec x)\leq c\}$ come $\bigcap_{k=1}^{+\infty}\{f(\vec x)<c+\frac1{k}\}$, che è un insieme di tipo $G_\delta$ e dunque misurabile.
 		Se $c=+\infty$, $\{f(\vec x)\leq c\}=A$ che è misurabile.
@@ -511,7 +512,8 @@ Passiamo ora a considerare gli insiemi \emph{di livello} della funzione.
 	Se $c=+\infty$, $\{f(\vec x)=c\}=\bigcap_{k=1}^{+\infty}\{f(\vec x)\geq k\}$ mentre per $c=-\infty$ $\{f(\vec x)=c\}=\bigcap_{k=1}^{+\infty}\{f(\vec x)\leq -k\}$ dunque sono entrambi insiemi di tipo $G_\delta$, perciò misurabili.
 \end{proof}
 Come ci si può aspettare, non tutte le funzioni sono misurabili.
-Una semplice funzione non misurabile è la funzione caratteristica di un insieme non misurabile: se $E\notin\mis(\R^n)$, la funzione $f\colon E\to\Rex$ definita come $f(\vec x)=\chi_E(\vec x)$ non è misurabile perch\'e l'insieme di livello $\{x\in E\colon \chi_E(\vec x)=1\}$ è proprio l'insieme $E$, dunque non è misurabile, e non lo è nemmeno la funzione per il teorema appena enunciato.
+Non dobbiamo sforzarci troppo per trovarne una: se $E\notin\mis(\R^n)$, la funzione caratteristica di tale insieme non è misurabile, perch\'e l'insieme di livello $\{x\in E\colon \chi_E(\vec x)=1\}$ è proprio l'insieme $E$.
+Se dunque $\chi_E$ fosse misurabile, per questo teorema dovrebbe esserlo anche l'insieme di livello, cosa che abbiamo visto non essere vera: allora $\chi_E$ non è misurabile.
 
 \begin{teorema} \label{t:funzioni-continue-misurabili}
 	Sia $A\in\mis(\R^n)$ e $f\colon A\to\R$.
@@ -573,7 +575,7 @@ Mostriamo ora con le seguenti proprietà che operando con funzioni misurabili (a
 	\begin{equation}
 		E=\bigcup_{r\in\Q}\big(\{\vec x\in E\colon f(\vec x)>r\}\cap\{\vec x\in E\colon g(\vec x)<r\}\big)
 	\end{equation}
-	che è quindi misurabile come unione di aperti.
+	che è quindi misurabile in quanto unione di aperti.
 \end{proof}
 Nella prossima proprietà, trattando le operazioni aritmetiche tra funzioni, prenderemo come loro codominio soltanto $\R$ e non tutto $\Rex$, in modo da evitare forme come $\infty-\infty$ o $\infty/\infty$ che non possiamo determinare.
 \begin{proprieta} \label{pr:operazioni-funzioni-misurabili}
@@ -581,7 +583,7 @@ Nella prossima proprietà, trattando le operazioni aritmetiche tra funzioni, pre
 \end{proprieta}
 \begin{proof}
 	\begin{itemize}
-		\item Se $\lambda>0$, l'insieme $\{\vec x\in A\colon \lambda f(\vec x)<c\}$ equivale per ogni $c\in\R$ a $\{\vec x\in A\colon f(\vec x)<\frac{c}{\lambda}\}$ che è misurabile per la misurabilità di $f$.
+		\item Se $\lambda>0$, l'insieme $\{\vec x\in A\colon \lambda f(\vec x)<c\}$ equivale per ogni $c\in\R$ a $\{\vec x\in A\colon f(\vec x)<c/\lambda\}$ che è misurabile per la misurabilità di $f$.
 			Se $\lambda=0$ è invece equivalente all'insieme $\{\vec x\in A\colon 0<c\}$ che è o tutto $A$ se $c>0$ o l'insieme vuoto se $c\leq 0$, e in entrambi i casi sono insiemi misurabili.
 			Se $\lambda<0$ è equivalente a $\{\vec x\in A\colon f(\vec x)>\frac{c}{\lambda}\}$ che è ancora misurabile come nel primo caso.
 		\item L'insieme $\{\vec x\in A\colon (f+g)(\vec x)<c\}$ equivale a $\{\vec x\in A\colon f(\vec x)<c-g(\vec x)\}$.
@@ -655,8 +657,8 @@ Infatti basta vederla come composizione $g\circ f$ dove $g\colon\R\to\R$ è defi
 \begin{equation}
 	g(x)=
 	\begin{cases}
-		0&x\leq 0\\
-		x^p&x>0
+		(-x)^p & x<0\\
+		x^p    & x\ge 0
 	\end{cases}
 \end{equation}
 che è evidentemente continua in tutto $\R$.
@@ -664,11 +666,13 @@ che è evidentemente continua in tutto $\R$.
 	La funzione caratteristica di un insieme $A$ è misurabile se e solo se $A$ è misurabile.
 \end{osservazione}
 \begin{proof}
-	Prendiamo $\chi_A\colon\R^n\to{0,1}$.
+	Prendiamo $\chi_A\colon\R^n\to\{0,1\}$.
 	Se $c>1$, risulta $\{\vec x\in \R^n\colon\chi_A(\vec x)<c\}=\R^n$.
 	Se $0<c\leq1$, $\{\vec x\in \R^n\colon \chi_A(\vec x)<c\}=\compl A$, poich\'e $\chi_A(\vec x)=0$ se $\vec x\notin A\then\vec x\in\compl A$.
 	Se $c\leq 0$ infine $\{\vec x\in R^n\colon \chi_A(\vec x)<c\}=\emptyset$.
-	In tutti i tre i casi gli insiemi sono misurabili.
+	In tutti i tre i casi gli insiemi sono misurabili, dunque anche $\chi_A$ lo è.
+
+	D'altro canto, se $\chi_A$ è misurabile, allora per il teorema \ref{t:insiemi-livello-funzione-misurabile} è misurabile l'insieme $\{\vec x\in\R^n\colon \chi_A(\vec x)=1\}=A$.
 \end{proof}
 
 \section{Integrale di Lebesgue}
@@ -1063,8 +1067,8 @@ Poich\'e stiamo considerando il limite della successione, come al solito ci inte
 	cioè possiamo scambiare limite e integrale.
 \end{osservazione}
 
-\subsection{Confronto con l'integrale di Riemann}
-Alla fine della costruzione della teoria dell'integrazione, cosa rimane della teoria di Riemann?
+\subsection*{Confronto con l'integrale di Riemann}
+Giunti alla fine della costruzione della teoria dell'integrazione, cosa rimane della teoria di Riemann?
 Possiamo usare quanto imparato in quel caso anche con l'integrale di Lebesgue?
 Vediamo ora come integrare il lavoro svolto per le due teorie. %PUN INTENDED.
 
