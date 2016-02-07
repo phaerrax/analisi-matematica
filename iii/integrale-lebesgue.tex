@@ -922,6 +922,52 @@ Passiamo dunque ad elencare i teoremi più importanti in questo ambito, che ci p
 		\lim_{n\to+\infty}\int_Af_n\dd\mu=\int_Af\,\dd\mu.\qedhere
 	\end{equation}
 \end{proof}
+Completiamo subito, dunque, la dimostrazione della linearità dell'integrale: ci manca da dimostrare che l'integrale della somma è la somma degli integrali (il resto è dimostrato nel punto 3 della \ref{pr:integrale-lebesgue}).
+\begin{proprieta} \label{pr:linearita-integrale-lebesgue}
+	Siano $f,g\colon A\to[0,+\infty]$ misurabili con $A\in\mis(\R^n)$.
+	Vale l'equazione
+	\begin{equation}
+		\int_A(f+g)\dd\mu=\int_Af\,\dd\mu+\int_Ag\,\dd\mu.
+		\label{eq:linearita-integrale-lebesgue}
+	\end{equation}
+\end{proprieta}
+\begin{proof}
+	Per la misurabilità delle due funzioni possiamo sempre trovare due successioni di funzioni semplici, $s_n$ e $t_n$, monotone crescenti e convergenti a $f$ e $g$ rispettivamente.
+	Anche il limite della loro somma esiste, e chiaramente vale $\lim_{n\to+\infty}(s_n+t_n)=f+g$.
+	Allora
+	\begin{equation}
+		\int_A(f+g)\dd\mu=\lim_{n\to+\infty}\int_A(s_n+t_n)\dd\mu=\lim_{n\to+\infty}\bigg(\int_As_n\dd\mu+\int_At_n\dd\mu\bigg)
+	\end{equation}
+	per il teorema \ref{t:integrale-funzioni-semplici-linearita}, dunque per il teorema della convergenza monotona risulta
+	\begin{equation}
+		\lim_{n\to+\infty}\bigg(\int_As_n\dd\mu+\int_At_n\dd\mu\bigg)=\int_Af\,\dd\mu+\int_Ag\,\dd\mu.\qedhere
+	\end{equation}
+\end{proof}
+
+Nonostante il teorema di Beppo-Levi sia detto ``della convergenza monotona'', le ipotesi ammettono in realtà solo le successioni crescenti.
+Con la seguente osservazione e una piccola ipotesi in più estendiamo la validità di questo teorema anche ad esse.
+\begin{osservazione} \label{o:convergenza-monotona-decrescente}
+	Sia $\{f_n\}_{n=1}^{+\infty}$ una successione di funzioni con $f_n\colon A\to[0,+\infty)$ e $A\in\mis(\R^n)$, tale che $\int_Af_1\,\dd\mu<+\infty$.
+	Se la successione è monotona decrescente, cioè $f_n(\vec x)\ge f_{n+1}(\vec x)$ $\forall\vec x\in A$, e converge puntualmente in $A$ alla funzione $f$, allora
+	\begin{equation}
+		\lim_{n\to+\infty}\int_Af_n\,\dd\mu=\int_Af\,\dd\mu.
+	\end{equation}
+\end{osservazione}
+\begin{proof}
+	Definiamo la successione $g_n\defeq f_1-f_n$: dato che $\{f_n\}$ è monotona decrescente, il cambio di segno in $f_n$ fa s\`i che $g_n$ sia monotona crescente; inoltre poich\'e $f_1\ge f_n$ abbiamo anche che $f_1-f_n\ge 0$ $\forall n\in\N$.
+	Possiamo dunque applicare il teorema della convergenza monotona a $\{g_n\}$, ottenendo
+	\begin{equation}
+		\lim_{n\to+\infty}\int_A(f_1-f_n)\,\dd\mu=\int_A\lim_{n\to+\infty}(f_1-f_n)\,\dd\mu
+	\end{equation}
+	la quale evidentemente, dato che $f_1$ è indipendente dal limite, per la linearità dell'integrale equivale a
+	\begin{equation}
+		\int_Af_1\,\dd\mu-\lim_{n\to+\infty}\int_Af_n\,\dd\mu=\int_Af_1\,\dd\mu-\int_A\lim_{n\to+\infty}f_n\,\dd\mu.
+	\end{equation}
+	La finitezza dell'integrale in $A$ di $f_1$ ci permette infine di cancellare tale termine da entrambi i membri, ottenendo
+	\begin{equation}
+		\lim_{n\to+\infty}\int_Af_n\,\dd\mu=\int_A\lim_{n\to+\infty}f_n\,\dd\mu.\qedhere
+	\end{equation}
+\end{proof}
 \begin{corollario} \label{cor:serie-integrali}
 	Sia $\{f_n\}_{n=1}^{+\infty}$ una successione di funzioni $f_n\colon A\to[0,+\infty]$ con $A$ misurabile: allora
 	\begin{equation}
@@ -942,7 +988,7 @@ Passiamo dunque ad elencare i teoremi più importanti in questo ambito, che ci p
 	\begin{enumerate}
 		\item se $A_i\cap A_j=\emptyset$ per $i\neq j$, $\int_Af\,\dd\mu=\ser{i}\int_{A_i}f\,\dd\mu$;
 		\item se $A_n\subseteq A_{n+1}$ per ogni $n\in\N$, $\int_Af\,\dd\mu=\lim_{n\to+\infty}\int_{A_n}f\,\dd\mu$;
-		\item se $A_n\supseteq A_{n+1}$ per ogni $n\in\N$, detto $B=\bigcap_{i=1}^{+\infty}A_i$, se $\int_{A_1}f\,\dd\mu<+\infty$ allora $\int_Bf\,\dd\mu=\lim_{j\to+\infty}\int_{A_j}f\,\dd\mu$.
+		\item se $A_n\supseteq A_{n+1}$ per ogni $n\in\N$, detto $B=\bigcap_{n=1}^{+\infty}A_n$, se $\int_{A_1}f\,\dd\mu<+\infty$ allora $\int_Bf\,\dd\mu=\lim_{n\to+\infty}\int_{A_n}f\,\dd\mu$.
 	\end{enumerate}
 \end{corollario}
 \begin{proof}
@@ -957,30 +1003,12 @@ Passiamo dunque ad elencare i teoremi più importanti in questo ambito, che ci p
 			\begin{equation}
 				\int_Af\,\dd\mu=\lim_{n\to+\infty}\int_Af_n\dd\mu=\lim_{n\to+\infty}\int_{A_n}f\,\dd\mu.
 			\end{equation}
-		\item ?	\qedhere
+		\item Definendo $f_n\defeq f\chi_{A_n}$ abbiamo evidentemente $f_n\ge f_{n+1}$ per ogni $n\in\N$, quindi la $\{f_n\}$ è una successione monotona decrescente, tale che $f\chi_B=\lim_{n\to+\infty}f_n$.
+			Dato che $\int_Af_1\,\dd\mu$ è finito, in virtù dell'osservazione \ref{o:convergenza-monotona-decrescente} risulta
+			\begin{equation}
+				\int_Bf\,\dd\mu=\int_Af\chi_B\,\dd\mu=\int_A\lim_{n\to+\infty}f_n\,\dd\mu=\lim_{n\to+\infty}\int_Af_n\,\dd\mu=\lim_{n\to+\infty}\int_{A_n}f\,\dd\mu.\qedhere
+			\end{equation}
 	\end{enumerate}
-\end{proof}
-
-Completiamo dunque la dimostrazione della linearità dell'integrale: ci manca da dimostrare che l'integrale della somma è la somma degli integrali (il resto è dimostrato nel punto 3 della \ref{pr:integrale-lebesgue}).
-\begin{proprieta} \label{pr:linearita-integrale-lebesgue}
-	Siano $f,g\colon A\to[0,+\infty]$ misurabili con $A\in\mis(\R^n)$.
-	Vale l'equazione
-	\begin{equation}
-		\int_A(f+g)\dd\mu=\int_Af\,\dd\mu+\int_Ag\,\dd\mu.
-		\label{eq:linearita-integrale-lebesgue}
-	\end{equation}
-\end{proprieta}
-\begin{proof}
-	Per la misurabilità delle due funzioni possiamo sempre trovare due successioni di funzioni semplici, $s_n$ e $t_n$, monotone crescenti e convergenti a $f$ e $g$ rispettivamente.
-	Anche il limite della loro somma esiste, e chiaramente vale $\lim_{n\to+\infty}(s_n+t_n)=f+g$.
-	Allora
-	\begin{equation}
-		\int_A(f+g)\dd\mu=\lim_{n\to+\infty}\int_A(s_n+t_n)\dd\mu=\lim_{n\to+\infty}\bigg(\int_As_n\dd\mu+\int_At_n\dd\mu\bigg)
-	\end{equation}
-	per il teorema \ref{t:integrale-funzioni-semplici-linearita}, dunque per il teorema della convergenza monotona risulta
-	\begin{equation}
-		\lim_{n\to+\infty}\bigg(\int_As_n\dd\mu+\int_At_n\dd\mu\bigg)=\int_Af\,\dd\mu+\int_Ag\,\dd\mu.\qedhere
-	\end{equation}
 \end{proof}
 
 \begin{lemma}[di Fatou] \label{l:fatou}
