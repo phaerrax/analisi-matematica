@@ -31,9 +31,13 @@
 \addbibresource{analisi-matematica.bib}
 
 \begin{document}
+\frontmatter
+
+% Frontespizio
 \maketitle
 
-\null % Serve scrivere qualcosa prima di \vfill altrimenti non funziona
+% Colophon
+\null % Bisogna inserire qualcosa prima di \vfill, altrimenti non funziona
 \vfill % Riempie lo spazio verticale della pagina
 \hspace*{-1.5em}\includegraphics[scale=.7]{by-sa-icon.pdf}
 \begin{flushleft}
@@ -41,6 +45,8 @@
 	2015, Davide Ferracin (\href{mailto:davide.ferracin@studenti.unimi.it}{\ttfamily davide.ferracin@studenti.unimi.it})\\[1cm]
 	Versione aggiornata al \today.
 \end{flushleft}
+
+\mainmatter
 
 \part{}
 \startcontents[parts]
@@ -71,12 +77,16 @@
 \include{iii/analisi-vettoriale}
 \stopcontents[parts]
 
+\backmatter
+
+% Bibliografia
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{part}{\bibname}
 \nocite{*}
 \printbibliography
 
+% Indice
 \cleardoublepage
 \pdfbookmark[-1]{Indice}{contents}
 \tableofcontents
