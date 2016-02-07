@@ -1244,21 +1244,18 @@ Vediamo ora quando è possibile applicare questi cambiamenti di coordinate.
 		\item se $p>n$, allora $\mu\big(\vec F(A)\big)=0$ in $\R^p$.
 	\end{itemize}
 \end{teorema}
-Ad esempio l'immagine di una curva in $\R^n$ con $n\geq 2$ ha sempre misura nulla, in quanto una curva è sempre funzione di una sola variabile.
 
-Tra le trasformazioni tra due aperti di $\R^n$, avevamo visto i diffeomorfismi, ossia delle trasformazioni biunivoche, differenziabili e con inversa differenziabile. La jacobiana di un diffeomorfismo non è mai singolare (almeno in ogni punto degli insiemi considerati).
+Tra le trasformazioni tra due aperti di $\R^n$ avevamo visto i diffeomorfismi, ossia delle trasformazioni biunivoche, differenziabili e con inversa differenziabile. La jacobiana di un diffeomorfismo non è mai singolare, quindi, per definizione.
 Inoltre, essendo differenziabile, possiamo scrivere lo sviluppo al primo ordine in ogni punto $\vec x_0$ dell'insieme di partenza
 \begin{equation}
-	\vec g(\vec x)=\vec g(\vec x_0)+\jac\vec g(\vec x_0)(\vec x-\vec x_0)+\rho(\vec x),
+	\vec g(\vec x)=\vec g(\vec x_0)+\jac\vec g(\vec x_0)(\vec x-\vec x_0)+o(\norm{\vec x-\vec x_0}).
 \end{equation}
-dove $\rho(\vec x)$ è il resto di Peano, del tipo $o(\norm{\vec x-\vec x_0})$, che tende a zero per $\vec x\to\vec x_0$.
-Dunque possiamo approssimare linearmente nell'intorno di $\vec x_0$ il nostro diffeomorfismo con una mappa affine (ossia lineare a meno di una costante, che è $\vec g(\vec x_0)$) rappresentata dalla matrice jacobiana.
+Possiamo dunque approssimare linearmente nell'intorno di $\vec x_0$ il diffeomorfismo con una mappa affine (ossia lineare a meno di una costante, che qui è $\vec g(\vec x_0)$) rappresentata dalla matrice jacobiana.
 Abbiamo inoltre il seguente teorema.
 \begin{teorema} \label{t:diffeomorfismo-globale}
 	Una funzione $\vec g\colon U\to V$, con $U,V$ aperti in $\R^n$, biunivoca e tale che $\vec g\in\cont{1}(U)$ e $\det\jac\vec g(\vec x)\neq 0$ per ogni $\vec x\in U$, è un diffeomorfismo \emph{globale} tra $U$ e $V$.
 \end{teorema}
-La proprietà di non singolarità della jacobiana è solamente locale, quindi da sola non basta ad affermare che il diffeomorfismo sia anche globale, ma serve provarne la biunivocità.
-
+La proprietà di non singolarità della jacobiana è solamente locale, quindi da sola non basta ad affermare che il diffeomorfismo sia anche globale: serve anche provarne la biunivocità.
 \begin{teorema} \label{t:diffeomorfismo-misurabilita-insieme}
 	Siano $U,V\subseteq\R^n$ aperti e $\vec g\colon U\to V$ un diffeomorfismo globale tra essi.
 	Allora un insieme $B\subseteq V$ è misurabile se e solo se $\vec g^{-1}(B)\subseteq U$ lo è.
