@@ -168,7 +168,7 @@ Quando abbiamo introdotto le forme differenziali lineari, eravamo partiti dai di
 \begin{equation}
 	\dd f=\sum_{i=1}^n\drp{f}{x_i}\dd x_i.
 \end{equation}
-Gli integrali di queste forme sono semplicissimi da calcolare: infatti dati $A$ aperto di $\R^n$, $F\colon A\to\R$ di classe $\cont{1}(A)$ e $\vphi\colon[a,b]\to\R^n$ regolare a tratti, risulta
+Gli integrali di queste forme sono semplicissimi da calcolare: infatti dati $A$ aperto di $\R^n$, $f\colon A\to\R$ di classe $\cont{1}(A)$ e $\vphi\colon[a,b]\to\R^n$ regolare a tratti, risulta
 \begin{equation}
 	\int_{\vphi}\dd f=\int_a^b\sum_{i=1}^n\drp{f}{x_i}\big(\vphi(t)\big)\phi_i'(t)\,\dd t=\int_a^b\drv{}{t}f\big(\vphi(t)\big)\,\dd t.
 \end{equation}
@@ -306,7 +306,7 @@ Una definizione rigorosa può essere data tramite il concetto di curve omotopich
 \end{definizione}
 La mappa dell'omotopia tra le due curve si può vedere più facilmente come una deformazione continua (quindi ``senza strappi'') e differenziabile che trasforma curve chiuse in curve chiuse nello stesso insieme.
 \begin{definizione} \label{d:insieme-semplicemente-connesso}
-	Un insieme $A\subseteq\R^n$ si dice \emph{semplicemente connesso} se ogni curva $\vphi\colon[a,b]\to A$, di classe $\cont{2}(A)$ e chiusa è omotopica ad un punto in $A$, ossia ad una curva (degenere) costante $\vpsi\colon[a,b]\to A$ per cui $\vpsi(t)=\vec c$, con $\vec c\in A$.
+	Un insieme $A\subseteq\R^n$ si dice \emph{semplicemente connesso} se ogni curva $\vphi\colon[a,b]\to A$, di classe $\cont{2}([a,b])$ e chiusa è omotopica ad un punto in $A$, ossia ad una curva (degenere) costante $\vpsi\colon[a,b]\to A$ per cui $\vpsi(t)=\vec c$, con $\vec c\in A$.
 \end{definizione}
 Con queste definizioni possiamo quindi enunciare il seguente importante teorema.
 \begin{teorema}[Lemma di Poincar\'e] \label{t:poincare}
