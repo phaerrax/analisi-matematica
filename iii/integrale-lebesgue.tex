@@ -433,13 +433,14 @@ Si verifica facilmente inoltre che il complementare di un insieme $G_\delta$ è 
 	\end{itemize}
 \end{lemma}
 \begin{teorema} \label{t:gdelta-fsigma-misurabili}
-	Un qualsiasi insieme $E\subseteq\R^n$ misurabile è sempre tale per cui
+	Un qualsiasi insieme $E\subseteq\R^n$ è misurabile se e solo se
 	\begin{itemize}
 		\item esistono un insieme $G$ di tipo $G_\delta$ e un insieme $Z$ di misura nulla tali che $E=G\setminus Z$;
 		\item esistono un insieme $F$ di tipo $F_\sigma$ e un insieme $Z$ di misura nulla tali che $E=F\cup Z$.
 	\end{itemize}
 \end{teorema}
 \begin{proof}
+	Dimostriamo innanzitutto che sia condizione necessaria per la misurabilità.
 	Scegliamo $\epsilon=\frac1{k}$: per il lemma precedente \ref{l:aperti-chiusi-poco-differenti} troviamo per ogni tale $\epsilon$ un insieme $G_k\supset E$ tale che $\mu(G_k\setminus E)<\frac1{k}$.
 	Individuiamo cos\`i una ``successione'' di insiemi $\{G_k\}_{k=1}^{+\infty}$ con le proprietà trovate.
 	Definiamo $G\defeq\bigcap_{k\in\N}G_k$ e $Z=G\setminus E$.
@@ -454,6 +455,9 @@ Si verifica facilmente inoltre che il complementare di un insieme $G_\delta$ è 
 	\end{equation}
 
 	Per la seconda parte della tesi, se $E=G\setminus Z$ è misurabile lo è anche il suo complementare, che è $\compl{E}=\compl{(G\cap\compl{Z})}=\compl{G}\cup Z$, ma $\compl{G}$ è di tipo $F_\sigma$, poich\'e complementare di $G$ che è di tipo $G_\delta$ (l'insieme $\compl{G}$ è l'equivalente di $F$ nella tesi).
+	
+	Dimostriamo infine che sia anche condizione sufficiente.
+	Se può essere scritto $E=G\setminus Z$ con $G$ e $Z$ come definiti nell'enunciato, abbiamo che l'insieme $G$ è misurabile perché di tipo $G_\delta$ e l'insieme $Z$ è misurabile perché di misura, e quindi misura esterna, nulla. Di conseguenza l'insieme $E$ è la differenza di due insiemi misurabili, che è sempre misurabile. Lo stesso discorso vale per l'unione nel secondo punto della tesi.
 \end{proof}
 \begin{teorema}
 	Un insieme $A\subseteq\R^n$ è misurabile se e solo se $\forall\epsilon>0$ esistono un insieme $F$ chiuso ed un insieme $U$ aperto tali che $F\subseteq A\subseteq U$ e $\mu(U\setminus F)<\epsilon$.
@@ -736,7 +740,7 @@ Definiamo inoltre convenzionalmente $0\cdot\infty=0$.
 		\int_{\R^n}s\,\dd\mu\defeq \sum_{j=1}^pc_j\mu(E_j).
 		\label{eq:integrale-lebesgue-funzioni-semplici}
 	\end{equation}
-	Definiamo inoltre l'integrale di $s$ su $A\subset\R^n$ come
+	Definiamo inoltre l'integrale di $s$ su $A\in\mis(\R^n)$ come
 	\begin{equation}
 		\int_As\,\dd\mu\defeq \sum_{j=1}^pc_j\mu(E_j\cap A).
 	\end{equation}
@@ -945,7 +949,7 @@ Completiamo subito, dunque, la dimostrazione della linearità dell'integrale: ci
 \end{proof}
 
 Nonostante il teorema di Beppo-Levi sia detto ``della convergenza monotona'', le ipotesi ammettono in realtà solo le successioni crescenti.
-Con la seguente osservazione e una piccola ipotesi in più estendiamo la validità di questo teorema anche ad esse.
+Con la seguente osservazione e una piccola ipotesi in più estendiamo la validità di questo teorema anche alle successioni decrescenti.
 \begin{osservazione} \label{o:convergenza-monotona-decrescente}
 	Sia $\{f_n\}_{n=1}^{+\infty}$ una successione di funzioni con $f_n\colon A\to[0,+\infty)$ e $A\in\mis(\R^n)$, tale che $\int_Af_1\,\dd\mu<+\infty$.
 	Se la successione è monotona decrescente, cioè $f_n(\vec x)\ge f_{n+1}(\vec x)$ $\forall\vec x\in A$, e converge puntualmente in $A$ alla funzione $f$, allora
@@ -1029,7 +1033,7 @@ Con la seguente osservazione e una piccola ipotesi in più estendiamo la validit
 	sempre per ogni $k\geq n$.
 	Prendendo l'estremo inferiore rispetto a $k$ dei due membri (il primo membro non dipende da $k$ quindi rimane cos\'i com'è), e passando poi al limite per $n\to+\infty$, abbiamo
 	\begin{equation}
-		\lim_{n\to+\infty}\int_Ag_n\dd\mu\leq\lim_{n\to+\infty}\inf_{k\geq n}\int_Af_k\dd\mu=\liminf_{k\to+\infty}\int_Af_k\dd\mu.
+		\lim_{n\to+\infty}\int_Ag_n\dd\mu\leq\lim_{n\to+\infty}\inf_{k\geq n}\int_Af_k\dd\mu=\liminf_{n\to+\infty}\int_Af_n\dd\mu.
 	\end{equation}
 	Applicando infine il teorema della convergenza monotona al primo membro troviamo
 	\begin{equation}

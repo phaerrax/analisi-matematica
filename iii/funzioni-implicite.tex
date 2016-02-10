@@ -4,6 +4,10 @@ Concentreremo il nostro studio delle funzioni implicite sul piano cartesiano $\R
 	Una curva è una mappa $\vphi\colon I\to\R^2$ che associa a $t$ la coppia ordinata $\big(x(t),y(t)\big)$.
 	Essa si dice regolare se è di classe $\cont{1}$ e se $\vphi'(t)=\big(x'(t),y'(t)\big)\neq(0,0)$ $\forall t\in I$.
 \end{definizione}
+\begin{definizione}
+	Una curva $\vphi\colon I\to\R^2$ si dice \emph{semplice} se $\forall a\neq b\in \mathring{I}$ si ha $\vphi(a)\neq\vphi(b)$; in pratica quando non incontra mai se stessa, salvo che negli estremi.
+	Una curva $\vphi\colon [a,b]\to\R^2$ si dice \emph{chiusa} se $\vphi(a)=\vphi(b)$, una curva semplice può quindi essere chiusa.
+\end{definizione}
 Una funzione $f\colon[a,b]\to\R$ di classe $\cont{1}$ può essere considerata come una curva in $\R^2$ parametrizzata come $\big(t,f(t)\big)$.
 Essa è sempre regolare, qualunque sia la sua forma analitica, poiché la sua derivata è $\big(1,f'(t)\big)$ che non può ovviamente mai essere uguale a $(0,0)$.
 \begin{osservazione}
@@ -233,7 +237,7 @@ Abbiamo dunque la seguente definizione.
 Abbiamo visto che quando il vincolo è rappresentabile come una curva, in presenza di un punto estremante vincolato il gradiente è proporzionale alla normale a tale curva.
 Il seguente teorema mostra una condizione sufficiente ad individuare i punti \emph{stazionari} vincolati (che andranno poi studiati man mano per discernerli).
 \begin{teorema}[dei moltiplicatori di Lagrange] \label{t:moltiplicatori-lagrange-R2}
-	Sia $A\subseteq\R^2$ aperto, $f\colon A\to\R$ e $F\colon A\to\R$, entrambe di classe $\cont{1}$ in $A$. Sia $E$ il luogo degli zeri di $F$ in $A$. Se $(x_0,y_0)\in A$ è un punto estremante per $f|_E$, e $\grad F(x_0,y_0)\neq(0,0)$, allora esiste un numero $\lambda\in\R$ tale per cui
+	Sia $A\subseteq\R^2$ aperto, $f\colon A\to\R$ e $F\colon A\to\R$, entrambe di classe $\cont{1}$ in $A$. Sia $E$ il luogo degli zeri di $F$ in $A$. Se $(x_0,y_0)\in E$ è un punto estremante per $f|_E$, e $\grad F(x_0,y_0)\neq(0,0)$, allora esiste un numero $\lambda\in\R$ tale per cui
 	\begin{equation} 
 		\grad f(x_0,y_0)=\lambda\grad F(x_0,y_0),
 		\label{eq:moltiplicatori-lagrange-R2}
