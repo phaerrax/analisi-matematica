@@ -433,13 +433,14 @@ Si verifica facilmente inoltre che il complementare di un insieme $G_\delta$ è 
 	\end{itemize}
 \end{lemma}
 \begin{teorema} \label{t:gdelta-fsigma-misurabili}
-	Un qualsiasi insieme $E\subseteq\R^n$ misurabile è sempre tale per cui
+	Un qualsiasi insieme $E\subseteq\R^n$ è misurabile se e solo se
 	\begin{itemize}
 		\item esistono un insieme $G$ di tipo $G_\delta$ e un insieme $Z$ di misura nulla tali che $E=G\setminus Z$;
 		\item esistono un insieme $F$ di tipo $F_\sigma$ e un insieme $Z$ di misura nulla tali che $E=F\cup Z$.
 	\end{itemize}
 \end{teorema}
 \begin{proof}
+	Dimostriamo innanzitutto che sia condizione necessaria per la misurabilità.
 	Scegliamo $\epsilon=\frac1{k}$: per il lemma precedente \ref{l:aperti-chiusi-poco-differenti} troviamo per ogni tale $\epsilon$ un insieme $G_k\supset E$ tale che $\mu(G_k\setminus E)<\frac1{k}$.
 	Individuiamo cos\`i una ``successione'' di insiemi $\{G_k\}_{k=1}^{+\infty}$ con le proprietà trovate.
 	Definiamo $G\defeq\bigcap_{k\in\N}G_k$ e $Z=G\setminus E$.
@@ -454,6 +455,9 @@ Si verifica facilmente inoltre che il complementare di un insieme $G_\delta$ è 
 	\end{equation}
 
 	Per la seconda parte della tesi, se $E=G\setminus Z$ è misurabile lo è anche il suo complementare, che è $\compl{E}=\compl{(G\cap\compl{Z})}=\compl{G}\cup Z$, ma $\compl{G}$ è di tipo $F_\sigma$, poich\'e complementare di $G$ che è di tipo $G_\delta$ (l'insieme $\compl{G}$ è l'equivalente di $F$ nella tesi).
+	
+	Dimostriamo infine che sia anche condizione sufficiente.
+	Se può essere scritto $E=G\setminus Z$ con $G$ e $Z$ come definiti nell'enunciato, abbiamo che l'insieme $G$ è misurabile perché di tipo $G_\delta$ e l'insieme $Z$ è misurabile perché di misura, e quindi misura esterna, nulla. Di conseguenza l'insieme $E$ è la differenza di due insiemi misurabili, che è sempre misurabile. Lo stesso discorso vale per l'unione nel secondo punto della tesi.
 \end{proof}
 \begin{teorema}
 	Un insieme $A\subseteq\R^n$ è misurabile se e solo se $\forall\epsilon>0$ esistono un insieme $F$ chiuso ed un insieme $U$ aperto tali che $F\subseteq A\subseteq U$ e $\mu(U\setminus F)<\epsilon$.
