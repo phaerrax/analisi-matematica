@@ -1,0 +1,219 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PER INCLUDERE QUESTE IMPOSTAZIONI %
+% \usepackage{analisi-matematica}   %
+% nel preambolo del documento       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{analisi-matematica}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pacchetti generici da caricare per i documenti
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{microtype}
+\usepackage{mathtools}
+\usepackage{comment}
+\usepackage{amsfonts}                     % Per il font blackboard \mathbb
+\usepackage{a4wide}                       % Reimposta i margini per una pagina in formato A4
+\usepackage{amsthm}                       % Per personalizzare gli stili dei teoremi
+\usepackage{siunitx}
+\usepackage{amssymb}                      % Per alcuni comandi come \varnothing, \emptyset
+\usepackage{booktabs}                     % Per i comandi top/mid/bottomrule nelle tabelle
+\usepackage{mathrsfs}                     % Per il font calligrafico \mathscr
+\usepackage{xfrac}
+\usepackage{graphicx}                     % Per includere, tra il resto, il logo della licenza CC
+\usepackage{titletoc}                     % Per creare gli indici per ciascuna parte separatamente
+\usepackage[usenames,dvipsnames]{xcolor}  % Per definire alcuni colori come nei link di hyperref
+\usepackage[bibstyle=authortitle,backend=biber]{biblatex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Impostazioni e caricamento di pgfplots
+\usepackage{pgfplots}
+	\pgfplotsset{compat=newest}
+	\tikzset{
+	small dot/.style={fill=black,circle,scale=0.3}
+	}
+	\pgfplotsset{ % Impostazioni di default già pronte per grafici
+		standard/.style={
+			axis lines=middle,
+			axis on top,
+			enlargelimits,
+			legend pos=outer north east,
+			every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+			every axis y label/.style={at={(current axis.above origin)},anchor=south}
+		}
+	}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formattazione del testo
+\usepackage{sectsty}
+% Impostazione della grandezza del font nei vari ambienti
+\usepackage{sectsty}
+	\sectionfont{\large}
+	\subsectionfont{\normalsize}
+	\subsubsectionfont{\itshape}
+	\paragraphfont{\normalsize}
+
+% Stile del titolo dei capitoli
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\bfseries\Large}{Capitolo \thechapter}{12pt}{\bfseries\Huge}
+
+% Stile del titolo delle parti
+\titleclass{\part}{top}
+\titleformat{\part}{\centering\Huge\bfseries}{Parte \thepart}{0pt}{}
+\titlespacing*{\part}{0pt}{0pt}{2cm}
+
+% Imposta un font di dimensione più piccola per apici e pedici
+\makeatletter
+\DeclareMathSizes{\@xpt}{\@xpt}{6}{5}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comandi vari (spaziatura, font, lettere greche etc.)
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\newcommand{\qqq}{\quad\longrightarrow\quad}  % Spazio lungo + --> + spazio lungo
+\newcommand{\qeq}{\quad\text{e}\quad}         % Spazio lungo + "e" + spazio lungo
+\newcommand{\qtext}[1]{\quad\text{#1}\quad}   % Come \qeq, ma con testo personalizzato
+\renewcommand{\vec}[1]{\mathbf{#1}}           % Indica vettori in grassetto (per vettori di spazi euclidei)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definizioni di nuovi colori
+\colorlet{darkgreen}{green!75!black}
+\colorlet{darkyellow}{yellow!75!orange}
+\colorlet{darkblue}{blue!50!black}      % Da usare per link e citazioni
+\colorlet{indigo}{blue!50!violet}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Simboli matematici
+\newcommand{\dd}{\textup{d}}                                   % Differenziale
+\newcommand{\ddp}{\partial}                                    % "Differenziale" parziale
+\newcommand{\abs}[1]{\left|{#1}\right|}                        % Modulo di numeri complessi / valore assoluto
+\newcommand{\Int}{\!\int}                                      % Simbolo di integrale con meno spazio che lo precede
+\newcommand{\norm}[1]{\left\|{#1}\right\|}                     % Norma
+\newcommand{\ser}[1]{\sum_{{#1}=1}^{+\infty}}                  % Simbolo di sommatoria da indice=1 a +inf (il simbolo dell'indice è specificato al momento nell'argomento del comando)
+\newcommand{\serz}[1]{\sum_{{#1}=0}^{+\infty}}                 % Come sopra, ma la serie parte da 0 e non da 1
+\renewcommand{\emptyset}{\varnothing}                          % Insieme vuoto
+\newcommand{\then}{\Rightarrow}                                % Implicazione logica
+\renewcommand{\iff}{\Leftrightarrow}                           % "Se e solo se"
+\renewcommand{\Re}[1]{\mathfrak{R}\!\left({#1}\right)}         % Parte reale
+\renewcommand{\Im}[1]{\mathfrak{I}\!\left({#1}\right)}         % Parte immaginaria
+\newcommand{\pinf}{+\infty}                                    % Simbolo del +inf (deprecated)
+\newcommand{\minf}{-\infty}                                    % Simbolo del -inf (deprecated)
+\newcommand{\partint}[1]{\left\lfloor{#1}\right\rfloor}        % Parte intera di un numero
+\newcommand{\conj}[1]{\overline{#1}}                           % Coniugato
+\newcommand{\intinf}{\underline{\Int_a^b}}                     % Integrale inferiore (Riemann)
+\newcommand{\intsup}{\overline{\Int_a^b}}                      % Integrale superiore (Riemann)
+\newcommand{\partz}{\mathcal{P}}                               % Partizione di un intervallo
+\newcommand{\rie}{\mathfrak{R}}                                % Spazio delle funzioni Riemann-integrabili in un insieme
+\newcommand{\cont}[1]{\mathcal{C}^{{#1}}}                      % Spazio delle funzioni continue
+\newcommand{\boun}[2]{\mathcal{B}_{#1}({#2})}                  % Spazio delle funzioni limitate
+\newcommand{\ab}{\big([a,b]\big)}                              % "Scorciatoia" per indicare tra parentesi leggermente più grandi ([a,b]) (i.e. quando si indica "integrabile in [a,b]" con il comando \rie)
+\newcommand{\grad}{\nabla}                                     % Gradiente
+\renewcommand{\div}{\nabla\cdot}                               % Divergenza
+\newcommand{\rot}{\nabla\times}                                % Rotore
+\newcommand{\lap}{\nabla^2}                                    % Laplaciano
+\newcommand{\lin}{\mathscr L}                                  % Generica applicazione lineare
+\newcommand{\gen}[1]{\left\langle{#1}\right\rangle}            % Spazio generato (da cosa è generato, è definito nell'argomento del comando)
+\newcommand{\scalar}[2]{{#1}\cdot{#2}}                         % Prodotto scalare tra i due argomenti specificati (con il punto) (old: \psc, please update)
+\newcommand{\drv}[2]{\frac{\dd {#1}}{\dd {#2}}}                % Derivata prima
+\newcommand{\ddrv}[2]{\frac{\dd^2 {#1}}{\dd {#2}^2}}           % Derivata seconda
+\newcommand{\drp}[2]{\frac{\partial {#1}}{\partial {#2}}}      % Derivata parziale
+\newcommand{\ddrp}[2]{\frac{\partial^2 {#1}}{\partial {#2}^2}} % Derivata parziale seconda, non mista
+\newcommand{\vol}[1]{\left|{#1}\right|}                        % Volume di un iperrettangolo
+\newcommand{\interior}[1]{\mathring{#1}}                       % Interno di un insieme
+\newcommand{\clos}[1]{\overline{#1}}                           % Chiusura di un insieme
+\newcommand{\compl}[1]{{#1}^c}                                 % Complementare di un insieme
+\newcommand{\mis}{\mathcal M}                                  % Classe degli insiemi misurabili secondo Lebesgue
+%simbolo di uguaglianza per definizione
+\newcommand*{\defeq}{
+	\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt \hbox{\scriptsize.} \hbox{\scriptsize.}}} =
+}
+
+%OPERATORI MATEMATICI: come lim, sen, etc. che hanno dello spazio prima e dopo la parola stampata
+\DeclareMathOperator{\diam}{diam}    % Diametro (di un intervallo etc.)
+\DeclareMathOperator{\sgn}{sgn}      % Funzione segno
+\DeclareMathOperator{\jac}{J}        % Matrice jacobiana
+\DeclareMathOperator{\hes}{H}        % Matrice hessiana
+\DeclareMathOperator{\mat}{mat}      % Spazio delle matrici
+\DeclareMathOperator{\volterra}{V}   % Operatore di Volterra (per eq. differenziali)
+\DeclareMathOperator{\tr}{tr}        % Traccia
+\DeclareMathOperator{\Ker}{Ker}      % Nucleo di un'app lineare
+\DeclareMathOperator{\rk}{rk}        % Rango di una matrice/operatore
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vettori di lettere greche (per renderle in grassetto come le lettere latine)
+\usepackage{bm,upgreek}
+\newcommand{\valpha}{\bm{\upalpha}}
+\newcommand{\vbeta}{\bm{\upbeta}}
+\newcommand{\vgamma}{\bm{\upgamma}}
+\newcommand{\vdelta}{\bm{\updelta}}
+\newcommand{\vepsilon}{\bm{\upepsilon}}
+\newcommand{\vzeta}{\bm{\upzeta}}
+\newcommand{\veta}{\bm{\upeta}}
+\newcommand{\vtheta}{\bm{\uptheta}}
+\newcommand{\viota}{\bm{\upiota}}
+\newcommand{\vkappa}{\bm{\upkappa}}
+\newcommand{\vlambda}{\bm{\uplambda}}
+\newcommand{\vmu}{\bm{\upmu}}
+\newcommand{\vnu}{\bm{\upnu}}
+\newcommand{\vxi}{\bm{\upxi}}
+\newcommand{\vpi}{\bm{\uppi}}
+\newcommand{\vrho}{\bm{\uprho}}
+\newcommand{\vsigma}{\bm{\upsigma}}
+\newcommand{\vtau}{\bm{\uptau}}
+\newcommand{\vupsilon}{\bm{\upupsilon}}
+\newcommand{\vphi}{\bm{\upvarphi}}
+\newcommand{\vchi}{\bm{\upchi}}
+\newcommand{\vpsi}{\bm{\uppsi}}
+\newcommand{\vomega}{\bm{\upomega}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stili per i titoli dei teoremi, definizioni, etc.
+\theoremstyle{definition}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{corollario}[teorema]{Corollario}
+\newtheorem{lemma}[teorema]{Lemma}
+\newtheorem{proprieta}[teorema]{Proprietà}
+
+\theoremstyle{plain}
+\newtheorem{definizione}[teorema]{Definizione}
+
+\theoremstyle{remark}
+\newtheorem{osservazione}[teorema]{Osservazione}
+
+% Numerazione delle equazioni: con questo comando risultano
+% numerate come (capitolo.sezione.#), dove # riparte da 1
+% all'inizio di ogni sezione
+\numberwithin{equation}{section}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Insiemi numerici
+\newcommand{\N}{\mathbb{N}}              % Naturali
+\newcommand{\Z}{\mathbb{Z}}              % Interi
+\newcommand{\Q}{\mathbb{Q}}              % Razionali
+\newcommand{\R}{\mathbb{R}}              % Reali
+\newcommand{\Rex}{\overline{\mathbb{R}}} % Reali estesi
+\newcommand{\C}{\mathbb{C}}              % Complessi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Personalizzazione di collegamenti e segnalibri
+% Il pacchetto hyperref è da caricare per ultimo, dato che
+% sovrascrive alcuni dei comandi di LaTeX. In particolare, lo
+% fa anche il pacchetto titlesec, quindi è meglio che hyperref
+% stia dopo di esso, altrimenti comandi come \pdfbookmark non
+% funzionano correttamente.
+\usepackage{hyperxmp}
+\usepackage{hyperref}
+	\hypersetup{ % Impostazioni generali di hyperref
+		bookmarksnumbered=true,
+		bookmarksopen=true,
+		bookmarksopenlevel=1,
+		colorlinks=true,
+		linkcolor=darkblue,
+		pdfstartview=Fit,
+		pdfpagemode=UseOutlines,
+		citecolor=darkblue
+	}
+	
