@@ -161,7 +161,7 @@ Sia $A'\subseteq A$ e $p$ un qualsiasi punto del complementare. Per ipotesi $p$ 
 \end{proof}
 \paragraph{Esempi}
 \begin{itemize}
-\item Ogni intervallo $(a,b)\subset\R$ è aperto, così come $(a,\pinf)$ e $(\minf,b)$. Analogamente, $[a,b]$, $[a,\pinf)$ e $(\minf,b]$ sono chiusi. Intervalli del tipo $[a,b)$ non sono aperti né chiusi.
+\item Ogni intervallo $(a,b)\subset\R$ è aperto, così come $(a,+\infty)$ e $(-\infty,b)$. Analogamente, $[a,b]$, $[a,+\infty)$ e $(-\infty,b]$ sono chiusi. Intervalli del tipo $[a,b)$ non sono aperti né chiusi.
 \item In ogni spazio metrico $(X,d)$, l'insieme $X$ è aperto perché tutti i suoi punti sono interni. Però $X$ è allo stesso tempo anche chiuso, perché contenendo tutti i punti non può che contenere anche quelli di accumulazione di $X'$. Allora $X$ è sia aperto che chiuso, e quindi anche un insieme vuoto è sia aperto che chiuso. 
 \item Ogni intorno è aperto, per definizione, perché tutti i suoi punti sono interni.
 \item In uno spazio metrico discreto, ogni insieme $A\subseteq X$ è aperto, perché ogni suo punto è interno, ma allo stesso tempo tutti i punti sono isolati, quindi $A'=\emptyset$, quindi $A$ (che ovviamente contiene l'insieme vuoto) è anche chiuso.
@@ -184,7 +184,7 @@ A=\bigcap_{i=1}^n A_i\text{ è aperto}.
 \item Sia $p$ un punto appartenente ad $A$, l'insieme intersezione degli insiemi appartenenti alla famiglia finita: questo punto deve allora appartenere a ciascuno degli insiemi della famiglia $A_i,\,\forall i$. Ognuno di questi insiemi è aperto, quindi esiste un raggio tale che la bolla centrata in $p$ sia contenuta in ogni insieme, $\exists r_i\colon \forall i\;B(p,r_i)\subset A_i$. Preso $r'=\min\{r_i\}$, la cui esistenza è garantita dal fatto che la famiglia di insiemi è finita, allora la bolla di raggio $r'$ è contenuta in tutti gli insiemi, quindi anche nell'insieme intersezione: $B(p,r')\subset A$.
 \end{enumerate}
 \end{proof}
-In generale, l'intersezione infinita di aperti non è aperta: ad esempio, sia $A_i=(0,1+\sfrac{1}{k})$, per $i\in\N$, l'intersezione dà come risultato $\bigcap_{i=1}^{\pinf}A_i=(0,1]$, che non è aperto né chiuso.
+In generale, l'intersezione infinita di aperti non è aperta: ad esempio, sia $A_i=(0,1+\sfrac{1}{k})$, per $i\in\N$, l'intersezione dà come risultato $\bigcap_{i=1}^{+\infty}A_i=(0,1]$, che non è aperto né chiuso.
 Vale anche il seguente teorema, la cui dimostrazione si ricava dal precedente.
 \begin{teorema} \label{t:unione-intersezione-chiusi}
 Siano $(X,d)$ uno spazio metrico e $\{C_j\}_{j\in J}$ un una famiglia qualunque di sottoinsiemi chiusi di tale spazio metrico. Allora
@@ -212,7 +212,7 @@ C^c=\bigg(\bigcup_{j=1}^n C_j\bigg)^c=C=\bigcap_{j=1}^n C^c_j,
 che è l'intersezione di un numero finito di insiemi aperti, che quindi per il teorema precedente è aperto. Allora $C$ è chiuso, sempre per la \ref{d:chiuso-se-c-aperto}.\qedhere
 \end{enumerate}
 \end{proof}
-Analogamente al controesempio precedente, l'unione di infiniti chiusi non è sempre chiusa: se $C_j=[0,1-\sfrac{1}{k}]$ con $j\in\N$, si ha che $\bigcup_{j=1}^{\pinf}C_j=[0,1)$ che non è chiuso, e nemmeno aperto.
+Analogamente al controesempio precedente, l'unione di infiniti chiusi non è sempre chiusa: se $C_j=[0,1-\sfrac{1}{k}]$ con $j\in\N$, si ha che $\bigcup_{j=1}^{+\infty}C_j=[0,1)$ che non è chiuso, e nemmeno aperto.
 \begin{definizione}
 Siano $(X,d)$ uno spazio metrico e $A\subseteq X$ un suo sottoinsieme. Si chiama \emph{chiusura} di $A$, e si indica con $\overline{A}$, il più piccolo insieme chiuso che lo contiene. Questo insieme coincide con l'unione dell'insieme stesso con il suo derivato.
 \[
@@ -231,7 +231,7 @@ Siano $(X,d)$ uno spazio metrico e $A\subseteq X$ un suo sottoinsieme.
 \begin{definizione}
 Un insieme è \emph{limitato} se esiste, finito, l'estremo superiore delle distanze reciproche tra tutti i suoi elementi.
 \[
-\sup_{x,y\in A} d(x,y)<\pinf.
+\sup_{x,y\in A} d(x,y)<+\infty.
 \]
 Tale estremo superiore è detto \emph{diametro} dell'insieme.
 \end{definizione}

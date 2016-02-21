@@ -53,7 +53,7 @@ La sola continuità di $f$ è sufficiente a garantire l'esistenza, ma sfortunata
 
 Sia $\vec f\colon\R^{n+1}\to\R^n$ continua in $E$, e siano $(x_0,\vec y_0)\in E$ e $x_0\in I$. Se la funzione $\vec y\colon I\to\R^n$ risolve il problema di Cauchy \eqref{pc}, certamente è continua in $I$, poiché la sua derivata esiste per i valori di $x\in I$. Ma allora $\vec f\big(x,\vec y(x)\big)$ è a sua volta continua in $I$, a cui segue che anche $\vec y'$, essendo di fatto uguale a $\vec f$, è continua in $I$. Tutto ciò significa infine che $\vec y\in\cont{1}(I)$: si può applicare quindi il teorema fondamentale del calcolo integrale \ref{t:tfci1}, ottenendo l'uguaglianza
 \begin{equation}
-\vec y(x)=\vec y_0+\Int_{x_0}^x\vec y'(t)\,\dd t=\vec y_0+\Int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t,
+\vec y(x)=\vec y_0+\int_{x_0}^x\vec y'(t)\,\dd t=\vec y_0+\int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t,
 \end{equation}
 valida per ogni $x\in I$.
 Si nota subito che in quest'ultima equazione $\vec y(x_0)=\vec y_0$. Inoltre se $\vec y\in\cont{}(I)$ anche l'integranda è continua, quindi risulta derivando i due membri che $\vec y'(x)=\vec f\big(x,\vec y(x)\big)$, cioè soddisfa il problema di Cauchy!
@@ -61,7 +61,7 @@ Si nota subito che in quest'ultima equazione $\vec y(x_0)=\vec y_0$. Inoltre se 
 \begin{definizione} \label{d:volterra}
 Per ogni funzione $\vec y\in\cont{}(I)$, con $x_0\in I\subseteq\R$, $\vec y_0\in\R^n$ e $\vec f\colon E\subseteq\R^{n+1}\to\R^n$, si definisce l'\emph{operatore integrale di Volterra} come
 \begin{equation} \label{vol}
-\volterra(\vec y)(x)=\vec y_0+\Int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t.
+\volterra(\vec y)(x)=\vec y_0+\int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t.
 \end{equation}
 \end{definizione}
 Risolvere il problema di Cauchy equivale quindi a ricercare le \emph{soluzioni continue} dell'analogo problema $\vec y=\volterra(\vec y)$, cioè a cercare i punti fissi dell'operatore di Volterra.
@@ -122,16 +122,16 @@ Sia $g\colon I\subseteq\R\to\R$ una funzione limitata in $I$:
 Si consideri soltanto l'intervallo $[x_0,b]$: si definisce $h=\min\{b-x_0,\frac1{2L}\}$, dove $L$ è la costante di Lipschitz per $\vec f$ rispetto alla variabile $\vec y$, e l'intervallo $I_0=[x_0,x_0+h]$. Lo spazio $X=\big(\cont{}_{\R^n}(I_0),d_\infty\big)$, con la distanza $d_{\infty}=\norm{\vec f-\vec g}_{\infty,I_0}$, è uno spazio metrico completo. Per ogni $\vec y\in X$, si applichi l'operatore di Volterra: $\volterra(\vec y)\in\cont{}(I_0)$, quindi l'operatore è una mappa $\volterra\colon X\to X$. In questo spazio metrico, date due funzioni $\vec y,\vec z\in X$, la norma della loro differenza è per ogni $x\in I_0$
 \begin{align*}
 &\norm{\volterra(\vec y)(x)-\volterra(\vec z)(x)}=\\
-&=\Big\|\Int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t-\Int_{x_0}^x\vec f\big(t,\vec z(t)\big)\,\dd t\Big\|=\\
-&=\Big\|\Int_{x_0}^x\Big[\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)\Big]\,\dd t\Big\|,
+&=\Big\|\int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t-\int_{x_0}^x\vec f\big(t,\vec z(t)\big)\,\dd t\Big\|=\\
+&=\Big\|\int_{x_0}^x\Big[\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)\Big]\,\dd t\Big\|,
 \end{align*}
 in cui la norma si intende in $\R^n$. Poiché in $I_0$ si ha sempre $x\geq x_0$, l'integrale è sempre positivo, quindi
 \begin{align*}
-&\Big\|\Int_{x_0}^x\Big[\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)\Big]\,\dd t\Big\|\leq\\
-&\leq\Int_{x_0}^x\norm{\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)}\,\dd t\leq\\
-&\leq\Int_{x_0}^xL\norm{\vec y(t)-\vec z(t)}\,\dd t\leq\\
-&\leq L\Int_{x_0}^x\sup_{x\in I_0}\norm{\vec y(t)-\vec z(t)}\,\dd t=\\
-&=L\Int_{x_0}^x\norm{\vec y-\vec z}_{\infty,I_0}\,\dd t=\\
+&\Big\|\int_{x_0}^x\Big[\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)\Big]\,\dd t\Big\|\leq\\
+&\leq\int_{x_0}^x\norm{\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)}\,\dd t\leq\\
+&\leq\int_{x_0}^xL\norm{\vec y(t)-\vec z(t)}\,\dd t\leq\\
+&\leq L\int_{x_0}^x\sup_{x\in I_0}\norm{\vec y(t)-\vec z(t)}\,\dd t=\\
+&=L\int_{x_0}^x\norm{\vec y-\vec z}_{\infty,I_0}\,\dd t=\\
 &=L\norm{\vec y-\vec z}_{\infty,I_0}(x-x_0)\leq\\
 &\leq L\norm{\vec y-\vec z}_{\infty,I_0}h\leq\\
 &\leq\frac12\norm{\vec y-\vec z}_{\infty,I_0}.
@@ -166,8 +166,8 @@ Nell'insieme delle soluzioni si ha sempre la soluzione costante $y(x)=y_0$, rica
 \]
 da cui si ottiene la soluzione integrando nell'intervallo $[x_0,x]$, cioè
 \[
-\int_{x_0}^x\frac{y'(s)}{k\big(y(s)\big)}\,\dd s=\Int_{x_0}^xh(t)\,\dd t\qqq
-\int_{y_0}^y\frac{\dd u}{k(u)}=\Int_{x_0}^xh(t)\,\dd t,
+\int_{x_0}^x\frac{y'(s)}{k\big(y(s)\big)}\,\dd s=\int_{x_0}^xh(t)\,\dd t\qqq
+\int_{y_0}^y\frac{\dd u}{k(u)}=\int_{x_0}^xh(t)\,\dd t,
 \]
 operando il cambio di variabile $y(x)=u$, da cui $y'(t)\,\dd t=\dd u$ e $u(x)=y(x)$ per sostituire gli estremi appropriati.
 \paragraph{Equazioni lineari}
@@ -176,7 +176,7 @@ y'+a(x)y=b(x).
 \end{equation}
 Soluzione:
 \begin{equation}
-y(x)=\exp\Big(-\int_{x_0}^xa(t)\,\dd t\Big)\bigg[y_0+\Int_{x_0}^xb(t)\exp\Big(\int_{x_0}^ta(s)\,\dd s\Big)\dd t\bigg].
+y(x)=\exp\Big(-\int_{x_0}^xa(t)\,\dd t\Big)\bigg[y_0+\int_{x_0}^xb(t)\exp\Big(\int_{x_0}^ta(s)\,\dd s\Big)\dd t\bigg].
 \end{equation}
 \paragraph{Equazioni di Bernoulli}
 \begin{equation}
@@ -420,7 +420,7 @@ Sono di questo tipo le equazioni nella forma
 x^ky^{(k)}(x)+a_{k-1}x^{k-1}y^{(k-1)}(x)+\dots+a_1xy'(x)+a_0y(x)=b(x)
 \end{equation}
 con $a_{k-1},\dots,a_1,a_0$ costanti reali, e $b\in\cont{}(I)$.
-Si nota subito che per portare l'equazione in forma normale è necessario dividere i termini per $x^k$, introducendo un problema non trascurabile in $x=0$: bisognerà alla fine infatti trattare con cura la soluzione in questo punto. Si considerano all'inizio le soluzioni in $(0,\pinf)$ e $(\minf,0)$: per $x>0$ si effettua la sostituzione $x=e^t$, e chiamando $z(t)=y(e^t)$ si ottiene (esplicitando la variabile rispetto a cui si derivano le funzioni):
+Si nota subito che per portare l'equazione in forma normale è necessario dividere i termini per $x^k$, introducendo un problema non trascurabile in $x=0$: bisognerà alla fine infatti trattare con cura la soluzione in questo punto. Si considerano all'inizio le soluzioni in $(0,+\infty)$ e $(-\infty,0)$: per $x>0$ si effettua la sostituzione $x=e^t$, e chiamando $z(t)=y(e^t)$ si ottiene (esplicitando la variabile rispetto a cui si derivano le funzioni):
 \[
 y'(x)=z'(t)=\drp{z}{x}(t)=\drp{z}{t}(t)\drp{t}{x}(t)=z'(t)\frac1{e^t}=\frac{z'(t)}{x}
 \]
@@ -439,15 +439,15 @@ x^3y'''(x)=z'''(t)-3z''(t)+2z'(t)
 \end{gathered}
 \end{equation}
 e così via per gli ordini superiori.
-Si ottiene dunque il problema di Cauchy, da risolvere in $(0,\pinf)$, per la funzione $z(t)$ con lo stesso termine noto. Si rieffettua infine la sostituzione inversa $t=\log x$ per ottenere le soluzioni dell'equazione di partenza.
-Nell'intervallo $(\minf,0)$ si sostituisce poi $x=-e^t$: con calcoli analoghi si ottiene la stessa soluzione generale dell'equazione omogenea, mentre il termine noto $b(-e^t)$ rimane uguale solo se è pari. Il cambiamento di variabile in ritorno, questa volta, è $t=\log(-x)$.
+Si ottiene dunque il problema di Cauchy, da risolvere in $(0,+\infty)$, per la funzione $z(t)$ con lo stesso termine noto. Si rieffettua infine la sostituzione inversa $t=\log x$ per ottenere le soluzioni dell'equazione di partenza.
+Nell'intervallo $(-\infty,0)$ si sostituisce poi $x=-e^t$: con calcoli analoghi si ottiene la stessa soluzione generale dell'equazione omogenea, mentre il termine noto $b(-e^t)$ rimane uguale solo se è pari. Il cambiamento di variabile in ritorno, questa volta, è $t=\log(-x)$.
 
 %%%%%%%
 \begin{comment}
 Un metodo alternativo è porre $y(x)=x^\lambda$, con $\lambda\in\R$: si deriva quanto serve e si sostituisce nell'equazione. Per la risoluzione dell'omogenea, si può infine dividere tutto per $x^\lambda$, che essendo $x>0$ non è mai nullo, e si risolve l'equazione in $\lambda$ per trovare i suoi valori. Sulla strada del metodo precedente, nel caso di radici multiple, per l'equazione in $z(t)$, si aggiungerebbe $t,t^2,\dots$ a ciascun termine corrispondente alla radice multipla: allora in questo caso, se si trovano delle radici $\gamma$ coincidenti si hanno i termini $x^\gamma,x^\gamma\log x,x^\gamma\log^2 x,\dots x^\gamma\log^{r-1}x$ quante volte è la molteplicità $r$ della radice $\gamma$. Nel caso di radici complesse coniugate $\alpha+i\beta$, si ha invece la forma $x^\alpha\big[\cos(\beta\log x)+\sin(\beta\log x)\big]$, moltiplicando eventualmente per $\log x$ nel caso di radici multiple, come prima.
 Per determinare la soluzione particolare, seguendo le linee del metodo di somiglianza, si ricordi soltanto di trattare ogni $x$ come un termine $e^t$: in questo modo è facile vedere che quando normalmente bisognerebbe moltiplicare per una potenza di $x$, qui si moltiplica per una (corrispettiva) potenza di $\log x$.
 
-Ora bisogna sistemare il problema in $x=0$. La soluzione deve essere innanzitutto cercata nell'intervallo in $(0,\pinf)$ se $x_0>0$, in $(\minf,0)$ se $x_0<0$. Trovata la soluzione nel caso principale, essa sarà estendibile in $x=0$ se il prolungamento trovato (tramite l'altra soluzione nell'altro intervallo) è di classe $\cont{k}$. Una volta trovato, la funzione si estende naturalmente a $(\minf,0)$ in cui è già definita e di classe $\cont{k}$, cioè sarà definita in tutto $\R$. Notare che il prolungamento non è necessariamente unico!
+Ora bisogna sistemare il problema in $x=0$. La soluzione deve essere innanzitutto cercata nell'intervallo in $(0,+\infty)$ se $x_0>0$, in $(-\infty,0)$ se $x_0<0$. Trovata la soluzione nel caso principale, essa sarà estendibile in $x=0$ se il prolungamento trovato (tramite l'altra soluzione nell'altro intervallo) è di classe $\cont{k}$. Una volta trovato, la funzione si estende naturalmente a $(-\infty,0)$ in cui è già definita e di classe $\cont{k}$, cioè sarà definita in tutto $\R$. Notare che il prolungamento non è necessariamente unico!
 Se il termine noto $b$ non è continuo in tutto $\R$ ma in un sottoinsieme $I$, bisognerà restringere opportunamente l'intervallo in cui ricercare le soluzioni.
 \paragraph{Esempio}
 Si determini per quali $a,b\in\R$ il problema di Cauchy
@@ -459,19 +459,19 @@ y'(1)=b.
 \end{cases}
 \end{equation}
 ha soluzioni prolungabili in tutto $\R$.
-In $(0,\pinf)$, l'equazione omogenea dà l'equazione caratteristica $\lambda^2-2\lambda-3=0$ da cui la soluzione
+In $(0,+\infty)$, l'equazione omogenea dà l'equazione caratteristica $\lambda^2-2\lambda-3=0$ da cui la soluzione
 \[
 y_+(x)=c_1x^3+c_2\frac1{x}
 \]
-in $(0,\pinf)$. Imponendo le condizioni iniziali si trova quindi
+in $(0,+\infty)$. Imponendo le condizioni iniziali si trova quindi
 \[
-c_1=\frac{a+b}4\qeq c_2=\frac{3a-b}4,
+c_1=\frac{a+b}4\qtext{e} c_2=\frac{3a-b}4,
 \]
 da cui
 \[
 y_+(x)=\frac{a+b}4x^3+\frac{3a-b}4\frac1{x}.
 \]
-Sicuramente se $3a-b$ non è nullo la soluzione non è nemmeno definita in $x=0$, quindi la soluzione non può che essere $y_+(x)=ax^3$ in $[0,\pinf)$. L'equazione differenziale è di per sé omogenea, quindi le soluzioni in $\R^-$ sono le stesse, cioè $y_-(x)=d_1x^3+d_2\frac1{x}$. Chiaramente per gli stessi motivi $d_2=0$.
-Le derivate prima e seconda di $y_+(x)$ sono nulle in $x=0$, dunque affinché si possa effettuare il prolungamento oltre $x=0$ lo devono anche essere i limiti delle derivate di $y_-(x)$ per $x\to 0^-$. Ma $y_-''(x)=6d_1x$ in $(\minf,0)$, cioè è nullo $\forall d_1\in\R$ in $x=0$.
+Sicuramente se $3a-b$ non è nullo la soluzione non è nemmeno definita in $x=0$, quindi la soluzione non può che essere $y_+(x)=ax^3$ in $[0,+\infty)$. L'equazione differenziale è di per sé omogenea, quindi le soluzioni in $\R^-$ sono le stesse, cioè $y_-(x)=d_1x^3+d_2\frac1{x}$. Chiaramente per gli stessi motivi $d_2=0$.
+Le derivate prima e seconda di $y_+(x)$ sono nulle in $x=0$, dunque affinché si possa effettuare il prolungamento oltre $x=0$ lo devono anche essere i limiti delle derivate di $y_-(x)$ per $x\to 0^-$. Ma $y_-''(x)=6d_1x$ in $(-\infty,0)$, cioè è nullo $\forall d_1\in\R$ in $x=0$.
 È allora possibile estendere la soluzione a tutto $\R$, ma i prolungamenti sono infiniti.
 \end{comment}

@@ -80,13 +80,13 @@ Se le disuguaglianze sono strette, l'intervallo si dice aperto:
 \]
 Si definiscono anche gli intervalli illimitati, inferiormente o superiormente, sia aperti che chiusi:
 \begin{align*}
-&(a,\pinf)=\{x\in\R\colon x>a\}\quad\text{(aperto)};\\
-&(\minf,b]=\{x\in\R\colon x\leq b\}\quad\text{(chiuso)}.
+&(a,+\infty)=\{x\in\R\colon x>a\}\quad\text{(aperto)};\\
+&(-\infty,b]=\{x\in\R\colon x\leq b\}\quad\text{(chiuso)}.
 \end{align*}
 \end{definizione}
-I simboli di $\minf$ e $\pinf$ sono solo convenzioni e non rappresentano dei numeri né appartengono all'insieme $\R$, ma sono compresi nell'insieme dei numeri reali \emph{esteso}:
+I simboli di $-\infty$ e $+\infty$ sono solo convenzioni e non rappresentano dei numeri né appartengono all'insieme $\R$, ma sono compresi nell'insieme dei numeri reali \emph{esteso}:
 \[
-\overline{\R}=\R\cup\{\minf\}\cup\{\pinf\}.
+\overline{\R}=\R\cup\{-\infty\}\cup\{+\infty\}.
 \]
 \begin{definizione}
 Un insieme $A\subseteq\R$ si dice limitato:
@@ -136,7 +136,7 @@ Si trova che $B$ non ha un minimo, perché per qualunque $p\in B$ si può sempre
 \]
 Si dimostra che $q<p$: in $B$, infatti, se $p^2\geq 2$ si ha che
 \[
-\bigg(\frac{2p+2}{p+2}\bigg)^2\geq 2\qeq\frac{2p+2}{p+2}<p,
+\bigg(\frac{2p+2}{p+2}\bigg)^2\geq 2\qtext{e}\frac{2p+2}{p+2}<p,
 \]
 a cui segue che $p^2>2$.
 L'estremo superiore, $\sqrt{2}$, che $A$ sembrerebbe avere, in realtà non è tale poiché $\sqrt{2}\notin\Q$, quindi $A$ non ha un estremo superiore. Diversamente sarebbe se $A$ non fosse un sottoinsieme di $\Q$ ma di $\R$: in tal caso $\sqrt{2}\in\R$ quindi è a pieno titolo l'estremo superiore di $A$.
@@ -150,7 +150,7 @@ Assegnati due qualunque numeri reali distinti, si possono sempre trovare tra di 
 \begin{proof}
 Siano $x<y$ due numeri reali: i loro allineamenti decimali sono
 \[
-x=a_0,\,a_1a_2a_3\dots\qeq y=b_0,\,b_1b_2b_3\dots.
+x=a_0,\,a_1a_2a_3\dots\qtext{e} y=b_0,\,b_1b_2b_3\dots.
 \]
 Se $a_0<b_0$, si costruisce come parte decimale un numero maggiore di $a_1a_2a_3\dots$, e per farlo basta sostituire con 9 la prima cifra trovata diversa da 9.
 Se invece $a_0=b_0$ si prosegue con le coppie $a_1,b_1$, $a_2,b_2$, finché non se ne trova una in cui gli elementi non sono più uguali, e poiché dovrà essere $a_k<b_k$ (dato che $x<y$) si ritorna al punto precedente.

@@ -6,22 +6,22 @@ S_n(x)=\sum_{n=1}^kf_n(x),
 ovviamente sempre definita in $E$: essa è la successione delle somme parziali.
 La serie di funzioni
 \[
-S(x)=\ser{n}f_n(x)
+S(x)=\sum_{n=1}^{+\infty}f_n(x)
 \]
-converge in $x_0$ se converge la serie numerica $\ser{n}f_n(x_0)$. La funzione $S(x)$, definita ovunque la serie di funzioni converga, è anche chiamata \emph{funzione somma}.
+converge in $x_0$ se converge la serie numerica $\sum_{n=1}^{+\infty}f_n(x_0)$. La funzione $S(x)$, definita ovunque la serie di funzioni converga, è anche chiamata \emph{funzione somma}.
 
 \section{Convergenza puntuale e uniforme}
 Unendo la teoria delle serie numeriche con quella delle successioni di funzioni si ottengono le definizioni seguenti.
 \begin{definizione}
-La serie $\ser{n}f_n(x)$ converge \emph{puntualmente} in $J\subseteq E$ se $\ser{n}f_n(x_0)$ converge in ogni punto $x_0\in J$.
+La serie $\sum_{n=1}^{+\infty}f_n(x)$ converge \emph{puntualmente} in $J\subseteq E$ se $\sum_{n=1}^{+\infty}f_n(x_0)$ converge in ogni punto $x_0\in J$.
 \end{definizione}
 \begin{definizione}
-La serie $\ser{n}f_n(x)$ converge \emph{assolutamente} in $J\subseteq E$ se $\ser{n}\abs{f_n(x)}$ converge $\forall x\in J$.
+La serie $\sum_{n=1}^{+\infty}f_n(x)$ converge \emph{assolutamente} in $J\subseteq E$ se $\sum_{n=1}^{+\infty}\abs{f_n(x)}$ converge $\forall x\in J$.
 \end{definizione}
 \begin{definizione}
-La serie $\ser{n}f_n(x)$ converge \emph{uniformemente} in $J\subseteq E$ se la successione $S_k(x)$ converge uniformemente a $S(x)$ in $J$, cioè se
+La serie $\sum_{n=1}^{+\infty}f_n(x)$ converge \emph{uniformemente} in $J\subseteq E$ se la successione $S_k(x)$ converge uniformemente a $S(x)$ in $J$, cioè se
 \[
-\norm{S_k-S}_{\infty,J}\to 0\quad\text{per }n\to\pinf.
+\norm{S_k-S}_{\infty,J}\to 0\quad\text{per }n\to+\infty.
 \]
 \end{definizione}
 
@@ -32,24 +32,24 @@ Nel capitolo \ref{sec:spazi-funz} si era visto che lo spazo metrico delle funzio
 \end{itemize}
 Chiaramente la somma (finita) di funzioni limitate o continue è ancora limitata o continua: non sempre lo stesso vale per la funzione somma, per la quale si applica il seguente teorema.
 \begin{teorema}
-	Se $f_n(x)\in\cont{}(J)$ $\forall n$ e $S(x)=\ser{n}f_n(x)$ converge uniformemente in $J$, allora $S\in\cont{}(J)$.
+	Se $f_n(x)\in\cont{}(J)$ $\forall n$ e $S(x)=\sum_{n=1}^{+\infty}f_n(x)$ converge uniformemente in $J$, allora $S\in\cont{}(J)$.
 \end{teorema}
 \begin{teorema} \label{t:continuita_serie_conv_uniforme}
-Se esiste finito il $\lim_{x\to x_0}f_n(x)=\ell_n\in\R$, per ogni $n$, e $S(x)=\ser{n}f_n(x)$ converge uniformemente in $J$, allora la serie $\ser{n}\ell_n$ converge e vale
+Se esiste finito il $\lim_{x\to x_0}f_n(x)=\ell_n\in\R$, per ogni $n$, e $S(x)=\sum_{n=1}^{+\infty}f_n(x)$ converge uniformemente in $J$, allora la serie $\sum_{n=1}^{+\infty}\ell_n$ converge e vale
 \[
-\ser{n}\ell_n=\lim_{x\to x_0}S(x)\then\ser{n}\lim_{x\to x_0}f_n(x)=\lim_{x\to x_0}\ser{n}f_n(x).
+\sum_{n=1}^{+\infty}\ell_n=\lim_{x\to x_0}S(x)\then\sum_{n=1}^{+\infty}\lim_{x\to x_0}f_n(x)=\lim_{x\to x_0}\sum_{n=1}^{+\infty}f_n(x).
 \]
 \end{teorema}
 \begin{teorema} \label{t:scambio_integrale_serie}
-Se $f_n\in\rie\ab$ per ogni $n$ e la serie $S(x)=\ser{n}f_n(x)$ converge uniformemente in $[a,b]$, allora $S\in\rie\ab$ e vale
+Se $f_n\in\rie\ab$ per ogni $n$ e la serie $S(x)=\sum_{n=1}^{+\infty}f_n(x)$ converge uniformemente in $[a,b]$, allora $S\in\rie\ab$ e vale
 \[
-\int_a^b\ser{n}f_n(x)\,\dd x=\ser{n}\int_a^bf_n(x)\,\dd x.
+\int_a^b\sum_{n=1}^{+\infty}f_n(x)\,\dd x=\sum_{n=1}^{+\infty}\int_a^bf_n(x)\,\dd x.
 \]
 \end{teorema}
 \begin{teorema} \label{t:scambio_derivata_serie}
-Se $f_n(x)$ è derivabile in $[a,b]$ per ogni $n$, la serie delle derivate $\ser{n}f_n'(x)$ converge uniformemente in $[a,b]$, ed esiste un punto $x_0\in[a,b]$ per cui la serie $\ser{n}f_n(x_0)$ converge, allora la serie $\ser{n}f_n(x)$ converge uniformemente in $[a,b]$ e vale
+Se $f_n(x)$ è derivabile in $[a,b]$ per ogni $n$, la serie delle derivate $\sum_{n=1}^{+\infty}f_n'(x)$ converge uniformemente in $[a,b]$, ed esiste un punto $x_0\in[a,b]$ per cui la serie $\sum_{n=1}^{+\infty}f_n(x_0)$ converge, allora la serie $\sum_{n=1}^{+\infty}f_n(x)$ converge uniformemente in $[a,b]$ e vale
 \[
-S'(x)=\bigg(\ser{n}f_n(x)\bigg)'=\ser{n}f_n'(x).
+S'(x)=\bigg(\sum_{n=1}^{+\infty}f_n(x)\bigg)'=\sum_{n=1}^{+\infty}f_n'(x).
 \]
 \end{teorema}
 
@@ -63,7 +63,7 @@ Posti $m+1=p$ e $q>0$, si ottiene che la condizione è soddisfatta se $\forall p
 \end{equation}
 Da questo si ottiene una condizione necessaria per la convergenza uniforme della serie.
 \begin{corollario}
-La serie $\ser{n}f_n(x)$ converge uniformemente in $J$ solo se la successione $\{f_n(x)\}$ dei termini generali converge uniformemente in $J$.
+La serie $\sum_{n=1}^{+\infty}f_n(x)$ converge uniformemente in $J$ solo se la successione $\{f_n(x)\}$ dei termini generali converge uniformemente in $J$.
 \end{corollario}
 \begin{proof}
 Ponendo $q=0$ nella \eqref{eq:cc_serie_funzioni}, si ottiene che
@@ -72,18 +72,18 @@ Ponendo $q=0$ nella \eqref{eq:cc_serie_funzioni}, si ottiene che
 \]
 ossia che $\forall\epsilon>0$ $\exists\overline{n}(\epsilon)$ tale per cui $\forall p>\overline{n}$ si ha $\norm{f_p-0}_{\infty,J}<\epsilon$ cioè $f_p$ (o equivalentemente $f_n$) converge uniformemente alla funzione identicamente nulla.
 \end{proof}
-La condizione appena data è ovviamente solamente necessaria: la serie $\ser{n}\frac1{n}$ diverge, ma il suo termine generale $f_n(x)=\frac1{n}$ converge uniformemente alla $f\equiv 0$ in tutto $\R$.
+La condizione appena data è ovviamente solamente necessaria: la serie $\sum_{n=1}^{+\infty}\frac1{n}$ diverge, ma il suo termine generale $f_n(x)=\frac1{n}$ converge uniformemente alla $f\equiv 0$ in tutto $\R$.
 
 \section{Convergenza totale}
 \begin{definizione}
-Si dice che la serie $\ser{n}f_n(x)$ converge \emph{totalmente} in $J$ se esiste una successione numerica $\{M_n\}\subset\R$ tale che $\abs{f_n(x)}\leq M_n$ per ogni $n$ e $x\in J$, e per cui la serie $\ser{n}M_n$ converga.
+Si dice che la serie $\sum_{n=1}^{+\infty}f_n(x)$ converge \emph{totalmente} in $J$ se esiste una successione numerica $\{M_n\}\subset\R$ tale che $\abs{f_n(x)}\leq M_n$ per ogni $n$ e $x\in J$, e per cui la serie $\sum_{n=1}^{+\infty}M_n$ converga.
 \end{definizione}
-La definizione continua a valere se come successione $\{M_n\}$ si prende il minimo dei maggioranti di $f_n(x)$ in $J$, che è proprio la norma uniforme: allora la convergenza é totale anche quando la serie $\ser{n}\norm{f_n}_{\infty,J}$ converge.
+La definizione continua a valere se come successione $\{M_n\}$ si prende il minimo dei maggioranti di $f_n(x)$ in $J$, che è proprio la norma uniforme: allora la convergenza é totale anche quando la serie $\sum_{n=1}^{+\infty}\norm{f_n}_{\infty,J}$ converge.
 \begin{teorema}[di Weierstrass]
-Se $\ser{n}f_n(x)$ converge totalmente in $J$, allora converge anche uniformemente.
+Se $\sum_{n=1}^{+\infty}f_n(x)$ converge totalmente in $J$, allora converge anche uniformemente.
 \end{teorema}
 \begin{proof}
-Per ipotesi esiste una successione $\{M_n\}$ la cui serie converge e tale che per ogni $n$ si abbia $\norm{f_n}_{\infty,E}\leq M_n$, $\forall x\in E$. Allora la serie $\ser{n}M_n$ soddisfa la condizione di Cauchy: per ogni $\epsilon>0$ esiste $\overline{n}$ tale per cui $\forall p\geq\overline{n}$ e $q>0$ interi si abbia
+Per ipotesi esiste una successione $\{M_n\}$ la cui serie converge e tale che per ogni $n$ si abbia $\norm{f_n}_{\infty,E}\leq M_n$, $\forall x\in E$. Allora la serie $\sum_{n=1}^{+\infty}M_n$ soddisfa la condizione di Cauchy: per ogni $\epsilon>0$ esiste $\overline{n}$ tale per cui $\forall p\geq\overline{n}$ e $q>0$ interi si abbia
 \[
 \sum_{n=p}^{p+q}M_n<\epsilon,
 \]
@@ -96,61 +96,61 @@ quindi la serie converge anche uniformemente per le \eqref{eq:cc_serie_funzioni}
 La convergenza totale implica anche la convergenza assoluta, come è facile vedere. Ovviamente non valgono le implicazioni nel senso inverso: né la convergenza uniforme né quella assoluta, né entrambe (e men che meno quella puntuale) implicano la convergenza totale.
 \paragraph{Esempi}
 \begin{itemize}
-\item La serie $\ser{n}\frac{(-1)^n}{n}$ ha come termine generale una funzione costante, e ovviamente converge puntualmente per il criterio di Leibnitz in tutto $\R$, ma non assolutamente. Non dipendendo in alcun modo dalla variabile $x$, la convergenza è sicuramente anche uniforme.
-\item La serie $\ser{n}x^n$ converge puntualmente in $J=(-1,1)$, anche assolutamente essendo a termini positivi, ma non uniformemente perché $\norm{f_n}_{\infty,J}=f_n(1)=1$.
-\item Considerata solo in $\R^+$, la serie di termine generale $f_n(x)=\frac1{x}\delta_{[n,n+1]}\scriptstyle(x)$ converge puntualmente ed assolutamente (la somma corrisponde in effetti all'integrale improprio $\int_1^{\pinf}\frac1{x}\,\scriptstyle\dd x$), inoltre $\norm{S-S_n}_{\infty,\R^+}\leq\frac1{n+1}\to 0$, quindi converge uniformemente. La convergenza non è però totale in quanto $\norm{f_n}_{\infty,\R^+}=\frac1{n}$ la cui serie diverge.
+\item La serie $\sum_{n=1}^{+\infty}\frac{(-1)^n}{n}$ ha come termine generale una funzione costante, e ovviamente converge puntualmente per il criterio di Leibnitz in tutto $\R$, ma non assolutamente. Non dipendendo in alcun modo dalla variabile $x$, la convergenza è sicuramente anche uniforme.
+\item La serie $\sum_{n=1}^{+\infty}x^n$ converge puntualmente in $J=(-1,1)$, anche assolutamente essendo a termini positivi, ma non uniformemente perché $\norm{f_n}_{\infty,J}=f_n(1)=1$.
+\item Considerata solo in $\R^+$, la serie di termine generale $f_n(x)=\frac1{x}\delta_{[n,n+1]}\scriptstyle(x)$ converge puntualmente ed assolutamente (la somma corrisponde in effetti all'integrale improprio $\int_1^{+\infty}\frac1{x}\,\scriptstyle\dd x$), inoltre $\norm{S-S_n}_{\infty,\R^+}\leq\frac1{n+1}\to 0$, quindi converge uniformemente. La convergenza non è però totale in quanto $\norm{f_n}_{\infty,\R^+}=\frac1{n}$ la cui serie diverge.
 \end{itemize}
 
 \section{Serie di potenze}
 Le serie di potenze sono un caso particolare e importante di serie di funzioni: dati un punto $x_0\in\R$ e una successione $\{a_n\}\subset\R$, si chiama serie di potenze di centro $x_0$ e coefficiente $a_n$ la serie
 \[
-\serz{n}a_n(x-x_0)^n.
+\sum_{n=0}^{+\infty}a_n(x-x_0)^n.
 \]
 Qualunque serie di potenze converge sempre in $x_0$, dove il termine generale è sempre nullo: dunque l'insieme di convergenza puntuale non è mai vuoto.
 Tutte le serie di potenze saranno indicate in questo capitolo con $n\in\{0,1,\dots\}$, senza perdere la generalità; laddove vi siano problemi di esistenza del coefficiente $a_n$, l'indice iniziale sarà opportunamente cambiato. Ovviamente ciò non cambia il carattere della serie, ma è importante quando si intende calcolare la funzione somma.
-Per comodità, tramite la traslazione $y=x-x_0$ si ottiene la serie $\serz{n}a_ny^n$, che è centrata in $y=0$ e mantiene le stesse caratteristiche qualitative della precedente, opportunamente traslate: d'ora in poi si tratteranno soltanto serie di potenze con questa scrittura.
+Per comodità, tramite la traslazione $y=x-x_0$ si ottiene la serie $\sum_{n=0}^{+\infty}a_ny^n$, che è centrata in $y=0$ e mantiene le stesse caratteristiche qualitative della precedente, opportunamente traslate: d'ora in poi si tratteranno soltanto serie di potenze con questa scrittura.
 \paragraph{Esempi}
 \begin{itemize}
-\item La serie $\serz{n}n^nx^n$ converge solo in $x=0$: altrove infatti $\sqrt[n]{n^nx^n}=n\abs{x}\to\pinf$ se $x\neq 0$ quindi diverge per il criterio della radice.
-\item $\serz{n}\frac{x^n}{n^n}$, sempre per il criterio della radice, converge puntualmente in tutto $\R$.
-\item $\serz{n}x^n$ converge puntualmente in $E=(-1,1)$, ma non uniformemente, perché $\sup_{x\in E}\abs{x^n}=f_n(1)=1^n=1$.
+\item La serie $\sum_{n=0}^{+\infty}n^nx^n$ converge solo in $x=0$: altrove infatti $\sqrt[n]{n^nx^n}=n\abs{x}\to+\infty$ se $x\neq 0$ quindi diverge per il criterio della radice.
+\item $\sum_{n=0}^{+\infty}\frac{x^n}{n^n}$, sempre per il criterio della radice, converge puntualmente in tutto $\R$.
+\item $\sum_{n=0}^{+\infty}x^n$ converge puntualmente in $E=(-1,1)$, ma non uniformemente, perché $\sup_{x\in E}\abs{x^n}=f_n(1)=1^n=1$.
 \end{itemize}
 \begin{teorema}
-Data una serie di potenze $\serz{n}a_nx^n$, se converge puntualmente in $x_0\neq 0$, allora converge assolutamente in tutto l'intervallo $(-\abs{x_0},\abs{x_0})$. La convergenza è inoltre totale, quindi anche uniforme, in ogni sottoinsieme compatto di esso.
+Data una serie di potenze $\sum_{n=0}^{+\infty}a_nx^n$, se converge puntualmente in $x_0\neq 0$, allora converge assolutamente in tutto l'intervallo $(-\abs{x_0},\abs{x_0})$. La convergenza è inoltre totale, quindi anche uniforme, in ogni sottoinsieme compatto di esso.
 \end{teorema}
 \begin{proof}
-Sia $\serz{n}a_nx^n$ convergente in $\xi\neq 0$: allora necessariamente deve risultare $\abs{a_n\xi^n}\to 0$, quindi esiste $c>0$ tale per cui per ogni $n$ si abbia $\abs{a_n\xi^n}<c$. Allora
+Sia $\sum_{n=0}^{+\infty}a_nx^n$ convergente in $\xi\neq 0$: allora necessariamente deve risultare $\abs{a_n\xi^n}\to 0$, quindi esiste $c>0$ tale per cui per ogni $n$ si abbia $\abs{a_n\xi^n}<c$. Allora
 \[
 \abs{a_nx^n}=\abs{a_n\xi^n}\abs{\frac{x}{\xi}}^n\leq c\abs{\frac{x}{\xi}}^n,
 \]
-che è il termine generale di una serie geometrica, e converge dunque per $\abs{x/\xi}<1$ cioè per $x\in(-\abs{\xi},\abs{\xi})$. Per il teorema del confronto, $\serz{n}a_nx^n$ converge assolutamente nel medesimo intervallo.
-Se poi $K$ è un sottoinsieme compatto di tale intervallo, sicuramente $\abs{x/\xi}\leq 1-\delta$ per qualche $\delta>0$, ma allora $\abs{a_nx^n}\leq c(1-\delta)^n$ quindi $\serz{n}a_nx^n$ converge totalmente.
+che è il termine generale di una serie geometrica, e converge dunque per $\abs{x/\xi}<1$ cioè per $x\in(-\abs{\xi},\abs{\xi})$. Per il teorema del confronto, $\sum_{n=0}^{+\infty}a_nx^n$ converge assolutamente nel medesimo intervallo.
+Se poi $K$ è un sottoinsieme compatto di tale intervallo, sicuramente $\abs{x/\xi}\leq 1-\delta$ per qualche $\delta>0$, ma allora $\abs{a_nx^n}\leq c(1-\delta)^n$ quindi $\sum_{n=0}^{+\infty}a_nx^n$ converge totalmente.
 \end{proof}
 \begin{definizione}
-Si chiama \emph{raggio di convergenza} di una serie di potenze $\serz{n}a_nx^n$ la quantità
+Si chiama \emph{raggio di convergenza} di una serie di potenze $\sum_{n=0}^{+\infty}a_nx^n$ la quantità
 \[
-\rho=\sup\bigg\{x\in\R\colon\ser{n}a_nx^n\text{ è convergente}\bigg\}.
+\rho=\sup\bigg\{x\in\R\colon\sum_{n=1}^{+\infty}a_nx^n\text{ è convergente}\bigg\}.
 \]
 \end{definizione}
-Il raggio $\rho$ appartiene a $[0,\pinf]$:
+Il raggio $\rho$ appartiene a $[0,+\infty]$:
 \begin{itemize}
 \item se $\rho=0$ la serie converge solo in 0;
-\item se $\rho\notin\{0,\pinf\}$, la serie converge assolutamente in $(-\rho,\rho)$, totalmente nei sottoinsiemi compatti, non converge se $\abs{x}>\rho$;
-\item se $\rho=\pinf$, la serie converge assolutamente $\forall x\in\R$ e totalmente in ogni insieme compatto.
+\item se $\rho\notin\{0,+\infty\}$, la serie converge assolutamente in $(-\rho,\rho)$, totalmente nei sottoinsiemi compatti, non converge se $\abs{x}>\rho$;
+\item se $\rho=+\infty$, la serie converge assolutamente $\forall x\in\R$ e totalmente in ogni insieme compatto.
 \end{itemize}
 Per determinare il raggio di convergenza si ricorre ai criteri seguenti.
 Quando $\rho\neq 0$, non si può affermare nulla sul comportamento della serie al bordo di $(-\rho,\rho)$.
 \begin{teorema}[Criterio di Cauchy-Hadamard]
-Sia $\rho$ il raggio di convergenza della serie $\serz{n}a_nx^n$. Se
+Sia $\rho$ il raggio di convergenza della serie $\sum_{n=0}^{+\infty}a_nx^n$. Se
 \[
-\ell=\limsup_{n\to\pinf}\sqrt[n]{\abs{a_n}},
+\ell=\limsup_{n\to+\infty}\sqrt[n]{\abs{a_n}},
 \]
 allora $\rho=\frac1{\ell}$, usando l'algebra di $\Rex$.
 \end{teorema}
 \begin{proof}
 Per il criterio \ref{t:criterio_radice_serie} della radice si ha
 \[
-\limsup_{n\to\pinf}\sqrt[n]{\abs{a_nx^n}}=\abs{x}\limsup_{n\to\pinf}\sqrt[n]{\abs{a_n}}\equiv \abs{x}\ell.
+\limsup_{n\to+\infty}\sqrt[n]{\abs{a_nx^n}}=\abs{x}\limsup_{n\to+\infty}\sqrt[n]{\abs{a_n}}\equiv \abs{x}\ell.
 \]
 che deve essere minore di 1, quindi $\abs{x}<1/\ell$: allora $\rho=1/\ell$ è il raggio di convergenza.
 \end{proof}
@@ -158,16 +158,16 @@ Questo criterio è sempre utilizzabile, in quanto il limite superiore di una suc
 \begin{teorema}[Criterio di d'Alembert]
 Se $a_n\neq 0$ per ogni $n$ ed esiste il limite
 \[
-\lim_{n\to\pinf}\abs{\frac{a_{n+1}}{a_n}}\equiv\ell,
+\lim_{n\to+\infty}\abs{\frac{a_{n+1}}{a_n}}\equiv\ell,
 \]
-allora il raggio di convergenza della serie $\serz{n}a_nx^n$ è $\rho=1/\ell$.
+allora il raggio di convergenza della serie $\sum_{n=0}^{+\infty}a_nx^n$ è $\rho=1/\ell$.
 \end{teorema}
 La dimostrazione è analoga a quella del teorema precedente. Questo criterio inoltre mostra che se $a_n$ ha una crescita o decrescita di tipo polinomiale il raggio di covergenza è 1.
 Non è possibile stabilire a priori la convergenza ai bordi dell'intervallo di convergenza, ma il caso va studiato di volta in volta. Ad esempio:
 \begin{itemize}
-\item la serie $\serz{n}x^n$ converge in $(-1,1)$;
-\item la serie $\serz{n}\frac{x^n}{n}$ converge in $[-1,1)$, in $x=-1$ in particolare per il criterio di Leibnitz;
-\item la serie $\serz{n}\frac{x^n}{n^2}$ converge in $[-1,1]$.
+\item la serie $\sum_{n=0}^{+\infty}x^n$ converge in $(-1,1)$;
+\item la serie $\sum_{n=0}^{+\infty}\frac{x^n}{n}$ converge in $[-1,1)$, in $x=-1$ in particolare per il criterio di Leibnitz;
+\item la serie $\sum_{n=0}^{+\infty}\frac{x^n}{n^2}$ converge in $[-1,1]$.
 \end{itemize}
 
 \section{Proprietà delle serie di potenze}
@@ -179,19 +179,19 @@ In ogni punto $x_0\in(-\rho,\rho)$, si trova un intervallo compatto $[a,b]\subse
 La serie è quindi continua in tutti i punti $x_0\in(-\rho,\rho)$. 
 \end{proof}
 \begin{teorema}[di Abel]
-Se la serie di potenze $\ser{n}a_nx^n$ ha un raggio di convergenza $\rho$ non nullo e converge in $x=\rho$, allora converge uniformemente nei sottoinsiemi compatti di $(-\rho,\rho]$.
+Se la serie di potenze $\sum_{n=1}^{+\infty}a_nx^n$ ha un raggio di convergenza $\rho$ non nullo e converge in $x=\rho$, allora converge uniformemente nei sottoinsiemi compatti di $(-\rho,\rho]$.
 \end{teorema}
 La tesi vale ovviamente anhe nel caso in cui la serie converga in $x=-\rho$, per cui la convergenza è uniforme in $[-\rho,\rho)$, o anche entrambi.
 Come conseguenza, la serie è anche continua sul bordo di $(-\rho,\rho)$, dove converge: ciò significa che
 \[
-\lim_{x\to\rho^-}\serz{n}a_nx^n=\serz{n}a_n\rho^n.
+\lim_{x\to\rho^-}\sum_{n=0}^{+\infty}a_nx^n=\sum_{n=0}^{+\infty}a_n\rho^n.
 \]
 È possibile calcolare l'integrale di una serie di potenze trasformandolo in una serie numerica grazie al teorema seguente.
 \begin{teorema} \label{t:integrale-serie-potenze}
-	Sia $\serz{n}a_nx^n$ con raggio di convergenza $\rho$.
+	Sia $\sum_{n=0}^{+\infty}a_nx^n$ con raggio di convergenza $\rho$.
 	Per $[\alpha,\beta]\subset(-\rho,\rho)$ vale l'uguaglianza
 	\begin{equation}
-		\int_\alpha^\beta\serz{n}a_nx^n\,\dd x=\serz{n}a_n\frac{\beta^{n+1}-\alpha^{n+1}}{n+1}.
+		\int_\alpha^\beta\sum_{n=0}^{+\infty}a_nx^n\,\dd x=\sum_{n=0}^{+\infty}a_n\frac{\beta^{n+1}-\alpha^{n+1}}{n+1}.
 	\end{equation}
 \end{teorema}
 \begin{proof}
@@ -199,46 +199,46 @@ Come conseguenza, la serie è anche continua sul bordo di $(-\rho,\rho)$, dove c
 	È quindi possibile applicare il teorema \ref{t:scambio_integrale_serie} che permette di scambiare l'ordine di serie ed integrale.
 	Integrando la serie termine a termine si ottiene
 	\begin{equation}
-		\int_\alpha^\beta\serz{n}a_nx^n\,\dd x=\serz{n}\int_\alpha^\beta a_nx^n\,\dd x=\serz{n}a_n\int_\alpha^\beta x^n\,\dd x=\serz{n}a_n\frac{\beta^{n+1}-\alpha^{n+1}}{n+1}.
+		\int_\alpha^\beta\sum_{n=0}^{+\infty}a_nx^n\,\dd x=\sum_{n=0}^{+\infty}\int_\alpha^\beta a_nx^n\,\dd x=\sum_{n=0}^{+\infty}a_n\int_\alpha^\beta x^n\,\dd x=\sum_{n=0}^{+\infty}a_n\frac{\beta^{n+1}-\alpha^{n+1}}{n+1}.
 	\end{equation}
 \end{proof}
 
-Dove la convergenza è uniforme, si può calcolare la derivata di una serie di potenze termine a termine: la derivata di $\serz{n}a_nx^n$ è dunque
+Dove la convergenza è uniforme, si può calcolare la derivata di una serie di potenze termine a termine: la derivata di $\sum_{n=0}^{+\infty}a_nx^n$ è dunque
 \[
-\serz{n}na_nx^{n-1}.
+\sum_{n=0}^{+\infty}na_nx^{n-1}.
 \]
 Dato che il primo termine, corrispondente a $n=0$, è costante (vale $a_0$) la sua derivata è nulla, quindi non appare nella serie derivata; si può allora trascurare, senza alterare in alcun modo la serie, il primo termine facendo partire la serie da $n=1$, ottenendo
 \[
-\ser{n}na_nx^{n-1}.
+\sum_{n=1}^{+\infty}na_nx^{n-1}.
 \]
 Scalando gli indici di 1 si riscrive quindi la serie derivata come
 \[
-\serz{n}(n+1)a_{n+1}x^n.
+\sum_{n=0}^{+\infty}(n+1)a_{n+1}x^n.
 \]
 Si calcola ora il suo raggio di convergenza $\rho'$, con il limite
 \[
 \sqrt[n]{(n+1)\abs{a_{n+1}}}=\sqrt[n]{n+1}\sqrt[n+1]{\abs{a_{n+1}}}^{\frac{n+1}{n}}.
 \]
-Il termine $\sqrt[n]{n+1}$ tende a 1, così come l'esponente $\frac{n+1}{n}$ nella seconda radice. Il termine $\sqrt[n+1]{\abs{a_{n+1}}}$ al limite per $n\to\pinf$ tende a $1/\rho$ dove $\rho$ è lo stesso raggio di convergenza della serie primitiva. Quindi si può formulare il teorema seguente.
+Il termine $\sqrt[n]{n+1}$ tende a 1, così come l'esponente $\frac{n+1}{n}$ nella seconda radice. Il termine $\sqrt[n+1]{\abs{a_{n+1}}}$ al limite per $n\to+\infty$ tende a $1/\rho$ dove $\rho$ è lo stesso raggio di convergenza della serie primitiva. Quindi si può formulare il teorema seguente.
 \begin{teorema}
-Sia $S(x)$ la funzione somma della serie $\serz{n}a_nx^n$, con raggio di convergenza non nullo: $S$ è derivabile in $(-\rho,\rho)$ e vale
+Sia $S(x)$ la funzione somma della serie $\sum_{n=0}^{+\infty}a_nx^n$, con raggio di convergenza non nullo: $S$ è derivabile in $(-\rho,\rho)$ e vale
 \[
-S'(x)=\serz{n}(n+1)a_{n+1}x^n,
+S'(x)=\sum_{n=0}^{+\infty}(n+1)a_{n+1}x^n,
 \]
 con lo stesso raggio di convergenza di $S(x)$.
 \end{teorema}
 \begin{proof}
-La serie $\serz{n}a_nx^n$ ha come termine generale una funzione continua e derivabile per ogni $n$, e converge sicuramente in $x=0$. La serie delle derivate ha lo stesso raggio di convergenza, quindi converge totalmente in ogni sottoinsieme compatto di $(-\rho,\rho)$. Allora $S(x)$ può essere derivata termine a termine per il teorema \ref{t:scambio_derivata_serie} ottenendo
+La serie $\sum_{n=0}^{+\infty}a_nx^n$ ha come termine generale una funzione continua e derivabile per ogni $n$, e converge sicuramente in $x=0$. La serie delle derivate ha lo stesso raggio di convergenza, quindi converge totalmente in ogni sottoinsieme compatto di $(-\rho,\rho)$. Allora $S(x)$ può essere derivata termine a termine per il teorema \ref{t:scambio_derivata_serie} ottenendo
 \[
-S'(x)=\serz{n}(n+1)a_{n+1}x^n.\qedhere
+S'(x)=\sum_{n=0}^{+\infty}(n+1)a_{n+1}x^n.\qedhere
 \]
 \end{proof}
 
-Continuando a derivare un qualsiasi numero di volte l'intervallo di convergenza non cambia, allora al suo interno ogni serie di potenze è derivabile infinite volte: ogni serie di potenze di raggio di convergenza $\rho$ è quindi di classe $\cont{\infty}\big((-\rho,\rho)\big)$. Inoltre, posto $S(x)=\serz{n}a_nx^n$, vale
+Continuando a derivare un qualsiasi numero di volte l'intervallo di convergenza non cambia, allora al suo interno ogni serie di potenze è derivabile infinite volte: ogni serie di potenze di raggio di convergenza $\rho$ è quindi di classe $\cont{\infty}\big((-\rho,\rho)\big)$. Inoltre, posto $S(x)=\sum_{n=0}^{+\infty}a_nx^n$, vale
 \[\begin{split}
-S^{(k)}(x)	&=\serz{n}n(n-1)(n-2)\dots(n-k+1)a_nx^{n-k}=\\
-			&=\sum_{n=k}^{\pinf}n(n-1)(n-2)\dots(n-k+1)a_nx^{n-k}=\\
-			&=\serz{m}(m+k)(m+k-1)\dots(m+1)a_{m+k}x^m,
+S^{(k)}(x)	&=\sum_{n=0}^{+\infty}n(n-1)(n-2)\dots(n-k+1)a_nx^{n-k}=\\
+			&=\sum_{n=k}^{+\infty}n(n-1)(n-2)\dots(n-k+1)a_nx^{n-k}=\\
+			&=\sum_{m=0}^{+\infty}(m+k)(m+k-1)\dots(m+1)a_{m+k}x^m,
 \end{split}\]
 sostituendo $m=n-k$. Tutti i termini di indice $n<k$ sono via via eliminati dalle derivate in quanto ogni volta, il primo è costante.
 In $x=0$, tutte le potenze diventano nulle ad eccezione del primo termine, che poiché $m=0$ diventa $k!a_k$, per ogni $k\geq 0$ (è l'ordine di derivazione), cioè deve risultare
@@ -247,40 +247,40 @@ a_k=\frac{f^{(k)}(0)}{k!}.
 \]
 I coefficienti della serie sono quindi univocamente determinati dalle derivate della funzione somma, tramite l'equazione precedente.
 \begin{teorema}
-	Data la serie di potenze $S(x)=\serz{n}a_n(x-x_0)^n$ con raggio di convergenza $\rho\ne 0$, si ha che $S\in\cont{\infty}\big((x_0-\rho,x_0+\rho)\big)$ e per ogni punto $x$ in tale intervallo risulta
+	Data la serie di potenze $S(x)=\sum_{n=0}^{+\infty}a_n(x-x_0)^n$ con raggio di convergenza $\rho\ne 0$, si ha che $S\in\cont{\infty}\big((x_0-\rho,x_0+\rho)\big)$ e per ogni punto $x$ in tale intervallo risulta
 	\begin{equation} \label{eq:serie_potenze_taylor}
-		S(x)=\serz{n}\frac{S^{(n)}(x_0)}{n!}(x-x_0)^n.
+		S(x)=\sum_{n=0}^{+\infty}\frac{S^{(n)}(x_0)}{n!}(x-x_0)^n.
 	\end{equation}
 \end{teorema}
 \paragraph{Esempi}
 \begin{itemize}
-\item La serie $f(x)=\serz{n}x^n$ ha $\rho=1$. La sua somma è quella della serie geometrica $f(x)=\frac1{1-x}$. Integrando in $[0,x]$ si ha che
+\item La serie $f(x)=\sum_{n=0}^{+\infty}x^n$ ha $\rho=1$. La sua somma è quella della serie geometrica $f(x)=\frac1{1-x}$. Integrando in $[0,x]$ si ha che
 \[
 \int_0^xf(t)\,\dd t=\int_0^x\frac{\dd t}{1-t}=-\log(1-x),
 \]
 e integrando invece termine a termine si ottiene
 \[
-\int_0^xf(t)\,\dd t=\int_0^x\serz{n}t^n\,\dd t=\serz{n}\int_0^xt^n\,\dd t=\serz{n}\frac{x^{n+1}}{n+1}=\ser{n}\frac{x^n}{n}.
+\int_0^xf(t)\,\dd t=\int_0^x\sum_{n=0}^{+\infty}t^n\,\dd t=\sum_{n=0}^{+\infty}\int_0^xt^n\,\dd t=\sum_{n=0}^{+\infty}\frac{x^{n+1}}{n+1}=\sum_{n=1}^{+\infty}\frac{x^n}{n}.
 \]
 Quindi per ogni $x\in(-1,1)$ vale l'uguaglianza
 \[
-\ser{n}\frac{x^n}{n}=-\log(1-x).
+\sum_{n=1}^{+\infty}\frac{x^n}{n}=-\log(1-x).
 \]
 Per il criterio di Leibnitz però l'ultima serie converge anche in $x=-1$: allora è lecito valutare l'uguaglianza in questo punto, potendo così calcolare il valore della serie numerica:
 \[
-\ser{n}\frac{(-1)^n}{n}=-\log 2.
+\sum_{n=1}^{+\infty}\frac{(-1)^n}{n}=-\log 2.
 \]
-\item La serie $g(x)=\serz{n}(-1)^nx^{2n}$ converge in $(-1,1)$. Si può riscrivere come $\serz{n}(-x^2)^n$, la cui somma è quindi $g(x)=\frac1{1+x^2}$: integrando in $[0,x]$ si ottiene
+\item La serie $g(x)=\sum_{n=0}^{+\infty}(-1)^nx^{2n}$ converge in $(-1,1)$. Si può riscrivere come $\sum_{n=0}^{+\infty}(-x^2)^n$, la cui somma è quindi $g(x)=\frac1{1+x^2}$: integrando in $[0,x]$ si ottiene
 \[
 \int_0^xg(t)\,\dd t=\int_0^x\frac{\dd t}{1+t^2}=\arctan x,
 \]
 e termine a termine
 \[
-\int_0^x\serz{n}(-1)^nt^{2n}\,\dd t=\serz{n}(-1)^n\int_0^xt^{2n}\,\dd t=\serz{n}(-1)^n\frac{x^{2n+1}}{2n+1}.
+\int_0^x\sum_{n=0}^{+\infty}(-1)^nt^{2n}\,\dd t=\sum_{n=0}^{+\infty}(-1)^n\int_0^xt^{2n}\,\dd t=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n+1}}{2n+1}.
 \]
 Questa serie converge in $[-1,1]$, quindi in $x=1$ si ha
 \[
-\serz{n}\frac{(-1)^n}{2n+1}=\arctan 1=\frac{\pi}4
+\sum_{n=0}^{+\infty}\frac{(-1)^n}{2n+1}=\arctan 1=\frac{\pi}4
 \]
 che fornisce un metodo per approssimare il valore di $\pi$.
 \end{itemize}
@@ -312,23 +312,23 @@ per $\xi\in(x_0-x,x_0+x)$. Se $x\in(x_0-\delta,x_0+\delta)$ dunque la derivata $
 \[
 \bigg|f(x)-\sum_{k=0}^{n-1}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k\bigg|=\abs{\frac{f^{(n)}(\xi)}{n!}(x-x_0)^n}\leq\frac{cM^n}{n!}\delta^n=c\frac{(\delta M)^n}{n!}
 \]
-che tende a 0 per $n\to\pinf$, quindi la funzione coincide con il suo sviluppo in serie di Taylor.
+che tende a 0 per $n\to+\infty$, quindi la funzione coincide con il suo sviluppo in serie di Taylor.
 \end{proof}
 \paragraph{Esempi}
 \begin{itemize}
 \item La funzione $f(x)=\sin x$ è di classe $\cont{\infty}(\R)$. Posto $x_0=0$, si ha che $f^{(n)}(0)=0$ se $n$ è pari, o $\pm 1$ se $n$ è dispari. Poiché quindi $\abs{f^{(n)}(0)}\leq 1$ per ogni $n\geq 0$, $f$ è analitica in un intorno di $x=0$: chiaramente il risultato si estende anche a tutto $\R$ (figura \ref{fig:taylor_sin}).
 Allora per ogni $x\in\R$ si ha
 \[
-\sin x=\sum_{n=0}^{\pinf}(-1)^n\frac{x^{2n+1}}{(2n+1)!}.
+\sin x=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n+1}}{(2n+1)!}.
 \]
 \input{grafici/taylor-sin.tex}
 Derivando la serie (la convergenza è necessariamente uniforme in tutto $\R$) si ottiene quindi l'uguaglianza
 \[
-\cos x=\sum_{n=0}^{\pinf}(-1)^n\frac{x^{2n}}{(2n!)}.
+\cos x=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n}}{(2n!)}.
 \]
 \item Si consideri la funzione $f(x)=e^x$ in $x_0=0$. Ogni sua derivata vale $f^{(n)}(0)=1$, per ogni $n$, inoltre per $\abs{x}<R$ risulta, sempre per ogni $n$, $\abs{f^{(n)}(x)}\leq e^R$, essendo una funzione crescente. Dunque $e^x$ è analitica, cioè per ogni $x\in(-R,R)$ si ha
 \[
-e^x=\sum_{n=0}^{\pinf}\frac{x^n}{n!}.
+e^x=\sum_{n=0}^{+\infty}\frac{x^n}{n!}.
 \]
 Poiché $R$ è del tutto arbitrario, la $f(x)=e^x$ è in realtà analitica in qualunque punto dell'asse reale (figura \ref{fig:taylor_exp}).
 Questa uguaglianza è sfruttata per definire la funzione esponenziale anche in altri ambiti, come per i numeri complessi o per le matrici.

@@ -74,8 +74,7 @@
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\phi}{\varphi}
 \newcommand{\qqq}{\quad\longrightarrow\quad}  % Spazio lungo + --> + spazio lungo
-\newcommand{\qeq}{\quad\text{e}\quad}         % Spazio lungo + "e" + spazio lungo
-\newcommand{\qtext}[1]{\quad\text{#1}\quad}   % Come \qeq, ma con testo personalizzato
+\newcommand{\qtext}[1]{\quad\text{#1}\quad}   % Testo in caratteri romani (i.e. non slanted, come di defeult in math mode) con spazio attorno 
 \renewcommand{\vec}[1]{\mathbf{#1}}           % Indica vettori in grassetto (per vettori di spazi euclidei)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -88,23 +87,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Simboli matematici
 \newcommand{\dd}{\textup{d}}                                   % Differenziale
-\newcommand{\ddp}{\partial}                                    % "Differenziale" parziale
 \newcommand{\abs}[1]{\left|{#1}\right|}                        % Modulo di numeri complessi / valore assoluto
-\newcommand{\Int}{\!\int}                                      % Simbolo di integrale con meno spazio che lo precede
 \newcommand{\norm}[1]{\left\|{#1}\right\|}                     % Norma
-\newcommand{\ser}[1]{\sum_{{#1}=1}^{+\infty}}                  % Simbolo di sommatoria da indice=1 a +inf (il simbolo dell'indice è specificato al momento nell'argomento del comando)
-\newcommand{\serz}[1]{\sum_{{#1}=0}^{+\infty}}                 % Come sopra, ma la serie parte da 0 e non da 1
 \renewcommand{\emptyset}{\varnothing}                          % Insieme vuoto
 \newcommand{\then}{\Rightarrow}                                % Implicazione logica
 \renewcommand{\iff}{\Leftrightarrow}                           % "Se e solo se"
 \renewcommand{\Re}[1]{\mathfrak{R}\!\left({#1}\right)}         % Parte reale
 \renewcommand{\Im}[1]{\mathfrak{I}\!\left({#1}\right)}         % Parte immaginaria
-\newcommand{\pinf}{+\infty}                                    % Simbolo del +inf (deprecated)
-\newcommand{\minf}{-\infty}                                    % Simbolo del -inf (deprecated)
 \newcommand{\partint}[1]{\left\lfloor{#1}\right\rfloor}        % Parte intera di un numero
 \newcommand{\conj}[1]{\overline{#1}}                           % Coniugato
-\newcommand{\intinf}{\underline{\Int_a^b}}                     % Integrale inferiore (Riemann)
-\newcommand{\intsup}{\overline{\Int_a^b}}                      % Integrale superiore (Riemann)
+\newcommand{\intinf}{\underline{\int_a^b}}                     % Integrale inferiore (Riemann)
+\newcommand{\intsup}{\overline{\int_a^b}}                      % Integrale superiore (Riemann)
 \newcommand{\partz}{\mathcal{P}}                               % Partizione di un intervallo
 \newcommand{\rie}{\mathfrak{R}}                                % Spazio delle funzioni Riemann-integrabili in un insieme
 \newcommand{\cont}[1]{\mathcal{C}^{{#1}}}                      % Spazio delle funzioni continue

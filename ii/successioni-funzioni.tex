@@ -4,16 +4,16 @@ Sia $n$ un numero naturale: con $\{f_n\}_{n\in\N}$ si indica una famiglia di fun
 \begin{definizione} \label{d:conv_puntuale_succ}
 La successione $\{f_n\}$ converge \emph{puntualmente} in $J\subseteq I$ se la successione numerica $\{f_n(x_0)\}$ converge, nello spazio metrico di arrivo, per ogni $x_0\in J$.
 \end{definizione}
-Quando $\{f_n\}$ converge puntualmente in $J$, in tale insieme si può definire la \emph{funzione limite} $f$ tale per cui $f(x_0)=\lim_{n\to\pinf}f_n(x_0)$ $\forall x_0\in J$, vale a dire che
+Quando $\{f_n\}$ converge puntualmente in $J$, in tale insieme si può definire la \emph{funzione limite} $f$ tale per cui $f(x_0)=\lim_{n\to+\infty}f_n(x_0)$ $\forall x_0\in J$, vale a dire che
 \begin{equation} \label{eq:conv_puntuale_succ}
 \forall x_0\in J,\ \forall\epsilon>0\ \exists\overline{n}=\overline{n}(\epsilon,x_0)\colon\forall n\geq\overline{n}\abs{f_n(x_0)-f(x_0)}<\epsilon.
 \end{equation}
 \paragraph{Esempi}
 \begin{enumerate}
-\item In $I=[0,\pinf)$, la successione $f_n(x)=\min\{x,n\}$ converge in $I$ alla $f(x)=x$;
-\item In $I=[0,\pinf)$, la $f_n=x^n$ converge puntualmente (figura \ref{fig:xn}) in $[0,1]$ alla funzione $f$ tale per cui $f(x)=0$ per $x\in[0,1)$ e $f(1)=1$.
+\item In $I=[0,+\infty)$, la successione $f_n(x)=\min\{x,n\}$ converge in $I$ alla $f(x)=x$;
+\item In $I=[0,+\infty)$, la $f_n=x^n$ converge puntualmente (figura \ref{fig:xn}) in $[0,1]$ alla funzione $f$ tale per cui $f(x)=0$ per $x\in[0,1)$ e $f(1)=1$.
 \input{grafici/xn.tex}
-\item $f_n=\frac{x}{x+n}$ in $I=[0,\pinf)$ converge per ogni $x\in I$ a $f(x)=0$.
+\item $f_n=\frac{x}{x+n}$ in $I=[0,+\infty)$ converge per ogni $x\in I$ a $f(x)=0$.
 \item\[
 f_n(x)=\begin{cases}n^2x&x\in[0,\frac1{n}]\\ 2n-n^2x&x\in(\frac1{n},\frac2{n})\\ 0&x\in[\frac2{n},2]\end{cases},
 \]
@@ -31,18 +31,18 @@ Si può studiare se le proprietà della famiglia di funzioni vengano ``ereditate
 \begin{itemize}
 \item se $f_n$ è limitata in $J$ per ogni $n\in\N$, allora anche $f$ è limitata in $J$;
 \item se per $\tilde{x}\in J$ esiste il limite delle $f_n(x)$ per $x\to\tilde{x}$, allora $\exists\lim_{x\to\tilde{x}}f(x)$;
-\item ulteriormente, per $\tilde{x}\in J$, $\lim_{n\to\pinf}\left(\lim_{x\to\tilde{x}}f_n(x)\right)=\lim_{x\to\tilde{x}}f(x)$;
+\item ulteriormente, per $\tilde{x}\in J$, $\lim_{n\to+\infty}\left(\lim_{x\to\tilde{x}}f_n(x)\right)=\lim_{x\to\tilde{x}}f(x)$;
 \item se $f_n$ è continua in $J$ per ogni $n\in\N$, anche $f$ è continua in $J$;
 \item se $f_n\in\rie\ab$ $\forall n\in\N$, allora lo è anche $f$, quando ovviamente $f_n\to f$ in $[a,b]$ e, nel caso, valga
 \[
-\lim_{n\to\pinf}\int_a^bf_n(x)\,\dd x=\int_a^bf(x)\,\dd x;
+\lim_{n\to+\infty}\int_a^bf_n(x)\,\dd x=\int_a^bf(x)\,\dd x;
 \]
 \item se ogni $f_n$ è derivabile in $x_0\in J$, allora lo è anche $f$ e, nel caso, valga
 \[
-\lim_{n\to\pinf}f_n'(x_0)=\left(\lim_{n\to\pinf}f_n\right)'(x_0).
+\lim_{n\to+\infty}f_n'(x_0)=\left(\lim_{n\to+\infty}f_n\right)'(x_0).
 \]
 \end{itemize}
-Nessuna di queste proprietà è valida: gli esempi elencati precedenti forniscono dei buoni controesempi. La funzione limite del punto 1 è illimitata nell'intervallo considerato, mentre le $f_n$ sono limitate per ogni $n$; nel punto 2, la funzione limite non è continua quando tutte le $f_n$ lo sono; nel punto 3, la $f$ tende a 0 per $x\to\pinf$, diversamente dalle $f_n$ che tendono a 1, $\forall n$; nel punto 5 la $f$ non è integrabile secondo Riemann, mentre lo sono tutte le $f_n$, e il punto 4 mostra che l'integrale di tutte le $f_n$ è 1 (geometricamente, è l'area del triangolo formato dalla curva), mentre quello della $f$ è nullo; nel punto 6 infine ogni $f_n$ ha derivata nulla in $x=0$, ma la funzione limite non è nemmeno derivabile in tale punto.
+Nessuna di queste proprietà è valida: gli esempi elencati precedenti forniscono dei buoni controesempi. La funzione limite del punto 1 è illimitata nell'intervallo considerato, mentre le $f_n$ sono limitate per ogni $n$; nel punto 2, la funzione limite non è continua quando tutte le $f_n$ lo sono; nel punto 3, la $f$ tende a 0 per $x\to+\infty$, diversamente dalle $f_n$ che tendono a 1, $\forall n$; nel punto 5 la $f$ non è integrabile secondo Riemann, mentre lo sono tutte le $f_n$, e il punto 4 mostra che l'integrale di tutte le $f_n$ è 1 (geometricamente, è l'area del triangolo formato dalla curva), mentre quello della $f$ è nullo; nel punto 6 infine ogni $f_n$ ha derivata nulla in $x=0$, ma la funzione limite non è nemmeno derivabile in tale punto.
 
 Per garantire queste proprietà, la convergenza puntuale della successione chiaramente non basta: bisogna introdurre un nuovo tipo di convergenza, detta \emph{uniforme}.
 \begin{definizione} \label{d:conv_uniforme_succ}
@@ -52,9 +52,9 @@ La successione $\{f_n\}$ converge uniformemente alla funzione limite $f$ in $J$ 
 \end{equation}
 \end{definizione}
 La definizione è simile a quella della convergenza puntuale se non per il fatto che la scelta di $\overline{n}$ è ora svincolata dal punto $x\in J$, ma è globale in tutto l'insieme $J$; di conseguenza la convergenza uniforme deve sempre essere associata all'insieme in cui accade. Ovviamente la convergenza uniforme implica automaticamente quella puntuale.
-Inoltre la differenza tra $f_n$ e la $f$ è certamente, in modulo, sempre minore del suo estremo superiore in $J$, ossia vale sempre $\abs{f_n(x)-f(x)}\leq\sup_{x\in J}\abs{f_n(x)-f(x)}$. Allora per valutare la convergenza uniforme in $J$ è sufficiente calcolare questo estremo superiore, che dovrà annullarsi. Se infatti per la convergenza puntuale doveva verificarsi $\sup_{x\in J}\lim_{n\to\pinf}\abs{f_n(x)-f(x)}=0$, per la convergenza uniforme si ha che
+Inoltre la differenza tra $f_n$ e la $f$ è certamente, in modulo, sempre minore del suo estremo superiore in $J$, ossia vale sempre $\abs{f_n(x)-f(x)}\leq\sup_{x\in J}\abs{f_n(x)-f(x)}$. Allora per valutare la convergenza uniforme in $J$ è sufficiente calcolare questo estremo superiore, che dovrà annullarsi. Se infatti per la convergenza puntuale doveva verificarsi $\sup_{x\in J}\lim_{n\to+\infty}\abs{f_n(x)-f(x)}=0$, per la convergenza uniforme si ha che
 \begin{equation}
-\lim_{n\to\pinf}\sup_{x\in J}\abs{f_n(x)-f(x)}=0.
+\lim_{n\to+\infty}\sup_{x\in J}\abs{f_n(x)-f(x)}=0.
 \end{equation}
 Si può anche indicare questo estremo superiore con la \emph{norma uniforme}:
 \[
@@ -66,11 +66,11 @@ Si può anche indicare questo estremo superiore con la \emph{norma uniforme}:
 \[
 \norm{f_n-f}_{\infty,[0,1)}=\sup_{0\leq x<1} x^n=\lim_{x\to 1}x^n=1,
 \]
-e chiaramente $\lim_{n\to\pinf}\neq 0$ quindi la convergenza non è uniforme. Per $\delta>0$ abritrariamente piccolo, però, considerando non più $[0,1]$ ma $[0,1-\delta]$, si ha che 
+e chiaramente $\lim_{n\to+\infty}\neq 0$ quindi la convergenza non è uniforme. Per $\delta>0$ abritrariamente piccolo, però, considerando non più $[0,1]$ ma $[0,1-\delta]$, si ha che 
 \[
 \norm{f_n-f}_{\infty,[0,1-\delta]}=\sup_{0\leq x\leq 1-\delta} x^n=(1-\delta)^n\to 0,
 \]
-per $n\to\pinf$, perciò la convergenza è uniforme, dato che $1-\delta$ non dipende nemmeno più da $x$.
+per $n\to+\infty$, perciò la convergenza è uniforme, dato che $1-\delta$ non dipende nemmeno più da $x$.
 \item La successione
 \[
 f_n(x)=\frac{\arctan\frac{x}{n}}{1+x^2}
@@ -83,7 +83,7 @@ poiché l'arcotangente è in modulo sempre minore del suo argomento, inoltre il 
 \[
 \frac1{n}\sup_{x\geq 0}\frac{x}{1+x^2}\leq\frac{c}{n}
 \]
-che tende a 0 per $n\to\pinf$, quindi la convergenza è uniforme in tutto $\R$.
+che tende a 0 per $n\to+\infty$, quindi la convergenza è uniforme in tutto $\R$.
 \item La convergenza della successione
 \[
 f_n(x)=\frac{\arctan(nx)}{1+x^2}\quad\to\quad\begin{dcases}\frac{\pi}2\frac{\sgn x}{1+x^2}&x\neq 0\\ 0&x=0\end{dcases}
@@ -93,7 +93,7 @@ non è uniforme su tutto $\R$, ma lo è in ogni insieme $A\subset\R\setminus[-\e
 \sup_{x\geq\epsilon>0}\abs{\frac{\arctan(nx)-\frac{\pi}2\sgn x}{1+x^2}}=\sup_{x\geq\epsilon>0}\frac{\frac{\pi}2-\arctan(nx)}{1+x^2}=\\
 =\sup_{x\geq\epsilon>0}\frac{\arctan\frac1{nx}}{1+x^2}=\frac1{1+\epsilon^2}\arctan\frac1{n\epsilon}\to 0
 \end{multline*}
-per $n\to\pinf$; un risultato analogo si ha per simmetria per $x\leq -\epsilon<0$.
+per $n\to+\infty$; un risultato analogo si ha per simmetria per $x\leq -\epsilon<0$.
 \end{itemize}
 Poiché le successioni di funzioni sono comprese in uno spazio metrico completo, quello delle funzioni limitate con la distanza data dalla norma uniforme, in esso si può elaborare la condizione di Cauchy anche per le successioni di funzioni, che sarà sufficiente e necessaria per la convergenza uniforme (dato che la convergenza in tale spazio coincide proprio con la convergenza uniforme)\footnote{Vedere il capitolo \ref{sec:spazi-funz} sugli spazi funzionali.}.
 \begin{teorema}
@@ -133,15 +133,15 @@ Sia $\{f_n\}$ una successione di funzioni definite da $J$ in $\R$, e $x_0\in J$.
 	Allora in tale intorno si ha $\abs{f(x)-f(x_0)}<3\epsilon$, quindi la funzione limite è continua.
 \end{proof}
 \begin{teorema}[del doppio limite] \label{t:doppio_limite}
-Sia $\{f_n\}$ una successione di funzione definite da $J$ a $\R$, e $x_0\in J'$. Se per ogni $n$ esiste $\lim_{x\to x_0}f_n(x)=\ell_n\in\R$, e $\{f_n\}$ converge a $f$ uniformemente in $J$, allora esiste anche $\lim_{n\to\pinf}\ell_n$, che è finito, e coincide con $\lim_{x\to x_0}f(x)$, ossia
+Sia $\{f_n\}$ una successione di funzione definite da $J$ a $\R$, e $x_0\in J'$. Se per ogni $n$ esiste $\lim_{x\to x_0}f_n(x)=\ell_n\in\R$, e $\{f_n\}$ converge a $f$ uniformemente in $J$, allora esiste anche $\lim_{n\to+\infty}\ell_n$, che è finito, e coincide con $\lim_{x\to x_0}f(x)$, ossia
 \begin{equation} \label{eq:doppio_limite}
-\lim_{n\to\pinf}\Big(\lim_{x\to x_0}f_n(x)\Big)=\lim_{x\to x_0}\Big(\lim_{n\to\pinf}f_n(x)\Big).
+\lim_{n\to+\infty}\Big(\lim_{x\to x_0}f_n(x)\Big)=\lim_{x\to x_0}\Big(\lim_{n\to+\infty}f_n(x)\Big).
 \end{equation}
 \end{teorema}
 \begin{teorema} \label{t:scambio_integrale_limite}
 Sia $\{f_n\}$ una successione di funzioni definite da $[a,b]$ a $\R$, in cui $f_n$ è integrabile secondo Riemann in $[a,b]$ per ogni $n$, e che converge uniformemente alla funzione $f$ nel medesimo intervallo. Allora anche $f\in\rie\ab$, e vale
 \begin{equation} \label{eq:scambio_integrale_limite}
-\lim_{n\to\pinf}\int_a^bf_n(x)\,\dd x=\int_a^b\lim_{n\to\pinf}f_n(x)\,\dd x.
+\lim_{n\to+\infty}\int_a^bf_n(x)\,\dd x=\int_a^b\lim_{n\to+\infty}f_n(x)\,\dd x.
 \end{equation}
 \end{teorema}
 La dimostrazione di questo teorema è piuttosto complicata%?
@@ -155,13 +155,13 @@ Poiché $f_n\in\cont{}\ab$ per ogni $n$, dal teorema \ref{t:continuita_conv_unif
 \abs{\int_a^bf_n(x)\,\dd x-\int_a^bf(x)\,\dd x}=\abs{\int_a^b\big[f_n(x)-f(x)\big]\,\dd x}\leq\int_a^b\abs{f_n(x)-f(x)}\,\dd x\leq\\
 \leq\int_a^b\norm{f_n-f}_{\infty,[a,b]}\,\dd x=\norm{f_n-f}_{\infty,[a,b]}\int_a^b\dd x=(b-a)\norm{f_n-f}_{\infty,[a,b]},
 \end{multline*}
-che tende a 0 per $n\to\pinf$, e si ha dunque la \eqref{eq:scambio_integrale_limite}.
+che tende a 0 per $n\to+\infty$, e si ha dunque la \eqref{eq:scambio_integrale_limite}.
 \end{proof}
 Il teorema non è estendibile a insiemi di integrazione illimitati, come mostrato nel seguente esempio: la successione
 \[
 f_n(x)=\begin{cases}\frac2{n}-\frac2{n^2}x&x<n\\0&x\geq n\end{cases}
 \]
-converge uniformemente alla funzione $f(x)=0$ (figura \ref{fig:succ_integrazione_illimitata}). L'integrale di ogni $f_n(x)$ in $[0,\pinf)$ vale 1, per ogni $n$, poiché la curva descritta dalla funzione è un triangolo di base $n$ e altezza $2/n$, ma l'integrale della funzione limite è chiaramente nullo.
+converge uniformemente alla funzione $f(x)=0$ (figura \ref{fig:succ_integrazione_illimitata}). L'integrale di ogni $f_n(x)$ in $[0,+\infty)$ vale 1, per ogni $n$, poiché la curva descritta dalla funzione è un triangolo di base $n$ e altezza $2/n$, ma l'integrale della funzione limite è chiaramente nullo.
 \input{grafici/succ-integrazione-illimitata.tex}
 
 La derivabilità di una successione di funzioni è una questione più complicata dell'integrabilità: si è già visto in un precedente esempio che anche se la successione converge uniformemente, non è sempre vero che converge anche la successione delle derivate, come per $f_n(x)=\sqrt{x^2+\frac1{n^2}}$, la cui derivata della funzione limite non esiste nemmeno, in $x=0$.
@@ -171,7 +171,7 @@ Sia $\{f_n\}$ una successione di funzioni definite da $[a,b]$ in $\R$ e derivabi
 \item $\{f_n\}$ converga uniformemente a $f$ in $[a,b]$;
 \item $f'(x)=g(x)$ in ogni punto $x\in[a,b]$, ossia
 \[
-\lim_{n\to\pinf}f'_n(x)=\Big(\lim_{n\to\pinf}f_n\Big)'(x).
+\lim_{n\to+\infty}f'_n(x)=\Big(\lim_{n\to+\infty}f_n\Big)'(x).
 \]
 \end{itemize}
 \end{teorema}
@@ -179,20 +179,20 @@ Si dà la dimostrazione nel caso particolare in cui $f_n\in\cont{1}\ab$, per ogn
 \begin{proof}
 Poiché $f_n'\in\cont{}\ab$, anche $g$ lo è per il teorema \ref{t:continuita_conv_uniforme}. Sapendo che esiste ed è finito il limite
 \[
-\lim_{n\to\pinf}f_n(x_0)=f(x_0),
+\lim_{n\to+\infty}f_n(x_0)=f(x_0),
 \]
 si costruisce per ogni punto $x\in[a,b]$ la funzione
 \[
-f(x)=f(x_0)+\Int_{x_0}^xg(t)\,\dd t.
+f(x)=f(x_0)+\int_{x_0}^xg(t)\,\dd t.
 \]
-Essa è derivabile, poiché l'integranda $g$ è continua, $f$ è derivabile per il teorema fondamentale del calcolo integrale \ref{t:tfci1} e la sua derivata è $f'(x)=g(x)$ in $[a,b]$. Inoltre per il medesimo teorema si ha $f_n(x)=f_n(x_0)+\Int_{x_0}^xf_n'(t)\,\dd t$, quindi $\forall x\in[a,b]$ risulta
+Essa è derivabile, poiché l'integranda $g$ è continua, $f$ è derivabile per il teorema fondamentale del calcolo integrale \ref{t:tfci1} e la sua derivata è $f'(x)=g(x)$ in $[a,b]$. Inoltre per il medesimo teorema si ha $f_n(x)=f_n(x_0)+\int_{x_0}^xf_n'(t)\,\dd t$, quindi $\forall x\in[a,b]$ risulta
 \[\begin{split}
-\abs{f(x)-f_n(x)}	&=\abs{f(x_0)+\Int_{x_0}^xg(t)\,\dd t-f_n(x_0)-\Int_{x_0}^xf_n'(t)\,\dd t}\leq\\
+\abs{f(x)-f_n(x)}	&=\abs{f(x_0)+\int_{x_0}^xg(t)\,\dd t-f_n(x_0)-\int_{x_0}^xf_n'(t)\,\dd t}\leq\\
 				&\leq\abs{f(x_0)-f_n(x_0)}+\abs{\int_{x_0}^x\big[g(t)-f_n'(t)\big]\,\dd t}\leq\\
 				&\leq\abs{f(x_0)-f_n(x_0)}+\abs{x-x_0}\norm{g-f_n'}_{\infty,[a,b]}\leq\\
 				&\leq\abs{f(x_0)-f_n(x_0)}+(b-a)\norm{g-f_n'}_{\infty,[a,b]},
 \end{split}\]
-e poiché per le ipotesi $f_n(x_0)\to f(x_0)$ per $n\to\pinf$, ed $\{f_n'\}$ converge a $g$, si ha che $\{f_n\}$ converge a $f$; la convergenza è infine uniforme in quanto non dipende affatto dalla scelta di $x$, come si nota nell'ultima riga dell'equazione dove la variabile non compare più.
+e poiché per le ipotesi $f_n(x_0)\to f(x_0)$ per $n\to+\infty$, ed $\{f_n'\}$ converge a $g$, si ha che $\{f_n\}$ converge a $f$; la convergenza è infine uniforme in quanto non dipende affatto dalla scelta di $x$, come si nota nell'ultima riga dell'equazione dove la variabile non compare più.
 \end{proof}
 È importante che la successione $\{f_n\}$ converga almeno in un punto: se si guarda alla successione $f_n(x)=n$, che è costante, la successione delle derivate è $f_n'(x)=0$, cioè sono tutte identicamente nulle ($f_n$ infatti è costante), quindi ovviamente $\{f_n'\}$ converge uniformemente alla funzione identicamente nulla. Ma si nota facilmente che $f_n$ non converge in nessun punto dell'asse reale, nemmeno puntualmente, quindi non esistono nemmeno la funzione limite $f$ né la sua derivata $f'$.
 
@@ -203,7 +203,7 @@ Si indica con la scrittura $\boun{F}{E}$, dove $E\subseteq\R^m$ e $F\subset\R^p$
 d(\vec f,\vec g)=\sup_{\vec x\in E}\norm{\vec f(\vec x)-\vec g(\vec x)}_F,
 \]
 dove $\norm{\cdot}_F$ è la norma euclidea in $\R^p$. È un'operazione binaria definita come $d\colon\boun{F}{E}\times\boun{F}{E}\to\R$.
-Tale distanza è ben definita, perché tutte le $p$ componenti di $\vec f$ e $\vec g$ sono limitate, quindi $\norm{\vec f(\vec x)}_F\leq M$ e $\norm{\vec g(\vec x)}_F\leq K$ $\forall\vec x\in E$, quindi per la disuguaglianza triangolare risulta $\norm{\vec f(\vec x)-\vec g(\vec x)}_F\leq M+K$, cioè $d(\vec f,\vec g)\leq M+K<\pinf$.
+Tale distanza è ben definita, perché tutte le $p$ componenti di $\vec f$ e $\vec g$ sono limitate, quindi $\norm{\vec f(\vec x)}_F\leq M$ e $\norm{\vec g(\vec x)}_F\leq K$ $\forall\vec x\in E$, quindi per la disuguaglianza triangolare risulta $\norm{\vec f(\vec x)-\vec g(\vec x)}_F\leq M+K$, cioè $d(\vec f,\vec g)\leq M+K<+\infty$.
 Inoltre soddisfa le proprietà che definiscono una distanza, ossia:
 \begin{itemize}
 	\item $d(\vec f,\vec g)\ge 0$ $\forall\vec x\in E$ in quanto è una norma euclidea, e $d(\vec f,\vec g)=0$ se e solo se $\norm{\vec f(\vec x)-\vec g(\vec x)}_F=0$ per ogni punto $\vec x\in E$, vale a dire che per tutti i punti $\vec x_0\in E$ risulta $\vec f(\vec x_0)=\vec g(\vec x_0)$, cioè le funzioni coincidono.
@@ -223,7 +223,7 @@ Poiché quindi per ogni punto $\vec x\in E$ la norma $\norm{\vec f(\vec x)-\vec 
 \end{itemize}
 Lo spazio $\boun{F}{E}$ può assumere anche la struttura di spazio vettoriale, a seconda che lo sia prima l'insieme $F$ di arrivo. Infatti per la disuguaglianza triangolare la somma di due funzioni limitate è limitata, e analogamente per il prodotto con uno scalare di una funzione limitata. Le immagini dei risultati di queste due operazioni però non appartengono necessariamente ad $F$: questo accade soltanto se l'insieme $F$ è a sua volta uno spazio vettoriale.
 
-Data una successione di funzioni $\vec f_n$ convergente alla funzione limite $\vec f$, secondo tale metrica la convergenza accade se $d(\vec f_n,\vec f)\to 0$ per $n\to\pinf$, cioè se $\vec f_n$ converge uniformemente a $\vec f$.
+Data una successione di funzioni $\vec f_n$ convergente alla funzione limite $\vec f$, secondo tale metrica la convergenza accade se $d(\vec f_n,\vec f)\to 0$ per $n\to+\infty$, cioè se $\vec f_n$ converge uniformemente a $\vec f$.
 \begin{teorema}
 $\boun{F}{E}$ è uno spazio metrico completo.
 \end{teorema}
@@ -269,21 +269,21 @@ d(x_m,x_n)\leq	&d(x_m,x_{m-1})+d(x_{m-1},x_{m-2})+\dots+d(x_{n+1},x_n)=\\
 \end{equation}
 e si ha che
 \[
-\sum_{j=0}^{m-n-1}k^j\leq\ser{j}k^j=\frac1{1-k},
+\sum_{j=0}^{m-n-1}k^j\leq\sum_{j=1}^{+\infty}k^j=\frac1{1-k},
 \]
 quindi risulta
 \begin{equation}
 d(x_m,x_n)\leq\frac{k^n}{1-k}d(x_1,x_0).
 \end{equation}
-Allora, poiché $k<1$, il secondo termine tende a 0 quindi $\forall\epsilon>0$ $\exists\overline{n}\colon\forall m>n\geq\overline{n}$ si ha $d(x_m,x_n)<\epsilon$, ossia la successione soddisfa la condizione di Cauchy. Dato che lo spazio metrico $(X,d)$ è completo, $\{x_n\}$ converge ad un punto $x^*\in X$ per $n\to\pinf$.
+Allora, poiché $k<1$, il secondo termine tende a 0 quindi $\forall\epsilon>0$ $\exists\overline{n}\colon\forall m>n\geq\overline{n}$ si ha $d(x_m,x_n)<\epsilon$, ossia la successione soddisfa la condizione di Cauchy. Dato che lo spazio metrico $(X,d)$ è completo, $\{x_n\}$ converge ad un punto $x^*\in X$ per $n\to+\infty$.
 La contrazione $T$ è infine (uniformemente) continua, quindi
 \[
-T(x^*)=T\Big(\lim_{n\to\pinf}x_n\Big)=\lim_{n\to\pinf} T(x_n)=\lim_{n\to\pinf} x_{n+1}=x^*,
+T(x^*)=T\Big(\lim_{n\to+\infty}x_n\Big)=\lim_{n\to+\infty} T(x_n)=\lim_{n\to+\infty} x_{n+1}=x^*,
 \]
 quindi $x^*$ è un punto fisso di $T$; per l'unicità del limite (teorema \ref{t:unicita_limite}) è inoltre unico.
 \end{proof}
 Non rispettando le ipotesi il teorema non è sempre ancora valido, come ad esempio nello spazio $\R\setminus\{0\}$ con la distanza euclidea: la funzione $f(x)=\frac{x}2$ è una contrazione, ma il suo punto fisso, che sarebbe $x=0$, non appartiene allo spazio.
 Anche se $T$ non è una contrazione si hanno degli effetti indesiderati: se $k=1$, infatti le distanze rimangono costanti, come per $g(x)=x+1$, che non ha punti fissi, o per $h(x)=x$ che ne ha infiniti.
 \begin{osservazione}
-Il teorema \ref{t:contrazioni} non vale se la funzione $T$ è tale per cui $d\big(T(x),T(y)\big)<d(x,y)$, ossia con una disuguaglianza stretta. Infatti, sia $X=[1,\pinf)$: la funzione $f(x)=x+\frac1{x}$ soddisfa questa condizione, ma non ha punti fissi.
+Il teorema \ref{t:contrazioni} non vale se la funzione $T$ è tale per cui $d\big(T(x),T(y)\big)<d(x,y)$, ossia con una disuguaglianza stretta. Infatti, sia $X=[1,+\infty)$: la funzione $f(x)=x+\frac1{x}$ soddisfa questa condizione, ma non ha punti fissi.
 \end{osservazione}

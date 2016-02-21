@@ -56,7 +56,7 @@ Un insieme connesso prende qui il posto dell'intervallo, che pure è anch'esso u
 \section{Forme differenziali lineari}
 Se $V$ e $W$ sono due spazi vettoriali sul medesimo campo generico $K$, sappiamo dal corso di Geometria che lo spazio delle applicazioni lineari da $V$ a $W$, che possiamo indicare con $\lin(V,W)$, ha una struttura di spazio vettoriale: la somma di due elementi $T_1,T_2\in\lin(V,W)$ e il prodotto di un elemento $T\in\lin(V,W)$ per uno scalare $a\in K$ sono ancora delle applicazioni lineari in $\lin(V,W)$, definite per $v\in V$ da
 \begin{equation*}
-	(T_1+T_2)(v)=T_1(v)+T_2(v)\qeq (aT)(v)=aT(v).
+	(T_1+T_2)(v)=T_1(v)+T_2(v)\qtext{e} (aT)(v)=aT(v).
 \end{equation*}
 La struttura di spazio vettoriale di questo spazio segue in modo naturale dalla linearità delle operazioni.
 In particolare, tra queste applicazioni troviamo quelle che da $V$ portano in $K$ (anch'esso è uno spazio vettoriale), dette anche \emph{funzionali lineari}, che quindi appartengono a $\lin(V,K)$.
@@ -204,7 +204,7 @@ Sfruttiamo questa definizione per enunciare i seguenti teoremi.
 	\end{equation}
 	
 	Sia ora $\vec p\in A$: poiché l'insieme è connesso per archi, per ciascun punto $\vec x\in A$ esiste una curva $\vphi$ regolare a tratti che connette i due punti, vale a dire $\vphi\in\Phi_{\vec p,\vec x}(A)$.
-	Sia allora $F(\vec x)=\Int_{\vphi}\omega$: per ipotesi, l'integrale dipende soltanto dagli estremi della curva, quindi fissato $\vec p$ la $F$ è ben definita.
+	Sia allora $F(\vec x)=\int_{\vphi}\omega$: per ipotesi, l'integrale dipende soltanto dagli estremi della curva, quindi fissato $\vec p$ la $F$ è ben definita.
 	L'insieme $A$ è aperto, quindi esiste sempre un intorno $B(\vec x,\delta)\subset A$ per ogni $\vec x\in A$.
 	Vogliamo ora calcolare il rapporto incrementale di $F$ lungo una direzione arbitraria, ai fini di calcolare la derivata direzionale, e vedremo che i coefficienti $a_i$ della forma sono le derivate parziali di $F$.
 	Prendiamo un versore $\vec v\in\R^n$, e per $h\in\R$ valutiamo l'incremento $\vec q=\vec x+h\vec v$.
@@ -218,17 +218,17 @@ Sfruttiamo questa definizione per enunciare i seguenti teoremi.
 		\end{cases}
 	\end{equation*}
 	Essa va da $\vpsi(\alpha)=\vec p$ a $\vpsi(\beta+1)=\vec x+(\beta+1-\beta)h\vec v=\vec q$, passando per $\vpsi(\beta)=\vec x$, ed è regolare a tratti con sostegno in $A$.
-	Calcoliamo dunque l'incremento di $F$, ossia $F(\vec x+h\vec v)-F(\vec x)=\Int_{\vpsi}\omega-\Int_{\vphi}\omega$, che per definizione è
+	Calcoliamo dunque l'incremento di $F$, ossia $F(\vec x+h\vec v)-F(\vec x)=\int_{\vpsi}\omega-\int_{\vphi}\omega$, che per definizione è
 	\begin{equation}
-		\Int_\alpha^{\beta+1}\sum_{i=1}^na_i\big(\vpsi(t)\big)\psi_i'(t)\,\dd t-\Int_\alpha^\beta\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t.
+		\int_\alpha^{\beta+1}\sum_{i=1}^na_i\big(\vpsi(t)\big)\psi_i'(t)\,\dd t-\int_\alpha^\beta\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t.
 	\end{equation}
 	Nell'intervallo $[\alpha,\beta]$, però, le due curve $\vphi$ e $\vpsi$ coincidono, quindi $a_i\big(\vphi(t)\big)=a_i\big(\vpsi(t)\big)$ per ogni $t$ in tale intervallo e per ogni $i=1,\dots,n$.
 	Allora l'incremento di $F$ diventa
 	\begin{equation}
 		\begin{aligned}
-			&\int_\alpha^\beta\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t+\Int_\beta^{\beta+1}\sum_{i=1}^na_i\big(\vpsi(t)\big)\psi_i'(t)\,\dd t-\Int_\alpha^\beta\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t=\\
-			=&\Int_\beta^{\beta+1}\sum_{i=1}^na_i\big(\vpsi(t)\big)\psi_i'(t)\,\dd t=\\
-			=&\Int_\beta^{\beta+1}\sum_{i=1}^na_i\big(\vec x+(t-\beta)h\vec v)hv_i\,\dd t.
+			&\int_\alpha^\beta\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t+\int_\beta^{\beta+1}\sum_{i=1}^na_i\big(\vpsi(t)\big)\psi_i'(t)\,\dd t-\int_\alpha^\beta\sum_{i=1}^na_i\big(\vphi(t)\big)\phi_i'(t)\,\dd t=\\
+			=&\int_\beta^{\beta+1}\sum_{i=1}^na_i\big(\vpsi(t)\big)\psi_i'(t)\,\dd t=\\
+			=&\int_\beta^{\beta+1}\sum_{i=1}^na_i\big(\vec x+(t-\beta)h\vec v)hv_i\,\dd t.
 		\end{aligned}
 	\end{equation}
 	Effettuiamo ora un cambio di variabile, ponendo $r(t)=h(t-\beta)$, per cui si avrà $r(\beta)=0$, $r(\beta+1)=h$ e $\dd r=h\,\dd t$: l'integrale precedente diventa
@@ -280,7 +280,7 @@ Notiamo inoltre che la funzione $F(x,y)=\arctan\frac{x}{y}$, a meno di costanti 
 A causa della singolarità per $y=0$ dobbiamo però prima dividere $A$ nei due sottoinsiemi per $y<0$ e $y>0$, in cui avremo rispettivamente $F(x,y)+c$ e $F(x,y)+d$ (a priori non possiamo dire che sono uguali).
 Determiniamo queste costanti: fissato $x_0<0$, abbiamo i limiti
 \begin{equation}
-	\lim_{\substack{x\to x_0\\ y\to 0^+}}F(x,y)=c-\frac{\pi}2\qeq\lim_{\substack{x\to x_0\\ y\to 0^-}}F(x,y)=d+\frac{\pi}2,
+	\lim_{\substack{x\to x_0\\ y\to 0^+}}F(x,y)=c-\frac{\pi}2\qtext{e}\lim_{\substack{x\to x_0\\ y\to 0^-}}F(x,y)=d+\frac{\pi}2,
 \end{equation}
 che devono coincidere, quindi $c=d+\pi$ e abbiamo la funzione
 \begin{equation}
@@ -293,7 +293,7 @@ che devono coincidere, quindi $c=d+\pi$ e abbiamo la funzione
 \end{equation}
 Però se prendiamo $x_1>0$, abbiamo i limiti
 \begin{equation}
-	\lim_{\substack{x\to x_1\\ y\to 0^+}}F(x,y)=\frac{\pi}2+c\qeq\lim_{\substack{x\to x_1\\ y\to 0^-}}F(x,y)=-\frac{3\pi}2+c,
+	\lim_{\substack{x\to x_1\\ y\to 0^+}}F(x,y)=\frac{\pi}2+c\qtext{e}\lim_{\substack{x\to x_1\\ y\to 0^-}}F(x,y)=-\frac{3\pi}2+c,
 \end{equation}
 ma allora $F$ è discontinua in $A$, perciò non può essere il potenziale di $\omega$, che quindi non ammette potenziali e non è esatta.
 Il problema da superare non risiede tanto nella funzione, ma nell'insieme in cui la stiamo studiando: è ovvio che se al posto di $A$ avessimo preso solo, ad esempio, il suo sottoinsieme in cui $x>0$, non ci sarebbero stati problemi di continuità e avremmo senza problemi trovato un potenziale per $\omega$.

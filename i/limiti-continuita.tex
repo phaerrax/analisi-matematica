@@ -44,8 +44,8 @@ Analogamente si dimostra che se la funzione ha un limite negativo nell'intorno, 
 \item Siano $f,g,h$ tre funzioni definite in $E\subseteq(X,d)$ a valori reali, e $p\in E'$. Se $\lim_{x\to p}f(x)=\lim_{x\to p}h(x)=\ell$ ed esiste un intorno $B(p,\delta)$ per cui $\forall x\in B(p,\delta)\cap E$ si ha $f(x)\leq g(x)\leq h(x)$, allora anche $g(x)$ ammette limite per $x\to p$, e tale limite è $\ell$.
 \item Siano $f,g$ due funzioni definite in $E\subseteq(X,d)$ a valori reali, e $p\in E'$. Se esiste un intorno $B(p,\delta)$ per cui $\forall x\in B(p,\delta)\cap E$ si ha $f(x)\leq g(x)$:
 \begin{itemize}
-\item se $f(x)\to\pinf$ per $x\to p$, allora anche $g$ ammette limite, che è $\pinf$;
-\item se $g(x)\to\minf$ per $x\to p$, allora anche $f$ ammette limite, che è $\minf$. 
+\item se $f(x)\to+\infty$ per $x\to p$, allora anche $g$ ammette limite, che è $+\infty$;
+\item se $g(x)\to-\infty$ per $x\to p$, allora anche $f$ ammette limite, che è $-\infty$. 
 \end{itemize}
 \end{enumerate}
 \end{teorema}
@@ -61,7 +61,7 @@ Allora, per un qualunque $\tilde{\delta}<\min\{\delta,\delta_1,\delta_2\}$, per 
 \ell-\epsilon<f(x)\leq g(x)\leq h(x)<\ell+\epsilon,
 \]
 cioè $\ell-\epsilon<g(x)<\ell+\epsilon$, che significa che nell'intorno $B$, quindi per $x\to p$, si ha $g(x)\to\ell$.
-\item Poiché $f$ diverge a $\pinf$, si ha che in $B(p,\delta)\cap E$ che $\forall M>0$, $\exists\delta_3\colon\forall x\in B(p,\delta_3)$ $f(x)>M$. Allora per un qualunque $\tilde{\delta}<\min\{\delta,\delta_3\}$ vale $g(x)\geq f(x)>M$, cioè $g(x)\to\pinf$ per $x\to p$.\qedhere
+\item Poiché $f$ diverge a $+\infty$, si ha che in $B(p,\delta)\cap E$ che $\forall M>0$, $\exists\delta_3\colon\forall x\in B(p,\delta_3)$ $f(x)>M$. Allora per un qualunque $\tilde{\delta}<\min\{\delta,\delta_3\}$ vale $g(x)\geq f(x)>M$, cioè $g(x)\to+\infty$ per $x\to p$.\qedhere
 \end{enumerate}
 \end{proof}
 
@@ -77,13 +77,13 @@ Estendendo $\ell$ a $\Rex$ si ha che
 \item$\forall M>0\;\exists\delta>0\colon\forall x\in A$ con $x\neq p$ e $\abs{x-p}<\delta$ si ha che $f(x)>M$;
 \item$\forall M>0\;\exists\delta>0\colon\forall x\in A$ con $x\neq p$ e $\abs{x-p}<\delta$ si ha che $f(x)<-M$.
 \end{itemize}
-Nel primo caso si ha che $\ell=\pinf$, nel secondo $\ell=\minf$. In ogni caso, la retta $x=p$ è un asintoto verticale per la funzione $f(x)$.
+Nel primo caso si ha che $\ell=+\infty$, nel secondo $\ell=-\infty$. In ogni caso, la retta $x=p$ è un asintoto verticale per la funzione $f(x)$.
 Estendendo inoltre anche $p$ a $\Rex$, si ha che se $\lim_{x\to\pm\infty}f(x)=\ell$:
 \begin{itemize}
 \item se $A$ non è inferiormente limitato, allora $\forall\epsilon>0\;\exists k\colon\forall x\in A$ con $x>k$ si ha che $\abs{f(x)-\ell}<\epsilon$;
 \item se $A$ non è superiormente limitato, allora $\forall\epsilon>0\;\exists k\colon\forall x\in A$ con $x<k$ si ha che $\abs{f(x)-\ell}<\epsilon$.
 \end{itemize}
-Nel primo caso è $p\to\pinf$, nel secondo $p\to\minf$.
+Nel primo caso è $p\to+\infty$, nel secondo $p\to-\infty$.
 Si definiscono anche, con le opportune ipotesi, i limiti del tipo $\displaystyle\lim_{x\to\pm\infty}=\pm\infty$.
 
 Se, in particolare, non esiste il limite di $f(x)$ per $x\to p$, si può definire comunque il limite per difetto (``da sinistra'') o per eccesso (``da destra''), rispettivamente calcolati sull'intorno sinistro e destro di $p$, ossia per $x\to p^-$, in $(p-\delta,p]$, e per $x\to p^+$, in $[p,p+\delta)$. Quando il limite per $x\to p$ esiste, questi due limiti coincidono.
@@ -100,16 +100,16 @@ Sia $f$ una funzione a valori reali definita, almeno, in un intorno di un suo pu
 \end{definizione}
 Ovviamente qualsiasi retta può essere asintoto di una funzione: sono particolari gli asintoti verticali e orizzontali:
 \begin{itemize}
-\item La retta $y=a$ è un asintoto orizzontale per la funzione $f(x)$ se $f(x)\to a$ per $x\to\minf$ o $x\to\pinf$, o anche entrambi. Nei primi casi, si chiama rispettivamente asintoto orizzontale sinistro e destro.
+\item La retta $y=a$ è un asintoto orizzontale per la funzione $f(x)$ se $f(x)\to a$ per $x\to-\infty$ o $x\to+\infty$, o anche entrambi. Nei primi casi, si chiama rispettivamente asintoto orizzontale sinistro e destro.
 \item La retta $x=b$ è un asintoto verticale per la funzione $f(x)$ se per almeno $x\to b^-$ o per $x\to b^+$ (ovviamente anche se valgono entrambi), si ha $f(x)\to\infty$.
 \end{itemize}
 Gli asintoti obliqui invece si possono individuare, in assenza di asintoti orizzontali, con le equazioni
 \[
-m=\lim_{x\to\infty}\frac{f(x)}{x}\qeq q=\lim_{x\to\infty}\big[f(x)-mx\big],
+m=\lim_{x\to\infty}\frac{f(x)}{x}\qtext{e} q=\lim_{x\to\infty}\big[f(x)-mx\big],
 \]
-diversificando per $\pinf$ e $\minf$. L'asintoto obliquo è la retta $y=mx+q$ soltanto se entrambi i limiti esistono finiti e se $m\neq 0$. Notare che il risultato $m=0$ \emph{non} significa che l'asintoto è orizzontale, e nemmeno il fatto che la derivata tende a zero per $x\to\pm\infty$: basta vedere la funzione $f(x)=\sqrt{x}$, per cui si avrebbe con questi ultimi due metodi $m=0$ o una derivata infinitesima nell'intorno di $\pinf$, ma chiaramente non esiste alcun asintoto per $x\to\pinf$.
+diversificando per $+\infty$ e $-\infty$. L'asintoto obliquo è la retta $y=mx+q$ soltanto se entrambi i limiti esistono finiti e se $m\neq 0$. Notare che il risultato $m=0$ \emph{non} significa che l'asintoto è orizzontale, e nemmeno il fatto che la derivata tende a zero per $x\to\pm\infty$: basta vedere la funzione $f(x)=\sqrt{x}$, per cui si avrebbe con questi ultimi due metodi $m=0$ o una derivata infinitesima nell'intorno di $+\infty$, ma chiaramente non esiste alcun asintoto per $x\to+\infty$.
 Un altro metodo per individuarli è riuscire ad esprimere la funzione nella forma $f(x)=mx+q+o(1)$ dove $o(1)$ è un generico infinitesimo per $x\to\pm\infty$.
-Ovviamente gli asintoti obliqui e gli asintoti orizzontali sono mutuamente esclusivi: una funzione non può avere entrambi per $x\to\minf$ o per $x\to\pinf$.
+Ovviamente gli asintoti obliqui e gli asintoti orizzontali sono mutuamente esclusivi: una funzione non può avere entrambi per $x\to-\infty$ o per $x\to+\infty$.
 
 \section{Continuità}
 \begin{definizione} \label{d:continuita}

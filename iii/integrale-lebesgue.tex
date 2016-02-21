@@ -627,7 +627,7 @@ Nella prossima proprietà, trattando le operazioni aritmetiche tra funzioni, pre
 
 	Per i due limiti abbiamo infine
 	\begin{equation}
-		\liminf_{k\to+\infty}f_k=\sup_{j\in\N}\big(\inf_{k\geq j}f_k\big)\qeq\limsup_{k\in\N}f_k=\inf_{j\in\N}\big(\sup_{k\geq j}f_k\big)
+		\liminf_{k\to+\infty}f_k=\sup_{j\in\N}\big(\inf_{k\geq j}f_k\big)\qtext{e}\limsup_{k\in\N}f_k=\inf_{j\in\N}\big(\sup_{k\geq j}f_k\big)
 	\end{equation}
 	dunque anch'essi sono misurabili.
 \end{proof}
@@ -975,7 +975,7 @@ Con la seguente osservazione e una piccola ipotesi in più estendiamo la validit
 \begin{corollario} \label{cor:serie-integrali}
 	Sia $\{f_n\}_{n=1}^{+\infty}$ una successione di funzioni $f_n\colon A\to[0,+\infty]$ con $A$ misurabile: allora
 	\begin{equation}
-		\int_A\ser{n}f_n\dd\mu=\ser{n}\int_Af_n\dd\mu.
+		\int_A\sum_{n=1}^{+\infty}f_n\dd\mu=\sum_{n=1}^{+\infty}\int_Af_n\dd\mu.
 		\label{eq:serie-integrali}
 	\end{equation}
 \end{corollario}
@@ -983,14 +983,14 @@ Con la seguente osservazione e una piccola ipotesi in più estendiamo la validit
 	Poich\'e ogni $f_n$ non è negativa, la successione delle somme parziali $s_k=\sum_{n=1}^kf_n$ è monotona crescente, e ammette anche il limite per $n\to+\infty$ (eventualmente infinito).
 	Per il teorema della convergenza monotona allora
 	\begin{equation}
-		\int_A\ser{n}f_n\dd\mu=\int_A\lim_{k\to+\infty}\sum_{n=1}^kf_n\dd\mu=\lim_{k\to+\infty}\int_A\sum_{n=1}^kf_n\dd\mu=\lim_{k\to+\infty}\sum_{n=1}^k\int_Af_n\dd\mu=\ser{n}\int_Af_n\dd\mu.\qedhere
+		\int_A\sum_{n=1}^{+\infty}f_n\dd\mu=\int_A\lim_{k\to+\infty}\sum_{n=1}^kf_n\dd\mu=\lim_{k\to+\infty}\int_A\sum_{n=1}^kf_n\dd\mu=\lim_{k\to+\infty}\sum_{n=1}^k\int_Af_n\dd\mu=\sum_{n=1}^{+\infty}\int_Af_n\dd\mu.\qedhere
 	\end{equation}
 \end{proof}
 \begin{corollario}
 	Sia $f\colon\R^n\to[0,+\infty]$ misurabile, e $\{A_n\}_{n=1}^{+\infty}$ una successione di insiemi misurabili.
 	Detto $A\defeq\bigcup_{n=1}^{+\infty}A_n$, risulta
 	\begin{enumerate}
-		\item se $A_i\cap A_j=\emptyset$ per $i\neq j$, $\int_Af\,\dd\mu=\ser{i}\int_{A_i}f\,\dd\mu$;
+		\item se $A_i\cap A_j=\emptyset$ per $i\neq j$, $\int_Af\,\dd\mu=\sum_{i=1}^{+\infty}\int_{A_i}f\,\dd\mu$;
 		\item se $A_n\subseteq A_{n+1}$ per ogni $n\in\N$, $\int_Af\,\dd\mu=\lim_{n\to+\infty}\int_{A_n}f\,\dd\mu$;
 		\item se $A_n\supseteq A_{n+1}$ per ogni $n\in\N$, detto $B=\bigcap_{n=1}^{+\infty}A_n$, se $\int_{A_1}f\,\dd\mu<+\infty$ allora $\int_Bf\,\dd\mu=\lim_{n\to+\infty}\int_{A_n}f\,\dd\mu$.
 	\end{enumerate}
@@ -1000,7 +1000,7 @@ Con la seguente osservazione e una piccola ipotesi in più estendiamo la validit
 		\item Poich\'e gli $A_i$ sono mutualmente disgiunti, definiamo una successione $\{f_n\}_{n=1}^{+\infty}$ come $f_n=f\chi_{A_n}$.
 			Per il corollario precedente allora
 			\begin{equation}
-				\int_Af\,\dd\mu=\int_A\ser{n}f_n\dd\mu=\ser{n}\int_Af_n\dd\mu=\ser{n}\int_{A_n}f\,\dd\mu.
+				\int_Af\,\dd\mu=\int_A\sum_{n=1}^{+\infty}f_n\dd\mu=\sum_{n=1}^{+\infty}\int_Af_n\dd\mu=\sum_{n=1}^{+\infty}\int_{A_n}f\,\dd\mu.
 			\end{equation}
 		\item Definiamo ancora $f_n=f\chi_{A_n}$: poich\'e $A_n\subseteq A_{n+1}$, risulta $f_n\leq f_{n+1}$ in $A$ dunque la $\{f_n\}_{n=1}^{+\infty}$ è una successione monotona crescente.
 			Per il teorema della convergenza monotona allora
@@ -1128,7 +1128,7 @@ che converge ad un valore finito poich\'e l'integranda è minore in modulo di $1
 Per l'integrale di Lebesgue, calcoliamolo per la parte positiva: essa vale $\frac{\sin x}{x}$ in $[2k\pi,\pi+2k\pi]$ per $k\in\N$, e zero altrove. 
 Allora l'integrale è
 \begin{equation}
-	\int_\pi^{+\infty}\max\Big\{\frac{\sin x}{x},0\Big\}\,\dd x=\ser{k}\int_{2k\pi}^{(1+2k)\pi}\frac{\sin x}{x}\,\dd x.
+	\int_\pi^{+\infty}\max\Big\{\frac{\sin x}{x},0\Big\}\,\dd x=\sum_{k=1}^{+\infty}\int_{2k\pi}^{(1+2k)\pi}\frac{\sin x}{x}\,\dd x.
 \end{equation}
 Calcoliamo in uno degli intervalli: dato che in $[2k\pi,(1+2k)\pi]$ si ha chiaramente $\abs{x}\leq(1+2k)\pi$, risulta
 \begin{equation*}
@@ -1141,7 +1141,7 @@ ma allora (tenendo conto che $x>0$) otteniamo
 Per la periodicità del seno, l'ultimo integrale vale 2 indipendentemente da $k$.
 Di conseguenza l'integrale della parte positiva diventa maggiore di
 \begin{equation*}
-	\ser{k}\frac2{(1+2k)\pi},
+	\sum_{k=1}^{+\infty}\frac2{(1+2k)\pi},
 \end{equation*}
 che però è una serie divergente: allora l'integrale della parte positiva è $+\infty$.
 Analogamente possiamo dimostrare che anche la parte negativa ha integrale $+\infty$: la funzione non è dunque integrabile secondo Lebesgue.
@@ -1157,7 +1157,7 @@ Queste sono chiamate \emph{formule di riduzione}, in quando permettono di ``ridu
 		\item per quasi ogni $\vec x\in\R^m$, la funzione $\vec y\mapsto f(\vec x,\vec y)\colon\R^k\to\R$ è sommabile in $\R^k$, e lo stesso per $\vec x\mapsto f(\vec x,\vec y)$;\footnote{Con \emph{per quasi ogni $\vec x\in\R^m$} intendiamo \emph{quasi ovunque in $\R^m$}: usiamo questa scrittura per specificare la variabile $\vec x$ a cui applicare la proprietà.}
 		\item le funzioni
 			\begin{equation*}
-				\vec x\mapsto\int_{\R^k}f(\vec x,\vec y)\,\dd\vec y\qeq\vec y\mapsto\int_{\R^m}f(\vec x,\vec y)\,\dd\vec x
+				\vec x\mapsto\int_{\R^k}f(\vec x,\vec y)\,\dd\vec y\qtext{e}\vec y\mapsto\int_{\R^m}f(\vec x,\vec y)\,\dd\vec x
 			\end{equation*}
 			sono sommabili in $\R^m$ e $\R^k$ rispettivamente;
 		\item si ha

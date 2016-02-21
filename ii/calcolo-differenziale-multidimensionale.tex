@@ -210,7 +210,7 @@ Nel caso di $\R^2$ si dà la seguente dimostrazione, generalizzabile eventualmen
 	\input{grafici/differenziale-totale.tex}
 	Applicando il teorema di Lagrange a $f(\cdot,y)$ e $f(a_1,\cdot)$, che sono entrambe derivabili per ipotesi, dato che corrispondono alle derivate parziali rispettivamente in $x$ e $y$, si ottiene che
 	\begin{equation}
-		f(x,y)-f(a_1,y)=(x-a_1)\drp{f}{x}(\xi,y)\qeq f(a_1,y)-f(a_1,a_2)=(y-a_2)\drp{f}{y}(a_1,\eta)
+		f(x,y)-f(a_1,y)=(x-a_1)\drp{f}{x}(\xi,y)\qtext{e} f(a_1,y)-f(a_1,a_2)=(y-a_2)\drp{f}{y}(a_1,\eta)
 	\end{equation}
 	per qualche $(\xi,y)$ e $(a_1,\eta)$ in $\Omega$.
 	Il numeratore della \eqref{eq:difftot} si riscrive quindi come
@@ -227,7 +227,7 @@ Nel caso di $\R^2$ si dà la seguente dimostrazione, generalizzabile eventualmen
 	Allora la \eqref{eq:difftot} è maggiorata dal termine tra parentesi quadre.
 	Per $\vec x\to\vec a$ si ha $(\xi,y)\to\vec a$ e anche $(a_1,\eta)\to\vec a$, e poiché le derivate parziali per ipotesi sono continue risulta che la \eqref{eq:difftot} tende a 0, quindi la $f$ è differenziabile in $\vec a$.
 \end{proof}
-Se $f$ è una funzione vettoriale da $\R^n$ a $\R^m$, il teorema richiede che tutte le derivate parziali $\frac{\ddp f_i}{\ddp x_j}$ con $1\leq i\leq m$ e $1\leq j\leq n$ siano continue in $\vec a$.
+Se $f$ è una funzione vettoriale da $\R^n$ a $\R^m$, il teorema richiede che tutte le derivate parziali $\drp{f_i}{x_j}$ con $1\leq i\leq m$ e $1\leq j\leq n$ siano continue in $\vec a$.
 
 \begin{definizione}
 Sia $\Omega$ un aperto di $\R^n$ e $f\colon\Omega\to\R$: si dice che $f\in\cont{1}(\Omega)$ se in ogni punto di $\Omega$ esistono e sono continue tutte le derivate parziali di $f$.
@@ -310,7 +310,7 @@ Si nota che il prodotto delle due jacobiane dà la matrice identità $3\times 3$
 \]
 che è la jacobiana della funzione identità, per ogni $\vec x\in A$. Di conseguenza, passando ai determinanti si trova che $\det\jac \vec f(\vec x)\neq 0$, e che essa è l'inversa di $\jac\vec f^{-1}\big(\vec f(\vec x)\big)$.
 
-Tra i diffeomorfismi più importanti si trovano i cambiamenti di coordinate, come quello in coordinate polari: esso è una trasformazione biunivoca tra $\R^2$ privato dell'origine e $(0,\pinf)\times[0,2\pi)$, che porta la coppia di coordinate cartesiane $(x,y)$ nella coppia $(\rho,\theta)$, che indica rispettivamente la distanza dall'origine degli assi e l'angolo che la retta congiungente l'origine e il punto formerebbe con il semiasse positivo delle ascisse, con le trasformazioni
+Tra i diffeomorfismi più importanti si trovano i cambiamenti di coordinate, come quello in coordinate polari: esso è una trasformazione biunivoca tra $\R^2$ privato dell'origine e $(0,+\infty)\times[0,2\pi)$, che porta la coppia di coordinate cartesiane $(x,y)$ nella coppia $(\rho,\theta)$, che indica rispettivamente la distanza dall'origine degli assi e l'angolo che la retta congiungente l'origine e il punto formerebbe con il semiasse positivo delle ascisse, con le trasformazioni
 \begin{equation}
 \begin{cases}
 \rho=\sqrt{x^2+y^2}\\
@@ -319,7 +319,7 @@ y=\rho\sin\theta
 \end{cases}.
 \end{equation}
 
-Sia $\vec T\colon(0,\pinf)\times[0,2\pi)\to\R^2\setminus\{(0,0)\}$ definita come $\vec T\colon(\rho,\theta)\mapsto(\rho\cos\theta,\rho\sin\theta)\equiv(x,y)$: il determinante della jacobiana della trasformazione è sempre non nullo, infatti
+Sia $\vec T\colon(0,+\infty)\times[0,2\pi)\to\R^2\setminus\{(0,0)\}$ definita come $\vec T\colon(\rho,\theta)\mapsto(\rho\cos\theta,\rho\sin\theta)\equiv(x,y)$: il determinante della jacobiana della trasformazione è sempre non nullo, infatti
 \[
 \det\jac\vec T(\rho,\theta)=
 	\begin{vmatrix}
@@ -328,7 +328,7 @@ Sia $\vec T\colon(0,\pinf)\times[0,2\pi)\to\R^2\setminus\{(0,0)\}$ definita come
 	\end{vmatrix}
 =\rho(\cos^2\theta+\sin^2\theta)=\rho\neq 0
 \]
-essendo definito in $(0,\pinf)$, quindi è un diffeomorfismo.
+essendo definito in $(0,+\infty)$, quindi è un diffeomorfismo.
 Posta $f$ una funzione qualunque da $\R^2\setminus\{(0,0)\}$ a $\R$ (per semplicità), si può comporre con $\vec T$ ottenendo
 \[
 g(\rho,\theta)=f\big(\vec T(\rho,\theta)\big).
@@ -386,18 +386,18 @@ Sia $f$ una funzione scalare definita da un aperto $\Omega\subset\R^n$ a $\R$, e
 allora si dice che $f$ è due volte derivabile in $\vec a$ lungo le direzioni $\vec v$ e $\vec w$, \emph{rigorosamente nell'ordine} rappresentato. Tale derivata seconda si scrive come $D^2_{\vec v,\vec w}f(\vec a)$, indicando nei pedici i due versori, nell'ordine della prima e della seconda derivata.
 Se inoltre i versori appartengono alla base canonica di $\R^n$, allora la derivata si scrive anche come
 \[
-D^2_{\vec e_i,\vec e_j}f(\vec a)=\frac{\ddp^2f}{\ddp x_i\ddp x_j}(\vec a).
+D^2_{\vec e_i,\vec e_j}f(\vec a)=\frac{\partial^2f}{\partial x_i\partial x_j}(\vec a).
 \]
 Le derivate parziali seconde con versori differenti si dicono miste.
 
 Se esistono tutte le derivate seconde parziali in $\vec a$ di $f$ (in tutto sono $n^2$) allora esse formano, in ordine, una matrice quadrata $n\times n$, detta \emph{matrice hessiana} di $f$ in $\vec a$ (da valutare nel punto):
 \[
 \hes f=\begin{bmatrix}
-\dfrac{\ddp^2f}{\ddp x_1^2}		&\dfrac{\ddp^2f}{\ddp x_1\ddp x_2}	&\cdots 	&\dfrac{\ddp^2f}{\ddp x_1\ddp x_n}\\
-\dfrac{\ddp^2f}{\ddp x_2\ddp x_1}	&\dfrac{\ddp^2f}{\ddp x_2^2}		&\cdots 	&\dfrac{\ddp^2f}{\ddp x_2\ddp x_n}\\
+\dfrac{\partial^2f}{\partial x_1^2}		&\dfrac{\partial^2f}{\partial x_1\partial x_2}	&\cdots 	&\dfrac{\partial^2f}{\partial x_1\partial x_n}\\
+\dfrac{\partial^2f}{\partial x_2\partial x_1}	&\dfrac{\partial^2f}{\partial x_2^2}		&\cdots 	&\dfrac{\partial^2f}{\partial x_2\partial x_n}\\
 \vdots 							&\vdots 							&\ddots 	&\vdots\\
-\dfrac{\ddp^2f}{\ddp x_n\ddp x_1}	&\dfrac{\ddp^2f}{\ddp x_n\ddp x_2}	&\cdots 	&\dfrac{\ddp^2f}{\ddp x_n^2}
-\end{bmatrix}\qquad\qquad(\hes f)_{ij}=\dfrac{\ddp^2f}{\ddp x_i\ddp x_j}.
+\dfrac{\partial^2f}{\partial x_n\partial x_1}	&\dfrac{\partial^2f}{\partial x_n\partial x_2}	&\cdots 	&\dfrac{\partial^2f}{\partial x_n^2}
+\end{bmatrix}\qquad\qquad(\hes f)_{ij}=\dfrac{\partial^2f}{\partial x_i\partial x_j}.
 \]
 L'hessiana di fatto rappresenta la jacobiana del gradiente come vettore riga.
 
@@ -405,11 +405,11 @@ L'ordine di derivazione è importante non solo per il risultato dell'operazione,
 \begin{itemize}
 \item Sia $f(x,y)=x^2y^{1/3}$. Le derivate prime parziali nell'origine sono entrambe nulle, altrimenti
 \[
-\drp{f}{x}(x,y)=2x\sqrt[3]{y}\qeq\drp{f}{y}(x,y)=\begin{dcases*}\nexists&in $(x,0)$ con $x\neq 0$\\\frac{x^2}{3y^{2/3}}&altrove\end{dcases*}.
+\drp{f}{x}(x,y)=2x\sqrt[3]{y}\qtext{e}\drp{f}{y}(x,y)=\begin{dcases*}\nexists&in $(x,0)$ con $x\neq 0$\\\frac{x^2}{3y^{2/3}}&altrove\end{dcases*}.
 \]
-Nell'origine, la derivata seconda rispetto a $y$ e poi a $x$, nell'ordine, ossia $\frac{\ddp}{\ddp x}\big(\frac{\ddp f}{\ddp y}\big)(0,0)$, non esiste, mentre la derivata seconda rispetto a $x,y$ è
+Nell'origine, la derivata seconda rispetto a $y$ e poi a $x$, nell'ordine, ossia $\drp{}{x}\big(\drp{f}{y}\big)(0,0)$, non esiste, mentre la derivata seconda rispetto a $x,y$ è
 \[
-\frac{\partial^2f}{\partial x\partial y}(x,y)=\drp{}{y}\bigg(\drp{f}{x}\bigg)(0,0)=\lim_{y\to 0}\frac{\frac{\ddp f}{\ddp x}(0,y)-\frac{\ddp f}{\ddp x}(0,0)}{y}=0.
+\frac{\partial^2f}{\partial x\partial y}(x,y)=\drp{}{y}\bigg(\drp{f}{x}\bigg)(0,0)=\lim_{y\to 0}\frac{\drp{f}{x}(0,y)-\drp{f}{x}(0,0)}{y}=0.
 \]
 \item Sia $f$ definita come
 \[
@@ -422,9 +422,9 @@ Nell'origine si ha $\grad f(0,0)=(0,0)$, altrimenti il gradiente di $f$ è
 
 Allora si ha
 \begin{align*}
-&\frac{\ddp^2f}{\ddp y\ddp x}=\lim_{x\to 0}\frac{\frac{\ddp f}{\ddp y}(x,0)-\frac{\ddp f}{\ddp y}(0,0)}{x}=\lim_{x\to 0}\frac0{x}=0,\\
+&\frac{\partial^2f}{\partial y\partial x}=\lim_{x\to 0}\frac{\drp{f}{y}(x,0)-\drp{f}{y}(0,0)}{x}=\lim_{x\to 0}\frac0{x}=0,\\
 %in che punti???
-&\frac{\ddp^2f}{\ddp x\ddp y}=\lim_{y\to 0}\frac{\frac{\ddp f}{\ddp x}(0,y)-\frac{\ddp f}{\ddp x}(0,0)}{y}=\lim_{y\to 0}\frac{y}{y}=1.
+&\frac{\partial^2f}{\partial x\partial y}=\lim_{y\to 0}\frac{\drp{f}{x}(0,y)-\drp{f}{x}(0,0)}{y}=\lim_{y\to 0}\frac{y}{y}=1.
 \end{align*}
 \end{itemize}
 Per certe funzioni, però, le derivate seconde non dipendono dall'ordine di derivazione, come spiegato dal seguente teorema.
@@ -444,7 +444,7 @@ Alcune condizioni implicano o sono implicate dal fatto che $f$ è due volte diff
 \item (\textit{necessaria}) esistono tutte le derivate parziali seconde in $\vec a$, e quelle miste coincidono\footnote{Questa affermazione non equivale al teorema \ref{t:schwarz} di Schwarz, in quanto le ipotesi sono differenti.};
 \item (\textit{necessaria}) ogni derivata direzionale prima è differenziabile in $\vec a$, quindi esistono tutte le derivate seconde direzionali indipendentemente dell'ordine (per il punto precedente) e si ha
 \[
-D^2_{\vec v,\vec w}f(\vec a)=\sum_{i,j=1}^n\frac{\ddp^2f}{\ddp x_i\ddp x_j}(\vec a)v_iw_j,
+D^2_{\vec v,\vec w}f(\vec a)=\sum_{i,j=1}^n\frac{\partial^2f}{\partial x_i\partial x_j}(\vec a)v_iw_j,
 \]
 la quale è chiamata \emph{forma quadratica} di $f$ in $\vec a$;
 \item (\textit{sufficiente}) in un intorno di $\vec a$ esistono e sono continue tutte le derivate prime parziali, ed esistono tutte le derivate seconde parziali e sono continue in $\vec a$;

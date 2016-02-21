@@ -24,7 +24,7 @@ Siano $\{a_n\}\subset(X,d)$ e $\ell\in X$. Si dice che la successione $\{a_n\}$ 
 \begin{definizione}
 Il numero $\ell\in X$ si chiama \emph{limite} della successione $\{a_n\}\subset(X,d)$ se
 \[
-\lim_{n\to \pinf}a_n=\ell.
+\lim_{n\to +\infty}a_n=\ell.
 \]
 \end{definizione}
 \begin{teorema}
@@ -53,14 +53,14 @@ Per il teorema \ref{t:succ_limitata} allora ogni successione convergente è sia 
 \begin{definizione}
 Una successione si dice \emph{divergente} all'infinito se i suoi elementi, in valore assoluto, sono definitivamente grandi. In particolare:
 \begin{itemize}
-\item $a_n\to \pinf$ se $\forall M>0\;\exists N\colon\forall n\geq N\to a_n>M$;
-\item $a_n\to \minf$ se $\forall M>0\;\exists N\colon\forall n\geq N\to a_n<-M$.
+\item $a_n\to +\infty$ se $\forall M>0\;\exists N\colon\forall n\geq N\to a_n>M$;
+\item $a_n\to -\infty$ se $\forall M>0\;\exists N\colon\forall n\geq N\to a_n<-M$.
 \end{itemize}
 \end{definizione}
 \begin{teorema}
-Se la successione $\{a_n\}$ diverge a $\pinf$, allora non è limitata superiormente. Analogamente, se $a_n\to \minf$ non è limitata inferiormente.
+Se la successione $\{a_n\}$ diverge a $+\infty$, allora non è limitata superiormente. Analogamente, se $a_n\to -\infty$ non è limitata inferiormente.
 \end{teorema}
-Non è però sempre valido il contrario, cioè una successione illimitata superiormente non è necessariamente divergente a $\pinf$. Come esempio si consideri la successione
+Non è però sempre valido il contrario, cioè una successione illimitata superiormente non è necessariamente divergente a $+\infty$. Come esempio si consideri la successione
 \[
 a_n=
 \begin{cases*}
@@ -92,8 +92,8 @@ Questi ultimi due teoremi suppongono che il limite della successione esista, inf
 \item Siano $\{a_n\}$, $\{b_n\}$ e $\{c_n\}$ tre successioni a valori reali, con $a_n\leq b_n\leq c_n$ definitivamente. Se le successioni $a_n$ e $c_n$ convergono entrambe ad un limite $\alpha$, allora $b_n$ ammette il limite, e tale limite coincide con $\alpha$.
 \item Siano $\{a_n\}$ e $\{b_n\}$ due successioni a valori reali, con $a_n\leq b_n$ definitivamente:
 	\begin{itemize}
-		\item se $a_n$ diverge a $\pinf$, allora anche $b_n$ ammette il limite, che è $\pinf$;
-		\item se $b_n$ diverge a $\minf$, allora anche $a_n$ ammette il limite, che è $\minf$.
+		\item se $a_n$ diverge a $+\infty$, allora anche $b_n$ ammette il limite, che è $+\infty$;
+		\item se $b_n$ diverge a $-\infty$, allora anche $a_n$ ammette il limite, che è $-\infty$.
 	\end{itemize}
 \end{enumerate}
 \end{teorema}
@@ -109,8 +109,8 @@ Per tutti gli $n\geq\max\{N_1,N_2\}$ devono sussistere entrambe le proprietà. A
 \alpha-\epsilon<a_n\leq b_n\leq c_n<\alpha+\epsilon,
 \]
 A questa relazione segue che $\alpha-\epsilon<b_n<\alpha+\epsilon$, che significa che anche $b_n$ converge ad $\alpha$.
-\item Nel caso in cui $a_n\to \pinf$, segue che definitivamente $a_n>M$ con $M$ arbitrariamente grande. Poiché è, per ipotesi, $b_n\geq a_n$, allora definitivamente si ha $b_n\geq a_n>M$, quindi $b_n>M$, cioè diverge a $\pinf$.
-Analogamente si dimostra il caso in cui $b_n\to \minf$.\qedhere
+\item Nel caso in cui $a_n\to +\infty$, segue che definitivamente $a_n>M$ con $M$ arbitrariamente grande. Poiché è, per ipotesi, $b_n\geq a_n$, allora definitivamente si ha $b_n\geq a_n>M$, quindi $b_n>M$, cioè diverge a $+\infty$.
+Analogamente si dimostra il caso in cui $b_n\to -\infty$.\qedhere
 \end{enumerate}
 \end{proof}
 Nel teorema del confronto non è nota a priori l'esistenza dei limiti delle successioni che sono dimostrate come convergenti o divergenti, quindi è possibile utilizzare questo teorema per dimostrare l'esistenza di tali limiti.
@@ -126,7 +126,7 @@ Analogamente, $a_n$ tende a $\ell\in\R$ per \emph{difetto} (e si indica $a_n\to\
 
 \section{Calcolo dei limiti}
 \subsection{Algebra parziale di $\Rex$}
-Si può estendere l'insieme dei numeri reali per comprendere anche il concetto di infinito, negativo e positivo, ottenendo l'insieme dei numeri reali \emph{esteso} $\Rex=\R\cup\{\minf\}\cup\{\pinf\}$. In questo insieme valgono ovviamente tutte le proprietà di somma e prodotto quando $a$ e $b$ sono finiti, ma non valgono più tutte se uno dei due è $\pm\infty$, infatti $\Rex$ non è più un campo.
+Si può estendere l'insieme dei numeri reali per comprendere anche il concetto di infinito, negativo e positivo, ottenendo l'insieme dei numeri reali \emph{esteso} $\Rex=\R\cup\{-\infty\}\cup\{+\infty\}$. In questo insieme valgono ovviamente tutte le proprietà di somma e prodotto quando $a$ e $b$ sono finiti, ma non valgono più tutte se uno dei due è $\pm\infty$, infatti $\Rex$ non è più un campo.
 
 \begin{teorema}
 Siano $\{a_n\}$ e $\{b_n\}$ due successioni a valori reali, e sia $a_n\to a$ e $b_n\to b$, con $a,b\in\Rex$. Allora
@@ -169,14 +169,14 @@ Il seguente teorema garantisce l'esistenza del limite per tali successioni.
 \begin{teorema}
 Tutte le successioni monotone sono regolari. Sia inoltre $\{a_n\}$ una successione a valori reali: se è monotona crescente, allora
 \[
-\lim_{n\to \pinf} a_n=\sup\{a_n\},
+\lim_{n\to +\infty} a_n=\sup\{a_n\},
 \]
-e tale limite è finito se la successione è limitata, altrimenti è $\pinf$.
+e tale limite è finito se la successione è limitata, altrimenti è $+\infty$.
 Se $\{a_n\}$ è invece monotona decrescente, allora
 \[
-\lim_{n\to \pinf} a_n=\inf\{a_n\},
+\lim_{n\to +\infty} a_n=\inf\{a_n\},
 \]
-e tale limite è finito se la successione è limitata, altrimenti è $\minf$.
+e tale limite è finito se la successione è limitata, altrimenti è $-\infty$.
 \end{teorema}
 \begin{proof}
 Si supponga $\{a_n\}$ monotona crescente, e sia $\sup\{a_n\}=\ell\in\R$. Allora $\ell$ è un maggiorante, e anche il minimo dei maggioranti. Quindi
@@ -187,9 +187,9 @@ L'elemento $a_{N+1}$ deve essere maggiore di $a_N$, perché la successione è cr
 \[
 \ell-\epsilon<a_N\leq a_n\leq\ell,
 \]
-quindi appartengono all'intorno sinistro di $\ell$, cioè $a_n\to\ell^-$ per $n\to \pinf$.
+quindi appartengono all'intorno sinistro di $\ell$, cioè $a_n\to\ell^-$ per $n\to +\infty$.
 
-Sia ora $\sup\{a_n\}=\pinf$. Poiché non ci sono maggioranti, vale che $\forall M>0$ $\exists a_N>M$, e dato che la successione è crescente, esiste $N\colon\forall n\geq N$ si ha che $a_n\geq a_N>M$, quindi $a_n\to \pinf$ per $n\to \pinf$.
+Sia ora $\sup\{a_n\}=+\infty$. Poiché non ci sono maggioranti, vale che $\forall M>0$ $\exists a_N>M$, e dato che la successione è crescente, esiste $N\colon\forall n\geq N$ si ha che $a_n\geq a_N>M$, quindi $a_n\to +\infty$ per $n\to +\infty$.
 
 La dimostrazione per $\{a_n\}$ decrescente è analoga.
 \end{proof}
@@ -201,7 +201,7 @@ per cui vale il teorema seguente.
 \begin{teorema}
 La successione $e_n$ è strettamente monotona crescente e superiormente limitata. Essa ammette quindi un limite finito, e tale limite è il numero $e$.
 \[
-\lim_{n\to \pinf} e_n=\sup\{e_n\}=e.
+\lim_{n\to +\infty} e_n=\sup\{e_n\}=e.
 \]
 \end{teorema}
 Tale numero è trascendente in quanto non è mai radice di un polinomio a coefficienti razionali. Una prima approssimazione del numero è
@@ -238,12 +238,12 @@ Una successione si dice infinitesima de tende a zero, mentre è infinita se dive
 \label{t:criterio_del_rapporto_successioni}
 Sia $\{a_n\}$ una successione a valori reali definitivamente positivi. Se esiste il limite del rapporto,
 \[
-\lim_{n\to \pinf} \frac{a_{n+1}}{a_n}\equiv\alpha,
+\lim_{n\to +\infty} \frac{a_{n+1}}{a_n}\equiv\alpha,
 \]
 con $\alpha\in\Rex$ (è anche positivo, poiché i due termini della frazione sono positivi), allora:
 \begin{itemize}
 	\item se $\alpha<1$, $a_n$ converge a 0;
-	\item se $\alpha>1$, $a_n$ diverge a $\pinf$.
+	\item se $\alpha>1$, $a_n$ diverge a $+\infty$.
 \end{itemize}
 \end{teorema}
 Questo teorema inoltre garantisce l'esistenza del limite della successione. Il caso in cui $\alpha=1$ non è preso in considerazione in quanto è di indecisione, e non non si può dire niente sul comportamento della successione.
@@ -270,18 +270,18 @@ si ha che per il teorema \ref{t:confronto} del confronto anche $a_n\to 0$.
 \[
 a_n>(\alpha-\epsilon)^n\cdot\frac{a_N}{(\alpha-\epsilon)^N},
 \]
-a cui segue, sempre per il teorema \ref{t:confronto}, che $a_n\to \pinf$.
+a cui segue, sempre per il teorema \ref{t:confronto}, che $a_n\to +\infty$.
 \end{proof}
 \begin{teorema}[Criterio della radice]
 \label{t:criterio_della_radice_successioni}
 Sia $\{a_n\}$ una successione a valori reali definitivamente positivi. Se esiste il limite del rapporto,
 \[
-\lim_{n\to \pinf} \sqrt[n]{a_n}\equiv\alpha,
+\lim_{n\to +\infty} \sqrt[n]{a_n}\equiv\alpha,
 \]
 con $\alpha\in\Rex$ (è anche positivo, dato che l'argomento della radice è positivo), allora:
 \begin{itemize}
 	\item se $\alpha<1$, $a_n$ converge a 0;
-	\item se $\alpha>1$, $a_n$ diverge a $\pinf$.
+	\item se $\alpha>1$, $a_n$ diverge a $+\infty$.
 \end{itemize}
 \end{teorema}
 La dimostrazione è simile a quella del teorema precedente.
@@ -292,12 +292,12 @@ Grazie a questi teoremi è possibile dimostrare alcuni dei confronti tra infinit
 \[
 \frac{x_n}{x_{n+1}}=\frac{a^{n+1}}{a^n}\cdot\frac{n^b}{(n+1)^b}=a\cdot\frac{(n+1-1)^b}{(n+1)^b}=a\,\left(1-\frac{1}{n+1}\right)^b\to a.
 \]
-Per il criterio del rapporto, poiché $a>1$ allora $x_n\to \pinf$, cioè $\dfrac{a^n}{n^b}\to \pinf$.
+Per il criterio del rapporto, poiché $a>1$ allora $x_n\to +\infty$, cioè $\dfrac{a^n}{n^b}\to +\infty$.
 \item Sia $y_n\equiv\dfrac{n!}{a^n}$, con $a>1$. La successione $y_{n+1}/y_n$ è
 \[
 \frac{y_n}{y_{n+1}}=\frac{(n+1)!}{a^{n+1}}\cdot\frac{a^n}{n!}=\frac{n+1}{a}>1.
 \]
-Quindi $y_n\to \pinf$ per il criterio del rapporto.
+Quindi $y_n\to +\infty$ per il criterio del rapporto.
 \end{enumerate}
 
 \section{Successioni asintotiche}
@@ -306,14 +306,14 @@ Spesso, per studiare l'andamento di una successione al limite, è utile poterla 
 \label{d:asintotico}
 Due successioni $\{x_n\}$ e $\{y_n\}$ si dicono \emph{asintotiche}, e si scrive $x_n\sim y_n$, se il loro rapporto tende a 1.
 \[
-\lim_{n\to \pinf}\frac{x_n}{y_n}=1.
+\lim_{n\to +\infty}\frac{x_n}{y_n}=1.
 \]
 \end{definizione}
 La relazione $\sim$ è riflessiva, simmetrica e transitiva.
 \begin{definizione}
 Date due successioni $\{x_n\}$ e $\{y_n\}$, si dice che $x_n$ è \emph{o-piccolo} di $y_n$, e si scrive $x_n=o(y_n)$, se il loro rapporto è infinitesimo:
 \[
-\lim_{n\to \pinf}\frac{x_n}{y_n}=0.
+\lim_{n\to +\infty}\frac{x_n}{y_n}=0.
 \]
 \end{definizione}
 La scrittura $o(1)$ indica un infinitesimo generico.
@@ -362,7 +362,7 @@ La successione di Cauchy quindi implica la limitatezza della successione, ma non
 \]
 se vale $m,n>1/2\epsilon$. Tuttavia la successione non converge, infatti supposto che converga al limite $k\in\N$, si ha
 \[
-\lim_{n\to \pinf} d^*(x_n,k)=\abs{\frac1{k}-\frac1{n}}=\frac1{k}\neq 0.
+\lim_{n\to +\infty} d^*(x_n,k)=\abs{\frac1{k}-\frac1{n}}=\frac1{k}\neq 0.
 \]
 \end{itemize}
 Esistono però alcuni spazi metrici in cui ogni successione che soddisfa la condizione di Cauchy è anche convergente.
@@ -380,7 +380,7 @@ Inoltre, se $\diam\{I_n\}\to 0$, allora $\bigcap_{n=1}^{\infty} I_n$ è un punto
 \begin{proof}
 Gli intervalli $I_n$ sono della forma $[a_n,b_n]$, con opportuni $a_n\leq b_n$. Per la relazione di inclusione, gli $a_n$ formano una successione monotona crescente, mentre $b_n$ è monotona decrescente. Inoltre, entrambe sono limitate perché $a_n\leq b_1$ e $b_n\geq a_1$, quindi entrambe ammettono limite, rispettivamente
 \[
-\lim_{n\to\pinf}a_n=\sup a_n\equiv A\qeq\lim_{n\to\pinf}b_n=\inf b_n\equiv B.
+\lim_{n\to+\infty}a_n=\sup a_n\equiv A\qtext{e}\lim_{n\to+\infty}b_n=\inf b_n\equiv B.
 \]
 Sia ora per assurdo che $B<A$, che quindi individuano l'intervallo $[B,A]$. Allora per i limiti precedenti $\exists N\colon\forall n\geq N$ $a_n\in[B,A]$ e $\exists M\colon\forall n\geq M$ $b_n\in[B,A]$. Quindi se si prende $K\geq\max\{N,M\}$, poiché per ipotesi $a_n<b_n$, si avrà che $B<a_K<b_K<A$. Ma proseguendo con gli indici, per $H>K$ si avrà $B<b_H<a_K<A$, che contrasta con l'ipotesi per cui $a_n\leq b_n$ per ogni $n\in\N$. Allora deve essere $A\leq B$, quindi l'intervallo $[A,B]$ è contenuto nell'intersezione di tutti gli $I_n$. Se infine $a_n$ e $b_n$ tendono ad un unico limite $p$, allora l'intervallo si riduce a $[A,B]\to p$, quindi l'intersezione degli $I_n$ è formata soltanto dal punto isolato $p$.
 \end{proof}
@@ -451,13 +451,13 @@ Se una successione è regolare, anche ogni sua sottosuccessione estratta converg
 \begin{definizione}
 Si chiama \emph{classe limite} di una successione l'insieme dei limiti di tutte le sottosuccessioni estratte da essa. Ogni elemento della classe limite è detto \emph{valore limite}.
 \end{definizione}
-I valori limiti possono anche essere $\pinf$ o $\minf$.
+I valori limiti possono anche essere $+\infty$ o $-\infty$.
 Una classe limite è sempre un insieme chiuso, e in $\Rex$ ammette sempre un massimo e un minimo, chiamati rispettivamente limite superiore e inferiore (si indicano con $\limsup a_n$ e $\liminf a_n$).
 Se una successione a valori reali è regolare, la sua classe limite è composta da un solo elemento. Può anche accadere che la classe limite sia infinita: ad esempio la successione
 \[
 x_{n,k}=k+\frac1{n}
 \]
-assume infiniti valori per $n\to\pinf$ al variare di $k\in\N$, quindi la sua classe limite è $\N$.
+assume infiniti valori per $n\to+\infty$ al variare di $k\in\N$, quindi la sua classe limite è $\N$.
 La classe limite però non è mai vuota, come dimostra il seguente teorema.
 \begin{teorema}
 \label{t:classe_limite_mai_vuota}
@@ -467,7 +467,7 @@ In $\R$ la classe limite non è mai vuota.
 Sia $\{x_n\}$ una successione a valori reali. Se essa assume un numero finito di valori, se si considera la sottosuccessione costante di uno di questi valori, ripetuto infinite volte, la classe limite è allora composta almeno da quel valore: non è quindi vuota.
 Se invece la successione assume infiniti valori distinti, si distinguono due casi:
 \begin{itemize}
-\item se $x_n$ è superiormente illimitata, allora si può sempre estrarre una sottosuccessione divergente a $\pinf$, o a $\minf$ se è inferiormente illimitata.
+\item se $x_n$ è superiormente illimitata, allora si può sempre estrarre una sottosuccessione divergente a $+\infty$, o a $-\infty$ se è inferiormente illimitata.
 \item se $x_n$ è limitata, è sicuramente contenuta in un intervallo $I=[a,b]$ in cui $a$ è un minorante e $b$ un maggiorante di $\{x_n\}$. Si divide $I$ in due parti, tali che in almeno una delle due cadano infiniti punti di $\{x_n\}$. Iterando questa suddivisione, che è sempre possibile perché la successione assume infiniti valori in $[a,b]$, si costruisce una successione decrescente di intervalli chiusi e inclusi ognuno nel precedente $\{I_n\}$ tale che $\diam I_n \to 0$. Allora risulta che
 \[
 \exists! p\in\R\colon p\in\bigcap_{n=1}^{\infty} I_n,
@@ -477,14 +477,14 @@ inoltre $p$ è un punto di accumulazione di $\{x_n\}$ perché negli $I_n$ sono c
 \end{proof}
 \section{Insiemi compatti}
 \begin{definizione}
-Un insieme $E\subseteq(X,d)$ si dice \emph{compatto} se $\forall\{x_n\}_{n=1}^{\pinf}\in E$ è possibile estrarre una sottosuccessione $\{x_{n_k}\}$ convergente ad un elemento $p\in E$.
+Un insieme $E\subseteq(X,d)$ si dice \emph{compatto} se $\forall\{x_n\}_{n=1}^{+\infty}\in E$ è possibile estrarre una sottosuccessione $\{x_{n_k}\}$ convergente ad un elemento $p\in E$.
 \end{definizione}
 \paragraph{Esempi}
 \begin{enumerate}
 \item Tutti gli insiemi di cardinalità finita sono compatti: ogni successione convergente estratta è infatti necessariamente definitivamente costante, e tale costante non può non essere nell'insieme.
 \item L'insieme $E=[0,1]\subset\R$ è compatto, perché qualsiasi punto di accumulazione a cui può tendere una successione in $E$ appartiene necessariamente ad $E$, poiché coincide con la sua chiusura $\overline{E}$. Infatti ogni insieme di $\R$ chiuso e limitato è compatto.
 \item L'insieme $E=(0,1]$ non è compatto, perché la successione $x_n=1/n$ tende a 0 che non appartiene ad $E$.
-\item Anche un insieme come $E=[a,\pinf)$ non è compatto, perché qualsiasi successione divergente ha come limite $\pinf$, che \emph{non} appartiene all'insieme.
+\item Anche un insieme come $E=[a,+\infty)$ non è compatto, perché qualsiasi successione divergente ha come limite $+\infty$, che \emph{non} appartiene all'insieme.
 \end{enumerate}
 \begin{lemma}
 Un insieme $A\subseteq(X,d)$ è chiuso se e solo se $\forall\{x_n\}\subset A$ con $x_n\to p$ si ha che $p\in A$, ossia se $A$ contiene tutti i limiti di successioni convergenti estratte da esso.
@@ -510,7 +510,7 @@ Sia ora per assurdo che $E$ sia illimitato. Si consideri un elemento generico $z
 \[
 n_k<d(x_{n_k},z)\leq d(x_{n_k},p)+d(z,p),
 \]
-che però è una contraddizione poiché per il teorema del confronto $d(x_{n_k},z)$ dovrebbe contemporaneamente tendere a $d(z,p)$ e divergere a $\pinf$, quindi si conclude che $E$ deve essere limitato.
+che però è una contraddizione poiché per il teorema del confronto $d(x_{n_k},z)$ dovrebbe contemporaneamente tendere a $d(z,p)$ e divergere a $+\infty$, quindi si conclude che $E$ deve essere limitato.
 \end{proof}
 Le condizioni di chiusura e limitatezza non sono sufficienti a determinare la compattezza di un insieme. Basti considerare $E=\N$ nello spazio metrico discreto: $E$ è chiuso e limitato, ma la successione $x_n=n$ non ammette sottosuccessioni convergenti (infatti, ogni successione convergente nella metrica discreta deve essere definitivamente costante).
 
@@ -524,7 +524,7 @@ Sia ora $\{x_n\}\subset E$: è sicuramente limitata, quindi (in $\R$ e in ogni $
 \end{proof}
 \begin{teorema}[di Bolzano-Weierstrass]
 \label{t:bolzano-weierstrass}
-Qualsiasi insieme di $\R^k$ di cardinalità infinita e limitato ha sempre almeno un punto di acumulazione. Ossia, se $E\subset(\R^k,\norm{\cdot})$ è limitato e $|E|=\pinf$, allora $E'\neq\emptyset$.
+Qualsiasi insieme di $\R^k$ di cardinalità infinita e limitato ha sempre almeno un punto di acumulazione. Ossia, se $E\subset(\R^k,\norm{\cdot})$ è limitato e $|E|=+\infty$, allora $E'\neq\emptyset$.
 \end{teorema}
 \begin{proof}
 Dato che ha cardinalità infinita, da $E$ si può sempre estrarre una successione non costante, che sarà sempre limitata (e in $E$). Sia $\{x_n\}\subset E$ con $x_n\neq x_m$ $\forall m,n$. Allora $\{x_n\}$ è limitata in $\overline{E}$, che è anch'esso limitato. Ma anche $\overline{E}$ è compatto per il teorema \ref{t:heine-borel} di Heine-Borel, allora $\exists x_{n_k}\to p$ e si ha che $p\in E'$ perché è un punto di accumulazione. Quindi $E'\neq\emptyset$.
