@@ -15,7 +15,6 @@
 \usepackage{mathtools}
 \usepackage{comment}
 \usepackage{amsfonts}                     % Per il font blackboard \mathbb
-\usepackage{a4wide}                       % Reimposta i margini per una pagina in formato A4
 \usepackage{amsthm}                       % Per personalizzare gli stili dei teoremi
 \usepackage{siunitx}
 \usepackage{amssymb}                      % Per alcuni comandi come \varnothing, \emptyset
@@ -25,6 +24,22 @@
 \usepackage{titletoc}                     % Per creare gli indici per ciascuna parte separatamente
 \usepackage[usenames,dvipsnames]{xcolor}  % Per definire alcuni colori come nei link di hyperref
 \usepackage[bibstyle=numeric,backend=biber]{biblatex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Margini
+\usepackage[big]{layaureo}
+% Il margine superiore impostato da layaureo è troppo piccolo, soprattutto in presenza delle
+% testatine nell'intestazione della pagina: il margine inferiore in confronto è enorme.
+% Per rimediare, aggiungo al margine superiore (il cui valore è salvato nella variabile
+% \Gm@tmargin) lo spazio che LaTeX imposta tra la testatina e il corpo del testo.
+% (Il valore di default di \headsep è 25pt, poco meno di 1 cm)
+\newlength{\customTopMargin}
+\setlength{\customTopMargin}{\Gm@tmargin+\headsep}
+% Per sommare due lunghezze (come nel 2o argomento del precedente comando) è necessario
+% il pacchetto 'calc', che è automaticamente incluso da layaureo
+\newgeometry{top=\customTopMargin}
+% Definisce delle nuove impostazioni per geometry. Gli altri margini etc. sono già impostati
+% da layaureo e vanno bene cosi`. Serve solo reimpostare 'top' con il nuovo valore.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Impostazioni e caricamento di pgfplots
