@@ -25,14 +25,14 @@ La serie $\sum_{n=1}^{+\infty}f_n(x)$ converge \emph{uniformemente} in $J\subset
 \]
 \end{definizione}
 
-Nel capitolo \ref{sec:spazi-funz} si era visto che lo spazo metrico delle funzioni limitate e quello delle funzioni continue $\cont{k}(E)$ sono spazi vettoriali, se si assume come insieme di arrivo l'intero $\R$. Da ciò segue che la funzione somma di funzioni limitate è a sua volta limitata, e analogamente è continua quando è somma di funzioni continue (dello stesso ordine $k$). Dunque la successione $S_k(x)$ delle somme parziali assume le stesse proprietà delle $f_n(x)$ di cui è somma:
+Nel capitolo \ref{sec:spazi-funz} si era visto che lo spazo metrico delle funzioni limitate e quello delle funzioni continue $\cont[k]{E}$ sono spazi vettoriali, se si assume come insieme di arrivo l'intero $\R$. Da ciò segue che la funzione somma di funzioni limitate è a sua volta limitata, e analogamente è continua quando è somma di funzioni continue (dello stesso ordine $k$). Dunque la successione $S_k(x)$ delle somme parziali assume le stesse proprietà delle $f_n(x)$ di cui è somma:
 \begin{itemize}
 \item se $f_n$ è limitata per ogni $n$, allora $S_k$ è limitata;
-\item se $f_n\in\cont{p}$ per ogni $n$, allora anche $S_k\in\cont{p}$.
+\item se $f_n\in\cclass[p]$ per ogni $n$, allora anche $S_k\in\cclass[p]$.
 \end{itemize}
 Chiaramente la somma (finita) di funzioni limitate o continue è ancora limitata o continua: non sempre lo stesso vale per la funzione somma, per la quale si applica il seguente teorema.
 \begin{teorema}
-	Se $f_n(x)\in\cont{}(J)$ $\forall n$ e $S(x)=\sum_{n=1}^{+\infty}f_n(x)$ converge uniformemente in $J$, allora $S\in\cont{}(J)$.
+	Se $f_n(x)\in\cont{J}$ $\forall n$ e $S(x)=\sum_{n=1}^{+\infty}f_n(x)$ converge uniformemente in $J$, allora $S\in\cont{J}$.
 \end{teorema}
 \begin{teorema} \label{t:continuita_serie_conv_uniforme}
 Se esiste finito il $\lim_{x\to x_0}f_n(x)=\ell_n\in\R$, per ogni $n$, e $S(x)=\sum_{n=1}^{+\infty}f_n(x)$ converge uniformemente in $J$, allora la serie $\sum_{n=1}^{+\infty}\ell_n$ converge e vale
@@ -41,7 +41,7 @@ Se esiste finito il $\lim_{x\to x_0}f_n(x)=\ell_n\in\R$, per ogni $n$, e $S(x)=\
 \]
 \end{teorema}
 \begin{teorema} \label{t:scambio_integrale_serie}
-Se $f_n\in\rie\ab$ per ogni $n$ e la serie $S(x)=\sum_{n=1}^{+\infty}f_n(x)$ converge uniformemente in $[a,b]$, allora $S\in\rie\ab$ e vale
+Se $f_n\in\rie{[a,b]}$ per ogni $n$ e la serie $S(x)=\sum_{n=1}^{+\infty}f_n(x)$ converge uniformemente in $[a,b]$, allora $S\in\rie{[a,b]}$ e vale
 \[
 \int_a^b\sum_{n=1}^{+\infty}f_n(x)\,\dd x=\sum_{n=1}^{+\infty}\int_a^bf_n(x)\,\dd x.
 \]
@@ -55,11 +55,11 @@ S'(x)=\bigg(\sum_{n=1}^{+\infty}f_n(x)\bigg)'=\sum_{n=1}^{+\infty}f_n'(x).
 
 Poiché la successione delle somme parziali $\{S_k\}$ converge uniformemente in $J$ se e solo se soddisfa la condizione di Cauchy (come per le successioni), cioè se per ogni $\epsilon>0$ esiste in corrispondenza un $\overline{n}(\epsilon)$ tale che per ogni $n>m\geq\overline{n}$ interi si abbia
 \[
-\norm{S_n-S_m}_{\infty,J}=\bigg\|\sum_{k=m+1}^nf_k\bigg\|_{\infty,J}<\epsilon.
+	\norm{S_n-S_m}_{\infty,J}=\norm[\bigg]{\sum_{k=m+1}^nf_k}_{\infty,J}<\epsilon.
 \]
 Posti $m+1=p$ e $q>0$, si ottiene che la condizione è soddisfatta se $\forall p>\overline{n}(\epsilon)$ e $q>0$ interi si ha
 \begin{equation} \label{eq:cc_serie_funzioni}
-\bigg\|\sum_{k=p}^{p+q}f_k(x)\bigg\|_{\infty_J}<\epsilon.
+	\norm[\bigg]{\sum_{k=p}^{p+q}f_k(x)}_{\infty_J}<\epsilon.
 \end{equation}
 Da questo si ottiene una condizione necessaria per la convergenza uniforme della serie.
 \begin{corollario}
@@ -68,7 +68,7 @@ La serie $\sum_{n=1}^{+\infty}f_n(x)$ converge uniformemente in $J$ solo se la s
 \begin{proof}
 Ponendo $q=0$ nella \eqref{eq:cc_serie_funzioni}, si ottiene che
 \[
-\bigg\|\sum_{k=p}^{p}f_k(x)\bigg\|_{\infty_J}=\norm{f_p}_{\infty_J}<\epsilon,
+	\norm[\bigg]{\sum_{k=p}^{p}f_k(x)}_{\infty_J}=\norm{f_p}_{\infty_J}<\epsilon,
 \]
 ossia che $\forall\epsilon>0$ $\exists\overline{n}(\epsilon)$ tale per cui $\forall p>\overline{n}$ si ha $\norm{f_p-0}_{\infty,J}<\epsilon$ cioè $f_p$ (o equivalentemente $f_n$) converge uniformemente alla funzione identicamente nulla.
 \end{proof}
@@ -89,7 +89,7 @@ Per ipotesi esiste una successione $\{M_n\}$ la cui serie converge e tale che pe
 \]
 ma allora per le disuguaglianze precedenti risulta
 \[
-\epsilon>\sum_{n=p}^{p+q}M_n\geq\sum_{n=p}^{p+q}\norm{f_n}_{\infty,E}\geq\bigg\|\sum_{n=p}^{p+q}f_n\bigg\|_{\infty,E}
+	\epsilon>\sum_{n=p}^{p+q}M_n\geq\sum_{n=p}^{p+q}\norm{f_n}_{\infty,E}\geq\norm[\bigg]{\sum_{n=p}^{p+q}f_n}_{\infty,E}
 \]
 quindi la serie converge anche uniformemente per le \eqref{eq:cc_serie_funzioni}.
 \end{proof}
@@ -121,7 +121,7 @@ Data una serie di potenze $\sum_{n=0}^{+\infty}a_nx^n$, se converge puntualmente
 \begin{proof}
 Sia $\sum_{n=0}^{+\infty}a_nx^n$ convergente in $\xi\neq 0$: allora necessariamente deve risultare $\abs{a_n\xi^n}\to 0$, quindi esiste $c>0$ tale per cui per ogni $n$ si abbia $\abs{a_n\xi^n}<c$. Allora
 \[
-\abs{a_nx^n}=\abs{a_n\xi^n}\abs{\frac{x}{\xi}}^n\leq c\abs{\frac{x}{\xi}}^n,
+	\abs{a_nx^n}=\abs{a_n\xi^n}\abs[\bigg]{\frac{x}{\xi}}^n\leq c\abs[\bigg]{\frac{x}{\xi}}^n,
 \]
 che è il termine generale di una serie geometrica, e converge dunque per $\abs{x/\xi}<1$ cioè per $x\in(-\abs{\xi},\abs{\xi})$. Per il teorema del confronto, $\sum_{n=0}^{+\infty}a_nx^n$ converge assolutamente nel medesimo intervallo.
 Se poi $K$ è un sottoinsieme compatto di tale intervallo, sicuramente $\abs{x/\xi}\leq 1-\delta$ per qualche $\delta>0$, ma allora $\abs{a_nx^n}\leq c(1-\delta)^n$ quindi $\sum_{n=0}^{+\infty}a_nx^n$ converge totalmente.
@@ -150,7 +150,7 @@ allora $\rho=\frac1{\ell}$, usando l'algebra di $\Rex$.
 \begin{proof}
 Per il criterio \ref{t:criterio_radice_serie} della radice si ha
 \[
-\limsup_{n\to+\infty}\sqrt[n]{\abs{a_nx^n}}=\abs{x}\limsup_{n\to+\infty}\sqrt[n]{\abs{a_n}}\equiv \abs{x}\ell.
+\limsup_{n\to+\infty}\sqrt[n]{\abs{a_nx^n}}=\abs{x}\limsup_{n\to+\infty}\sqrt[n]{\abs{a_n}}=\abs{x}\ell.
 \]
 che deve essere minore di 1, quindi $\abs{x}<1/\ell$: allora $\rho=1/\ell$ è il raggio di convergenza.
 \end{proof}
@@ -158,7 +158,7 @@ Questo criterio è sempre utilizzabile, in quanto il limite superiore di una suc
 \begin{teorema}[Criterio di d'Alembert]
 Se $a_n\neq 0$ per ogni $n$ ed esiste il limite
 \[
-\lim_{n\to+\infty}\abs{\frac{a_{n+1}}{a_n}}\equiv\ell,
+	\ell\defeq\lim_{n\to+\infty}\abs[\bigg]{\frac{a_{n+1}}{a_n}},
 \]
 allora il raggio di convergenza della serie $\sum_{n=0}^{+\infty}a_nx^n$ è $\rho=1/\ell$.
 \end{teorema}
@@ -234,7 +234,7 @@ S'(x)=\sum_{n=0}^{+\infty}(n+1)a_{n+1}x^n.\qedhere
 \]
 \end{proof}
 
-Continuando a derivare un qualsiasi numero di volte l'intervallo di convergenza non cambia, allora al suo interno ogni serie di potenze è derivabile infinite volte: ogni serie di potenze di raggio di convergenza $\rho$ è quindi di classe $\cont{\infty}\big((-\rho,\rho)\big)$. Inoltre, posto $S(x)=\sum_{n=0}^{+\infty}a_nx^n$, vale
+Continuando a derivare un qualsiasi numero di volte l'intervallo di convergenza non cambia, allora al suo interno ogni serie di potenze è derivabile infinite volte: ogni serie di potenze di raggio di convergenza $\rho$ è quindi di classe $\cont[\infty]{(-\rho,\rho)}$. Inoltre, posto $S(x)=\sum_{n=0}^{+\infty}a_nx^n$, vale
 \[\begin{split}
 S^{(k)}(x)	&=\sum_{n=0}^{+\infty}n(n-1)(n-2)\dots(n-k+1)a_nx^{n-k}=\\
 			&=\sum_{n=k}^{+\infty}n(n-1)(n-2)\dots(n-k+1)a_nx^{n-k}=\\
@@ -247,7 +247,7 @@ a_k=\frac{f^{(k)}(0)}{k!}.
 \]
 I coefficienti della serie sono quindi univocamente determinati dalle derivate della funzione somma, tramite l'equazione precedente.
 \begin{teorema}
-	Data la serie di potenze $S(x)=\sum_{n=0}^{+\infty}a_n(x-x_0)^n$ con raggio di convergenza $\rho\ne 0$, si ha che $S\in\cont{\infty}\big((x_0-\rho,x_0+\rho)\big)$ e per ogni punto $x$ in tale intervallo risulta
+	Data la serie di potenze $S(x)=\sum_{n=0}^{+\infty}a_n(x-x_0)^n$ con raggio di convergenza $\rho\ne 0$, si ha che $S\in\cont[\infty]{(x_0-\rho,x_0+\rho)}$ e per ogni punto $x$ in tale intervallo risulta
 	\begin{equation} \label{eq:serie_potenze_taylor}
 		S(x)=\sum_{n=0}^{+\infty}\frac{S^{(n)}(x_0)}{n!}(x-x_0)^n.
 	\end{equation}
@@ -290,14 +290,14 @@ che fornisce un metodo per approssimare il valore di $\pi$.
 Una funzione $f$ si dice \emph{analitica} in un punto $x_0$ se $f(x_0)$ coincide con lo sviluppo in serie di Taylor $T(x_0)$ in tale punto.
 \end{definizione}
 Ovviamente la definizione si estende anche ad un insieme, una volta che $f(x)$ coincide con $T(x)$ per ogni punto $x$ di tale insieme.
-L'insieme delle funzioni analitiche in un insieme $E$ si indica convenzionalmente con $\cont{\omega}(E)$. La condizione di \emph{analiticità} è più restrittiva dell'appartenenza alla classe $\cont{\infty}$, cioè in un insieme $J$ si ha $\cont{\infty}(J)\supset\cont{\omega}(J)$.
+L'insieme delle funzioni analitiche in un insieme $E$ si indica convenzionalmente con $\cont[\omega]{E}$. La condizione di \emph{analiticità} è più restrittiva dell'appartenenza alla classe $\cclass[\infty]$, cioè in un insieme $J$ si ha $\cont[\infty]{J}\supset\cont[\omega]{J}$.
 Tutti i polinomi di grado qualunque sono infinitamente derivabili, e coincidono così come sono con il loro sviluppo in serie di Taylor, quindi sono analitici. Un controesempio è invece dato dalla funzione
 \[
 f(x)=\begin{dcases}e^{-\frac1{x^2}}&x\neq 0\\0&x=0\end{dcases}.
 \]
 
 \begin{teorema}
-Siano $f\in\cont{\infty}\big((a,b)\big)$ e $x_0\in(a,b)$. Se esistono $\delta>0$, $c\geq 0$ e $M\geq 0$ tali che per $x\in(x_0-\delta,x_0+\delta)$ e per ogni $n\geq 0$ si abbia
+Siano $f\in\cont[\infty]{(a,b)}$ e $x_0\in(a,b)$. Se esistono $\delta>0$, $c\geq 0$ e $M\geq 0$ tali che per $x\in(x_0-\delta,x_0+\delta)$ e per ogni $n\geq 0$ si abbia
 \[
 \abs{f^{(n)}(x)}\leq cM^n,
 \]
@@ -310,13 +310,13 @@ f(x)=\sum_{k=0}^{n-1}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+\frac{f^{(n)}(\xi)}{n!}(x-
 \]
 per $\xi\in(x_0-x,x_0+x)$. Se $x\in(x_0-\delta,x_0+\delta)$ dunque la derivata $f^{(n)}(\xi)$ è maggiorata per ipotesi da $cM^n$, mentre $\abs{x-x_0}<\delta$, quindi in modulo la differenza tra la funzione e lo sviluppo è
 \[
-\bigg|f(x)-\sum_{k=0}^{n-1}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k\bigg|=\abs{\frac{f^{(n)}(\xi)}{n!}(x-x_0)^n}\leq\frac{cM^n}{n!}\delta^n=c\frac{(\delta M)^n}{n!}
+	\abs[\bigg]{f(x)-\sum_{k=0}^{n-1}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k}=\abs[\bigg]{\frac{f^{(n)}(\xi)}{n!}(x-x_0)^n}\leq\frac{cM^n}{n!}\delta^n=c\frac{(\delta M)^n}{n!}
 \]
 che tende a 0 per $n\to+\infty$, quindi la funzione coincide con il suo sviluppo in serie di Taylor.
 \end{proof}
 \paragraph{Esempi}
 \begin{itemize}
-\item La funzione $f(x)=\sin x$ è di classe $\cont{\infty}(\R)$. Posto $x_0=0$, si ha che $f^{(n)}(0)=0$ se $n$ è pari, o $\pm 1$ se $n$ è dispari. Poiché quindi $\abs{f^{(n)}(0)}\leq 1$ per ogni $n\geq 0$, $f$ è analitica in un intorno di $x=0$: chiaramente il risultato si estende anche a tutto $\R$ (figura \ref{fig:taylor_sin}).
+\item La funzione $f(x)=\sin x$ è di classe $\cont[\infty]{\R}$. Posto $x_0=0$, si ha che $f^{(n)}(0)=0$ se $n$ è pari, o $\pm 1$ se $n$ è dispari. Poiché quindi $\abs{f^{(n)}(0)}\leq 1$ per ogni $n\geq 0$, $f$ è analitica in un intorno di $x=0$: chiaramente il risultato si estende anche a tutto $\R$ (figura \ref{fig:taylor_sin}).
 Allora per ogni $x\in\R$ si ha
 \[
 \sin x=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n+1}}{(2n+1)!}.

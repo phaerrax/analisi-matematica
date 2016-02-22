@@ -36,14 +36,14 @@ La derivata parziale è inoltre definita come, ad esempio per $x_1$,
 quindi non è altro che un'operazione di derivazione rispetto soltanto alla variabile $x_1$, mantenendo le rimanenti come costanti. Si possono allora applicare le solite regole di derivazione per le funzioni ad una sola variabile.
 \paragraph{Esempi}
 \begin{itemize}
-\item Sia $f(\vec x)=\scalar{\vec b}{\vec x}$, con $\vec b\in\R^n$. La funzione è per definizione di prodotto scalare equivalente a $f(\vec x)=\sum_{j=1}^nb_jx_j$, quindi chiaramente le derivate parziali esistono tutte e valgono
+\item Sia $f(\vec x)=\inner{\vec b}{\vec x}$, con $\vec b\in\R^n$. La funzione è per definizione di prodotto scalare equivalente a $f(\vec x)=\sum_{j=1}^nb_jx_j$, quindi chiaramente le derivate parziali esistono tutte e valgono
 \[
 \drp{f}{x_j}=b_j,
 \]
 cioè il gradiente di $f$ in $\vec x$ è $\grad f(\vec x)=\vec b$.
 \item La funzione $f(\vec x)=\norm{\vec x}$, per definizione, è $f(\vec x)=\sqrt{\sum_{j=1}^nx_j^2}$, quindi le derivate parziali sono per $\vec x\neq\vec 0$
 \[
-\drp{f}{x_j}=\frac12\left(\sum_{j=1}^nx_j^2\right)^{-\frac{1}{2}}2x_j=x_j\left(\sum_{j=1}^nx_j^2\right)^{-\frac{1}{2}},
+\drp{f}{x_j}=\frac12\bigg(\sum_{j=1}^nx_j^2\bigg)^{-\frac{1}{2}}2x_j=x_j\bigg(\sum_{j=1}^nx_j^2\bigg)^{-\frac{1}{2}},
 \]
 quindi il suo gradiente è $\grad f(\vec x)=\dfrac{\vec x}{\norm{\vec x}}$. Si nota anche che $\grad(\norm{\vec x})$ è un versore.
 \end{itemize}
@@ -81,9 +81,9 @@ f(\vec a+\vec h)-f(\vec a)=L(\vec h)+o(\norm{\vec h}).
 \end{definizione}
 L'applicazione $L$ è detta \emph{differenziale primo} di $f$ nel punto $\vec a$, e si indica con $\dd f(\vec a,\cdot)$.
 Ogni applicazione lineare da $\R^n$ a $\R$ è rappresentabile % una volta fissata la base, qui quella canonica?
-tramite il prodotto interno con un vettore fissato di $\R^n$: allora esiste un vettore $\vlambda\in\R^n$ per cui si può scrivere $L(\vec h)=\scalar{\vlambda}{\vec h}$. Si può dunque formulare la definizione \ref{d:differenziabilita} chiedendo che esista un vettore $\vlambda\in\R^n$ tale per cui
+tramite il prodotto interno con un vettore fissato di $\R^n$: allora esiste un vettore $\vlambda\in\R^n$ per cui si può scrivere $L(\vec h)=\inner{\vlambda}{\vec h}$. Si può dunque formulare la definizione \ref{d:differenziabilita} chiedendo che esista un vettore $\vlambda\in\R^n$ tale per cui
 \begin{equation} \label{eq:differenziabilita}
-\lim_{\vec h\to\vec 0}\frac{f(\vec a+\vec h)-f(\vec a)-\scalar{\vlambda}{\vec h}}{\norm{\vec h}}=0.
+\lim_{\vec h\to\vec 0}\frac{f(\vec a+\vec h)-f(\vec a)-\inner{\vlambda}{\vec h}}{\norm{\vec h}}=0.
 \end{equation}
 \begin{osservazione}
 Se esiste $\vlambda$ tale per cui valga la \eqref{eq:differenziabilita}, allora è unico.
@@ -91,9 +91,9 @@ Se esiste $\vlambda$ tale per cui valga la \eqref{eq:differenziabilita}, allora 
 \begin{proof}
 Sia $f$ differenziabile in $\vec a$ per due vettori distinti $\vlambda_1$ e $\vlambda_2$. Si ha allora l'uguaglianza
 \[
-\scalar{\vlambda_1}{\vec h}+o(\norm{\vec h})=f(\vec a+\vec h)-f(\vec a)=\scalar{\vlambda_2}{\vec h}+o(\norm{\vec h}).
+\inner{\vlambda_1}{\vec h}+o(\norm{\vec h})=f(\vec a+\vec h)-f(\vec a)=\inner{\vlambda_2}{\vec h}+o(\norm{\vec h}).
 \]
-Trascurando il membro centrale si trova che $\scalar{\vlambda_1-\vlambda_2}{\vec h}=o(\norm{\vec h})$. Dividendo per $\norm{\vec h}$, si ottiene $\vec h/\norm{\vec h}$ che è un versore, che sarà indicato con $\vec v$; dunque $\scalar{\vlambda_1-\vlambda_2}{\vec v}=o(1)$, cioè per ogni $\vec v$ si ha che $\scalar{\vlambda_1-\vlambda_2}{\vec v}=0$, dato che l'espressione non dipende da $\norm{\vec h}$. Allora $\vlambda_1-\vlambda_2$ è ortogonale a $\vec v$: poiché l'unico vettore ortogonale ad infiniti vettori (la relazione vale infatti per qualunque $\vec v\in\R^n$) è il vettore nullo, risulta $\vlambda_1=\vlambda_2$.
+Trascurando il membro centrale si trova che $\inner{\vlambda_1-\vlambda_2}{\vec h}=o(\norm{\vec h})$. Dividendo per $\norm{\vec h}$, si ottiene $\vec h/\norm{\vec h}$ che è un versore, che sarà indicato con $\vec v$; dunque $\inner{\vlambda_1-\vlambda_2}{\vec v}=o(1)$, cioè per ogni $\vec v$ si ha che $\inner{\vlambda_1-\vlambda_2}{\vec v}=0$, dato che l'espressione non dipende da $\norm{\vec h}$. Allora $\vlambda_1-\vlambda_2$ è ortogonale a $\vec v$: poiché l'unico vettore ortogonale ad infiniti vettori (la relazione vale infatti per qualunque $\vec v\in\R^n$) è il vettore nullo, risulta $\vlambda_1=\vlambda_2$.
 \end{proof}
 
 La differenziabilità della funzione permette di evitare spiacevoli inconvenienti come la discontinuità. Il teorema seguente dimostra la regolarità della funzione differenziabile, oltre a mostrare che $\vlambda$ non è proprio un vettore qualsiasi.
@@ -103,30 +103,30 @@ Siano $\Omega$ un aperto di $\R^n$, e la funzione $f\colon\Omega\to\R$. Preso un
 \item $f$ è continua in $\vec a$;
 \item per ogni versore $\vec v\in\R^n$, $f$ ammette le derivate direzionali $D_{\vec v}f(\vec a)$;
 \item esiste il gradiente $\grad f(\vec a)$, che è uguale a $\vlambda$;
-\item $D_{\vec v}f(\vec a)=\scalar{\grad f(\vec a)}{\vec v}$.
+\item $D_{\vec v}f(\vec a)=\inner{\grad f(\vec a)}{\vec v}$.
 \end{enumerate}
 \end{teorema}
 \begin{proof}
 \begin{enumerate}
-\item Poiché $f$ è differenziabile, applicando il modulo alla definizione di differenziabilità si ottiene che $\abs{f(\vec a+\vec h)-f(\vec a)}=\abs{\scalar{\vlambda}{\vec h}+o(\norm{\vec h})}$. L'ultimo membro è maggiorato dalla somma dei moduli dei singoli termini, quindi $\abs{f(\vec a+\vec h)-f(\vec a)}\leq\abs{\scalar{\vlambda}{\vec h}}+o(\norm{\vec h})\leq\norm{\vlambda}\norm{\vec h}+o(\norm{\vec h})$ che tende a 0 se $\vec h$, quindi anche $\norm{\vec h}$, tende a 0. Quindi $f(\vec a+\vec h)\to f(\vec a)$ e la funzione è continua.
-\item Fissato un versore $\vec v$, l'incremento lungo la sua direzione è differenziabile come $f(\vec a+t\vec v)-f(\vec a)=\scalar{\vlambda}{t\vec v}+o(\norm{t\vec v})$. Dato che $\norm{t\vec v}=\abs{t}\norm{\vec v}=\abs{t}$, dividendo per $t$ risulta
+\item Poiché $f$ è differenziabile, applicando il modulo alla definizione di differenziabilità si ottiene che $\abs{f(\vec a+\vec h)-f(\vec a)}=\abs{\inner{\vlambda}{\vec h}+o(\norm{\vec h})}$. L'ultimo membro è maggiorato dalla somma dei moduli dei singoli termini, quindi $\abs{f(\vec a+\vec h)-f(\vec a)}\leq\abs{\inner{\vlambda}{\vec h}}+o(\norm{\vec h})\leq\norm{\vlambda}\norm{\vec h}+o(\norm{\vec h})$ che tende a 0 se $\vec h$, quindi anche $\norm{\vec h}$, tende a 0. Quindi $f(\vec a+\vec h)\to f(\vec a)$ e la funzione è continua.
+\item Fissato un versore $\vec v$, l'incremento lungo la sua direzione è differenziabile come $f(\vec a+t\vec v)-f(\vec a)=\inner{\vlambda}{t\vec v}+o(\norm{t\vec v})$. Dato che $\norm{t\vec v}=\abs{t}\norm{\vec v}=\abs{t}$, dividendo per $t$ risulta
 \[
-\frac{f(\vec a+t\vec v)-f(\vec a)}{t}=\scalar{\vlambda}{\vec v}+o(1)\text{, cioè }D_{\vec v}f(\vec a)=\scalar{\vlambda}{\vec v}.
+\frac{f(\vec a+t\vec v)-f(\vec a)}{t}=\inner{\vlambda}{\vec v}+o(1)\text{, cioè }D_{\vec v}f(\vec a)=\inner{\vlambda}{\vec v}.
 \]
-\item Per il secondo punto si ha $D_{\vec v}f(\vec a)=\scalar{\vlambda}{\vec v}$, e quando il versore è della base canonica di $\R^n$, $\vec e_j$, per definizione si ha la derivata parziale, che è quindi
+\item Per il secondo punto si ha $D_{\vec v}f(\vec a)=\inner{\vlambda}{\vec v}$, e quando il versore è della base canonica di $\R^n$, $\vec e_j$, per definizione si ha la derivata parziale, che è quindi
 \[
-\drp{f}{x_j}(\vec a)=\scalar{\vlambda}{\vec e_j}=\lambda_j\;\then\;\grad f(\vec a)=\vlambda.
+\drp{f}{x_j}(\vec a)=\inner{\vlambda}{\vec e_j}=\lambda_j\qqq\grad f(\vec a)=\vlambda.
 \]
-\item Quest'ultimo punto segue automaticamente dal fatto che $\grad f(\vec a)=\vlambda$ e $D_{\vec v}f(\vec a)=\scalar{\vlambda}{\vec v}$.\qedhere
+\item Quest'ultimo punto segue automaticamente dal fatto che $\grad f(\vec a)=\vlambda$ e $D_{\vec v}f(\vec a)=\inner{\vlambda}{\vec v}$.\qedhere
 \end{enumerate}
 \end{proof}
 Se $f$ è differenziabile in $\vec a$, allora la mappa $\vec v\mapsto D_{\vec v}f(\vec a)$ è lineare, in quanto le derivate direzionali sono una combinazione lineare di $\vec v$, cioè
 \[
-D_{\vec v}f(\vec a)=\scalar{\grad f(\vec a)}{\vec v}=\sum_{i=1}^n\drp{f}{x_i}(\vec a)v_i.
+D_{\vec v}f(\vec a)=\inner{\grad f(\vec a)}{\vec v}=\sum_{i=1}^n\drp{f}{x_i}(\vec a)v_i.
 \]
 Inoltre, noto il gradiente della funzione, lo si può sostituire nella \eqref{eq:differenziabilita} e se il limite è vero, cioè se esiste finito
 \[
-\lim_{\vec x\to\vec a}\frac{f(\vec x)-f(\vec a)-\scalar{\grad f(\vec a)}{\vec x,\vec a}}{\norm{\vec x-\vec a}}
+\lim_{\vec x\to\vec a}\frac{f(\vec x)-f(\vec a)-\inner{\grad f(\vec a)}{\vec x-\vec a}}{\norm{\vec x-\vec a}}
 \]
 allora la funzione è differenziabile.
 
@@ -137,10 +137,10 @@ Data una funzione $f\colon\Omega\subseteq\R^n\to\R$, l'insieme
 \]
 è il \emph{grafico} di $f$.
 
-In un punto $\vec a\in\Omega$, si definisce \emph{iperpiano tangente} al grafico di $f$ in $\big(\vec a,f(\vec a)\big)$ l'insieme dei punti di $\R^{n+1}$ tali per cui $x_{n+1}=f(\vec a)+\scalar{\grad f(\vec a)}{\vec x-\vec a}$.
+In un punto $\vec a\in\Omega$, si definisce \emph{iperpiano tangente} al grafico di $f$ in $\big(\vec a,f(\vec a)\big)$ l'insieme dei punti di $\R^{n+1}$ tali per cui $x_{n+1}=f(\vec a)+\inner{\grad f(\vec a)}{\vec x-\vec a}$.
 \end{definizione}
 \begin{osservazione}
-Se $f$ è differenziabile in $\vec a$, si ha che $D_{\vec v}f(\vec a)=\scalar{\grad f(\vec a)}{\vec v}$, quindi
+Se $f$ è differenziabile in $\vec a$, si ha che $D_{\vec v}f(\vec a)=\inner{\grad f(\vec a)}{\vec v}$, quindi
 \[
 \abs{D_{\vec v}f(\vec a)}\leq\norm{\grad f(\vec a)};
 \]
@@ -153,12 +153,12 @@ D_{\vec v}\vec f(\vec a)=\lim_{t\to 0}\frac{\vec f(\vec a+t\vec v)-\vec f(\vec a
 Le derivate parziali seguono la stessa regola delle funzioni scalari, semplicemente ogni funzione può ammettere al più $m$ derivate parziali in ogni variabile, quindi non più $n$ ma $mn$ derivate.
 Se esistono tutte le derivate parziali in $\vec a$, si raccolgono tutte in una matrice $m\times n$
 \[
-\begin{bmatrix}
-\drp{f_1}{x_1}	&\drp{f_1}{x_2}	&\cdots	&\drp{f_1}{x_n}\\
-\drp{f_2}{x_1}	&\drp{f_2}{x_2}	&\cdots	&\drp{f_2}{x_n}\\
-\vdots			&\vdots			&\ddots	&\vdots\\
-\drp{f_m}{x_1}	&\drp{f_m}{x_2}	&\cdots	&\drp{f_1}{x_n}
-\end{bmatrix}\qquad\qquad(\jac\vec f)_{ij}=\drp{f_i}{x_j},
+\begin{bmatrix} % \drp rende le frazioni in textstyle nelle matrici, e qui risultano troppo piccole...
+\dfrac{\partial f_1}{\partial x_1} &\dfrac{\partial f_1}{\partial x_2} &\cdots &\dfrac{\partial f_1}{\partial x_n}\\
+\dfrac{\partial f_2}{\partial x_1} &\dfrac{\partial f_2}{\partial x_2} &\cdots &\dfrac{\partial f_2}{\partial x_n}\\
+\vdots                             &\vdots                             &\ddots &\vdots\\
+\dfrac{\partial f_m}{\partial x_1} &\dfrac{\partial f_m}{\partial x_2} &\cdots &\dfrac{\partial f_1}{\partial x_n}
+\end{bmatrix}\qquad\qquad(\jac\vec f)_{ij}=\dfrac{\partial f_i}{\partial x_j},
 \]
 detta \emph{jacobiana} di $\vec f$. Per le funzioni scalari, che hanno una sola componente, la jacobiana è composta soltanto della prima riga e si riduce quindi al gradiente. Ogni riga della jacobiana, in effetti, è il gradiente di una singola componente. Se la funzione è in una sola variabile la jacobiana diventa un vettore, e sarà indicata più semplicemente con $\vec f'(\vec a)$.
 
@@ -200,7 +200,7 @@ Nel caso di $\R^2$ si dà la seguente dimostrazione, generalizzabile eventualmen
 	Siano $\vec x=(x,y)\in B(\vec a,r)$ e $\vec a=(a_1,a_2)$.
 	Si dimostra che
 	\begin{equation} \label{eq:difftot}
-		\frac{f(x,y)-f(a_1,a_2)-\scalar{\grad f(\vec a)}{\vec x-\vec a}}{\norm{\vec x-\vec a}}\to 0,
+		\frac{f(x,y)-f(a_1,a_2)-\inner{\grad f(\vec a)}{\vec x-\vec a}}{\norm{\vec x-\vec a}}\to 0,
 	\end{equation}
 	per $\vec x\to\vec a$, in modo che $f$ sia differenziabile in $\vec a$.
 
@@ -220,9 +220,9 @@ Nel caso di $\R^2$ si dà la seguente dimostrazione, generalizzabile eventualmen
 	\end{align*}
 	il cui modulo è minore della somma dei moduli dei termini, quindi
 	\begin{align*}
-		\leq&\abs{x-a_1}\abs{\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)}+\abs{y-a_2}\abs{\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)}\leq\\
-		\leq&\norm{\vec x-\vec a}\abs{\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)}+\norm{\vec x-\vec a}\abs{\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)}=\\
-		=&\norm{\vec x-\vec a}\left[\abs{\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)}+\abs{\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)}\right].
+		\leq&\abs{x-a_1}\abs[\bigg]{\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)}+\abs{y-a_2}\abs[\bigg]{\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)}\leq\\
+		\leq&\norm{\vec x-\vec a}\abs[\bigg]{\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)}+\norm{\vec x-\vec a}\abs[\bigg]{\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)}=\\
+		=&\norm{\vec x-\vec a}\left[\abs[\bigg]{\drp{f}{x}(\xi,y)-\drp{f}{x}(a_1,a_2)}+\abs[\bigg]{\drp{f}{y}(a_1,\eta)-\drp{f}{y}(a_1,a_2)}\right].
 	\end{align*}
 	Allora la \eqref{eq:difftot} è maggiorata dal termine tra parentesi quadre.
 	Per $\vec x\to\vec a$ si ha $(\xi,y)\to\vec a$ e anche $(a_1,\eta)\to\vec a$, e poiché le derivate parziali per ipotesi sono continue risulta che la \eqref{eq:difftot} tende a 0, quindi la $f$ è differenziabile in $\vec a$.
@@ -230,10 +230,10 @@ Nel caso di $\R^2$ si dà la seguente dimostrazione, generalizzabile eventualmen
 Se $f$ è una funzione vettoriale da $\R^n$ a $\R^m$, il teorema richiede che tutte le derivate parziali $\drp{f_i}{x_j}$ con $1\leq i\leq m$ e $1\leq j\leq n$ siano continue in $\vec a$.
 
 \begin{definizione}
-Sia $\Omega$ un aperto di $\R^n$ e $f\colon\Omega\to\R$: si dice che $f\in\cont{1}(\Omega)$ se in ogni punto di $\Omega$ esistono e sono continue tutte le derivate parziali di $f$.
+Sia $\Omega$ un aperto di $\R^n$ e $f\colon\Omega\to\R$: si dice che $f\in\cont[1]{\Omega}$ se in ogni punto di $\Omega$ esistono e sono continue tutte le derivate parziali di $f$.
 \end{definizione}
 \begin{corollario}
-Se una funzione appartiene alla classe $\cont{1}(\Omega)$, allora è differenziabile in tutto $\Omega$.
+Se una funzione appartiene alla classe $\cont[1]{\Omega}$, allora è differenziabile in tutto $\Omega$.
 \end{corollario}
 La dimostrazione segue immediatamente dal teorema precedente.
 
@@ -256,12 +256,12 @@ Sviluppando il prodotto tra le due matrici si ha che la componente della jacobia
 \]
 dove $y_k$ è la variabile relativa a $\vec g$, ossia $y_k=f_k(\vec a)$.
 \begin{teorema}[di Lagrange] \label{t:lagrange_piu_variabili}
-Sia $\Omega$ un aperto di $\R^n$, $\vec a$ e $\vec b$ due punti interni ad esso tali che $[\vec a,\vec b]\subset\Omega$, e $g\colon\Omega\to\R$ una funzione differenziabile in tutto $\Omega$. Allora esiste un punto $\vxi\in[\vec a,\vec b]$ per il quale $g(\vec b)-g(\vec a)=\scalar{\grad g(\vxi)}{\vec b-\vec a}$.
+Sia $\Omega$ un aperto di $\R^n$, $\vec a$ e $\vec b$ due punti interni ad esso tali che $[\vec a,\vec b]\subset\Omega$, e $g\colon\Omega\to\R$ una funzione differenziabile in tutto $\Omega$. Allora esiste un punto $\vxi\in[\vec a,\vec b]$ per il quale $g(\vec b)-g(\vec a)=\inner{\grad g(\vxi)}{\vec b-\vec a}$.
 \end{teorema}
 \begin{proof}
 Sul segmento $\vec b-\vec a$ si costruisce una funzione vettoriale $\vec f(t)=\vec a+t(\vec b-\vec a)$, con $t\in[0,1]$\footnote{Dato che tale segmento è chiuso e interno ad $\Omega$, anche ``sporgendo'' un poco oltre gli estremi si resterà sempre nell'insieme, quindi volendo si può limitare $t$ anche a $(-\epsilon,1+\epsilon)$}: componendola con $g$ si ottiene che $(g\circ\vec f)(t)=g[\vec a+t(\vec b-\vec a)]$, tale che $g\circ\vec f\colon[0,1]\to\R$ e le si applica il teorema \ref{t:lagrange} di Lagrange per funzioni reali a variabili reali nell'intervallo $[0,1]$, ottenendo che esiste $\theta\in(0,1)$ tale per cui $(g\circ\vec f)(1)-(g\circ\vec f)(0)=(g\circ\vec f)'(\theta)$, cioè
 \[
-g(\vec b)-g(\vec a)=\jac g\big(\vec f(\theta)\big)\jac\vec f=\scalar{\grad g\big(\vec f(\theta)\big)}{\vec b-\vec a}.
+g(\vec b)-g(\vec a)=\jac g\big(\vec f(\theta)\big)\jac\vec f=\inner{\grad g\big(\vec f(\theta)\big)}{\vec b-\vec a}.
 \]
 Il punto $\vec f(\theta)$ è il punto $\vxi$ cercato della tesi.
 \end{proof}
@@ -277,7 +277,7 @@ Sia $\Omega\in\R^m$ un aperto e $\vec g\colon\Omega\to\R^p$ differenziabile in $
 \end{teorema}
 Un ``buon'' valore di questa quantità $c$ è ad esempio
 \begin{equation*}
-	c=\sqrt{mp}\max_{\substack{1\leq i\leq p\\1\leq j\leq m}}\sup_{\vec x\in[\vec a,\vec b]}\abs{\drp{g_i}{x_j}(\vec x)}.
+	c=\sqrt{mp}\max_{\substack{1\leq i\leq p\\1\leq j\leq m}}\sup_{\vec x\in[\vec a,\vec b]}\abs[\bigg]{\drp{g_i}{x_j}(\vec x)}.
 \end{equation*}
 ossia il valore maggiore tra tutte le derivate parziali, nell'intervallo dato, tra tutte le componenti di $\vec g$.
 Se tutte le derivate parziali sono nulle, si ha $c=0$ quindi la funzione è costante.
@@ -319,7 +319,7 @@ y=\rho\sin\theta
 \end{cases}.
 \end{equation}
 
-Sia $\vec T\colon(0,+\infty)\times[0,2\pi)\to\R^2\setminus\{(0,0)\}$ definita come $\vec T\colon(\rho,\theta)\mapsto(\rho\cos\theta,\rho\sin\theta)\equiv(x,y)$: il determinante della jacobiana della trasformazione è sempre non nullo, infatti
+Sia $\vec T\colon(0,+\infty)\times[0,2\pi)\to\R^2\setminus\{(0,0)\}$ definita come $\vec T\colon(\rho,\theta)\mapsto(\rho\cos\theta,\rho\sin\theta)=(x,y)$: il determinante della jacobiana della trasformazione è sempre non nullo, infatti
 \[
 \det\jac\vec T(\rho,\theta)=
 	\begin{vmatrix}
@@ -346,7 +346,7 @@ mentre per la $f$ si ha
 \jac f(x,y)=\jac g\big(\vec T^{-1}(x,y)\big)\jac\vec T^{-1}(x,y)=\\
 =\jac g\big(\vec T^{-1}(x,y)\big)\big[\jac\vec T\big(\vec T^{-1}(x,y)\big)\big]^{-1}=\jac g\big(\vec T^{-1}(x,y)\big)\big[\jac\vec T(\rho,\theta)\big]^{-1},
 \end{multline}
-sfruttando il fatto che $\jac\vec T\big(\vec T^{-1}(x,y)\big)\equiv\jac\vec T(\rho,\theta)$ è l'inversa di $\jac\vec T^{-1}(x,y)$, come visto in precedenza.
+sfruttando il fatto che $\jac\vec T\big(\vec T^{-1}(x,y)\big)=\jac\vec T(\rho,\theta)$ è l'inversa di $\jac\vec T^{-1}(x,y)$, come visto in precedenza.
 
 Dalle \eqref{eq:composizione_jacobiane_polari1} e \eqref{eq:composizione_jacobiane_polari2} si possono dunque calcolare le formule per la derivazione in coordinate polari: esse sono
 \begin{equation} \label{eq:jacobiane_polari}
@@ -432,11 +432,11 @@ Per certe funzioni, però, le derivate seconde non dipendono dall'ordine di deri
 Siano $\Omega$ un aperto di $\R^n$, $\vec a$ un punto interno ad esso, $\vec v$ e $\vec w$ due versori di $\R^n$ e $f$ una funzione definita da $\Omega$ a $\R$. Se esiste un intorno di $\vec a$ contenuto in $\Omega$ in cui esistono sia $D^2_{\vec v,\vec w}f$ che $D^2_{\vec w,\vec v}f$ e sono continue in $\vec a$, allora esse coincidono in tale punto.
 \end{teorema}
 \begin{corollario}
-Se la funzione $f$ è di classe $\cont{2}(\Omega)$, cioè esistono e sono continue tutte le derivate parziali prime e seconde in $\Omega$, allora le derivate miste coincidono; vale a dire, la matrice hessiana è simmetrica.
+Se la funzione $f$ è di classe $\cont[2]{\Omega}$, cioè esistono e sono continue tutte le derivate parziali prime e seconde in $\Omega$, allora le derivate miste coincidono; vale a dire, la matrice hessiana è simmetrica.
 \end{corollario}
 Se la funzione poi è vettoriale, la matrice hessiana avrà dei vettori come componenti, e il teorema di Schwarz vale ancora componente per componente.%?
 
-Quando $f\colon\Omega\to\R$ è differenziabile in ogni punto $\vec x\in\Omega$, il suo differenziale primo $\dd f(\vec x;\cdot)$ è una funzione da $\R^n$ a $\R$ lineare, definita come $\dd f(\vec x;\vec h)=\scalar{\grad f(\vec x)}{\vec h}$, $\forall\vec h$ tale che l'incremento $\vec x+\vec h$ appartenga ancora ad $\Omega$. Fissato però l'incremento $\vec h$, si può considerare $\dd f(\cdot;\vec h)=\scalar{\grad f(\cdot)}{\vec h}$ che è una funzione di variabile $\vec x\in\Omega$ a valori reali, proprio come $f$. Se questa funzione\footnote{Poiché le derivate parziali sono $n$ e non una sola, in realtà il differenziale primo come $\dd f(\cdot;\vec h)$ rappresenta più di una funzione: è la combinazione lineare delle derivate parziali.} $\dd f(\cdot;\vec h)$ è differenziabile in un punto $\vec a$ di $\Omega$, allora si dice che $f$ è due volte differenziabile in $\vec a$.
+Quando $f\colon\Omega\to\R$ è differenziabile in ogni punto $\vec x\in\Omega$, il suo differenziale primo $\dd f(\vec x;\cdot)$ è una funzione da $\R^n$ a $\R$ lineare, definita come $\dd f(\vec x;\vec h)=\inner{\grad f(\vec x)}{\vec h}$, $\forall\vec h$ tale che l'incremento $\vec x+\vec h$ appartenga ancora ad $\Omega$. Fissato però l'incremento $\vec h$, si può considerare $\dd f(\cdot;\vec h)=\inner{\grad f(\cdot)}{\vec h}$ che è una funzione di variabile $\vec x\in\Omega$ a valori reali, proprio come $f$. Se questa funzione\footnote{Poiché le derivate parziali sono $n$ e non una sola, in realtà il differenziale primo come $\dd f(\cdot;\vec h)$ rappresenta più di una funzione: è la combinazione lineare delle derivate parziali.} $\dd f(\cdot;\vec h)$ è differenziabile in un punto $\vec a$ di $\Omega$, allora si dice che $f$ è due volte differenziabile in $\vec a$.
 
 Alcune condizioni implicano o sono implicate dal fatto che $f$ è due volte differenziabile in $\vec a$:
 \begin{enumerate}
@@ -448,7 +448,7 @@ D^2_{\vec v,\vec w}f(\vec a)=\sum_{i,j=1}^n\frac{\partial^2f}{\partial x_i\parti
 \]
 la quale è chiamata \emph{forma quadratica} di $f$ in $\vec a$;
 \item (\textit{sufficiente}) in un intorno di $\vec a$ esistono e sono continue tutte le derivate prime parziali, ed esistono tutte le derivate seconde parziali e sono continue in $\vec a$;
-\item (\textit{sufficiente}) $f$ è di classe $\cont{2}(\Omega)$.
+\item (\textit{sufficiente}) $f$ è di classe $\cont[2]{\Omega}$.
 \end{enumerate}
 
 \section{Formula di Taylor}
@@ -491,12 +491,12 @@ Dividendo il differenziale per $\norm{\vec h}^k$ si ottiene dunque un polinomio 
 \]
 che è indipendente da $t$ quindi costante su tutta la semiretta.
 
-Siano ora $\vec w\neq\vec 0$ e $f\in\cont{k}(\Omega)$. Per $t$ sufficientemente piccolo, $\vec a+t\vec w\in\Omega$, quindi la funzione $F(t)\defeq f(\vec a+t\vec w)$ è di classe $\cont{k}$ in un intorno di $t=0$, dove è assicurato che sia composta da due funzioni una, $f$, di classe $\cont{k}$ per definizione, e l'altra, $\vec a+t\vec w$, di classe $\cont{\infty}$. Al di fuori di $\mathcal U(0)$ non è più certo che $\vec a+t\vec w$ appartenga ancora a $\Omega$, al di fuori del quale $f\notin\cont{k}$. Dunque la $F$ è una funzione definita da $\mathcal U(0)$ a $\R$. Nel centro $t=0$ si può dunque sviluppare in serie di Taylor fino all'ordine $k$: le sue derivate sono
+Siano ora $\vec w\neq\vec 0$ e $f\in\cont[k]{\Omega}$. Per $t$ sufficientemente piccolo, $\vec a+t\vec w\in\Omega$, quindi la funzione $F(t)\defeq f(\vec a+t\vec w)$ è di classe $\cclass[k]$ in un intorno di $t=0$, dove è assicurato che sia composta da due funzioni una, $f$, di classe $\cclass[k]$ per definizione, e l'altra, $\vec a+t\vec w$, di classe $\cclass[\infty]$. Al di fuori di $\mathcal U(0)$ non è più certo che $\vec a+t\vec w$ appartenga ancora a $\Omega$, al di fuori del quale $f\notin\cclass[k]$. Dunque la $F$ è una funzione definita da $\mathcal U(0)$ a $\R$. Nel centro $t=0$ si può dunque sviluppare in serie di Taylor fino all'ordine $k$: le sue derivate sono
 \begin{equation}\begin{aligned}
-F'(t)	&=\scalar{\grad f(\vec a+t\vec w)}{\vec w}=\sum_{j=1}^n\drp{f}{x_j}(\vec a+t\vec w)w_j=\dd f(\vec a+t\vec w;\vec w)\\
+F'(t)	&=\inner{\grad f(\vec a+t\vec w)}{\vec w}=\sum_{j=1}^n\drp{f}{x_j}(\vec a+t\vec w)w_j=\dd f(\vec a+t\vec w;\vec w)\\
 F''(t)	&=\sum_{j=1}^nw_j\bigg[\sum_{i=1}^n\drp{}{x_i}\Big(\drp{f}{x_j}(\vec a+t\vec w)w_i\Big)\bigg]=\\
 		&=\sum_{i,j=1}^n\frac{\partial^2f}{\partial x_i\partial x_j}(\vec a+t\vec w)w_iw_j=\\
-		&=\vec w^t\hes f(\vec a+t\vec w)\vec w=\dd^2f(\vec a+t\vec w;\vec w),
+		&=\vec w^T\hes f(\vec a+t\vec w)\vec w=\dd^2f(\vec a+t\vec w;\vec w),
 \end{aligned}\end{equation}
 e così via per induzione %ma dove???
 si ha $F^{(n)}(t)=\dd^nf(\vec a+t\vec w;\vec w)$, per ogni $0\leq n\leq k$.
@@ -527,7 +527,7 @@ Sia $f\colon\Omega\to\R$ dove $\Omega\in\R^n$ e sia $\vec a\in\Omega$. Il punto 
 Il massimo o il minimo locale sono il valore assunto dalla funzione nel rispettivo punto estremante. Il massimo è assoluto se la definizione è estendibile a tutto l'insieme $\Omega$, cioè se $f(\vec a)\geq f(\vec x)$ per ogni $\vec x\in\Omega$; analogamente per i minimi.
 Infine, il punto estremante si dice \emph{forte} se l'uguaglianza si ha solo in $\vec a$ e non anche altrove.
 
-Si ricorda il teorema di Weierstra\ss\ \ref{t:weierstrass} che afferma che se $f$ è continua in $E$ compatto, allora essa ha massimo e minimo assoluti in $E$. Individuato questo insieme compatto, gli estremi (locali) possono trovarsi in $\mathring{E}$ o in $\partial E$: in questi casi si dicono, rispettivamente, estremi \emph{liberi} ed estremi \emph{vincolati}. Se individuare gli estremi vincolati in una sola dimensione consisteva al più nell'analisi di due soli punti, in più dimensioni la frontiera di un insieme è solitamente costituita da infiniti punti: occorrono quindi metodi diversi per i due casi.
+Si ricorda il teorema di Weierstrass \ref{t:weierstrass} che afferma che se $f$ è continua in $E$ compatto, allora essa ha massimo e minimo assoluti in $E$. Individuato questo insieme compatto, gli estremi (locali) possono trovarsi in $\interior{E}$ o in $\boundary E$: in questi casi si dicono, rispettivamente, estremi \emph{liberi} ed estremi \emph{vincolati}. Se individuare gli estremi vincolati in una sola dimensione consisteva al più nell'analisi di due soli punti, in più dimensioni la frontiera di un insieme è solitamente costituita da infiniti punti: occorrono quindi metodi diversi per i due casi.
 Di seguito ci si occuperà soltanto degli estremi liberi.
 
 \begin{teorema}[di Fermat]
@@ -547,25 +547,25 @@ questo naturalmente per ogni $i\in\{1,\dots,n\}$, cioè tutte le derivate parzia
 \end{proof}
 Ovviamente la condizione data è soltanto sufficiente, come mostra la funzione $f(x)=x^2-y^2$, che nell'origine ha gradiente nullo ma tale punto non è un estremante; i punti stazionari non estremanti si dicono \emph{punti di sella}. In ogni caso, è necessaria soltanto per i punti estremanti \emph{liberi}, dato che $\Omega$ è aperto, e in cui $f$ è differenziabile. Rimangono esclusi quindi i punti in cui $f$ non è differenziabile, da analizzare singolarmente, e gli estremi vincolati.
 
-Sia $f\in\cont{2}(\Omega)$. In $\vec a$, punto estremante locale di $f$, il gradiente è nullo: per $\vec h\to\vec 0$, arbitrariamente piccolo e tale per cui $\vec a+\vec h\in\Omega$, per il teorema di Taylor con resto di Peano risulta
+Sia $f\in\cont[2]{\Omega}$. In $\vec a$, punto estremante locale di $f$, il gradiente è nullo: per $\vec h\to\vec 0$, arbitrariamente piccolo e tale per cui $\vec a+\vec h\in\Omega$, per il teorema di Taylor con resto di Peano risulta
 \begin{align}
-&f(\vec a+\vec h)=f(\vec a)+\scalar{\grad f(\vec a)}{\vec h}+\frac12\dd^2f(\vec a;\vec h)+o(\norm{\vec h}^2)\\
+&f(\vec a+\vec h)=f(\vec a)+\inner{\grad f(\vec a)}{\vec h}+\frac12\dd^2f(\vec a;\vec h)+o(\norm{\vec h}^2)\\
 &f(\vec a+\vec h)-f(\vec a)=\frac12\dd^2f(\vec a;\vec h)+o(\norm{\vec h}^2).
 \end{align}
 Sfruttando l'uguaglianza %da dimostrare!
-$\dd^2f(\vec a;\vec h)=\vec h^t\hes f(\vec a)\vec h$, e in seguito raccogliendo $\norm{\vec h}^2$ si ottiene l'equazione
+$\dd^2f(\vec a;\vec h)=\vec h^T\hes f(\vec a)\vec h$, e in seguito raccogliendo $\norm{\vec h}^2$ si ottiene l'equazione
 \begin{equation}
-f(\vec a+\vec h)-f(\vec a)=\frac12\norm{\vec h}^2\left[\frac{\vec h^t\hes f(\vec a)\vec h}{\norm{\vec h}^2}+o(1)\right].
+f(\vec a+\vec h)-f(\vec a)=\frac12\norm{\vec h}^2\left[\frac{\vec h^T\hes f(\vec a)\vec h}{\norm{\vec h}^2}+o(1)\right].
 \end{equation}
-Il segno del secondo membro, che sarà quindi il segno dell'incremento della funzione da $\vec a$ a $\vec a+\vec h$, è quindi determinato dalla forma quadratica $\vec h^t\hes f(\vec a)\vec h$. Si $F(\vec h)$ la funzione definita come
+Il segno del secondo membro, che sarà quindi il segno dell'incremento della funzione da $\vec a$ a $\vec a+\vec h$, è quindi determinato dalla forma quadratica $\vec h^T\hes f(\vec a)\vec h$. Si $F(\vec h)$ la funzione definita come
 \[
-F(\vec h)=\frac{\vec h^t\hes f(\vec a)\vec h}{\norm{\vec h}^2}.
+F(\vec h)=\frac{\vec h^T\hes f(\vec a)\vec h}{\norm{\vec h}^2}.
 \]
 Essa è una funzione omogenea di grado 0, quindi è costante sulle semirette con origine nell'origine degli assi\footnote{Le forme quadratiche sono polinomi omogenei di grado 2, quindi dividendole per una norma al quadrato, anch'essa di grado 2, si ottiene un polinomio di grado nullo.}: infatti fissato $\vec v$ e per $t>0$ si ha
 \[
-F(t\vec v)=\frac{(t\vec v)^t\hes f(\vec a)(t\vec v)}{\norm{t\vec v}^2}=\frac{t^2}{\abs{t}^2}\frac{\vec v^t\hes f(\vec a)\vec v}{\norm{\vec v}^2}=F(\vec v).
+F(t\vec v)=\frac{(t\vec v)^T\hes f(\vec a)(t\vec v)}{\norm{t\vec v}^2}=\frac{t^2}{\abs{t}^2}\frac{\vec v^T\hes f(\vec a)\vec v}{\norm{\vec v}^2}=F(\vec v).
 \]
-La $F$ è dunque definita in $\R^n\setminus\{\vec 0\}$, è continua e differenziabile dove definita, e costante quando ristretta alle rette passanti per l'origine. Si possono allora analizzare i valori assunti da $F$ su una superficie sferica qualsiasi centrata nell'origine, ad esempio fissando $\norm{\vec h}=1$. Questa superficie, che corrisponde poi a $\partial B(\vec 0,1)$, è chiusa e limitata, cioè è un insieme compatto. Per il teorema di Weierstra\ss\ dunque la $F$ ammette un minimo e un massimo assoluto $m,M$ in $\partial B(\vec 0,1)$, cioè esistono $\vec u,\vec w\neq\vec 0$ tali per cui
+La $F$ è dunque definita in $\R^n\setminus\{\vec 0\}$, è continua e differenziabile dove definita, e costante quando ristretta alle rette passanti per l'origine. Si possono allora analizzare i valori assunti da $F$ su una superficie sferica qualsiasi centrata nell'origine, ad esempio fissando $\norm{\vec h}=1$. Questa superficie, che corrisponde poi a $\boundary B(\vec 0,1)$, è chiusa e limitata, cioè è un insieme compatto. Per il teorema di Weierstrass dunque la $F$ ammette un minimo e un massimo assoluto $m,M$ in $\boundary B(\vec 0,1)$, cioè esistono $\vec u,\vec w\neq\vec 0$ tali per cui
 \begin{equation} \label{eq:maxmin_quadratica}
 m=F(\vec u)\leq F(\vec h)\leq F(\vec w)=M.
 \end{equation}
@@ -577,14 +577,14 @@ Nel caso in cui $mM\neq 0$ risulta:
 \item se $m<0<M$, la $F$ cambia di segno, quindi $\vec a$ è un punto di sella.
 \end{itemize}
 Quando invece $mM=0$, il segno è determinato da $o(\norm{\vec h}^2)$, quindi questo metodo non porta ad alcun risultato.
-Rimane quindi da trovare il segno di $m$ e $M$. Poiché $f$ è differenziabile due volte, la sua matrice hessiana è simmetrica, e come già visto si può rappresentare (fissata la base, cioè quella canonica) la forma quadratica che è il differenziale secondo con l'espressione $\vec h^t\hes f(\vec a)\vec h$. Sia quindi $q(\vec x)=\vec x^t\hes f(\vec a)\vec x$: si ha che $F(\vec x)=q(\vec x)/\norm{\vec x}^2$, e vale ancora la \eqref{eq:maxmin_quadratica}.
+Rimane quindi da trovare il segno di $m$ e $M$. Poiché $f$ è differenziabile due volte, la sua matrice hessiana è simmetrica, e come già visto si può rappresentare (fissata la base, cioè quella canonica) la forma quadratica che è il differenziale secondo con l'espressione $\vec h^T\hes f(\vec a)\vec h$. Sia quindi $q(\vec x)=\vec x^T\hes f(\vec a)\vec x$: si ha che $F(\vec x)=q(\vec x)/\norm{\vec x}^2$, e vale ancora la \eqref{eq:maxmin_quadratica}.
 Le derivate parziali di $F$ sono
 \[
-\drp{}{x_k}\norm{\vec x}^2=\drp{}{x_k}\left(\sum_{i=1}^nx_i^2\right)=2x_k,
+\drp{}{x_k}\norm{\vec x}^2=\drp{}{x_k}\bigg(\sum_{i=1}^nx_i^2\bigg)=2x_k,
 \]
 e
 \[\begin{split}
-\drp{q}{x_k}(\vec x)	&=\drp{}{x_k}\left(\sum_{i,j=1}^n\big(\hes f(\vec a)\big)_{ij}x_ix_j\right)=\\
+\drp{}{x_k}q(\vec x)	&=\drp{}{x_k}\bigg(\sum_{i,j=1}^n\big(\hes f(\vec a)\big)_{ij}x_ix_j\bigg)=\\
 					&=\sum_{i,j=1}^n\big(\hes f(\vec a)\big)_{ij}(\delta_{ik}x_j+\delta_{jk}x_i)=\\
 					&=\sum_{j=1}^n\big(\hes f(\vec a)\big)_{kj}x_j+\sum_{i=1}^n\big(\hes f(\vec a)\big)_{ik}x_i=\\
 					&=\sum_{j=1}^n\big(\hes f(\vec a)\big)_{kj}x_j+\sum_{i=1}^n\big(\hes f(\vec a)\big)_{ki}x_i=\\
@@ -594,7 +594,7 @@ e
 dove si è potuto cambiare gli indici dell'hessiana da $ik$ a $ki$ poiché è simmetrica.
 Allora risulta
 \[\begin{split}
-\drp{F}{x_k}(\vec x)	&=\norm{\vec x}^{-4}\left[\norm{\vec x}^2\drp{q}{x_k}(\vec x)-q(\vec x)\drp{}{x_k}\norm{\vec x}^2\right]=\\
+\drp{}{x_k}F(\vec x)	&=\norm{\vec x}^{-4}\left[\norm{\vec x}^2\drp{q}{x_k}(\vec x)-q(\vec x)\drp{}{x_k}\norm{\vec x}^2\right]=\\
 					&=\norm{\vec x}^{-4}\left[\norm{\vec x}^22\big(\hes f(\vec a)\vec x\big)_k-q(\vec x)2x_k\right],
 \end{split}\]
 dunque
@@ -610,7 +610,7 @@ Nei punti $\vec u$ e $\vec v$ estremanti di $F$ si ha dunque $\grad F(\vec x)=\v
 \end{equation}
 cioè $F(\vec x)$ è un autovalore di $\hes f(\vec a)$ a cui è associato proprio l'autovettore $\vec x$. Gli autovalori della matrice hessiana sono tanti quanti la dimensione di $\R^n$, e poiché è simmetrica, sono tutti reali.
 Di conseguenza il massimo autovalore di $\hes f(\vec a)$ è anche il massimo di $F(\vec x)$, e lo stesso per il minimo: individuando gli autovalori dell'hessiana in $\vec a$ si trova quindi la natura del punto estremante.
-La forma quadratica $q(\vec x)=\vec x^t\hes f(\vec a)\vec x$ si dice
+La forma quadratica $q(\vec x)=\vec x^T\hes f(\vec a)\vec x$ si dice
 \begin{itemize}
 \item\emph{definita positiva} se $q(\vec x)>0$, che significa $0<m\leq M$;
 \item\emph{semidefinita positiva} se $q(\vec x)\geq 0$, cioè esiste $\vec v\neq\vec 0$ per cui $q(\vec v)=0$, e questo corrisponde a $0\leq m\leq M$;

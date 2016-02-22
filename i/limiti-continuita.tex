@@ -84,7 +84,7 @@ Estendendo inoltre anche $p$ a $\Rex$, si ha che se $\lim_{x\to\pm\infty}f(x)=\e
 \item se $A$ non è superiormente limitato, allora $\forall\epsilon>0\;\exists k\colon\forall x\in A$ con $x<k$ si ha che $\abs{f(x)-\ell}<\epsilon$.
 \end{itemize}
 Nel primo caso è $p\to+\infty$, nel secondo $p\to-\infty$.
-Si definiscono anche, con le opportune ipotesi, i limiti del tipo $\displaystyle\lim_{x\to\pm\infty}=\pm\infty$.
+Si definiscono anche, con le opportune ipotesi, i limiti del tipo $\lim_{x\to\pm\infty}=\pm\infty$.
 
 Se, in particolare, non esiste il limite di $f(x)$ per $x\to p$, si può definire comunque il limite per difetto (``da sinistra'') o per eccesso (``da destra''), rispettivamente calcolati sull'intorno sinistro e destro di $p$, ossia per $x\to p^-$, in $(p-\delta,p]$, e per $x\to p^+$, in $[p,p+\delta)$. Quando il limite per $x\to p$ esiste, questi due limiti coincidono.
 
@@ -183,10 +183,10 @@ Tutte le funzioni elementari reali sono continue nel loro insieme di definizione
 Sia $f:[a,b]\to\R$ una funzione continua nell'intervallo $[a,b]$. Se $f(a)\cdot f(b)<0$, allora $\exists\tilde{x}\in[a,b]\colon f(\tilde{x})=0$.
 \end{teorema}
 \begin{proof}
-Siano $f(a)<0$ e $f(b)>0$. Si consideri il punto medio di $[a,b]\equiv I_0$ e la rispettiva immagine $f(\frac{a+b}{2})$, e l'intervallo $I_1=[a_1,b_1]$, lungo la metà di $I_0$, tale per cui o $a_1=\frac{a+b}{2}$ o $b_1=\frac{a+b}{2}$ in modo che si abbia ancora che $f(a_1)\cdot f(b_1)<0$. Procedendo in questo modo, bisecando l'intervallo sempre di più, si trova una successione di intervalli $I_n=[a_n,b_n]$ in cui un elemento è sempre compreso nel precedente nell'ordine.
+Siano $f(a)<0$ e $f(b)>0$. Si consideri il punto medio di $I_0\defeq[a,b]$ e la rispettiva immagine $f(\frac{a+b}{2})$, e l'intervallo $I_1=[a_1,b_1]$, lungo la metà di $I_0$, tale per cui o $a_1=\frac{a+b}{2}$ o $b_1=\frac{a+b}{2}$ in modo che si abbia ancora che $f(a_1)\cdot f(b_1)<0$. Procedendo in questo modo, bisecando l'intervallo sempre di più, si trova una successione di intervalli $I_n=[a_n,b_n]$ in cui un elemento è sempre compreso nel precedente nell'ordine.
 La successione $a_n$ è monotona crescente, inoltre è sempre $f(a_n)<0$, mentre $b_n$ è monotona decrescente e si ha $f(b_n)>0$. La distanza tra i due $a_n$ e $b_n$ è quindi
 \[
-|b_n-a_n|=\frac1{2^n}(b-a),
+	\abs{b_n-a_n}=\frac1{2^n}(b-a),
 \]
 perché ogni intervallo come già detto è ampio la metà del precedente, e questa distanza è infinitesima. Quindi sia $a_n$ che $b_n$ tendono ad un unico limite $\tilde{x}$. Per il teorema di permanenza del segno, risulta che $f(a_n)\to f(\tilde{x})\leq 0$, e allo stesso tempo $f(b_n)\to f(\tilde{x})\geq 0$ perciò non può che essere $f(\tilde{x})=0$.
 \end{proof}
@@ -254,7 +254,7 @@ Se $f\colon(a,b)\subseteq\R\to\R$ è una funzione monotona, le sue discontinuit�
 \end{teorema}
 \begin{proof}
 Sia $x_0\in(a,b)$ un punto di discontinuità: allora esiste il limite della $f(x)$ per $x\to x_0$ sia per difetto che per eccesso, e questi sono necessariamente diversi altrimenti sarebbe continua, e finiti, dato che sono limitati da altri valori della funzione, che è monotona.
-Sia $f$ crescente: esiste un intervallo $(\ell_1,\ell_2)$, attorno al punto di discontinuità, in cui $\ell_1\equiv\lim_{x\to x_0^-}f(x)$ e $\ell_2\equiv\lim_{x\to x_0^+}f(x)$. Ad un altro punto $\tilde{x}_0$ si associa in modo analogo l'intervallo $(\tilde{\ell}_1,\tilde{\ell}_2)$. Dato che $f$ è monotona, deve essere che $(\ell_1,\ell_2)\cap(\tilde{\ell}_1,\tilde{\ell}_2)=\emptyset$, poiché $\tilde{\ell}_1\geq \ell_2$. Infatti $\ell_2=\inf_{x>x_0}f(x)$ e $\tilde{\ell}_1=\sup_{x<x_0}f(x)$, e dato che $x_0<\tilde{x}_0$ non può mai succedere che $\ell_2>\tilde{\ell}_1$ (al più si ha il caso in cui sono uguali, come per la funzione $f(x)=\partint{x}$).
+Sia $f$ crescente: esiste un intervallo $(\ell_1,\ell_2)$, attorno al punto di discontinuità, in cui $\ell_1\defeq\lim_{x\to x_0^-}f(x)$ e $\ell_2\defeq\lim_{x\to x_0^+}f(x)$. Ad un altro punto $\tilde{x}_0$ si associa in modo analogo l'intervallo $(\tilde{\ell}_1,\tilde{\ell}_2)$. Dato che $f$ è monotona, deve essere che $(\ell_1,\ell_2)\cap(\tilde{\ell}_1,\tilde{\ell}_2)=\emptyset$, poiché $\tilde{\ell}_1\geq \ell_2$. Infatti $\ell_2=\inf_{x>x_0}f(x)$ e $\tilde{\ell}_1=\sup_{x<x_0}f(x)$, e dato che $x_0<\tilde{x}_0$ non può mai succedere che $\ell_2>\tilde{\ell}_1$ (al più si ha il caso in cui sono uguali, come per la funzione $f(x)=\partint{x}$).
 Ciò significa che $(\ell_1,\ell_2)\cap(\tilde{\ell}_1,\tilde{\ell}_2)=\emptyset$, anche se sono aperti il caso in cui $\ell_2=\tilde{\ell}_1$ non è contemplato.
 Tutti questi intervalli trovati sono quindi disgiunti, e per la densità di $\R$ in ognuno è possibile individuare (almeno) un numero razionale e uno irrazionale. Ad ogni punto di discontinuità si associa allora il numero razionale: $\exists p_1\in\Q$ con $p_1\in(\ell_1,\ell_2)$, ossia si applica una funzione che è biiettiva, quindi le discontinuità sono in corrispondenza biunivoca con $\Q$, cioè sono numerabili.
 \end{proof}

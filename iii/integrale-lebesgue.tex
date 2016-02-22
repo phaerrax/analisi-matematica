@@ -159,9 +159,9 @@ Eccone alcuni esempi.
 		\end{equation}
 	\item L'insieme $\Q$ dei razionali è numerabile, quindi $\mu^*(\Q)=0$ cos\'i come $\mu^*(\Q^n)=0$, pur essendo densi in $\R$ e $\R^n$.
 	\item Ogni sottoinsieme di un insieme di misura nulla è a sua volta di misura nulla, per la monotonia della misura.
-	\item Il bordo $\partial I$ di un iperrettangolo di $\R^n$ può essere scritto come l'unione delle sue $2n$ facce $F_i$, che sono a loro volta iperrettangoli degeneri (come nel primo di questi esempi), dunque
+	\item Il bordo $\boundary I$ di un iperrettangolo di $\R^n$ può essere scritto come l'unione delle sue $2n$ facce $F_i$, che sono a loro volta iperrettangoli degeneri (come nel primo di questi esempi), dunque
 		\begin{equation}
-			\mu^*(\partial I)=\mu^*\bigg(\bigcup_{i=1}^{2n} F_i\bigg)\leq\sum_{i=1}^{2n}\mu^*(F_i)=0.
+			\mu^*(\boundary I)=\mu^*\bigg(\bigcup_{i=1}^{2n} F_i\bigg)\leq\sum_{i=1}^{2n}\mu^*(F_i)=0.
 		\end{equation}
 \end{itemize}
 
@@ -1090,11 +1090,11 @@ Poich\'e stiamo considerando il limite della successione, come al solito ci inte
 \begin{osservazione} \label{o:convergenza-dominata}
 	Poich\'e per le note proprietà degli integrali
 	\begin{equation*}
-		\abs{\int_Af_n\dd\mu-\int_Af\,\dd\mu}=\abs{\int_A(f_n-f)\dd\mu}\leq\int_A\abs{f_n-f}\dd\mu,
+		\abs[\bigg]{\int_Af_n\dd\mu-\int_Af\,\dd\mu}=\abs[\bigg]{\int_A(f_n-f)\dd\mu}\leq\int_A\abs{f_n-f}\dd\mu,
 	\end{equation*}
 	da questo teorema si ha anche che
 	\begin{equation}
-		\lim_{n\to+\infty}\abs{\int_Af_n\dd\mu-\int_Af\,\dd\mu}=0
+		\lim_{n\to+\infty}\abs[\bigg]{\int_Af_n\dd\mu-\int_Af\,\dd\mu}=0
 	\end{equation}
 	cioè possiamo scambiare limite e integrale.
 \end{osservazione}
@@ -1108,7 +1108,7 @@ Innanzitutto, partiamo dal caso ovvio: tutte le funzioni integrabili secondo Rie
 \begin{teorema} \label{t:integrale-riemann-lebesgue}
 	Se $f\colon[a,b]\to\R$ è integrabile secondo Riemann, allora è anche misurabile e sommabile in $[a,b]$, e gli integrali secondo Riemann e Lebesgue coincidono.
 \end{teorema}
-Di conseguenza, $\rie\ab\subset L\ab$, con un'inclusione stretta, dato che esistono funzioni integrabili secondo Lebesgue in un intervallo compatto, ma non secondo Riemann.
+Di conseguenza, $\rie{[a,b]}\subset L([a,b])$, con un'inclusione stretta, dato che esistono funzioni integrabili secondo Lebesgue in un intervallo compatto, ma non secondo Riemann.
 Diverso è il discorso se si passa agli integrali generalizzati, lasciando gli intervalli compatti come insieme di integrazione.
 In questo caso il discorso è più complicato: esistono funzioni integrabili in senso improprio, ma non secondo Lebesgue nel medesimo insieme.
 Il seguente teorema collega i due integrali sotto l'ipotesi che la funzione non cambi segno.
@@ -1257,7 +1257,7 @@ Inoltre, essendo differenziabile, possiamo scrivere lo sviluppo al primo ordine 
 Possiamo dunque approssimare linearmente nell'intorno di $\vec x_0$ il diffeomorfismo con una mappa affine (ossia lineare a meno di una costante, che qui è $\vec g(\vec x_0)$) rappresentata dalla matrice jacobiana.
 Abbiamo inoltre il seguente teorema.
 \begin{teorema} \label{t:diffeomorfismo-globale}
-	Una funzione $\vec g\colon U\to V$, con $U,V$ aperti in $\R^n$, biunivoca e tale che $\vec g\in\cont{1}(U)$ e $\det\jac\vec g(\vec x)\neq 0$ per ogni $\vec x\in U$, è un diffeomorfismo \emph{globale} tra $U$ e $V$.
+	Una funzione $\vec g\colon U\to V$, con $U,V$ aperti in $\R^n$, biunivoca e tale che $\vec g\in\cont[1]{U}$ e $\det\jac\vec g(\vec x)\neq 0$ per ogni $\vec x\in U$, è un diffeomorfismo \emph{globale} tra $U$ e $V$.
 \end{teorema}
 La proprietà di non singolarità della jacobiana è solamente locale, quindi da sola non basta ad affermare che il diffeomorfismo sia anche globale: serve anche provarne la biunivocità.
 \begin{teorema} \label{t:diffeomorfismo-misurabilita-insieme}

@@ -1,7 +1,7 @@
 \chapter{Serie}
 Sia $\{a_n\}$ una successione a valori reali. Si costruisce una successione che è la somme dei termini di $a_n$ da 1 a $k$:
 \[
-A_k\equiv\sum_{n=1}^k a_n,
+A_k\defeq\sum_{n=1}^k a_n,
 \]
 detta \emph{serie} di termine generale $a_n$ e si indica con $\{A_k\}$. $A_k$ è la \emph{somma parziale} di $k$ elementi di $\{a_n\}$, e la serie è il limite per $k\to+\infty$ di questa somma parziale, e si indica con
 \[
@@ -51,17 +51,17 @@ Avendo dimostrato che $\R$ è completo (teorema \ref{t:completo}), la condizione
 La serie $\sum_{n=1}^{+\infty}a_n$ soddisfa la condizione di Cauchy se per ogni $\epsilon>0$, $\exists p_0\colon\forall p\geq p_0$ e $\forall q\geq 0$ si ha
 \begin{equation}
 \label{eq:ccauchy_serie}
-\abs{\sum_{n=p}^{p+q}a_n}<\epsilon,
+\abs[\bigg]{\sum_{n=p}^{p+q}a_n}<\epsilon,
 \end{equation}
 cioè la successione $\{A_k\}$ delle somme parziali soddisfa la condizione di Cauchy \ref{eq:ccauchy_successioni}.
 \end{definizione}
 Perché $\{A_k\}$ soddisfi la \ref{eq:ccauchy_successioni} deve essere che $\forall\epsilon>0$ esiste $N\colon\forall h,k\geq p_0$ si ha che
 \[
-\abs{A_k-A_h}=\abs{\sum_{n=1}^ka_n-\sum_{n=1}^ha_n}=\abs{\sum_{n=h+1}^ka_n}<\epsilon.
+	\abs{A_k-A_h}=\abs[\bigg]{\sum_{n=1}^ka_n-\sum_{n=1}^ha_n}=\abs[\bigg]{\sum_{n=h+1}^ka_n}<\epsilon.
 \]
 Sostituendo gli indici come $h=p-1$ e $k=p+q$ (con $q\geq 0$), l'equazione diventa
 \[
-\abs{A_{p+q}-A_{p-1}}=\abs{\sum_{n=p}^{p+q}a_n}<\epsilon.
+	\abs{A_{p+q}-A_{p-1}}=\abs[\bigg]{\sum_{n=p}^{p+q}a_n}<\epsilon.
 \]
 Tutte le serie che soddisfano questa condizione sono convergenti.
 \section{Carattere delle serie}
@@ -93,7 +93,7 @@ Se una serie converge assolutamente, allora converge anche semplicemente.
 \begin{proof}
 La serie di $\abs{a_n}$ converge, quindi soddisfa la condizione di Cauchy. Per le proprietà dei valori assoluti quindi si ha che, $\forall\epsilon>0$ $\exists N\colon\forall m\geq N$ e $\forall p\geq 0$,
 \[
-\abs{\sum_{n=m}^{m+p}a_n}\leq\sum_{n=m}^{m+p}\abs{a_n}<\epsilon,
+	\abs[\bigg]{\sum_{n=m}^{m+p}a_n}\leq\sum_{n=m}^{m+p}\abs{a_n}<\epsilon,
 \]
 e per il teorema del confronto \ref{t:confronto} entrambe le serie convergono.
 \end{proof}
@@ -141,7 +141,7 @@ Poiché le costanti $1/2$ e 2 non alterano il carattere della serie di $b_n$, pe
 \end{corollario}
 \begin{teorema}[criterio della radice]
 \label{t:criterio_radice_serie}
-Sia $\sum_{n=1}^{+\infty}a_n$ una serie a termini positivi. Supponendo che $\exists\lim_{n\to+\infty}\sqrt[n]{a_n}\equiv\alpha$:
+Sia $\sum_{n=1}^{+\infty}a_n$ una serie a termini positivi. Supponendo che $\exists\alpha\defeq\lim_{n\to+\infty}\sqrt[n]{a_n}$:
 \begin{itemize}
 \item se $0\leq\alpha<1$ la serie converge;
 \item se $\alpha>1$ la serie diverge, e inoltre $a_n\to+\infty$.
@@ -155,7 +155,7 @@ Sia $\sum_{n=1}^{+\infty}a_n$ una serie a termini positivi. Supponendo che $\exi
 Quando $\alpha=1$, come al solito, non si può dire niente sul carattere della serie. Infatti sia la serie di $1/n$ che di $1/n^2$ hanno $\alpha=1$, ma la prima diverge e la seconda converge.
 \begin{teorema}[criterio del rapporto]
 \label{t:criterio_rapporto_serie}
-Sia $\sum_{n=1}^{+\infty}a_n$ una serie a termini positivi. Supponendo che $\exists\lim_{n\to+\infty}\frac{a_{n+1}}{a_n}\equiv\alpha$:
+Sia $\sum_{n=1}^{+\infty}a_n$ una serie a termini positivi. Supponendo che $\exists\alpha\defeq\lim_{n\to+\infty}\frac{a_{n+1}}{a_n}$:
 \begin{itemize}
 \item se $\alpha<1$ la serie converge;
 \item se $\alpha>1$ la serie diverge, e inoltre $a_n\to+\infty$.
@@ -207,7 +207,7 @@ Se $a_n$ è una successione defininitivamente positiva, monotona decrescente e c
 \end{teorema}
 \begin{proof}
 La successione delle somme parziali al termine dispari $2k+1$ è $A_{2k+1}=A_{2k-1}+(-1)^{2k}a_{2k}+(-1)^{2k+1}a_{2k+1}=A_{2k-1}+a_{2k}-a_{2k+1}$. La differenza $a_{2k}-a_{2k+1}$ è positiva, perché la successione è monotona decrescente, allora $A_{2k+1}\geq A_{2k-1}$. Quindi la sottosuccessione $A_{2k+1}$, di indice dispari, è monotona crescente. Analogamente, $A_{2k+2}=A_{2k}+(-1)^{2k+1}a_{2k+1}+(-1)^{2k+2}a_{2k+2}=A_{2k}-(a_{2k+1}-a_{2k+2})$, in cui per lo stesso motivo precedente $a_{2k+1}+a_{2k+2}$ è positivo, quindi $A_{2k+2}\geq A_{2k}$ e allora $A_{2k+2}$ (che è di indice pari) è monotona decrescente.
-Si ha inoltre che $A_{2k+1}=A_{2k}-a_{2k+1}$ da cui $A_{2k+1}\leq A_{2k}$, dato che $a_{2k+1}<0$. Siano $S_p$ e $S_d$ i limiti a cui convergono rispettivamente le sottosuccessioni $A_{2k}$ e $A_{2k+1}$, poiché sono limitate e monotone, con $S_p\geq S_d$. Portando al limite per $n\to+\infty$ l'equazione $A_{2k+1}=A_{2k}-a_{2k+1}$ si ottiene che $S_d=S_p-0$ quindi $S_d=S_p$. L'unico limite della serie è allora $S_d=S_p\equiv S$.
+Si ha inoltre che $A_{2k+1}=A_{2k}-a_{2k+1}$ da cui $A_{2k+1}\leq A_{2k}$, dato che $a_{2k+1}<0$. Siano $S_p$ e $S_d$ i limiti a cui convergono rispettivamente le sottosuccessioni $A_{2k}$ e $A_{2k+1}$, poiché sono limitate e monotone, con $S_p\geq S_d$. Portando al limite per $n\to+\infty$ l'equazione $A_{2k+1}=A_{2k}-a_{2k+1}$ si ottiene che $S_d=S_p-0$ quindi $S_d=S_p$. L'unico limite della serie è allora $S_d=S_p=S$.
 
 Inoltre, si ha che $A_{2k}-S\leq A_{2k}-A_{2k+1}=a_{2k+1}$, e analogamente $S-A_{2k+1}\leq A_{2k+2}-A_{2k+1}=a_{2k+2}$. Quindi in ogni caso risulta $\abs{A_k-S}<a_{k+1}$.
 \end{proof}

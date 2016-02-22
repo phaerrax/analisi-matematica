@@ -47,7 +47,7 @@ Si identificano con questa definizione tutte le successioni le cui immagini sono
 \[
 f\colon\N\to\R.
 \]
-La definizione di limite in questo caso si può riscrivere affermando che se la successione converge a $\ell$, è definitivamente contenuta nell'intervallo $(\ell-\epsilon,\ell+\epsilon)$, perché $|a_n-\ell|<\epsilon$.
+La definizione di limite in questo caso si può riscrivere affermando che se la successione converge a $\ell$, è definitivamente contenuta nell'intervallo $(\ell-\epsilon,\ell+\epsilon)$, perché $\abs{a_n-\ell}<\epsilon$.
 Per il teorema \ref{t:succ_limitata} allora ogni successione convergente è sia superiormente che inferiormente limitata.
 
 \begin{definizione}
@@ -64,9 +64,9 @@ Non è però sempre valido il contrario, cioè una successione illimitata superi
 \[
 a_n=
 \begin{cases*}
-	n & se $n$ è pari\\
+	n & se $n$ è pari,\\
 	1 & se $n$ è dispari
-\end{cases*}.
+\end{cases*}
 \]
 Ovviamente questa successione non è limitata, ma non è verificato \emph{definitivamente} che sia arbitrariamente grande.
 \begin{teorema}[di permanenza del segno]
@@ -195,7 +195,7 @@ La dimostrazione per $\{a_n\}$ decrescente è analoga.
 \end{proof}
 Tra le successioni monotone crescenti ne esiste una molto particolare, che definisce il numero $e$. Si definisce infatti la successione
 \[
-e_n\equiv\left(1+\frac1{n}\right)^n,
+e_n\defeq\left(1+\frac1{n}\right)^n,
 \]
 per cui vale il teorema seguente.
 \begin{teorema}
@@ -220,11 +220,11 @@ Il primo non è altro che la successione $e_n$ riscritta diversamente per una su
 \[
 \log(1+\epsilon_n)^{1/\epsilon_n}\to\log e\text{,  da cui  }\frac{\log(1+\epsilon_n)}{\epsilon_n}\to 1.
 \]
-\item Sia $x_n\equiv e^{\epsilon_n}-1$, che quindi è infinitesima. Allora $e^{\epsilon_n}=x_n+1$, e applicando i logaritmi si ha $\epsilon_n=\log(x_n+1)$, quindi
+\item Sia $x_n\defeq e^{\epsilon_n}-1$, che quindi è infinitesima. Allora $e^{\epsilon_n}=x_n+1$, e applicando i logaritmi si ha $\epsilon_n=\log(x_n+1)$, quindi
 \[
 \frac{e^{\epsilon_n}-1}{\epsilon_n}=\frac{x_n}{\log(1+x_n)}\to 1.
 \]
-\item Sia $y_n\equiv a\log(1+\epsilon_n)$, che è infinitesima. Applicando la potenza in base $e$ si trova che $e^{y_n}=e^{a\log(1+\epsilon_n)}=(1+\epsilon_n)^a$, quindi
+\item Sia $y_n\defeq a\log(1+\epsilon_n)$, che è infinitesima. Applicando la potenza in base $e$ si trova che $e^{y_n}=e^{a\log(1+\epsilon_n)}=(1+\epsilon_n)^a$, quindi
 \[
 \frac{(1+\epsilon_n)^a-1}{\epsilon_n}=\frac{e^{y_n}-1}{y_n}\cdot\frac{y_n}{\epsilon_n}=\frac{e^{y_n}-1}{y_n}\cdot\frac{a\log(1+\epsilon_n)}{\epsilon_n}\to a.\qedhere
 \]
@@ -238,7 +238,7 @@ Una successione si dice infinitesima de tende a zero, mentre è infinita se dive
 \label{t:criterio_del_rapporto_successioni}
 Sia $\{a_n\}$ una successione a valori reali definitivamente positivi. Se esiste il limite del rapporto,
 \[
-\lim_{n\to +\infty} \frac{a_{n+1}}{a_n}\equiv\alpha,
+\alpha\defeq\lim_{n\to +\infty} \frac{a_{n+1}}{a_n},
 \]
 con $\alpha\in\Rex$ (è anche positivo, poiché i due termini della frazione sono positivi), allora:
 \begin{itemize}
@@ -276,7 +276,7 @@ a cui segue, sempre per il teorema \ref{t:confronto}, che $a_n\to +\infty$.
 \label{t:criterio_della_radice_successioni}
 Sia $\{a_n\}$ una successione a valori reali definitivamente positivi. Se esiste il limite del rapporto,
 \[
-\lim_{n\to +\infty} \sqrt[n]{a_n}\equiv\alpha,
+\alpha\defeq\lim_{n\to +\infty} \sqrt[n]{a_n},
 \]
 con $\alpha\in\Rex$ (è anche positivo, dato che l'argomento della radice è positivo), allora:
 \begin{itemize}
@@ -288,12 +288,12 @@ La dimostrazione è simile a quella del teorema precedente.
 
 Grazie a questi teoremi è possibile dimostrare alcuni dei confronti tra infiniti:
 \begin{enumerate}
-\item Sia $x_n\equiv\dfrac{a^n}{n^b}$, con $a>1$ e $b>0$. La successione $x_{n+1}/x_n$ è
+\item Sia $x_n\defeq\dfrac{a^n}{n^b}$, con $a>1$ e $b>0$. La successione $x_{n+1}/x_n$ è
 \[
 \frac{x_n}{x_{n+1}}=\frac{a^{n+1}}{a^n}\cdot\frac{n^b}{(n+1)^b}=a\cdot\frac{(n+1-1)^b}{(n+1)^b}=a\,\left(1-\frac{1}{n+1}\right)^b\to a.
 \]
 Per il criterio del rapporto, poiché $a>1$ allora $x_n\to +\infty$, cioè $\dfrac{a^n}{n^b}\to +\infty$.
-\item Sia $y_n\equiv\dfrac{n!}{a^n}$, con $a>1$. La successione $y_{n+1}/y_n$ è
+\item Sia $y_n\defeq\dfrac{n!}{a^n}$, con $a>1$. La successione $y_{n+1}/y_n$ è
 \[
 \frac{y_n}{y_{n+1}}=\frac{(n+1)!}{a^{n+1}}\cdot\frac{a^n}{n!}=\frac{n+1}{a}>1.
 \]
@@ -356,13 +356,13 @@ La successione di Cauchy quindi implica la limitatezza della successione, ma non
 \paragraph{Esempi}
 \begin{itemize}
 \item Nello spazio metrico $(\Q,\abs{\cdot})$, una successione qualsiasi convergente a $\sqrt{2}$, come ad esempio quella dei troncamenti degli allineamenti decimali che la approssimano, soddisfa la condizione di Cauchy, in quanto converge in $\R$ dato che la metrica è la stessa per entrambi gli spazi metrici. Tuttavia il limite di tale successione non appartiene a $\Q$, perciò non converge.
-\item Si definisca per ogni $m,n\in\N$ la distanza $d^*(n,m)=\abs{\dfrac1{n}-\dfrac1{m}}$. Si può dimostrare che $(\N,d^*)$ è uno spazio metrico. La successione $x_n=n$ soddisfa la condizione di Cauchy, poiché
+\item Si definisca per ogni $m,n\in\N$ la distanza $d^*(n,m)=\abs[\big]{\frac1{n}-\frac1{m}}$. Si può dimostrare che $(\N,d^*)$ è uno spazio metrico. La successione $x_n=n$ soddisfa la condizione di Cauchy, poiché
 \[
-\abs{\frac1{n}-\frac1{m}}\leq\frac1{n}+\frac1{m}<\epsilon
+	\abs[\bigg]{\frac1{n}-\frac1{m}}\leq\frac1{n}+\frac1{m}<\epsilon
 \]
-se vale $m,n>1/2\epsilon$. Tuttavia la successione non converge, infatti supposto che converga al limite $k\in\N$, si ha
+se vale $m,n>\epsilon/2$. Tuttavia la successione non converge, infatti supposto che converga al limite $k\in\N$, si ha
 \[
-\lim_{n\to +\infty} d^*(x_n,k)=\abs{\frac1{k}-\frac1{n}}=\frac1{k}\neq 0.
+	\lim_{n\to +\infty} d^*(x_n,k)=\abs[\bigg]{\frac1{k}-\frac1{n}}=\frac1{k}\neq 0.
 \]
 \end{itemize}
 Esistono però alcuni spazi metrici in cui ogni successione che soddisfa la condizione di Cauchy è anche convergente.
@@ -380,7 +380,7 @@ Inoltre, se $\diam\{I_n\}\to 0$, allora $\bigcap_{n=1}^{\infty} I_n$ è un punto
 \begin{proof}
 Gli intervalli $I_n$ sono della forma $[a_n,b_n]$, con opportuni $a_n\leq b_n$. Per la relazione di inclusione, gli $a_n$ formano una successione monotona crescente, mentre $b_n$ è monotona decrescente. Inoltre, entrambe sono limitate perché $a_n\leq b_1$ e $b_n\geq a_1$, quindi entrambe ammettono limite, rispettivamente
 \[
-\lim_{n\to+\infty}a_n=\sup a_n\equiv A\qtext{e}\lim_{n\to+\infty}b_n=\inf b_n\equiv B.
+A\defeq\lim_{n\to+\infty}a_n=\sup a_n\qtext{e}B\defeq\lim_{n\to+\infty}b_n=\inf b_n.
 \]
 Sia ora per assurdo che $B<A$, che quindi individuano l'intervallo $[B,A]$. Allora per i limiti precedenti $\exists N\colon\forall n\geq N$ $a_n\in[B,A]$ e $\exists M\colon\forall n\geq M$ $b_n\in[B,A]$. Quindi se si prende $K\geq\max\{N,M\}$, poiché per ipotesi $a_n<b_n$, si avrà che $B<a_K<b_K<A$. Ma proseguendo con gli indici, per $H>K$ si avrà $B<b_H<a_K<A$, che contrasta con l'ipotesi per cui $a_n\leq b_n$ per ogni $n\in\N$. Allora deve essere $A\leq B$, quindi l'intervallo $[A,B]$ è contenuto nell'intersezione di tutti gli $I_n$. Se infine $a_n$ e $b_n$ tendono ad un unico limite $p$, allora l'intervallo si riduce a $[A,B]\to p$, quindi l'intersezione degli $I_n$ è formata soltanto dal punto isolato $p$.
 \end{proof}
@@ -402,7 +402,7 @@ La dimostrazione è la stessa del lemma precedente, svolta su ciascuna dimension
 Lo spazio metrico $(\R^k,\norm{\cdot})$ è completo per ogni $k\geq 1$.
 \end{teorema}
 \begin{proof}
-Sia $\{x_n\}$ una successione a valori reali che soddisfa la condizione di Cauchy. Per ogni $i\geq 1$ si consideri la successione $\{x_i,x_{i+1},x_{i+2},\dots\}\equiv A_i$, che è a valori reali ed è limitata. Necessariamente quindi $A_i$ ammette un estremo inferiore e superiore: siano tali estremi rispettivamente $a_i$ e $b_i$, e si consideri l'intervallo $I_i=[a_i,b_i]$.
+Sia $\{x_n\}$ una successione a valori reali che soddisfa la condizione di Cauchy. Per ogni $i\geq 1$ si consideri la successione $A_i\defeq\{x_i,x_{i+1},x_{i+2},\dots\}$, che è a valori reali ed è limitata. Necessariamente quindi $A_i$ ammette un estremo inferiore e superiore: siano tali estremi rispettivamente $a_i$ e $b_i$, e si consideri l'intervallo $I_i=[a_i,b_i]$.
 Questi intervalli formano una famiglia $\{I_i\}$ di intervalli chiusi con $I_{i+1}\subseteq I_i$; inoltre, per la condizione di Cauchy la distanza $\abs{x_n-x_{n+1}}\to 0$, quindi $\diam I_n\to 0$ e per il lemma precedente $\exists! z\in\bigcap\nolimits _i I_i$, cioè che è contenuto in tutti gli intervalli della famiglia. Come $z$, anche $x_n$ per definizione è contenuto in $\bigcap\nolimits _i I_i$, quindi
 \[
 \abs{x_n-z}\leq\diam\{I_n\}.
@@ -428,13 +428,13 @@ Sia $A\subseteq (X,d)$. Un punto $p\in(X,d)$ è di accumulazione per l'insieme $
 \begin{proof}
 Se $p$ è il limite di $\{x_n\}$ allora $\forall r>0$ esiste un intorno $B(p,r)$ in cui gli elementi della successione sono definitivamente contenuti, quindi $\exists N\colon\forall n\geq N$ $\{x_n\}\subset B(p,r)$. Ciò vuol dire che in qualsiasi intorno arbitrariamente piccolo di $p$ sono contenuti infiniti elementi di $\{x_n\}$, che sono anche elementi di $A$. Allora $p\in A'$.
 
-Se invece $p\in A'$, in suo intorno si trovano infiniti punti di $A$. Allora, consideriamo un intorno di raggio $r=1$: esiste $x_1\in A\cap B_1(p,1)$. Si prosegue con un nuovo intorno di raggio $\sfrac{1}{2}$, quindi $\sfrac{1}{3}$ e così via, creando una successione come segue:
+Se invece $p\in A'$, in suo intorno si trovano infiniti punti di $A$. Allora, consideriamo un intorno di raggio $r=1$: esiste $x_1\in A\cap B_1(p,1)$. Si prosegue con un nuovo intorno di raggio $\frac12$, quindi $\frac13$ e così via, creando una successione come segue:
 \begin{align*}
 &x_1\in B_1(p,1)\\
-&x_2\in B_2(p,\sfrac{1}{2})\\
-&x_3\in B_3(p,\sfrac{1}{3})\\
+&x_2\in B_2(p,\frac12)\\
+&x_3\in B_3(p,\frac13)\\
 &\vdots\\
-&x_n\in B_n(p,\sfrac{1}{n})\\
+&x_n\in B_n(p,\frac1{n})\\
 &\vdots
 \end{align*}
 La successione di $x_n$ creata appartiene certamente ad $A$, inoltre poiché il raggio dell'intorno $B$ è infinitesimo, anche la distanza tra $p$ e $x_n$ (compresi in $B$) è infinitesima, vale a dire che $x_n\to p$.
@@ -482,7 +482,7 @@ Un insieme $E\subseteq(X,d)$ si dice \emph{compatto} se $\forall\{x_n\}_{n=1}^{+
 \paragraph{Esempi}
 \begin{enumerate}
 \item Tutti gli insiemi di cardinalità finita sono compatti: ogni successione convergente estratta è infatti necessariamente definitivamente costante, e tale costante non può non essere nell'insieme.
-\item L'insieme $E=[0,1]\subset\R$ è compatto, perché qualsiasi punto di accumulazione a cui può tendere una successione in $E$ appartiene necessariamente ad $E$, poiché coincide con la sua chiusura $\overline{E}$. Infatti ogni insieme di $\R$ chiuso e limitato è compatto.
+\item L'insieme $E=[0,1]\subset\R$ è compatto, perché qualsiasi punto di accumulazione a cui può tendere una successione in $E$ appartiene necessariamente ad $E$, poiché coincide con la sua chiusura $\clos{E}$. Infatti ogni insieme di $\R$ chiuso e limitato è compatto.
 \item L'insieme $E=(0,1]$ non è compatto, perché la successione $x_n=1/n$ tende a 0 che non appartiene ad $E$.
 \item Anche un insieme come $E=[a,+\infty)$ non è compatto, perché qualsiasi successione divergente ha come limite $+\infty$, che \emph{non} appartiene all'insieme.
 \end{enumerate}
@@ -524,10 +524,10 @@ Sia ora $\{x_n\}\subset E$: è sicuramente limitata, quindi (in $\R$ e in ogni $
 \end{proof}
 \begin{teorema}[di Bolzano-Weierstrass]
 \label{t:bolzano-weierstrass}
-Qualsiasi insieme di $\R^k$ di cardinalità infinita e limitato ha sempre almeno un punto di acumulazione. Ossia, se $E\subset(\R^k,\norm{\cdot})$ è limitato e $|E|=+\infty$, allora $E'\neq\emptyset$.
+Qualsiasi insieme di $\R^k$ di cardinalità infinita e limitato ha sempre almeno un punto di acumulazione. Ossia, se $E\subset(\R^k,\norm{\cdot})$ è limitato e $\card{E}=+\infty$, allora $E'\neq\emptyset$.
 \end{teorema}
 \begin{proof}
-Dato che ha cardinalità infinita, da $E$ si può sempre estrarre una successione non costante, che sarà sempre limitata (e in $E$). Sia $\{x_n\}\subset E$ con $x_n\neq x_m$ $\forall m,n$. Allora $\{x_n\}$ è limitata in $\overline{E}$, che è anch'esso limitato. Ma anche $\overline{E}$ è compatto per il teorema \ref{t:heine-borel} di Heine-Borel, allora $\exists x_{n_k}\to p$ e si ha che $p\in E'$ perché è un punto di accumulazione. Quindi $E'\neq\emptyset$.
+Dato che ha cardinalità infinita, da $E$ si può sempre estrarre una successione non costante, che sarà sempre limitata (e in $E$). Sia $\{x_n\}\subset E$ con $x_n\neq x_m$ $\forall m,n$. Allora $\{x_n\}$ è limitata in $\clos{E}$, che è anch'esso limitato. Ma anche $\clos{E}$ è compatto per il teorema \ref{t:heine-borel} di Heine-Borel, allora $\exists x_{n_k}\to p$ e si ha che $p\in E'$ perché è un punto di accumulazione. Quindi $E'\neq\emptyset$.
 \end{proof}
 Altre proprietà degli insiemi compatti sono:
 \begin{itemize}

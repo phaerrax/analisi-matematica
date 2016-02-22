@@ -2,13 +2,13 @@
 Concentreremo il nostro studio delle funzioni implicite sul piano cartesiano $\R^2$: è essenziale, prima di iniziare, sapere la definizione di una curva con immagine appunto in $\R^2$, e le sue proprietà di base.
 \begin{definizione}
 	Una curva è una mappa $\vphi\colon I\to\R^2$ che associa a $t$ la coppia ordinata $\big(x(t),y(t)\big)$.
-	Essa si dice regolare se è di classe $\cont{1}$ e se $\vphi'(t)=\big(x'(t),y'(t)\big)\neq(0,0)$ $\forall t\in I$.
+	Essa si dice regolare se è di classe $\cclass[1]$ e se $\vphi'(t)=\big(x'(t),y'(t)\big)\neq(0,0)$ $\forall t\in I$.
 \end{definizione}
 \begin{definizione}
-	Una curva $\vphi\colon I\to\R^2$ si dice \emph{semplice} se $\forall a\neq b\in \mathring{I}$ si ha $\vphi(a)\neq\vphi(b)$; in pratica quando non incontra mai se stessa, salvo che negli estremi.
+	Una curva $\vphi\colon I\to\R^2$ si dice \emph{semplice} se $\forall a\neq b\in \interior{I}$ si ha $\vphi(a)\neq\vphi(b)$; in pratica quando non incontra mai se stessa, salvo che negli estremi.
 	Una curva $\vphi\colon [a,b]\to\R^2$ si dice \emph{chiusa} se $\vphi(a)=\vphi(b)$, una curva semplice può quindi essere chiusa.
 \end{definizione}
-Una funzione $f\colon[a,b]\to\R$ di classe $\cont{1}$ può essere considerata come una curva in $\R^2$ parametrizzata come $\big(t,f(t)\big)$.
+Una funzione $f\colon[a,b]\to\R$ di classe $\cclass[1]$ può essere considerata come una curva in $\R^2$ parametrizzata come $\big(t,f(t)\big)$.
 Essa è sempre regolare, qualunque sia la sua forma analitica, poiché la sua derivata è $\big(1,f'(t)\big)$ che non può ovviamente mai essere uguale a $(0,0)$.
 \begin{osservazione}
 	Una curva semplice e regolare può essere localmente rappresentata come grafico di una funzione.
@@ -28,8 +28,8 @@ Il seguente teorema, che è il teorema delle funzioni implicite, fornisce delle 
 Ne daremo la dimostrazione nel caso di funzioni in $\R^2$, che incontreremo più spesso.
 Esiste ovviamente una versione del teorema per un numero arbitrario di dimensioni, che enunceremo successivamente.
 \begin{teorema}[di Dini] \label{t:dini-R2}
-	Sia $A\subset\R^2$ un aperto e $F\colon A\to\R$ una funzione di classe $\cont{1}(A)$, e sia $(x_0,y_0)\in A$ uno zero di questa funzione tale che $\drp{F}{y}(x_0,y_0)\neq 0$.
-	Allora esistono degli intorni $U(x_0)$ e $V(y_0)$ per i quali $\forall x\in U$ $\exists! y=f(x)\in V$ tale che $F(x,y)=0$. Inoltre, la mappa $x\mapsto f(x)$ è di classe $\cont{1}$ e vale la relazione
+	Sia $A\subset\R^2$ un aperto e $F\colon A\to\R$ una funzione di classe $\cont[1]{A}$, e sia $(x_0,y_0)\in A$ uno zero di questa funzione tale che $\drp{F}{y}(x_0,y_0)\neq 0$.
+	Allora esistono degli intorni $U(x_0)$ e $V(y_0)$ per i quali $\forall x\in U$ $\exists! y=f(x)\in V$ tale che $F(x,y)=0$. Inoltre, la mappa $x\mapsto f(x)$ è di classe $\cclass[1]$ e vale la relazione
 	\begin{equation}
 		f'(x)=-\dfrac{\drp{F}{x}\big(x,f(x)\big)}{\drp{F}{y}\big(x,f(x)\big)}.
 		\label{eq:dini-R2}
@@ -46,7 +46,7 @@ Localmente nell'intorno dato, quindi, si può rappresentare la curva come funzio
 
 	Calcoliamo ora la derivata della funzione implicita.
 	Siano $x,x_1\in U$ con $f(x),f(x_1)\in V$; i punti $\big(x,f(x)\big)$ e $\big(x_1,f(x_1)\big)$ sono quindi in $T$.
-	Poiché $F\in\cont{1}(T)$, per il teorema di Lagrange esiste un punto $(a,b)$, appartenente al segmento avente questi due punti come estremi, in cui
+	Poiché $F\in\cont[1]{T}$, per il teorema di Lagrange esiste un punto $(a,b)$, appartenente al segmento avente questi due punti come estremi, in cui
 	\begin{equation}
 		F\big(x,f(x)\big)-F\big(x_1,f(x_1)\big)=\grad F(a,b)
 		\begin{bmatrix}
@@ -72,9 +72,9 @@ Localmente nell'intorno dato, quindi, si può rappresentare la curva come funzio
 \end{proof}
 Passiamo ora ad una versione di questo teorema in tre dimensioni, relativamente simile al precedente, quindi ad una generalizzazione in un numero arbitrario di dimensioni.
 \begin{teorema} \label{t:dini-R3}
-	Sia $A\subset\R^3$ un aperto e $F\colon A\to\R$ una funzione di classe $\cont{1}(A)$, e sia $(x_0,y_0,z_0)\in A$ uno zero di questa funzione tale che $\drp{F}{z}(x_0,y_0,z_0)\neq 0$.
+	Sia $A\subset\R^3$ un aperto e $F\colon A\to\R$ una funzione di classe $\cont[1]{A}$, e sia $(x_0,y_0,z_0)\in A$ uno zero di questa funzione tale che $\drp{F}{z}(x_0,y_0,z_0)\neq 0$.
 	Allora esiste un intorno $U(x_0,y_0,z_0)$ nel quale i punti per cui $F(x,y,z)=0$ si possono scrivere come funzione $z=f(x,y)$.
-	Inoltre, la mappa $(x,y)\mapsto f(x,y)$ è di classe $\cont{1}$ e vale la relazione
+	Inoltre, la mappa $(x,y)\mapsto f(x,y)$ è di classe $\cclass[1]$ e vale la relazione
 	\begin{equation}
 		\drp{f}{x}(x,y)=-\dfrac{\drp{F}{x}\big(x,y,f(x,y)\big)}{\drp{F}{z}\big(x,y,f(x,y)\big)},
 	\label{eq:dini-R3}
@@ -83,7 +83,7 @@ Passiamo ora ad una versione di questo teorema in tre dimensioni, relativamente 
 \end{teorema}
 \begin{teorema} \label{t:dini-Rn}
 	Sia $A\subset\R^n\times\R^m$ un aperto, e $(\vec x,\vec y)=(x_1,\dots,x_m,y_1,\dots,y_n)$ un suo punto.
-	Sia $\vec F\colon A\to\R^n$ una funzione di classe $\cont{1}(A)$.
+	Sia $\vec F\colon A\to\R^n$ una funzione di classe $\cont[1]{A}$.
 	Denotiamo con $F_x$ e $F_y$ le matrici, rispettivamente di dimensioni $n\times m$ e $n\times n$, che sono le colonne della jacobiana di $F$ rispetto alle variabili $\vec x$ e $\vec y$, ossia
 	\[
 	F_x=
@@ -102,19 +102,19 @@ Passiamo ora ad una versione di questo teorema in tre dimensioni, relativamente 
 	\]
 	Sia infine $(\vec x_0,\vec y_0)$ un punto di $A$ tale che $\vec F(\vec x_0,\vec y_0)=\vec 0$ e che $\det F_y(\vec x_0,\vec y_0)\neq 0$.
 	Allora esistono degli intorni $U\in\R^m$ di $\vec x_0$ e $V\in\R^n$ di $\vec y_0$ per i quali $\forall\vec x\in U$ $\exists! \vec y=\vec f(\vec x)\in V$ tale che $\vec F\big(\vec x,\vec f(\vec x)\big)=\vec 0$.
-	Inoltre la funzione $\vec f\colon U\to\R^n$ è di classe $\cont{1}$ e vale la relazione
+	Inoltre la funzione $\vec f\colon U\to\R^n$ è di classe $\cclass[1]$ e vale la relazione
 	\begin{equation} \label{eq:dini-Rn}
 		\jac\vec f(\vec x)=-\Big[F_y\big(\vec x,\vec f(\vec x)\big)\Big]^{-1}F_x\big(\vec x,\vec f(\vec x)\big).
 	\end{equation}
 \end{teorema}
 \begin{corollario}
-	Se la funzione $F$ è di classe $\cont{k}$ nell'insieme $A$, allora la funzione implicita $f$ del teorema di Dini eredita la regolarità ed è anch'essa di classe $\cont{k}$ nell'intorno $U$ di $x_0$.
+	Se la funzione $F$ è di classe $\cclass[k]$ nell'insieme $A$, allora la funzione implicita $f$ del teorema di Dini eredita la regolarità ed è anch'essa di classe $\cclass[k]$ nell'intorno $U$ di $x_0$.
 \end{corollario}
 \begin{proof}
 	Semplicemente, poiché la derivata parziale di $F$ in $y$ non è mai nulla, possiamo continuare a derivare la $f'(x)$ per ottenere quelle di grado superiore: al denominatore troveremo sempre una potenza di questa derivata.
-	Gli altri termini saranno le varie derivate parziali, dei vari ordini fino a quello a cui si vuole derivare $f$, che certamente esistono dato che $F\in\cont{k}$, quindi tutte le sue derivate parziali fino al $k$-esimo ordine esistono.
+	Gli altri termini saranno le varie derivate parziali, dei vari ordini fino a quello a cui si vuole derivare $f$, che certamente esistono dato che $F\in\cclass[k]$, quindi tutte le sue derivate parziali fino al $k$-esimo ordine esistono.
 \end{proof}
-Se abbiamo $F\in\cont{2}$ che rispetta le ipotesi del teorema di Dini, la derivata seconda di $f$ è
+Se abbiamo $F\in\cclass[2]$ che rispetta le ipotesi del teorema di Dini, la derivata seconda di $f$ è
 \begin{equation}
 	f''(x)=-\frac{(\partial_{xx}F)(\partial_{xy}F)f'}{(\partial_yF)+\frac1{(\partial_yF)^2}(\partial_xF)[(\partial_{yx}F)+(\partial_{yy}F)f']}
 \end{equation}
@@ -123,9 +123,9 @@ valutata in $\big(x,f(x)\big)$. Sostituendo a $f'(x)$ l'espressione della \eqref
 	f''(x)=-\frac{(\partial_{xx}F)(\partial_yF)^2-2(\partial_xF)(\partial_{xy}F)(\partial_yF)+(\partial_{yy}F)(\partial_xF)^2}{(\partial_yF)^3},
 	\label{eq:dini-derivata-seconda}
 \end{equation}
-sfruttando il fatto che $\partial_{xy}F=\partial_{yx}F$ per il teorema di Schwartz, dato che la funzione è di classe $\cont{2}$ le derivate miste coincidono.
+sfruttando il fatto che $\partial_{xy}F=\partial_{yx}F$ per il teorema di Schwartz, dato che la funzione è di classe $\cclass[2]$ le derivate miste coincidono.
 Possiamo dunque verificare, se $F(x_0,y_0)$ è nulla, se abbiamo un punto di massimo o minimo (locale) per la funzione implicita.
-Sappiamo già che la $f$ deve essere derivabile, dato che come conseguenza del teorema di Dini è di classe $\cont{2}$.
+Sappiamo già che la $f$ deve essere derivabile, dato che come conseguenza del teorema di Dini è di classe $\cclass[2]$.
 Allora per il teorema di Fermat in ogni punto estremante la derivata prima deve essere nulla.
 Se $f'(x_0)=0$, dalla \eqref{eq:dini-R2} segue che $\partial_xF(x_0,y_0)=0$, quindi sostituendolo nella \eqref{eq:dini-derivata-seconda} otteniamo
 \begin{equation} 
@@ -138,11 +138,11 @@ La condizione è ovviamente soltanto sufficiente.
 
 \section{Diffeomorfismi}
 \begin{definizione} \label{d:diffeomorfismo-locale}
-	Siano $A,B\subset\R^n$ insiemi aperti, $\vec x_0$ un punto di $A$ e $\vec f\colon A\to B$ una funzione di classe $\cont{1}(A)$. La funzione $\vec f$ si dice \emph{diffeomorfismo locale} in $\vec x_0$ se esiste un opportuno intorno $U$ di tale punto per il quale la $\vec f$ ristretta a $U$ e alla sua immagine, ossia $\vec f\colon U\to \vec f(U)$, è un diffeomorfismo.
+	Siano $A,B\subset\R^n$ insiemi aperti, $\vec x_0$ un punto di $A$ e $\vec f\colon A\to B$ una funzione di classe $\cont[1]{A}$. La funzione $\vec f$ si dice \emph{diffeomorfismo locale} in $\vec x_0$ se esiste un opportuno intorno $U$ di tale punto per il quale la $\vec f$ ristretta a $U$ e alla sua immagine, ossia $\vec f\colon U\to \vec f(U)$, è un diffeomorfismo.
 \end{definizione}
 Il seguente teorema mostra una condizione sufficiente a determinare se una funzione è un diffeomorfismo locale.
 \begin{teorema}[di invertibilità locale] \label{t:invertibilita-locale}
-	Siano $A,B$ due insiemi aperti di $\R^n$, $\vec x_0$ un punto di $A$, e $\vec f$ una funzione da $A$ a $B$ di classe $\cont{1}(A)$.
+	Siano $A,B$ due insiemi aperti di $\R^n$, $\vec x_0$ un punto di $A$, e $\vec f$ una funzione da $A$ a $B$ di classe $\cont[1]{A}$.
 	La funzione $\vec f$ è un diffeomorfismo locale in $\vec x_0$ se la matrice jacobiana in tale punto non è singolare, cioè se
 	\begin{equation} 
 		\det\jac\vec f(\vec x_0)\neq 0.
@@ -150,44 +150,44 @@ Il seguente teorema mostra una condizione sufficiente a determinare se una funzi
 	\end{equation}
 \end{teorema}
 \begin{proof}
-	Dobbiamo dimostrare le proprietà di diffeomorfismo nell'intorno del punto dato, cioè dobbiamo mostrare che è invertibile, cioè iniettiva, e che la sua inversa è di classe $\cont{1}$ nell'intorno.
+	Dobbiamo dimostrare le proprietà di diffeomorfismo nell'intorno del punto dato, cioè dobbiamo mostrare che è invertibile, cioè iniettiva, e che la sua inversa è di classe $\cclass[1]$ nell'intorno.
 	Supponiamo che per assurdo $\vec f$ non sia iniettiva in qualsiasi intorno di $\vec x_0$, e vediamo che ciò contrasta con l'ipotesi fatta sul determinante.
 	Possiamo scegliere un intorno in cui due punti in esso, che chiameremo $\vec x_n$ e $\tilde{\vec x}_n$, hanno la stessa immagine: allora $\vec f(\vec x_n)=\vec f(\tilde{\vec x}_n)$.
 	Almeno due punti di questo tipo esistono certamente, perch\'e abbiamo detto che $\vec f$ non è iniettiva.
 	Questo vale per ogni intorno di $\vec x_0$, perciò possiamo immaginare che $\vec x_n$ e $\tilde{\vec x}_n$ siano due successioni convergenti a $\vec x_0$.
 	Per il teorema di Lagrange, per ogni $i$-esima componente $\vec f$ si ha che esiste un punto $\vxi_i$ appartenente al segmento $[\vec x_n, \tilde{\vec x}_n]$ tale per cui risulti
 	\begin{equation}
-		f_i(\vec x_n)-f_i(\tilde{\vec x}_n)=\scalar{\grad f_i(\vxi_i)}{(\vec x_n-\tilde{\vec x}_n)}
+		f_i(\vec x_n)-f_i(\tilde{\vec x}_n)=\inner{\grad f_i(\vxi_i)}{\vec x_n-\tilde{\vec x}_n}
 		\label{eq:lagrange-in-diffeomorfismo-locale}
 	\end{equation}
 	Per quanto detto prima, però, questo è nullo perché $\vec f(\vec x_n)=\vec f(\tilde{\vec x}_n)$.
 	Allora possiamo dividere per $\norm{\vec x_n-\tilde{\vec x}_n}$ ottenendo che
 	\begin{equation}
-		\scalar{\grad f_i(\vxi_i)}{\frac{\vec x_n-\tilde{\vec x}_n}{\norm{\vec x_n-\tilde{\vec x}_n}}}=0.
+		\inner[\Big]{\grad f_i(\vxi_i)}{\frac{\vec x_n-\tilde{\vec x}_n}{\norm{\vec x_n-\tilde{\vec x}_n}}}=0.
 		\label{eq:vettori-ortogonali-diffeomorfismo}
 	\end{equation}
 	Chiamiamo $\vec v_n$ il vettore $\vec x_n-\tilde{\vec x}_n$ normalizzato: esso ha norma 1, dunque appartiene alla sfera $n$ dimensionale $S^{n-1}\subset\R^n$.\footnote{Si distingue in matematica tra la \emph{sfera}, che è la superficie chiusa $n$-dimensionale immersa in $\R^{n+1}$, e la \emph{palla} che è l'insieme la cui frontiera è la sfera, cioè comprende anche i punti interni. La sfera in $\R^n$ è indicata spesso con $S^{n-1}$.}
 	Essa è un insieme compatto dunque $\vec v_n$, che è una successione in esso contenuta, deve convergere ad un elemento di $S^{n-1}$, che indichiamo con $\vec v$.
-	Allora $\scalar{\grad f_i(\vxi_i)}{\vec v}=0$ per ogni $i$, ricordando che $\vec x_n$ e $\tilde{\vec x}_n$ convergono a $\vec x_0$ questo equivale a dire $\jac\vec f(\vec x_0)\vec v=\vec 0$.
+	Allora $\inner{\grad f_i(\vxi_i)}{\vec v}=0$ per ogni $i$, ricordando che $\vec x_n$ e $\tilde{\vec x}_n$ convergono a $\vec x_0$ questo equivale a dire $\jac\vec f(\vec x_0)\vec v=\vec 0$.
 	Questo però è assurdo, poiché $\vec v$ non è nullo e $\det\jac\vec f(\vec x_0)\neq 0$.
 	Allora $\vec f$ deve essere iniettiva\footnote{Poiché $\det\jac\vec f(\vec x_0)\neq 0$, essa individua un operatore lineare iniettivo, ossia $\ker\jac\vec f(\vec x_0)=\{\vec 0\}$, quindi l'unico vettore che può dare il vettore nullo è solo il vettore nullo stesso (e $\vec v$ non lo è!).}.
 
 	Troviamo adesso l'inversa della nostra funzione.
 	Consideriamo una funzione $\vec F\colon W\times\R^n\to\R^n$, dove $W$ è un intorno di $\vec x_0$, definita come $\vec F(\vec x,\vec y)=\vec y-\vec f(\vec x)$, e sia inoltre $\vec y_0=\vec f(\vec x_0)$.
-	Sicuramente $\vec F\in\cont{1}$, e $\vec F(\vec x_0,\vec y_0)=\vec 0$.
+	Sicuramente $\vec F\in\cclass[1]$, e $\vec F(\vec x_0,\vec y_0)=\vec 0$.
 	Per come abbiamo costruito la funzione inoltre risulta
 	\begin{equation}
 		\det\jac\vec F(\vec x_0,\vec y_0)=-\det\jac\vec f(\vec x_0),
 	\end{equation}
 	che non è nullo per quanto detto nella prima parte della dimostrazione.
-	Possiamo allora applicare il teorema di Dini per una funzione implicita $\vec x=\vphi(\vec y)$: esso afferma che esiste un intorno $V$ di $\vec y_0$ tale che esiste una funzione $\vphi\colon V\to W$ di classe $\cont{1}(V)$ per cui vale $\vec F(\vphi(\vec y),\vec y)=\vec 0$ per ogni $\vec y\in V$.
+	Possiamo allora applicare il teorema di Dini per una funzione implicita $\vec x=\vphi(\vec y)$: esso afferma che esiste un intorno $V$ di $\vec y_0$ tale che esiste una funzione $\vphi\colon V\to W$ di classe $\cont[1]{V}$ per cui vale $\vec F(\vphi(\vec y),\vec y)=\vec 0$ per ogni $\vec y\in V$.
 	Allora, se esiste una funzione inversa di $\vec f$, essa deve essere proprio $\vphi$, perch\'e $\vec y=\vec f\big(\vphi(\vec y)\big)$, cioè $\vec y=(\vec f\circ \vphi)(\vec y)$.
 	Dimostriamo quindi che l'inversa di $\vec f$ esiste: prendiamo l'intorno $W$ di $\vec x_0$ e la controimmagine in $\vec f$ di $V$, e chiamiamo $U\defeq W\cap\vec f^{-1}(V)$.
 	Per tale insieme vale $\vec f(\vec x)=\vec y\in V$, quindi
 	\begin{equation*}
 		\vec f\big(\vphi(\vec y)\big)=\vec f\big(\vphi\big(\vec f(\vec x)\big)\big)=\vec f(\vec x).
 	\end{equation*}
-	Poiché $U$ è un sottoinsieme di $W$, dove $\vec f$ è iniettiva, se le immagini sono uguali anche le preimmagini devono esserlo, cioè $\vphi\big(\vec f(\vec x)\big)=\vec x$ ossia $\vphi=\vec f^{-1}$ ed è di classe $\cont{1}$ per il teorema di Dini, dato che lo era anche $\vec F$.
+	Poiché $U$ è un sottoinsieme di $W$, dove $\vec f$ è iniettiva, se le immagini sono uguali anche le preimmagini devono esserlo, cioè $\vphi\big(\vec f(\vec x)\big)=\vec x$ ossia $\vphi=\vec f^{-1}$ ed è di classe $\cclass[1]$ per il teorema di Dini, dato che lo era anche $\vec F$.
 	Allora $\vec F$ è un diffeomorfismo in un intorno di $\vec x_0$.
 \end{proof}
 Anche qui possiamo affermare qualcosa sulle derivate: $\jac\vphi(\vec y)=\jac\vec f^{-1}(\vec y)$, e con il teorema \ref{t:dini-Rn} di Dini troviamo che
@@ -203,9 +203,9 @@ come dovrebbe giustamente risultare.
 
 \section{Estremi vincolati}
 Prendiamo un insieme $K$ compatto di $\R^2$, e una funzione definita da esso a $\R$.
-Per il teorema di Weierstrass, se $f\in\cont{}(K)$, deve certamente assumere un massimo ed un minimo in $K$: possiamo distinguerli se si trovano nell'interno o sulla frontiera dell'insieme.
-Per i punti in $\mathring{K}$, dove $f$ è differenziabile, il teorema di Fermat ci assicura che gli estremanti si trovano laddove $\grad f=\vec 0$.
-Sul bordo, però, ciò non è possibile. Trovandoci in $\R^2$, $\partial K$ è una curva di $\R^2$: supponiamo che essa sia regolare, data da una parametrizzazione lungo un intervallo $[a,b]$, cioè sia scrivibile come funzione $\vphi\colon[a,b]\to A\in\R^2$.
+Per il teorema di Weierstrass, se $f\in\cont{K}$, deve certamente assumere un massimo ed un minimo in $K$: possiamo distinguerli se si trovano nell'interno o sulla frontiera dell'insieme.
+Per i punti in $\interior{K}$, dove $f$ è differenziabile, il teorema di Fermat ci assicura che gli estremanti si trovano laddove $\grad f=\vec 0$.
+Sul bordo, però, ciò non è possibile. Trovandoci in $\R^2$, $\boundary K$ è una curva di $\R^2$: supponiamo che essa sia regolare, data da una parametrizzazione lungo un intervallo $[a,b]$, cioè sia scrivibile come funzione $\vphi\colon[a,b]\to A\in\R^2$.
 Sia dunque $\vphi=\big(x(t),y(t)\big)$: l'insieme $\Phi=\{\vphi(t)\colon t\in[a,b]\}$ è detto \emph{sostegno} della curva $\vphi$.
 Restringiamo $f$ all'insieme $\Phi$ e cerchiamo in questo insieme gli estremi: risulta chiaramente che
 \begin{equation*}
@@ -219,10 +219,10 @@ Chiamiamo dunque $P\defeq\big(x(t_0),y(t_0)\big)$, e dovremo avere che
 \end{equation}
 Possiamo riscrivere questa equazione in termini del gradiente di $f$ come
 \begin{equation}
-	\grad f(P)\begin{pmatrix} x'(t_0)\\y'(t_0) \end{pmatrix}=\grad f(P)\vphi'(t_0)=0.
+	\grad f(P)\begin{pmatrix} x'(t_0)\\y'(t_0) \end{pmatrix}=\inner{\grad f(P)}{\vphi'(t_0)}=0.
 \end{equation}
 Il vettore $\vphi'(t)$ è sempre tangente a $\vphi(t)$ in ogni punto, quindi quest'equazione significa che il gradiente di $f$ in $P$ è ortogonale alla tangente di $\vphi$ in $t_0$.
-Questa è una condizione necessaria affinché $P=\vphi(t_0)$ sia un estremante per $f$ sulla frontiera $\partial K$.
+Questa è una condizione necessaria affinché $P=\vphi(t_0)$ sia un estremante per $f$ sulla frontiera $\boundary K$.
 Ciò inoltre significa che il gradiente di $f$ in $P$ è un multiplo del versore normale a $\vphi$ in $t_0$.
 
 Può capitare che la frontiera dell'insieme sia espressa non come parametrizzazione di una curva ma, implicitamente, come luogo di zeri di una certa funzione $\vec F$: essa rappresenta un vincolo a cui ci si restringe per calcolare gli estremi.
@@ -237,7 +237,7 @@ Abbiamo dunque la seguente definizione.
 Abbiamo visto che quando il vincolo è rappresentabile come una curva, in presenza di un punto estremante vincolato il gradiente è proporzionale alla normale a tale curva.
 Il seguente teorema mostra una condizione sufficiente ad individuare i punti \emph{stazionari} vincolati (che andranno poi studiati man mano per discernerli).
 \begin{teorema}[dei moltiplicatori di Lagrange] \label{t:moltiplicatori-lagrange-R2}
-	Sia $A\subseteq\R^2$ aperto, $f\colon A\to\R$ e $F\colon A\to\R$, entrambe di classe $\cont{1}$ in $A$. Sia $E$ il luogo degli zeri di $F$ in $A$. Se $(x_0,y_0)\in E$ è un punto estremante per $f|_E$, e $\grad F(x_0,y_0)\neq(0,0)$, allora esiste un numero $\lambda\in\R$ tale per cui
+	Sia $A\subseteq\R^2$ aperto, $f\colon A\to\R$ e $F\colon A\to\R$, entrambe di classe $\cclass[1]$ in $A$. Sia $E$ il luogo degli zeri di $F$ in $A$. Se $(x_0,y_0)\in E$ è un punto estremante per $f|_E$, e $\grad F(x_0,y_0)\neq(0,0)$, allora esiste un numero $\lambda\in\R$ tale per cui
 	\begin{equation} 
 		\grad f(x_0,y_0)=\lambda\grad F(x_0,y_0),
 		\label{eq:moltiplicatori-lagrange-R2}
@@ -246,24 +246,24 @@ Il seguente teorema mostra una condizione sufficiente ad individuare i punti \em
 \end{teorema}
 \begin{proof}
 	Possiamo supporre che $\drp{F}{y}(x_0,y_0)\neq 0$ senza ledere la generalità del teorema: sicuramente una tra questa o la derivata rispetto a $x$ deve essere non nulla.
-	Per il teorema di Dini, l'insieme $E$ in $U(x_0,y_0)$ coincide con il sostegno di una funzione $y=h(x)$ di classe $\cont{1}$, ossia $E\cap U(x_0,y_0)=\{\big(x,h(x)\big)\colon x\in I(x_0)\}$.
+	Per il teorema di Dini, l'insieme $E$ in $U(x_0,y_0)$ coincide con il sostegno di una funzione $y=h(x)$ di classe $\cclass[1]$, ossia $E\cap U(x_0,y_0)=\{\big(x,h(x)\big)\colon x\in I(x_0)\}$.
 	Inoltre, la derivata $h'(x_0)$, che segue sempre dal teorema di Dini, si può scrivere in modo che
 	\begin{equation}
 		\drp{F}{x}(x_0,y_0)+h'(x_0)\drp{F}{y}(x_0,y_0)=0.
 	\end{equation}
-	Questo può essere visto come un prodotto tra il gradiente di $F$ in $(x_0,y_0)$ e il vettore $\big(1,h'(x_0)\big)^t$, e dato che è nullo significa che sono ortogonali nel punto $(x_0,y_0)$.
+	Questo può essere visto come un prodotto tra il gradiente di $F$ in $(x_0,y_0)$ e il vettore $\big(1,h'(x_0)\big)^T$, e dato che è nullo significa che sono ortogonali nel punto $(x_0,y_0)$.
 	D'altra parte il punto è vincolato, cioè è un estremante per $f\big(x,h(x)\big)$, che è la stessa cosa che dire di restringere la $f$ a $E\cap U(x_0,y_0)$.
 	Derivando la $f$ in questa forma otteniamo
 	\begin{equation}
 		f'\big(x_0,h(x_0)\big)=\drp{f}{x}\big(x_0,h(x_0)\big)+\drp{f}{y}\big(x_0,h(x_0)\big)h'(x_0),
 	\end{equation}
 	che dev'essere nulla se il punto è un estremo (per il teorema di Fermat: $f$ è differenziabile in $E$).
-	Ancora una volta si può interpretare come una relazione di ortogonalità tra il gradiente di $f$ nel punto $(x_0,y_0)=\big(x_0,h(x_0)\big)$ e il vettore $\big(1,h'(x_0)\big)^t$.
+	Ancora una volta si può interpretare come una relazione di ortogonalità tra il gradiente di $f$ nel punto $(x_0,y_0)=\big(x_0,h(x_0)\big)$ e il vettore $\big(1,h'(x_0)\big)^T$.
 	Abbiamo dunque che i gradienti di $f$ e $F$ nel punto sono ortogonali allo stesso vettore: ciò implica che essi sono proporzionali (hanno la stessa direzione), vale a dire $\grad f(x_0,y_0)=\lambda\grad F(x_0,y_0)$ per un certo numero $\lambda\in\R$.
 \end{proof}
 Il teorema appena dimostrato non si limita ovviamente alle funzioni in due variabili, ma si può generalizzare come di seguito.
 \begin{teorema}[dei moltiplicatori di Lagrange] \label{t:moltiplicatori-lagrange}
-	Sia $f\colon\Omega\to\R$, con $\Omega\in\R^n$ aperto e $f\in\cont{1}(\Omega)$. Sia inoltre $\vec F\colon\Omega\to\R^m$, con $m<n$, anch'essa di classe $\cont{1}(\Omega)$, e $E=\{\vec x\in\Omega\colon\vec F(\vec x)=\vec 0\}$.
+	Sia $f\colon\Omega\to\R$, con $\Omega\in\R^n$ aperto e $f\in\cont[1]{\Omega}$. Sia inoltre $\vec F\colon\Omega\to\R^m$, con $m<n$, anch'essa di classe $\cont[1]{\Omega}$, e $E=\{\vec x\in\Omega\colon\vec F(\vec x)=\vec 0\}$.
 	Se $\vec x_0\in\Omega$ è un estremante di $f|_E$ e il rango della jacobiana $\jac\vec F(\vec x_0)$ è massimo, allora esiste un vettore $\vlambda\in\R^m$ tale che $(\vec x_0,\vlambda)\in\Omega\times\R^m$ è soluzione del sistema
 	\begin{equation} 
 		\begin{dcases}

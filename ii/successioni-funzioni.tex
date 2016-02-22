@@ -33,7 +33,7 @@ Si può studiare se le proprietà della famiglia di funzioni vengano ``ereditate
 \item se per $\tilde{x}\in J$ esiste il limite delle $f_n(x)$ per $x\to\tilde{x}$, allora $\exists\lim_{x\to\tilde{x}}f(x)$;
 \item ulteriormente, per $\tilde{x}\in J$, $\lim_{n\to+\infty}\left(\lim_{x\to\tilde{x}}f_n(x)\right)=\lim_{x\to\tilde{x}}f(x)$;
 \item se $f_n$ è continua in $J$ per ogni $n\in\N$, anche $f$ è continua in $J$;
-\item se $f_n\in\rie\ab$ $\forall n\in\N$, allora lo è anche $f$, quando ovviamente $f_n\to f$ in $[a,b]$ e, nel caso, valga
+\item se $f_n\in\rie{[a,b]}$ $\forall n\in\N$, allora lo è anche $f$, quando ovviamente $f_n\to f$ in $[a,b]$ e, nel caso, valga
 \[
 \lim_{n\to+\infty}\int_a^bf_n(x)\,\dd x=\int_a^bf(x)\,\dd x;
 \]
@@ -77,7 +77,7 @@ f_n(x)=\frac{\arctan\frac{x}{n}}{1+x^2}
 \]
 converge puntualmente alla funzione identicamente nulla in $\R$. Sia la funzione limite che i termini della successione sono funzioni dispari, quindi si può studiare la convergenza uniforme anche solo per $x\geq 0$. Risulta:
 \[
-\sup_{x\geq 0}\abs{\frac{\arctan\frac{x}{n}}{1+x^2}}\leq\sup_{x\geq 0}\frac{x}{n}\frac1{1+x^2}=\frac1{n}\sup_{x\geq 0}\frac{x}{1+x^2},
+	\sup_{x\geq 0}\abs[\bigg]{\frac{\arctan\frac{x}{n}}{1+x^2}}\leq\sup_{x\geq 0}\frac{x}{n}\frac1{1+x^2}=\frac1{n}\sup_{x\geq 0}\frac{x}{1+x^2},
 \]
 poiché l'arcotangente è in modulo sempre minore del suo argomento, inoltre il termine $1/n$ non dipende da $x$ quindi può essere estratto dall'argomento dell'estremo superiore. La funzione $g(x)=\frac{x}{1+x^2}$ è limitata in $\R$, di conseguenza esiste un numero $c\in\R$ per cui $\abs{g(x)}\leq c$, $\forall x\geq 0$. Dunque
 \[
@@ -90,7 +90,7 @@ f_n(x)=\frac{\arctan(nx)}{1+x^2}\quad\to\quad\begin{dcases}\frac{\pi}2\frac{\sgn
 \]
 non è uniforme su tutto $\R$, ma lo è in ogni insieme $A\subset\R\setminus[-\epsilon,\epsilon]$, con $\epsilon>0$, ossia escludendo un intorno dell'origine. Infatti
 \begin{multline*}
-\sup_{x\geq\epsilon>0}\abs{\frac{\arctan(nx)-\frac{\pi}2\sgn x}{1+x^2}}=\sup_{x\geq\epsilon>0}\frac{\frac{\pi}2-\arctan(nx)}{1+x^2}=\\
+	\sup_{x\geq\epsilon>0}\abs[\bigg]{\frac{\arctan(nx)-\frac{\pi}2\sgn x}{1+x^2}}=\sup_{x\geq\epsilon>0}\frac{\frac{\pi}2-\arctan(nx)}{1+x^2}=\\
 =\sup_{x\geq\epsilon>0}\frac{\arctan\frac1{nx}}{1+x^2}=\frac1{1+\epsilon^2}\arctan\frac1{n\epsilon}\to 0
 \end{multline*}
 per $n\to+\infty$; un risultato analogo si ha per simmetria per $x\leq -\epsilon<0$.
@@ -139,7 +139,7 @@ Sia $\{f_n\}$ una successione di funzione definite da $J$ a $\R$, e $x_0\in J'$.
 \end{equation}
 \end{teorema}
 \begin{teorema} \label{t:scambio_integrale_limite}
-Sia $\{f_n\}$ una successione di funzioni definite da $[a,b]$ a $\R$, in cui $f_n$ è integrabile secondo Riemann in $[a,b]$ per ogni $n$, e che converge uniformemente alla funzione $f$ nel medesimo intervallo. Allora anche $f\in\rie\ab$, e vale
+Sia $\{f_n\}$ una successione di funzioni definite da $[a,b]$ a $\R$, in cui $f_n$ è integrabile secondo Riemann in $[a,b]$ per ogni $n$, e che converge uniformemente alla funzione $f$ nel medesimo intervallo. Allora anche $f\in\rie{[a,b]}$, e vale
 \begin{equation} \label{eq:scambio_integrale_limite}
 \lim_{n\to+\infty}\int_a^bf_n(x)\,\dd x=\int_a^b\lim_{n\to+\infty}f_n(x)\,\dd x.
 \end{equation}
@@ -150,9 +150,9 @@ La dimostrazione di questo teorema è piuttosto complicata%?
 Sia $\{f_n\}$ una successione di funzioni definite da $[a,b]$ a $\R$, in cui $f_n$ è continua in $[a,b]$ per ogni $n$, e che converge uniformemente alla funzione $f$ nel medesimo intervallo. Allora vale la \eqref{eq:scambio_integrale_limite}.
 \end{corollario}
 \begin{proof}
-Poiché $f_n\in\cont{}\ab$ per ogni $n$, dal teorema \ref{t:continuita_conv_uniforme} segue che anche $f$ lo è, dunque $f\in\rie\ab$. Inoltre si ha
+Poiché $f_n\in\cont{[a,b]}$ per ogni $n$, dal teorema \ref{t:continuita_conv_uniforme} segue che anche $f$ lo è, dunque $f\in\rie{[a,b]}$. Inoltre si ha
 \begin{multline*}
-\abs{\int_a^bf_n(x)\,\dd x-\int_a^bf(x)\,\dd x}=\abs{\int_a^b\big[f_n(x)-f(x)\big]\,\dd x}\leq\int_a^b\abs{f_n(x)-f(x)}\,\dd x\leq\\
+	\abs[\bigg]{\int_a^bf_n(x)\,\dd x-\int_a^bf(x)\,\dd x}=\abs[\bigg]{\int_a^b\big[f_n(x)-f(x)\big]\,\dd x}\leq\int_a^b\abs{f_n(x)-f(x)}\,\dd x\leq\\
 \leq\int_a^b\norm{f_n-f}_{\infty,[a,b]}\,\dd x=\norm{f_n-f}_{\infty,[a,b]}\int_a^b\dd x=(b-a)\norm{f_n-f}_{\infty,[a,b]},
 \end{multline*}
 che tende a 0 per $n\to+\infty$, e si ha dunque la \eqref{eq:scambio_integrale_limite}.
@@ -175,9 +175,9 @@ Sia $\{f_n\}$ una successione di funzioni definite da $[a,b]$ in $\R$ e derivabi
 \]
 \end{itemize}
 \end{teorema}
-Si dà la dimostrazione nel caso particolare in cui $f_n\in\cont{1}\ab$, per ogni $n$.
+Si dà la dimostrazione nel caso particolare in cui $f_n\in\cont[1]{[a,b]}$, per ogni $n$.
 \begin{proof}
-Poiché $f_n'\in\cont{}\ab$, anche $g$ lo è per il teorema \ref{t:continuita_conv_uniforme}. Sapendo che esiste ed è finito il limite
+Poiché $f_n'\in\cont{[a,b]}$, anche $g$ lo è per il teorema \ref{t:continuita_conv_uniforme}. Sapendo che esiste ed è finito il limite
 \[
 \lim_{n\to+\infty}f_n(x_0)=f(x_0),
 \]
@@ -198,17 +198,17 @@ e poiché per le ipotesi $f_n(x_0)\to f(x_0)$ per $n\to+\infty$, ed $\{f_n'\}$ c
 
 \section{Spazi funzionali}
 \label{sec:spazi-funz}
-Si indica con la scrittura $\boun{F}{E}$, dove $E\subseteq\R^m$ e $F\subset\R^p$ è chiuso, l'insieme delle funzioni definite in $E$ a valori in $F$ che sono limitate. Su tale insieme si può costruire una struttura spazio metrico, introducendo la distanza
+Si indica con la scrittura $\bounded[F]{E}$, dove $E\subseteq\R^m$ e $F\subset\R^p$ è chiuso, l'insieme delle funzioni definite in $E$ a valori in $F$ che sono limitate. Su tale insieme si può costruire una struttura spazio metrico, introducendo la distanza
 \[
 d(\vec f,\vec g)=\sup_{\vec x\in E}\norm{\vec f(\vec x)-\vec g(\vec x)}_F,
 \]
-dove $\norm{\cdot}_F$ è la norma euclidea in $\R^p$. È un'operazione binaria definita come $d\colon\boun{F}{E}\times\boun{F}{E}\to\R$.
+dove $\norm{\cdot}_F$ è la norma euclidea in $\R^p$. È un'operazione binaria definita come $d\colon\bounded[F]{E}\times\bounded[F]{E}\to\R$.
 Tale distanza è ben definita, perché tutte le $p$ componenti di $\vec f$ e $\vec g$ sono limitate, quindi $\norm{\vec f(\vec x)}_F\leq M$ e $\norm{\vec g(\vec x)}_F\leq K$ $\forall\vec x\in E$, quindi per la disuguaglianza triangolare risulta $\norm{\vec f(\vec x)-\vec g(\vec x)}_F\leq M+K$, cioè $d(\vec f,\vec g)\leq M+K<+\infty$.
 Inoltre soddisfa le proprietà che definiscono una distanza, ossia:
 \begin{itemize}
 	\item $d(\vec f,\vec g)\ge 0$ $\forall\vec x\in E$ in quanto è una norma euclidea, e $d(\vec f,\vec g)=0$ se e solo se $\norm{\vec f(\vec x)-\vec g(\vec x)}_F=0$ per ogni punto $\vec x\in E$, vale a dire che per tutti i punti $\vec x_0\in E$ risulta $\vec f(\vec x_0)=\vec g(\vec x_0)$, cioè le funzioni coincidono.
 	\item $d(\vec f,\vec g)=d(\vec g,\vec f)$ per la simmetria della norma euclidea.
-	\item Date tre funzioni $\vec f,\vec g,\vec h\in\boun{F}{E}$, per la disuguaglianza triangolare della norma euclidea si ha
+	\item Date tre funzioni $\vec f,\vec g,\vec h\in\bounded[F]{E}$, per la disuguaglianza triangolare della norma euclidea si ha
 	\begin{equation}
 		\begin{split}
 			\norm{\vec f(\vec x)-\vec g(\vec x)}_F&\leq\norm{\vec f(\vec x)-\vec h(\vec x)+\vec h(\vec x)-\vec g(\vec x)}_F\leq\\
@@ -221,26 +221,31 @@ Poiché quindi per ogni punto $\vec x\in E$ la norma $\norm{\vec f(\vec x)-\vec 
 \sup_{\vec x\in E}\norm{\vec f(\vec x)-\vec g(\vec x)}_F=d(\vec f,\vec g)\leq d(\vec f,\vec h)+d(\vec h,\vec g).
 \]
 \end{itemize}
-Lo spazio $\boun{F}{E}$ può assumere anche la struttura di spazio vettoriale, a seconda che lo sia prima l'insieme $F$ di arrivo. Infatti per la disuguaglianza triangolare la somma di due funzioni limitate è limitata, e analogamente per il prodotto con uno scalare di una funzione limitata. Le immagini dei risultati di queste due operazioni però non appartengono necessariamente ad $F$: questo accade soltanto se l'insieme $F$ è a sua volta uno spazio vettoriale.
+Lo spazio $\bounded[F]{E}$ può assumere anche la struttura di spazio vettoriale, a seconda che lo sia prima l'insieme $F$ di arrivo. Infatti per la disuguaglianza triangolare la somma di due funzioni limitate è limitata, e analogamente per il prodotto con uno scalare di una funzione limitata. Le immagini dei risultati di queste due operazioni però non appartengono necessariamente ad $F$: questo accade soltanto se l'insieme $F$ è a sua volta uno spazio vettoriale.
 
 Data una successione di funzioni $\vec f_n$ convergente alla funzione limite $\vec f$, secondo tale metrica la convergenza accade se $d(\vec f_n,\vec f)\to 0$ per $n\to+\infty$, cioè se $\vec f_n$ converge uniformemente a $\vec f$.
 \begin{teorema}
-$\boun{F}{E}$ è uno spazio metrico completo.
+$\bounded[F]{E}$ è uno spazio metrico completo.
 \end{teorema}
 \begin{proof}
 Una successione $\{\vec f_n\}_{n\in\N}$ soddisfa la condizione di Cauchy rispetto alla distanza $d$ se $\forall\epsilon>0$, $\exists N=N(\epsilon)\colon\forall m,n\geq N$ si ha $d(\vec f_n,\vec f_m)<\epsilon$, cioè
 \[
 \sup_{\vec x\in E}\norm{\vec f_n(\vec x)-\vec f_m(\vec x)}_F<\epsilon,
 \]
-cioè se e solo se soddisfa il criterio di Cauchy per la convergenza uniforme, quindi $\exists\vec f\colon E\to F$ tale che $\vec f_n\to \vec f$ uniformemente in $E$. Allora $\vec f$ è anche limitata, cioè appartiene a $\boun{F}{E}$.
+cioè se e solo se soddisfa il criterio di Cauchy per la convergenza uniforme, quindi $\exists\vec f\colon E\to F$ tale che $\vec f_n\to \vec f$ uniformemente in $E$. Allora $\vec f$ è anche limitata, cioè appartiene a $\bounded[F]{E}$.
 \end{proof}
-Più in generale la funzione limite $\vec f$ avrebbe valori nella chiusura di $F$, ma essa coincide con $F$ stesso poiché è chiuso. Le proprietà dello spazio $\boun{F}{E}$ dipendono fortemente quindi dalla completezza di $F$.
+Più in generale la funzione limite $\vec f$ avrebbe valori nella chiusura di $F$, ma essa coincide con $F$ stesso poiché è chiuso. Le proprietà dello spazio $\bounded[F]{E}$ dipendono fortemente quindi dalla completezza di $F$.
 
 \subsection*{Spazio delle funzioni continue}
-Siano $E\subset\R^n$ un insieme compatto e $F\subset\R^p$ chiuso. La scrittura $\mathcal{C}_F(E)$, o anche $\cont{0}_F(E)$, individua lo spazio delle funzioni continue definite da $E$ a $F$.
-Per il teorema \ref{t:weierstrass} di Weiestra\ss, tutte le $\vec f\in\cont{0}_F(E)$ sono limitate perché $E$ è compatto, quindi $\cont{0}_F(E)\subset\mathcal B_F(E)$.
+% Ridefinisco temporaneamente per questa sezione il comando per le funzioni continue
+\renewcommand{\cont}[2][]{\mathscr C^{#1}_{#2}\parentheses} % Uso: \cont[k]{A}{B} equivale a C^k_B(A), per f:A->B
+%
+Siano $E\subset\R^n$ un insieme compatto e $F\subset\R^p$ chiuso. La scrittura $\cont{E}{F}$, o anche $\cont[0]{E}{F}$, individua lo spazio delle funzioni continue definite da $E$ a $F$.
+Per il teorema \ref{t:weierstrass} di Weiestra\ss, tutte le $\vec f\in\cont[0]{E}{F}$ sono limitate perché $E$ è compatto, quindi $\cont[0]{E}{F}\subset\bounded[F]{E}$.
 
-Con la distanza $d$ definita per le funzioni limitate, anche $(\cont{0}_F(E),d)$ è uno spazio metrico, ed è anch'esso completo, perché per il teorema \ref{t:continuita_conv_uniforme}, se per ogni $n\in\N$ le funzioni $\vec f_n$ sono continue, allora quando $d(\vec f_n,\vec f)\to 0$ significa che la successione converge uniformemente a $\vec f$, che quindi eredita la continuità; allora se $\{\vec f_n\}_{n\in\N}$ soddisfa la condizione di Cauchy, essa converge in $\cont{0}_F(E)$.
+Con la distanza $d$ definita per le funzioni limitate, anche $(\cont[0]{E}{F},d)$ è uno spazio metrico, ed è anch'esso completo, perché per il teorema \ref{t:continuita_conv_uniforme}, se per ogni $n\in\N$ le funzioni $\vec f_n$ sono continue, allora quando $d(\vec f_n,\vec f)\to 0$ significa che la successione converge uniformemente a $\vec f$, che quindi eredita la continuità; allora se $\{\vec f_n\}_{n\in\N}$ soddisfa la condizione di Cauchy, essa converge in $\cont[0]{E}{F}$.
+%
+\renewcommand{\cont}[1][]{\mathscr C^{#1}\parentheses} % Torna come prima
 
 \section{Teorema delle contrazioni}
 \begin{definizione}

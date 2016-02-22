@@ -21,7 +21,6 @@
 \usepackage{amssymb}                      % Per alcuni comandi come \varnothing, \emptyset
 \usepackage{booktabs}                     % Per i comandi top/mid/bottomrule nelle tabelle
 \usepackage{mathrsfs}                     % Per il font calligrafico \mathscr
-\usepackage{xfrac}
 \usepackage{graphicx}                     % Per includere, tra il resto, il logo della licenza CC
 \usepackage{titletoc}                     % Per creare gli indici per ciascuna parte separatamente
 \usepackage[usenames,dvipsnames]{xcolor}  % Per definire alcuni colori come nei link di hyperref
@@ -44,7 +43,7 @@
 			every axis y label/.style={at={(current axis.above origin)},anchor=south}
 		}
 	}
-	
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Formattazione del testo
 \usepackage{sectsty}
@@ -69,7 +68,7 @@
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\phi}{\varphi}
 \newcommand{\qqq}{\quad\longrightarrow\quad}  % Spazio lungo + --> + spazio lungo
-\newcommand{\qtext}[1]{\quad\text{#1}\quad}   % Testo in caratteri romani (i.e. non slanted, come di defeult in math mode) con spazio attorno 
+\newcommand{\qtext}[1]{\quad\text{#1}\quad}   % Testo in caratteri romani (i.e. non slanted, come di defeult in math mode) con spazio attorno
 \renewcommand{\vec}[1]{\mathbf{#1}}           % Indica vettori in grassetto (per vettori di spazi euclidei)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,31 +79,46 @@
 \colorlet{indigo}{blue!50!violet}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Simboli matematici
+% Comandi matematici
+
+% Parentesi automatiche
+% Esse permettono di aggiustare la loro dimensione in base al contenuto: per specificare la dimensione, si
+% scrive il comando apposito (i soliti \big, \bigg, \Big, etc.) come comando opzionale, come in \abs[\bigg]{x}.
+% La variante "stellata", come \abs*, usa invece \left e \right, cioè \abs*{x} equivale a \left\lvert{x}\right\rvert.
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}                    % Valore assoluto, modulo
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}                   % Norma
+\DeclarePairedDelimiter{\partint}{\lfloor}{\rfloor}              % Parte intera
+\DeclarePairedDelimiter{\card}{\lvert}{\rvert}                   % Cardinalità di un insieme
+\DeclarePairedDelimiterX{\inner}[2]{\langle}{\rangle}{{#1},{#2}} % Prodotto interno
+\DeclarePairedDelimiter{\parentheses}{(}{)}                      % Generiche parentesi tonde (servono per alcuni comandi più sotto)
+% Il comando \parentheses aggiunge un ulteriore argomento ai comandi sotto dove è usato, e.g. \cont[1][]{...} in realtà ha due argomenti, uno opzionale (definito nel comando \cont) e uno obbligatorio che viene da \parentheses.
+% Per tali comandi, l'opzione della dimensione va posta subito prima dell'argomento obbligatorio, e.g. \cont[2][\big]{A}.
+% Si noti infatti che tale scrittura è equivalente alla forma \mathscr{C}^{2}\parentheses[\big]{A}, quindi l'argomento
+% opzionale [\big] è dato a \parentheses, e non a \cont, com'è giusto.
+
+% Simboli
 \newcommand{\dd}{\textup{d}}                                   % Differenziale
-\newcommand{\abs}[1]{\left|{#1}\right|}                        % Modulo di numeri complessi / valore assoluto
-\newcommand{\norm}[1]{\left\|{#1}\right\|}                     % Norma
 \renewcommand{\emptyset}{\varnothing}                          % Insieme vuoto
+\newcommand{\boundary}{\partial}                               % Simbolo di frontiera di un insieme
 \newcommand{\then}{\Rightarrow}                                % Implicazione logica
 \renewcommand{\iff}{\Leftrightarrow}                           % "Se e solo se"
-\renewcommand{\Re}[1]{\mathfrak{R}\!\left({#1}\right)}         % Parte reale
-\renewcommand{\Im}[1]{\mathfrak{I}\!\left({#1}\right)}         % Parte immaginaria
-\newcommand{\partint}[1]{\left\lfloor{#1}\right\rfloor}        % Parte intera di un numero
+\renewcommand{\Re}{\mathfrak{R}\parentheses}                   % Parte reale
+\renewcommand{\Im}{\mathfrak{I}\parentheses}                   % Parte immaginaria
 \newcommand{\conj}[1]{\overline{#1}}                           % Coniugato
 \newcommand{\intinf}{\underline{\int_a^b}}                     % Integrale inferiore (Riemann)
 \newcommand{\intsup}{\overline{\int_a^b}}                      % Integrale superiore (Riemann)
 \newcommand{\partz}{\mathcal{P}}                               % Partizione di un intervallo
-\newcommand{\rie}{\mathfrak{R}}                                % Spazio delle funzioni Riemann-integrabili in un insieme
-\newcommand{\cont}[1]{\mathcal{C}^{{#1}}}                      % Spazio delle funzioni continue
-\newcommand{\boun}[2]{\mathcal{B}_{#1}({#2})}                  % Spazio delle funzioni limitate
-\newcommand{\ab}{\big([a,b]\big)}                              % "Scorciatoia" per indicare tra parentesi leggermente più grandi ([a,b]) (i.e. quando si indica "integrabile in [a,b]" con il comando \rie)
+\newcommand{\rie}{\mathfrak{R}\parentheses}                    % Spazio delle funzioni Riemann-integrabili: \rie{A} indica funz. integrabile nell'insieme A
+\newcommand{\cont}[1][]{\mathscr{C}^{#1}\parentheses}          % Spazio delle funzioni continue: \cont[k]{A} indica una funz. di classe C^k nell'insieme A
+\newcommand{\cclass}[1][]{\mathscr{C}^{#1}}                    % Per indicare la "classe di continuità" senza specificare l'insieme
+\newcommand{\bounded}[1][]{\mathscr{B}_{#1}\parentheses}       % Spazio delle funzioni limitate: \boun[B]{A} indica una funz. limitata con dominio A e codominio B
 \newcommand{\grad}{\nabla}                                     % Gradiente
 \renewcommand{\div}{\nabla\cdot}                               % Divergenza
 \newcommand{\rot}{\nabla\times}                                % Rotore
 \newcommand{\lap}{\nabla^2}                                    % Laplaciano
 \newcommand{\lin}{\mathscr L}                                  % Generica applicazione lineare
 \newcommand{\gen}[1]{\left\langle{#1}\right\rangle}            % Spazio generato (da cosa è generato, è definito nell'argomento del comando)
-\newcommand{\scalar}[2]{{#1}\cdot{#2}}                         % Prodotto scalare tra i due argomenti specificati (con il punto) (old: \psc, please update)
+\newcommand{\scalar}[2]{{#1}\cdot{#2}}                         % Prodotto scalare tra i due argomenti specificati (con il punto)
 \newcommand{\drv}[2]{\frac{\dd {#1}}{\dd {#2}}}                % Derivata prima
 \newcommand{\ddrv}[2]{\frac{\dd^2 {#1}}{\dd {#2}^2}}           % Derivata seconda
 \newcommand{\drp}[2]{\frac{\partial {#1}}{\partial {#2}}}      % Derivata parziale
@@ -119,7 +133,7 @@
 	\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt \hbox{\scriptsize.} \hbox{\scriptsize.}}} =
 }
 
-%OPERATORI MATEMATICI: come lim, sen, etc. che hanno dello spazio prima e dopo la parola stampata
+% Operatori (come lim, sen, etc. che hanno dello spazio prima e dopo la parola stampata)
 \DeclareMathOperator{\diam}{diam}    % Diametro (di un intervallo etc.)
 \DeclareMathOperator{\sgn}{sgn}      % Funzione segno
 \DeclareMathOperator{\jac}{J}        % Matrice jacobiana
@@ -204,4 +218,4 @@
 		pdfpagemode=UseOutlines,
 		citecolor=darkblue
 	}
-	
+

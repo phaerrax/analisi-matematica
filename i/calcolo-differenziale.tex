@@ -22,7 +22,7 @@ f(x)=f(x_0)+f'(x_0)(x-x_0)+o(x-x_0),
 \end{equation}
 dove $o(x-x_0)$ tende a zero più velocemente di quanto $x$ tenda a $x_0$. Questa formula rappresenta una prima approssimazione, chiamata anche formula dell'incremento finito.
 \begin{teorema}
-Se una funzione $f\colon A\to\R$ è derivabile in un punto $x_0\in\mathring{A}$, in tale punto è necessariamente continua.
+Se una funzione $f\colon A\to\R$ è derivabile in un punto $x_0\in\interior{A}$, in tale punto è necessariamente continua.
 \end{teorema}
 \begin{proof}
 Se $f$ è derivabile in $x_0$, allora il suo rapporto incrementale in tale punto ammette limite, quindi può riscrivere la \eqref{eq:incr_finito_1} nella forma
@@ -141,10 +141,10 @@ Sia $f\colon I\to\R$ derivabile in $x_0\in I$. Si dice che $x_0$ è un punto di:
 \end{definizione}
 \begin{teorema}[di Fermat]
 \label{t:fermat}
-Siano $f\colon I\to\R$, $I$ un intervallo e $x_0\in\mathring{I}$. Se $f$ è derivabile in $x_0$ ed esso è un punto estremante per $f$, allora $f'(x_0)=0$.
+Siano $f\colon I\to\R$, $I$ un intervallo e $x_0\in\interior{I}$. Se $f$ è derivabile in $x_0$ ed esso è un punto estremante per $f$, allora $f'(x_0)=0$.
 \end{teorema}
 \begin{proof}
-Sia $x_0$ un punto di massimo. Dato che $x_0\in\mathring{I}$, per la definizione \ref{d:pt_estremanti} $\exists\delta>0\colon\forall x\in(x_0-\delta,x_0+\delta)$ si ha che $f(x)\leq f(x_0)$. Il rapporto incrementale,
+Sia $x_0$ un punto di massimo. Dato che $x_0\in\interior{I}$, per la definizione \ref{d:pt_estremanti} $\exists\delta>0\colon\forall x\in(x_0-\delta,x_0+\delta)$ si ha che $f(x)\leq f(x_0)$. Il rapporto incrementale,
 \[
 \frac{f(x)-f(x_0)}{x-x_0}
 \]
@@ -154,7 +154,7 @@ Analogamente si dimostra se $x_0$ è un punto di minimo.
 Al di fuori delle ipotesi di questo teorema non si può affermare niente: ad esempio, per $f\colon[-1,3)\to\R=\abs{x}$, si ha che $-1$ è un punto di massimo relativo e 3 un punto di massimo assoluto, ma entrambi non sono interni all'intervallo di definizione, e il punto di minimo assoluto è 0, in cui $f$ non è derivabile.
 La condizione del teorema \ref{t:fermat} è inoltre solo necessaria, infatti $f(x)=x^3$ ha derivata nulla in $x=0$ ma tale punto non è estremante.
 \begin{definizione}
-Si dicono \emph{punti stazionari} i punti che soddisfano le ipotesi del teorema \ref{t:fermat} di Fermat. Ossia, data una funzione $f\colon I\to\R$, il punto $x_0$ è stazionario se $x_0\in\mathring{I}$ e $\exists f'(x_0)$ ed è nulla.
+Si dicono \emph{punti stazionari} i punti che soddisfano le ipotesi del teorema \ref{t:fermat} di Fermat. Ossia, data una funzione $f\colon I\to\R$, il punto $x_0$ è stazionario se $x_0\in\interior{I}$ e $\exists f'(x_0)$ ed è nulla.
 \end{definizione}
 I punti estremanti di una funzione, quindi, possono solo essere punti stazionari, punti non interni all'intervallo di definizione oppure punti di non derivabilità.
 
@@ -208,10 +208,10 @@ Come già visto per la definizione \ref{d:lipschitz} delle funzioni lispchitzian
 I seguenti teoremi sulla monotonia delle funzioni si applicano esclusivamente a degli intervalli.
 \begin{teorema}
 \label{t:monotonia_lagrange}
-Sia $f\colon I\to\R$ una funzione almeno derivabile in $\mathring{I}$ e continua in $I$. Essa è
+Sia $f\colon I\to\R$ una funzione almeno derivabile in $\interior{I}$ e continua in $I$. Essa è
 \begin{itemize}
-\item monotona crescente in $I$ se e solo se $f'(x)\geq 0$ $\forall x\in\mathring{I}$;
-\item monotona decrescente in $I$ se e solo se $f'(x)\leq 0$ $\forall x\in\mathring{I}$.
+\item monotona crescente in $I$ se e solo se $f'(x)\geq 0$ $\forall x\in\interior{I}$;
+\item monotona decrescente in $I$ se e solo se $f'(x)\leq 0$ $\forall x\in\interior{I}$.
 \end{itemize}
 \end{teorema}
 \begin{proof}
@@ -224,26 +224,26 @@ La dimostrazione per il secondo caso è del tutto analoga.
 \end{proof}
 Vale inoltre che se $f'(x)>0$ ($f'(x)<0$) allora la funzione è monotona strettamente crescente (decrescente), ma non vale il teorema inverso: la funzione $x^3$, ad esempio, ha derivata nulla nell'origine, ma essa è crescente in tutto $\R$. Inoltre i punti in cui una funzione crescente, o decrescente, può avere derivata nulla possono essere al più un'infinità numerabile: non possono formare un intervallo, altrimenti in esso la funzione sarebbe costante.
 \begin{teorema}
-Sia $f\colon I\to\R$ una funzione continua in $I$ e derivabile in $\mathring{I}$. Essa è costante se e solo se $f'(x)=0$ $\forall x\in\mathring{I}$.
+Sia $f\colon I\to\R$ una funzione continua in $I$ e derivabile in $\interior{I}$. Essa è costante se e solo se $f'(x)=0$ $\forall x\in\interior{I}$.
 \end{teorema}
 \begin{proof}
-Si supponga che $f$ sia costante: il rapporto incrementale è sempre nullo perché $f(x_0+h)=f(x_0)$ $\forall x\in\mathring{I}$, quindi la derivata è sempre nulla.
+Si supponga che $f$ sia costante: il rapporto incrementale è sempre nullo perché $f(x_0+h)=f(x_0)$ $\forall x\in\interior{I}$, quindi la derivata è sempre nulla.
 Supposto invece che la derivata sia nulla, valgono entrambi i casi del teorema \ref{t:monotonia_lagrange}, quindi $f$ è sia crescente che decrescente, cioè deve essere costante.
 \end{proof}
-È importante che questo teorema sia verificato in un \emph{intervallo}: se infatti consideriamo la funzione $f(x)=\arctan x+\arctan\sfrac{1}{x}$, la sua derivata,
+È importante che questo teorema sia verificato in un \emph{intervallo}: se infatti consideriamo la funzione $f(x)=\arctan x+\arctan\frac1{x}$, la sua derivata,
 \[
 f'(x)=\frac{1}{1+x^2}+\bigg(\!-\frac1{x^2}\bigg)\frac{1}{1+\frac1{x^2}}=\frac{1}{1+x^2}-\frac{1}{1+x^2}
 \]
 è nulla in ogni intervallo tutto a sinistra o tutto a destra dell'origine, ma non appena si considera un insieme che contiene sia ascisse negative che positive (nell'origine la funzione non è definita) il teorema non si può più applicare. Si verifica infatti che $f(x)=\frac{\pi}2$ $\forall x>0$, mentre $f(x)=-\frac{\pi}2$ $\forall x<0$, quindi non è sempre costante. 
 \begin{corollario}
-Sia $f\colon(x_0-\delta,x_0+\delta)\equiv I\to\R$ una funzione derivabile in $I$, con $f'(x_0)=0$. Il punto $x_0$ è un punto di:
+Sia $f\colon I\defeq(x_0-\delta,x_0+\delta)\to\R$ una funzione derivabile in $I$, con $f'(x_0)=0$. Il punto $x_0$ è un punto di:
 \begin{itemize}
 \item massimo relativo (a tale intorno), se $f'(x)\geq 0$ in $(x_0-\delta,x_0)$ e $f'(x)\leq 0$ in $(x_0,x_0+\delta)$;
 \item minimo relativo (a tale intorno), se $f'(x)\leq 0$ in $(x_0-\delta,x_0)$ e $f'(x)\geq 0$ in $(x_0,x_0+\delta)$.
 \end{itemize}
 \end{corollario}
 \begin{teorema} \label{t:derivata_solo_disc_seconda_specie}
-Sia $f\colon(x_0-\delta,x_0+\delta)\to\R$ una funzione derivabile in $(x_0-\delta,x_0)\cup(x_0,x_0+\delta)$. Se esiste (finito) $\lim_{x\to x_0} f'(x)\equiv\gamma\in\R$, allora $f$ è derivabile in $x_0$ e $f'(x_0)=\gamma$.
+Sia $f\colon(x_0-\delta,x_0+\delta)\to\R$ una funzione derivabile in $(x_0-\delta,x_0)\cup(x_0,x_0+\delta)$. Se esiste (finito) $\gamma\defeq\lim_{x\to x_0} f'(x)\in\R$, allora $f$ è derivabile in $x_0$ e $f'(x_0)=\gamma$.
 \end{teorema}
 \begin{proof}
 Nell'intervallo $(x_0,x_0+h)$, $\exists z$ (in dipendenza da $h$) in tale intervallo per cui, dal teorema \ref{t:lagrange} di Lagrange il rapporto incrementale nell'intervallo è $\frac{f(x_0+h)-f(x_0)}{h}=f'(z)$. Quando $h\to 0$, dato che $z$ è nell'intervallo $(x_0,x_0+h)$, si ha che $z\to x_0$, e per ipotesi allora $f'(z)\to\gamma$, cioè la derivata di $f$ esiste ed è $\gamma$ quando l'intervallo si restringe a $x_0$.
@@ -276,7 +276,7 @@ Siano $x,x_0\in(a,b)$ e $f\colon(a,b)\to\R$ una funzione derivabile almeno $n$ v
 \begin{equation}
 \label{eq:taylor}
 %\begin{split}
-P_nf(x-x_0)\equiv %f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\dots+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n=
+P_nf(x-x_0)\defeq %f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\dots+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n=
 \sum_{k=0}^n\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k.
 %\end{split}
 \end{equation}
@@ -284,7 +284,7 @@ P_nf(x-x_0)\equiv %f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\dots+\fra
 Per approssimare una funzione nell'intorno del punto $x_0$, si utilizza questo polinomio appena definito, con l'aggiunta dell'errore che assume forme differenti a seconda del teorema utilizzato.
 \begin{teorema}[Formula di Taylor con resto secondo Peano]
 \label{t:taylor_peano}
-Sia $f\colon I\to\R$ una funzione derivabile $n$ volte in $x_0\in\mathring{I}$. Localmente, per $x\to x_0$, si ha
+Sia $f\colon I\to\R$ una funzione derivabile $n$ volte in $x_0\in\interior{I}$. Localmente, per $x\to x_0$, si ha
 \begin{equation}
 \label{eq:taylor_peano}
 f(x)=P_nf(x-x_0)+o\big((x-x_0)^n\big).
@@ -303,7 +303,7 @@ f'(x)-f'(x_0)-f''(x_0)(x-x_0)-\frac{f'''(x_0)}{2!}(x-x_0)^2-\\
 -\frac{f^{(4)}(x_0)}{3!}(x-x_0)^3-\frac{f^{(5)}(x_0)}{4!}(x-x_0)^4-\dots-\frac{f^{(n+1)}(x_0)}{n!}(x-x_0)^n=\\
 =f'(x)-\sum_{k=1}^{n+1}\frac{f^{(k)}(x_0)}{(k-1)!}(x-x_0)^{k-1}.
 \end{multline*}
-Ponendo quindi $f'(x)\equiv g(x)$ si ottiene che $f^{(k)}(x)=g^{(k-1)}(x)$, e sostituendo $k-1=j$ l'equazione diventa
+Ponendo quindi $g(x)\defeq f'(x)$ si ottiene che $f^{(k)}(x)=g^{(k-1)}(x)$, e sostituendo $k-1=j$ l'equazione diventa
 \[
 g(x)-\sum_{k=1}^{n+1}\frac{g^{(k-1)}(x_0)}{(k-1)!}(x-x_0)^{k-1}=g(x)-\sum_{j=0}^{n}\frac{g^{(j)}(x_0)}{j!}(x-x_0)^j.
 \]
@@ -316,7 +316,7 @@ Se $f$ è derivabile $n+1$ volte in $x_0$, allora $g$ è in tale punto derivabil
 \end{proof}
 \begin{teorema}[Formula di Taylor con resto secondo Lagrange]
 \label{t:taylor_lagrange}
-Siano $f\colon I\to\R$ e $x_0\in\mathring{I}$, con $f$ derivabile $n+1$ volte in $\mathring{I}$. Si ha per ogni $x\in I$ che
+Siano $f\colon I\to\R$ e $x_0\in\interior{I}$, con $f$ derivabile $n+1$ volte in $\interior{I}$. Si ha per ogni $x\in I$ che
 \begin{equation}
 \label{eq:taylor_lagrange}
 f(x)=P_nf(x-x_0)+\frac{f^{(n+1)}(z)}{(n+1)!}(x-x_0)^{n+1}

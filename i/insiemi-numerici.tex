@@ -185,8 +185,8 @@ La norma è anche la radice quadrata del prodotto interno tra il vettore e se st
 Valgono le seguenti proprietà:
 \begin{itemize}
 \item $\norm{\vec x}\geq 0$, e in particolare è nulla se e solo se il vettore è nullo;
-\item $\norm{\alpha\vec x}=|\alpha|\norm{\vec x}$, con $\alpha\in\R$;
-\item $|(\vec x,\vec y)|\leq\norm{\vec x}\norm{\vec y}$ (disuguaglianza di Cauchy);
+\item $\norm{\alpha\vec x}=\abs{\alpha}\norm{\vec x}$, con $\alpha\in\R$;
+\item $\abs{\inner{\vec x}{\vec y}}\leq\norm{\vec x}\norm{\vec y}$ (disuguaglianza di Cauchy);
 \item $\norm{\vec x+\vec y}\leq\norm{\vec x}+\norm{\vec y}$ (disuguaglianza triangolare).
 \end{itemize}
 Le ultime due proprietà sono dimostrate nei seguenti teoremi.
@@ -196,16 +196,17 @@ Dati due vettori $\vec x, \vec y\in\R^n$, il modulo del prodotto interno tra di 
 \begin{proof}
 Sia $t\in\R$, il prodotto interno tra il vettore $t\vec x+\vec y$ e se stesso è sempre non negativo, in quanto rappresenta una norma. Inoltre:
 \begin{align*}
-(t\vec x+\vec y,t\vec x+\vec y)&=(t\vec x,t\vec x+\vec y)+(t\vec x+\vec y,\vec y)=\\
-&=(t\vec x,t\vec x)+(t\vec x,\vec y)+(t\vec x,\vec y)+(\vec y,\vec y)=\\
-&=t^2(\vec x,\vec x)+2t(\vec x,\vec y)+(\vec y,\vec y)=\\
-&=t^2\norm{\vec x}^2+2t(\vec x,\vec y)+\norm{\vec y}^2.
+	\inner{t\vec x+\vec y}{t\vec x+\vec y}
+	&=\inner{t\vec x}{t\vec x+\vec y}+\inner{\vec y}{t\vec x+\vec y}=\\
+	&=\inner{t\vec x}{t\vec x}+\inner{t\vec x}{\vec y}+\inner{t\vec x}{\vec y}+\inner{\vec y}{\vec y}=\\
+	&=t^2\inner{\vec x}{\vec x}+2t\inner{\vec x}{\vec y}+\inner{\vec y}{\vec y}=\\
+	&=t^2\norm{\vec x}^2+2t\inner{\vec x}{\vec y}+\norm{\vec y}^2.
 \end{align*}
 Quest'ultima deve essere non negativa per ogni valore di $t\in\R$, vale a dire che il suo discriminante deve essere negativo o nullo:
-\begin{gather*}
-\frac{\Delta}{4}=(\vec x,\vec y)^2-\norm{\vec x}^2\norm{\vec y}^2\leq 0\\
-|(\vec x,\vec y)|\leq\norm{\vec x}\norm{\vec y}.\qedhere
-\end{gather*}
+\begin{equation}
+	\frac{\Delta}{4}=\inner{\vec x}{\vec y}^2-\norm{\vec x}^2\norm{\vec y}^2\leq 0\qqq
+	\abs{\inner{\vec x}{\vec y}}\leq\norm{\vec x}\norm{\vec y}.\qedhere
+\end{equation}
 \end{proof}
 \begin{teorema}[Disuguaglianza triangolare]
 Dati due vettori $\vec x, \vec y\in\R^n$, la norma della loro somma è minore o uguale della somma delle loro norme.
@@ -213,15 +214,15 @@ Dati due vettori $\vec x, \vec y\in\R^n$, la norma della loro somma è minore o 
 \begin{proof}
 Questo teorema si dimostra a partire dalla disuguaglianza di Cauchy, con $t=1$.
 \[
-\norm{\vec x+\vec y}^2=(\vec x+\vec y,\vec x+\vec y)=\norm{\vec x}^2+2(\vec x,\vec y)+\norm{\vec y}^2.
+	\norm{\vec x+\vec y}^2=\inner{\vec x+\vec y}{\vec x+\vec y}=\norm{\vec x}^2+2\inner{\vec x}{\vec y}+\norm{\vec y}^2.
 \]
-Il termine $(\vec x,\vec y)$, come qualunque numero, è minore o uguale del suo modulo, quindi si può scrivere che
+Il termine $\inner{\vec x}{\vec y}$, come qualunque numero, è minore o uguale del suo modulo, quindi si può scrivere che
 \[
-\norm{\vec x}^2+2(\vec x,\vec y)+\norm{\vec y}^2\leq\norm{\vec x}^2+2|(\vec x,\vec y)|+\norm{\vec y}^2.
+	\norm{\vec x}^2+2\inner{\vec x}{\vec y}+\norm{\vec y}^2\leq\norm{\vec x}^2+2\abs{\inner{\vec x}{\vec y}}+\norm{\vec y}^2.
 \]
 Per la disuguaglianza di Cauchy quindi risulta
 \[
-\norm{\vec x}^2+2|(\vec x,\vec y)|+\norm{\vec y}^2\leq\norm{\vec x}^2+2\norm{\vec x}\norm{\vec y}+\norm{\vec y}^2.
+	\norm{\vec x}^2+2\abs{\inner{\vec x}{\vec y}}+\norm{\vec y}^2\leq\norm{\vec x}^2+2\norm{\vec x}\norm{\vec y}+\norm{\vec y}^2.
 \]
 Il secondo termine è lo sviluppo del quadrato $(\norm{\vec x}+\norm{\vec y})^2$, allora si ha che
 \[

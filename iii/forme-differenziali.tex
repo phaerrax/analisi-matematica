@@ -43,7 +43,7 @@ Un insieme connesso prende qui il posto dell'intervallo, che pure è anch'esso u
 	Prendiamo un punto qualsiasi $\vec x'\in A_1$ e un suo intorno $\mathcal U(\vec x')$ che sia tutto contenuto in $A$ (un tale intorno esiste, perch\'e $A$ è aperto).
 	Per ogni $\vec x\in\mathcal U(\vec x')$, dunque, per il teorema di Lagrange
 	\begin{equation*}
-		f(\vec x)-f(\vec x')=\scalar{\grad f\big(\vec x'+c(\vec x-\vec x')\big)}{(\vec x-\vec x')}
+		f(\vec x)-f(\vec x')=\inner[\big]{\grad f\big(\vec x'+c(\vec x-\vec x')\big)}{\vec x-\vec x'}
 	\end{equation*}
 	per $c\in[0,1]$.
 	Ma $\mathcal U(\vec x')\subset A$, quindi per tutti questi punti il gradiente è nullo, quindi $f(\vec x)=f(\vec x')$ $\forall\vec x\in\mathcal U(\vec x')$, ossia $\mathcal U(\vec x')\subset A_1$.
@@ -74,12 +74,12 @@ In particolare, data la base canonica di $\R^n$, la base corrispondente di $(\R^
 
 Detto ciò, abbiamo già incontrato in precedenza alcuni elementi di $(\R^n)^*$: i differenziali di funzioni (scalari).
 Nel capitolo in cui abbiamo trattato della differenziabilità in più dimensioni avevamo visto che data una $f\in A\subseteq\R^n\to\R$ differenziabile, il suo differenziale $\dd f$ si comporta come un funzionale lineare: preso un punto $\vec x_0\in A$, restituisce un numero reale che è l'incremento di $f$ dal punto $\vec x_0$ relativo all'incremento $\vec h$ della variabile.
-Sappiamo inoltre che questo differenziale si può esprimere con il gradiente di $f$, cioè $\dd f(\vec x_0)=\grad f(\vec x_0)\dd\vec x$, dove abbiamo scritto $\dd\vec x=(\dd x_1,\dots,\dd x_n)$, ossia
+Sappiamo inoltre che questo differenziale si può esprimere con il gradiente di $f$, cioè $\dd f(\vec x_0)=\inner{\grad f(\vec x_0)}{\dd\vec x}$, dove abbiamo scritto $\dd\vec x=(\dd x_1,\dots,\dd x_n)$, ossia
 \begin{equation}
 	\dd f(\vec x_0)=\drp{f}{x_1}(\vec x_0)\,\dd x_1+\drp{f}{x_2}(\vec x_0)\,\dd x_2+\dots+\drp{f}{x_n}(\vec x_0)\,\dd x_n.
 	\label{eq:differenziale-duale}
 \end{equation}
-Ma se il primo membro è proprio il differenziale di $f$, cioè l'applicazione $\vec h\mapsto\grad f(\vec x_0)\vec h$, allora la notazione ci induce a considerare $\dd x_i$ come l'applicazione che porta $\vec h$ nella sua componente $h_i$.
+Ma se il primo membro è proprio il differenziale di $f$, cioè l'applicazione $\vec h\mapsto\inner{\grad f(\vec x_0)}{\vec h}$, allora la notazione ci induce a considerare $\dd x_i$ come l'applicazione che porta $\vec h$ nella sua componente $h_i$.
 Infatti, guardando alla \eqref{eq:differenziale-duale} come un funzionale lineare da applicare all'incremento $\vec h$, con la regola che $\dd x_i(\vec h)=h_i$ troviamo
 \begin{equation}
 	\begin{split}
@@ -94,7 +94,7 @@ Abbiamo anche verificato la proprietà dell'equazione \eqref{eq:funzionale-base-
 	\dd x_j(\vec e_k)=\delta_{jk}
 \end{equation}
 dove $\{\vec e_i\}_{i=1}^n$ è la base canonica di $\R^n$.
-La notazione con gli indici $1,2,3,\dots,n$ è ovviamente arbitraria: se ad esempio in $\R^3$ denotiamo le variabili con $x,y,z$, sarà naturale indicare la base del duale $\R^3_*$ con $\{\dd x,\dd y,\dd z\}$.
+La notazione con gli indici $1,2,3,\dots,n$ è ovviamente arbitraria: se ad esempio in $\R^3$ denotiamo le variabili con $x,y,z$, sarà naturale indicare la base del duale $(\R^3)^*$ con $\{\dd x,\dd y,\dd z\}$.
 
 Lasciamo da parte ora quei particolari elementi del duale che sono i differenziali di funzioni, e guardiamo a tutto lo spazio: un suo elemento generico sarà scritto, in termini della base appena introdotta, come combinazione lineare
 \begin{equation*}
@@ -114,7 +114,7 @@ Le forme differenziali lineari sono anche dette 1-forme.
 Ogni forma differenziale lineare si può rappresentare come $\omega=\sum_{i=1}^n\omega_i\,\dd x_i$, e questa scrittura è unica poich\'e la scrittura di un elemento di uno spazio vettoriale in termini di una sua base è sempre univoca.
 Le funzioni $\omega_i$, che sono funzioni da $A$ a $\R$, si dicono componenti, o coefficienti della forma, ed esse determinano la regolarità della forma differenziale.
 \begin{definizione} \label{d:regolarita-1forme}
-	Una forma differenziale lineare $\omega\colon A\subseteq\R^n\to(\R^n)^*$ si dice di classe $\cont{k}$ se tutte le sue componenti lo sono.
+	Una forma differenziale lineare $\omega\colon A\subseteq\R^n\to(\R^n)^*$ si dice di classe $\cclass[k]$ se tutte le sue componenti lo sono.
 \end{definizione}
 
 Un esempio immediato di forma differenziale, come si può intuire dal discorso svolto finora, è il differenziale di una funzione $f\colon\R^n\to\R$: avremo semplicemente $\omega=\dd f$.
@@ -126,7 +126,7 @@ Definiamo ora l'integrale di una forma differenziale lineare lungo una curva di 
 	Sia inoltre $\vphi\colon[a,b]\to A$ una parametrizzazione di una curva regolare a tratti.
 	Si definisce l'integrale di $\omega$ lungo $\vphi$ come
 	\begin{equation} 
-		\int_{\vphi}\omega=\int_a^b\scalar{\omega\big(\vphi(t)\big)}{\vphi'(t)}\,\dd t=\int_a^b\sum_{i=1}^n\omega_i\big(\vphi(t)\big)\phi_i'(t)\dd t.
+		\int_{\vphi}\omega=\int_a^b\sum_{i=1}^n\omega_i\big(\vphi(t)\big)\phi_i'(t)\dd t.
 		\label{eq:integrale-1forma}
 	\end{equation}
 \end{definizione}
@@ -139,7 +139,7 @@ Definiamo ora l'integrale di una forma differenziale lineare lungo una curva di 
 \end{definizione}
 Poiché $\tau'(t)>0$ per ogni $t\in[a,b]$ segue che $\tau$ è anche iniettiva e dunque biunivoca tra $[a,b]$ e $[c,d]$.
 \begin{teorema}
-	Sia $\omega=\sum_{i=1}^na_i\,\dd x_i$ una forma differenziale dall'insieme aperto $A\subseteq\R^n$ a $(\R^n)^*$, di classe $\cont{1}$, e $\vphi\colon[a,b]\to A$ e $\vpsi\colon [c,d]\to A$ due curve regolari a tratti, equivalenti e con sostegno in $A$.
+	Sia $\omega=\sum_{i=1}^na_i\,\dd x_i$ una forma differenziale dall'insieme aperto $A\subseteq\R^n$ a $(\R^n)^*$, di classe $\cclass[1]$, e $\vphi\colon[a,b]\to A$ e $\vpsi\colon [c,d]\to A$ due curve regolari a tratti, equivalenti e con sostegno in $A$.
 	Se le due curve sono equiorientate, si ha $\int_{\vphi}\omega=\int_{\vpsi}\omega$; se invece sono orientate in senso opposto, allora $\int_{\vphi}\omega=-\int_{\vpsi}\omega$.
 \end{teorema}
 \begin{proof}
@@ -168,7 +168,7 @@ Quando abbiamo introdotto le forme differenziali lineari, eravamo partiti dai di
 \begin{equation}
 	\dd f=\sum_{i=1}^n\drp{f}{x_i}\dd x_i.
 \end{equation}
-Gli integrali di queste forme sono semplicissimi da calcolare: infatti dati $A$ aperto di $\R^n$, $f\colon A\to\R$ di classe $\cont{1}(A)$ e $\vphi\colon[a,b]\to\R^n$ regolare a tratti, risulta
+Gli integrali di queste forme sono semplicissimi da calcolare: infatti dati $A$ aperto di $\R^n$, $f\colon A\to\R$ di classe $\cont[1]{A}$ e $\vphi\colon[a,b]\to\R^n$ regolare a tratti, risulta
 \begin{equation}
 	\int_{\vphi}\dd f=\int_a^b\sum_{i=1}^n\drp{f}{x_i}\big(\vphi(t)\big)\phi_i'(t)\,\dd t=\int_a^b\drv{}{t}f\big(\vphi(t)\big)\,\dd t.
 \end{equation}
@@ -179,7 +179,7 @@ Questo semplifica di molto il calcolo di questi integrali, perciò vogliamo capi
 In una sola dimensione tutte le forme differenziali lineari continue sono anche dei differenziali di funzioni, ma questo non è più vero in più dimensioni.
 \begin{definizione} \label{d:forma-differenziale-esatta}
 	Sia $A\subseteq\R^n$ aperto e $\omega\colon A\to(\R^n)^*$ una forma differenziale lineare continua in $A$.
-	Essa si dice \emph{esatta} se esiste una funzione (detta \emph{potenziale}) $F\colon A\to\R$ di classe $\cont{1}(A)$ tale per cui $\dd F=\omega$.
+	Essa si dice \emph{esatta} se esiste una funzione (detta \emph{potenziale}) $F\colon A\to\R$ di classe $\cont[1]{A}$ tale per cui $\dd F=\omega$.
 \end{definizione}
 \begin{osservazione}
 	Se $F$ è un potenziale di $\omega$ su $A$, allora anche $G=F+c$, dove $c$ è una qualsiasi costante, lo è.
@@ -244,7 +244,7 @@ Sfruttiamo questa definizione per enunciare i seguenti teoremi.
 	In ogni caso, notiamo che, poiché la derivata direzionale si può ottenere come prodotto scalare tra il gradiente di $F$ e $\vec v$, è proprio $\grad F=(a_1,\dots,a_n)$.
 	Allora si ottiene
 	\begin{equation}
-		\omega=\sum_{i=1}^na_i\dd x_i=\scalar{\grad F}{\dd \vec x}=\dd F,
+		\omega=\sum_{i=1}^na_i\dd x_i=\inner{\grad F}{\dd\vec x}=\dd F,
 	\end{equation}
 	ossia $\omega$ è esatta.
 \end{proof}
@@ -253,14 +253,14 @@ Sfruttiamo questa definizione per enunciare i seguenti teoremi.
 Le forme esatte sono importanti, ma i teoremi che abbiamo visto finora sono poco utili a individuarle: è chiaramente impossibile verificare che l'integrale sia nullo lungo \emph{ogni} curva chiusa.
 Dobbiamo quindi cercare delle condizioni più facili da verificare, e sufficienti ad affermare che una forma è esatta.
 
-Se una forma differenziale è esatta in un insieme $A$ connesso e aperto ed è di classe $\cont{1}(A)$, allora il suo potenziale è una funzione $F\in\cont{2}(A)$: per essa vale il teorema di Schwarz, per cui le derivate miste coincidono.
+Se una forma differenziale è esatta in un insieme $A$ connesso e aperto ed è di classe $\cont[1]{A}$, allora il suo potenziale è una funzione $F\in\cont[2]{A}$: per essa vale il teorema di Schwarz, per cui le derivate miste coincidono.
 Poiché la forma è esatta, $\drp{F}{x_i}(\vec x)=a_i(\vec x)$, perciò
 \begin{equation}
 	\drp{a_i}{x_j}(\vec x)=\frac{\partial^2 F}{\partial x_j\partial x_i}(\vec x)=\frac{\partial^2 F}{\partial x_i\partial x_j}(\vec x)=\drp{a_j}{x_i}(\vec x).
 \end{equation}
 Questa proprietà che le derivate miste ``incrociate'' sono uguali si ritrova nella seguente definizione.
 \begin{definizione} \label{d:forma-diff-chiusa}
-	Una forma differenziale lineare $\omega\in\cont{1}(A)$ per un insieme $A\in\R^n$ aperto si dice \emph{chiusa} in tale insieme se
+	Una forma differenziale lineare $\omega\in\cont[1]{A}$ per un insieme $A\in\R^n$ aperto si dice \emph{chiusa} in tale insieme se
 	\begin{equation}
 		\drp{a_i}{x_j}(\vec x)=\drp{a_j}{x_i}(\vec x)
 	\end{equation}
@@ -272,7 +272,7 @@ Prendiamo ad esempio la forma
 	\omega(x,y)=a_1(x,y)\,\dd x+a_2(x,y)\,\dd y=\frac{y}{x^2+y^2}\,\dd x-\frac{x}{x^2+y^2}\,\dd y
 \end{equation*}
 in $A=\R^2\setminus\{\vec 0\}$.
-Essa è $\cont{\infty}(A)$, ed è chiusa, infatti
+Essa è $\cont[\infty]{A}$, ed è chiusa, infatti
 \begin{equation}
 	\drp{}{y}\frac{y}{x^2+y^2}=\frac{x^2-y^2}{(x^2+y^2)^2}=\drp{}{x}\frac{-x}{x^2+y^2}
 \end{equation}
@@ -301,16 +301,16 @@ Il problema da superare non risiede tanto nella funzione, ma nell'insieme in cui
 Dobbiamo quindi restringere la classe degli insiemi ``buoni'' che ci permettano di dire che quando una forma è chiusa è anche esatta: tali insiemi sono gli insiemi \emph{semplicemente connessi}, che intuitivamente si possono pensare come insiemi ``senza buchi''.
 Una definizione rigorosa può essere data tramite il concetto di curve omotopiche.
 \begin{definizione} \label{d:curva-omotopica}
-	Siano $\vphi_1,\vphi_2\colon[a,b]\to A\subset\R^n$ due parametrizzazioni di curve chiuse e $\cont{2}\ab$.
-	La curva $\vphi_1$ si dice \emph{omotopica} a $\vphi_2$ se esiste una mappa (detta appunto \emph{omotopia}) $\vxi\colon[0,1]\times[a,b]\to A$, di classe $\cont{2}$, tale per cui $\vxi(0,t)=\vphi_1(t)$ e $\vxi(1,t)=\vphi_2(t)$, e per ogni $s\in[0,1]$ si abbia $\vxi(s,a)=\vxi(s,b)$.
+	Siano $\vphi_1,\vphi_2\colon[a,b]\to A\subset\R^n$ due parametrizzazioni di curve chiuse e $\cont[2]{[a,b]}$.
+	La curva $\vphi_1$ si dice \emph{omotopica} a $\vphi_2$ se esiste una mappa (detta appunto \emph{omotopia}) $\vxi\colon[0,1]\times[a,b]\to A$, di classe $\cclass[2]$, tale per cui $\vxi(0,t)=\vphi_1(t)$ e $\vxi(1,t)=\vphi_2(t)$, e per ogni $s\in[0,1]$ si abbia $\vxi(s,a)=\vxi(s,b)$.
 \end{definizione}
 La mappa dell'omotopia tra le due curve si può vedere più facilmente come una deformazione continua (quindi ``senza strappi'') e differenziabile che trasforma curve chiuse in curve chiuse nello stesso insieme.
 \begin{definizione} \label{d:insieme-semplicemente-connesso}
-	Un insieme $A\subseteq\R^n$ si dice \emph{semplicemente connesso} se ogni curva $\vphi\colon[a,b]\to A$, di classe $\cont{2}([a,b])$ e chiusa è omotopica ad un punto in $A$, ossia ad una curva (degenere) costante $\vpsi\colon[a,b]\to A$ per cui $\vpsi(t)=\vec c$, con $\vec c\in A$.
+	Un insieme $A\subseteq\R^n$ si dice \emph{semplicemente connesso} se ogni curva $\vphi\colon[a,b]\to A$, di classe $\cont[2]{[a,b]}$ e chiusa è omotopica ad un punto in $A$, ossia ad una curva (degenere) costante $\vpsi\colon[a,b]\to A$ per cui $\vpsi(t)=\vec c$, con $\vec c\in A$.
 \end{definizione}
 Con queste definizioni possiamo quindi enunciare il seguente importante teorema.
 \begin{teorema}[Lemma di Poincar\'e] \label{t:poincare}
-	Sia $A\subseteq\R^n$ un insieme aperto e semplicemente connesso, e $\omega$ una forma differenziale lineare di classe $\cont{1}(A)$.
+	Sia $A\subseteq\R^n$ un insieme aperto e semplicemente connesso, e $\omega$ una forma differenziale lineare di classe $\cont[1]{A}$.
 	Se $\omega$ è chiusa in $A$, allora è anche esatta in tale insieme.
 \end{teorema}
 La forma vista nell'esempio precedente può non essere esatta in $\R^2\setminus\{\vec 0\}$ perch\'e l'insieme non è semplicemente connesso: ogni curva che circonda l'origine non può essere deformata in un punto (dell'insieme) tramite un'omotopia, perch\'e abbiamo il ``buco'' nell'origine che lo impedisce.
@@ -331,7 +331,7 @@ Vediamo quindi una dimostrazione del lemma di Poincar\'e per questi insiemi stel
 	\begin{equation}
 		F(\vec x)=\int_0^1\sum_{i=1}^na_i\big(\vec x_0+(\vec x-\vec x_0)t\big)(x_i-x_{0,i})\,\dd t.
 	\end{equation}
-	Si ha che $\omega$ è almeno di classe $\cont{1}(A)$, in quanto chiusa, quindi per la sua continuità e per la linearità della derivazione risulta
+	Si ha che $\omega$ è almeno di classe $\cont[1]{A}$, in quanto chiusa, quindi per la sua continuità e per la linearità della derivazione risulta
 	\begin{equation}
 		\begin{split}
 			\drp{F}{x_j}(\vec x)&=\drp{}{x_j}\int_0^1\sum_{i=1}^na_i\big(\vphi(t)\big)(x_i-x_{0,i})\,\dd t=\\
@@ -373,7 +373,7 @@ Ad esempio, prendiamo in $A=\{(x,y)\in\R^2\colon y>x\}$ la forma differenziale
 \begin{equation*}
 	\omega(x,y)=a_1(x,y)\,\dd x+a_2(x,y)\,\dd y=\frac{2xy-2x^2-1}{y-x}\,\dd x+\frac{y-x+1}{y-x}\,\dd y.
 \end{equation*}
-Essa è di classe $\cont{\infty}(A)$, ed è chiusa: infatti
+Essa è di classe $\cont[\infty]{A}$, ed è chiusa: infatti
 \begin{equation}
 	\drp{a_1}{y}(x,y)=\drp{}{y}\bigg(2x-\frac1{y-x}\bigg)=\frac1{(y-x)^2}=\drp{a_2}{x}(x,y).
 \end{equation}

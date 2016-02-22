@@ -21,7 +21,7 @@ Si dice che la funzione $\vec y$ è una soluzione, nell'intervallo $I$, della \e
 \end{itemize}
 \end{definizione}
 Si inizi con il caso più semplice, ossia l'equazione $y'=f(x)$, in cui la funzione $f\colon\R\to\R$ non dipende da $y$. Innanzitutto, se $f$ ha in un punto $x_0$ una discontinuità eliminabile o di prima specie, il problema non si può risolvere, dato che una funzione derivata può avere soltanto discontinuità di seconda specie, come segue dal teorema \ref{t:derivata_solo_disc_seconda_specie}.
-Si può quindi eliminare una parte dei casi patologici, e trattare solo una classe di funzioni, quelle continue nel loro insieme di definizione. Se $f\in\cont{}(I)$, quindi, la \eqref{eq:diff-1} ammette sempre una soluzione. Se prima era possibile non avere soluzioni, però, ora l'equazione $y'=f(x)$ ammette comunque \emph{infinite} soluzioni: infatti tali soluzioni sono tutte le primitive di $f$, di cui chiaramente non ne esiste una soltanto. Bisogna quindi imporre il passaggio della funzione per un certo punto $y(x_0)=y_0$, in modo da avere una soluzione che sia anche unica.
+Si può quindi eliminare una parte dei casi patologici, e trattare solo una classe di funzioni, quelle continue nel loro insieme di definizione. Se $f\in\cont{I}$, quindi, la \eqref{eq:diff-1} ammette sempre una soluzione. Se prima era possibile non avere soluzioni, però, ora l'equazione $y'=f(x)$ ammette comunque \emph{infinite} soluzioni: infatti tali soluzioni sono tutte le primitive di $f$, di cui chiaramente non ne esiste una soltanto. Bisogna quindi imporre il passaggio della funzione per un certo punto $y(x_0)=y_0$, in modo da avere una soluzione che sia anche unica.
 
 \section{Il problema di Cauchy}
 Il problema di ricercare la soluzione (o le soluzioni) dell'equazione \eqref{eq:diff-1} su un intervallo, in modo tale che passino per un punto fissato, detto anche \emph{condizione al contorno}, si traduce formalmente nel sistema
@@ -40,7 +40,7 @@ Siano $\Omega$ un insieme aperto di $\R^{n+1}$, il punto $\big(x_0,\vec y_0)\in\
 \begin{itemize}
 \item Sia dato il problema di Cauchy
 \[\begin{cases}y'=2xy^2\\y(0)=y_0.\end{cases}\]
-Poiché è un polinomio, chiaramente $f\in\cont{\infty}(\R^2)$. La soluzione quindi esiste sempre in un intorno di $x=0$, ed è unica poiché nessuna delle soluzioni ne interseca un'altra in ogni punto in cui è definita. In particolare, la soluzione è la funzione
+Poiché è un polinomio, chiaramente $f\in\cont[\infty]{\R^2}$. La soluzione quindi esiste sempre in un intorno di $x=0$, ed è unica poiché nessuna delle soluzioni ne interseca un'altra in ogni punto in cui è definita. In particolare, la soluzione è la funzione
 \[
 y=\frac{y_0}{1-y_0x^2},
 \]
@@ -51,15 +51,15 @@ La funzione $f$ del problema è continua in tutto $\R^2$, quindi esiste una solu
 \end{itemize}
 La sola continuità di $f$ è sufficiente a garantire l'esistenza, ma sfortunatamente non basta per decretare anche l'\emph{unicità} della soluzione: per questo si avrà bisogno di ipotesi di partenza più restrittive.
 
-Sia $\vec f\colon\R^{n+1}\to\R^n$ continua in $E$, e siano $(x_0,\vec y_0)\in E$ e $x_0\in I$. Se la funzione $\vec y\colon I\to\R^n$ risolve il problema di Cauchy \eqref{pc}, certamente è continua in $I$, poiché la sua derivata esiste per i valori di $x\in I$. Ma allora $\vec f\big(x,\vec y(x)\big)$ è a sua volta continua in $I$, a cui segue che anche $\vec y'$, essendo di fatto uguale a $\vec f$, è continua in $I$. Tutto ciò significa infine che $\vec y\in\cont{1}(I)$: si può applicare quindi il teorema fondamentale del calcolo integrale \ref{t:tfci1}, ottenendo l'uguaglianza
+Sia $\vec f\colon\R^{n+1}\to\R^n$ continua in $E$, e siano $(x_0,\vec y_0)\in E$ e $x_0\in I$. Se la funzione $\vec y\colon I\to\R^n$ risolve il problema di Cauchy \eqref{pc}, certamente è continua in $I$, poiché la sua derivata esiste per i valori di $x\in I$. Ma allora $\vec f\big(x,\vec y(x)\big)$ è a sua volta continua in $I$, a cui segue che anche $\vec y'$, essendo di fatto uguale a $\vec f$, è continua in $I$. Tutto ciò significa infine che $\vec y\in\cont[1]{I}$: si può applicare quindi il teorema fondamentale del calcolo integrale \ref{t:tfci1}, ottenendo l'uguaglianza
 \begin{equation}
 \vec y(x)=\vec y_0+\int_{x_0}^x\vec y'(t)\,\dd t=\vec y_0+\int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t,
 \end{equation}
 valida per ogni $x\in I$.
-Si nota subito che in quest'ultima equazione $\vec y(x_0)=\vec y_0$. Inoltre se $\vec y\in\cont{}(I)$ anche l'integranda è continua, quindi risulta derivando i due membri che $\vec y'(x)=\vec f\big(x,\vec y(x)\big)$, cioè soddisfa il problema di Cauchy!
+Si nota subito che in quest'ultima equazione $\vec y(x_0)=\vec y_0$. Inoltre se $\vec y\in\cont{I}$ anche l'integranda è continua, quindi risulta derivando i due membri che $\vec y'(x)=\vec f\big(x,\vec y(x)\big)$, cioè soddisfa il problema di Cauchy!
 
 \begin{definizione} \label{d:volterra}
-Per ogni funzione $\vec y\in\cont{}(I)$, con $x_0\in I\subseteq\R$, $\vec y_0\in\R^n$ e $\vec f\colon E\subseteq\R^{n+1}\to\R^n$, si definisce l'\emph{operatore integrale di Volterra} come
+Per ogni funzione $\vec y\in\cont{I}$, con $x_0\in I\subseteq\R$, $\vec y_0\in\R^n$ e $\vec f\colon E\subseteq\R^{n+1}\to\R^n$, si definisce l'\emph{operatore integrale di Volterra} come
 \begin{equation} \label{vol}
 \volterra(\vec y)(x)=\vec y_0+\int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t.
 \end{equation}
@@ -116,32 +116,32 @@ Sia $g\colon I\subseteq\R\to\R$ una funzione limitata in $I$:
 \end{proof}
 
 \begin{teorema}[di esistenza e unicità globale] \label{t:E-globale}
-	Sia $S\subseteq\R^{n+1}$ una striscia verticale a base compatta, ossia $S=[a,b]\times\R^n$, e siano $(x_0,\vec y_0)\in S$, $\vec f\colon S\to\R^n$. Se $\vec f\in\cont{}(S)$ e, in $S$, $\vec f$ è lipschitziana rispetto a $\vec y$ e uniformemente rispetto a $x$, allora il problema di Cauchy \eqref{pc} ammette una e una sola soluzione, definita in tutto $[a,b]$.
+	Sia $S\subseteq\R^{n+1}$ una striscia verticale a base compatta, ossia $S=[a,b]\times\R^n$, e siano $(x_0,\vec y_0)\in S$, $\vec f\colon S\to\R^n$. Se $\vec f\in\cont{S}$ e, in $S$, $\vec f$ è lipschitziana rispetto a $\vec y$ e uniformemente rispetto a $x$, allora il problema di Cauchy \eqref{pc} ammette una e una sola soluzione, definita in tutto $[a,b]$.
 \end{teorema}
 \begin{proof}
-Si consideri soltanto l'intervallo $[x_0,b]$: si definisce $h=\min\{b-x_0,\frac1{2L}\}$, dove $L$ è la costante di Lipschitz per $\vec f$ rispetto alla variabile $\vec y$, e l'intervallo $I_0=[x_0,x_0+h]$. Lo spazio $X=\big(\cont{}_{\R^n}(I_0),d_\infty\big)$, con la distanza $d_{\infty}=\norm{\vec f-\vec g}_{\infty,I_0}$, è uno spazio metrico completo. Per ogni $\vec y\in X$, si applichi l'operatore di Volterra: $\volterra(\vec y)\in\cont{}(I_0)$, quindi l'operatore è una mappa $\volterra\colon X\to X$. In questo spazio metrico, date due funzioni $\vec y,\vec z\in X$, la norma della loro differenza è per ogni $x\in I_0$
+Si consideri soltanto l'intervallo $[x_0,b]$: si definisce $h=\min\{b-x_0,\frac1{2L}\}$, dove $L$ è la costante di Lipschitz per $\vec f$ rispetto alla variabile $\vec y$, e l'intervallo $I_0=[x_0,x_0+h]$. Lo spazio $X=\big(\cont{I_0},d_\infty\big)$, con la distanza $d_{\infty}=\norm{\vec f-\vec g}_{\infty,I_0}$, è uno spazio metrico completo. Per ogni $\vec y\in X$, si applichi l'operatore di Volterra: $\volterra(\vec y)\in\cont{I_0}$, quindi l'operatore è una mappa $\volterra\colon X\to X$. In questo spazio metrico, date due funzioni $\vec y,\vec z\in X$, la norma della loro differenza è per ogni $x\in I_0$
 \begin{align*}
 &\norm{\volterra(\vec y)(x)-\volterra(\vec z)(x)}=\\
-&=\Big\|\int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t-\int_{x_0}^x\vec f\big(t,\vec z(t)\big)\,\dd t\Big\|=\\
-&=\Big\|\int_{x_0}^x\Big[\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)\Big]\,\dd t\Big\|,
+&=\norm[\bigg]{\int_{x_0}^x\vec f\big(t,\vec y(t)\big)\,\dd t-\int_{x_0}^x\vec f\big(t,\vec z(t)\big)\,\dd t}=\\
+&=\norm[\bigg]{\int_{x_0}^x\Big[\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)\Big]\,\dd t},
 \end{align*}
 in cui la norma si intende in $\R^n$. Poiché in $I_0$ si ha sempre $x\geq x_0$, l'integrale è sempre positivo, quindi
 \begin{align*}
-&\Big\|\int_{x_0}^x\Big[\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)\Big]\,\dd t\Big\|\leq\\
-&\leq\int_{x_0}^x\norm{\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)}\,\dd t\leq\\
-&\leq\int_{x_0}^xL\norm{\vec y(t)-\vec z(t)}\,\dd t\leq\\
-&\leq L\int_{x_0}^x\sup_{x\in I_0}\norm{\vec y(t)-\vec z(t)}\,\dd t=\\
-&=L\int_{x_0}^x\norm{\vec y-\vec z}_{\infty,I_0}\,\dd t=\\
-&=L\norm{\vec y-\vec z}_{\infty,I_0}(x-x_0)\leq\\
-&\leq L\norm{\vec y-\vec z}_{\infty,I_0}h\leq\\
-&\leq\frac12\norm{\vec y-\vec z}_{\infty,I_0}.
+	&\norm[\bigg]{\int_{x_0}^x\Big[\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)\Big]\,\dd t}\leq\\
+	&\leq\int_{x_0}^x\norm[\big]{\vec f\big(t,\vec y(t)\big)-\vec f\big(t,\vec z(t)\big)}\,\dd t\leq\\
+	&\leq\int_{x_0}^xL\norm{\vec y(t)-\vec z(t)}\,\dd t\leq\\
+	&\leq L\int_{x_0}^x\sup_{x\in I_0}\norm{\vec y(t)-\vec z(t)}\,\dd t=\\
+	&=L\int_{x_0}^x\norm{\vec y-\vec z}_{\infty,I_0}\,\dd t=\\
+	&=L\norm{\vec y-\vec z}_{\infty,I_0}(x-x_0)\leq\\
+	&\leq L\norm{\vec y-\vec z}_{\infty,I_0}h\leq\\
+	&\leq\frac12\norm{\vec y-\vec z}_{\infty,I_0}.
 \end{align*}
 Questa disuguaglianza vale pe ogni $x\in I_0$, quindi passando all'estremo superiore in $x$ si ottiene che
 \[
 \sup_{x\in I_0}\norm{\volterra(\vec y)(x)-\volterra(\vec z)(x)}=\norm{\volterra(\vec y)-\volterra(\vec z)}_{\infty,I_0}\leq\frac12\norm{\vec y-\vec z}_{\infty,I_0}
 \]
 e ciò mostra che l'operatore $\volterra$ è una contrazione. Allora esiste, ed è unico, un punto fisso in $X$, cioè una funzione continua $\vec y^*\colon I_0\to\R^n$ che risolve $\volterra(\vec y^*)=\vec y^*$, che quindi è anche soluzione del problema di Cauchy in $[x_0,x_0+h]$.
-Se ora $x_0+h=b$, il problema ha una soluzione unica in tutto $[x_0,b]$, altrimenti si pone un nuovo problema di Cauchy nell'intervallo $[x_0+h,b]$ con un altro ``passo'' lungo almeno $1/2L$. Con un numero finito di queste iterazioni si giunge necessariamente a $b$, quindi si arriva in ogni caso a coprire l'intero $[x_0,b]$, poiché è compatto, e per il lemma \ref{l:saldatura} precedente la soluzione deve essere la medesima funzione, estesa all'intervallo ogni volta più ampio. Analogamente si ripete il procedimento in $[a,x_0]$, e sempre per il \ref{l:saldatura} la soluzione rimane la medesima. Si trova alla fine una soluzione unica al problema di Cauchy nell'intero $[a,b]$, e il teorema è quindi dimostrato.
+Se ora $x_0+h=b$, il problema ha una soluzione unica in tutto $[x_0,b]$, altrimenti si pone un nuovo problema di Cauchy nell'intervallo $[x_0+h,b]$ con un altro ``passo'' lungo almeno $\frac1{2L}$. Con un numero finito di queste iterazioni si giunge necessariamente a $b$, quindi si arriva in ogni caso a coprire l'intero $[x_0,b]$, poiché è compatto, e per il lemma \ref{l:saldatura} precedente la soluzione deve essere la medesima funzione, estesa all'intervallo ogni volta più ampio. Analogamente si ripete il procedimento in $[a,x_0]$, e sempre per il \ref{l:saldatura} la soluzione rimane la medesima. Si trova alla fine una soluzione unica al problema di Cauchy nell'intero $[a,b]$, e il teorema è quindi dimostrato.
 \end{proof}
 
 \begin{corollario}
@@ -152,7 +152,7 @@ Sotto ipotesi più ``leggere'' del teorema precedente, l'esistenza e unicità de
 \begin{teorema}[di esistenza e unicità locale] \label{t:E-locale}
 Siano $\Omega\subseteq\R^{n+1}$ aperto, $\vec f\colon\Omega\to\R^n$, $(x_0,\vec y_0)\in\Omega$, con il problema di Cauchy \eqref{pc}. Se esiste un intorno di $(x_0,\vec y_0)$ contenuto in $\Omega$ in cui $\vec f$ è continua e lipschitziana rispetto a $\vec y$ uniformemente rispetto a $x$, allora esiste un intorno $\mathcal U(x_0)$ in cui è definita ed è unica una soluzione del problema di Cauchy.
 \end{teorema}
-Se $\vec f\in\cont{1}(\Omega)$, allora si dimostra subito che ogni problema di Cauchy associato ammette un'unica soluzione locale: infatti le derivate di $\vec f$ sono continue, quindi anche limitate, da cui segue la lispchitzianità di $\vec f$ almeno rispetto a $\vec y$.
+Se $\vec f\in\cont[1]{\Omega}$, allora si dimostra subito che ogni problema di Cauchy associato ammette un'unica soluzione locale: infatti le derivate di $\vec f$ sono continue, quindi anche limitate, da cui segue la lispchitzianità di $\vec f$ almeno rispetto a $\vec y$.
 
 \section{Equazioni notevoli}
 \paragraph{Equazioni a variabili separabili}
@@ -206,7 +206,7 @@ Lasciando le equazioni differenziali, sempre ordinarie, del primo ordine soltant
 y^{(k)}=f(x,y,y',\dots,y^{(k-1)}),
 \end{equation}
 restando per semplicità nell'ambito delle funzioni scalari $y\colon I\subseteq\R\to\R$, con quindi $f\colon E\subseteq\R^{1+k}\to\R$, scritta in forma normale.
-Se $f\in\cont{}(E)$, allora la $k$-esima derivata della soluzione $y$ è continua, quindi ogni soluzione dell'equazione è di classe $\cont{k}(E)$.
+Se $f\in\cont{E}$, allora la $k$-esima derivata della soluzione $y$ è continua, quindi ogni soluzione dell'equazione è di classe $\cont[k]{E}$.
 
 Se $y$ è una soluzione della \eqref{eq:diff-k}, da essa si può costruire un'altra funzione $\vec z\colon I\to\R^k$ definita come
 \[
@@ -256,7 +256,7 @@ Si possono quindi formulare i due teoremi, del tutto analogi ai teoremi \ref{t:E
 Sia $S\subseteq\R^{k+1}$ una striscia verticale, ossia $S=I\times\R^k$ (con $I$ intervallo di qualunque genere), e siano $x_0\in I$ e $\valpha\in\R^k$, cioè $(x_0,\valpha)\in S$. Data $f\colon S\to\R$ continua in $S$ e lipschitziana rispetto alla variabile $\vec y\in\R^k$ e uniformemente rispetto a $x$, in ogni sottostriscia compatta $[a,b]\times\R^k\subseteq S$, il problema di Cauchy \eqref{pck} ammette una e una sola soluzione, definita in tutto $I$.
 \end{teorema}
 \begin{teorema}[di esistenza e unicità locale]
-Siano $\Omega\subseteq\R^{k+1}$ aperto, $f\colon\Omega\to\R$, $(x_0,\valpha)\in\Omega$, con il problema di Cauchy \eqref{pck}. Se $f\in\cont{1}(\Omega)$, esiste un opportuno intorno di $x_0$ in cui è definita una soluzione, unica, del problema di Cauchy.
+Siano $\Omega\subseteq\R^{k+1}$ aperto, $f\colon\Omega\to\R$, $(x_0,\valpha)\in\Omega$, con il problema di Cauchy \eqref{pck}. Se $f\in\cont[1]{\Omega}$, esiste un opportuno intorno di $x_0$ in cui è definita una soluzione, unica, del problema di Cauchy.
 \end{teorema}
 
 \section{Equazioni lineari}
@@ -272,12 +272,12 @@ Si introduce quindi l'\emph{operatore differenziale}
 \begin{equation} \label{eq:L}
 \lin\colon y\mapsto y^{(k)}+\sum_{j=0}^{k-1}a_jy^{(j)},
 \end{equation}
-che per come è stato costruito è lineare. Inoltre $\lin\colon\cont{k}(I)\to\cont{0}(I)$, quindi $\lin$ è un'applicazione lineare tra due spazi vettoriali (di dimensione infinita). Si riassume dunque la \eqref{eq:diff-lin} nella forma $\lin(y)=b$.
+che per come è stato costruito è lineare. Inoltre $\lin\colon\cont[k]{I}\to\cont[0]{I}$, quindi $\lin$ è un'applicazione lineare tra due spazi vettoriali (di dimensione infinita). Si riassume dunque la \eqref{eq:diff-lin} nella forma $\lin(y)=b$.
 Scrivendo l'equazione in forma normale, risulta
 \[
 y^{(k)}(x)=b(x)-\sum_{j=0}^{k-1}a_j(x)y^{(j)}(x)=f(x,y,y',\dots,y^{(k-1)}).
 \]
-Si ha che $f\in\cont{}(I\times\R^k)$ e in ogni $[c,d]\subseteq I$, per ogni $j\in\{0,1,\dots,k-1\}$ la derivata $\partial f/\partial y^{(j)}=-a_j(x)$ è limitata, perché ogni $a_j(x)$ è continua in $I$; allora $f$ è lipschitziana in ogni sottoinsieme compatto di $I$ rispetto alle variabili $\vec y$, e uniformemente in $x$, quindi il problema di Cauchy
+Si ha che $f\in\cont{I\times\R^k}$ e in ogni $[c,d]\subseteq I$, per ogni $j\in\{0,1,\dots,k-1\}$ la derivata $\partial f/\partial y^{(j)}=-a_j(x)$ è limitata, perché ogni $a_j(x)$ è continua in $I$; allora $f$ è lipschitziana in ogni sottoinsieme compatto di $I$ rispetto alle variabili $\vec y$, e uniformemente in $x$, quindi il problema di Cauchy
 \begin{equation} \label{pcL}
 \begin{cases}
 \lin(y)=b\\
@@ -290,9 +290,9 @@ y^{(k-1)}(x_0)=\alpha_k
 ammette una e una sola soluzione in $I$.
 
 \section{Equazioni lineari omogenee}
-Secondo la notazione appena introdotta, un'equazione omogenea è nella forma $\lin(y)=0$. L'insieme delle soluzioni è quindi composto dalle funzioni $y$ che annullano l'operatore $\lin$, quindi è $\Ker\lin$, che è senza dubbio un sottospazio vettoriale di $\cont{k}(I)$.
+Secondo la notazione appena introdotta, un'equazione omogenea è nella forma $\lin(y)=0$. L'insieme delle soluzioni è quindi composto dalle funzioni $y$ che annullano l'operatore $\lin$, quindi è $\Ker\lin$, che è senza dubbio un sottospazio vettoriale di $\cont[k]{I}$.
 \begin{teorema} \label{t:k-soluzioni}
-Sia $\lin\colon\cont{k}(I)\to\cont{}(I)$ definito come nella \eqref{eq:L}, con $a_j\in\cont{}(I)$ $\forall j\in\{0,1,\dots,k-1\}$. Allora
+Sia $\lin\colon\cont[k]{I}\to\cont{I}$ definito come nella \eqref{eq:L}, con $a_j\in\cont{I}$ $\forall j\in\{0,1,\dots,k-1\}$. Allora
 \[
 \dim\Ker\lin=k.
 \]
@@ -365,13 +365,13 @@ u'_1			&u'_2			&\cdots	&u'_k\\
 u^{(k-1)}_1	&u^{(k-1)}_2		&\cdots	&u^{(k-1)}_k
 \end{bmatrix}
 \]
-detta \emph{matrice wronskiana}, in cui tutte le funzioni sono di classe (almeno) $\cont{1}(I)$; in particolare, le funzioni della $p$-esima riga contando dal fondo sono di classe $\cont{p}(I)$, fino alla prima riga di classe $\cont{k}(I)$. Allora si ha $\det W(x)\in\cont{1}(I)$.
+detta \emph{matrice wronskiana}, in cui tutte le funzioni sono di classe (almeno) $\cont[1]{I}$; in particolare, le funzioni della $p$-esima riga contando dal fondo sono di classe $\cont[p]{I}$, fino alla prima riga di classe $\cont[k]{I}$. Allora si ha $\det W(x)\in\cont[1]{I}$.
 Con l'utilizzo di questa matrice, l'insieme $\{u_1,\dots,u_k\}$ è dunque linearmente indipendente se e solo se $\det W(x)\neq 0$, per qualsiasi punto $x\in I$. Alternativamente, si ricerca se $\exists x_0\in I$ tale per cui $\det W(x_0)\neq 0$, dato che se il wronskiano non si annulla in un punto allora non si annulla in tutto $I$\footnote{È errato invece implicare la dipendenza lineare delle funzioni dal fatto che $\det W(x)=0$ ovunque.}.
 Si può eventualmente restringere l'intervallo $I$ ad un sottoinsieme $J\subset I$ in cui il wronskiano non sia mai nullo, nel caso esso si annullasse in qualche $x_0\in I$ (ma ovviamente $\notin J$!): basterà eliminare tali punti da $I$.
 Una volta note le $k$ soluzioni linearmente indipendenti di $\lin(y)=0$ in un intervallo $I$, si può trovare almeno una soluzione particolare tramite il metodo seguente.
 
 \subsection*{Metodo di variazione delle costanti}
-Esistono opportune funzioni $c_1,\dots,c_k\colon I\to\R$ di classe $\cont{1}(I)$ tali che applicando $\lin$ a $y_p(x)=c_1(x)u_1(x)+c_2(x)u_2(x)+\dots+c_k(x)u_k(x)$ si ottiene la funzione nulla. Un ``buon'' insieme di queste soluzioni $c_j$ ($j=1,\dots,k$) sono quelle che soddisfano il sistema lineare
+Esistono opportune funzioni $c_1,\dots,c_k\colon I\to\R$ di classe $\cont[1]{I}$ tali che applicando $\lin$ a $y_p(x)=c_1(x)u_1(x)+c_2(x)u_2(x)+\dots+c_k(x)u_k(x)$ si ottiene la funzione nulla. Un ``buon'' insieme di queste soluzioni $c_j$ ($j=1,\dots,k$) sono quelle che soddisfano il sistema lineare
 \begin{equation}
 W(x)\begin{bmatrix}c_1'(x)\\c_2'(x)\\\vdots\\c'_{k-1}(x)\\c_k'(x)\end{bmatrix}=
 \begin{bmatrix}0\\0\\\vdots\\0\\b(x)\end{bmatrix}.
@@ -382,7 +382,7 @@ Si ha la forma lineare completa
 \begin{equation} \label{eq:lin-2}
 y''(x)+a_1(x)y'(x)+a_0(x)y(x)=b(x).
 \end{equation}
-Conoscendo due soluzioni $u_1$ e $u_2$ della omogenea associata, la soluzione particolare sarà una loro combinazione lineare nella forma $y_p(x)=c_1(x)u_1(x)+c_2(x)u_2(x)$ (d'ora in poi sarà omessa per comodità, a meno di ambiguità, la scrittura $(x)$ per indicare la variabile indipendente delle funzioni, che sarà per tutte $x$). La sua derivata prima esiste, perché è di classe $\cont{1}(I)$, ed è $y'_p=c'_1u_1+c_1u'_1+c'_2u_2+c_2u'_2$: si impone che $c'_1u_1+c'_2u_2=0$ per ottenere una forma più semplice della derivata seconda, che è $y''_p=c'_1u'_1+c_1u''_1+c'_2u'_2+c_2u''_2$. Si richiede allora l'uguaglianza
+Conoscendo due soluzioni $u_1$ e $u_2$ della omogenea associata, la soluzione particolare sarà una loro combinazione lineare nella forma $y_p(x)=c_1(x)u_1(x)+c_2(x)u_2(x)$ (d'ora in poi sarà omessa per comodità, a meno di ambiguità, la scrittura $(x)$ per indicare la variabile indipendente delle funzioni, che sarà per tutte $x$). La sua derivata prima esiste, perché è di classe $\cont[1]{I}$, ed è $y'_p=c'_1u_1+c_1u'_1+c'_2u_2+c_2u'_2$: si impone che $c'_1u_1+c'_2u_2=0$ per ottenere una forma più semplice della derivata seconda, che è $y''_p=c'_1u'_1+c_1u''_1+c'_2u'_2+c_2u''_2$. Si richiede allora l'uguaglianza
 \[\begin{split}
 b	&=y''_p+a_1y'_p+a_0y_p=\\
 	&=c'_1u'_1+c_1u''_1+c'_2u'_2+c_2u''_2+a_1(c_1u'_1+c_2u'_2)+a_0(c_1u_1+c_2u_2)=\\
@@ -419,7 +419,7 @@ Sono di questo tipo le equazioni nella forma
 \begin{equation} \label{eq:eulero}
 x^ky^{(k)}(x)+a_{k-1}x^{k-1}y^{(k-1)}(x)+\dots+a_1xy'(x)+a_0y(x)=b(x)
 \end{equation}
-con $a_{k-1},\dots,a_1,a_0$ costanti reali, e $b\in\cont{}(I)$.
+con $a_{k-1},\dots,a_1,a_0$ costanti reali, e $b\in\cont{I}$.
 Si nota subito che per portare l'equazione in forma normale è necessario dividere i termini per $x^k$, introducendo un problema non trascurabile in $x=0$: bisognerà alla fine infatti trattare con cura la soluzione in questo punto. Si considerano all'inizio le soluzioni in $(0,+\infty)$ e $(-\infty,0)$: per $x>0$ si effettua la sostituzione $x=e^t$, e chiamando $z(t)=y(e^t)$ si ottiene (esplicitando la variabile rispetto a cui si derivano le funzioni):
 \[
 y'(x)=z'(t)=\drp{z}{x}(t)=\drp{z}{t}(t)\drp{t}{x}(t)=z'(t)\frac1{e^t}=\frac{z'(t)}{x}
@@ -447,7 +447,7 @@ Nell'intervallo $(-\infty,0)$ si sostituisce poi $x=-e^t$: con calcoli analoghi 
 Un metodo alternativo è porre $y(x)=x^\lambda$, con $\lambda\in\R$: si deriva quanto serve e si sostituisce nell'equazione. Per la risoluzione dell'omogenea, si può infine dividere tutto per $x^\lambda$, che essendo $x>0$ non è mai nullo, e si risolve l'equazione in $\lambda$ per trovare i suoi valori. Sulla strada del metodo precedente, nel caso di radici multiple, per l'equazione in $z(t)$, si aggiungerebbe $t,t^2,\dots$ a ciascun termine corrispondente alla radice multipla: allora in questo caso, se si trovano delle radici $\gamma$ coincidenti si hanno i termini $x^\gamma,x^\gamma\log x,x^\gamma\log^2 x,\dots x^\gamma\log^{r-1}x$ quante volte è la molteplicità $r$ della radice $\gamma$. Nel caso di radici complesse coniugate $\alpha+i\beta$, si ha invece la forma $x^\alpha\big[\cos(\beta\log x)+\sin(\beta\log x)\big]$, moltiplicando eventualmente per $\log x$ nel caso di radici multiple, come prima.
 Per determinare la soluzione particolare, seguendo le linee del metodo di somiglianza, si ricordi soltanto di trattare ogni $x$ come un termine $e^t$: in questo modo è facile vedere che quando normalmente bisognerebbe moltiplicare per una potenza di $x$, qui si moltiplica per una (corrispettiva) potenza di $\log x$.
 
-Ora bisogna sistemare il problema in $x=0$. La soluzione deve essere innanzitutto cercata nell'intervallo in $(0,+\infty)$ se $x_0>0$, in $(-\infty,0)$ se $x_0<0$. Trovata la soluzione nel caso principale, essa sarà estendibile in $x=0$ se il prolungamento trovato (tramite l'altra soluzione nell'altro intervallo) è di classe $\cont{k}$. Una volta trovato, la funzione si estende naturalmente a $(-\infty,0)$ in cui è già definita e di classe $\cont{k}$, cioè sarà definita in tutto $\R$. Notare che il prolungamento non è necessariamente unico!
+Ora bisogna sistemare il problema in $x=0$. La soluzione deve essere innanzitutto cercata nell'intervallo in $(0,+\infty)$ se $x_0>0$, in $(-\infty,0)$ se $x_0<0$. Trovata la soluzione nel caso principale, essa sarà estendibile in $x=0$ se il prolungamento trovato (tramite l'altra soluzione nell'altro intervallo) è di classe $\cclass[k]$. Una volta trovato, la funzione si estende naturalmente a $(-\infty,0)$ in cui è già definita e di classe $\cclass[k]$, cioè sarà definita in tutto $\R$. Notare che il prolungamento non è necessariamente unico!
 Se il termine noto $b$ non è continuo in tutto $\R$ ma in un sottoinsieme $I$, bisognerà restringere opportunamente l'intervallo in cui ricercare le soluzioni.
 \paragraph{Esempio}
 Si determini per quali $a,b\in\R$ il problema di Cauchy

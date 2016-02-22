@@ -39,17 +39,17 @@ B(p,r)=\{x\in X\colon d(x,p)<r\}.
 \end{definizione}
 \paragraph{Esempi}
 \begin{itemize}
-	\item In $(\R,|\cdot|)$, gli intorni sono della forma $B=\{x\in\R\colon|x-p|<r\}$, che è l'intervallo aperto $(p-r,p+r)$ (figura \ref{fig:intorno-circolare-r1}).
+	\item In $(\R,\abs{\cdot})$, gli intorni sono della forma $B=\{x\in\R\colon\abs{x-p}<r\}$, che è l'intervallo aperto $(p-r,p+r)$ (figura \ref{fig:intorno-circolare-r1}).
 		\input{grafici/intorno-circolare-r1}
 	\item In $(\R^2,\norm{\cdot})$, gli intorni sono della forma $B=\{\vec x\in\R^2\colon\norm{\vec x-\vec p}<r\}$, che rappresenta un cerchio, privato della circonferenza, di centro $p$ e raggio $r$ (figura \ref{fig:B-circ}).
 		\input{grafici/intorno-circolare-r2}
-\item In $(\R^3,\norm{\cdot})$, analogamente al punto precedente, gli intorni sono delle sfere di centro $p$ e raggio $r$, private della superficie sferica.
-\item Con la distanza $d_\infty$, l'intorno $B(\vec 0,r)=\big\{\vec x\in\R^2\colon\max\{\abs{x_1},\abs{x_2}\}<r\big\}$ ha la forma di un quadrato di lato $2r$ centrato nell'origine (figura \ref{fig:B-dinfty}).
-\input{grafici/intorno-dinfty-r2}
-\item Con la distanza $d_1$, l'intorno $B(\vec 0,r)=\{\vec x\in\R^2\colon\abs{x_1}+\abs{x_2}<r\}$ ha la forma di un quadrato ruotato di $\pi/4$, di diagonale $2r$ e centrato nell'origine (figura \ref{fig:B-d1}).
-\input{grafici/intorno-d1-r2}
-\item Nello spazio $X=\{\phi\colon[a,b]\to\R\colon\phi\text{ è limitata}\}$, con la distanza $d_*$, un intorno di una funzione $f$ è lo spazio limitato dalle funzioni $f-r$ e $f+r$, escluse: $B(f,r)=\{g\in X\colon\sup_{x\in[a,b]}\abs{g(x)-f(x)}<r\}$ (figura \ref{fig:B-d*}).
-\input{grafici/intorno-funzione}
+	\item In $(\R^3,\norm{\cdot})$, analogamente al punto precedente, gli intorni sono delle sfere di centro $p$ e raggio $r$, private della superficie sferica.
+	\item Con la distanza $d_\infty$, l'intorno $B(\vec 0,r)=\{\vec x\in\R^2\colon\max\{\abs{x_1},\abs{x_2}\}<r\}$ ha la forma di un quadrato di lato $2r$ centrato nell'origine (figura \ref{fig:B-dinfty}).
+	\input{grafici/intorno-dinfty-r2}
+	\item Con la distanza $d_1$, l'intorno $B(\vec 0,r)=\{\vec x\in\R^2\colon\abs{x_1}+\abs{x_2}<r\}$ ha la forma di un quadrato ruotato di $\pi/4$, di diagonale $2r$ e centrato nell'origine (figura \ref{fig:B-d1}).
+	\input{grafici/intorno-d1-r2}
+	\item Nello spazio $X=\{\phi\colon[a,b]\to\R\colon\phi\text{ è limitata}\}$, con la distanza $d_*$, un intorno di una funzione $f$ è lo spazio limitato dalle funzioni $f-r$ e $f+r$, escluse: $B(f,r)=\{g\in X\colon\sup_{x\in[a,b]}\abs{g(x)-f(x)}<r\}$ (figura \ref{fig:B-d*}).
+	\input{grafici/intorno-funzione}
 \end{itemize}
 
 \begin{teorema}[Proprietà di Hausdorff]
@@ -60,7 +60,7 @@ B(p,r_1)\cap B(q,r_2)=\emptyset.
 \]
 \end{teorema}
 \begin{proof}
-Sia $d$ la distanza tra i due punti $p,q$. Definito $r_1=r_2=\sfrac{d}{3}$ le due bolle hanno intersezione vuota. In generale, qualunque coppia di raggi la cui somma sia minore della distanza dei due punti è adatta a dimostrare il teorema.
+	Sia $d$ la distanza tra i due punti $p,q$. Definito $r_1=r_2=\frac{d}3$ le due bolle hanno intersezione vuota. In generale, qualunque coppia di raggi la cui somma sia minore della distanza dei due punti è adatta a dimostrare il teorema.
 \end{proof}
 
 \section{Classificazione dei punti}
@@ -69,34 +69,34 @@ Siano $(X,d)$ uno spazio metrico e $A\subseteq X$ un suo sottoinsieme. Il punto 
 \begin{enumerate}
 \item \emph{interno} ad $A$ se esiste una bolla, centrata in $p$, tutta contenuta in tale insieme:
 \[
-\exists r>0\colon B(p,r)\subset A;
+	\exists r>0\colon B(p,r)\subset A;
 \]
 \item \emph{esterno} ad $A$ se esiste una bolla, centrata in $p$, tutta contenuta nel complementare di tale insieme:
 \[
-\exists r>0\colon B(p,r)\subset A^c;
+	\exists r>0\colon B(p,r)\subset\compl{A};
 \]
 \item \emph{di frontiera} se non è interno né esterno, ossia se ogni bolla centrata in $p$ contiene sia punti di $A$ sia del suo complementare:
 \[
-\forall r>0,\;B(p,r)\cap A\neq\emptyset\text{ e }B(p,r)\cap A^c\neq\emptyset.
+	\forall r>0,\ B(p,r)\cap A\neq\emptyset\qtext{e}B(p,r)\cap\compl{A}\neq\emptyset.
 \]
 \end{enumerate}
 \end{definizione}
-Questa definizione è disgiuntiva ed esaustiva, perché ogni punto rientra sempre in una soltanto delle tre categorie.
-L'insieme dei punti interni di $A$ si chiama \emph{interno} e si indica con $\mathring A$, che non coincide necessariamente con l'insieme stesso. L'insieme dei punti di frontiera, che possono o meno appartenere all'insieme (non si può stabilire a priori) si chiama \emph{frontiera} e si indica con $\partial A$.
+	Questa definizione è disgiuntiva ed esaustiva, perché ogni punto rientra sempre in una soltanto delle tre categorie.
+	L'insieme dei punti interni di $A$ si chiama \emph{interno} e si indica con $\interior{A}$, che non coincide necessariamente con l'insieme stesso. L'insieme dei punti di frontiera, che possono o meno appartenere all'insieme (non si può stabilire a priori) si chiama \emph{frontiera} e si indica con $\boundary A$.
 \paragraph{Esempi}
 \begin{itemize}
 \item In ogni spazio metrico $(X,d)$, l'insieme $X$ ha solo punti interni.
 \item Ogni punto è esterno ad un insieme vuoto.
 \item L'interno di un intorno coincide \emph{sempre} con l'intorno stesso.
-\item La frontiera di un intorno $B(\vec p,r)\subset\R^2$ è la circonferenza di raggio $r$, centrata in $\vec p$, cioè $\partial B=\{\vec x\in\R^2\colon\norm{\vec x-\vec p}=r\}$.
-\item La frontiera dello stesso insieme del punto precedente, ma in $\R^3$, quindi il cerchio $\{\vec x\in\R^3\colon(x_1-p_1)^2+(x_2-p_2)^2<r^2,\;x_3=p_3\}\subset\R^3$ è \emph{l'insieme stesso}, e non più la sua circonferenza.
+\item La frontiera di un intorno $B(\vec p,r)\subset\R^2$ è la circonferenza di raggio $r$, centrata in $\vec p$, cioè $\boundary B=\{\vec x\in\R^2\colon\norm{\vec x-\vec p}=r\}$.
+\item La frontiera dello stesso insieme del punto precedente, ma in $\R^3$, quindi il cerchio $\{\vec x\in\R^3\colon(x_1-p_1)^2+(x_2-p_2)^2<r^2,\ x_3=p_3\}\subset\R^3$ è \emph{l'insieme stesso}, e non più la sua circonferenza.
 \item La frontiera di $\Q\subset\R$ è proprio $\R$, perché ogni intorno di un punto razionale contiene infiniti altri punti razionali e irrazionali (gli irrazionali formano il complementare di $\Q$ rispetto ad $\R$). Analogamente, $\R$ è anche la frontiera di $\R\setminus\Q$.
-\item Con la metrica discreta, se $x\in A$, allora $B(x,1)=\{x\}\subseteq A$, mentre se $y\in A^c$ allora $B(y,1)=\{y\}\subseteq A^c$, quindi ogni punto di un insieme è ad esso interno, mentre ogni punto del complementare è esterno. Quindi la frontiera di un insieme è sempre vuota, anche perché qualsiasi intorno di raggio $r\leq 1$ contiene soltanto il punto, che è il centro della bolla, quindi nessun altro punto del'insieme o del complementare.
+\item Con la metrica discreta, se $x\in A$, allora $B(x,1)=\{x\}\subseteq A$, mentre se $y\in\compl{A}$ allora $B(y,1)=\{y\}\subseteq\compl{A}$, quindi ogni punto di un insieme è ad esso interno, mentre ogni punto del complementare è esterno. Quindi la frontiera di un insieme è sempre vuota, anche perché qualsiasi intorno di raggio $r\leq 1$ contiene soltanto il punto, che è il centro della bolla, quindi nessun altro punto del'insieme o del complementare.
 \end{itemize}
 \begin{osservazione}
 Fissati uno spazio metrico $(X,d)$ e un suo sottoinsieme $A$, se un punto $p\in X$ non è esterno a tale insieme, allora ogni bolla centrata in $p$ di qualsiasi raggio non è un sottoinsieme del complementare di $A$, cioè la sua intersezione con $A$ non è mai vuota:
 \[
-\forall r>0,\;B(p,r)\not\subset A^c,\text{ vale a dire }B(p,r)\cap A\neq\emptyset.
+	\forall r>0,\ B(p,r)\not\subset\compl{A},\text{ vale a dire }B(p,r)\cap A\neq\emptyset.
 \]
 \end{osservazione}
 \begin{definizione}
@@ -104,11 +104,11 @@ Siano $(X,d)$ uno spazio metrico e $A\subseteq X$ un suo sottoinsieme. Il punto 
 \begin{itemize}
 \item \emph{di accumulazione} per $A$, se ogni bolla centrata in $p$ contiene punti di $A$, oltre al centro stesso della bolla:
 \[
-\forall r>0,\;B(p,r)\cap A\setminus\{p\}\neq\emptyset;
+\forall r>0,\ B(p,r)\cap A\setminus\{p\}\neq\emptyset;
 \]
 \item \emph{isolato}, se esiste almeno una bolla centrata nel punto che non contiene altri punti dell'insieme, oltre a $p$ stesso:
 \[
-\exists r>0\colon B(p,r)\cap A=\{p\}.% uguale a {p} o al vuoto????????????????????
+\exists r>0\colon B(p,r)\cap A=\{p\}.% uguale a {p} o al vuoto?
 \]
 \end{itemize}
 \end{definizione}
@@ -116,7 +116,7 @@ L'insieme dei punti di accumulazione di $A$ si chiama \emph{derivato} e si indic
 \begin{teorema}
 Siano $(X,d)$ uno spazio metrico e $A\subseteq X$ un suo sottoinsieme. Se $p\in A'$, l'intersezione tra una bolla di qualsiasi raggio e l'insieme $A$ ha cardinalità infinita.
 \[
-\forall r>0,\;|B(p,r)\cap A|=\infty.
+	\forall r>0,\ \card{B(p,r)\cap A}=\infty.
 \]
 \end{teorema}
 \begin{proof}
@@ -137,8 +137,8 @@ In ogni spazio metrico, il derivato di qualsiasi insieme di cardinalità finita 
 \label{d:chiuso-se-c-aperto}
 Siano $(X,d)$ uno spazio metrico e $A\subseteq X$ un suo sottoinsieme. $A$ si dice
 \begin{itemize}
-\item \emph{aperto}, se tutti i suoi punti sono interni, quindi $\mathring{A}=A$;
-\item \emph{chiuso}, se il suo complementare $A^c$ è aperto.
+\item \emph{aperto}, se tutti i suoi punti sono interni, quindi $\interior{A}=A$;
+\item \emph{chiuso}, se il suo complementare $\compl{A}$ è aperto.
 \end{itemize}
 \end{definizione}
 Questa non è una definizione esaustiva, infatti esistono insiemi che non sono aperti né chiusi. Si dà anche la seguente caratterizzazione, cioè una condizione necessaria e sufficiente.
@@ -150,14 +150,14 @@ A\text{ è chiuso}\iff A'\subseteq A.
 \end{teorema}
 \begin{proof}
 (i) Se $A$ è chiuso, contiene i suoi punti di accumulazione.
-Sia $p\in A^c$, che quindi per ipotesi, dato che $A$ è chiuso, è aperto. Allora esiste una bolla centrata in $p$ tutta contenuta in $A^c$: quindi l'intersezione di tale bolla con l'insieme $A$ deve essere vuota, e $p$ non può essere un punto di accumulazione di $A$.
+Sia $p\in \compl{A}$, che quindi per ipotesi, dato che $A$ è chiuso, è aperto. Allora esiste una bolla centrata in $p$ tutta contenuta in $\compl{A}$: quindi l'intersezione di tale bolla con l'insieme $A$ deve essere vuota, e $p$ non può essere un punto di accumulazione di $A$.
 \[
-\exists r>0\colon B(p,r)\subset A^c\qqq B(p,r)\cap A=\emptyset\qqq p\notin A'.
+\exists r>0\colon B(p,r)\subset \compl{A}\qqq B(p,r)\cap A=\emptyset\qqq p\notin A'.
 \]
 Necessariamente allora i punti di accumulazione devono trovarsi in $A$.
 
 (ii) Se $A$ contiene i suoi punti di accumulazione, è chiuso.
-Sia $A'\subseteq A$ e $p$ un qualsiasi punto del complementare. Per ipotesi $p$ non è di accumulazione per $A$, quindi esiste una bolla $B(p,r)$ che non contiene altri punti di $A$ oltre a $p$ stesso. Poiché $p\in A^c$, tale bolla non contiene alcun punto di $A$: allora $B(p,r)\subseteq A^c$, vale a dire $p$ è interno ad $A^c$. Quindi $A^c$ è aperto, a cui segue che $A$ è chiuso.
+Sia $A'\subseteq A$ e $p$ un qualsiasi punto del complementare. Per ipotesi $p$ non è di accumulazione per $A$, quindi esiste una bolla $B(p,r)$ che non contiene altri punti di $A$ oltre a $p$ stesso. Poiché $p\in \compl{A}$, tale bolla non contiene alcun punto di $A$: allora $B(p,r)\subseteq \compl{A}$, vale a dire $p$ è interno ad $\compl{A}$. Quindi $\compl{A}$ è aperto, a cui segue che $A$ è chiuso.
 \end{proof}
 \paragraph{Esempi}
 \begin{itemize}
@@ -184,7 +184,7 @@ A=\bigcap_{i=1}^n A_i\text{ è aperto}.
 \item Sia $p$ un punto appartenente ad $A$, l'insieme intersezione degli insiemi appartenenti alla famiglia finita: questo punto deve allora appartenere a ciascuno degli insiemi della famiglia $A_i,\,\forall i$. Ognuno di questi insiemi è aperto, quindi esiste un raggio tale che la bolla centrata in $p$ sia contenuta in ogni insieme, $\exists r_i\colon \forall i\;B(p,r_i)\subset A_i$. Preso $r'=\min\{r_i\}$, la cui esistenza è garantita dal fatto che la famiglia di insiemi è finita, allora la bolla di raggio $r'$ è contenuta in tutti gli insiemi, quindi anche nell'insieme intersezione: $B(p,r')\subset A$.
 \end{enumerate}
 \end{proof}
-In generale, l'intersezione infinita di aperti non è aperta: ad esempio, sia $A_i=(0,1+\sfrac{1}{k})$, per $i\in\N$, l'intersezione dà come risultato $\bigcap_{i=1}^{+\infty}A_i=(0,1]$, che non è aperto né chiuso.
+In generale, l'intersezione infinita di aperti non è aperta: ad esempio, sia $A_i=(0,1+\frac1{k})$, per $i\in\N$, l'intersezione dà come risultato $\bigcap_{i=1}^{+\infty}A_i=(0,1]$, che non è aperto né chiuso.
 Vale anche il seguente teorema, la cui dimostrazione si ricava dal precedente.
 \begin{teorema} \label{t:unione-intersezione-chiusi}
 Siano $(X,d)$ uno spazio metrico e $\{C_j\}_{j\in J}$ un una famiglia qualunque di sottoinsiemi chiusi di tale spazio metrico. Allora
@@ -202,30 +202,30 @@ C=\bigcup_{j=1}^n C_j\text{ è chiuso}.
 \begin{enumerate}
 \item Passando ai complementari dei risultati del teorema precedente, per le formule di De Morgan si ha
 \[
-C^c=\bigg(\bigcap_{j\in J} C_j\bigg)^c=\bigcup_{j\in J} C^c_j,
+	\compl{C}=\compl{\bigg(\bigcap_{j\in J} C_j\bigg)}=\bigcup_{j\in J}\compl{C_j},
 \]
 che è l'unione di infiniti insiemi aperti, che per il teorema precedente è aperta. Allora $C$ è chiuso, per la definizione \ref{d:chiuso-se-c-aperto}.
 \item Analogamente, si ha
 \[
-C^c=\bigg(\bigcup_{j=1}^n C_j\bigg)^c=C=\bigcap_{j=1}^n C^c_j,
+	\compl{C}=\compl{\bigg(\bigcup_{j=1}^n C_j\bigg)}=\bigcap_{j=1}^n\compl{C_j},
 \]
 che è l'intersezione di un numero finito di insiemi aperti, che quindi per il teorema precedente è aperto. Allora $C$ è chiuso, sempre per la \ref{d:chiuso-se-c-aperto}.\qedhere
 \end{enumerate}
 \end{proof}
-Analogamente al controesempio precedente, l'unione di infiniti chiusi non è sempre chiusa: se $C_j=[0,1-\sfrac{1}{k}]$ con $j\in\N$, si ha che $\bigcup_{j=1}^{+\infty}C_j=[0,1)$ che non è chiuso, e nemmeno aperto.
+Analogamente al controesempio precedente, l'unione di infiniti chiusi non è sempre chiusa: se $C_j=[0,1-\frac1{k}]$ con $j\in\N$, si ha che $\bigcup_{j=1}^{+\infty}C_j=[0,1)$ che non è chiuso, e nemmeno aperto.
 \begin{definizione}
-Siano $(X,d)$ uno spazio metrico e $A\subseteq X$ un suo sottoinsieme. Si chiama \emph{chiusura} di $A$, e si indica con $\overline{A}$, il più piccolo insieme chiuso che lo contiene. Questo insieme coincide con l'unione dell'insieme stesso con il suo derivato.
+Siano $(X,d)$ uno spazio metrico e $A\subseteq X$ un suo sottoinsieme. Si chiama \emph{chiusura} di $A$, e si indica con $\clos{A}$, il più piccolo insieme chiuso che lo contiene. Questo insieme coincide con l'unione dell'insieme stesso con il suo derivato.
 \[
-\overline{A}=A\cup A'.
+\clos{A}=A\cup A'.
 \]
 \end{definizione}
 Si dimostrano che:
 \begin{teorema}
 Siano $(X,d)$ uno spazio metrico e $A\subseteq X$ un suo sottoinsieme. 
 \begin{enumerate}
-\item $\overline{A}$ è sempre chiuso;
-\item se $F$ è chiuso e $A\subseteq F$, allora $\overline{A}\subseteq F$;
-\item se $A$ è chiuso, $\overline{A}=A$ (perché, semplicemente, $A'=A$).
+\item $\clos{A}$ è sempre chiuso;
+\item se $F$ è chiuso e $A\subseteq F$, allora $\clos{A}\subseteq F$;
+\item se $A$ è chiuso, $\clos{A}=A$ (perché, semplicemente, $A'=A$).
 \end{enumerate}
 \end{teorema}
 \begin{definizione}
@@ -235,7 +235,7 @@ Un insieme è \emph{limitato} se esiste, finito, l'estremo superiore delle dista
 \]
 Tale estremo superiore è detto \emph{diametro} dell'insieme.
 \end{definizione}
-Se $A\subseteq (X,d)$ è un insieme limitato, allora il suo diametro coincide con quello della sua chiusura: $\diam A=\diam\overline{A}$; inoltre $\exists p\in X$ e $r>0$ tali per cui $A\subset B(p,r)$, ossia un insieme limitato può essere sempre contenuto in una bolla di opportuno raggio.
+Se $A\subseteq (X,d)$ è un insieme limitato, allora il suo diametro coincide con quello della sua chiusura: $\diam A=\diam\clos{A}$; inoltre $\exists p\in X$ e $r>0$ tali per cui $A\subset B(p,r)$, ossia un insieme limitato può essere sempre contenuto in una bolla di opportuno raggio.
 \paragraph{Esempi}
 \begin{itemize}
 \item Sia $A\subset\R$ un insieme limitato, non vuoto: il suo diametro è dato da $\sup A-\inf A$.

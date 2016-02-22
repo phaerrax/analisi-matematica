@@ -6,7 +6,7 @@ Per cominciare, vediamo le definizioni degli integrali su linee e superfici in $
 \section{Integrali di linea}
 Abbiamo già incontrato le curve, anche se solo in $\R^2$, trattando le funzioni implicite.
 Vediamone una definizione più generale.
-Una \emph{curva} è una funzione $\vphi\colon [a,b]\to\R^n$: diciamo che è regolare se $\vphi\in\cont{1}\ab$, è iniettiva su $(a,b)$ e $\vphi'(t)\ne\vec 0$ per ogni $t\in(a,b)$.
+Una \emph{curva} è una funzione $\vphi\colon [a,b]\to\R^n$: diciamo che è regolare se $\vphi\in\cont[1]{[a,b]}$, è iniettiva su $(a,b)$ e $\vphi'(t)\ne\vec 0$ per ogni $t\in(a,b)$.
 Spesso è detta curva anche la sua immagine, anche chiamata \emph{sostegno}, $\vphi(I)$, mentre $\vphi$ è detta \emph{parametrizzazione}.
 
 \begin{definizione} \label{d:lunghezza-curva}
@@ -21,22 +21,22 @@ Spesso è detta curva anche la sua immagine, anche chiamata \emph{sostegno}, $\v
 
 Definiamo infine la misura infinitesima (o elementare) di una curva come
 \begin{equation}
-	\dd s\defeq\norm{\drv{\vphi}{t}(t)}\,\dd t
+	\dd s\defeq\norm[\bigg]{\drv{\vphi}{t}(t)}\,\dd t
 	\label{eq:misura-curva}
 \end{equation}
 dove $\vphi$ è la sua parametrizzazione.
 Con questa definizione, otteniamo la lunghezza della curva parametrizzata da $\vphi$ tramite l'integrale
 \begin{equation}
-	\ell(\vphi)=\int_\phi\,\dd s=\int_a^b\norm{\drv{\vphi}{t}(t)}\,\dd t
+	\ell(\vphi)=\int_\phi\,\dd s=\int_a^b\norm[\bigg]{\drv{\vphi}{t}(t)}\,\dd t
 \end{equation}
-dove $\phi=\vphi\ab$ è l'immagine della curva.
+dove $\phi=\vphi([a,b])$ è l'immagine della curva.
 L'integrale di linea di una funzione scalare $f$ definita da $\phi$ a valori in $\R$ è definito come
 \begin{equation}
-	\int_\phi f\,\dd s=\int_a^b(f\circ\vphi)(t)\norm{\drv{\vphi}{t}(t)}\,\dd t.
+	\int_\phi f\,\dd s=\int_a^b(f\circ\vphi)(t)\norm[\bigg]{\drv{\vphi}{t}(t)}\,\dd t.
 \end{equation}
 Notiamo che $f\circ\vphi$ è una funzione da $[a,b]$ a $\R$ quindi l'integrale risultante si interpreta senza problemi come un integrale di Lebesgue.
 
-Nel caso in cui una curva regolare sia il grafico di una funzione $\vec f\colon[a,b]\to\R^{n-1}$ di classe $\cont{1}\ab$, allora la parametrizzazione $\vphi\colon[a,b]\to\R^n$ si scrive facilmente come $\vphi(t)=\big(t,\vec f(t)\big)$, e la misura infinitesima diventa
+Nel caso in cui una curva regolare sia il grafico di una funzione $\vec f\colon[a,b]\to\R^{n-1}$ di classe $\cont[1]{[a,b]}$, allora la parametrizzazione $\vphi\colon[a,b]\to\R^n$ si scrive facilmente come $\vphi(t)=\big(t,\vec f(t)\big)$, e la misura infinitesima diventa
 \begin{equation}
 	\dd s=\sqrt{1+\norm{\vec f'(t)}^2}\,\dd t.
 \end{equation}
@@ -44,7 +44,7 @@ Nel caso in cui una curva regolare sia il grafico di una funzione $\vec f\colon[
 \section{Integrali di superficie}
 Innanzitutto, una superficie in $\R^3$ è una funzione $\vphi\colon D\to\R^3$, dove $D$ è un insieme di $\R^2$.\footnote{Anche qui, il termine \emph{superficie} talvolta indica l'immagine della funzione e non la funzione stessa.}
 \begin{definizione} \label{d:superficie-regolare}
-	Una \emph{superficie regolare} in $\R^3$ è una funzione $\vphi\colon D\to\R^3$ dove $D$ è un insieme connesso di $\R^2$, $\vphi\in\cont{1}(D)$, è iniettiva in $\mathring{D}$ e il rango della jacobiana $\jac\vphi$ è massimo in ogni punto di $\mathring{D}$.
+	Una \emph{superficie regolare} in $\R^3$ è una funzione $\vphi\colon D\to\R^3$ dove $D$ è un insieme connesso di $\R^2$, $\vphi\in\cont[1]{D}$, è iniettiva in $\interior{D}$ e il rango della jacobiana $\jac\vphi$ è massimo in ogni punto di $\interior{D}$.
 \end{definizione}
 La condizione sul rango della jacobiana è del tutto analoga a quanto già visto per le linee: in tal caso, la jacobiana è composta da una sola colonna, e il rango di una matrice con una sola colonna è 1 (il massimo) se essa è linearmente indipendente, ossia se non è nulla.
 
@@ -83,7 +83,7 @@ Il prodotto vettoriale gode delle seguenti proprietà, facilmente dimostrabili c
 	\item $\vec e_1\times\vec e_2=\vec e_3$, $\vec e_2\times\vec e_3=\vec e_1$ e $\vec e_3\times\vec e_1=\vec e_2$ (permutazioni cicliche);
 	\item $\norm{\vec v\times\vec u}=\norm{\vec v}\norm{\vec u}\sin\alpha$, dove $\alpha\in[0,\pi]$ è l'angolo compreso tra i due vettori nel piano, cioè
 		\begin{equation}
-			\norm{\vec v\times\vec u}=\norm{\vec v}\norm{\vec u}\sin\bigg(\!\arccos\frac{\scalar{\vec v}{\vec u}}{\norm{\vec v}\norm{\vec u}}\bigg).
+			\norm{\vec v\times\vec u}=\norm{\vec v}\norm{\vec u}\sin\bigg(\!\arccos\frac{\inner{\vec v}{\vec u}}{\norm{\vec v}\norm{\vec u}}\bigg).
 		\end{equation}
 	\item il prodotto è indipendente dalla scelta del sistema di coordinate.
 \end{itemize}
@@ -91,7 +91,7 @@ Il prodotto vettoriale gode delle seguenti proprietà, facilmente dimostrabili c
 Con questo possiamo caratterizzare la misura delle superfici.
 Se $\vphi\colon D\to\R^3$ è la parametrizzazione scelta per la superficie, la sua misura infinitesima è definita da
 \begin{equation}
-	\dd\sigma\defeq\norm{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}\,\dd u\dd v
+	\dd\sigma\defeq\norm[\bigg]{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}\,\dd u\dd v
 	\label{eq:misura-superficie}
 \end{equation}
 dove abbiamo chiamato $\drp{\vphi}{u}$ e $\drp{\vphi}{v}$ le due colonne che affiancate formano $\jac\vphi$ (sono rispettivamente la colonna delle derivate rispetto alle due variabili $u$ e $v$).
@@ -103,7 +103,7 @@ Prendiamo il rettangolo $T$ esteso dai vettori $a\vec e_1$ e $b\vec e_2$ in $\R^
 Ovviamente $\mu(T)=\abs{ab}$.
 Le immagini dei due vettori che individuano $T$ sono $a\drp{\vphi}{x}$ e $b\drp{\vphi}{y}$, quindi abbiamo
 \begin{equation*}
-	\mu(P)=\norm{a\drp{\vphi}{x}\times b\drp{\vphi}{y}}=\abs{ab}\norm{\drp{\vphi}{x}\times\drp{\vphi}{y}}=\mu(T)\norm{\drp{\vphi}{x}\times\drp{\vphi}{y}}.
+	\mu(P)=\norm[\bigg]{a\drp{\vphi}{x}\times b\drp{\vphi}{y}}=\abs{ab}\norm[\bigg]{\drp{\vphi}{x}\times\drp{\vphi}{y}}=\mu(T)\norm[\bigg]{\drp{\vphi}{x}\times\drp{\vphi}{y}}.
 \end{equation*}
 dato che il prodotto vettoriale $\vec v\times\vec w$ misura l'area del parallalogramma delimitato da $\vec v$ e $\vec w$.
 Nella definizione della misura di superficie, dunque, è come se individuassimo un parallelogramma tangente alla superficie nel punto $(u,v)$ individuato dalle due colonne della matrice jacobiana, e ne calcolassimo l'area, ottenendo la \eqref{eq:misura-superficie}.
@@ -111,15 +111,15 @@ Il processo è simile alla definizione della misura infinitesima \eqref{eq:misur
 
 L'area della superficie $S=\vphi(D)$ si calcola dunque come
 \begin{equation}
-	\int_S\dd\sigma=\int_D\norm{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}\,\dd u\dd v
+	\int_S\dd\sigma=\int_D\norm[\bigg]{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}\,\dd u\dd v
 \end{equation}
 dove $\vphi\colon D\to\R^3$ è la sua parametrizzazione regolare; l'integrale di superficie di una funzione $f\colon S\to\R$ è
 \begin{equation}
-	\int_Sf\,\dd\sigma=\int_D(f\circ\vphi)(u,v)\norm{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}\,\dd u\dd v.
+	\int_Sf\,\dd\sigma=\int_D(f\circ\vphi)(u,v)\norm[\bigg]{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}\,\dd u\dd v.
 \end{equation}
 Anche in questo caso $f\circ\vphi\colon D\to\R$ quindi troviamo un integrale di Lebesgue.
 
-Se una superficie regolare è il grafico di una funzione $g\colon D\subseteq\R^2\to\R$ di classe $\cont{1}(D)$ (si dice in questo caso che è una \emph{superficie cartesiana}), possiamo scegliere la parametrizzazione $\vphi\colon D\to\R^3$ della forma $\vphi(u,v)=\big(u,v,g(u,v)\big)$: la matrice jacobiana è
+Se una superficie regolare è il grafico di una funzione $g\colon D\subseteq\R^2\to\R$ di classe $\cont[1]{D}$ (si dice in questo caso che è una \emph{superficie cartesiana}), possiamo scegliere la parametrizzazione $\vphi\colon D\to\R^3$ della forma $\vphi(u,v)=\big(u,v,g(u,v)\big)$: la matrice jacobiana è
 \begin{equation}
 	\begin{bmatrix}
 		1&0\\
@@ -163,10 +163,10 @@ Per studiare questi teoremi dobbiamo innanzitutto introdurre nuove definizioni p
 \end{definizione}
 \begin{definizione} \label{d:dominio-norm-reg}
 	Un dominio si dice \emph{normale} rispetto alla variabile $x$ se, dato un intervallo $[a,b]$ e due funzioni $f,g\colon[a,b]\to\R$ continue, tali che $f(x)\leq g(x)$ $\forall x\in[a,b]$, esso è della forma $\{(x,y)\in[a,b]\times\R\colon f(x)\leq y\leq g(x)\}$; si definisce in modo analogo per la variabile $y$.
-	Si dice \emph{normale} e \emph{regolare} se le funzioni $f$ e $g$ sono di $\cont{1}\ab$ e se $f(x)<g(x) \forall x\in(a,b)$.
+	Si dice \emph{normale} e \emph{regolare} se le funzioni $f$ e $g$ sono di $\cont[1]{[a,b]}$ e se $f(x)<g(x) \forall x\in(a,b)$.
 \end{definizione}
 \begin{definizione} \label{d:dominio-regolare}
-	Un insieme è un \emph{dominio regolare} se è l'unione di un numero finito di domini $D_i$ normali e regolari (rispetto a x oppure a y) separati, ossia $\mathring{D_j}\cap\mathring{D_k}=\emptyset$ per ogni $j\neq k$.
+	Un insieme è un \emph{dominio regolare} se è l'unione di un numero finito di domini $D_i$ normali e regolari (rispetto a x oppure a y) separati, ossia $\interior{D_j}\cap\interior{D_k}=\emptyset$ per ogni $j\neq k$.
 \end{definizione}
 Ogni dominio, essendo chiuso e limitato, è chiaramente anche compatto.
 
@@ -187,27 +187,27 @@ A questo punto possiamo definire il \emph{versore normale}, che indicheremo spes
 	\end{bmatrix}
 \end{equation*}
 Chiaramente i due versori sono ortogonali per ogni $t\in[a,b]$.
-Se $D$ è un dominio regolare, si può dimostrare che $\partial D$ è l'unione finita di sostegni di curve regolari a tratti: allora possiamo affermare l'esistenza di un versore tangente e normale alla frontiera di un dominio regolare, tranne al più in un numero finito di punti.
+Se $D$ è un dominio regolare, si può dimostrare che $\boundary D$ è l'unione finita di sostegni di curve regolari a tratti: allora possiamo affermare l'esistenza di un versore tangente e normale alla frontiera di un dominio regolare, tranne al più in un numero finito di punti.
 
 Questo ci porta al problema di trovare un'orientazione delle curve, e più precisamente del bordo di un dominio.
-Diremo che la frontiera è orientata in senso \emph{positivo} (e scriveremo $+\partial D$) se il versore normale ``punta'' all'esterno del dominio (come, ad esempio, nella figura \ref{fig:versore-tangente-normale}).
+Diremo che la frontiera è orientata in senso \emph{positivo} (e scriveremo $+\boundary D$) se il versore normale ``punta'' all'esterno del dominio (come, ad esempio, nella figura \ref{fig:versore-tangente-normale}).
 Questo indica anche il verso di percorrenza della frontiera: percorrendola in senso positivo il dominio si troverà sempre alla sinistra del versore tangente.
 \input{grafici/versore-tangente-normale}
 
 Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato da Gauss e Green.
 \begin{teorema}[di Gauss-Green] \label{t:gauss-green}
-	Sia $D\subseteq\R^2$ un dominio regolare e $f\colon D\to\R$ una funzione in $\cont{1}(D)$.
+	Sia $D\subseteq\R^2$ un dominio regolare e $f\colon D\to\R$ una funzione in $\cont[1]{D}$.
 	Allora valgono
 	\begin{gather}
-		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\int_{+\partial D}f(x,y)\,\dd y;
+		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\int_{+\boundary D}f(x,y)\,\dd y;
 		\label{eq:gauss-green-y}\\
-		\int_D\drp{f}{y}(x,y)\,\dd x\,\dd y=-\int_{+\partial D}f(x,y)\,\dd x.
+		\int_D\drp{f}{y}(x,y)\,\dd x\,\dd y=-\int_{+\boundary D}f(x,y)\,\dd x.
 		\label{eq:gauss-green-x}
 	\end{gather}
 \end{teorema}
 \begin{proof}
 	Verrà dimostrata solo la prima legge, la dimostrazione della seconda è del tutto analoga.
-	Supponiamo che esista un insieme $U$ aperto tale che $D\subset U$ e che $f\in\cont{1}(U)$.
+	Supponiamo che esista un insieme $U$ aperto tale che $D\subset U$ e che $f\in\cont[1]{U}$.
 	Distinguiamo tre casi: (i) $D$ è normale rispetto a $y$, (ii) $D$ è normale rispetto a $x$ e (iii) $D$ è un generico insieme regolare.
 
 	\input{grafici/gauss-green-normale-y}
@@ -231,14 +231,14 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 			t\\d
 		\end{bmatrix}, t\in[\alpha(d),\beta(d)].
 	\end{gather*}
-	Scriviamo $\vgamma_1^-$ e $\vgamma_4^-$ perch\'e la parametrizzazione data è tale che le due curve sono percorse nel senso opposto all'orientazione di $+\partial D$: nel calcolo dell'integrale dovremo tener conto di questo cambio di segno.
-	Dimostriamo che entrambi i membri si possono riportare ad una stessa grandezza: cominciamo dal primo, usando il teorema di Fubini ($f\in\cont{1}(D)$ quindi è anche sommabile), per il quale
+	Scriviamo $\vgamma_1^-$ e $\vgamma_4^-$ perch\'e la parametrizzazione data è tale che le due curve sono percorse nel senso opposto all'orientazione di $+\boundary D$: nel calcolo dell'integrale dovremo tener conto di questo cambio di segno.
+	Dimostriamo che entrambi i membri si possono riportare ad una stessa grandezza: cominciamo dal primo, usando il teorema di Fubini ($f\in\cont[1]{D}$ quindi è anche sommabile), per il quale
 	\begin{equation}
 		\int_D\drp{f}{x}\,\dd x\,\dd y=\int_c^d\int_{\alpha(y)}^{\beta(y)}\drp{f}{x}\,\dd x\,\dd y=\int_c^df(x,y)\bigg|_{x=\alpha(y)}^{x=\beta(y)}\dd y=\int_c^d\Big[f\big(\beta(y),y\big)-f\big(\alpha(y),y\big)\Big]\,\dd y.
 	\end{equation}
 	Per il secondo membro, invece, scomponiamo l'integrale della forma differenziale sulle quattro curve ottenendo
 	\begin{multline}
-		\int_{+\partial D}f(x,y)\,\dd y=
+		\int_{+\boundary D}f(x,y)\,\dd y=
 		-\int_c^d(f\circ\vgamma_1)(t)\gamma'_{1,2}(t)\,\dd t
 		+\int_{\alpha(c)}^{\beta(c)}(f\circ\vgamma_2)(t)\gamma'_{2,2}(t)\,\dd t+\\
 		+\int_c^d(f\circ\vgamma_3)(t)\gamma'_{3,2}(t)\,\dd t
@@ -247,7 +247,7 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	dove $\gamma_{k,2}$ è la seconda componente della curva $\vgamma_k$ (per $k=1,2,3,4$).
 	Siccome $\gamma'_{1,2}(t)=\gamma'_{3,2}(t)=1$ e $\gamma'_{2,2}(t)=\gamma'_{4,2}(t)=0$ si ha
 	\begin{equation}
-		\int_{+\partial D}f(x,y)\,\dd y=\int_c^d\Big[f\big(\beta(t),t\big)-f\big(\alpha(t),t\big)\Big]\,\dd t
+		\int_{+\boundary D}f(x,y)\,\dd y=\int_c^d\Big[f\big(\beta(t),t\big)-f\big(\alpha(t),t\big)\Big]\,\dd t
 	\end{equation}
 	che è lo stesso risultato precedente.
 
@@ -276,9 +276,9 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	\end{equation}
 	La derivata rispetto a $y$ invece è semplicemente $\drp{G}{y}(x,y)=f(x,y)$, dato che il primo dei due integrali addendi non dipende da $y$ e il secondo è una funzione integrale con estremo inferiore costante rispetto a $y$.
 	Prendiamo la forma differenziale $\dd G=\drp{G}{x}\,\dd x+\drp{G}{y}\,\dd y$: essa è ovviamente esatta.
-	Inoltre $\partial D$ è chiusa e regolare a tratti, dunque l'integrale di $\dd G$ lungo di essa è nullo: allora
+	Inoltre $\boundary D$ è chiusa e regolare a tratti, dunque l'integrale di $\dd G$ lungo di essa è nullo: allora
 	\begin{equation}
-		\int_{+\partial D}\drp{G}{x}\,\dd x=-\int_{+\partial D}\drp{G}{y}\,\dd y.
+		\int_{+\boundary D}\drp{G}{x}\,\dd x=-\int_{+\boundary D}\drp{G}{y}\,\dd y.
 		\label{eq:dim-gauss-green-forma-esatta}
 	\end{equation}
 	Parametrizziamo il bordo di $D$ con le quattro curve
@@ -300,11 +300,11 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 			a\\t
 		\end{bmatrix}, t\in[\delta(a),\eta(a)].
 	\end{gather*}
-	Anche qui abbiamo scritto $\vgamma_3^-$ e $\vgamma_4^-$ perché con queste parametrizzazioni le due curve sono percorse nel senso opposto all'orientazione positiva di $\partial D$, e dovremo cambiare il segno all'integrale.
+	Anche qui abbiamo scritto $\vgamma_3^-$ e $\vgamma_4^-$ perché con queste parametrizzazioni le due curve sono percorse nel senso opposto all'orientazione positiva di $\boundary D$, e dovremo cambiare il segno all'integrale.
 	Il primo membro di \eqref{eq:dim-gauss-green-forma-esatta}, sostituendo $\drp{G}{x}(x,y)$ trovato prima, vale
 	\begin{equation}
 		\begin{split}
-			\int_{+\partial D}\drp{G}{x}(x,y)\,\dd x&=\int_{\vgamma_1}\drp{G}{x}(x,y)\,\dd x+\int_{\vgamma_2}\drp{G}{x}(x,y)\,\dd x-\int_{\vgamma_3}\drp{G}{x}(x,y)\,\dd x-\int_{\vgamma_4}\drp{G}{x}(x,y)\,\dd x=\\
+			\int_{+\boundary D}\drp{G}{x}(x,y)\,\dd x&=\int_{\vgamma_1}\drp{G}{x}(x,y)\,\dd x+\int_{\vgamma_2}\drp{G}{x}(x,y)\,\dd x-\int_{\vgamma_3}\drp{G}{x}(x,y)\,\dd x-\int_{\vgamma_4}\drp{G}{x}(x,y)\,\dd x=\\
 			&=\int_a^b\drp{G}{x}\big(s,\delta(s)\big)\,\dd s-\int_a^b\drp{G}{x}\big(s,\eta(s)\big)\,\dd s=\\
 			&=\int_a^b\int_{\delta(s)}^{\delta(s)}\drp{f}{x}(s,t)\,\dd t\,\dd s-\int_a^b\int_{\delta(s)}^{\eta(s)}\drp{f}{x}(s,t)\,\dd t\,\dd s=\\
 			&=-\int_a^b\int_{\delta(s)}^{\eta(s)}\drp{f}{x}(s,t)\,\dd t\,\dd s.
@@ -312,27 +312,27 @@ Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato
 	\end{equation}
 	Sostituendo poi $\drp{G}{y}(x,y)=f(x,y)$ nella \eqref{eq:dim-gauss-green-forma-esatta} otteniamo\footnote{La variabile $s$ è muta perché è una delle variabili di integrazione, quindi possiamo senza alcun problema porre $x=s$ cambiandone il nome.}
 	\begin{equation}
-		-\int_a^b\int_{\delta(x)}^{\eta(x)}\drp{f}{x}(x,t)\,\dd t\,\dd x=-\int_{+\partial D}f(x,y)\,\dd y
+		-\int_a^b\int_{\delta(x)}^{\eta(x)}\drp{f}{x}(x,t)\,\dd t\,\dd x=-\int_{+\boundary D}f(x,y)\,\dd y
 	\end{equation}
 	e applicando il teorema di Fubini ``al contrario'', cioè passando all'integrale in $D$, troviamo
 	\begin{equation}
-		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\int_{+\partial D}f(x,y)\,\dd y.
+		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\int_{+\boundary D}f(x,y)\,\dd y.
 	\end{equation}
 
 	(iii) Se infine $D$ è un dominio regolare, ma non è normale rispetto ad una delle due variabili, possiamo comunque scomporlo in un insieme di domini normali $\{D_i\}_{i\in I}$ separati.
 	Per ciascuno di essi vale quanto detto precedentemente, perciò
 	\begin{equation}
-		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\sum_{i\in I}\int_{D_i}\drp{f}{x}(x,y)\,\dd x\,\dd y=\sum_{i\in I}\int_{+\partial D_i}f\,\dd y.
+		\int_D\drp{f}{x}(x,y)\,\dd x\,\dd y=\sum_{i\in I}\int_{D_i}\drp{f}{x}(x,y)\,\dd x\,\dd y=\sum_{i\in I}\int_{+\boundary D_i}f\,\dd y.
 	\end{equation}
 	Poich\'e le frontiere dei vari $D_i$ sono in comune, in ciascun addendo di quest'ultima somma ciascuna porzione di frontiera che si trova tra due $D_i$ viene percorsa, integrando, una volta in un senso e una volta nell'altro.
 	Chiaramente ciascuna delle due volte la funzione integranda è la stessa, quindi i due integrali hanno segno opposto e si annullano.
-	Rimangono nel conto quindi solo le parti delle frontiere che sono esterni, ossia proprio $\partial D$, quindi
+	Rimangono nel conto quindi solo le parti delle frontiere che sono esterni, ossia proprio $\boundary D$, quindi
 	\begin{equation}
-		\sum_{i\in I}\int_{+\partial D_i}f\,\dd y=\int_{+\partial D}f\,\dd y.\qedhere
+		\sum_{i\in I}\int_{+\boundary D_i}f\,\dd y=\int_{+\boundary D}f\,\dd y.\qedhere
 	\end{equation}
 \end{proof}
 
-Dato un campo vettoriale $\vec F=(F_1,F_2)\colon U\to\R^2$ di classe $\cont{1}(U)$, definiamo la \emph{divergenza} di $\vec F$ come la funzione $\div\vec F\colon U\to\R$ data da
+Dato un campo vettoriale $\vec F=(F_1,F_2)\colon U\to\R^2$ di classe $\cont[1]{U}$, definiamo la \emph{divergenza} di $\vec F$ come la funzione $\div\vec F\colon U\to\R$ data da
 \begin{equation}
 	\div\vec F\defeq\drp{F_1}{x}+\drp{F_2}{y}.
 \end{equation}
@@ -341,15 +341,15 @@ La divergenza si definisce anche in dimensione qualunque come, dato $\vec F=(F_1
 	\div\vec F\defeq\sum_{i=1}^m\drp{F_i}{x_i}.
 \end{equation}
 \begin{teorema}[della divergenza] \label{t:divergenza-R2}
-	Sia $D\subset\R^2$ un dominio regolare e $\vec F\colon D\to\R^2$ un campo vettoriale di classe $\cont{1}(D)$.
+	Sia $D\subset\R^2$ un dominio regolare e $\vec F\colon D\to\R^2$ un campo vettoriale di classe $\cont[1]{D}$.
 	Se $\vnu(x,y)$ è il versore normale al bordo di $D$ uscente da esso, allora
 	\begin{equation}
-		\int_D\div\vec F\,\dd x\,\dd y=\int_{\partial D}\scalar{\vec F}{\vnu}\,\dd s.
+		\int_D\div\vec F\,\dd x\,\dd y=\int_{\boundary D}\inner{\vec F}{\vnu}\,\dd s.
 		\label{eq:divergenza-R2}
 	\end{equation}
 \end{teorema}
 \begin{proof}
-	Parametrizziamo $\partial D$, che è regolare a tratti, con una funzione $\cont{1}$ a tratti $\vphi(t)=\big(x(t),y(t)\big)$, con $t\in[a,b]$.
+	Parametrizziamo $\boundary D$, che è regolare a tratti, con una funzione $\cclass[1]$ a tratti $\vphi(t)=\big(x(t),y(t)\big)$, con $t\in[a,b]$.
 	Il versore normale con questa scelta assume quindi la forma
 	\begin{equation*}
 		\vnu(t)=\frac1{\sqrt{x'^2(t)+y'^2(t)}}
@@ -360,9 +360,9 @@ La divergenza si definisce anche in dimensione qualunque come, dato $\vec F=(F_1
 	L'integrale curvilineo al secondo membro della \eqref{eq:divergenza-R2} è dunque
 	\begin{equation}
 		\begin{split}
-			\int_{\partial D}\scalar{\vec F}{\vnu}\,\dd s&=\int_a^b\bigg(\frac{(F_1\circ\vphi)(t)y'(t)}{\sqrt{x'^2(t)+y'^2(t)}}-\frac{(F_2\circ\vphi)(t)x'(t)}{\sqrt{x'^2(t)+y'^2(t)}}\bigg)\sqrt{x'^2(t)+y'^2(t)}\,\dd t=\\
+			\int_{\boundary D}\inner{\vec F}{\vnu}\,\dd s&=\int_a^b\bigg(\frac{(F_1\circ\vphi)(t)y'(t)}{\sqrt{x'^2(t)+y'^2(t)}}-\frac{(F_2\circ\vphi)(t)x'(t)}{\sqrt{x'^2(t)+y'^2(t)}}\bigg)\sqrt{x'^2(t)+y'^2(t)}\,\dd t=\\
 			&=\int_a^b\big[(F_1\circ\vphi)(t)y'(t)-(F_2\circ\vphi)(t)x'(t)\big]\,\dd t=\\
-			&=\int_{\partial D}[F_1(x,y)\,\dd y-F_2(x,y)\,\dd x]
+			&=\int_{\boundary D}[F_1(x,y)\,\dd y-F_2(x,y)\,\dd x]
 		\end{split}
 	\end{equation}
 	che per il teorema \ref{t:gauss-green} di Gauss-Green è uguale a
@@ -371,51 +371,51 @@ La divergenza si definisce anche in dimensione qualunque come, dato $\vec F=(F_1
 	\end{equation}
 \end{proof}
 \begin{teorema}[del rotore, di Stokes] \label{t:rotore-R2}
-	Sia $\vec F\colon D\to\R^2$ un campo vettoriale di classe $\cont{1}(D)$ e $D\subset\R^2$ un dominio regolare.
+	Sia $\vec F\colon D\to\R^2$ un campo vettoriale di classe $\cont[1]{D}$ e $D\subset\R^2$ un dominio regolare.
 	Allora
 	\begin{equation}
-		\int_{+\partial D}\big(F_1(x,y)\,\dd x+F_2(x,y)\,\dd y\big)=\int_D\bigg(\drp{F_2}{x}(x,y)-\drp{F_1}{y}(x,y)\bigg)\,\dd x\,\dd y.
+		\int_{+\boundary D}\big(F_1(x,y)\,\dd x+F_2(x,y)\,\dd y\big)=\int_D\bigg(\drp{F_2}{x}(x,y)-\drp{F_1}{y}(x,y)\bigg)\,\dd x\,\dd y.
 		\label{eq:rotore-R2}
 	\end{equation}
 \end{teorema}
 \begin{proof}
 	La dimostrazione è immediata se applichiamo il teorema della divergenza \ref{t:divergenza-R2} al campo $\vec F(x,y)=\big(F_2(x,y),-F_1(x,y)\big)$, per il quale
 	\begin{equation}
-		\int_{+\partial D}\scalar{\vec F}{\vnu}\,\dd s=\int_{+\partial D}(F_2(x,y)\,\dd y+F_1(x,y)\,\dd x)=\int_D\drp{F_2}{x}(x,y)\,\dd x\,\dd y-\int_D\drp{F_1}{y}(x,y)\,\dd x\,\dd y
+		\int_{+\boundary D}\inner{\vec F}{\vnu}\,\dd s=\int_{+\boundary D}(F_2(x,y)\,\dd y+F_1(x,y)\,\dd x)=\int_D\drp{F_2}{x}(x,y)\,\dd x\,\dd y-\int_D\drp{F_1}{y}(x,y)\,\dd x\,\dd y
 	\end{equation}
 	da cui la tesi.
 \end{proof}
 Grazie a questi teoremi appena dimostrati possiamo portare in più dimensioni la formula di integrazione per parti: si ha, dati $f,g\colon D\to\R$ e $D\subset\R^2$ dominio regolare,
 \begin{gather}
-	\int_D f(x,y)\drp{g}{x}(x,y)\,\dd x\,\dd y=\int_{+\partial D}f(x,y)g(x,y)\,\dd y-\int_D\drp{f}{x}(x,y)g(x,y)\,\dd x\,\dd y;\\
-	\int_D f(x,y)\drp{g}{y}(x,y)\,\dd x\,\dd y=-\int_{+\partial D}f(x,y)g(x,y)\,\dd x-\int_D\drp{f}{y}(x,y)g(x,y)\,\dd x\,\dd y.
+	\int_D f(x,y)\drp{g}{x}(x,y)\,\dd x\,\dd y=\int_{+\boundary D}f(x,y)g(x,y)\,\dd y-\int_D\drp{f}{x}(x,y)g(x,y)\,\dd x\,\dd y;\\
+	\int_D f(x,y)\drp{g}{y}(x,y)\,\dd x\,\dd y=-\int_{+\boundary D}f(x,y)g(x,y)\,\dd x-\int_D\drp{f}{y}(x,y)g(x,y)\,\dd x\,\dd y.
 \end{gather}
 Per dimostrarlo è sufficiente applicare il teorema di Gauss-Green \ref{t:gauss-green} alla funzione $fg$.
 
 Dato un versore $\vec w$ di $\R^2$, possiamo anche dare una formulazione del \ref{t:gauss-green} per le derivate direzionali: assumendo sempre $D$ dominio regolare,
 \begin{equation}
-	\int_DD_{\vec w}f\,\dd x\,\dd y=\int_{\partial D}f\scalar{\vec w}{\vnu}\,\dd s.
+	\int_DD_{\vec w}f\,\dd x\,\dd y=\int_{\boundary D}f\inner{\vec w}{\vnu}\,\dd s.
 \end{equation}
 Infatti, applicando il teorema della divergenza \ref{t:divergenza-R2} al campo $f\vec w=(fw_1,fw_2)$, si ottiene
 \begin{equation}
 	\begin{split}
 		\int_D\div(f\vec w)\,\dd x\,\dd y&=\int_D\bigg[\drp{fw_1}{x}(x,y)+\drp{fw_2}{y}(x,y)\bigg]\,\dd x\,\dd y=\\
 		&=\int_D\bigg[w_1\drp{f}{x}(x,y)+w_2\drp{f}{y}(x,y)\bigg]\,\dd x\,\dd y=\\
-		&=\int_D\scalar{\vec w}{\grad f}\,\dd x\,\dd y=\int_DD_{\vec w}f(x,y)\,\dd x\,\dd y
+		&=\int_D\inner{\vec w}{\grad f}\,\dd x\,\dd y=\int_DD_{\vec w}f(x,y)\,\dd x\,\dd y
 	\end{split}
 \end{equation}
 ma allo stesso tempo
 \begin{equation}
-	\int_D\div(f\vec w)\,\dd x\,\dd y=\int_{\partial D}\scalar{(f\vec w)}{\vnu}\,\dd s=\int_{\partial D}f(\scalar{\vec w}{\vnu})\,\dd s.
+	\int_D\div(f\vec w)\,\dd x\,\dd y=\int_{\boundary D}\inner{f\vec w}{\vnu}\,\dd s=\int_{\boundary D}f\inner{\vec w}{\vnu}\,\dd s.
 \end{equation}
 
 Un'ultima applicazione di questi risultati è il calcolo dell'area di $D$: notiamo che in $\int_D\dd x\dd y$ possiamo prendere l'integranda come derivata parziale di $f(x,y)=x$ rispetto a $x$ (che quindi vale 1), perciò per il teorema di Gauss-Green \ref{t:gauss-green} abbiamo
 \begin{equation}
-	\mu(D)=\int_D\dd x\,\dd y=\int_{+\partial D}x\,\dd y\text{ o anche }-\int_{+\partial D}y\,\dd x.
+	\mu(D)=\int_D\dd x\,\dd y=\int_{+\boundary D}x\,\dd y\text{ o anche }-\int_{+\boundary D}y\,\dd x.
 \end{equation}
 Possiamo quindi prendere una combinazione arbitraria delle due, in cui presi $\alpha$ e $\beta$ tali che $\alpha+\beta=1$ si ha
 \begin{equation}
-	\int_{+\partial D}(\alpha x\,\dd y-\beta y\,\dd x)=(\alpha+\beta)\int_D\dd x\,\dd y=\int_D\dd x\,\dd y=\mu(D).
+	\int_{+\boundary D}(\alpha x\,\dd y-\beta y\,\dd x)=(\alpha+\beta)\int_D\dd x\,\dd y=\int_D\dd x\,\dd y=\mu(D).
 \end{equation}
 
 \section{Teorema della divergenza e del rotore in $\R^3$}
@@ -424,31 +424,31 @@ Cominciamo adattando quanto detto sui domini e l'orientazione di curve anche a i
 	Un insieme $D\subset\R^3$ si dice:
 	\begin{itemize}
 		\item \emph{dominio normale} rispetto alla coppia di variabili $x,y$ se si può scrivere come $\{(x,y,z)\in\R^3\colon(x,y)\in E, \alpha(x,y)\leq z\leq\beta(x,y)\}$, dove $E\subset\R^2$ è un dominio regolare, $\alpha,\beta\colon E\to\R$ sono continue e $\alpha(x,y)\leq\beta(x,y)\forall(x,y)\in E$;
-		\item \emph{dominio normale e regolare} rispetto alla coppia di variabili $x,y$ se ha le caratteristiche di un dominio normale ma le funzioni $\alpha,\beta\colon E\to\R$ sono di classe $\cont{1}(E)$ e $\alpha(x,y)<\beta(x,y)\forall(x,y)\in E$;
-		\item \emph{dominio regolare} se è unione di un numero finito di domini $\{D_i\}_{i=1}^n$, $n\in\N$, ciascuno normale rispetto ad una coppia di variabili (non necessariamente la stessa per tutti), e tali per cui $\mathring{D_i}\cap\mathring{D_j}=\emptyset$ per $i\neq j$.
+		\item \emph{dominio normale e regolare} rispetto alla coppia di variabili $x,y$ se ha le caratteristiche di un dominio normale ma le funzioni $\alpha,\beta\colon E\to\R$ sono di classe $\cont[1]{E}$ e $\alpha(x,y)<\beta(x,y)\forall(x,y)\in E$;
+		\item \emph{dominio regolare} se è unione di un numero finito di domini $\{D_i\}_{i=1}^n$, $n\in\N$, ciascuno normale rispetto ad una coppia di variabili (non necessariamente la stessa per tutti), e tali per cui $\interior{D_i}\cap\interior{D_j}=\emptyset$ per $i\neq j$.
 	\end{itemize}
 \end{definizione}
 \begin{osservazione}
 	Se $T\subset\R^3$ è un dominio regolare, allora è connesso e compatto, dunque la sua frontiera ha misura nulla.
 	Inoltre esiste un numero finito di superfici regolari $\{S_i\}_{i=1}^n$, $n\in\N$, ciascuna parametrizzabile con $\vphi_i\colon D_i\to\R^3$ per $i=1,\dots,n$ (tali quindi che $\vphi_i(D_i)=S_i$), per le quali
 	\begin{equation*}
-		\partial T=\bigcup_{i=1}^n\vphi_i(D_i)
+		\boundary T=\bigcup_{i=1}^n\vphi_i(D_i)
 	\end{equation*}
-	con $\vphi_i(\mathring{D_i})\cap\vphi_j(\mathring{D_j})=\emptyset$ per $i\neq j$.
+	con $\vphi_i(\interior{D_i})\cap\vphi_j(\interior{D_j})=\emptyset$ per $i\neq j$.
 \end{osservazione}
 D'ora in poi indicheremo sempre con $D$ un dominio regolare di questo tipo.
 Possiamo estendere il concetto di integrale di superficie anche a queste frontiere, dato che sono unione numerabile di insiemi disgiunti, a meno di insiemi di misura nulla: infatti l'intersezione di due superfici di cui è composta la frontiera è al più una curva, che ha misura (superficiale) nulla, quindi non influisce sull'integrale.
 Se le superfici hanno in comune solo la frontiera, allora\footnote{
-	La frontiera di queste superfici è da intendersi nella topologia indotta da $\R^3$ su di esse: se la superficie regolare $S$ è immersa in $\R^3$ infatti $\partial S=S$.
+	La frontiera di queste superfici è da intendersi nella topologia indotta da $\R^3$ su di esse: se la superficie regolare $S$ è immersa in $\R^3$ infatti $\boundary S=S$.
 }
 \begin{equation*}
-	\int_{\partial T}f\,\dd\sigma=\sum_{i=1}^n\int_{S_i}f\,\dd\sigma
+	\int_{\boundary T}f\,\dd\sigma=\sum_{i=1}^n\int_{S_i}f\,\dd\sigma
 \end{equation*}
 usando la notazione della predecente osservazione.
 
-Prendiamo ora la parametrizzazione $\vphi\colon D\subset\R^2\to\R^3$ di una superficie regolare $S$ immersa in $\R^3$, cioè tale per cui $\vphi(D)=S$: definiamo l'insieme $S_\circ\defeq\vphi(\mathring{D})$.
-Esso è tale che la restrizione della parametrizzazione $\vphi|_{\mathring{D}}\colon\mathring{D}\to S_\circ$ è biunivoca.
-L'iniettività infatti discende dalla definizione di regolarità della superficie ($\vphi\colon D\to S$ è iniettiva) mentre la suriettività è ovvia per come è stata definita la funzione, poich\'e $S_\circ=\vphi(\mathring{D})=\vphi|_{\mathring{D}}(\mathring{D})$.
+Prendiamo ora la parametrizzazione $\vphi\colon D\subset\R^2\to\R^3$ di una superficie regolare $S$ immersa in $\R^3$, cioè tale per cui $\vphi(D)=S$: definiamo l'insieme $S_\circ\defeq\vphi(\interior{D})$.
+Esso è tale che la restrizione della parametrizzazione $\vphi|_{\interior{D}}\colon\interior{D}\to S_\circ$ è biunivoca.
+L'iniettività infatti discende dalla definizione di regolarità della superficie ($\vphi\colon D\to S$ è iniettiva) mentre la suriettività è ovvia per come è stata definita la funzione, poich\'e $S_\circ=\vphi(\interior{D})=\vphi|_{\interior{D}}(\interior{D})$.
 
 Si può vedere che $S_\circ$ non è univoco, ma dipende dalla parametrizzazione.
 Prendiamo ad esempio la sfera unitaria $S^2\subset\R^3$, parametrizzata in coordinare polari.
@@ -469,17 +469,17 @@ Intuitivamente, se abbiamo una curva che corre sulla superficie, un vettore ad e
 Fissato dunque il punto $\vec x\in S_\circ$, l'insieme dei vettori tangenti a tutte le curve passanti per tale punto forma quello che è chiamato lo \emph{spazio tangente} a $S_\circ$ in $\vec x$.
 \begin{definizione} \label{d:spazio-tangente}
 	Sia $\vphi\colon D\to S\subset\R^3$ una superficie regolare, e $\vec x$ un punto di $S_\circ$.
-	Si definisce \emph{spazio tangente} a $S_\circ$ nel punto $\vec x$ l'insieme, indicato con $T_{\vec x}S_\circ$, formato dai vettori $\vec p\in\R^3$ tali che esiste $\epsilon>0$ e una mappa $\vgamma\colon(-\epsilon,\epsilon)\to\R^3$ di classe $\cont{1}$ per cui $\vgamma(t)\in S_\circ$ $\forall t\in(-\epsilon,\epsilon)$, $\vgamma(0)=\vec x$, e $\vgamma'(0)=\vec p$.
+	Si definisce \emph{spazio tangente} a $S_\circ$ nel punto $\vec x$ l'insieme, indicato con $T_{\vec x}S_\circ$, formato dai vettori $\vec p\in\R^3$ tali che esiste $\epsilon>0$ e una mappa $\vgamma\colon(-\epsilon,\epsilon)\to\R^3$ di classe $\cclass[1]$ per cui $\vgamma(t)\in S_\circ$ $\forall t\in(-\epsilon,\epsilon)$, $\vgamma(0)=\vec x$, e $\vgamma'(0)=\vec p$.
 \end{definizione}
-Se $\valpha=(\alpha_1,\alpha_2)\colon I\to\mathring{D}$ è una curva regolare, con $I$ intervallo reale (possiamo sceglierlo arbitrariamente in modo che contenga lo zero), allora possiamo prenderne l'immagine attraverso la parametrizzazione ottenendo una curva su $S_\circ$, che è ancora regolare.
-Essendo $\mathring{D}$ aperto, scelto un punto $(u_0,v_0)$ al suo interno esiste sempre (posto $\valpha(0)=(u_0,v_0)$) un $\epsilon>0$ tale che $\valpha(t)\in\mathring{D}$ per ogni $t\in(-\epsilon,\epsilon)$.
+Se $\valpha=(\alpha_1,\alpha_2)\colon I\to\interior{D}$ è una curva regolare, con $I$ intervallo reale (possiamo sceglierlo arbitrariamente in modo che contenga lo zero), allora possiamo prenderne l'immagine attraverso la parametrizzazione ottenendo una curva su $S_\circ$, che è ancora regolare.
+Essendo $\interior{D}$ aperto, scelto un punto $(u_0,v_0)$ al suo interno esiste sempre (posto $\valpha(0)=(u_0,v_0)$) un $\epsilon>0$ tale che $\valpha(t)\in\interior{D}$ per ogni $t\in(-\epsilon,\epsilon)$.
 Analogamente $(\vphi\circ\valpha)(t)\in S_\circ$ per ogni $t$ in tale intervallo.
 Detta $\vec x$ l'immagine di $(u_0,v_0)$ attraverso la parametrizzazione, evidentemente si ha $(\vphi\circ\valpha)(0)=\vec x$.
 Allora differenziando la funzione composta otteniamo
 \begin{equation}
 	(\vphi\circ\valpha)'(0)=\jac\vphi\big(u_0,v_0)\valpha'(0)=\alpha_1'(0)\drp{\vphi}{u}(u_0,v_0)+\alpha_2'(0)\drp{\vphi}{v}(u_0,v_0).
 \end{equation}
-Si può dimostrare che questa è in effetti la generica espressione di un vettore tangente a una curva di classe $\cont{1}$ (come richiesto nella definizione \ref{d:spazio-tangente}) passante per il punto $\vec x$: di conseguenza tutti questi vettori tangenti al punto $\vec x$ sono la somma di $\vec x$ e una combinazione lineare delle colonne della matrice jacobiana di $\vphi$.
+Si può dimostrare che questa è in effetti la generica espressione di un vettore tangente a una curva di classe $\cclass[1]$ (come richiesto nella definizione \ref{d:spazio-tangente}) passante per il punto $\vec x$: di conseguenza tutti questi vettori tangenti al punto $\vec x$ sono la somma di $\vec x$ e una combinazione lineare delle colonne della matrice jacobiana di $\vphi$.
 Riassumendo,
 \begin{equation}
 	T_{\vec x}S_\circ=\bigg\{\vec x'\in\R^3\colon \vec x'=\vec x+a\drp{\vphi}{u}\big(\vphi^{-1}(\vec x)\big)+b\drp{\vphi}{v}\big(\vphi^{-1}(\vec x)\big),\ \forall a,b\in\R\bigg\}.
@@ -495,9 +495,9 @@ Possiamo dunque definire per ogni $\vec x\in S_\circ$ un versore normale $\vnu(\
 		In parole povere, molti dei vettori relativi agli spazi tangenti sono da interpretarsi ``a meno di una costante'', dove tale costante è il vettore $\vec x$ in cui lo spazio è tangente alla superficie.
 	}
 \begin{equation}
-	\vnu(\vec x)=\frac{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}{\norm{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}}.
+	\vnu(\vec x)=\frac{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}{\norm[\big]{\drp{\vphi}{u}(u,v)\times\drp{\vphi}{v}(u,v)}}.
 \end{equation}
-Solo per i punti di $S_\circ$ ha senso definire in questo modo il versore normale: se $D$ è chiuso, sulla sua frontiera non ha senso parlare di differenziabilità, perciò le derivate parziali di $\vphi$ sono definite solo per $(u,v)\in\mathring{D}$, ossia $\vec x\in S_\circ$.
+Solo per i punti di $S_\circ$ ha senso definire in questo modo il versore normale: se $D$ è chiuso, sulla sua frontiera non ha senso parlare di differenziabilità, perciò le derivate parziali di $\vphi$ sono definite solo per $(u,v)\in\interior{D}$, ossia $\vec x\in S_\circ$.
 \begin{osservazione} \label{o:spazio-tangente-superficie-implicita}
 	Se una superficie è descritta implicitamente come luogo degli zeri di una funzione $F(x,y,z)$, se le ipotesi del teorema di Dini \ref{t:dini-R3} sono soddisfatte allora possiamo parametrizzarla in un opportuno insieme $A$ con una funzione $\vphi(x,y)=\big(x,y,f(x,y)\big)^T$, come una superficie cartesiana.
 	Il versore normale alla superficie è allora
@@ -506,7 +506,7 @@ Solo per i punti di $S_\circ$ ha senso definire in questo modo il versore normal
 	\end{equation}
 	come già avevamo visto calcolando la misura infinitesima della superficie; un elemento dello spazio tangente in $\vec p_0=\vphi(x_0,y_0)=\big(x_0,y_0,z_0=f(x_0,y_0)\big)^T$ è del tipo $\vec p-\vec p_0$, dove $\vec p=(x,y,z)$, ed è dunque caratterizzato dal fatto di essere ortogonale a tale versore normale, ossia
 	\begin{equation}
-		0=\scalar{(\vec p-\vec p_0)}{\bigg(\drp{\vphi}{x}(x_0,y_0)\times\drp{\vphi}{y}(x_0,y_0)\bigg)}=
+		0=\inner[\Big]{\vec p-\vec p_0}{\drp{\vphi}{x}(x_0,y_0)\times\drp{\vphi}{y}(x_0,y_0)}=
 		-(x-x_0)\drp{f}{x}(x_0,y_0)-(y-y_0)\drp{f}{y}(x_0,y_0)+z-z_0
 	\end{equation}
 	ma sempre per il teorema di Dini esprimiamo le derivate parziali di $f$ in termini delle derivate parziali di $F$ ottenendo
@@ -518,18 +518,18 @@ Solo per i punti di $S_\circ$ ha senso definire in questo modo il versore normal
 		\drp{F}{x}(\vec p_0)(x-x_0)+\drp{F}{y}(\vec p_0)(y-y_0)+\drp{F}{z}(\vec p_0)(z-z_0)=0
 		\label{eq:spazio-tangente-superficie-implicita}
 	\end{equation}
-	o anche in breve, $\scalar{\grad F(\vec p_0)}{(\vec p-\vec p_0)}=0$.
+	o anche in breve, $\inner{\grad F(\vec p_0)}{\vec p-\vec p_0}=0$.
 	Questo mostra tra l'altro che il gradiente di $F$ è ortogonale alla superficie in tale punto.
 \end{osservazione}
 
 \begin{definizione} \label{d:superficie-orientabile}
 	Sia $S\subset\R^3$ una superficie regolare parametrizzata da $\vphi\colon D\to\R^3$: essa si dice orientabile se il campo del versore normale $\vnu$ si può estendere con continuità da $S_\circ$ a tutta $S$.
 \end{definizione}
-Prese due superfici regolari $\vphi_1\colon D_1\to\R^3$ e $\vphi_2\colon D_2\to\R^3$, possiamo chiederci, come già visto per le curve, quando sono \emph{equivalenti}; in breve, vogliamo trovare un cambiamento di coordinate $\vtau\colon D_1\to D_2$ che sia di classe $\cont{1}$.
+Prese due superfici regolari $\vphi_1\colon D_1\to\R^3$ e $\vphi_2\colon D_2\to\R^3$, possiamo chiederci, come già visto per le curve, quando sono \emph{equivalenti}; in breve, vogliamo trovare un cambiamento di coordinate $\vtau\colon D_1\to D_2$ che sia di classe $\cclass[1]$.
 Anche qui però non ha senso parlare di differenziabilità sulla frontiera di un insieme, quindi è meglio perfezionare la definizione.
 Diciamo che le due superfici sono equivalenti se:
 \begin{itemize}
-	\item esiste una funzione (comunemente, una \emph{riparametrizzazione}) $\vtau\colon E\to\R^2$, con $E$ aperto tale che $D_1\subset E$ e $D_2\subset\vtau(E)$, di classe $\cont{1}(E)$ e tale che $\vtau^{-1}$ sia a sua volta di classe $\cont{1}$, in altre parole un diffeomorfismo tra $E$ e la sua immagine;\footnote{
+	\item esiste una funzione (comunemente, una \emph{riparametrizzazione}) $\vtau\colon E\to\R^2$, con $E$ aperto tale che $D_1\subset E$ e $D_2\subset\vtau(E)$, di classe $\cont[1]{E}$ e tale che $\vtau^{-1}$ sia a sua volta di classe $\cclass[1]$, in altre parole un diffeomorfismo tra $E$ e la sua immagine;\footnote{
 		La continuità dell'inversa assicura che anche $\vtau(E)$ è aperto.
 	}
 	\item hanno la stessa immagine, ossia $\vphi_1(D_1)=\vphi_2(D_2)$. 
@@ -590,45 +590,45 @@ Chiaramente possiamo avere un vettore normale ben definito per $(u,v)\in(-1,1)\t
 }
 
 \begin{definizione} \label{d:superfici-con-bordo}
-	Sia $\vphi\colon D\to\R^3$ la parametrizzazione di una superficie $S$ regolare, con $D$ dominio regolare connesso: essa si dice \emph{superficie con bordo} se $\vphi$ è iniettiva su $D$ e se si può individuare un insieme $E\supset D$ aperto e una funzione $\tilde{\vphi}\colon E\to\R^3$, di classe $\cont{1}(E)$, tale che la sua restrizione in $D$ coincida con $\vphi$. Il rango della jacobiana $\jac\vphi$ deve essere massimo $\forall (u,v)\in D$.
+	Sia $\vphi\colon D\to\R^3$ la parametrizzazione di una superficie $S$ regolare, con $D$ dominio regolare connesso: essa si dice \emph{superficie con bordo} se $\vphi$ è iniettiva su $D$ e se si può individuare un insieme $E\supset D$ aperto e una funzione $\tilde{\vphi}\colon E\to\R^3$, di classe $\cont[1]{E}$, tale che la sua restrizione in $D$ coincida con $\vphi$. Il rango della jacobiana $\jac\vphi$ deve essere massimo $\forall (u,v)\in D$.
 \end{definizione}
-Per queste superfici definiamo allora $\partial S\defeq\vphi(\partial D)$.
+Per queste superfici definiamo allora $\boundary S\defeq\vphi(\boundary D)$.
 Il bordo di $D$, che è un dominio regolare, si può esprimere sempre come unione di curve semplici, regolari a tratti.
-Se dunque $\vgamma$ è una parametrizzazione di $+\partial D$ (cioè tale che il versore normale al bordo di $D$ è uscente), allora componendo la parametrizzazione della superficie, $\vphi$, con essa si ottiene $\vphi\circ\vgamma$ che è una parametrizzazione del bordo di $S$, ed è una curva regolare a tratti in $\R^3$.
-In questo caso si scrive $+\partial S$, e il bordo $\partial S$ diventa orientato in senso antiorario (e si dice che l'orientazione è indotta da quella di $\partial D$).
+Se dunque $\vgamma$ è una parametrizzazione di $+\boundary D$ (cioè tale che il versore normale al bordo di $D$ è uscente), allora componendo la parametrizzazione della superficie, $\vphi$, con essa si ottiene $\vphi\circ\vgamma$ che è una parametrizzazione del bordo di $S$, ed è una curva regolare a tratti in $\R^3$.
+In questo caso si scrive $+\boundary S$, e il bordo $\boundary S$ diventa orientato in senso antiorario (e si dice che l'orientazione è indotta da quella di $\boundary D$).
 
 Possiamo dunque concludere con le versioni dei teoremi del rotore e della divergenza per campi vettoriali in $\R^3$, di cui non diamo la dimostrazione.
 \begin{teorema}[della divergenza] \label{t:divergenza-R3}
-	Se $D\subset\R^3$ è un dominio regolare e $\vec F\colon D\to\R^3$ un campo vettoriale $\cont{1}(D)$, allora
+	Se $D\subset\R^3$ è un dominio regolare e $\vec F\colon D\to\R^3$ un campo vettoriale $\cont[1]{D}$, allora
 	\begin{equation}
-		\int_{\partial D}\scalar{\vec F}{\vnu}\,\dd\sigma=\int_D\div\vec F\,\dd x\,\dd y\,\dd z.
+		\int_{\boundary D}\inner{\vec F}{\vnu}\,\dd\sigma=\int_D\div\vec F\,\dd x\,\dd y\,\dd z.
 		\label{eq:divergenza-R3}
 	\end{equation}
-	dove $\vnu$ è il versore normale a $\partial D$ \emph{uscente} da $D$.
+	dove $\vnu$ è il versore normale a $\boundary D$ \emph{uscente} da $D$.
 \end{teorema}
 \begin{corollario}
-	Sia $D\subset\R^3$ regolare, $f\colon D\to\R$ una funzione $\cont{1}(D)$, e $\vec w\in\R^3$ un versore.
+	Sia $D\subset\R^3$ regolare, $f\colon D\to\R$ una funzione $\cont[1]{D}$, e $\vec w\in\R^3$ un versore.
 	Allora
 	\begin{equation}
-		\int_DD_{\vec w}f\,\dd x\,\dd y\,\dd z=\int_{\partial D}f\scalar{\vec w}{\vnu}\,\dd\sigma.
+		\int_DD_{\vec w}f\,\dd x\,\dd y\,\dd z=\int_{\boundary D}f\inner{\vec w}{\vnu}\,\dd\sigma.
 	\end{equation}
-	dove $D_{\vec w}$ indica la derivata lungo la direzione di $\vec w$, e $\vnu$ è il versore normale a $\partial D$ uscente.
+	dove $D_{\vec w}$ indica la derivata lungo la direzione di $\vec w$, e $\vnu$ è il versore normale a $\boundary D$ uscente.
 \end{corollario}
 \begin{proof}
-	Il campo $f\vec w$ è una funzione da $D$ a $\R^3$, e la sua divergenza è $\div(f\vec w)=\sum_{i=1}^3\drp{f}{x_i}w_i=\scalar{\vec w}{\grad f}=D_{\vec w}f$: dal teorema precedente
+	Il campo $f\vec w$ è una funzione da $D$ a $\R^3$, e la sua divergenza è $\div(f\vec w)=\sum_{i=1}^3\drp{f}{x_i}w_i=\inner{\vec w}{\grad f}=D_{\vec w}f$: dal teorema precedente
 	\begin{equation}
-		\int_{\partial D}\scalar{f\vec w}{\vnu}\,\dd\sigma=\int_D\div(f\vec w)\,\dd x\,\dd y\,\dd z=\int_DD_{\vec w}f\,\dd x\,\dd y\,\dd z.\qedhere
+		\int_{\boundary D}\inner{f\vec w}{\vnu}\,\dd\sigma=\int_D\div(f\vec w)\,\dd x\,\dd y\,\dd z=\int_DD_{\vec w}f\,\dd x\,\dd y\,\dd z.\qedhere
 	\end{equation}
 \end{proof}
 Un altro caso particolare, che discende da questo corollario, è la formula di integrazione per parti: sempre in generale con le derivate direzionali, applicandolo alla funzione $\vec F=fg\vec w$ otteniamo
 \begin{equation}
-	\int_Df(D_{\vec w}g)\,\dd x\,\dd y\,\dd z=\int_{\partial D}fg\scalar{\vec w}{\vnu}\,\dd\sigma-\int_D(D_{\vec w}f)g\,\dd x\,\dd y\,\dd z.
+	\int_Df(D_{\vec w}g)\,\dd x\,\dd y\,\dd z=\int_{\boundary D}fg\inner{\vec w}{\vnu}\,\dd\sigma-\int_D(D_{\vec w}f)g\,\dd x\,\dd y\,\dd z.
 \end{equation}
 Sempre con l'ultimo corollario, prendendo invece per $\vec w$ un versore $\vec e_i$ della base canonica risulta
 \begin{equation}
-	\int_DD_{\vec e_i}f\,\dd x\,\dd y\,\dd z=\int_D\drp{f}{x_i}\,\dd x\,\dd y\,\dd z=\int_{\partial D}\scalar{f\vec e_i}{\vnu}\,\dd\sigma=\int_{\partial D}f\nu_i\,\dd\sigma.
+	\int_DD_{\vec e_i}f\,\dd x\,\dd y\,\dd z=\int_D\drp{f}{x_i}\,\dd x\,\dd y\,\dd z=\int_{\boundary D}\inner{f\vec e_i}{\vnu}\,\dd\sigma=\int_{\boundary D}f\nu_i\,\dd\sigma.
 \end{equation}
-Dato un campo vettoriale $\vec F=(F_1,F_2,F_3)\colon U\to\R^3$ di classe $\cont{1}(U)$, definiamo il \emph{rotore} di $\vec F$ come la funzione $\rot\vec F\colon U\to\R^3$ data da
+Dato un campo vettoriale $\vec F=(F_1,F_2,F_3)\colon U\to\R^3$ di classe $\cont[1]{U}$, definiamo il \emph{rotore} di $\vec F$ come la funzione $\rot\vec F\colon U\to\R^3$ data da
 \begin{equation}
 	\rot\vec F\defeq\bigg(
 		\drp{F_3}{y}-\drp{F_2}{z},
@@ -638,11 +638,11 @@ Dato un campo vettoriale $\vec F=(F_1,F_2,F_3)\colon U\to\R^3$ di classe $\cont{
 \end{equation}
 \begin{teorema}[del rotore] \label{t:rotore-R3}
 	Sia $S\subset\R^3$ una superficie regolare con bordo e $\vphi\colon D\to\R^3$ una sua parametrizzazione, con $D\subset\R^2$ dominio regolare.
-	Sia inoltre $A$ un aperto di $\R^3$ tale che $S\subset A$, e $\vec F\colon A\to\R^3$ un campo di classe $\cont{1}(A)$.
+	Sia inoltre $A$ un aperto di $\R^3$ tale che $S\subset A$, e $\vec F\colon A\to\R^3$ un campo di classe $\cont[1]{A}$.
 	Allora
 	\begin{equation}
-		\int_S\scalar{\rot\vec F}{\vnu}\,\dd\sigma=\int_{+\partial S}\scalar{\vec F}{\vec t}\,\dd s
+		\int_S\inner{\rot\vec F}{\vnu}\,\dd\sigma=\int_{+\boundary S}\inner{\vec F}{\vec t}\,\dd s
 		\label{eq:rotore-R3}
 	\end{equation}
-	dove $\vec t$ è il versore tangente a $+\partial S$.
+	dove $\vec t$ è il versore tangente a $+\boundary S$.
 \end{teorema}
