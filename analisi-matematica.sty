@@ -189,14 +189,34 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Stili per i titoli dei teoremi, definizioni, etc.
-\theoremstyle{definition}
+% Tutti gli ambienti seguono la numerazione 'teorema', che è definita
+% (con l'opzione 'section') come capitolo.sezione.#, con # reimpostato
+% a zero all'inizio di ogni sezione. # è incrementato per ogni elemento,
+% indiscriminatamente dal tipo di ambiente.
+% In questo modo è più facile individuare teoremi, definizioni, etc. nel
+% testo, inoltre si evitano ripetizioni come "Teorema 5", "Definizione 5",
+% "Osservazione 5" nello stesso capitolo.
+\theoremstyle{plain}
 \newtheorem{teorema}{Teorema}[section]
 \newtheorem{corollario}[teorema]{Corollario}
 \newtheorem{lemma}[teorema]{Lemma}
 \newtheorem{proprieta}[teorema]{Proprietà}
 
-\theoremstyle{plain}
+\theoremstyle{definition}
 \newtheorem{definizione}[teorema]{Definizione}
+\newtheorem{esempio}[teorema]{Esempio}
+% Non è scontato cosa "vada" e cosa "non vada" in questo ambiente 'esempio'.
+% In linea di principio ci vanno quegli esempi che non sono una parte fondamentale
+% del discorso, nel senso che se anche non ci fossero la lettura non ne
+% risentirebbe più di tanto. Diciamo che per gli esempi corti (una/due righe) non
+% è necessario questo blocco: o li si raggruppa tutti in una lista numerata, o si
+% fa anche a meno di usare l'ambiente 'esempio' e li si lascia nel testo normale.
+% Per gli esempi lunghi (sette, otto righe o più) vale invece la pena di avere un
+% ambiente esempio per ciascuno di essi, separatamente.
+% Ci sono infine quei paragrafi che si legano direttamente a un teorema come esempio
+% per "cosa succederebbe se togliessimo un'ipotesi": eviterei di usare questo
+% ambiente in tali casi (perche', come detto prima, sono una parte _essenziale_ del
+% discorso).
 
 \theoremstyle{remark}
 \newtheorem{osservazione}[teorema]{Osservazione}
