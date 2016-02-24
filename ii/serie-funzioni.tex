@@ -79,7 +79,7 @@ La condizione appena data è ovviamente solamente necessaria: la serie $\sum_{n=
 Si dice che la serie $\sum_{n=1}^{+\infty}f_n(x)$ converge \emph{totalmente} in $J$ se esiste una successione numerica $\{M_n\}\subset\R$ tale che $\abs{f_n(x)}\leq M_n$ per ogni $n$ e $x\in J$, e per cui la serie $\sum_{n=1}^{+\infty}M_n$ converga.
 \end{definizione}
 La definizione continua a valere se come successione $\{M_n\}$ si prende il minimo dei maggioranti di $f_n(x)$ in $J$, che è proprio la norma uniforme: allora la convergenza é totale anche quando la serie $\sum_{n=1}^{+\infty}\norm{f_n}_{\infty,J}$ converge.
-\begin{teorema}[di Weierstrass]
+\begin{teorema}[Weierstrass]
 Se $\sum_{n=1}^{+\infty}f_n(x)$ converge totalmente in $J$, allora converge anche uniformemente.
 \end{teorema}
 \begin{proof}
@@ -144,7 +144,7 @@ Il raggio $\rho$ appartiene a $[0,+\infty]$:
 \end{itemize}
 Per determinare il raggio di convergenza si ricorre ai criteri seguenti.
 Quando $\rho\neq 0$, non si può affermare nulla sul comportamento della serie al bordo di $(-\rho,\rho)$.
-\begin{teorema}[Criterio di Cauchy-Hadamard]
+\begin{teorema}[Cauchy-Hadamard]
 Sia $\rho$ il raggio di convergenza della serie $\sum_{n=0}^{+\infty}a_nx^n$. Se
 \[
 \ell=\limsup_{n\to+\infty}\sqrt[n]{\abs{a_n}},
@@ -159,7 +159,7 @@ Per il criterio \ref{t:criterio_radice_serie} della radice si ha
 che deve essere minore di 1, quindi $\abs{x}<1/\ell$: allora $\rho=1/\ell$ è il raggio di convergenza.
 \end{proof}
 Questo criterio è sempre utilizzabile, in quanto il limite superiore di una successione, in $\Rex$, esiste sempre (teorema \ref{t:classe_limite_mai_vuota}).
-\begin{teorema}[Criterio di d'Alembert]
+\begin{teorema}[d'Alembert]
 Se $a_n\neq 0$ per ogni $n$ ed esiste il limite
 \[
 	\ell\defeq\lim_{n\to+\infty}\abs[\bigg]{\frac{a_{n+1}}{a_n}},
@@ -185,7 +185,7 @@ Una serie di potenze è continua nell'intervallo di convergenza $(-\rho,\rho)$.
 In ogni punto $x_0\in(-\rho,\rho)$, si trova un intervallo compatto $[a,b]\subset(-\rho,\rho)$ con $a<x_0<b$. Essendo un insieme compatto, la serie converge totalmente in $[a,b]$, e poiché $a_nx^n$ è continua in $[a,b]$ per ogni $n$ si ha per il teorema \ref{t:continuita_serie_conv_uniforme} che anche la serie è continua in $[a,b]$, quindi in $x_0$.
 La serie è quindi continua in tutti i punti $x_0\in(-\rho,\rho)$. 
 \end{proof}
-\begin{teorema}[di Abel]
+\begin{teorema}[Abel]
 Se la serie di potenze $\sum_{n=1}^{+\infty}a_nx^n$ ha un raggio di convergenza $\rho$ non nullo e converge in $x=\rho$, allora converge uniformemente nei sottoinsiemi compatti di $(-\rho,\rho]$.
 \end{teorema}
 La tesi vale ovviamente anhe nel caso in cui la serie converga in $x=-\rho$, per cui la convergenza è uniforme in $[-\rho,\rho)$, o anche entrambi.

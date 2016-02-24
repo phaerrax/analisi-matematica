@@ -40,12 +40,12 @@ Quando una funzione non è derivabile in un singolo punto, tale punto si chiama 
 \end{itemize}
 \section{Operazioni tra derivate}
 Per derivare una combinazione di più funzioni si ricorre alle seguenti regole, per le operazioni elementari: i seguenti teoremi garantiscono la derivabilità del risultato delle operazioni.
-\begin{teorema}
+\begin{proprieta}
 Siano $f,g\colon A\to\R$ due funzioni derivabili in $x_0\in A$: allora la combinazione lineare $\alpha f+\beta g$ è derivabile in $x_0$ $\forall\alpha,\beta\in\R$ e si ha che
 \begin{equation}
 (\alpha f+\beta g)'(x_0)=\alpha f'(x_0)+\beta g'(x_0).
 \end{equation}
-\end{teorema}
+\end{proprieta}
 \begin{proof}
 Il teorema si dimostra perché l'operazione di limite è lineare, quindi il limite della somma equivale alla somma dei limiti. Infatti il rapporto incrementale, per $x\to x_0$, è
 \begin{align*}
@@ -55,12 +55,12 @@ Il teorema si dimostra perché l'operazione di limite è lineare, quindi il limi
 &\to\alpha f'(x_0)+\beta g'(x_0).\qedhere
 \end{align*}
 \end{proof}
-\begin{teorema}[regola di Leibnitz]
+\begin{proprieta}[Leibnitz]
 Siano $f,g\colon A\to\R$ due funzioni derivabili in $x_0\in A$: allora $fg$ è derivabile in $x_0$ e si ha che
 \begin{equation}
 (fg)'(x_0)=f'(x_0)g(x_0)+f(x_0)g'(x_0).
 \end{equation}
-\end{teorema}
+\end{proprieta}
 \begin{proof}
 Al prodotto incrementale per $x\to x_0$ si somma e sottrae il termine $f(x_0)g(x)$ al numeratore:
 \begin{align*}
@@ -71,12 +71,12 @@ Al prodotto incrementale per $x\to x_0$ si somma e sottrae il termine $f(x_0)g(x
 &\to f'(x_0)g(x_0)+f(x_0)g'(x_0).\qedhere
 \end{align*}
 \end{proof}
-\begin{teorema}
+\begin{proprieta}
 Siano $f,g\colon A\to\R$ due funzioni derivabili in $x_0\in A$: allora $\frac{f}{g}$ è derivabile in $x_0$ se $g\neq 0$ nell'intorno di $x_0$ e si ha che
 \begin{equation}
 \bigg(\frac{f}{g}\bigg)'(x_0)=\frac{f'(x_0)g(x_0)-f(x_0)g'(x_0)}{g^2(x_0)}.
 \end{equation}
-\end{teorema}
+\end{proprieta}
 \begin{proof}
 Il rapporto incrementale per $x\to x_0$ è
 \[
@@ -90,12 +90,12 @@ A questo punto, come nel teorema precedente, si aggiunge e toglie il termine $f(
 \end{align*}
 \end{proof}
 \subsection{Funzioni composte}
-\begin{teorema}
+\begin{proprieta}
 Sia $f\colon I\subseteq\R\to\R$ una funzione derivabile in $x_0\in\ I$, e sia $g\colon J\to\R$ derivabile in $y_0=f(x_0)$, con $f(I)\subseteq J$. La funzione $g\circ f\colon I\to\R$ è derivabile in $x_0$ e si ha
 \begin{equation}
 (g\circ f)'(x_0)=f'(x_0)g'\big(f(x_0)\big).
 \end{equation}
-\end{teorema}
+\end{proprieta}
 \begin{proof}
 Il rapporto incrementale per $x\to x_0$ della funzione composta è
 \[
@@ -107,12 +107,12 @@ in cui $f(x)\neq f(x_0)$, per cui il rapporto incrementale sarebbe semplicemente
 \]
 \end{proof}
 \subsection{Funzioni inverse}
-\begin{teorema}
+\begin{proprieta}
 Siano $f\colon I\to\R$ e $x_0\in I$, con $f$ derivabile in $I$ e $f'(x_0)\neq 0$. Se $f$ è invertibile, allora $f^{-1}\colon f(I)\to I$ è derivabile in $y_0=f(x_0)$ e tale derivata è il reciproco di $f'(x_0)$.
 \begin{equation}
 (f^{-1})'(y_0)=\frac1{f'(x_0)}.
 \end{equation}
-\end{teorema}
+\end{proprieta}
 \begin{proof}
 Il rapporto incrementale della funzione inversa, per $y\to y_0$ (dove $y=f(x)$, quindi $f^{-1}(y)=x$) è
 \[
@@ -142,7 +142,7 @@ Sia $f\colon I\to\R$ derivabile in $x_0\in I$. Si dice che $x_0$ è un punto di:
 \item \emph{minimo} (relativo per $f$ in $I$) se $\exists\delta>0\colon\forall x\in(x_0-\delta,x_0+\delta)\rightarrow f(x)\geq f(x_0)$.
 \end{itemize}
 \end{definizione}
-\begin{teorema}[di Fermat]
+\begin{teorema}[Fermat]
 \label{t:fermat}
 Siano $f\colon I\to\R$, $I$ un intervallo e $x_0\in\interior{I}$. Se $f$ è derivabile in $x_0$ ed esso è un punto estremante per $f$, allora $f'(x_0)=0$.
 \end{teorema}
@@ -161,7 +161,7 @@ Si dicono \emph{punti stazionari} i punti che soddisfano le ipotesi del teorema 
 \end{definizione}
 I punti estremanti di una funzione, quindi, possono solo essere punti stazionari, punti non interni all'intervallo di definizione oppure punti di non derivabilità.
 
-\begin{teorema}[di Rolle]
+\begin{teorema}[Rolle]
 \label{t:rolle}
 Sia $f\colon [a,b]\to\R$ una funzione continua in $[a,b]$ e derivabile in $(a,b)$. Se $f(a)=f(b)$, allora esiste un punto $x_0\in (a,b)$ per cui $f'(x_0)=0$.
 \end{teorema}
@@ -171,7 +171,7 @@ Se invece $f$ non è costante, per il teorema \ref{t:weierstrass} di Weierstrass
 \end{proof}
 \input{grafici/rolle}
 
-\begin{teorema}[di Cauchy]
+\begin{teorema}[Cauchy]
 \label{t:cauchy}
 Se $f,g\colon[a,b]\to\R$ sono due funzoni continue in $[a,b]$ e derivabili in $(a,b)$, esiste un punto $z\in(a,b)$ per cui
 \begin{equation}
@@ -183,7 +183,7 @@ ossia le due derivate sono proporzionali di un fattore che dipende unicamente da
 \begin{proof}
 Si definisce la funzione ausiliaria $\phi(x)=\big(g(b)-g(a)\big)f(x)-\big(f(b)-f(a)\big)g(x)$, che soddisfa le ipotesi del teorema \ref{t:rolle} di Rolle: è una combinazione lineare di funzioni continue e derivabili, quindi è a sua volta continua e derivabile, e $\phi(a)=\phi(b)$. Allora $\exists z\in(a,b)$ per cui vale $\phi'(z)=0$, cioè per cui $\big(g(b)-g(a)\big)f'(z)-\big(f(b)-f(a)\big)g'(z)=0$, da cui si ottiene la \eqref{eq:cauchy}.
 \end{proof}
-\begin{teorema}[di Lagrange]
+\begin{teorema}[Lagrange]
 \label{t:lagrange}
 Se $f\colon[a,b]\to\R$ è una funzione continua in $[a,b]$ e derivabile in $(a,b)$, esiste un punto $z\in(a,b)$ tale per cui
 \begin{equation}
@@ -253,7 +253,7 @@ Nell'intervallo $(x_0,x_0+h)$, $\exists z$ (in dipendenza da $h$) in tale interv
 \end{proof}
 La condizione è solo sufficiente: se non esiste il limite della derivata, non si sa dire niente sul suo comportamento in quell'intorno.
 Da questo teorema inoltre si deduce che se una funzione è una derivata può ammettere solo discontinuità di seconda specie.
-\begin{teorema}[di De l'H\^opital]
+\begin{teorema}[de l'H\^opital]
 \label{t:hopital}
 Siano $f,g\colon(a,b)\to\R$, con $a<b$ anche infiniti, due funzioni derivabili in $(a,b)$ in cui sia $g$ che $g'$ non si annullino mai, cioè $g(x)g'(x)\neq 0$ $\forall x\in(a,b)$. Se
 \[
@@ -285,7 +285,7 @@ P_nf(x-x_0)\defeq %f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\dots+\fra
 \end{equation}
 \end{definizione}
 Per approssimare una funzione nell'intorno del punto $x_0$, si utilizza questo polinomio appena definito, con l'aggiunta dell'errore che assume forme differenti a seconda del teorema utilizzato.
-\begin{teorema}[Formula di Taylor con resto secondo Peano]
+\begin{teorema}[formula di Taylor con resto secondo Peano]
 \label{t:taylor_peano}
 Sia $f\colon I\to\R$ una funzione derivabile $n$ volte in $x_0\in\interior{I}$. Localmente, per $x\to x_0$, si ha
 \begin{equation}
@@ -317,7 +317,7 @@ La derivata del denominatore invece vale semplicemente $(n+1)(x-x_0)^n$, perciò
 \end{equation}
 Se $f$ è derivabile $n+1$ volte in $x_0$, allora $g$ è in tale punto derivabile $n$ volte, allora per l'ipotesi di induzione poiché vale la tesi per $f'(x)=g(x)$, la \eqref{eq:dimostrazione-taylor-g} tende a 0, dato che è la stessa della tesi per $n$, ma divisa per $n+1$. Allora la \eqref{eq:dimostrazione-taylor} è vera, quindi si è dimostrato il teorema.
 \end{proof}
-\begin{teorema}[Formula di Taylor con resto secondo Lagrange]
+\begin{teorema}[formula di Taylor con resto secondo Lagrange]
 \label{t:taylor_lagrange}
 Siano $f\colon I\to\R$ e $x_0\in\interior{I}$, con $f$ derivabile $n+1$ volte in $\interior{I}$. Si ha per ogni $x\in I$ che
 \begin{equation}
@@ -349,21 +349,23 @@ Per le funzioni convesse valgono le seguenti proprietà:
 \item le derivate sinistre e destre sono monotone crescenti per ogni punto interno all'intervallo (vedi punto precedente), quindi la derivata prima ha al più un'infinità numerabile di punti di discontinuità solo di prima specie; quindi la funzione è derivabile nell'interno dell'intervallo tranne al più in un'infinità numerabile di punti, che sono tutti punti angolosi.
 \end{itemize}
 Tali proprietà valgono ovviamente anche per le funzioni concave, cambiando opportunamente verso o segno dove serve.
-\begin{teorema}
+\begin{proprieta}
 Sia $f\colon(a,b)\to\R$ derivabile almeno due volte in $(a,b)$. $f$ è convessa in $(a,b)$ se e solo se $f''(x)\geq 0$ $\forall x\in(a,b)$.
-\end{teorema}
-\begin{teorema}
+\end{proprieta}
+\begin{proprieta}
 Sia $f\colon(a,b)\to\R$ derivabile almeno una volta in $(a,b)$. $f$ è convessa in $(a,b)$ se e solo se $\forall x_0\in(a,b)$ il grafico della funzione è sopra al grafico della retta tangente in $x_0$, cioè se $\forall x_0,x\in(a,b)$ si ha che $f(x)\geq f(x_0)+f'(x_0)(x-x_0)$.
-\end{teorema}
+\end{proprieta}
 \begin{definizione}
 Siano $f\colon(a,b)\to\R$ derivabile in $(a,b)$ e $x_0\in(a,b)$. Se $\forall x\in(x_0-\delta,x_0)$ si ha $f(x)\leq f(x_0)+f'(x_0)(x-x_0)$ e $\forall x\in(x_0,x_0+\delta)$ si ha $f(x)\geq f(x_0)+f'(x_0)(x-x_0)$, cioè se prima di $x_0$ è concava e dopo e convessa, $x_0$ si dice punto di flesso ascendente.
 
 Se invece $\forall x\in(x_0-\delta,x_0)$ si ha $f(x)\geq f(x_0)+f'(x_0)(x-x_0)$ e $\forall x\in(x_0,x_0+\delta)$ si ha $f(x)\leq f(x_0)+f'(x_0)(x-x_0)$, cioè se prima di $x_0$ è convessa e dopo e concava, allora $x_0$ è un punto di flesso discendente.
 \end{definizione}
-\begin{teorema}
+\begin{proprieta}
 Siano $f\colon(a,b)\to\R$ derivabile due volte in $(a,b)$ e $x_0\in(a,b)$. Se $x_0$ è un punto di flesso, allora $f''(x_0)=0$.
-\end{teorema}
-Il teorema inverso non vale ad esempio per le potenze pari, come $x^4$, che in $x=0$ hanno la derivata seconda evidentemente nulla, ma non hanno un flesso in tale punto.
+\end{proprieta}
+L'affermazione contraria non vale: si guardi ad esempio alle potenze pari, come $x^4$, che in $x=0$ hanno la derivata seconda evidentemente nulla, ma non hanno un flesso in tale punto.
+
+Quando anche la derivata seconda è zero, con il seguente teorema possiamo comunque determinare la natura di un punto (flesso o estremante) a partire dalla prima derivata non nulla.
 \begin{teorema}
 Sia $f\colon(a,b)\to\R$ una funzione derivabile $n$ volte in $x_0\in(a,b)$. Se $f'(x_0)=f''(x_0)=\dots=f^{(n-1)}(x_0)=0$, e $f^{(n)}(x_0)\neq0$, allora:
 \begin{itemize}

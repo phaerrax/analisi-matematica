@@ -27,7 +27,7 @@ Non sappiamo, così a priori, se è nemmeno una curva.
 Il seguente teorema, che è il teorema delle funzioni implicite, fornisce delle condizioni sufficienti a rappresentare certe curve ``nascoste'' in equazioni come queste.
 Ne daremo la dimostrazione nel caso di funzioni in $\R^2$, che incontreremo più spesso.
 Esiste ovviamente una versione del teorema per un numero arbitrario di dimensioni, che enunceremo successivamente.
-\begin{teorema}[di Dini] \label{t:dini-R2}
+\begin{teorema}[Dini] \label{t:dini-R2}
 	Sia $A\subset\R^2$ un aperto e $F\colon A\to\R$ una funzione di classe $\cont[1]{A}$, e sia $(x_0,y_0)\in A$ uno zero di questa funzione tale che $\drp{F}{y}(x_0,y_0)\neq 0$.
 	Allora esistono degli intorni $U(x_0)$ e $V(y_0)$ per i quali $\forall x\in U$ $\exists! y=f(x)\in V$ tale che $F(x,y)=0$. Inoltre, la mappa $x\mapsto f(x)$ è di classe $\cclass[1]$ e vale la relazione
 	\begin{equation}
@@ -235,8 +235,8 @@ Abbiamo dunque la seguente definizione.
 	\end{equation*}
 \end{definizione}
 Abbiamo visto che quando il vincolo è rappresentabile come una curva, in presenza di un punto estremante vincolato il gradiente è proporzionale alla normale a tale curva.
-Il seguente teorema mostra una condizione sufficiente ad individuare i punti \emph{stazionari} vincolati (che andranno poi studiati man mano per discernerli).
-\begin{teorema}[dei moltiplicatori di Lagrange] \label{t:moltiplicatori-lagrange-R2}
+Il seguente teorema, noto come \emph{teorema dei moltiplicatori di Lagrange}, mostra una condizione sufficiente ad individuare i punti \emph{stazionari} vincolati (che andranno poi studiati man mano per discernerli).
+\begin{teorema}[Lagrange] \label{t:moltiplicatori-lagrange-R2}
 	Sia $A\subseteq\R^2$ aperto, $f\colon A\to\R$ e $F\colon A\to\R$, entrambe di classe $\cclass[1]$ in $A$. Sia $E$ il luogo degli zeri di $F$ in $A$. Se $(x_0,y_0)\in E$ è un punto estremante per $f|_E$, e $\grad F(x_0,y_0)\neq(0,0)$, allora esiste un numero $\lambda\in\R$ tale per cui
 	\begin{equation} 
 		\grad f(x_0,y_0)=\lambda\grad F(x_0,y_0),
@@ -262,7 +262,7 @@ Il seguente teorema mostra una condizione sufficiente ad individuare i punti \em
 	Abbiamo dunque che i gradienti di $f$ e $F$ nel punto sono ortogonali allo stesso vettore: ciò implica che essi sono proporzionali (hanno la stessa direzione), vale a dire $\grad f(x_0,y_0)=\lambda\grad F(x_0,y_0)$ per un certo numero $\lambda\in\R$.
 \end{proof}
 Il teorema appena dimostrato non si limita ovviamente alle funzioni in due variabili, ma si può generalizzare come di seguito.
-\begin{teorema}[dei moltiplicatori di Lagrange] \label{t:moltiplicatori-lagrange}
+\begin{teorema}[Lagrange] \label{t:moltiplicatori-lagrange}
 	Sia $f\colon\Omega\to\R$, con $\Omega\in\R^n$ aperto e $f\in\cont[1]{\Omega}$. Sia inoltre $\vec F\colon\Omega\to\R^m$, con $m<n$, anch'essa di classe $\cont[1]{\Omega}$, e $E=\{\vec x\in\Omega\colon\vec F(\vec x)=\vec 0\}$.
 	Se $\vec x_0\in\Omega$ è un estremante di $f|_E$ e il rango della jacobiana $\jac\vec F(\vec x_0)$ è massimo, allora esiste un vettore $\vlambda\in\R^m$ tale che $(\vec x_0,\vlambda)\in\Omega\times\R^m$ è soluzione del sistema
 	\begin{equation} 

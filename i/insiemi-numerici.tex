@@ -117,12 +117,10 @@ Quindi, perché un numero $\alpha$ sia un estremo superiore, deve soddisfare due
 \item deve essere il minore dei maggioranti, cioè ``spostandosi'' di una quantità arbitrariamente piccola $\epsilon$ a sinistra (ossia nell'insieme $A$) di $\alpha$ si devono trovare soltanto elementi di $A$, e non altri maggioranti, quindi $\forall\epsilon>0$, $\exists\tilde{a}\in A\colon\alpha-\epsilon<\tilde{a}\leq\alpha$.
 \end{itemize}
 Invertendo le disuguaglianze si trovano le proprietà che un estremo inferiore deve soddisfare. Se poi tale estremo è massimo o minimo, allora dovrà anche appartenere ad $A$.
-Inoltre, ogni insieme limitato di numeri reali possiede \emph{sempre} un estremo superiore o inferiore, per il seguente teorema.
-\begin{teorema}[proprietà dell'estremo superiore]
+\begin{proprieta}[dell'estremo superiore]
 Ogni sottoinsieme di $\R$ limitato superiormente possiede sempre un estremo superiore.
-\end{teorema}
-%proof?
-Questo teorema distingue il campo $\R$ da $\Q$, che non possiede questa proprietà: esiste infatti almeno un sottoinsieme di $\Q$ che, pur essendo superiormente limitato, non ammette un estremo superiore, come vediamo nel seguente esempio.
+\end{proprieta}
+Questa proprietà distingue il campo $\R$ da $\Q$, che non la possiede: esiste infatti almeno un sottoinsieme di $\Q$ che, pur essendo superiormente limitato, non ammette un estremo superiore, come vediamo nel seguente esempio.
 \begin{esempio} \label{es:non-esiste-sempre-sup-in-Q}
 	Prendiamo l'insieme $A=\{r\in\Q^+\colon r^2<2\}$.
 	L'insieme dei suoi maggioranti è $B=\{p\in\Q^+\colon p^2\geq 2\}$.
@@ -139,11 +137,10 @@ Questo teorema distingue il campo $\R$ da $\Q$, che non possiede questa propriet
 	L'estremo superiore, $\sqrt{2}$, che $A$ sembrerebbe avere, in realtà non è tale poiché $\sqrt{2}\notin\Q$, quindi $A$ non ha un estremo superiore.
 	Diversamente sarebbe se $A$ non fosse un sottoinsieme di $\Q$ ma di $\R$: in tal caso $\sqrt{2}\in\R$ quindi è a pieno titolo l'estremo superiore di $A$.
 \end{esempio}
-
 A partire da questa proprietà si può definire l'operazione di addizione tra due allineamenti infiniti di numeri reali.
 Per farlo, si costruiscono le somme dei troncati di due numeri approssimati ogni volta ad una cifra decimale in più: queste somme dei troncati saranno sempre minori della somma reale dei due numeri, e formano una famiglia di elementi che ha un elemento superiore; tale estremo è la somma dei due numeri cercata.
 
-\begin{teorema}[densità di $\R$]
+\begin{teorema}
 Assegnati due qualunque numeri reali distinti, si possono sempre trovare tra di essi un numero razionale e un numero irrazionale.
 \end{teorema}
 \begin{proof}
@@ -189,7 +186,7 @@ Valgono le seguenti proprietà:
 \item $\norm{\vec x+\vec y}\leq\norm{\vec x}+\norm{\vec y}$ (disuguaglianza triangolare).
 \end{itemize}
 Le ultime due proprietà sono dimostrate nei seguenti teoremi.
-\begin{teorema}[Disuguaglianza di Cauchy]
+\begin{teorema}[disuguaglianza di Cauchy-Schwarz]
 Dati due vettori $\vec x, \vec y\in\R^n$, il modulo del prodotto interno tra di essi è minore o uguale del prodotto delle loro norme.
 \end{teorema}
 \begin{proof}
@@ -207,7 +204,7 @@ Quest'ultima deve essere non negativa per ogni valore di $t\in\R$, vale a dire c
 	\abs{\inner{\vec x}{\vec y}}\leq\norm{\vec x}\norm{\vec y}.\qedhere
 \end{equation}
 \end{proof}
-\begin{teorema}[Disuguaglianza triangolare]
+\begin{teorema}[disuguaglianza triangolare]
 Dati due vettori $\vec x, \vec y\in\R^n$, la norma della loro somma è minore o uguale della somma delle loro norme.
 \end{teorema}
 \begin{proof}

@@ -195,7 +195,7 @@ Questo indica anche il verso di percorrenza della frontiera: percorrendola in se
 \input{grafici/versore-tangente-normale}
 
 Possiamo dunque dimostrare con gli elementi a disposizione il teorema sviluppato da Gauss e Green.
-\begin{teorema}[di Gauss-Green] \label{t:gauss-green}
+\begin{teorema}[Gauss-Green] \label{t:gauss-green}
 	Sia $D\subseteq\R^2$ un dominio regolare e $f\colon D\to\R$ una funzione in $\cont[1]{D}$.
 	Allora valgono
 	\begin{gather}
@@ -340,7 +340,7 @@ La divergenza si definisce anche in dimensione qualunque come, dato $\vec F=(F_1
 \begin{equation}
 	\div\vec F\defeq\sum_{i=1}^m\drp{F_i}{x_i}.
 \end{equation}
-\begin{teorema}[della divergenza] \label{t:divergenza-R2}
+\begin{teorema} \label{t:divergenza-R2}
 	Sia $D\subset\R^2$ un dominio regolare e $\vec F\colon D\to\R^2$ un campo vettoriale di classe $\cont[1]{D}$.
 	Se $\vnu(x,y)$ è il versore normale al bordo di $D$ uscente da esso, allora
 	\begin{equation}
@@ -370,7 +370,7 @@ La divergenza si definisce anche in dimensione qualunque come, dato $\vec F=(F_1
 		\int_D\drp{F_1}{x}(x,y)\,\dd x\,\dd y+\int_D\drp{F_2}{y}(x,y)\,\dd x\,\dd y=\int_D\div\vec F(x,y)\,\dd x\,\dd y.\qedhere
 	\end{equation}
 \end{proof}
-\begin{teorema}[del rotore, di Stokes] \label{t:rotore-R2}
+\begin{teorema} \label{t:rotore-R2}
 	Sia $\vec F\colon D\to\R^2$ un campo vettoriale di classe $\cont[1]{D}$ e $D\subset\R^2$ un dominio regolare.
 	Allora
 	\begin{equation}
@@ -600,7 +600,7 @@ Se dunque $\vgamma$ è una parametrizzazione di $+\boundary D$ (cioè tale che i
 In questo caso si scrive $+\boundary S$, e il bordo $\boundary S$ diventa orientato in senso antiorario (e si dice che l'orientazione è indotta da quella di $\boundary D$).
 
 Possiamo dunque concludere con le versioni dei teoremi del rotore e della divergenza per campi vettoriali in $\R^3$, di cui non diamo la dimostrazione.
-\begin{teorema}[della divergenza] \label{t:divergenza-R3}
+\begin{teorema}[Gauss-Ostrogradsky] \label{t:divergenza-R3}
 	Se $D\subset\R^3$ è un dominio regolare e $\vec F\colon D\to\R^3$ un campo vettoriale $\cont[1]{D}$, allora
 	\begin{equation}
 		\int_{\boundary D}\inner{\vec F}{\vnu}\,\dd\sigma=\int_D\div\vec F\,\dd x\,\dd y\,\dd z.
@@ -638,7 +638,10 @@ Dato un campo vettoriale $\vec F=(F_1,F_2,F_3)\colon U\to\R^3$ di classe $\cont[
 		\drp{F_2}{x}-\drp{F_1}{y}
 		\bigg)^T
 \end{equation}
-\begin{teorema}[del rotore] \label{t:rotore-R3}
+Come per la divergenza, anche al rotore è collegato un teorema omonimo.\footnote{
+	Anche il teorema \ref{t:rotore-R2} si potrebbe chiamare ``teorema del rotore'', se volessimo estendere la definizione del rotore alle funzioni in $\R^2$ come $\rot\colon\vec F=(F_1,F_2)\mapsto \partial_1{F_2}-\partial_2F_1$.
+}
+\begin{teorema}[Kelvin-Stokes] \label{t:rotore-R3}
 	Sia $S\subset\R^3$ una superficie regolare con bordo e $\vphi\colon D\to\R^3$ una sua parametrizzazione, con $D\subset\R^2$ dominio regolare.
 	Sia inoltre $A$ un aperto di $\R^3$ tale che $S\subset A$, e $\vec F\colon A\to\R^3$ un campo di classe $\cont[1]{A}$.
 	Allora

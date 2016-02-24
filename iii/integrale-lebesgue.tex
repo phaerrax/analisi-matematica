@@ -888,7 +888,7 @@ Per dimostrarla ci serve però il teorema della convergenza monotona, questo pun
 
 Come avevamo anticipato all'inizio del capitolo, uno dei motivi principali che hanno portato allo sviluppo dell'integrale di Lebesgue è giustificare il passaggio al limite nell'integrale con ipotesi meno restrittive che con l'integrale di Riemann.
 Passiamo dunque ad elencare i teoremi più importanti in questo ambito, che ci permetteranno lo scambio tra limite e integrale con solamente la convergenza puntuale e qualche altra ipotesi più semplice da verificare.
-\begin{teorema}[della convergenza monotona, di Beppo Levi] \label{t:convergenza-monotona}
+\begin{teorema}[Beppo Levi; della convergenza monotona] \label{t:convergenza-monotona}
 	Sia $\{f_n\}_{n=1}^{+\infty}$ una successione di funzioni con $f_n\colon A\to[0,+\infty)$ e $A\in\mis(\R^n)$.
 	Se la successione è crescente, cioè $f_n(\vec x)\leq f_{n+1}(\vec x)$ $\forall\vec x\in A$, e converge puntualmente in $A$ alla funzione $f$, allora
 	\begin{equation}
@@ -1015,7 +1015,7 @@ Con la seguente osservazione e una piccola ipotesi in più estendiamo la validit
 	\end{enumerate}
 \end{proof}
 
-\begin{lemma}[di Fatou] \label{l:fatou}
+\begin{lemma}[Fatou] \label{l:fatou}
 	Sia $\{f_n\}_{n=1}^{+\infty}$ una successione di funzioni $f_n\colon A\to[0,+\infty]$ con $A\in\mis(\R^n)$.
 	Vale la relazione
 	\begin{equation}
@@ -1059,7 +1059,7 @@ nei risultati visti finora possiamo senza problemi sostituire alle condizioni ch
 	Si noti che $Z_n$ non deve necessariamente essere uguale al suo successivo $Z_{n+1}$ affinch\'e questo valga: tutti questi $Z_i$ sono infatti di misura nulla, e in quanto numerabili anche la loro unione $\bigcup_{i=1}^{+\infty}Z_i$ lo è.
 \end{osservazione}
 Concludiamo infine la trattazione dei limiti con gli integrali con il seguente risultato.
-\begin{teorema}[della convergenza dominata, di Lebesgue] \label{t:convergenza-dominata}
+\begin{teorema}[Lebesgue; della convergenza dominata] \label{t:convergenza-dominata}
 	Sia $\{f_n\}_{n\in\N}$ una successione di funzioni sommabili su $A\subseteq\R^n$.
 	Se esiste quasi ovunque in $A$ il limite puntuale $f$ della successione, ed esiste una funzione $g\colon A\to\R$ sommabile tale che $\abs{f_n(\vec x)}\leq g(\vec x)$ $\forall n\in\N$ e quasi ovunque in $A$, allora
 	\begin{equation}
@@ -1150,7 +1150,7 @@ Analogamente possiamo dimostrare che anche la parte negativa ha integrale $+\inf
 Occupiamoci ora delle tecniche per passare da un integrale \emph{multiplo}, ossia dove l'insieme di integrazione è in $\R^n$ con $n\geq 2$ (quindi in più variabili), ad un integrale in una sola dimensione a cui possiamo applicare le note formule per risolverlo.
 Queste sono chiamate \emph{formule di riduzione}, in quando permettono di ``ridurre la dimensione'' dell'integrale.
 
-\begin{teorema}[di Fubini] \label{t:fubini}
+\begin{teorema}[Fubini] \label{t:fubini}
 	Sia $f\in\leb{\R^n}$, con $n=m+k$ ($m,k\geq 1$).
 	Detto $(\vec x,\vec y)\in\R^n$ come definito prima, allora:
 	\begin{itemize}
@@ -1227,7 +1227,7 @@ Se separiamo le variabili, essendo una funzione dispari l'integrale è nullo sia
 Come si può chiaramente vedere, però, sia la parte positiva sia quella negativa sono funzioni costanti su intervalli illimitati, quindi l'integrale di entrambi vale $+\infty$: ma allora la $f$ non è nemmeno integrabile!
 
 Se la funzione ha segno costante, vediamo che questo non può accadere.
-\begin{teorema}[di Tonelli] \label{t:tonelli}
+\begin{teorema}[Tonelli] \label{t:tonelli}
 	Data $f\colon\R^n\to[0,+\infty]$ misurabile, con $\R^n=\R^m\times\R^k$, allora la funzione $\vec x\mapsto\int_{\R^k}f(\vec x,\vec y)\,\dd\vec y$, definita quasi ovunque da $\R^m$ a $\R$, è misurabile, e lo stesso per la $\vec y\mapsto\int_{\R^m}f(\vec x,\vec y)\,\dd\vec x$ da $\R^k$ a $\R$, e si può scambiare l'ordine di integrazione.
 \end{teorema}
 Se dobbiamo integrare una funzione, se essa è sommabile o non negativa in partenza, possiamo direttamente applicare il teorema di Fubini o di Tonelli.

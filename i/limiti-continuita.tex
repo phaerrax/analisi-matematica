@@ -123,7 +123,7 @@ Infatti se un punto è isolato, scelto opportunamente il raggio $\delta$, nessun
 Se invece il punto è di accumulazione, allora $f$ è continua se e solo se $\lim_{x\to p} f(x)=f(p)$.
 Ovviamente una funzione è continua in tutto un insieme se e solo se è continua in tutti i punti che lo compongono.
 
-\begin{teorema}[continuità delle funzioni composte]
+\begin{teorema}
 Siano $f\colon E\subseteq (X_1,d_1)\to(X_2,d_2)$ e $g\colon X_2\to (X_3,d_3)$, e $p$ un punto di $E$. Se $f$ è continua in $p$, e $g$ è continua in $f(p)$, allora la funzione $g\circ f$ è continua in $p$.
 \end{teorema}
 \begin{teorema}
@@ -142,7 +142,7 @@ Sia la funzione $f\colon E\subseteq (X_1,d_1)\to(X_2,d_2)$ continua in tutto $E$
 Sia la successione $\{y_n\}\subset f(K)$: allora ogni elemento $y_n$ è immagine di un qualche punto in $E$, ossia $y_n=f(x_n)$, Allora si ha che $\{x_n\}\subseteq K$; poiché $K$ è compatto si può estrarre da $x_n$ una sottosuccessione $x_{n_j}$ che converga ad un valore $\tilde{x}\in K$. La continuità di $f$ quindi implica che $f(x_{n_j})\to f(\tilde{x})$, cioè che $y_{n_j}\to f(\tilde{x})\in f(K)$, e ciò significa che $f(K)$ è compatto.
 \end{proof}
 Da questo teorema segue un importante teorema per le funzioni a valori reali, definite in qualunque spazio metrico.
-\begin{teorema}[di Weierstrass]
+\begin{teorema}[Weierstrass]
 \label{t:weierstrass}
 Se $f\colon E\subseteq (X,d)\to\R$ è una funzione continua in tutto $E$, e tale insieme è compatto, allora $f$ ammette massimo e minimo assoluti, vale a dire $f(E)$ è limitato e ammette un massimo e un minimo.
 \end{teorema}
@@ -156,7 +156,7 @@ La funzione $f\colon E\subseteq (X_1,d_1)\to(X_2,d_2)$ si dice \emph{uniformemen
 \end{definizione}
 A questo punto ai fini della continuità della funzione non è più importante quale sia il punto $p$ nell'insieme $E$, ma si considera soltanto la distanza tra una qualsiasi coppia di punti. Per le funzioni uniformemente continue infatti il raggio $\delta$ non dipende più dal punto $p$ preso come centro dell'intorno.
 
-\begin{teorema}[di Heine-Cantor]
+\begin{teorema}[Heine-Cantor]
 \label{t:heine-cantor}
 Se $f\colon E\subseteq (X_1,d_1)\to(X_2,d_2)$ è una funzione continua in $E$ e se tale insieme è compatto, allora $f$ è uniformemente continua in $E$.
 \end{teorema}
@@ -198,7 +198,7 @@ Se $f$ è una funzione a valori reali definita e continua su $[a,b]\in\R$, allor
 L'intervallo $[a,b]$ è compatto quindi $f$ per il teorema \ref{t:weierstrass} ammette un massimo e un minimo (assoluti). Sia $m$ tale minimo e $M$ il massimo. Traslando la funzione in verticale di una costante $c$ opportuna, in modo che $m<0$ e $M>0$, allora deve esistere per il teorema \ref{t:esistenza_zeri} un punto in cui $f$ si annulla. Per qualsiasi valore di $c$ tale che $m\leq c\leq M$ allora deve esistere in corrispondenza un punto in cui ciò succede, allora $f$ assume tutti i valori compresi tra $m$ e $M$.
 \end{proof}
 Come conclusione, e conseguenza, di questi ultimi teoremi, resta il teorema seguente, di cui si dà la dimostrazione solo per la seconda parte.
-\begin{teorema}[di Darboux]
+\begin{teorema}[Darboux]
 \label{t:darboux}
 Sia $I\subseteq\R$ un intervallo di qualunque tipo: se $f\colon I\to\R$ è continua (non costante), allora $f(I)$ è a sua volta un intervallo. Se inoltre $I$ è un intervallo chiuso e limitato, anche la sua immagine è un intervallo chiuso e limitato.
 \end{teorema}

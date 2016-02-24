@@ -257,7 +257,7 @@ Sviluppando il prodotto tra le due matrici si ha che la componente della jacobia
 \big(\!\jac\vec h(\vec a)\big)_{ij}=\drp{h_i}{x_j}(\vec a)=\sum_{k=1}^m\drp{g_i}{y_k}\big(\vec f(\vec a)\big)\drp{f_k}{x_j}(\vec a),
 \]
 dove $y_k$ è la variabile relativa a $\vec g$, ossia $y_k=f_k(\vec a)$.
-\begin{teorema}[di Lagrange] \label{t:lagrange_piu_variabili}
+\begin{teorema}[Lagrange] \label{t:lagrange_piu_variabili}
 Sia $\Omega$ un aperto di $\R^n$, $\vec a$ e $\vec b$ due punti interni ad esso tali che $[\vec a,\vec b]\subset\Omega$, e $g\colon\Omega\to\R$ una funzione differenziabile in tutto $\Omega$. Allora esiste un punto $\vxi\in[\vec a,\vec b]$ per il quale $g(\vec b)-g(\vec a)=\inner{\grad g(\vxi)}{\vec b-\vec a}$.
 \end{teorema}
 \begin{proof}
@@ -432,7 +432,7 @@ L'ordine di derivazione è importante non solo per il risultato dell'operazione,
 	\end{align*}
 \end{esempio}
 Per certe funzioni, però, le derivate seconde non dipendono dall'ordine di derivazione, come spiegato dal seguente teorema.
-\begin{teorema}[di Schwartz] \label{t:schwarz}
+\begin{teorema}[Schwarz] \label{t:schwarz}
 Siano $\Omega$ un aperto di $\R^n$, $\vec a$ un punto interno ad esso, $\vec v$ e $\vec w$ due versori di $\R^n$ e $f$ una funzione definita da $\Omega$ a $\R$. Se esiste un intorno di $\vec a$ contenuto in $\Omega$ in cui esistono sia $D^2_{\vec v,\vec w}f$ che $D^2_{\vec w,\vec v}f$ e sono continue in $\vec a$, allora esse coincidono in tale punto.
 \end{teorema}
 \begin{corollario}
@@ -534,7 +534,7 @@ Infine, il punto estremante si dice \emph{forte} se l'uguaglianza si ha solo in 
 Si ricorda il teorema di Weierstrass \ref{t:weierstrass} che afferma che se $f$ è continua in $E$ compatto, allora essa ha massimo e minimo assoluti in $E$. Individuato questo insieme compatto, gli estremi (locali) possono trovarsi in $\interior{E}$ o in $\boundary E$: in questi casi si dicono, rispettivamente, estremi \emph{liberi} ed estremi \emph{vincolati}. Se individuare gli estremi vincolati in una sola dimensione consisteva al più nell'analisi di due soli punti, in più dimensioni la frontiera di un insieme è solitamente costituita da infiniti punti: occorrono quindi metodi diversi per i due casi.
 Di seguito ci si occuperà soltanto degli estremi liberi.
 
-\begin{teorema}[di Fermat]
+\begin{teorema}[Fermat]
 Sia $f\colon\Omega\to\R$, con $\Omega\in\R^n$ aperto, differenziabile in $\vec a\in\Omega$. Se $\vec a$ è un punto estremante per $f$, allora $\grad f(\vec a)=\vec 0$.
 \end{teorema}
 \begin{proof}
