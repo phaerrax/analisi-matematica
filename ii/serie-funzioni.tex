@@ -94,12 +94,14 @@ ma allora per le disuguaglianze precedenti risulta
 quindi la serie converge anche uniformemente per le \eqref{eq:cc_serie_funzioni}.
 \end{proof}
 La convergenza totale implica anche la convergenza assoluta, come è facile vedere. Ovviamente non valgono le implicazioni nel senso inverso: né la convergenza uniforme né quella assoluta, né entrambe (e men che meno quella puntuale) implicano la convergenza totale.
-\paragraph{Esempi}
-\begin{itemize}
-\item La serie $\sum_{n=1}^{+\infty}\frac{(-1)^n}{n}$ ha come termine generale una funzione costante, e ovviamente converge puntualmente per il criterio di Leibnitz in tutto $\R$, ma non assolutamente. Non dipendendo in alcun modo dalla variabile $x$, la convergenza è sicuramente anche uniforme.
-\item La serie $\sum_{n=1}^{+\infty}x^n$ converge puntualmente in $J=(-1,1)$, anche assolutamente essendo a termini positivi, ma non uniformemente perché $\norm{f_n}_{\infty,J}=f_n(1)=1$.
-\item Considerata solo in $\R^+$, la serie di termine generale $f_n(x)=\frac1{x}\delta_{[n,n+1]}\scriptstyle(x)$ converge puntualmente ed assolutamente (la somma corrisponde in effetti all'integrale improprio $\int_1^{+\infty}\frac1{x}\,\scriptstyle\dd x$), inoltre $\norm{S-S_n}_{\infty,\R^+}\leq\frac1{n+1}\to 0$, quindi converge uniformemente. La convergenza non è però totale in quanto $\norm{f_n}_{\infty,\R^+}=\frac1{n}$ la cui serie diverge.
-\end{itemize}
+\begin{esempio} \label{es:convergenza-totale}
+	Valutiamo la convergenza totale di alcune serie.
+	\begin{enumerate}
+		\item La serie $\sum_{n=1}^{+\infty}\frac{(-1)^n}{n}$ ha come termine generale una funzione costante, e ovviamente converge puntualmente per il criterio di Leibnitz in tutto $\R$, ma non assolutamente. Non dipendendo in alcun modo dalla variabile $x$, la convergenza è sicuramente anche uniforme.
+		\item La serie $\sum_{n=1}^{+\infty}x^n$ converge puntualmente in $J=(-1,1)$, anche assolutamente essendo a termini positivi, ma non uniformemente perché $\norm{f_n}_{\infty,J}=f_n(1)=1$.
+		\item Considerata solo in $\R^+$, la serie di termine generale $f_n(x)=\frac1{x}\delta_{[n,n+1]}\scriptstyle(x)$ converge puntualmente ed assolutamente (la somma corrisponde in effetti all'integrale improprio $\int_1^{+\infty}\frac1{x}\,\scriptstyle\dd x$), inoltre $\norm{S-S_n}_{\infty,\R^+}\leq\frac1{n+1}\to 0$, quindi converge uniformemente. La convergenza non è però totale in quanto $\norm{f_n}_{\infty,\R^+}=\frac1{n}$ la cui serie diverge.
+	\end{enumerate}
+\end{esempio}
 
 \section{Serie di potenze}
 Le serie di potenze sono un caso particolare e importante di serie di funzioni: dati un punto $x_0\in\R$ e una successione $\{a_n\}\subset\R$, si chiama serie di potenze di centro $x_0$ e coefficiente $a_n$ la serie
@@ -109,12 +111,14 @@ Le serie di potenze sono un caso particolare e importante di serie di funzioni: 
 Qualunque serie di potenze converge sempre in $x_0$, dove il termine generale è sempre nullo: dunque l'insieme di convergenza puntuale non è mai vuoto.
 Tutte le serie di potenze saranno indicate in questo capitolo con $n\in\{0,1,\dots\}$, senza perdere la generalità; laddove vi siano problemi di esistenza del coefficiente $a_n$, l'indice iniziale sarà opportunamente cambiato. Ovviamente ciò non cambia il carattere della serie, ma è importante quando si intende calcolare la funzione somma.
 Per comodità, tramite la traslazione $y=x-x_0$ si ottiene la serie $\sum_{n=0}^{+\infty}a_ny^n$, che è centrata in $y=0$ e mantiene le stesse caratteristiche qualitative della precedente, opportunamente traslate: d'ora in poi si tratteranno soltanto serie di potenze con questa scrittura.
-\paragraph{Esempi}
-\begin{itemize}
-\item La serie $\sum_{n=0}^{+\infty}n^nx^n$ converge solo in $x=0$: altrove infatti $\sqrt[n]{n^nx^n}=n\abs{x}\to+\infty$ se $x\neq 0$ quindi diverge per il criterio della radice.
-\item $\sum_{n=0}^{+\infty}\frac{x^n}{n^n}$, sempre per il criterio della radice, converge puntualmente in tutto $\R$.
-\item $\sum_{n=0}^{+\infty}x^n$ converge puntualmente in $E=(-1,1)$, ma non uniformemente, perché $\sup_{x\in E}\abs{x^n}=f_n(1)=1^n=1$.
-\end{itemize}
+\begin{esempio} \label{es:serie-di-potenze}
+	Alcuni esempi di serie di potenze:
+	\begin{enumerate}
+		\item la serie $\sum_{n=0}^{+\infty}n^nx^n$ converge solo in $x=0$: altrove infatti $\sqrt[n]{n^nx^n}=n\abs{x}\to+\infty$ se $x\neq 0$ quindi diverge per il criterio della radice.
+		\item $\sum_{n=0}^{+\infty}\frac{x^n}{n^n}$, sempre per il criterio della radice, converge puntualmente in tutto $\R$.
+		\item $\sum_{n=0}^{+\infty}x^n$ converge puntualmente in $E=(-1,1)$, ma non uniformemente, perché $\sup_{x\in E}\abs{x^n}=f_n(1)=1^n=1$.
+	\end{enumerate}
+\end{esempio}
 \begin{teorema}
 Data una serie di potenze $\sum_{n=0}^{+\infty}a_nx^n$, se converge puntualmente in $x_0\neq 0$, allora converge assolutamente in tutto l'intervallo $(-\abs{x_0},\abs{x_0})$. La convergenza è inoltre totale, quindi anche uniforme, in ogni sottoinsieme compatto di esso.
 \end{teorema}
@@ -163,12 +167,15 @@ Se $a_n\neq 0$ per ogni $n$ ed esiste il limite
 allora il raggio di convergenza della serie $\sum_{n=0}^{+\infty}a_nx^n$ è $\rho=1/\ell$.
 \end{teorema}
 La dimostrazione è analoga a quella del teorema precedente. Questo criterio inoltre mostra che se $a_n$ ha una crescita o decrescita di tipo polinomiale il raggio di covergenza è 1.
-Non è possibile stabilire a priori la convergenza ai bordi dell'intervallo di convergenza, ma il caso va studiato di volta in volta. Ad esempio:
-\begin{itemize}
-\item la serie $\sum_{n=0}^{+\infty}x^n$ converge in $(-1,1)$;
-\item la serie $\sum_{n=0}^{+\infty}\frac{x^n}{n}$ converge in $[-1,1)$, in $x=-1$ in particolare per il criterio di Leibnitz;
-\item la serie $\sum_{n=0}^{+\infty}\frac{x^n}{n^2}$ converge in $[-1,1]$.
-\end{itemize}
+Non è possibile stabilire a priori la convergenza ai bordi dell'intervallo di convergenza.
+\begin{esempio} \label{es:convergenza-serie-di-potenza-sul-bordo}
+	La convergenza in tali punti va studiata di volta in volta. Ad esempio:
+	\begin{enumerate}
+		\item la serie $\sum_{n=0}^{+\infty}x^n$ converge in $(-1,1)$;
+		\item la serie $\sum_{n=0}^{+\infty}\frac{x^n}{n}$ converge in $[-1,1)$, in $x=-1$ in particolare per il criterio di Leibnitz;
+		\item la serie $\sum_{n=0}^{+\infty}\frac{x^n}{n^2}$ converge in $[-1,1]$.
+	\end{enumerate}
+\end{esempio}
 
 \section{Proprietà delle serie di potenze}
 \begin{teorema}
@@ -252,38 +259,39 @@ I coefficienti della serie sono quindi univocamente determinati dalle derivate d
 		S(x)=\sum_{n=0}^{+\infty}\frac{S^{(n)}(x_0)}{n!}(x-x_0)^n.
 	\end{equation}
 \end{teorema}
-\paragraph{Esempi}
-\begin{itemize}
-\item La serie $f(x)=\sum_{n=0}^{+\infty}x^n$ ha $\rho=1$. La sua somma è quella della serie geometrica $f(x)=\frac1{1-x}$. Integrando in $[0,x]$ si ha che
-\[
-\int_0^xf(t)\,\dd t=\int_0^x\frac{\dd t}{1-t}=-\log(1-x),
-\]
-e integrando invece termine a termine si ottiene
-\[
-\int_0^xf(t)\,\dd t=\int_0^x\sum_{n=0}^{+\infty}t^n\,\dd t=\sum_{n=0}^{+\infty}\int_0^xt^n\,\dd t=\sum_{n=0}^{+\infty}\frac{x^{n+1}}{n+1}=\sum_{n=1}^{+\infty}\frac{x^n}{n}.
-\]
-Quindi per ogni $x\in(-1,1)$ vale l'uguaglianza
-\[
-\sum_{n=1}^{+\infty}\frac{x^n}{n}=-\log(1-x).
-\]
-Per il criterio di Leibnitz però l'ultima serie converge anche in $x=-1$: allora è lecito valutare l'uguaglianza in questo punto, potendo così calcolare il valore della serie numerica:
-\[
-\sum_{n=1}^{+\infty}\frac{(-1)^n}{n}=-\log 2.
-\]
-\item La serie $g(x)=\sum_{n=0}^{+\infty}(-1)^nx^{2n}$ converge in $(-1,1)$. Si può riscrivere come $\sum_{n=0}^{+\infty}(-x^2)^n$, la cui somma è quindi $g(x)=\frac1{1+x^2}$: integrando in $[0,x]$ si ottiene
-\[
-\int_0^xg(t)\,\dd t=\int_0^x\frac{\dd t}{1+t^2}=\arctan x,
-\]
-e termine a termine
-\[
-\int_0^x\sum_{n=0}^{+\infty}(-1)^nt^{2n}\,\dd t=\sum_{n=0}^{+\infty}(-1)^n\int_0^xt^{2n}\,\dd t=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n+1}}{2n+1}.
-\]
-Questa serie converge in $[-1,1]$, quindi in $x=1$ si ha
-\[
-\sum_{n=0}^{+\infty}\frac{(-1)^n}{2n+1}=\arctan 1=\frac{\pi}4
-\]
-che fornisce un metodo per approssimare il valore di $\pi$.
-\end{itemize}
+\begin{esempio} \label{es:serie-potenze-integrale-log2}
+	La serie $f(x)=\sum_{n=0}^{+\infty}x^n$ ha $\rho=1$. La sua somma è quella della serie geometrica $f(x)=\frac1{1-x}$. Integrando in $[0,x]$ si ha che
+	\[
+	\int_0^xf(t)\,\dd t=\int_0^x\frac{\dd t}{1-t}=-\log(1-x),
+	\]
+	e integrando invece termine a termine si ottiene
+	\[
+	\int_0^xf(t)\,\dd t=\int_0^x\sum_{n=0}^{+\infty}t^n\,\dd t=\sum_{n=0}^{+\infty}\int_0^xt^n\,\dd t=\sum_{n=0}^{+\infty}\frac{x^{n+1}}{n+1}=\sum_{n=1}^{+\infty}\frac{x^n}{n}.
+	\]
+	Quindi per ogni $x\in(-1,1)$ vale l'uguaglianza
+	\[
+	\sum_{n=1}^{+\infty}\frac{x^n}{n}=-\log(1-x).
+	\]
+	Per il criterio di Leibnitz però l'ultima serie converge anche in $x=-1$: allora è lecito valutare l'uguaglianza in questo punto, potendo così calcolare il valore della serie numerica:
+	\[
+	\sum_{n=1}^{+\infty}\frac{(-1)^n}{n}=-\log 2.
+	\]
+\end{esempio}
+\begin{esempio} \label{es:serie-potenze-integrale-pi4}
+	La serie $g(x)=\sum_{n=0}^{+\infty}(-1)^nx^{2n}$ converge in $(-1,1)$. Si può riscrivere come $\sum_{n=0}^{+\infty}(-x^2)^n$, la cui somma è quindi $g(x)=\frac1{1+x^2}$: integrando in $[0,x]$ si ottiene
+	\[
+	\int_0^xg(t)\,\dd t=\int_0^x\frac{\dd t}{1+t^2}=\arctan x,
+	\]
+	e termine a termine
+	\[
+	\int_0^x\sum_{n=0}^{+\infty}(-1)^nt^{2n}\,\dd t=\sum_{n=0}^{+\infty}(-1)^n\int_0^xt^{2n}\,\dd t=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n+1}}{2n+1}.
+	\]
+	Questa serie converge in $[-1,1]$, quindi in $x=1$ si ha
+	\[
+	\sum_{n=0}^{+\infty}\frac{(-1)^n}{2n+1}=\arctan 1=\frac{\pi}4
+	\]
+	che fornisce un metodo per approssimare il valore di $\pi$.
+\end{esempio}
 
 \section{Funzioni analitiche}
 \begin{definizione}
@@ -314,23 +322,25 @@ per $\xi\in(x_0-x,x_0+x)$. Se $x\in(x_0-\delta,x_0+\delta)$ dunque la derivata $
 \]
 che tende a 0 per $n\to+\infty$, quindi la funzione coincide con il suo sviluppo in serie di Taylor.
 \end{proof}
-\paragraph{Esempi}
-\begin{itemize}
-\item La funzione $f(x)=\sin x$ è di classe $\cont[\infty]{\R}$. Posto $x_0=0$, si ha che $f^{(n)}(0)=0$ se $n$ è pari, o $\pm 1$ se $n$ è dispari. Poiché quindi $\abs{f^{(n)}(0)}\leq 1$ per ogni $n\geq 0$, $f$ è analitica in un intorno di $x=0$: chiaramente il risultato si estende anche a tutto $\R$ (figura \ref{fig:taylor_sin}).
-Allora per ogni $x\in\R$ si ha
-\[
-\sin x=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n+1}}{(2n+1)!}.
-\]
-\input{grafici/taylor-sin.tex}
-Derivando la serie (la convergenza è necessariamente uniforme in tutto $\R$) si ottiene quindi l'uguaglianza
-\[
-\cos x=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n}}{(2n!)}.
-\]
-\item Si consideri la funzione $f(x)=e^x$ in $x_0=0$. Ogni sua derivata vale $f^{(n)}(0)=1$, per ogni $n$, inoltre per $\abs{x}<R$ risulta, sempre per ogni $n$, $\abs{f^{(n)}(x)}\leq e^R$, essendo una funzione crescente. Dunque $e^x$ è analitica, cioè per ogni $x\in(-R,R)$ si ha
-\[
-e^x=\sum_{n=0}^{+\infty}\frac{x^n}{n!}.
-\]
-Poiché $R$ è del tutto arbitrario, la $f(x)=e^x$ è in realtà analitica in qualunque punto dell'asse reale (figura \ref{fig:taylor_exp}).
-Questa uguaglianza è sfruttata per definire la funzione esponenziale anche in altri ambiti, come per i numeri complessi o per le matrici.
-\end{itemize}
-\input{grafici/taylor-exp.tex}
+\begin{esempio} \label{es:funzioni-analitiche-sin-cos}
+	La funzione $f(x)=\sin x$ è di classe $\cont[\infty]{\R}$. Posto $x_0=0$, si ha che $f^{(n)}(0)=0$ se $n$ è pari, o $\pm 1$ se $n$ è dispari. Poiché quindi $\abs{f^{(n)}(0)}\leq 1$ per ogni $n\geq 0$, $f$ è analitica in un intorno di $x=0$: chiaramente il risultato si estende anche a tutto $\R$ (figura \ref{fig:taylor_sin}).
+	Allora per ogni $x\in\R$ si ha
+	\[
+	\sin x=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n+1}}{(2n+1)!}.
+	\]
+	\input{grafici/taylor-sin.tex}
+	Derivando la serie (la convergenza è necessariamente uniforme in tutto $\R$) si ottiene quindi l'uguaglianza
+	\[
+	\cos x=\sum_{n=0}^{+\infty}(-1)^n\frac{x^{2n}}{(2n!)}.
+	\]
+\end{esempio}
+\begin{esempio} \label{es:funzioni-analitiche-exp}
+	Si consideri la funzione $f(x)=e^x$ in $x_0=0$. Ogni sua derivata vale $f^{(n)}(0)=1$, per ogni $n$, inoltre per $\abs{x}<R$ risulta, sempre per ogni $n$, $\abs{f^{(n)}(x)}\leq e^R$, essendo una funzione crescente. Dunque $e^x$ è analitica, cioè per ogni $x\in(-R,R)$ si ha
+	\[
+	e^x=\sum_{n=0}^{+\infty}\frac{x^n}{n!}.
+	\]
+	\input{grafici/taylor-exp.tex}
+	Poiché $R$ è del tutto arbitrario, la $f(x)=e^x$ è in realtà analitica in qualunque punto dell'asse reale (figura \ref{fig:taylor_exp}).
+	Questa uguaglianza è sfruttata per definire la funzione esponenziale anche in altri ambiti, come per i numeri complessi o per le matrici.
+\end{esempio}
+

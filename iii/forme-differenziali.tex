@@ -267,37 +267,38 @@ Questa proprietà che le derivate miste ``incrociate'' sono uguali si ritrova ne
 	per ogni $\vec x\in A$ e $i,j\in\{1,\dots,n\}$ con $i\neq j$.
 \end{definizione}
 Da quanto appena detto è evidente che tutte le forme differenziali esatte sono anche chiuse, ma questa proprietà si ritrova anche in altre forme, per cui non vale l'inverso.
-Prendiamo ad esempio la forma
-\begin{equation*}
-	\omega(x,y)=a_1(x,y)\,\dd x+a_2(x,y)\,\dd y=\frac{y}{x^2+y^2}\,\dd x-\frac{x}{x^2+y^2}\,\dd y
-\end{equation*}
-in $A=\R^2\setminus\{\vec 0\}$.
-Essa è $\cont[\infty]{A}$, ed è chiusa, infatti
-\begin{equation}
-	\drp{}{y}\frac{y}{x^2+y^2}=\frac{x^2-y^2}{(x^2+y^2)^2}=\drp{}{x}\frac{-x}{x^2+y^2}
-\end{equation}
-Notiamo inoltre che la funzione $F(x,y)=\arctan\frac{x}{y}$, a meno di costanti arbitrarie, è tale per cui $\drp{F}{x}(x,y)=a_1(x,y)$ e $\drp{F}{y}(x,y)=a_2(x,y)$ per ogni $(x,y)\in A$, quindi se esiste un potenziale non può che essere della forma $F(x,y)+c$ con $c\in\R$.
-A causa della singolarità per $y=0$ dobbiamo però prima dividere $A$ nei due sottoinsiemi per $y<0$ e $y>0$, in cui avremo rispettivamente $F(x,y)+c$ e $F(x,y)+d$ (a priori non possiamo dire che sono uguali).
-Determiniamo queste costanti: fissato $x_0<0$, abbiamo i limiti
-\begin{equation}
-	\lim_{\substack{x\to x_0\\ y\to 0^+}}F(x,y)=c-\frac{\pi}2\qtext{e}\lim_{\substack{x\to x_0\\ y\to 0^-}}F(x,y)=d+\frac{\pi}2,
-\end{equation}
-che devono coincidere, quindi $c=d+\pi$ e abbiamo la funzione
-\begin{equation}
-	F(x,y)=
-	\begin{cases}
-		\arctan\frac{x}{y}+c	&y>0\\
-		c-\frac{\pi}2			&y=0\\
-		\arctan\frac{x}{y}+c-\pi	&y<0
-	\end{cases}
-\end{equation}
-Però se prendiamo $x_1>0$, abbiamo i limiti
-\begin{equation}
-	\lim_{\substack{x\to x_1\\ y\to 0^+}}F(x,y)=\frac{\pi}2+c\qtext{e}\lim_{\substack{x\to x_1\\ y\to 0^-}}F(x,y)=-\frac{3\pi}2+c,
-\end{equation}
-ma allora $F$ è discontinua in $A$, perciò non può essere il potenziale di $\omega$, che quindi non ammette potenziali e non è esatta.
+\begin{esempio} \label{es:forma-differenziale-angolo-R2}
+	Consideriamo la forma differenziale
+	\begin{equation*}
+		\omega(x,y)=a_1(x,y)\,\dd x+a_2(x,y)\,\dd y=\frac{y}{x^2+y^2}\,\dd x-\frac{x}{x^2+y^2}\,\dd y
+	\end{equation*}
+	in $A=\R^2\setminus\{\vec 0\}$.
+	Essa è $\cont[\infty]{A}$, ed è chiusa, infatti
+	\begin{equation}
+		\drp{}{y}\frac{y}{x^2+y^2}=\frac{x^2-y^2}{(x^2+y^2)^2}=\drp{}{x}\frac{-x}{x^2+y^2}
+	\end{equation}
+	Notiamo inoltre che la funzione $F(x,y)=\arctan\frac{x}{y}$, a meno di costanti arbitrarie, è tale per cui $\drp{F}{x}(x,y)=a_1(x,y)$ e $\drp{F}{y}(x,y)=a_2(x,y)$ per ogni $(x,y)\in A$, quindi se esiste un potenziale non può che essere della forma $F(x,y)+c$ con $c\in\R$.
+	A causa della singolarità per $y=0$ dobbiamo però prima dividere $A$ nei due sottoinsiemi per $y<0$ e $y>0$, in cui avremo rispettivamente $F(x,y)+c$ e $F(x,y)+d$ (a priori non possiamo dire che sono uguali).
+	Determiniamo queste costanti: fissato $x_0<0$, abbiamo i limiti
+	\begin{equation}
+		\lim_{\substack{x\to x_0\\ y\to 0^+}}F(x,y)=c-\frac{\pi}2\qtext{e}\lim_{\substack{x\to x_0\\ y\to 0^-}}F(x,y)=d+\frac{\pi}2,
+	\end{equation}
+	che devono coincidere, quindi $c=d+\pi$ e abbiamo la funzione
+	\begin{equation}
+		F(x,y)=
+		\begin{cases}
+			\arctan\frac{x}{y}+c	&y>0\\
+			c-\frac{\pi}2			&y=0\\
+			\arctan\frac{x}{y}+c-\pi	&y<0
+		\end{cases}
+	\end{equation}
+	Però se prendiamo $x_1>0$, abbiamo i limiti
+	\begin{equation}
+		\lim_{\substack{x\to x_1\\ y\to 0^+}}F(x,y)=\frac{\pi}2+c\qtext{e}\lim_{\substack{x\to x_1\\ y\to 0^-}}F(x,y)=-\frac{3\pi}2+c,
+	\end{equation}
+	ma allora $F$ è discontinua in $A$, perciò non può essere il potenziale di $\omega$, che quindi non ammette potenziali e non è esatta.
+\end{esempio}
 Il problema da superare non risiede tanto nella funzione, ma nell'insieme in cui la stiamo studiando: è ovvio che se al posto di $A$ avessimo preso solo, ad esempio, il suo sottoinsieme in cui $x>0$, non ci sarebbero stati problemi di continuità e avremmo senza problemi trovato un potenziale per $\omega$.
-
 Dobbiamo quindi restringere la classe degli insiemi ``buoni'' che ci permettano di dire che quando una forma è chiusa è anche esatta: tali insiemi sono gli insiemi \emph{semplicemente connessi}, che intuitivamente si possono pensare come insiemi ``senza buchi''.
 Una definizione rigorosa può essere data tramite il concetto di curve omotopiche.
 \begin{definizione} \label{d:curva-omotopica}
@@ -369,26 +370,28 @@ Vediamo quindi una dimostrazione del lemma di Poincar\'e per questi insiemi stel
 	ma allora $F$ è il potenziale di $\omega$, che dunque è esatta.
 \end{proof}
 La dimostrazione appena eseguita indica anche un metodo per individuare, se esiste, il potenziale di una forma su un insieme stellato: si prende un punto nell'insieme dato (rispetto al quale l'insieme è stellato!), e si calcola l'integrale della forma lungo un segmento che connette tale punto ad un generico $\vec x$, sempre nell'insieme.
-Ad esempio, prendiamo in $A=\{(x,y)\in\R^2\colon y>x\}$ la forma differenziale
-\begin{equation*}
-	\omega(x,y)=a_1(x,y)\,\dd x+a_2(x,y)\,\dd y=\frac{2xy-2x^2-1}{y-x}\,\dd x+\frac{y-x+1}{y-x}\,\dd y.
-\end{equation*}
-Essa è di classe $\cont[\infty]{A}$, ed è chiusa: infatti
-\begin{equation}
-	\drp{a_1}{y}(x,y)=\drp{}{y}\bigg(2x-\frac1{y-x}\bigg)=\frac1{(y-x)^2}=\drp{a_2}{x}(x,y).
-\end{equation}
-L'insieme $A$ è convesso, quindi $\omega$ è anche esatta.
-Prendiamo il punto $(0,1)$ e la curva $\vphi(t)=\big(tx,1+(y-1)t\big)$ che lo connette con un generico $(x,y)\in A$, con $t\in[0,1]$.
-Il suo potenziale è la funzione $F\colon A\to\R$ determinata da
-\begin{equation}
-	\begin{split}
-		F(\vec x)&=\int_{\vphi}\omega=\int_0^1\bigg[2tx-\frac1{1+(y-1)t-tx}\bigg]x\,\dd t+\int_0^1\bigg[1+\frac1{1+(y-1)t-tx}\bigg](y-1)\,\dd t=\\
-		&=\int_0^12tx^2\,\dd t+\int_0^1(y-1)\,\dd t+\int_0^1\frac{y-x-1}{1+(y-1)t-t}\,\dd t=\\
-		&=x^2\int_0^12t\,\dd t+(y-1)\int_0^1\dd t+\int_0^1\frac{y-x-1}{1+(y-x-1)t}\,\dd t=\\
-		&=x^2+y-1+\log\big[1+(y-x-1)t\big]\bigg|_0^1=x^2+y-1+\log(y-x).
-	\end{split}
-\end{equation}
-Più rigorosamente, questa funzione è solo una dei potenziali di $\omega$, che sono della forma $F+c$ per qualsiasi $c\in\R$.
+\begin{esempio} \label{es:calcolo-potenziale}
+	Consideriamo in $A=\{(x,y)\in\R^2\colon y>x\}$ la forma differenziale
+	\begin{equation*}
+		\omega(x,y)=a_1(x,y)\,\dd x+a_2(x,y)\,\dd y=\frac{2xy-2x^2-1}{y-x}\,\dd x+\frac{y-x+1}{y-x}\,\dd y.
+	\end{equation*}
+	Essa è di classe $\cont[\infty]{A}$, ed è chiusa: infatti
+	\begin{equation}
+		\drp{a_1}{y}(x,y)=\drp{}{y}\bigg(2x-\frac1{y-x}\bigg)=\frac1{(y-x)^2}=\drp{a_2}{x}(x,y).
+	\end{equation}
+	L'insieme $A$ è convesso, quindi $\omega$ è anche esatta.
+	Prendiamo il punto $(0,1)$ e la curva $\vphi(t)=\big(tx,1+(y-1)t\big)$ che lo connette con un generico $(x,y)\in A$, con $t\in[0,1]$.
+	Il suo potenziale è la funzione $F\colon A\to\R$ determinata da
+	\begin{equation}
+		\begin{split}
+			F(\vec x)&=\int_{\vphi}\omega=\int_0^1\bigg[2tx-\frac1{1+(y-1)t-tx}\bigg]x\,\dd t+\int_0^1\bigg[1+\frac1{1+(y-1)t-tx}\bigg](y-1)\,\dd t=\\
+			&=\int_0^12tx^2\,\dd t+\int_0^1(y-1)\,\dd t+\int_0^1\frac{y-x-1}{1+(y-1)t-t}\,\dd t=\\
+			&=x^2\int_0^12t\,\dd t+(y-1)\int_0^1\dd t+\int_0^1\frac{y-x-1}{1+(y-x-1)t}\,\dd t=\\
+			&=x^2+y-1+\log\big[1+(y-x-1)t\big]\bigg|_0^1=x^2+y-1+\log(y-x).
+		\end{split}
+	\end{equation}
+	Rigorosamente, questa funzione è solo una dei potenziali di $\omega$, che sono della forma $F+c$ per qualsiasi $c\in\R$.
+\end{esempio}
 La scelta di calcolare l'integrale dal punto $(0,1)$ ci ha dato un potenziale che si annulla in tale punto.
 Questo è utile quando è espressamente richiesto che il potenziale soddisfi una condizione di questo tipo: se vogliamo che $F$ valga $F_0\in\R$ in un dato punto $\vec x'$, troveremo subito il potenziale richiesto con la formula
 \begin{equation}

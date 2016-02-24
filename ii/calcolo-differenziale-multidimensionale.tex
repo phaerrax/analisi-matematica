@@ -34,19 +34,21 @@ La derivata parziale è inoltre definita come, ad esempio per $x_1$,
 \drp{f}{x_1}(\vec a)=\lim_{t\to 0}\frac{f(\vec a+t\vec e_1)-f(\vec a)}{t}=\lim_{t\to 0}\big[f(a_1+t,a_2,\dots,a_n)-f(a_1,a_2,\dots,a_n)\big]
 \]
 quindi non è altro che un'operazione di derivazione rispetto soltanto alla variabile $x_1$, mantenendo le rimanenti come costanti. Si possono allora applicare le solite regole di derivazione per le funzioni ad una sola variabile.
-\paragraph{Esempi}
-\begin{itemize}
-\item Sia $f(\vec x)=\inner{\vec b}{\vec x}$, con $\vec b\in\R^n$. La funzione è per definizione di prodotto scalare equivalente a $f(\vec x)=\sum_{j=1}^nb_jx_j$, quindi chiaramente le derivate parziali esistono tutte e valgono
-\[
-\drp{f}{x_j}=b_j,
-\]
-cioè il gradiente di $f$ in $\vec x$ è $\grad f(\vec x)=\vec b$.
-\item La funzione $f(\vec x)=\norm{\vec x}$, per definizione, è $f(\vec x)=\sqrt{\sum_{j=1}^nx_j^2}$, quindi le derivate parziali sono per $\vec x\neq\vec 0$
-\[
-\drp{f}{x_j}=\frac12\bigg(\sum_{j=1}^nx_j^2\bigg)^{-\frac{1}{2}}2x_j=x_j\bigg(\sum_{j=1}^nx_j^2\bigg)^{-\frac{1}{2}},
-\]
-quindi il suo gradiente è $\grad f(\vec x)=\dfrac{\vec x}{\norm{\vec x}}$. Si nota anche che $\grad(\norm{\vec x})$ è un versore.
-\end{itemize}
+\begin{esempio} \label{es:derivate-parziali}
+	Calcoliamo le derivate parziali di due funzioni elementari.
+	\begin{enumerate}
+		\item Sia $f(\vec x)=\inner{\vec b}{\vec x}$, con $\vec b\in\R^n$. La funzione è per definizione di prodotto scalare equivalente a $f(\vec x)=\sum_{j=1}^nb_jx_j$, quindi chiaramente le derivate parziali esistono tutte e valgono
+		\[
+		\drp{f}{x_j}=b_j,
+		\]
+		cioè il gradiente di $f$ in $\vec x$ è $\grad f(\vec x)=\vec b$.
+		\item La funzione $f(\vec x)=\norm{\vec x}$, per definizione, è $f(\vec x)=\sqrt{\sum_{j=1}^nx_j^2}$, quindi le derivate parziali sono per $\vec x\neq\vec 0$
+		\[
+		\drp{f}{x_j}=\frac12\bigg(\sum_{j=1}^nx_j^2\bigg)^{-\frac{1}{2}}2x_j=x_j\bigg(\sum_{j=1}^nx_j^2\bigg)^{-\frac{1}{2}},
+		\]
+		quindi il suo gradiente è $\grad f(\vec x)=\dfrac{\vec x}{\norm{\vec x}}$. Si nota anche che $\grad(\norm{\vec x})$ è un versore.
+	\end{enumerate}
+\end{esempio}
 
 Per le funzioni ad una variabile reale, la derivabilità implica automaticamente la continuità. Questo non è più vero in più dimensioni, come mostrato dalla funzione
 \[
@@ -310,73 +312,74 @@ Si nota che il prodotto delle due jacobiane dà la matrice identità $3\times 3$
 \]
 che è la jacobiana della funzione identità, per ogni $\vec x\in A$. Di conseguenza, passando ai determinanti si trova che $\det\jac \vec f(\vec x)\neq 0$, e che essa è l'inversa di $\jac\vec f^{-1}\big(\vec f(\vec x)\big)$.
 
-Tra i diffeomorfismi più importanti si trovano i cambiamenti di coordinate, come quello in coordinate polari: esso è una trasformazione biunivoca tra $\R^2$ privato dell'origine e $(0,+\infty)\times[0,2\pi)$, che porta la coppia di coordinate cartesiane $(x,y)$ nella coppia $(\rho,\theta)$, che indica rispettivamente la distanza dall'origine degli assi e l'angolo che la retta congiungente l'origine e il punto formerebbe con il semiasse positivo delle ascisse, con le trasformazioni
-\begin{equation}
-\begin{cases}
-\rho=\sqrt{x^2+y^2}\\
-x=\rho\cos\theta\\
-y=\rho\sin\theta
-\end{cases}.
-\end{equation}
+\begin{esempio} \label{es:diffeomorfismo-coordinate-polari-R2}
+	Tra i diffeomorfismi più importanti si trovano i cambiamenti di coordinate, come quello in coordinate polari: esso è una trasformazione biunivoca tra $\R^2$ privato dell'origine e $(0,+\infty)\times[0,2\pi)$, che porta la coppia di coordinate cartesiane $(x,y)$ nella coppia $(\rho,\theta)$, che indica rispettivamente la distanza dall'origine degli assi e l'angolo che la retta congiungente l'origine e il punto formerebbe con il semiasse positivo delle ascisse, con le trasformazioni
+	\begin{equation}
+	\begin{cases}
+	\rho=\sqrt{x^2+y^2}\\
+	x=\rho\cos\theta\\
+	y=\rho\sin\theta
+	\end{cases}.
+	\end{equation}
+	Sia $\vec T\colon(0,+\infty)\times[0,2\pi)\to\R^2\setminus\{(0,0)\}$ definita come $\vec T\colon(\rho,\theta)\mapsto(\rho\cos\theta,\rho\sin\theta)=(x,y)$: il determinante della jacobiana della trasformazione è sempre non nullo, infatti
+	\[
+	\det\jac\vec T(\rho,\theta)=
+		\begin{vmatrix}
+		\cos\theta	&-\rho\sin\theta\\
+		\sin\theta	&\rho\cos\theta
+		\end{vmatrix}
+	=\rho(\cos^2\theta+\sin^2\theta)=\rho\neq 0
+	\]
+	essendo definito in $(0,+\infty)$, quindi è un diffeomorfismo.
+	Posta $f$ una funzione qualunque da $\R^2\setminus\{(0,0)\}$ a $\R$ (per semplicità), si può comporre con $\vec T$ ottenendo
+	\[
+	g(\rho,\theta)=f\big(\vec T(\rho,\theta)\big).
+	\]
+	Si ricava $f(x,y)$ invertendo il processo:
+	\[
+	f(x,y)=g\big(\vec T^{-1}(x,y)\big).
+	\]
+	Calcolando le jacobiane, risulta allora per la $g$
+	\begin{equation} \label{eq:composizione_jacobiane_polari1}
+	\jac g(\rho,\theta)=\jac f\big(\vec T(\rho,\theta)\big)\jac\vec T(\rho,\theta)
+	\end{equation}
+	mentre per la $f$ si ha
+	\begin{multline} \label{eq:composizione_jacobiane_polari2}
+	\jac f(x,y)=\jac g\big(\vec T^{-1}(x,y)\big)\jac\vec T^{-1}(x,y)=\\
+	=\jac g\big(\vec T^{-1}(x,y)\big)\big[\jac\vec T\big(\vec T^{-1}(x,y)\big)\big]^{-1}=\jac g\big(\vec T^{-1}(x,y)\big)\big[\jac\vec T(\rho,\theta)\big]^{-1},
+	\end{multline}
+	sfruttando il fatto che $\jac\vec T\big(\vec T^{-1}(x,y)\big)=\jac\vec T(\rho,\theta)$ è l'inversa di $\jac\vec T^{-1}(x,y)$, come visto in precedenza.
 
-Sia $\vec T\colon(0,+\infty)\times[0,2\pi)\to\R^2\setminus\{(0,0)\}$ definita come $\vec T\colon(\rho,\theta)\mapsto(\rho\cos\theta,\rho\sin\theta)=(x,y)$: il determinante della jacobiana della trasformazione è sempre non nullo, infatti
-\[
-\det\jac\vec T(\rho,\theta)=
-	\begin{vmatrix}
-	\cos\theta	&-\rho\sin\theta\\
-	\sin\theta	&\rho\cos\theta
-	\end{vmatrix}
-=\rho(\cos^2\theta+\sin^2\theta)=\rho\neq 0
-\]
-essendo definito in $(0,+\infty)$, quindi è un diffeomorfismo.
-Posta $f$ una funzione qualunque da $\R^2\setminus\{(0,0)\}$ a $\R$ (per semplicità), si può comporre con $\vec T$ ottenendo
-\[
-g(\rho,\theta)=f\big(\vec T(\rho,\theta)\big).
-\]
-Si ricava $f(x,y)$ invertendo il processo:
-\[
-f(x,y)=g\big(\vec T^{-1}(x,y)\big).
-\]
-Calcolando le jacobiane, risulta allora per la $g$
-\begin{equation} \label{eq:composizione_jacobiane_polari1}
-\jac g(\rho,\theta)=\jac f\big(\vec T(\rho,\theta)\big)\jac\vec T(\rho,\theta)
-\end{equation}
-mentre per la $f$ si ha
-\begin{multline} \label{eq:composizione_jacobiane_polari2}
-\jac f(x,y)=\jac g\big(\vec T^{-1}(x,y)\big)\jac\vec T^{-1}(x,y)=\\
-=\jac g\big(\vec T^{-1}(x,y)\big)\big[\jac\vec T\big(\vec T^{-1}(x,y)\big)\big]^{-1}=\jac g\big(\vec T^{-1}(x,y)\big)\big[\jac\vec T(\rho,\theta)\big]^{-1},
-\end{multline}
-sfruttando il fatto che $\jac\vec T\big(\vec T^{-1}(x,y)\big)=\jac\vec T(\rho,\theta)$ è l'inversa di $\jac\vec T^{-1}(x,y)$, come visto in precedenza.
-
-Dalle \eqref{eq:composizione_jacobiane_polari1} e \eqref{eq:composizione_jacobiane_polari2} si possono dunque calcolare le formule per la derivazione in coordinate polari: esse sono
-\begin{equation} \label{eq:jacobiane_polari}
-\begin{gathered}
-\grad g(\rho,\theta)
-=\grad f(x,y)
-	\begin{pmatrix}
-	\cos\theta	&-\rho\sin\theta\\
-	\sin\theta	&\rho\cos\theta
-	\end{pmatrix}\\
-\grad f(x,y)
-=\grad g(\rho,\theta)
-	\begin{pmatrix}
-	\cos\theta			&\sin\theta\\
-	-\frac{\sin\theta}{\rho}	&\frac{\cos\theta}{\rho}
-	\end{pmatrix}
-=\bigg(\drp{g}{\rho},\drp{g}{\theta}\bigg)
-	\begin{pmatrix}
-	\frac{x}{\sqrt{x^2+y^2}}	&\frac{y}{\sqrt{x^2+y^2}}\\
-	-\frac{y}{x^2+y^2}		&\frac{x}{x^2+y^2}.
-	\end{pmatrix},
-\end{gathered}
-\end{equation}
-dunque le derivate della funzione dopo la trasformazione in coordinate polari sono
-\begin{equation} \label{eq:derivate_polari}
-\begin{gathered}
-\drp{g}{\rho}=\cos\theta\,\drp{f}{x}+\sin\theta\,\drp{f}{y}\\
-\drp{g}{\theta}=-\rho\sin\theta\,\drp{f}{x}+\rho\cos\theta\,\drp{f}{y}.
-\end{gathered}
-\end{equation}
+	Dalle \eqref{eq:composizione_jacobiane_polari1} e \eqref{eq:composizione_jacobiane_polari2} si possono dunque calcolare le formule per la derivazione in coordinate polari: esse sono
+	\begin{equation} \label{eq:jacobiane_polari}
+	\begin{gathered}
+	\grad g(\rho,\theta)
+	=\grad f(x,y)
+		\begin{pmatrix}
+		\cos\theta	&-\rho\sin\theta\\
+		\sin\theta	&\rho\cos\theta
+		\end{pmatrix}\\
+	\grad f(x,y)
+	=\grad g(\rho,\theta)
+		\begin{pmatrix}
+		\cos\theta			&\sin\theta\\
+		-\frac{\sin\theta}{\rho}	&\frac{\cos\theta}{\rho}
+		\end{pmatrix}
+	=\bigg(\drp{g}{\rho},\drp{g}{\theta}\bigg)
+		\begin{pmatrix}
+		\frac{x}{\sqrt{x^2+y^2}}	&\frac{y}{\sqrt{x^2+y^2}}\\
+		-\frac{y}{x^2+y^2}		&\frac{x}{x^2+y^2}.
+		\end{pmatrix},
+	\end{gathered}
+	\end{equation}
+	dunque le derivate della funzione dopo la trasformazione in coordinate polari sono
+	\begin{equation} \label{eq:derivate_polari}
+	\begin{gathered}
+	\drp{g}{\rho}=\cos\theta\,\drp{f}{x}+\sin\theta\,\drp{f}{y}\\
+	\drp{g}{\theta}=-\rho\sin\theta\,\drp{f}{x}+\rho\cos\theta\,\drp{f}{y}.
+	\end{gathered}
+	\end{equation}
+\end{esempio}
 
 \section{Derivate seconde}
 Sia $f$ una funzione scalare definita da un aperto $\Omega\subset\R^n$ a $\R$, e si supponga che per ogni $\vec x\in\Omega$ esista la derivata $D_{\vec v}f(\vec x)$, lungo la direzione indicata dal versore $\vec v$. Fissato un altro versore $\vec w$, se esiste la derivata di questa derivata lungo $\vec w$ in un punto $\vec a$, ossia $D_{\vec w}\big(D_{\vec v}f(\vec a)\big)$, che equivale al limite
@@ -401,32 +404,33 @@ Se esistono tutte le derivate seconde parziali in $\vec a$ di $f$ (in tutto sono
 \]
 L'hessiana di fatto rappresenta la jacobiana del gradiente come vettore riga.
 
-L'ordine di derivazione è importante non solo per il risultato dell'operazione, ma anche per l'esistenza stessa del risultato, come dimostrano i seguenti esempi in $\R^2$:
-\begin{itemize}
-\item Sia $f(x,y)=x^2y^{1/3}$. Le derivate prime parziali nell'origine sono entrambe nulle, altrimenti
-\[
-\drp{f}{x}(x,y)=2x\sqrt[3]{y}\qtext{e}\drp{f}{y}(x,y)=\begin{dcases*}\nexists&in $(x,0)$ con $x\neq 0$\\\frac{x^2}{3y^{2/3}}&altrove\end{dcases*}.
-\]
-Nell'origine, la derivata seconda rispetto a $y$ e poi a $x$, nell'ordine, ossia $\drp{}{x}\big(\drp{f}{y}\big)(0,0)$, non esiste, mentre la derivata seconda rispetto a $x,y$ è
-\[
-\frac{\partial^2f}{\partial x\partial y}(x,y)=\drp{}{y}\bigg(\drp{f}{x}\bigg)(0,0)=\lim_{y\to 0}\frac{\drp{f}{x}(0,y)-\drp{f}{x}(0,0)}{y}=0.
-\]
-\item Sia $f$ definita come
-\[
-f(x,y)=\begin{dcases*}0&in $(0,0)$\\\frac{xy^3}{x^2+y^2}&altrove\end{dcases*}.
-\]
-Nell'origine si ha $\grad f(0,0)=(0,0)$, altrimenti il gradiente di $f$ è
-\[
-\grad f(x,y)=\bigg(\frac{y^5-x^2y^3}{(x^2+y^2)^2},\frac{3x^3y^2+xy^4}{(x^2+y^2)^2}\bigg).
-\]
-
-Allora si ha
-\begin{align*}
-&\frac{\partial^2f}{\partial y\partial x}=\lim_{x\to 0}\frac{\drp{f}{y}(x,0)-\drp{f}{y}(0,0)}{x}=\lim_{x\to 0}\frac0{x}=0,\\
-%in che punti???
-&\frac{\partial^2f}{\partial x\partial y}=\lim_{y\to 0}\frac{\drp{f}{x}(0,y)-\drp{f}{x}(0,0)}{y}=\lim_{y\to 0}\frac{y}{y}=1.
-\end{align*}
-\end{itemize}
+L'ordine di derivazione è importante non solo per il risultato dell'operazione, ma anche per l'esistenza stessa del risultato, come dimostrano i seguenti esempi in $\R^2$.
+\begin{esempio} \label{es:ordine-di-derivazione-1}
+	Sia $f(x,y)=x^2y^{1/3}$. Le derivate prime parziali nell'origine sono entrambe nulle, altrimenti
+	\[
+	\drp{f}{x}(x,y)=2x\sqrt[3]{y}\qtext{e}\drp{f}{y}(x,y)=\begin{dcases*}\nexists&in $(x,0)$ con $x\neq 0$\\\frac{x^2}{3y^{2/3}}&altrove\end{dcases*}.
+	\]
+	Nell'origine, la derivata seconda rispetto a $y$ e poi a $x$, nell'ordine, ossia $\drp{}{x}\big(\drp{f}{y}\big)(0,0)$, non esiste, mentre la derivata seconda rispetto a $x,y$ è
+	\[
+	\frac{\partial^2f}{\partial x\partial y}(x,y)=\drp{}{y}\bigg(\drp{f}{x}\bigg)(0,0)=\lim_{y\to 0}\frac{\drp{f}{x}(0,y)-\drp{f}{x}(0,0)}{y}=0.
+	\]
+\end{esempio}
+\begin{esempio} \label{es:ordine-di-derivazione-2}
+	Sia $f$ definita come
+	\[
+	f(x,y)=\begin{dcases*}0&in $(0,0)$\\\frac{xy^3}{x^2+y^2}&altrove\end{dcases*}.
+	\]
+	Nell'origine si ha $\grad f(0,0)=(0,0)$, altrimenti il gradiente di $f$ è
+	\[
+	\grad f(x,y)=\bigg(\frac{y^5-x^2y^3}{(x^2+y^2)^2},\frac{3x^3y^2+xy^4}{(x^2+y^2)^2}\bigg).
+	\]
+	Allora si ha
+	\begin{align*}
+	&\frac{\partial^2f}{\partial y\partial x}=\lim_{x\to 0}\frac{\drp{f}{y}(x,0)-\drp{f}{y}(0,0)}{x}=\lim_{x\to 0}\frac0{x}=0,\\
+	%in che punti???
+	&\frac{\partial^2f}{\partial x\partial y}=\lim_{y\to 0}\frac{\drp{f}{x}(0,y)-\drp{f}{x}(0,0)}{y}=\lim_{y\to 0}\frac{y}{y}=1.
+	\end{align*}
+\end{esempio}
 Per certe funzioni, però, le derivate seconde non dipendono dall'ordine di derivazione, come spiegato dal seguente teorema.
 \begin{teorema}[di Schwartz] \label{t:schwarz}
 Siano $\Omega$ un aperto di $\R^n$, $\vec a$ un punto interno ad esso, $\vec v$ e $\vec w$ due versori di $\R^n$ e $f$ una funzione definita da $\Omega$ a $\R$. Se esiste un intorno di $\vec a$ contenuto in $\Omega$ in cui esistono sia $D^2_{\vec v,\vec w}f$ che $D^2_{\vec w,\vec v}f$ e sono continue in $\vec a$, allora esse coincidono in tale punto.

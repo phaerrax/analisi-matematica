@@ -36,19 +36,20 @@ Il seguente teorema mostra che imponendo alcune condizioni all'equazione, come l
 \begin{teorema}[di Peano]
 Siano $\Omega$ un insieme aperto di $\R^{n+1}$, il punto $\big(x_0,\vec y_0)\in\Omega$ e la funzione $\vec f\colon\Omega\to\R^n$ continua in $\Omega$. Il problema di Cauchy \eqref{pc} ammette una soluzione locale, ossia $\exists I\subseteq\R$, con $x_0\in I$, in cui è definita una soluzione del problema.
 \end{teorema}
-\paragraph{Esempi}
-\begin{itemize}
-\item Sia dato il problema di Cauchy
-\[\begin{cases}y'=2xy^2\\y(0)=y_0.\end{cases}\]
-Poiché è un polinomio, chiaramente $f\in\cont[\infty]{\R^2}$. La soluzione quindi esiste sempre in un intorno di $x=0$, ed è unica poiché nessuna delle soluzioni ne interseca un'altra in ogni punto in cui è definita. In particolare, la soluzione è la funzione
-\[
-y=\frac{y_0}{1-y_0x^2},
-\]
-che è definita per ogni $x\in\R$ se $y_0\leq 0$ (se $y_0=0$ è la funzione nulla $y(x)=0$), soltanto per $\abs{x}<1/\sqrt{y_0}$ se $y_0>0$.
-\item Sia dato il problema di Cauchy
-\[\begin{cases}y'=3y^{2/3}\\y(0)=0.\end{cases}\]
-La funzione $f$ del problema è continua in tutto $\R^2$, quindi esiste una soluzione nell'intorno di $x_0$: infatti la funzione $y(x)=0$ è una soluzione del problema. Non è però l'unica, dato che se $y\neq 0$ esistono infinite soluzioni in tale intorno, definite in tutto $\R$: una di queste è anche, tra le tante, la funzione $y(x)=x^3$. Questo problema è noto come \emph{pennello di Peano}.
-\end{itemize}
+\begin{esempio} \label{es:problema-cauchy-unicita}
+	Sia dato il problema di Cauchy
+	\[\begin{cases}y'=2xy^2\\y(0)=y_0.\end{cases}\]
+	Poiché è un polinomio, chiaramente $f\in\cont[\infty]{\R^2}$. La soluzione quindi esiste sempre in un intorno di $x=0$, ed è unica poiché nessuna delle soluzioni ne interseca un'altra in ogni punto in cui è definita. In particolare, la soluzione è la funzione
+	\[
+	y=\frac{y_0}{1-y_0x^2},
+	\]
+	che è definita per ogni $x\in\R$ se $y_0\leq 0$ (se $y_0=0$ è la funzione nulla $y(x)=0$), soltanto per $\abs{x}<1/\sqrt{y_0}$ se $y_0>0$.
+\end{esempio}
+\begin{esempio} \label{es:pennello-peano}
+	Sia dato il problema di Cauchy
+	\[\begin{cases}y'=3y^{2/3}\\y(0)=0.\end{cases}\]
+	La funzione $f$ del problema è continua in tutto $\R^2$, quindi esiste una soluzione nell'intorno di $x_0$: infatti la funzione $y(x)=0$ è una soluzione del problema. Non è però l'unica, dato che se $y\neq 0$ esistono infinite soluzioni in tale intorno, definite in tutto $\R$: una di queste è anche, tra le tante, la funzione $y(x)=x^3$. Questo problema è noto come \emph{pennello di Peano}.
+\end{esempio}
 La sola continuità di $f$ è sufficiente a garantire l'esistenza, ma sfortunatamente non basta per decretare anche l'\emph{unicità} della soluzione: per questo si avrà bisogno di ipotesi di partenza più restrittive.
 
 Sia $\vec f\colon\R^{n+1}\to\R^n$ continua in $E$, e siano $(x_0,\vec y_0)\in E$ e $x_0\in I$. Se la funzione $\vec y\colon I\to\R^n$ risolve il problema di Cauchy \eqref{pc}, certamente è continua in $I$, poiché la sua derivata esiste per i valori di $x\in I$. Ma allora $\vec f\big(x,\vec y(x)\big)$ è a sua volta continua in $I$, a cui segue che anche $\vec y'$, essendo di fatto uguale a $\vec f$, è continua in $I$. Tutto ciò significa infine che $\vec y\in\cont[1]{I}$: si può applicare quindi il teorema fondamentale del calcolo integrale \ref{t:tfci1}, ottenendo l'uguaglianza
@@ -74,13 +75,14 @@ Risolvere il problema di Cauchy equivale quindi a ricercare le \emph{soluzioni c
 	\end{equation}
 \end{definizione}
 In pratica questa definizione è simile alla classica definizione di lipschitzianità, se non per il fatto che una variabile (qui la $x$) è tenuta fissa.
-\paragraph{Esempi}
-Sia $g\colon I\subseteq\R\to\R$ una funzione limitata in $I$:
-\begin{itemize}
-	\item la funzione $f(x,y)=g(x)\abs{y}$ è lipschitziana in $y$ uniformemente rispetto a $x$ nell'insieme $I\times\R$;
-	\item la funzione $f(x,y)=g(x)\sqrt[3]{y}$ soddisfa la \ref{d:lipschitziana-uniformemente} in ogni insieme $I\times\{y\colon\abs{y}\geq\epsilon>0\}$, poiché per $y\to 0$ la derivata di $f$ rispetto a $y$ cresce illimitatamente;
-	\item la funzione $f(x,y)=g(x)y^2$ soddisfa la \ref{d:lipschitziana-uniformemente} in ogni insieme compatto di $\R^2$, poiché al crescere indefinito di $y$ la derivata di $f$ rispetto a tale variabile cresce illimitatamente.
-\end{itemize}
+\begin{esempio} \label{es:lipschitziana-uniformemente}
+	Sia $g\colon I\subseteq\R\to\R$ una funzione limitata in $I$:
+	\begin{itemize}
+		\item la funzione $f(x,y)=g(x)\abs{y}$ è lipschitziana in $y$ uniformemente rispetto a $x$ nell'insieme $I\times\R$;
+		\item la funzione $f(x,y)=g(x)\sqrt[3]{y}$ soddisfa la \ref{d:lipschitziana-uniformemente} in ogni insieme $I\times\{y\colon\abs{y}\geq\epsilon>0\}$, poiché per $y\to 0$ la derivata di $f$ rispetto a $y$ cresce illimitatamente;
+		\item la funzione $f(x,y)=g(x)y^2$ soddisfa la \ref{d:lipschitziana-uniformemente} in ogni insieme compatto di $\R^2$, poiché al crescere indefinito di $y$ la derivata di $f$ rispetto a tale variabile cresce illimitatamente.
+	\end{itemize}
+\end{esempio}
 \begin{osservazione}
 	Sia $\Omega$ un insieme aperto e convesso\footnote{È \emph{convesso} un insieme tale che per ogni coppia di punti appartenenti ad esso, il segmento che li unisce appartiene ancora all'insieme.} di $\R^{n+1}$, e $\vec f$ una funzione definita in $\Omega$, a valori in $\R^n$.
 	Se tutte le derivate parziali $\partial f_i/\partial y_j$ esistono e sono limitate, allora la $\vec f$ è lipschitziana in $\Omega$ nella variabile $\vec y$ e uniformemente rispetto ad $x$.

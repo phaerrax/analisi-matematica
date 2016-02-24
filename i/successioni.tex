@@ -353,18 +353,20 @@ Ogni successione che soddisfa la condizione di Cauchy è limitata.
 Sia $\epsilon=1$, allora per la condizione di Cauchy $\exists N\colon\forall n\geq N$ si ha $d(x_n,x_m)<1$. Quindi per $n\geq N$ si ha che $x_n\in B(x_N,1)$. Al di fuori dell'intorno rimangono al più un numero finito di elementi (tutti quelli per cui $n<N$): sia $r_i=d(x_N,x_i)$ con $i=1,2,\dots,N-1$, preso un qualunque $R>\max\{r_i\}$ allora tutta la successione $\{x_n\}$ è compresa in $B(x_N,R)$, perciò è limitata.
 \end{proof}
 La successione di Cauchy quindi implica la limitatezza della successione, ma non è ancora sufficiente per determinarne la convergenza. Questa proprietà infatti dipende dallo spazio metrico in cui è posta la successione.
-\paragraph{Esempi}
-\begin{itemize}
-\item Nello spazio metrico $(\Q,\abs{\cdot})$, una successione qualsiasi convergente a $\sqrt{2}$, come ad esempio quella dei troncamenti degli allineamenti decimali che la approssimano, soddisfa la condizione di Cauchy, in quanto converge in $\R$ dato che la metrica è la stessa per entrambi gli spazi metrici. Tuttavia il limite di tale successione non appartiene a $\Q$, perciò non converge.
-\item Si definisca per ogni $m,n\in\N$ la distanza $d^*(n,m)=\abs[\big]{\frac1{n}-\frac1{m}}$. Si può dimostrare che $(\N,d^*)$ è uno spazio metrico. La successione $x_n=n$ soddisfa la condizione di Cauchy, poiché
-\[
-	\abs[\bigg]{\frac1{n}-\frac1{m}}\leq\frac1{n}+\frac1{m}<\epsilon
-\]
-se vale $m,n>\epsilon/2$. Tuttavia la successione non converge, infatti supposto che converga al limite $k\in\N$, si ha
-\[
-	\lim_{n\to +\infty} d^*(x_n,k)=\abs[\bigg]{\frac1{k}-\frac1{n}}=\frac1{k}\neq 0.
-\]
-\end{itemize}
+\begin{esempio} \label{es:condizione-cauchy}
+	Nei seguenti esempi vediamo come la condizione di Cauchy sia insufficiente a stabilire se una successione converge o meno.
+	\begin{enumerate}
+		\item Nello spazio metrico $(\Q,\abs{\cdot})$, una successione qualsiasi convergente a $\sqrt{2}$, come ad esempio quella dei troncamenti degli allineamenti decimali che la approssimano, soddisfa la condizione di Cauchy, in quanto converge in $\R$ dato che la metrica è la stessa per entrambi gli spazi metrici. Tuttavia il limite di tale successione non appartiene a $\Q$, perciò non converge.
+		\item Si definisca per ogni $m,n\in\N$ la distanza $d^*(n,m)=\abs[\big]{\frac1{n}-\frac1{m}}$. Si può dimostrare che $(\N,d^*)$ è uno spazio metrico. La successione $x_n=n$ soddisfa la condizione di Cauchy, poiché
+			\[
+				\abs[\bigg]{\frac1{n}-\frac1{m}}\leq\frac1{n}+\frac1{m}<\epsilon
+			\]
+			se vale $m,n>\epsilon/2$. Tuttavia la successione non converge, infatti supposto che converga al limite $k\in\N$, si ha
+			\[
+				\lim_{n\to +\infty} d^*(x_n,k)=\abs[\bigg]{\frac1{k}-\frac1{n}}=\frac1{k}\neq 0.
+			\]
+	\end{enumerate}
+\end{esempio}
 Esistono però alcuni spazi metrici in cui ogni successione che soddisfa la condizione di Cauchy è anche convergente.
 \begin{definizione}
 Uno spazio metrico si dice \emph{completo} se in esso ogni successione che verifica la condizione di Cauchy è anche convergente.
@@ -479,13 +481,15 @@ inoltre $p$ è un punto di accumulazione di $\{x_n\}$ perché negli $I_n$ sono c
 \begin{definizione}
 Un insieme $E\subseteq(X,d)$ si dice \emph{compatto} se $\forall\{x_n\}_{n=1}^{+\infty}\in E$ è possibile estrarre una sottosuccessione $\{x_{n_k}\}$ convergente ad un elemento $p\in E$.
 \end{definizione}
-\paragraph{Esempi}
-\begin{enumerate}
-\item Tutti gli insiemi di cardinalità finita sono compatti: ogni successione convergente estratta è infatti necessariamente definitivamente costante, e tale costante non può non essere nell'insieme.
-\item L'insieme $E=[0,1]\subset\R$ è compatto, perché qualsiasi punto di accumulazione a cui può tendere una successione in $E$ appartiene necessariamente ad $E$, poiché coincide con la sua chiusura $\clos{E}$. Infatti ogni insieme di $\R$ chiuso e limitato è compatto.
-\item L'insieme $E=(0,1]$ non è compatto, perché la successione $x_n=1/n$ tende a 0 che non appartiene ad $E$.
-\item Anche un insieme come $E=[a,+\infty)$ non è compatto, perché qualsiasi successione divergente ha come limite $+\infty$, che \emph{non} appartiene all'insieme.
-\end{enumerate}
+\begin{esempio} \label{es:compatti}
+	Alcuni esempi di insiemi compatti e non compatti:
+	\begin{enumerate}
+		\item tutti gli insiemi di cardinalità finita sono compatti, poich\'e ogni successione convergente estratta da essi è necessariamente (definitivamente) costante, e tale costante non può non essere nell'insieme;
+		\item l'insieme $E=[0,1]\subset\R$ è compatto, perché qualsiasi punto di accumulazione a cui può tendere una successione in $E$ appartiene necessariamente ad $E$, poiché coincide con la sua chiusura $\clos{E}$; vedremo infatti che ogni insieme di $\R$ chiuso e limitato è compatto;
+		\item l'insieme $E=(0,1]$ non è compatto, perché la successione $x_n=1/n$ tende a 0 che non appartiene ad $E$;
+		\item anche un insieme come $E=[a,+\infty)$ non è compatto, perché qualsiasi successione divergente ha come limite $+\infty$, che \emph{non} appartiene all'insieme.
+	\end{enumerate}
+\end{esempio}
 \begin{lemma}
 Un insieme $A\subseteq(X,d)$ è chiuso se e solo se $\forall\{x_n\}\subset A$ con $x_n\to p$ si ha che $p\in A$, ossia se $A$ contiene tutti i limiti di successioni convergenti estratte da esso.
 \end{lemma}

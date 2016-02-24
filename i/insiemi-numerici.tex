@@ -122,24 +122,23 @@ Inoltre, ogni insieme limitato di numeri reali possiede \emph{sempre} un estremo
 Ogni sottoinsieme di $\R$ limitato superiormente possiede sempre un estremo superiore.
 \end{teorema}
 %proof?
-Questo teorema distingue il campo $\R$ da $\Q$, che non possiede questa proprietà: esiste infatti almeno un sottoinsieme di $\Q$ che, pur essendo superiormente limitato, non ammette un estremo superiore. Sia ad esempio l'insieme
-\[
-A=\{r\in\Q^+\colon r^2<2\}.
-\]
-L'insieme dei suoi maggioranti di $A$ è
-\[
-B=\{p\in\Q^+\colon p^2\geq 2\}.
-\]
-Si trova che $B$ non ha un minimo, perché per qualunque $p\in B$ si può sempre trovare un altro elemento $q\in B$ per cui $q<p$. Infatti, si consideri l'elemento
-\[
-\frac{2p+2}{p+2}=q.
-\]
-Si dimostra che $q<p$: in $B$, infatti, se $p^2\geq 2$ si ha che
-\[
-\bigg(\frac{2p+2}{p+2}\bigg)^2\geq 2\qtext{e}\frac{2p+2}{p+2}<p,
-\]
-a cui segue che $p^2>2$.
-L'estremo superiore, $\sqrt{2}$, che $A$ sembrerebbe avere, in realtà non è tale poiché $\sqrt{2}\notin\Q$, quindi $A$ non ha un estremo superiore. Diversamente sarebbe se $A$ non fosse un sottoinsieme di $\Q$ ma di $\R$: in tal caso $\sqrt{2}\in\R$ quindi è a pieno titolo l'estremo superiore di $A$.
+Questo teorema distingue il campo $\R$ da $\Q$, che non possiede questa proprietà: esiste infatti almeno un sottoinsieme di $\Q$ che, pur essendo superiormente limitato, non ammette un estremo superiore, come vediamo nel seguente esempio.
+\begin{esempio} \label{es:non-esiste-sempre-sup-in-Q}
+	Prendiamo l'insieme $A=\{r\in\Q^+\colon r^2<2\}$.
+	L'insieme dei suoi maggioranti è $B=\{p\in\Q^+\colon p^2\geq 2\}$.
+	Si trova che $B$ non ha un minimo, perché per qualunque $p\in B$ si può sempre trovare un altro elemento $q\in B$ per cui $q<p$.
+	Infatti, si consideri l'elemento
+	\begin{equation*}
+		\frac{2p+2}{p+2}=q.
+	\end{equation*}
+	Si dimostra che $q<p$: in $B$, infatti, se $p^2\geq 2$ si ha che
+	\begin{equation*}
+		\bigg(\frac{2p+2}{p+2}\bigg)^2\geq 2\qtext{e}\frac{2p+2}{p+2}<p,
+	\end{equation*}
+	da cui segue che $p^2>2$.
+	L'estremo superiore, $\sqrt{2}$, che $A$ sembrerebbe avere, in realtà non è tale poiché $\sqrt{2}\notin\Q$, quindi $A$ non ha un estremo superiore.
+	Diversamente sarebbe se $A$ non fosse un sottoinsieme di $\Q$ ma di $\R$: in tal caso $\sqrt{2}\in\R$ quindi è a pieno titolo l'estremo superiore di $A$.
+\end{esempio}
 
 A partire da questa proprietà si può definire l'operazione di addizione tra due allineamenti infiniti di numeri reali.
 Per farlo, si costruiscono le somme dei troncati di due numeri approssimati ogni volta ad una cifra decimale in più: queste somme dei troncati saranno sempre minori della somma reale dei due numeri, e formano una famiglia di elementi che ha un elemento superiore; tale estremo è la somma dei due numeri cercata.
@@ -248,7 +247,9 @@ Un insieme finito ha cardinalità sempre maggiore di un suo sottoinsieme proprio
 \begin{teorema}
 Un insieme è infinito se e solo se può essere messo in corrispondenza biunivoca con un suo sottoinsieme proprio.
 \end{teorema}
-Quindi si può sempre definire una funzione biunivoca che leghi un insieme infinito con un suo sottoinsieme proprio. Ad esempio, si può definire una funzione $f\colon\N\to 2\N$, cioè tra i numeri naturali e i numeri naturali pari, che ovviamente formano un sottoinsieme proprio di $\N$. Sia questa funzione $f(n)=2n$: è iniettiva, poiché $n$ differenti hanno immagini differenti, inoltre è suriettiva perché l'insieme immagine è esattamente $2\N$, quindi è una corrispondenza biunivoca tra $2\N$ e $\N$, che è quindi infinito dato che è è in corispondenza bounivocacon un suo sottoinsieme proprio.
+L'insieme dei numeri naturali e il suo sottoinsieme $2\N$ dei numeri (naturali) pari sono per esempio in corrispondenza biunivoca tramite la funzione $f(n)=2n$, dunque $2\N$ e $\N$ sono equipotenti, e in particolare $\N$ è infinito.\footnote{
+	Spesso questo fatto si racconta come «i numeri pari sono tanti quanti i numeri naturali».
+}
 
 \section{Cardinalità del numerabile}
 \begin{definizione}

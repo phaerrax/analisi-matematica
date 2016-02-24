@@ -552,42 +552,44 @@ dunque normalizzando si ha
 \end{equation}
 Per la continuità del versore normale, il segno della matrice jacobiana può essere quindi o 1 o $-1$ in tutto il dominio, perciò o vale $\vnu_2(\vec x)=\vnu_1(\vec x)$ o vale $\vnu_2(\vec x)=-\vnu_1(\vec x)$ per ogni $\vec x\in S_\circ$.
 Indichiamo quindi con $\vphi_1\overset{\circ}{\sim}\vphi_2$ se le due superfici sono anche equiorientate, cioè se il versore normale coincide (ha lo stesso segno).
-
-Prendiamo ad esempio una sfera di raggio $R$, centrata nell'origine: è il luogo degli zeri della funzione $F(x,y,z)=x^2+y^2+z^2-R^2$, e prendendo solo l'emisfero per $z>0$ possiamo applicare il teorema di Dini.
-Per quanto visto nell'osservazione \ref{o:spazio-tangente-superficie-implicita}, il versore normale è
-\begin{equation}
-	\vnu(x,y,z)=\frac{\grad F(x,y,z)}{\norm{\grad F(x,y,z)}}=\frac1{\sqrt{4x^2+4y^2+4z^2}}(2x,2y,2z)^T=\frac1{R}(x,y,z)^T
-\end{equation}
-quindi punta sempre nella direzione radiale.
-L'estensione di $\vnu$ a tutta la superficie si vede subito sfruttandone la simmetria.
-Essa è evidentemente sempre orientabile, e le due orientazioni possibili sono quella uscente ($\vnu$) o quella entrante ($-\vnu$).
-
-Una superficie non orientabile è il nastro di M\"obius, dato dalla parametrizzazione
-\begin{equation}
-	\vphi(u,v)=\bigg(
-		\Big(r+\dfrac{v}2\cos\dfrac{u}2\Big)\cos\dfrac{u}2,\
-		\Big(r+\dfrac{v}2\cos\dfrac{u}2\Big)\sin\dfrac{u}2,\
-		\dfrac{v}2\sin\dfrac{u}2
-	\bigg)^T
-	\label{eq:nastro-moebius}
-\end{equation}
-per $(u,v)\in[-a,a]\times[0,2\pi]$, con $a,r\in\R$ fissati: essa descrive un nastro di larghezza $a$ il cui punto medio percorre una circonferenza (centrata nell'origine) di raggio $r$.
-Se $a<r$ la superficie non si interseca ed è dunque una superficie regolare.
-\input{grafici/nastro-moebius}
-Per semplicità, calcoliamo un vettore normale, senza normalizzarlo, solo nella circonferenza di mezzo, vale a dire per $v=0$: esso vale
-\begin{equation}
-	\vnu(u,0)=\bigg(
-		\dfrac14\cos\dfrac{u}2\sin u,\
-		\dfrac14\sin\dfrac{u}2\sin u,\
-		-\dfrac14\cos\dfrac{u}2
-	\bigg)^T
-	\label{eq:vettore-normale-centro-nastro-mobius}
-\end{equation}
-Vediamo che quando $u$ varia da 0 a $2\pi$ $\vnu$ cambia segno, dato che le funzioni sono periodiche di $4\pi$: ma dalla \eqref{eq:nastro-moebius} è chiaro che $\vphi(0,0)$ e $\vphi(2\pi,0)$ \emph{sono lo stesso punto}, perciò il vettore normale non può essere ben definito su tutta la superficie.
-Chiaramente possiamo avere un vettore normale ben definito per $(u,v)\in(-1,1)\times(0,2\pi)$: il problema si ha quando vogliamo aggiungere il bordo, in cui il vettore normale ``salta'' da una faccia all'altra.\footnote{
-	In realtà è sbagliato parlare di ``facce'' del nastro di M\"obius, in quanto (come uno sguardo alla figura può subito far capire) di faccia ce n'è \emph{una sola}.
-	Se localmente, in un intorno di un qualsiasi punto (non sul bordo) del nastro, sembra che ci possano essere due facce, questo non può più essere vero globalmente.
-}
+\begin{esempio} \label{es:versore-normale-sfera}
+	Prendiamo una sfera di raggio $R$, centrata nell'origine: è il luogo degli zeri della funzione $F(x,y,z)=x^2+y^2+z^2-R^2$, e prendendo solo l'emisfero per $z>0$ possiamo applicare il teorema di Dini.
+	Per quanto visto nell'osservazione \ref{o:spazio-tangente-superficie-implicita}, il versore normale è
+	\begin{equation}
+		\vnu(x,y,z)=\frac{\grad F(x,y,z)}{\norm{\grad F(x,y,z)}}=\frac1{\sqrt{4x^2+4y^2+4z^2}}(2x,2y,2z)^T=\frac1{R}(x,y,z)^T
+	\end{equation}
+	quindi punta sempre nella direzione radiale.
+	L'estensione di $\vnu$ a tutta la superficie si vede subito sfruttandone la simmetria.
+	Essa è evidentemente sempre orientabile, e le due orientazioni possibili sono quella uscente ($\vnu$) o quella entrante ($-\vnu$).
+\end{esempio}
+\begin{esempio} \label{es:nastro-moebius}
+	Il nastro di M\"obius è una superficie non orientabile, data dalla parametrizzazione
+	\begin{equation}
+		\vphi(u,v)=\bigg(
+			\Big(r+\dfrac{v}2\cos\dfrac{u}2\Big)\cos\dfrac{u}2,\
+			\Big(r+\dfrac{v}2\cos\dfrac{u}2\Big)\sin\dfrac{u}2,\
+			\dfrac{v}2\sin\dfrac{u}2
+		\bigg)^T
+		\label{eq:nastro-moebius}
+	\end{equation}
+	per $(u,v)\in[-a,a]\times[0,2\pi]$, con $a,r\in\R$ fissati: essa descrive un nastro di larghezza $a$ il cui punto medio percorre una circonferenza (centrata nell'origine) di raggio $r$.
+	Se $a<r$ la superficie non si interseca ed è dunque una superficie regolare.
+	\input{grafici/nastro-moebius}
+	Per semplicità, calcoliamo un vettore normale, senza normalizzarlo, solo nella circonferenza di mezzo, vale a dire per $v=0$: esso vale
+	\begin{equation}
+		\vnu(u,0)=\bigg(
+			\dfrac14\cos\dfrac{u}2\sin u,\
+			\dfrac14\sin\dfrac{u}2\sin u,\
+			-\dfrac14\cos\dfrac{u}2
+		\bigg)^T
+		\label{eq:vettore-normale-centro-nastro-mobius}
+	\end{equation}
+	Vediamo che quando $u$ varia da 0 a $2\pi$ $\vnu$ cambia segno, dato che le funzioni sono periodiche di $4\pi$: ma dalla \eqref{eq:nastro-moebius} è chiaro che $\vphi(0,0)$ e $\vphi(2\pi,0)$ \emph{sono lo stesso punto}, perciò il vettore normale non può essere ben definito su tutta la superficie.
+	Chiaramente possiamo avere un vettore normale ben definito per $(u,v)\in(-1,1)\times(0,2\pi)$: il problema si ha quando vogliamo aggiungere il bordo, in cui il vettore normale ``salta'' da una faccia all'altra.\footnote{
+		In realtà è sbagliato parlare di ``facce'' del nastro di M\"obius, in quanto (come uno sguardo alla figura può subito far capire) di faccia ce n'è \emph{una sola}.
+		Se localmente, in un intorno di un qualsiasi punto (non sul bordo) del nastro, sembra che ci possano essere due facce, questo non può più essere vero globalmente.
+	}
+\end{esempio}
 
 \begin{definizione} \label{d:superfici-con-bordo}
 	Sia $\vphi\colon D\to\R^3$ la parametrizzazione di una superficie $S$ regolare, con $D$ dominio regolare connesso: essa si dice \emph{superficie con bordo} se $\vphi$ è iniettiva su $D$ e se si può individuare un insieme $E\supset D$ aperto e una funzione $\tilde{\vphi}\colon E\to\R^3$, di classe $\cont[1]{E}$, tale che la sua restrizione in $D$ coincida con $\vphi$. Il rango della jacobiana $\jac\vphi$ deve essere massimo $\forall (u,v)\in D$.

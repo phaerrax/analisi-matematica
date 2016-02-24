@@ -62,12 +62,13 @@ Ciò significa che le classi numeriche di tutte le somme inferiori e superiori, 
 \intinf f(x)\,\dd x\qtext{e}\intsup f(x)\,\dd x
 \]
 che sono compresi tra $m(b-a)$ e $M(b-a)$.
-
-\paragraph{Esempi}
-\begin{itemize}
-\item La funzione $f(x)=k$ (costante) ha indubbiamente, per ogni $j$, $m_j=M_j$, quindi le somme inferiore e superiore e gli integrali inferiore e superiore coincidono tutti e valgono $k(b-a)$.
-\item La funzione di Dirichlet assume come valori 1 se $x\in\Q$ e 0 altrimenti, quindi per ogni partizione dell'intervallo definito si ha che $m_j=0$ e $M_j=1$. Allora $s=0$ e $S=b-a$ per qualsiasi partizione.
-\end{itemize}
+\begin{esempio} \label{es:somme-superiori-inferiori}
+	Calcoliamo le somme superiori e inferiori per due semplici funzioni.
+	\begin{enumerate}
+		\item La funzione $f(x)=k$ (costante) ha indubbiamente, per ogni $j$, $m_j=M_j$, quindi le somme inferiore e superiore e gli integrali inferiore e superiore coincidono tutti e valgono $k(b-a)$.
+		\item La funzione di Dirichlet assume come valori 1 se $x\in\Q$ e 0 altrimenti, quindi per ogni partizione dell'intervallo definito si ha che $m_j=0$ e $M_j=1$. Allora $s=0$ e $S=b-a$ per qualsiasi partizione.
+	\end{enumerate}
+\end{esempio}
 
 Separando uno dei sottointervalli $I_j=[x_{j-1},x_j]$ con un elemento $\tilde{x}\in I_j$, si ottiene un intervallo $\tilde{I}_j=[x_{j-1},\tilde{x}]\cup[\tilde{x},x_j]$, quindi contribuisce alle somme inferiori $s$ con due addendi, la cui somma non è minore di $\inf_jm_j(x_j-x_{j-1})$ e analogamente contribuisce a $S$ con due addendi la cui somma non è maggiore del $\sup_jM_j(x_j-x_{j-1})$. %??????
 Sia $\mathcal{Q}[a,b]$ un raffinamento di $\partz[a,b]$, ossia $\partz\subset\mathcal{Q}$: si ha che $s(f,\partz)\leq s(f,\mathcal{Q})$ e $S(f,\partz)\geq S(f,\mathcal{Q})$ e, come prima, $s(f,\mathcal{Q})\leq S(f,\mathcal{Q})$.
@@ -415,16 +416,18 @@ La convergenza dell'integrale improprio non implica, come si era visto per le se
 	\end{equation}
 	da cui, nel limite per $m\to+\infty$, si ottiene la \eqref{eq:intserie}.
 \end{proof}
-Con questo teorema si può valutare l'integrale
-\[
-\int_a^{+\infty}\frac{\dd x}{x^p\log^qx},
-\]
-per qualsiasi $a>1$, tramite la similitudine con la nota serie $\sum_{n=2}^{+\infty}\frac1{n^p\log^qn}$ si ricava che esso converge se $p>1$ e diverge per $p<1$. Se $p=1$ si ha l'integrale
-\[
-\int_a^{+\infty}\frac{\dd x}{x\log^qx}
-\]
-che con la sostituzione $t=\log x$ diventa
-\[
-\int_{\log a}^{+\infty}\frac{\dd t}{t^q},
-\]
-che quindi converge se $q>1$.
+\begin{esempio} \label{es:integrale-campione}
+	Con quest'ultimo teorema si può valutare l'integrale
+	\[
+	\int_a^{+\infty}\frac{\dd x}{x^p\log^qx},
+	\]
+	per qualsiasi $a>1$, tramite la similitudine con la nota serie $\sum_{n=2}^{+\infty}\frac1{n^p\log^qn}$ si ricava che esso converge se $p>1$ e diverge per $p<1$. Se $p=1$ si ha l'integrale
+	\[
+	\int_a^{+\infty}\frac{\dd x}{x\log^qx}
+	\]
+	che con la sostituzione $t=\log x$ diventa
+	\[
+	\int_{\log a}^{+\infty}\frac{\dd t}{t^q},
+	\]
+	che quindi converge se $q>1$.
+\end{esempio}

@@ -8,25 +8,27 @@ Quando $\{f_n\}$ converge puntualmente in $J$, in tale insieme si può definire 
 \begin{equation} \label{eq:conv_puntuale_succ}
 \forall x_0\in J,\ \forall\epsilon>0\ \exists\overline{n}=\overline{n}(\epsilon,x_0)\colon\forall n\geq\overline{n}\abs{f_n(x_0)-f(x_0)}<\epsilon.
 \end{equation}
-\paragraph{Esempi}
-\begin{enumerate}
-\item In $I=[0,+\infty)$, la successione $f_n(x)=\min\{x,n\}$ converge in $I$ alla $f(x)=x$;
-\item In $I=[0,+\infty)$, la $f_n=x^n$ converge puntualmente (figura \ref{fig:xn}) in $[0,1]$ alla funzione $f$ tale per cui $f(x)=0$ per $x\in[0,1)$ e $f(1)=1$.
-\input{grafici/xn.tex}
-\item $f_n=\frac{x}{x+n}$ in $I=[0,+\infty)$ converge per ogni $x\in I$ a $f(x)=0$.
-\item\[
-f_n(x)=\begin{cases}n^2x&x\in[0,\frac1{n}]\\ 2n-n^2x&x\in(\frac1{n},\frac2{n})\\ 0&x\in[\frac2{n},2]\end{cases},
-\]
-in $I=[0,2]$, converge puntualmente alla funzione identicamente nulla (figura \ref{fig:succ_triangolo}).
-\input{grafici/succ-triangolo.tex}
-\item In $I=[0,1]$, sia
-\[
-f_n(x)=\begin{cases*}1&se $x=\frac{j}{2^n}$, per $0\leq j\leq 2^n$ intero\\ 0&altrove\end{cases*}.
-\]
-La funzione limite è la funzione\dots?
-\item $f_n(x)=\sqrt{x^2+\frac1{n^2}}$ in $I=\R$, converge puntualmente (figura \ref{fig:succ_iperbole}) alla funzione $f(x)=\abs{x}$.
-\input{grafici/succ-iperbole.tex}
-\end{enumerate}
+\begin{esempio} \label{es:convergenza-puntuale-successioni}
+	Esaminiamo la convergenza puntuale di alcune successioni.
+	\begin{enumerate}
+		\item In $I=[0,+\infty)$, la successione $f_n(x)=\min\{x,n\}$ converge in $I$ alla $f(x)=x$;
+		\item In $I=[0,+\infty)$, la $f_n=x^n$ converge puntualmente (figura \ref{fig:xn}) in $[0,1]$ alla funzione $f$ tale per cui $f(x)=0$ per $x\in[0,1)$ e $f(1)=1$.
+		\input{grafici/xn.tex}
+		\item $f_n=\frac{x}{x+n}$ in $I=[0,+\infty)$ converge per ogni $x\in I$ a $f(x)=0$.
+		\item\[
+		f_n(x)=\begin{cases}n^2x&x\in[0,\frac1{n}]\\ 2n-n^2x&x\in(\frac1{n},\frac2{n})\\ 0&x\in[\frac2{n},2]\end{cases},
+		\]
+		in $I=[0,2]$, converge puntualmente alla funzione identicamente nulla (figura \ref{fig:succ_triangolo}).
+		\input{grafici/succ-triangolo.tex}
+		\item In $I=[0,1]$, sia
+		\[
+		f_n(x)=\begin{cases*}1&se $x=\frac{j}{2^n}$, per $0\leq j\leq 2^n$ intero\\ 0&altrove\end{cases*}.
+		\]
+		La funzione limite è la funzione\dots?
+		\item $f_n(x)=\sqrt{x^2+\frac1{n^2}}$ in $I=\R$, converge puntualmente (figura \ref{fig:succ_iperbole}) alla funzione $f(x)=\abs{x}$.
+		\input{grafici/succ-iperbole.tex}
+	\end{enumerate}
+\end{esempio}
 Si può studiare se le proprietà della famiglia di funzioni vengano ``ereditate'' dalla funzione limite tramite la convergenza puntuale, ad esempio:
 \begin{itemize}
 \item se $f_n$ è limitata in $J$ per ogni $n\in\N$, allora anche $f$ è limitata in $J$;
@@ -60,41 +62,44 @@ Si può anche indicare questo estremo superiore con la \emph{norma uniforme}:
 \[
 \norm{f_n-f}_{\infty,J}=\sup_{x\in J}\abs{f_n(x)-f(x)}.
 \]
-\paragraph{Esempi}
-\begin{itemize}
-\item La successione già vista precedentemente $f_n(x)=x^n$ in $[0,1]$ converge puntualmente, però la $\norm{f_n-f}_{\infty,[0,1]}$ vale 0 in $x=1$, perché $f_n(1)=f(1)$, mentre altrove
-\[
-\norm{f_n-f}_{\infty,[0,1)}=\sup_{0\leq x<1} x^n=\lim_{x\to 1}x^n=1,
-\]
-e chiaramente $\lim_{n\to+\infty}\neq 0$ quindi la convergenza non è uniforme. Per $\delta>0$ abritrariamente piccolo, però, considerando non più $[0,1]$ ma $[0,1-\delta]$, si ha che 
-\[
-\norm{f_n-f}_{\infty,[0,1-\delta]}=\sup_{0\leq x\leq 1-\delta} x^n=(1-\delta)^n\to 0,
-\]
-per $n\to+\infty$, perciò la convergenza è uniforme, dato che $1-\delta$ non dipende nemmeno più da $x$.
-\item La successione
-\[
-f_n(x)=\frac{\arctan\frac{x}{n}}{1+x^2}
-\]
-converge puntualmente alla funzione identicamente nulla in $\R$. Sia la funzione limite che i termini della successione sono funzioni dispari, quindi si può studiare la convergenza uniforme anche solo per $x\geq 0$. Risulta:
-\[
-	\sup_{x\geq 0}\abs[\bigg]{\frac{\arctan\frac{x}{n}}{1+x^2}}\leq\sup_{x\geq 0}\frac{x}{n}\frac1{1+x^2}=\frac1{n}\sup_{x\geq 0}\frac{x}{1+x^2},
-\]
-poiché l'arcotangente è in modulo sempre minore del suo argomento, inoltre il termine $1/n$ non dipende da $x$ quindi può essere estratto dall'argomento dell'estremo superiore. La funzione $g(x)=\frac{x}{1+x^2}$ è limitata in $\R$, di conseguenza esiste un numero $c\in\R$ per cui $\abs{g(x)}\leq c$, $\forall x\geq 0$. Dunque
-\[
-\frac1{n}\sup_{x\geq 0}\frac{x}{1+x^2}\leq\frac{c}{n}
-\]
-che tende a 0 per $n\to+\infty$, quindi la convergenza è uniforme in tutto $\R$.
-\item La convergenza della successione
-\[
-f_n(x)=\frac{\arctan(nx)}{1+x^2}\quad\to\quad\begin{dcases}\frac{\pi}2\frac{\sgn x}{1+x^2}&x\neq 0\\ 0&x=0\end{dcases}
-\]
-non è uniforme su tutto $\R$, ma lo è in ogni insieme $A\subset\R\setminus[-\epsilon,\epsilon]$, con $\epsilon>0$, ossia escludendo un intorno dell'origine. Infatti
-\begin{multline*}
-	\sup_{x\geq\epsilon>0}\abs[\bigg]{\frac{\arctan(nx)-\frac{\pi}2\sgn x}{1+x^2}}=\sup_{x\geq\epsilon>0}\frac{\frac{\pi}2-\arctan(nx)}{1+x^2}=\\
-=\sup_{x\geq\epsilon>0}\frac{\arctan\frac1{nx}}{1+x^2}=\frac1{1+\epsilon^2}\arctan\frac1{n\epsilon}\to 0
-\end{multline*}
-per $n\to+\infty$; un risultato analogo si ha per simmetria per $x\leq -\epsilon<0$.
-\end{itemize}
+\begin{esempio} \label{es:convergenza-uniforme-successioni-1}
+	La successione già vista precedentemente $f_n(x)=x^n$ in $[0,1]$ converge puntualmente, però la $\norm{f_n-f}_{\infty,[0,1]}$ vale 0 in $x=1$, perché $f_n(1)=f(1)$, mentre altrove
+	\[
+	\norm{f_n-f}_{\infty,[0,1)}=\sup_{0\leq x<1} x^n=\lim_{x\to 1}x^n=1,
+	\]
+	e chiaramente $\lim_{n\to+\infty}\neq 0$ quindi la convergenza non è uniforme. Per $\delta>0$ abritrariamente piccolo, però, considerando non più $[0,1]$ ma $[0,1-\delta]$, si ha che 
+	\[
+	\norm{f_n-f}_{\infty,[0,1-\delta]}=\sup_{0\leq x\leq 1-\delta} x^n=(1-\delta)^n\to 0,
+	\]
+	per $n\to+\infty$, perciò la convergenza è uniforme, dato che $1-\delta$ non dipende nemmeno più da $x$.
+\end{esempio}
+\begin{esempio} \label{es:convergenza-uniforme-successioni-2}
+	La successione
+	\[
+	f_n(x)=\frac{\arctan\frac{x}{n}}{1+x^2}
+	\]
+	converge puntualmente alla funzione identicamente nulla in $\R$. Sia la funzione limite che i termini della successione sono funzioni dispari, quindi si può studiare la convergenza uniforme anche solo per $x\geq 0$. Risulta:
+	\[
+		\sup_{x\geq 0}\abs[\bigg]{\frac{\arctan\frac{x}{n}}{1+x^2}}\leq\sup_{x\geq 0}\frac{x}{n}\frac1{1+x^2}=\frac1{n}\sup_{x\geq 0}\frac{x}{1+x^2},
+	\]
+	poiché l'arcotangente è in modulo sempre minore del suo argomento, inoltre il termine $1/n$ non dipende da $x$ quindi può essere estratto dall'argomento dell'estremo superiore. La funzione $g(x)=\frac{x}{1+x^2}$ è limitata in $\R$, di conseguenza esiste un numero $c\in\R$ per cui $\abs{g(x)}\leq c$, $\forall x\geq 0$. Dunque
+	\[
+	\frac1{n}\sup_{x\geq 0}\frac{x}{1+x^2}\leq\frac{c}{n}
+	\]
+	che tende a 0 per $n\to+\infty$, quindi la convergenza è uniforme in tutto $\R$.
+\end{esempio}
+\begin{esempio} \label{es:convergenza-uniforme-successioni-3}
+	La convergenza della successione
+	\[
+	f_n(x)=\frac{\arctan(nx)}{1+x^2}\quad\to\quad\begin{dcases}\frac{\pi}2\frac{\sgn x}{1+x^2}&x\neq 0\\ 0&x=0\end{dcases}
+	\]
+	non è uniforme su tutto $\R$, ma lo è in ogni insieme $A\subset\R\setminus[-\epsilon,\epsilon]$, con $\epsilon>0$, ossia escludendo un intorno dell'origine. Infatti
+	\begin{multline*}
+		\sup_{x\geq\epsilon>0}\abs[\bigg]{\frac{\arctan(nx)-\frac{\pi}2\sgn x}{1+x^2}}=\sup_{x\geq\epsilon>0}\frac{\frac{\pi}2-\arctan(nx)}{1+x^2}=\\
+	=\sup_{x\geq\epsilon>0}\frac{\arctan\frac1{nx}}{1+x^2}=\frac1{1+\epsilon^2}\arctan\frac1{n\epsilon}\to 0
+	\end{multline*}
+	per $n\to+\infty$; un risultato analogo si ha per simmetria per $x\leq -\epsilon<0$.
+\end{esempio}
 Poiché le successioni di funzioni sono comprese in uno spazio metrico completo, quello delle funzioni limitate con la distanza data dalla norma uniforme, in esso si può elaborare la condizione di Cauchy anche per le successioni di funzioni, che sarà sufficiente e necessaria per la convergenza uniforme (dato che la convergenza in tale spazio coincide proprio con la convergenza uniforme)\footnote{Vedere il capitolo \ref{sec:spazi-funz} sugli spazi funzionali.}.
 \begin{teorema}
 Sia $\{f_n\}$ con $f_n\colon J\to\R$ una successione di funzioni: essa converge uniformemente a $f$ in $J$ se e solo se $\forall\epsilon>0$ $\exists\overline{n}\colon\forall m,n\geq\overline{n}$ si ha $\norm{f_m-f_n}_{\infty,J}<\epsilon$.
@@ -157,11 +162,11 @@ Poiché $f_n\in\cont{[a,b]}$ per ogni $n$, dal teorema \ref{t:continuita_conv_un
 \end{multline*}
 che tende a 0 per $n\to+\infty$, e si ha dunque la \eqref{eq:scambio_integrale_limite}.
 \end{proof}
-Il teorema non è estendibile a insiemi di integrazione illimitati, come mostrato nel seguente esempio: la successione
+Il teorema non è estendibile a insiemi di integrazione illimitati: si consideri la successione
 \[
 f_n(x)=\begin{cases}\frac2{n}-\frac2{n^2}x&x<n\\0&x\geq n\end{cases}
 \]
-converge uniformemente alla funzione $f(x)=0$ (figura \ref{fig:succ_integrazione_illimitata}). L'integrale di ogni $f_n(x)$ in $[0,+\infty)$ vale 1, per ogni $n$, poiché la curva descritta dalla funzione è un triangolo di base $n$ e altezza $2/n$, ma l'integrale della funzione limite è chiaramente nullo.
+che converge uniformemente alla funzione $f(x)=0$ (figura \ref{fig:succ_integrazione_illimitata}). L'integrale di ogni $f_n(x)$ in $[0,+\infty)$ vale 1, per ogni $n$, poiché la curva descritta dalla funzione è un triangolo di base $n$ e altezza $2/n$, ma l'integrale della funzione limite è chiaramente nullo.
 \input{grafici/succ-integrazione-illimitata.tex}
 
 La derivabilità di una successione di funzioni è una questione più complicata dell'integrabilità: si è già visto in un precedente esempio che anche se la successione converge uniformemente, non è sempre vero che converge anche la successione delle derivate, come per $f_n(x)=\sqrt{x^2+\frac1{n^2}}$, la cui derivata della funzione limite non esiste nemmeno, in $x=0$.

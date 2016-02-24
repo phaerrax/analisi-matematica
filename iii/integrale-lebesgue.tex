@@ -146,25 +146,26 @@ da cui $\vol{I}=\mu^*(I)$ per l'arbitrarietà di $\epsilon$.
 	\end{enumerate}
 \end{proof}
 Un insieme si dice di \emph{misura nulla} se la sua misura esterna è zero.
-Eccone alcuni esempi.
-\begin{itemize}
-	\item Se $I$ è dato dal prodotto di vari intervalli $[a_i,b_i]$ con $i\in\{1,\dots,n\}$, e per almeno un $j$ si ha $a_j=b_j$, allora
-		\begin{equation}
-			\mu^*(I)=\prod_{i=1}^n(b_i-a_i)=(a_j-a_j)\prod_{\substack{i=1\\i\neq j}}^n(b_i-a_i)=0.
-		\end{equation}
-	\item Se $A\in\R^n$ è composto di un solo punto, cioè $A=\{\vec a\}$, può essere scritto come $A=[a_1,a_1]\times\dots\times[a_n,a_n]$ quindi per il punto precedente $\mu^*(\{\vec a\})=0$.
-	\item Un insieme $B$ finito o numerabile è l'unione numerabile di tanti punti, cioè $B=\bigcup_{j\in J}\{\vec b_j\}$ con $J\subseteq\N$, quindi per la subadditività della misura esterna e per il punto precedente risulta
-		\begin{equation}
-			\mu^*(B)=\mu^*\bigg(\bigcup_{j\in J}\{\vec b_j\}\bigg)\leq\sum_{j\in J}\mu^*(\{\vec b_j\})=0.
-		\end{equation}
-	\item L'insieme $\Q$ dei razionali è numerabile, quindi $\mu^*(\Q)=0$ cos\'i come $\mu^*(\Q^n)=0$, pur essendo densi in $\R$ e $\R^n$.
-	\item Ogni sottoinsieme di un insieme di misura nulla è a sua volta di misura nulla, per la monotonia della misura.
-	\item Il bordo $\boundary I$ di un iperrettangolo di $\R^n$ può essere scritto come l'unione delle sue $2n$ facce $F_i$, che sono a loro volta iperrettangoli degeneri (come nel primo di questi esempi), dunque
-		\begin{equation}
-			\mu^*(\boundary I)=\mu^*\bigg(\bigcup_{i=1}^{2n} F_i\bigg)\leq\sum_{i=1}^{2n}\mu^*(F_i)=0.
-		\end{equation}
-\end{itemize}
-
+\begin{esempio} \label{es:insiemi-misura-nulla}
+	Ecco alcuni esempi di tali insiemi.
+	\begin{enumerate}
+		\item Se $I$ è dato dal prodotto di vari intervalli $[a_i,b_i]$ con $i\in\{1,\dots,n\}$, e per almeno un $j$ si ha $a_j=b_j$, allora
+			\begin{equation}
+				\mu^*(I)=\prod_{i=1}^n(b_i-a_i)=(a_j-a_j)\prod_{\substack{i=1\\i\neq j}}^n(b_i-a_i)=0.
+			\end{equation}
+		\item Se $A\in\R^n$ è composto di un solo punto, cioè $A=\{\vec a\}$, può essere scritto come $A=[a_1,a_1]\times\dots\times[a_n,a_n]$ quindi per il punto precedente $\mu^*(\{\vec a\})=0$.
+		\item Un insieme $B$ finito o numerabile è l'unione numerabile di tanti punti, cioè $B=\bigcup_{j\in J}\{\vec b_j\}$ con $J\subseteq\N$, quindi per la subadditività della misura esterna e per il punto precedente risulta
+			\begin{equation}
+				\mu^*(B)=\mu^*\bigg(\bigcup_{j\in J}\{\vec b_j\}\bigg)\leq\sum_{j\in J}\mu^*(\{\vec b_j\})=0.
+			\end{equation}
+		\item L'insieme $\Q$ dei razionali è numerabile, quindi $\mu^*(\Q)=0$ cos\'i come $\mu^*(\Q^n)=0$, pur essendo densi in $\R$ e $\R^n$.
+		\item Ogni sottoinsieme di un insieme di misura nulla è a sua volta di misura nulla, per la monotonia della misura.
+		\item Il bordo $\boundary I$ di un iperrettangolo di $\R^n$ può essere scritto come l'unione delle sue $2n$ facce $F_i$, che sono a loro volta iperrettangoli degeneri (come nel primo di questi esempi), dunque
+			\begin{equation}
+				\mu^*(\boundary I)=\mu^*\bigg(\bigcup_{i=1}^{2n} F_i\bigg)\leq\sum_{i=1}^{2n}\mu^*(F_i)=0.
+			\end{equation}
+	\end{enumerate}
+\end{esempio}
 Esistono anche insiemi non numerabili ma di misura nulla, come l'insieme di Cantor, definito come limite per induzione di
 \begin{equation}
 	\begin{aligned}
@@ -804,7 +805,7 @@ Generalizziamo quindi l'integrale a funzioni misurabili non negative.
 	dove $\mathcal S_f$ è l'insieme delle funzioni semplici misurabili per le quali $0\leq s(\vec x)\leq f(\vec x)$ $\forall\vec x\in A$.
 \end{definizione}
 Anche in questo caso l'integrale è un numero in $[0,+\infty]$.
-Eccone alcuni esempi:
+Nei casi ``limite'' abbiamo che:
 \begin{itemize}
 	\item se $\mu(A)=0$, l'integrale sarà sempre nullo.
 		Infatti per qualsiasi $f\geq 0$ misurabile, per ogni $s\in\mathcal S_f$ si ha
@@ -812,12 +813,12 @@ Eccone alcuni esempi:
 			0\leq \sum_{j=1}^nc_j\mu(E_j\cap A)
 		\end{equation}
 		ma $E_j\cap A$ è un sottoinsieme di $A$ quindi $\mu(E_j\cap A)\leq\mu(A)=0$ per ogni $j\in\{1,\dots,n\}$.
-	\item Lo stesso discorso vale se $f$ è identicamente nulla su $A$, perch\'e in questo caso l'unica funzione semplice misurabile $s$ per cui $0\leq s\leq f$ in $A$ è anch'essa identicamente nulla, quindi $\int_Af\,\dd\mu=\int_As\,\dd\mu=0\mu(A)=0$ con la convenzione adottata.
-	\item Se $f$ è limitata superiormente e la misura di $A$ è finita, allora l'integrale è finito, perch\'e per ogni $s\in\mathcal S_f$
-		\begin{equation}
-			\int_Af\,\dd\mu\leq\max_{\vec x\in A}f(\vec x)\sum_{j=1}^n\mu(A\cap E_j)=\max_{\vec x\in A}f(\vec x)\mu(A)<+\infty.
-		\end{equation}
+	\item se $f$ è identicamente nulla su $A$ vale lo stesso discorso, perch\'e in questo caso l'unica funzione semplice misurabile $s$ per cui $0\leq s\leq f$ in $A$ è anch'essa identicamente nulla, quindi $\int_Af\,\dd\mu=\int_As\,\dd\mu=0\mu(A)=0$ con la convenzione adottata.
 \end{itemize}
+In generale, invece, se $f$ è limitata superiormente e la misura di $A$ è finita allora l'integrale è finito, perch\'e per ogni $s\in\mathcal S_f$
+\begin{equation}
+	\int_Af\,\dd\mu\leq\max_{\vec x\in A}f(\vec x)\sum_{j=1}^n\mu(A\cap E_j)=\max_{\vec x\in A}f(\vec x)\mu(A)<+\infty.
+\end{equation}
 
 Concludiamo quindi con l'ultima definizione.
 \begin{definizione} \label{d:integrale-lebesgue-funzioni-qualunque}
@@ -1194,8 +1195,8 @@ Potendo restringere una funzione definita in tutto $\R^n$ ad un sottoinsieme $A\
 \end{teorema}
 Anche in questo caso ovviamente si possono scambiare i ruoli delle due variabili ottenendo lo stesso risultato.
 
-Vediamo ora due esempi che mostrano cosa succede se la funzione non è sommabile.
-Prendiamo $f\colon E\defeq(0,1]\times(0,1]\to\R$ definita come
+Se la funzione non è sommabile, tutto può accadere.
+Prendiamo ad esempio $f\colon E\defeq(0,1]\times(0,1]\to\R$ definita come
 \begin{equation*}
 	f(x,y)=
 	\begin{dcases}
@@ -1282,40 +1283,43 @@ La proprietà di non singolarità della jacobiana è solamente locale, quindi da
 Questo risultato mostra come cambia la misura di integrazione con un cambiamento di coordinate (il diffeomorfismo): in particolare, se la trasformazione è lineare, la jacobiana sarà costante, di conseguenza avremmo $\mu(B)=\mu\big(\vphi(A)\big)=\abs{\det\jac\vphi}\mu(A)$.
 Possiamo vedere $\dd\vec y$ ad esempio come un ``elemento infinitesimo di volume'' (o di area), e il risultante $\abs{\det\jac\vphi(\vec x)}\dd\vec x$ come il medesimo elemento di volume visto nelle nuove coordinate.
 
-Prendiamo l'esempio delle coordinate polari in $\R^2$: possiamo passare a queste dalle coordinate cartesiane ortogonali con la trasformazione
-\begin{equation}
-	\begin{pmatrix}
-		x\\y
-	\end{pmatrix}
-	=\vec g
-	\begin{pmatrix}
-		\rho\\\theta
-	\end{pmatrix}
-	=
-	\begin{pmatrix}
-		\rho\cos\theta\\\rho\sin\theta
-	\end{pmatrix},
-\end{equation}
-ma affinch\'e sia un diffeomorfismo dobbiamo prendere degli insiemi di partenza e di arrivo \emph{aperti} e in modo che $\vec g$ sia biunivoca.
-Prendiamo dunque $U=(0,+\infty)\times(0,2\pi)$ e $V=\R^2\setminus\{(x,0)\in\R^2\colon x\geq 0\}$: abbiamo che $\vec g\colon U\to V$ è biunivoca.
-Questa trasformazione in realtà lascia ``scoperto'' il semiasse positivo delle ascisse, che non è incluso in $V$ (e chiaramente non ha una controimmagine in $U$): ai fini dell'integrazione in $\R^2$, però, questa esclusione non porta ad alcun cambiamento, perch\'e tale semiretta ha misura nulla in $\R^2$ quindi non influisce sull'integrale.
-Il determinante della jacobiana di $\vec g$ è inoltre
-\begin{equation}
-	\det\jac\vec g(\rho,\theta)=
-	\begin{vmatrix}
-		\cos\theta &-\rho\sin\theta\\
-		\sin\theta &\rho\cos\theta
-	\end{vmatrix}
-	=\rho
-\end{equation}
-che per come è definito $U$ è compreso in $(0,+\infty)$ quindi non è mai nullo.
-
-Le coordinate polari sono naturalmente centrate nell'origine degli assi, ma potrebbe servirci centrarle in un altro punto nel piano, quindi dobbiamo comporre la trasformazione in polari con una traslazione: la traslazione è ovviamente un diffeomorfismo tra tutto $\R^2$ e se stesso, e ha come jacobiana l'identità.
-Usiamo ancora $\vec g$ per la trasformazione in coordinate polari e chiamiamo $\vec t$ la traslazione.
-Si può vedere facilmente che $\jac\vec t(x,y)$ è la matrice identità per ogni $(x,y)\in\R^2$.
-Ricordandoci che componendo due funzioni la jacobiana della risultante è il prodotto delle due jacobiane delle funzioni di partenza, risulta
-\begin{equation}
-	\jac(\vec g\circ\vec t)=\jac\vec g\jac\vec t=\jac\vec g\quad\then\quad\det\jac(\vec g\circ\vec t)=\rho
-\end{equation}
-anche in questo caso.
+\begin{esempio} \label{es:jacobiano-coordinate-polari}
+	Prendiamo le coordinate polari in $\R^2$: possiamo passare a queste dalle coordinate cartesiane ortogonali con la trasformazione
+	\begin{equation}
+		\begin{pmatrix}
+			x\\y
+		\end{pmatrix}
+		=\vec g
+		\begin{pmatrix}
+			\rho\\\theta
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			\rho\cos\theta\\\rho\sin\theta
+		\end{pmatrix},
+	\end{equation}
+	ma affinch\'e sia un diffeomorfismo dobbiamo prendere degli insiemi di partenza e di arrivo \emph{aperti} e in modo che $\vec g$ sia biunivoca.
+	Prendiamo dunque $U=(0,+\infty)\times(0,2\pi)$ e $V=\R^2\setminus\{(x,0)\in\R^2\colon x\geq 0\}$: abbiamo che $\vec g\colon U\to V$ è biunivoca.
+	Questa trasformazione in realtà lascia ``scoperto'' il semiasse positivo delle ascisse, che non è incluso in $V$ (e chiaramente non ha una controimmagine in $U$): ai fini dell'integrazione in $\R^2$, però, questa esclusione non porta ad alcun cambiamento, perch\'e tale semiretta ha misura nulla in $\R^2$ quindi non influisce sull'integrale.
+	Il determinante della jacobiana di $\vec g$ è inoltre
+	\begin{equation}
+		\det\jac\vec g(\rho,\theta)=
+		\begin{vmatrix}
+			\cos\theta &-\rho\sin\theta\\
+			\sin\theta &\rho\cos\theta
+		\end{vmatrix}
+		=\rho
+	\end{equation}
+	che per come è definito $U$ è compreso in $(0,+\infty)$ quindi non è mai nullo.
+\end{esempio}
+\begin{esempio} \label{es:composizione-polari-traslazione}
+	Le coordinate polari sono naturalmente centrate nell'origine degli assi, ma potrebbe servirci centrarle in un altro punto nel piano, quindi dobbiamo comporre la trasformazione in polari con una traslazione: la traslazione è ovviamente un diffeomorfismo tra tutto $\R^2$ e se stesso, e ha come jacobiana l'identità.
+	Usiamo ancora $\vec g$ per la trasformazione in coordinate polari e chiamiamo $\vec t$ la traslazione.
+	Si può vedere facilmente che $\jac\vec t(x,y)$ è la matrice identità per ogni $(x,y)\in\R^2$.
+	Ricordandoci che componendo due funzioni la jacobiana della risultante è il prodotto delle due jacobiane delle funzioni di partenza, risulta
+	\begin{equation}
+		\jac(\vec g\circ\vec t)=\jac\vec g\jac\vec t=\jac\vec g\quad\then\quad\det\jac(\vec g\circ\vec t)=\rho
+	\end{equation}
+	anche in questo caso.
+\end{esempio}
 Più in generale, usando la formula di Binet dei determinanti troviamo che componendo due diffeomorfismi, il determinante della jacobiana della trasformazione risultante non è altro che il prodotto dei determinanti dei singoli diffeomorfismi; inoltre anche se scambiando l'ordine della composizione la jacobiana ``finale'' potrebbe cambiare, non varia invece il suo determinante.

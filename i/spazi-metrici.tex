@@ -15,42 +15,45 @@ che soddisfa le seguenti proprietà $\forall x,y,z\in X$:
 L'insieme $X$ associato alla distanza $d$ è detto \emph{spazio metrico} e si indica con $(X,d)$.
 \end{definizione}
 In generale, per ogni spazio metrico si può definire più di un tipo di distanza.
-\paragraph{Esempi}
-\begin{itemize}
-\item La distanza euclidea è definita dalla norma, come nella definizione \ref{d:norma}, che per $\R$ (o anche $\Q$), essendo in un'unica dimensione, si riduce a $\norm{\vec x-\vec y}=\abs{x-y}$.
-\item La distanza $d_\infty$ in $\R^2$ è definita come il massimo delle distanze delle coordinate omologhe: $d_\infty(\vec x,\vec y)=\max\{\abs{x_1-y_1},\abs{x_2-y_2}\}$.
-\item La distanza $d_1(\vec x,\vec y)=\abs{x_1-y_1}+\abs{x_2-y_2}$ è la somma delle distanze tra le componenti omologhe.
-\item Nello spazio metrico $X=\{\phi\colon[a,b]\to\R\colon\phi\text{ è limitata}\}$ la distanza tra due funzioni $f$ e $g$ definite in un intervallo $[a,b]$ e in cui sono limitate, cioè se $f\big([a,b]\big)$ e $g\big([a,b]\big)$ sono insiemi limitati, è definita come $d_*(f,g)=\sup_{x\in[a,b]}\abs{f(x)-g(x)}$.
-\item La metrica \emph{discreta} è data dalla distanza
-\[
-d_D(x,y)=
-\begin{cases*}
-0&se $x=y$\\
-1&se $x\neq y$
-\end{cases*}.
-\]
-
-\end{itemize}
+\begin{esempio} \label{es:distanze}
+	Ecco alcuni esempi di distanze, alcune delle quali ritroveremo più avanti.
+	\begin{enumerate}
+		\item La distanza euclidea è definita dalla norma, come nella definizione \ref{d:norma}, che per $\R$ (o anche $\Q$), essendo in un'unica dimensione, si riduce a $\norm{\vec x-\vec y}=\abs{x-y}$.
+		\item La distanza $d_\infty$ in $\R^2$ è definita come il massimo delle distanze delle coordinate omologhe: $d_\infty(\vec x,\vec y)=\max\{\abs{x_1-y_1},\abs{x_2-y_2}\}$.
+		\item La distanza $d_1(\vec x,\vec y)=\abs{x_1-y_1}+\abs{x_2-y_2}$ in $\R^2$ è la somma delle distanze tra le componenti omologhe.
+		\item Nello spazio $X=\{\phi\colon[a,b]\to\R\colon\phi\text{ è limitata}\}$ la distanza tra due funzioni $f$ e $g$ definite in un intervallo $[a,b]$ e in cui sono limitate, cioè se $f\big([a,b]\big)$ e $g\big([a,b]\big)$ sono insiemi limitati, è definita come $d_*(f,g)=\sup_{x\in[a,b]}\abs{f(x)-g(x)}$.
+		\item La metrica \emph{discreta}, in un insieme qualsiasi, è definita dalla distanza
+			\[
+				d_D(x,y)=
+				\begin{cases*}
+					0 &se $x=y$,\\
+					1 &se $x\neq y$.
+				\end{cases*}
+			\]
+	\end{enumerate}
+\end{esempio}
 \begin{definizione}
 Sia $(X,d)$ uno spazio metrico. Dati un punto $p\in X$ e $r>0$, si chiama \emph{intorno circolare} (o \emph{bolla}) di centro $p$ e raggio $r$ l'insieme
 \[
 B(p,r)=\{x\in X\colon d(x,p)<r\}.
 \]
 \end{definizione}
-\paragraph{Esempi}
-\begin{itemize}
-	\item In $(\R,\abs{\cdot})$, gli intorni sono della forma $B=\{x\in\R\colon\abs{x-p}<r\}$, che è l'intervallo aperto $(p-r,p+r)$ (figura \ref{fig:intorno-circolare-r1}).
-		\input{grafici/intorno-circolare-r1}
-	\item In $(\R^2,\norm{\cdot})$, gli intorni sono della forma $B=\{\vec x\in\R^2\colon\norm{\vec x-\vec p}<r\}$, che rappresenta un cerchio, privato della circonferenza, di centro $p$ e raggio $r$ (figura \ref{fig:B-circ}).
-		\input{grafici/intorno-circolare-r2}
-	\item In $(\R^3,\norm{\cdot})$, analogamente al punto precedente, gli intorni sono delle sfere di centro $p$ e raggio $r$, private della superficie sferica.
-	\item Con la distanza $d_\infty$, l'intorno $B(\vec 0,r)=\{\vec x\in\R^2\colon\max\{\abs{x_1},\abs{x_2}\}<r\}$ ha la forma di un quadrato di lato $2r$ centrato nell'origine (figura \ref{fig:B-dinfty}).
-	\input{grafici/intorno-dinfty-r2}
-	\item Con la distanza $d_1$, l'intorno $B(\vec 0,r)=\{\vec x\in\R^2\colon\abs{x_1}+\abs{x_2}<r\}$ ha la forma di un quadrato ruotato di $\pi/4$, di diagonale $2r$ e centrato nell'origine (figura \ref{fig:B-d1}).
-	\input{grafici/intorno-d1-r2}
-	\item Nello spazio $X=\{\phi\colon[a,b]\to\R\colon\phi\text{ è limitata}\}$, con la distanza $d_*$, un intorno di una funzione $f$ è lo spazio limitato dalle funzioni $f-r$ e $f+r$, escluse: $B(f,r)=\{g\in X\colon\sup_{x\in[a,b]}\abs{g(x)-f(x)}<r\}$ (figura \ref{fig:B-d*}).
-	\input{grafici/intorno-funzione}
-\end{itemize}
+\begin{esempio} \label{es:intorni}
+	Ecco alcuni intorni dati dalle distanze che abbiamo definito nell'esempio \ref{es:distanze}.
+	\begin{enumerate}
+		\item In $(\R,\abs{\cdot})$, gli intorni sono della forma $B=\{x\in\R\colon\abs{x-p}<r\}$, che è l'intervallo aperto $(p-r,p+r)$ (figura \ref{fig:intorno-circolare-r1}).
+			\input{grafici/intorno-circolare-r1}
+		\item In $(\R^2,\norm{\cdot})$, gli intorni sono della forma $B=\{\vec x\in\R^2\colon\norm{\vec x-\vec p}<r\}$, che rappresenta un cerchio, privato della circonferenza, di centro $p$ e raggio $r$ (figura \ref{fig:B-circ}).
+			\input{grafici/intorno-circolare-r2}
+		\item In $(\R^3,\norm{\cdot})$, analogamente al punto precedente, gli intorni sono delle sfere di centro $p$ e raggio $r$, private della superficie sferica.
+		\item Con la distanza $d_\infty$, l'intorno $B(\vec 0,r)=\{\vec x\in\R^2\colon\max\{\abs{x_1},\abs{x_2}\}<r\}$ ha la forma di un quadrato di lato $2r$ centrato nell'origine (figura \ref{fig:B-dinfty}).
+		\input{grafici/intorno-dinfty-r2}
+		\item Con la distanza $d_1$, l'intorno $B(\vec 0,r)=\{\vec x\in\R^2\colon\abs{x_1}+\abs{x_2}<r\}$ ha la forma di un quadrato ruotato di $\pi/4$, di diagonale $2r$ e centrato nell'origine (figura \ref{fig:B-d1}).
+		\input{grafici/intorno-d1-r2}
+		\item Nello spazio $X=\{\phi\colon[a,b]\to\R\colon\phi\text{ è limitata}\}$, con la distanza $d_*$, un intorno di una funzione $f$ è lo spazio limitato dalle funzioni $f-r$ e $f+r$, escluse: $B(f,r)=\{g\in X\colon\sup_{x\in[a,b]}\abs{g(x)-f(x)}<r\}$ (figura \ref{fig:B-d*}).
+		\input{grafici/intorno-funzione}
+	\end{enumerate}
+\end{esempio}
 
 \begin{teorema}[Proprietà di Hausdorff]
 \label{t:hausdorff}
@@ -81,18 +84,20 @@ Siano $(X,d)$ uno spazio metrico e $A\subseteq X$ un suo sottoinsieme. Il punto 
 \]
 \end{enumerate}
 \end{definizione}
-	Questa definizione è disgiuntiva ed esaustiva, perché ogni punto rientra sempre in una soltanto delle tre categorie.
-	L'insieme dei punti interni di $A$ si chiama \emph{interno} e si indica con $\interior{A}$, che non coincide necessariamente con l'insieme stesso. L'insieme dei punti di frontiera, che possono o meno appartenere all'insieme (non si può stabilire a priori) si chiama \emph{frontiera} e si indica con $\boundary A$.
-\paragraph{Esempi}
-\begin{itemize}
-\item In ogni spazio metrico $(X,d)$, l'insieme $X$ ha solo punti interni.
-\item Ogni punto è esterno ad un insieme vuoto.
-\item L'interno di un intorno coincide \emph{sempre} con l'intorno stesso.
-\item La frontiera di un intorno $B(\vec p,r)\subset\R^2$ è la circonferenza di raggio $r$, centrata in $\vec p$, cioè $\boundary B=\{\vec x\in\R^2\colon\norm{\vec x-\vec p}=r\}$.
-\item La frontiera dello stesso insieme del punto precedente, ma in $\R^3$, quindi il cerchio $\{\vec x\in\R^3\colon(x_1-p_1)^2+(x_2-p_2)^2<r^2,\ x_3=p_3\}\subset\R^3$ è \emph{l'insieme stesso}, e non più la sua circonferenza.
-\item La frontiera di $\Q\subset\R$ è proprio $\R$, perché ogni intorno di un punto razionale contiene infiniti altri punti razionali e irrazionali (gli irrazionali formano il complementare di $\Q$ rispetto ad $\R$). Analogamente, $\R$ è anche la frontiera di $\R\setminus\Q$.
-\item Con la metrica discreta, se $x\in A$, allora $B(x,1)=\{x\}\subseteq A$, mentre se $y\in\compl{A}$ allora $B(y,1)=\{y\}\subseteq\compl{A}$, quindi ogni punto di un insieme è ad esso interno, mentre ogni punto del complementare è esterno. Quindi la frontiera di un insieme è sempre vuota, anche perché qualsiasi intorno di raggio $r\leq 1$ contiene soltanto il punto, che è il centro della bolla, quindi nessun altro punto del'insieme o del complementare.
-\end{itemize}
+Questa definizione è disgiuntiva ed esaustiva, perché ogni punto rientra sempre in una soltanto delle tre categorie.
+L'insieme dei punti interni di $A$ si chiama \emph{interno} e si indica con $\interior{A}$, che non coincide necessariamente con l'insieme stesso. L'insieme dei punti di frontiera, che possono o meno appartenere all'insieme (non si può stabilire a priori) si chiama \emph{frontiera} e si indica con $\boundary A$.
+\begin{esempio} \label{es:punti-interni-esterni}
+	Applichiamo le definizioni appena date a degli esempi importanti.
+	\begin{enumerate}
+		\item In ogni spazio metrico $(X,d)$, l'insieme $X$ ha solo punti interni.
+		\item Ogni punto è esterno ad un insieme vuoto.
+		\item L'interno di un intorno coincide \emph{sempre} con l'intorno stesso.
+		\item La frontiera di un intorno $B(\vec p,r)\subset\R^2$ è la circonferenza di raggio $r$, centrata in $\vec p$, cioè $\boundary B=\{\vec x\in\R^2\colon\norm{\vec x-\vec p}=r\}$.
+		\item La frontiera dello stesso insieme del punto precedente, ma in $\R^3$, quindi il cerchio $\{\vec x\in\R^3\colon(x_1-p_1)^2+(x_2-p_2)^2<r^2,\ x_3=p_3\}\subset\R^3$ è \emph{l'insieme stesso}, e non più la sua circonferenza.
+		\item La frontiera di $\Q\subset\R$ è proprio $\R$, perché ogni intorno di un punto razionale contiene infiniti altri punti razionali e irrazionali (gli irrazionali formano il complementare di $\Q$ rispetto ad $\R$). Analogamente, $\R$ è anche la frontiera di $\R\setminus\Q$.
+		\item Con la metrica discreta, se $x\in A$, allora $B(x,1)=\{x\}\subseteq A$, mentre se $y\in\compl{A}$ allora $B(y,1)=\{y\}\subseteq\compl{A}$, quindi ogni punto di un insieme è ad esso interno, mentre ogni punto del complementare è esterno. Quindi la frontiera di un insieme è sempre vuota, anche perché qualsiasi intorno di raggio $r\leq 1$ contiene soltanto il punto, che è il centro della bolla, quindi nessun altro punto del'insieme o del complementare.
+	\end{enumerate}
+\end{esempio}
 \begin{osservazione}
 Fissati uno spazio metrico $(X,d)$ e un suo sottoinsieme $A$, se un punto $p\in X$ non è esterno a tale insieme, allora ogni bolla centrata in $p$ di qualsiasi raggio non è un sottoinsieme del complementare di $A$, cioè la sua intersezione con $A$ non è mai vuota:
 \[
@@ -159,13 +164,15 @@ Necessariamente allora i punti di accumulazione devono trovarsi in $A$.
 (ii) Se $A$ contiene i suoi punti di accumulazione, è chiuso.
 Sia $A'\subseteq A$ e $p$ un qualsiasi punto del complementare. Per ipotesi $p$ non è di accumulazione per $A$, quindi esiste una bolla $B(p,r)$ che non contiene altri punti di $A$ oltre a $p$ stesso. Poiché $p\in \compl{A}$, tale bolla non contiene alcun punto di $A$: allora $B(p,r)\subseteq \compl{A}$, vale a dire $p$ è interno ad $\compl{A}$. Quindi $\compl{A}$ è aperto, a cui segue che $A$ è chiuso.
 \end{proof}
-\paragraph{Esempi}
-\begin{itemize}
-\item Ogni intervallo $(a,b)\subset\R$ è aperto, così come $(a,+\infty)$ e $(-\infty,b)$. Analogamente, $[a,b]$, $[a,+\infty)$ e $(-\infty,b]$ sono chiusi. Intervalli del tipo $[a,b)$ non sono aperti né chiusi.
-\item In ogni spazio metrico $(X,d)$, l'insieme $X$ è aperto perché tutti i suoi punti sono interni. Però $X$ è allo stesso tempo anche chiuso, perché contenendo tutti i punti non può che contenere anche quelli di accumulazione di $X'$. Allora $X$ è sia aperto che chiuso, e quindi anche un insieme vuoto è sia aperto che chiuso. 
-\item Ogni intorno è aperto, per definizione, perché tutti i suoi punti sono interni.
-\item In uno spazio metrico discreto, ogni insieme $A\subseteq X$ è aperto, perché ogni suo punto è interno, ma allo stesso tempo tutti i punti sono isolati, quindi $A'=\emptyset$, quindi $A$ (che ovviamente contiene l'insieme vuoto) è anche chiuso.
-\end{itemize}
+\begin{esempio} \label{es:aperti-chiusi}
+	Seguono alcuni semplici e comuni esempi per quanto abbiamo appena visto.
+	\begin{enumerate}
+		\item Ogni intervallo $(a,b)\subset\R$ è aperto, così come $(a,+\infty)$ e $(-\infty,b)$. Analogamente, $[a,b]$, $[a,+\infty)$ e $(-\infty,b]$ sono chiusi. Intervalli del tipo $[a,b)$ non sono aperti né chiusi.
+		\item In ogni spazio metrico $(X,d)$, l'insieme $X$ è aperto perché tutti i suoi punti sono interni. Però $X$ è allo stesso tempo anche chiuso, perché contenendo tutti i punti non può che contenere anche quelli di accumulazione di $X'$. Allora $X$ è sia aperto che chiuso, e quindi anche un insieme vuoto è sia aperto che chiuso. 
+		\item Ogni intorno è aperto, per definizione, perché tutti i suoi punti sono interni.
+		\item In uno spazio metrico discreto, ogni insieme $A\subseteq X$ è aperto, perché ogni suo punto è interno, ma allo stesso tempo tutti i punti sono isolati, quindi $A'=\emptyset$, quindi $A$ (che ovviamente contiene l'insieme vuoto) è anche chiuso.
+	\end{enumerate}
+\end{esempio}
 \begin{teorema} \label{t:unione-intersezione-aperti}
 Siano $(X,d)$ uno spazio metrico e $\{A_i\}_{i\in I}$ una famiglia qualunque di sottoinsiemi aperti di tale spazio metrico. Allora
 \begin{enumerate}
@@ -236,8 +243,10 @@ Un insieme è \emph{limitato} se esiste, finito, l'estremo superiore delle dista
 Tale estremo superiore è detto \emph{diametro} dell'insieme.
 \end{definizione}
 Se $A\subseteq (X,d)$ è un insieme limitato, allora il suo diametro coincide con quello della sua chiusura: $\diam A=\diam\clos{A}$; inoltre $\exists p\in X$ e $r>0$ tali per cui $A\subset B(p,r)$, ossia un insieme limitato può essere sempre contenuto in una bolla di opportuno raggio.
-\paragraph{Esempi}
-\begin{itemize}
-\item Sia $A\subset\R$ un insieme limitato, non vuoto: il suo diametro è dato da $\sup A-\inf A$.
-\item Con la metrica discreta il diametro di qualsiasi insieme di almeno due punti è sempre 1. Quindi ogni insieme è limitato.
-\end{itemize}
+\begin{esempio} \label{es:insiemi-limitati}
+	Alcuni insiemi limitati e i loro diametri:
+	\begin{enumerate}
+		\item se $A\subset\R$ un insieme limitato, non vuoto, il suo diametro è dato da $\sup A-\inf A$;
+		\item con la metrica discreta il diametro di qualsiasi insieme di almeno due punti è sempre 1, quindi ogni insieme è limitato.
+	\end{enumerate}
+\end{esempio}
