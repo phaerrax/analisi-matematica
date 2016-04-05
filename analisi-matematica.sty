@@ -22,6 +22,7 @@
 \usepackage{mathrsfs}                     % Per il font calligrafico \mathscr
 \usepackage{graphicx}                     % Per includere, tra il resto, il logo della licenza CC
 \usepackage{titletoc}                     % Per creare gli indici per ciascuna parte separatamente
+\usepackage{esint}                        % Per il comando \fint
 \usepackage[usenames,dvipsnames]{xcolor}  % Per definire alcuni colori come nei link di hyperref
 \usepackage[bibstyle=numeric,backend=biber]{biblatex}
 
@@ -100,12 +101,13 @@
 % Esse permettono di aggiustare la loro dimensione in base al contenuto: per specificare la dimensione, si
 % scrive il comando apposito (i soliti \big, \bigg, \Big, etc.) come comando opzionale, come in \abs[\bigg]{x}.
 % La variante "stellata", come \abs*, usa invece \left e \right, cioè \abs*{x} equivale a \left\lvert{x}\right\rvert.
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}                    % Valore assoluto, modulo
-\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}                   % Norma
-\DeclarePairedDelimiter{\partint}{\lfloor}{\rfloor}              % Parte intera
-\DeclarePairedDelimiter{\card}{\lvert}{\rvert}                   % Cardinalità di un insieme
-\DeclarePairedDelimiterX{\inner}[2]{\langle}{\rangle}{{#1},{#2}} % Prodotto interno
-\DeclarePairedDelimiter{\parentheses}{(}{)}                      % Generiche parentesi tonde (servono per alcuni comandi più sotto)
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}                       % Valore assoluto, modulo
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}                      % Norma
+\DeclarePairedDelimiter{\partint}{\lfloor}{\rfloor}                 % Parte intera
+\DeclarePairedDelimiter{\card}{\lvert}{\rvert}                      % Cardinalità di un insieme
+\DeclarePairedDelimiterX{\inner}[2]{\langle}{\rangle}{{#1},{#2}}    % Prodotto interno
+\DeclarePairedDelimiterX{\dualpair}[2]{\langle}{\rangle}{{#1},{#2}} % Coppia duale (trad. dall'inglese "duality pairing")
+\DeclarePairedDelimiter{\parentheses}{(}{)}                         % Generiche parentesi tonde (servono per alcuni comandi più sotto)
 % Il comando \parentheses aggiunge un ulteriore argomento ai comandi sotto dove è usato, e.g. \cont[1][]{...} in realtà ha due argomenti, uno opzionale (definito nel comando \cont) e uno obbligatorio che viene da \parentheses.
 % Per tali comandi, l'opzione della dimensione va posta subito prima dell'argomento obbligatorio, e.g. \cont[2][\big]{A}.
 % Si noti infatti che tale scrittura è equivalente alla forma \mathscr{C}^{2}\parentheses[\big]{A}, quindi l'argomento
@@ -115,6 +117,7 @@
 \newcommand{\dd}{\textup{d}}                                   % Differenziale
 \renewcommand{\emptyset}{\varnothing}                          % Insieme vuoto
 \newcommand{\boundary}{\partial}                               % Simbolo di frontiera di un insieme
+\newcommand{\dual}[1]{{#1}^{\ast}}                             % Duale di un insieme
 \newcommand{\then}{\Rightarrow}                                % Implicazione logica
 \renewcommand{\iff}{\Leftrightarrow}                           % "Se e solo se"
 \renewcommand{\Re}{\mathfrak{R}\parentheses}                   % Parte reale
@@ -125,13 +128,22 @@
 \newcommand{\partz}{\mathcal{P}}                               % Partizione di un intervallo
 \newcommand{\rie}{\mathfrak{R}\parentheses}                    % Spazio delle funzioni Riemann-integrabili: \rie{A} indica funz. integrabile nell'insieme A
 \newcommand{\cont}[1][]{\mathscr{C}^{#1}\parentheses}          % Spazio delle funzioni continue: \cont[k]{A} indica una funz. di classe C^k nell'insieme A
-\newcommand{\cclass}[1][]{\mathscr{C}^{#1}}                    % Per indicare la "classe di continuità" senza specificare l'insieme
+\newcommand{\contsc}[1][]{\mathscr{C}^{#1}_0\parentheses}      % Spazio delle funzioni continue a supporto compatto (come sopra)
 \newcommand{\bounded}[1][]{\mathscr{B}_{#1}\parentheses}       % Spazio delle funzioni limitate: \boun[B]{A} indica una funz. limitata con dominio A e codominio B
-\newcommand{\leb}{\mathscr L\parentheses}                      % Funzione sommabile: \leb{F} equivale a L(F)
+\newcommand{\leb}[1][]{L^{#1}\parentheses}                     % Spazio delle funzioni alla p-esima potenza sommabile: \leb[p]{A} equivale a L^p(A)
+\newcommand{\locleb}[1][]{L^{#1}_\textup{loc}\parentheses}     % Spazio delle funzioni localmente L^p
+\newcommand{\cclass}[1][]{\mathscr{C}^{#1}}                    % Per indicare la "classe di continuità" senza specificare l'insieme
+\newcommand{\lclass}[1][]{L^{#1}}                              % Come sopra ma per il comando \leb
+\newcommand{\sobW}[1][]{W^{#1}\parentheses}                    % Spazio di Sobolev
+\newcommand{\sobWc}[1][]{W^{#1}_0\parentheses}                 % Spazio di Sobolev (funzioni con supporto compatto)
+\newcommand{\sobH}[1][]{H^{#1}\parentheses}                    % Spazio di Sobolev con p=2
+\newcommand{\sobHc}[1][]{H^{#1}_0\parentheses}                 % Spazio di Sobolev con p=2 (funzioni con supporto compatto)
+\newcommand{\summ}{\mathscr L\parentheses}                     % Funzione sommabile
 \newcommand{\grad}{\nabla}                                     % Gradiente
 \renewcommand{\div}{\nabla\cdot}                               % Divergenza
 \newcommand{\rot}{\nabla\times}                                % Rotore
 \newcommand{\lap}{\nabla^2}                                    % Laplaciano
+\newcommand{\dal}{\square}                                      % Dalembertiano
 \newcommand{\lin}{\mathcal L}                                  % Generica applicazione lineare
 \newcommand{\gen}[1]{\left\langle{#1}\right\rangle}            % Spazio generato (da cosa è generato, è definito nell'argomento del comando)
 \newcommand{\scalar}[2]{{#1}\cdot{#2}}                         % Prodotto scalare tra i due argomenti specificati (con il punto)
@@ -144,21 +156,27 @@
 \newcommand{\clos}[1]{\overline{#1}}                           % Chiusura di un insieme
 \newcommand{\compl}[1]{{#1}^c}                                 % Complementare di un insieme
 \newcommand{\mis}{\mathcal M}                                  % Classe degli insiemi misurabili secondo Lebesgue
+\newcommand{\weakto}{\rightharpoonup}                          % Convergenza debole
+\newcommand{\emb}{\hookrightarrow}                             % Insieme immerso con continuità (continuously embedded)
+\newcommand{\cemb}{\Subset}                                    % Insieme immerso con compattezza (compactly embedded)
+\newcommand{\avint}{\fint}                                     % Integrale di valor medio
 %simbolo di uguaglianza per definizione
 \newcommand*{\defeq}{
 	\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt \hbox{\scriptsize.} \hbox{\scriptsize.}}} =
 }
 
 % Operatori (come lim, sen, etc. che hanno dello spazio prima e dopo la parola stampata)
-\DeclareMathOperator{\diam}{diam}    % Diametro (di un intervallo etc.)
-\DeclareMathOperator{\sgn}{sgn}      % Funzione segno
-\DeclareMathOperator{\jac}{J}        % Matrice jacobiana
-\DeclareMathOperator{\hes}{H}        % Matrice hessiana
-\DeclareMathOperator{\mat}{mat}      % Spazio delle matrici
-\DeclareMathOperator{\volterra}{V}   % Operatore di Volterra (per eq. differenziali)
-\DeclareMathOperator{\tr}{tr}        % Traccia
-\DeclareMathOperator{\Ker}{Ker}      % Nucleo di un'app lineare
-\DeclareMathOperator{\rk}{rk}        % Rango di una matrice/operatore
+\DeclareMathOperator{\diam}{diam}        % Diametro (di un intervallo etc.)
+\DeclareMathOperator{\sgn}{sgn}          % Funzione segno
+\DeclareMathOperator{\jac}{J}            % Matrice jacobiana
+\DeclareMathOperator{\hes}{H}            % Matrice hessiana
+\DeclareMathOperator{\mat}{mat}          % Spazio delle matrici
+\DeclareMathOperator{\volterra}{V}       % Operatore di Volterra (per eq. differenziali)
+\DeclareMathOperator{\tr}{tr}            % Traccia
+\DeclareMathOperator{\Ker}{Ker}          % Nucleo di un'app lineare
+\DeclareMathOperator{\rk}{rk}            % Rango di una matrice/operatore
+\DeclareMathOperator{\supp}{supp}        % Supporto di una funzione
+\DeclareMathOperator*{\esssup}{ess\,sup} % Estremo superiore essenziale (il * serve per poter porre i limiti con _{} sotto all'operatore)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Vettori di lettere greche (per renderle in grassetto come le lettere latine)

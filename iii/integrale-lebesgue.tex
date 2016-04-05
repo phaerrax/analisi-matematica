@@ -840,7 +840,7 @@ Una funzione non negativa è sempre integrabile su qualunque insieme, perch\'e q
 \end{definizione}
 In questo caso l'integrale è un numero finito, e ovviamente una funzione sommabile è integrabile ma non viceversa.
 Notiamo inoltre che la sommabilità di $f$ è equivalente a quella di $\abs{f}$, perciò per verificare se $f$ è sommabile basta studiare il suo valore assoluto.
-Indicheremo che una funzione $f$ è sommabile nell'insieme $E$ con la scrittura $f\in\leb{E}$.
+Indicheremo che una funzione $f$ è sommabile nell'insieme $E$ con la scrittura $f\in\summ{E}$.
 L'integrale si può anche indicare esplicitando le varie coordinate, e con uno o più simboli di integrale, come in
 \begin{equation*}
 	\int_Af(x_1,\dots,x_n)\dd x_1\cdots\dd x_n,\quad \iint_Af(x,y)\dd x\dd y,\quad \idotsint_Af(x_1,\dots,x_n)\dd x_1\cdots\dd x_n.
@@ -853,7 +853,7 @@ Lasceremo sottinteso d'ora in poi che $\mathcal S_f$ è l'insieme delle funzioni
 	\begin{enumerate}
 		\item $\int_Af\,\dd\mu=\int_{\R^n}f\chi_A\dd\mu$.
 		\item Se $f(\vec x)\leq g(\vec x)$ per ogni $\vec x\in A$, allora $\int_A f\,\dd\mu\leq\int_Ag\,\dd\mu$.
-		\item Se $f(\vec x)\geq 0$ per ogni $\vec x\in A$ e $c\in[0,+\infty)$, allora $\int_Acf\,\dd\mu=c\int_Af\,\dd\mu$, e se $f\in\leb{A}$ e $c\in\R$, allora $cf\in\leb{A}$.
+		\item Se $f(\vec x)\geq 0$ per ogni $\vec x\in A$ e $c\in[0,+\infty)$, allora $\int_Acf\,\dd\mu=c\int_Af\,\dd\mu$, e se $f\in\summ{A}$ e $c\in\R$, allora $cf\in\summ{A}$.
 		\item Per $E\subseteq A$ misurabile, $\int_Ef\,\dd\mu\leq\int_Af\,\dd\mu$.
 	\end{enumerate}
 \end{proprieta}
@@ -875,7 +875,7 @@ Lasceremo sottinteso d'ora in poi che $\mathcal S_f$ è l'insieme delle funzioni
 			\begin{equation}
 				\int_Acf\,\dd\mu=c\int_Af^+\dd\mu-c\int_Af^-\dd\mu=c\int_Af\,\dd\mu.
 			\end{equation}
-			È evidente a questo punto che se $f\in\leb{A}$ il suo integrale esiste finito, dunque è finito anche l'integrale di $cf$, che quindi è a sua volta sommabile.
+			È evidente a questo punto che se $f\in\summ{A}$ il suo integrale esiste finito, dunque è finito anche l'integrale di $cf$, che quindi è a sua volta sommabile.
 			La proprietà vale anche, ovviamente se $c<0$: basta ricordarsi che $f=f^+-f^-$ dunque $cf=cf^+-cf^-$ e applicare quanto detto alla parte positiva e negativa, che sono entrambe funzioni non negative.
 		\item Si ha che $0\leq f\chi_E\leq f$ in $A$, perciò per il secondo punto
 			\begin{equation}
@@ -1108,7 +1108,7 @@ Innanzitutto, partiamo dal caso ovvio: tutte le funzioni integrabili secondo Rie
 \begin{teorema} \label{t:integrale-riemann-lebesgue}
 	Se $f\colon[a,b]\to\R$ è integrabile secondo Riemann, allora è anche misurabile e sommabile in $[a,b]$, e gli integrali secondo Riemann e Lebesgue coincidono.
 \end{teorema}
-Di conseguenza, $\rie{[a,b]}\subset\leb{[a,b]}$, con un'inclusione stretta, dato che esistono funzioni integrabili secondo Lebesgue in un intervallo compatto, ma non secondo Riemann.
+Di conseguenza, $\rie{[a,b]}\subset\summ{[a,b]}$, con un'inclusione stretta, dato che esistono funzioni integrabili secondo Lebesgue in un intervallo compatto, ma non secondo Riemann.
 Diverso è il discorso se si passa agli integrali generalizzati, lasciando gli intervalli compatti come insieme di integrazione.
 In questo caso il discorso è più complicato: esistono funzioni integrabili in senso improprio, ma non secondo Lebesgue nel medesimo insieme.
 Il seguente teorema collega i due integrali sotto l'ipotesi che la funzione non cambi segno.
@@ -1151,7 +1151,7 @@ Occupiamoci ora delle tecniche per passare da un integrale \emph{multiplo}, ossi
 Queste sono chiamate \emph{formule di riduzione}, in quando permettono di ``ridurre la dimensione'' dell'integrale.
 
 \begin{teorema}[Fubini] \label{t:fubini}
-	Sia $f\in\leb{\R^n}$, con $n=m+k$ ($m,k\geq 1$).
+	Sia $f\in\summ{\R^n}$, con $n=m+k$ ($m,k\geq 1$).
 	Detto $(\vec x,\vec y)\in\R^n$ come definito prima, allora:
 	\begin{itemize}
 		\item per quasi ogni $\vec x\in\R^m$, la funzione $\vec y\mapsto f(\vec x,\vec y)\colon\R^k\to\R$ è sommabile in $\R^k$, e lo stesso per $\vec x\mapsto f(\vec x,\vec y)$;\footnote{Con \emph{per quasi ogni $\vec x\in\R^m$} intendiamo \emph{quasi ovunque in $\R^m$}: usiamo questa scrittura per specificare la variabile $\vec x$ a cui applicare la proprietà.}
@@ -1187,7 +1187,7 @@ Potendo restringere una funzione definita in tutto $\R^n$ ad un sottoinsieme $A\
 \begin{teorema} \label{t:fubini2}
 	Siano $A\in\mis(\R^n)$, $\R^n=\R^m\times\R^k$ e $f\colon A\to\Rex$.
 	Allora $f$ è misurabile sulle sezioni $A(\vec x)$, come definite prima, quasi ovunque in $\R^m$.
-	Inoltre se $f\in\leb{A}$ allora $\vec y\mapsto f(\vec x,\vec y)$ è a sua volta sommabile su $A(\vec x)$ quasi ovunque in $\R^k$, e $\vec x\mapsto\int_{A(\vec x)}f(\vec x,\vec y)\,\dd\vec y$ è sommabile in $\R^m$.
+	Inoltre se $f\in\summ{A}$ allora $\vec y\mapsto f(\vec x,\vec y)$ è a sua volta sommabile su $A(\vec x)$ quasi ovunque in $\R^k$, e $\vec x\mapsto\int_{A(\vec x)}f(\vec x,\vec y)\,\dd\vec y$ è sommabile in $\R^m$.
 	Infine si può scomporre l'integrale come
 	\begin{equation}
 		\int_Af(\vec x,\vec y)\,\dd\vec x\,\dd\vec y=\int_{\R^m}\bigg[\int_{A(\vec x)}f(\vec x,\vec y)\,\dd\vec y\bigg]\dd\vec x.

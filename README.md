@@ -1,9 +1,10 @@
 # Analisi Matematica
 
-Questo volume consiste principalmente nella trascrizione degli appunti dei tre corsi di Analisi Matematica del corso di laurea in Fisica all'Università degli Studi di Milano, rispettivamente
+Questo volume consiste principalmente nella trascrizione degli appunti dei quattro corsi di Analisi Matematica del corso di laurea in Fisica all'Università degli Studi di Milano, rispettivamente
 * Analisi Matematica 1, A.A. 2013-2014, tenuto dalla prof.ssa Maura Salvatori;
 * Analisi Matematica 2, A.A. 2013-2014, tenuto dal prof. Marco Vignati;
-* Analisi Matematica 3, A.A. 2014-2015, tenuto dal prof. Bernhard Ruf.
+* Analisi Matematica 3, A.A. 2014-2015, tenuto dal prof. Bernhard Ruf;
+* Analisi Matematica 4, A.A. 2015-2016, tenuto dal prof. Bernhard Ruf.
 
 È arricchito da alcuni approfondimenti personali, spesso di carattere discorsivo e non troppo rigorosi.
 Il lavoro è sotto una continua opera di perfezionamento, quindi correzioni e consigli sono sempre i benvenuti.
