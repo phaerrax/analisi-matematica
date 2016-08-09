@@ -1,0 +1,139 @@
+\chapter{Spazi funzionali}
+\label{ch:spazi-funzionali}
+
+\section{Spazi $\lclass[p]$}
+\label{sec:spazi-lp}
+Gli spazi $\lclass[p]$ contengono le classi di equivalenza, rispetto alla relazione di uguaglianza quasi ovunque, di funzioni la cui $p$-esima potenza è sommabile: dato un insieme $\Omega\subseteq\R^n$ aperto, sono definiti come
+\begin{equation*}
+    \leb[p]{\Omega}\defeq\biggl\{f\colon\Omega\to\R\text{ misurabili tali che }\int_\Omega\abs{f}^p\,\dd\mu<+\infty\biggr\}
+\end{equation*}
+per $1\le p<+\infty$.
+Per $p=+\infty$ si definisce invece lo spazio $\leb[\infty]{\Omega}$ come l'insieme delle classi di equivalenza di funzioni $f\colon\Omega\to\R$ misurabili tali che $\abs{f}$ è limitata quasi ovunque in $\Omega$.
+
+\newcommand{\eqc}[1]{\hat{#1}} % Classe di equivalenza
+Per il momento, distinguiamo la funzione $f$ dalla sua classe di equivalenza che indichiamo con $\eqc{f}$; tale $f$ è un \emph{rappresentante} della classe $\eqc{f}$.
+Questi spazi sono spazi vettoriali: se $u,v\in\leb[p]{\Omega}$ e $p<+\infty$ allora si ha che, puntualmente, 
+\begin{equation}
+    \abs{u+v}^p\le(\abs{u}+\abs{v})^p\le
+    \begin{cases*}
+        (2\abs{u})^p & se $\abs{u}\ge\abs{v}$\\
+        (2\abs{v})^p & se $\abs{u}\le\abs{v}$
+    \end{cases*}
+\end{equation}
+perciò in ogni caso $\abs{u+v}^p\le 2^p(\abs{u}^p+\abs{v}^p)$.
+Integrando su $\Omega$ otteniamo
+\begin{equation}
+    \int_\Omega \abs{u+v}^p\,\dd\mu\le
+    \int_\Omega 2^p(\abs{u}^p+\abs{v}^p)\,\dd\mu=
+    2^p\biggl(\int_\Omega \abs{u}^p\,\dd\mu + \int_\Omega \abs{v}^p\,\dd\mu\biggr)<+\infty
+\end{equation}
+dunque $u+v\in\leb[p]{\Omega}$.
+È ovvio invece che per ogni $\alpha\in\R$ si ha che $\alpha f\in\leb[p]{\Omega}$ se $f\in\leb[p]{\Omega}$, per $1\le p\le+\infty$.
+
+Introduciamo dunque una norma in questi spazi (chiamata spesso $p$-norma) definita come
+\begin{equation}
+    \norm{f}_p\defeq\biggl(\int_\Omega \abs{f}^p\,\dd\mu\biggr)^{\frac1{p}}
+    \label{eq:p-norma-finita}
+\end{equation}
+per $1\le p<+\infty$ e per il caso $p=+\infty$ invece
+\begin{equation}
+    \norm{f}_\infty\defeq\esssup_{\vec x\in\Omega}\abs{f(\vec x)}=\inf\bigl\{M\colon\mu\bigl(\{\vec x\in\Omega\colon f(\vec x)>M\}\bigr)=0\bigr\}
+    \label{eq:p-norma-infinita}
+\end{equation}
+Tali norme sono chiaramente ben definite, cioè sono sempre limitate, per $f\in\leb[p]{\Omega}$.
+Verifichiamone le proprietà necessarie.
+\begin{proprieta} \label{pr:norma}
+    Per ogni $p\in[1,+\infty]$, $f,g\in\leb[p]{\Omega}$ e $\alpha\in\R$ valgono le seguenti proprietà:
+    \begin{enumerate}
+        \item $\norm{f}_p=0$ se e solo se $\eqc{f}=0$, ossia $f=0$ quasi ovunque;
+        \item $\norm{\alpha f}_p=\abs{\alpha}\norm{f}_p$;
+        \item $\norm{f+g}_p\le\norm{f}_p+\norm{g}_p$ (nota come \emph{disuguaglianza di Minkowski}).
+    \end{enumerate}
+\end{proprieta}
+\begin{proof}
+    Le prime due sono banali, quindi saltiamo direttamente alla terza.
+    Se $p=+\infty$ è ancora elementare, cos\`i come i casi $\eqc{f}=0$ o $\eqc{g}=0$; siano dunque $\alpha\defeq\norm{f}_p$ e $\beta\defeq\norm{g}_p$, che assumiamo entrambi positivi.
+    Siano $f_0$ e $g_0$ le ``normalizzazioni'' delle due funzioni date, ossia tali che $\abs{f}=\alpha f_0$ e $\abs{g}=\beta g_0$ e $\norm{f}_p=\norm{g}_p=1$.
+    Detto $\lambda\defeq\frac{\alpha}{\alpha+\beta}$ abbiamo
+    \begin{equation}
+        \abs{f+g}^p\le
+        \abs[\big]{\abs{f}+\abs{g}}^p=
+        \abs{\alpha f_0+\beta g_0}^p=
+        (\alpha+\beta)^p\bigl[\lambda f_0+(1-\lambda)g_0\bigr]^p
+    \end{equation}
+    (si noti che $1-\lambda=\frac{\beta}{\alpha+\beta}$).
+    Dato che la mappa $t\mapsto t^p$ è convessa per $p\ge 1$, la combinazione convessa $(\alpha+\beta)^p\bigl[\lambda f_0+(1-\lambda)g_0\bigr]^p$ risulta minore o uguale a $\lambda f_0^p+(1-\lambda)g_0^p$, poich\'e il valore in un punto intermedio di $t^p$ è minore o uguale del corrispondente punto sulla retta secante la funzione.
+    Con ciò risulta
+    \begin{equation}
+        \abs{f+g}^p\le
+        (\alpha+\beta)^p\bigl[\lambda f_0^p+(1-\lambda)g_0^p\bigr]
+    \end{equation}
+    e integrando su $\Omega$ otteniamo
+    \begin{equation}
+        \begin{split}
+            \norm{f+g}_p^p=&
+            \int_\Omega \abs{f+g}^p\,\dd\mu\le\\\le&
+            (\alpha+\beta)^p\int_\Omega\bigl[\lambda f_0^p+(1-\lambda)g_0^p\bigr]\,\dd\mu=\\=&
+            (\alpha+\beta)^p\biggl[\lambda\int_\Omega f_0^p\,\dd\mu+(1-\lambda)\int_\Omega g_0^p\,\dd\mu\biggr]=\\=&
+            (\alpha+\beta)^p\bigl[\lambda\norm{f_0}_p^p+(1-\lambda)\norm{g_0}_p^p\bigr]=\\=&
+            (\alpha+\beta)^p=(\norm{f}_p+\norm{g}_p)^p
+        \end{split}
+    \end{equation}
+    che prova la disuguaglianza.
+\end{proof}
+La grandezza definita dalle \eqref{eq:p-norma-finita} e \eqref{eq:p-norma-infinita} è dunque a tutti gli effetti una norma.
+Vediamo ora un'altra disuguaglianza fondamentale.
+Definiamo l'\emph{esponente coniugato} (o \emph{coniugato di H\"older}) di un numero reale $p>1$ il numero $p'$ tale che
+\begin{equation}
+    \frac1{p}+\frac1{p'}=1,
+\end{equation}
+o equivalentemente $p+p'=pp'$.
+Se $p=1$ si definisce $1'=+\infty$, e viceversa $+\infty'=1$.
+\begin{proprieta}[disuguaglianza di H\"older] \label{pr:disuguaglianza-holder}
+    Sia $p\in[1,+\infty]$: per ogni $f\in\leb[p]{\Omega}$ e $g\in\leb[p']{\Omega}$ si ha che $fg\in\leb[1]{\Omega}$ e inoltre vale
+    \begin{equation}
+        \abs[\bigg]{\int_\Omega fg\,\dd\mu} \le \norm{f}_p\norm{g}_{p'}
+        \label{eq:disuguaglianza-holder}
+    \end{equation}
+\end{proprieta}
+\begin{proof}
+    Se $p=1$ allora risulta
+    \begin{equation}
+        \abs[\bigg]{\int_\Omega fg\,\dd\mu}\le
+        \int_\Omega\abs{fg}\,\dd\mu\le
+        \int_\Omega\abs{f}\esssup_\Omega\abs{g}\,\dd\mu=
+        \esssup_\Omega\abs{g}\int_\Omega\abs{f}\,\dd\mu=
+        \norm{g}_\infty\norm{f}_1<+\infty
+    \end{equation}
+    e analogamente per $p=+\infty$, scambiando i ruoli di $p$ e $p'$.
+    Se $p\in(1,+\infty)$, invece, è sufficiente considerare i casi $f\ge 0$ e $g\ge 0$ (tanto dobbiamo calcolare il valore assoluto dell'integrale).
+    Sia dunque $h\defeq g^{p'-1}$, che equivale a $g^{p'/p}$: risulta anche
+    \begin{equation}
+        g=h^{\frac1{p'-1}}=h^{p-1}=h^{p/p'}.
+    \end{equation}
+    Consideriamo ora $t>0$ e la grandezza $tpfg$, che è poi $tpfh^{p-1}$: risulta\footnote{
+        Per ogni $a,b\ge 0$ e $1\le p<+\infty$ si ha $a^p+pba^{p-1}\le(a+b)^p$.
+        Prendiamo infatti le due funzioni $\alpha(b)\defeq a^p+pba^{p-1}$ e $\beta(b)\defeq (a+b)^p$: vale $\alpha(0)=\beta(0)=a^p$, ma $\beta'(b)=p(a+b)^{p-1}\ge pa^{p-1}=\alpha'(b)$ $\forall b\ge 0$, dunque $\alpha(b)\le\beta(b)$ $\forall b\ge 0$.
+    }
+    \begin{equation}
+        ptfh^{p-1} \le (h-tf)^p-h^p
+    \end{equation}
+    e integrando troviamo
+    \begin{multline}
+        pt\int_\Omega fg\,\dd\mu\le
+        \int_\Omega (h+tf)^p\dd\mu-\int_\Omega h^p\,\dd\mu=
+        \int_\Omega \abs{h+tf}^p\dd\mu-\int_\Omega \abs{h}^p\,\dd\mu=\\=
+        \norm{h+tf}_p^p-\norm{h}_p^p\le
+        \bigl(\norm{h}_p+t\norm{f}_p\bigr)^p-\norm{h}_p^p
+    \end{multline}
+    Osserviamo che entrambi i membri della disuguaglianza, come funzioni di $t$, assumono lo stesso valore (zero) per $t\to 0$.
+    Affinch\'e la disuguaglianza sia vera dovrà allora essere che la derivata del primo membro, per $t=0$, sia minore o uguale della derivata del secondo membro, ossia
+    \begin{multline}
+        p\int_\Omega fg\,\dd\mu\le
+        p\bigl(\norm{h}_p+t\norm{f}_p\bigr)^{p-1}\norm{f}_p\Big\rvert_{t=0}=
+        p\norm{h}_p^{p-1}\norm{f}_p=\\=
+        p\norm{f}_p\biggl(\int_\Omega \abs{h}^p\,\dd\mu\biggr)^{\frac{p-1}{p}}=
+        p\norm{f}_p\biggl(\int_\Omega \abs{g}^{p'}\,\dd\mu\biggr)^{\frac1{p'}}=p\norm{f}_p\norm{g}_{p'}
+    \end{multline}
+    da cui segue la tesi.
+\end{proof}
