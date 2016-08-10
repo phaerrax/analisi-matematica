@@ -137,3 +137,42 @@ Se $p=1$ si definisce $1'=+\infty$, e viceversa $+\infty'=1$.
     \end{multline}
     da cui segue la tesi.
 \end{proof}
+
+\section{Convergenza}
+Dato uno spazio vettoriale normato $X$ (come gli $\lclass[p]$, ma ne esistono altri) e una successione $\{u_n\}_{n\in\N}\subset X$, diciamo che essa \emph{converge in norma} al limite $u\in X$ se $\norm{u_n-u}_X\to 0$ per $n\to +\infty$.
+Pe spazi di funzioni possiamo anche trovare la convergenza puntuale, per cui $u_n\to u$ se vale $u_n(\vec x)\to u(\vec x)$ per ogni $\vec x$ (eventualmente quasi ovunque) nel dominio delle funzioni.
+Riserveremo il simbolo $\to$ per la convergenza in norma, se non indicato altrimenti.
+Uno spazio normato completo è uno \emph{spazio di Banach}, e gli spazi $\lclass[p]$ ne sono un esempio fondamentale.
+\begin{teorema}[Riesz-Fischer] \label{t:riesz-fischer}
+    Per ogni insieme aperto $\Omega\subseteq\R^n$ e per ogni $p\in[1,+\infty]$ lo spazio $\leb[p]{\Omega}$ è completo.
+\end{teorema}
+\begin{proof}
+    Prendiamo una successione $\{f_n\}_{n\in\N}\subset\leb[p]{\Omega}$ di Cauchy: fissato $\epsilon>0$ esiste $\bar{n}=\bar{n}(\epsilon)$ tale che $\norm{f_n-f_m}_p>\epsilon$ per ogni $n,m>\bar{n}$.
+    Sarà sufficiente dimostrare che esiste una sottosuccessione $\{f_{n_k}\}\subset\{f_n\}$ convergente in norma a un limite $f$ affinch\'e $f_n$ converga in norma alla stessa $f$: infatti se $\norm{f_{n_k}-f}_p\to 0$ allora risulta
+    \begin{equation}
+        \norm{f_n-f}_p \le \norm{f_n-f_{n_k}}_p+\norm{f_{n_k}-f}_p<2\epsilon
+    \end{equation}
+    se $n,n_k>\bar{n}$, per la condizione di Cauchy e per la convergenza di $f_{n_k}$.
+
+    Costruiamo dunque una buona sottosuccessione: sia $k_1$ tale che $\norm{f_{k_1}-f_n}_p<\frac12$ per ogni $n\ge k_1$, il che è possibile se $k_1$ è sufficientemente grande scegliendo $\epsilon=\frac12$ nella condizione di Cauchy; sia poi $k_2$ tale che $\norm{f_{k_2}-f_n}_p<\frac14$ per ogni $n\ge k_2$, e cos\`i via prendendo $k_i$ tale che $\norm{f_{k_i}-f_n}_p<2^{-i}$ per ogni $n\ge k_i$.
+    In particolare, risulta che $\norm{f_{k_i}-f_{k_{i+1}}}_p\le 2^{-i}$ poich\'e $k_{i+1}\ge k_i$ per ogni $i$.
+    Definiamo ora la funzione
+    \begin{equation}
+        F_j\defeq\abs{f_{k_1}}+\sum_{i=1}^j\abs{f_{k_i}-f_{k_{i+1}}}
+    \end{equation}
+    (se $j=1$ si ha $F_1=\abs{f_{k_1}}$, e via via si aggiungono i termini della somma): risulta per la disuguaglianza triangolare che
+    \begin{equation}
+        \norm{F_j}_p \le \norm{f_{k_1}}_p+\sum_{i=1}^j\norm{f_{k_i}-f_{k_{i+1}}}_p = \norm{f_{k_1}}_p+\sum_{i=1}^j\frac1{2^i} = \norm{f_{k_1}}_p+1,
+    \end{equation}
+    per ogni $j\in\N$, e notiamo che $\{F_j\}_{j\in\N}$ è una successione crescente di funzioni non negative: per il teorema \ref{t:convergenza-monotona} della convergenza monotona allora $F_j$ converge a un limite $F\in\leb[p]{\Omega}$, dato che $\norm{F_j}_p$ è limitata: dunque $F(\vec x)<+\infty$ quasi ovunque in $\Omega$.
+    
+    Tornando alla sottosuccessione $\{f_{n_k}\}$, abbiamo che per ogni $i\in\N$
+    \begin{equation}
+        f_{k_{i+1}}=f_{k_1}+f_{k_2}-f_{k_1}+\dotsb+f_{k_{i+1}}-f_{k_i}
+    \end{equation}
+    quindi con la disuguaglianza triangolare si ha quasi ovunque che
+    \begin{equation}
+        \abs{f_{k_{i+1}}} \le \abs{f_{k_1}}+\abs{f_{k_2}-f_{k_1}}+\dotsb+\abs{f_{k_{i+1}}-f_{k_i}} = \abs{f_{k_1}}+\sum_{l=1}^i\abs{f_{l+1}-f_l} \le F
+    \end{equation}
+    dunque la sottosuccessione è limitata e crescente, per cui converge assolutamente ad un certo limite $f$; ma ogni $f_{n_k}$ è limitata da $F\in\leb[p]{\Omega}$ quindi per il teorema \ref{t:convergenza-dominata} della convergenza dominata si ha che anche il limite $f$ appartiene a $\leb[p]{\Omega}$, da cui la tesi.
+\end{proof}
