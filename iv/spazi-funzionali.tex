@@ -142,6 +142,54 @@ Se $p=1$ si definisce $1'=+\infty$, e viceversa $+\infty'=1$.
 Dato uno spazio vettoriale normato $X$ (come gli $\lclass[p]$, ma ne esistono altri) e una successione $\{u_n\}_{n\in\N}\subset X$, diciamo che essa \emph{converge in norma} al limite $u\in X$ se $\norm{u_n-u}_X\to 0$ per $n\to +\infty$.
 Pe spazi di funzioni possiamo anche trovare la convergenza puntuale, per cui $u_n\to u$ se vale $u_n(\vec x)\to u(\vec x)$ per ogni $\vec x$ (eventualmente quasi ovunque) nel dominio delle funzioni.
 Riserveremo il simbolo $\to$ per la convergenza in norma, se non indicato altrimenti.
+
+Lo spazio $\leb[1]{\Omega}$ contiene classi di equivalenza di funzioni sommabili, quindi per tali funzioni si applica tutto ciò che abbiamo visto nella sezione \ref{sec:integrale-lebesgue}, in particolare i teoremi della convergenza dominata e monotona.
+Questi due teoremi hanno una facile generalizzazione agli spazi $\lclass[p]$ per $p>1$: innanzitutto è necessaria una versione raffinata del teorema di Beppo Levi, di cui non diamo la dimostrazione.
+\begin{teorema}[Beppo-Levi; della convergenza monotona] \label{t:convergenza-monotona-L1}
+    Sia $\Omega\in\mis(\R^n)$ e $\{f_n\}_{n\in\N}$ una successione di funzioni tali che $f_n\in\leb[1]{\Omega}$ per ogni $n\in\N$, $f_n(\vec x)\le f_{n+1}(\vec x)$ quasi ovunque in $\Omega$, e la successione $\norm{f_n}_1$ sia limitata.
+    Allora $f_n$ converge in norma e puntualmente quasi ovunque in $\Omega$ a una funzione $f\in\leb[1]{\Omega}$.
+\end{teorema}
+La funzione limite sarà, per il teorema di permanenza del segno, quasi ovunque non negativa.
+\begin{teorema} \label{t:convergenza-monotona-Lp}
+    Sia $\Omega\in\mis(\R^n)$ e $\{f_n\}_{n\in\N}\subset\leb[p]{\Omega}$ una successione di funzioni a valori non negativi quasi ovunque non decrescente, ossia per cui $f_n(\vec x)\le f_{n+1}(\vec x)$ quasi ovunque in $\Omega$ per ogni $n\in\N$, e tale che la successione $\norm{f_n}_p$ sia limitata.
+    Allora $f_n$ converge in norma e puntualmente quasi ovunque in $\Omega$ a una funzione $f\in\leb[p]{\Omega}$.
+\end{teorema}
+\begin{proof}
+    Dato che $f_n\in\leb[p]{\Omega}$ si ha $f_n^p\in\leb[1]{\Omega}$, e perciò $\norm{f_n^p}_1$ forma, per $n\in\N$, una successione limitata dato che
+    \begin{equation}
+        \norm{f_n^p}_1=\int_\Omega\abs{f_n^p}\,\dd\mu=\int_\Omega\abs{f_n}^p\,\dd\mu=\norm{f_n}_p^p.
+    \end{equation}
+    Per il teorema della convergenza monotona appena visto allora esiste $g\in\leb[1]{\Omega}$, a valori non negativi, tale che $f_n^p\to g$ e anche puntualmente quasi ovunque in $\Omega$.
+    Sia dunque $f\defeq g^{1/p}$, che appartiene ovviamente a $\leb[p]{\Omega}$; per quanto appena visto $\norm{f^p-f_n^p}_1\to 0$ per $n\to +\infty$.
+    Dato che la successione $\{f_n\}$ è non decrescente, $f_n\le f$ quasi ovunque da cui\footnote{
+        Se $0\le a\le b$ e $p\ge 1$ allora $(b-a)^p\le b^p-a^p$: infatti, presa la funzione $\gamma(b)\defeq b^p-a^p-(b-a)^p$, troviamo che $\gamma'(b)=pb^{p-1}-p(b-a)^{p-1}$ è non negativa per $a\le b$, e $\gamma(a)=0$, si ha per tutti gli $a\le b$ che $\gamma(b)\ge 0$ ossia $b^p-a^p\ge(b-a)^p$.
+    }
+    \begin{equation}
+        \norm{f-f_n}_p^p=
+        \int_\Omega(f-f_n)^p\,\dd\mu\le
+        \int_\Omega(f^p-f_n^p)\,\dd\mu=
+        \norm{f^p-f_n^p}_1
+    \end{equation}
+    che tende a zero per $n\to+\infty$, quindi si ha anche $\lim_{n\to+\infty}\norm{f-f_n}_p=0$.
+\end{proof}
+\begin{teorema} \label{t:convergenza-dominata-Lp}
+    Sia $\Omega\in\mis(\R^n)$ e $\{f_n\}_{n\in\N}\subset\leb[p]{\Omega}$ una successione di funzioni convergente quasi ovunque in $\Omega$ a un limite (misurabile) $f$.
+    Se esiste una funzione $g\in\leb[p]{\Omega}$ tale che per ogni $n\in\N$ si abbia $\abs{f_n}\le g$ quasi ovunque in $\Omega$, allora $\lim_{n\to+\infty}\norm{f_n-f}_p=0$.
+\end{teorema}
+\begin{proof}
+    Se $f_n\in\leb[p]{\Omega}$ allora $f_n^p\in\leb[1]{\Omega}$.
+    Per il teorema di permanenza del segno si ha, quasi ovunque in $\Omega$, che $\abs{f}\le g$, e ovviamente $\abs{f_n}^p\le g^p$ e $\abs{f}^p\le g^p$.
+    Allora per la disuguaglianza triangolare $\abs{f_n-f}^p\le(\abs{f_n}-\abs{f})^p\le(2g)^p$.
+    La successione $h_n\defeq\abs{f_n-f}^p$ è, per le ipotesi, convergente quasi ovunque puntualmente a zero, ed è maggiorata da $(2g)^p$ che è sommabile.
+    Per il teorema \ref{t:convergenza-dominata} della convergenza dominata allora
+    \begin{equation}
+        0=\lim_{n\to+\infty}\int_\Omega\abs{h_n-0}\,\dd\mu=
+        \lim_{n\to+\infty}\int_\Omega\abs{h_n}\,\dd\mu=
+        \lim_{n\to+\infty}\int_\Omega\abs{f_n-f}^p\,\dd\mu=
+    \end{equation}
+    ossia $\norm{f_n-f}_p\to 0$.
+\end{proof}
+
 Uno spazio normato completo è uno \emph{spazio di Banach}, e gli spazi $\lclass[p]$ ne sono un esempio fondamentale.
 \begin{teorema}[Riesz-Fischer] \label{t:riesz-fischer}
     Per ogni insieme aperto $\Omega\subseteq\R^n$ e per ogni $p\in[1,+\infty]$ lo spazio $\leb[p]{\Omega}$ è completo.
@@ -164,7 +212,7 @@ Uno spazio normato completo è uno \emph{spazio di Banach}, e gli spazi $\lclass
     \begin{equation}
         \norm{F_j}_p \le \norm{f_{k_1}}_p+\sum_{i=1}^j\norm{f_{k_i}-f_{k_{i+1}}}_p = \norm{f_{k_1}}_p+\sum_{i=1}^j\frac1{2^i} = \norm{f_{k_1}}_p+1,
     \end{equation}
-    per ogni $j\in\N$, e notiamo che $\{F_j\}_{j\in\N}$ è una successione crescente di funzioni non negative: per il teorema \ref{t:convergenza-monotona} della convergenza monotona allora $F_j$ converge a un limite $F\in\leb[p]{\Omega}$, dato che $\norm{F_j}_p$ è limitata: dunque $F(\vec x)<+\infty$ quasi ovunque in $\Omega$.
+    per ogni $j\in\N$, e notiamo che $\{F_j\}_{j\in\N}$ è una successione crescente di funzioni non negative: per il teorema \ref{t:convergenza-monotona-Lp} della convergenza monotona allora $F_j$ converge a un limite $F\in\leb[p]{\Omega}$, dato che $\norm{F_j}_p$ è una successione (in $j$) limitata.
     
     Tornando alla sottosuccessione $\{f_{n_k}\}$, abbiamo che per ogni $i\in\N$
     \begin{equation}
@@ -174,5 +222,5 @@ Uno spazio normato completo è uno \emph{spazio di Banach}, e gli spazi $\lclass
     \begin{equation}
         \abs{f_{k_{i+1}}} \le \abs{f_{k_1}}+\abs{f_{k_2}-f_{k_1}}+\dotsb+\abs{f_{k_{i+1}}-f_{k_i}} = \abs{f_{k_1}}+\sum_{l=1}^i\abs{f_{l+1}-f_l} \le F
     \end{equation}
-    dunque la sottosuccessione è limitata e crescente, per cui converge assolutamente ad un certo limite $f$; ma ogni $f_{n_k}$ è limitata da $F\in\leb[p]{\Omega}$ quindi per il teorema \ref{t:convergenza-dominata} della convergenza dominata si ha che anche il limite $f$ appartiene a $\leb[p]{\Omega}$, da cui la tesi.
+    dunque la sottosuccessione è limitata e non decrescente, per cui converge puntualmente (sempre quasi ovunque) ad un certo limite $f$; ma ogni $f_{n_k}$ è limitata da $F\in\leb[p]{\Omega}$ quindi per il teorema \ref{t:convergenza-dominata-Lp} della convergenza dominata si ha che anche il limite $f$ appartiene a $\leb[p]{\Omega}$, da cui la tesi.
 \end{proof}
