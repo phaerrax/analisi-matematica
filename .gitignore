@@ -7,6 +7,7 @@
 *.dpth
 *.fdb_latexmk
 *.fls
+*.latexmain
 *.log
 *.md5
 *.out
