@@ -86,6 +86,7 @@ Vediamo ora un'altra disuguaglianza fondamentale.
 Definiamo l'\emph{esponente coniugato} (o \emph{coniugato di H\"older}) di un numero reale $p>1$ il numero $p'$ tale che
 \begin{equation}
     \frac1{p}+\frac1{p'}=1,
+    \label{eq:coniugato-holder}
 \end{equation}
 o equivalentemente $p+p'=pp'$.
 Se $p=1$ si definisce $1'=+\infty$, e viceversa $+\infty'=1$.
@@ -288,3 +289,170 @@ delle cui funzioni il supporto è chiuso --- per definizione --- e limitato perc
     \end{equation}
 \end{proof}
 La densità di $\contsc{\Omega}$ si può anche scrivere come $\clos{\contsc{\Omega}}\equiv\leb[p]{\Omega}$, dove la chiusura è presa rispetto alla distanza data da $\norm{\cdot}_p$: in altre parole, ``aggiungendo i limiti'' nella norma $\norm{\cdot}_p$ a $\contsc{\Omega}$ (che, da solo, non è completo) si ottiene $\leb[p]{\Omega}$.
+
+\section{Spazi duali}
+Vediamo ora alcune generalità sugli spazi duali a spazi normati, che poi applicheremo agli insiemi $\lclass[p]$.
+\begin{definizione} \label{d:mappa-lineare-continua-limitata}
+    Siano $(X,\norm{\cdot}_X)$ e $(Y,\norm{\cdot}_Y)$ due spazi normati: una mappa $f\colon X\to Y$ è detta
+    \begin{itemize}
+        \item \emph{lineare} se $f(ax+by)=af(x)+bf(y)$ per ogni $x,y\in X$ e $a,b\in\R$;
+        \item \emph{limitata} se esiste $M>0$ tale per cui $\norm{f(x)}_Y\le M\norm{x}_X$ per ogni $x\in X$;
+        \item \emph{continua} in un punto $x_0\in X$ se $\forall\epsilon>0$ $\exists\delta>0$ tale che se $\norm{x-x_0}_X<\delta$ allora $\norm{f(x)-f(x_0)}_Y<\epsilon$.
+    \end{itemize}
+\end{definizione}
+\begin{teorema} \label{t:continuita-limitatezza-linearita}
+    Se $(X,\norm{\cdot}_X)$ e $(Y,\norm{\cdot}_Y)$ sono due spazi normati e $f\colon X\to Y$ è una mappa lineare, allora le seguenti sono equivalenti:
+    \begin{enumerate}
+        \item $f$ è limitata;
+        \item $f$ è continua in un punto;
+        \item $f$ è continua ovunque.
+    \end{enumerate}
+\end{teorema}
+\begin{proof}
+    Sia $f$ limitata: se esiste $M>0$ per cui $\norm{f(x)}_Y\le M\norm{x}_X$ per ogni $x\in X$, allora $\forall\epsilon>0$, per $x\in X$ tali che $\norm{x}_X<\delta\defeq\frac{\epsilon}{M}$ si ha
+    \begin{equation}
+        \norm{f(x)}_Y<M\frac{\epsilon}{M}=\epsilon
+    \end{equation}
+    quindi $f$ è continua in $0$ ($\in X$).
+
+    Sia ora $f$ continua in $x_0$: preso $\epsilon>0$ esiste $\delta>0$ per cui $\norm{x-x_0}_X<\delta$ implica $\norm{f(x)-f(x_0)}_Y<\epsilon$.
+    Sia $x_1$ un qualsiasi altro punto di $X$: se $\norm{x-x_1}_X<\delta$, allora $\delta>\norm{x-x_1-x_0+x_0}_X=\norm{(x+x_0-x_1)-x_0}_X$ e di conseguenza
+    \begin{equation}
+        \epsilon>\norm{f(x+x_0-x_1)-f(x_0)}_Y=
+        \norm{f(x)-f(x_1)}_Y
+    \end{equation}
+    per linearità, perciò $f$ è continua anche in $x_1$.
+
+    Sia infine $f$ continua ovunque: sfrutando la continuità in $0\in X$, $\forall\epsilon>0$ $\exists\delta>0$ per cui $\norm{x}_X<\delta$ implica $\norm{f(x)}_Y<\epsilon$.
+    Scelto $\epsilon=1$, si ha
+    \begin{equation}
+        \norm{f(x)}_Y=
+        \norm[\bigg]{\frac{2\norm{x}_X}{\delta}f\biggl(\frac{\delta x}{2\norm{x}_X}\biggr)}_Y=
+        \frac{2\norm{x}_X}{\delta}\norm[\bigg]{f\biggl(\frac{\delta x}{2\norm{x}_X}\biggr)}_Y<
+        \frac{2\norm{x}_X}{\delta}
+    \end{equation}
+    data la continuità in $0$, siccome $\norm[\big]{\frac{\delta x}{2\norm{x}_X}}_X=\frac{\delta}2<\delta$: allora $f$ è limitata (con $M=\frac2{\delta}$).
+\end{proof}
+Di conseguenza una mappa lineare continua è sempre anche lipschitziana, dato che $M$ non dipende da $x$.
+
+Di particolare interesse sono le mappe di questo tipo in cui $Y$ è $\R$ con la distanza euclidea, ossia i \emph{funzionali lineari e continui}; lo spazio di queste funzioni è lo \emph{spazio duale} di $X$, indicato con $\dual{X}$.
+Dotato delle operazioni di somma e moltiplicazione per scalare
+\begin{equation}
+    \begin{gathered}
+        f+g\colon x\mapsto (f+g)(x)=f(x)+g(x)\\
+        \alpha f\colon x\mapsto (\alpha f)(x)=\alpha f(x)
+    \end{gathered}
+\end{equation}
+l'insieme $\dual{X}$ è uno spazio vettoriale su $\R$.
+Definiamo la seguente funzione da $\dual{X}$ a $\R$:
+\begin{equation}
+    \norm{f}\defeq\sup_{x\in X\setminus\{0\}}\frac{\abs{f(x)}}{\norm{x}_X}
+    \label{eq:norma-funzionale}
+\end{equation}
+che per la linearità è equivalente a $\sup_{x\in X\colon \norm{x}_X=1}\abs{f(x)}$.
+Questa quantità è evidentemente sempre finita per i funzionali limitati.
+\begin{proprieta} \label{pr:norma-funzionale}
+    La funzione $\norm{\cdot}\colon\dual{X}\to\R$ definita dalla \eqref{eq:norma-funzionale} è una norma.
+\end{proprieta}
+\begin{proof}
+    Dimostriamo le tre proprietà date nella \ref{d:norma}.
+    \begin{itemize}
+        \item Se $f\in\dual{X}$ è il funzionale nullo, allora $\norm{f}=\sup_{x\in X\setminus\{0\}}\abs{f(x)}=\sup_{x\in X\setminus\{0\}}0=0$; viceversa, se $\norm{f}=0$ allora $\sup_{x\in X\setminus\{0\}}\abs{f(x)}=0$ e di conseguenza, siccome chiaramente $\abs{f(x)}>0$, si ha $f(x)=0$ $\forall x\in X$ da cui $f=0$.
+        \item Per $\alpha\in\R$ e $f\in\dual{X}$ si ha
+            \begin{equation}
+                \norm{\alpha f}=
+                \sup_{x\in X\setminus\{0\}}\abs{\alpha f(x)}=
+                \abs{\alpha}\sup_{x\in X\setminus\{0\}}\abs{f(x)}=
+                \abs{\alpha}\norm{f}.
+            \end{equation}
+        \item Per ogni $f,g\in\dual{X}$ si ha
+            \begin{multline}
+                \norm{f+g}=
+                \sup_{x\in X\setminus\{0\}}\abs{f(x)+g(x)}\le
+                \sup_{x\in X\setminus\{0\}}\bigl(\abs{f(x)}+\abs{g(x)}\bigr)\le\\ \le
+                \sup_{x\in X\setminus\{0\}}\abs{f(x)}+\sup_{x\in X\setminus\{0\}}\abs{g(x)}=
+                \norm{f}+\norm{g}.\qedhere
+            \end{multline}
+    \end{itemize}
+\end{proof}
+Lo spazio duale è quindi, con questa funzione, anche uno spazio normato.
+
+Grazie ai funzionali lineari continui possiamo definire una nuova nozione di convergenza.
+\begin{definizione} \label{d:convergenza-debole}
+    Sia $\{x_n\}_{n\in\N}$ una successione in $X$: diciamo che essa \emph{converge debolmente} a un elemento $\bar{x}\in X$, e indichiamo ciò con $x_n\weakto\bar{x}$, se per ogni $f\in\dual{X}$ si ha
+    \begin{equation}
+        \lim_{n\to+\infty}f(x_n)=f(\bar{x}).
+        \label{eq:convergenza-debole}
+    \end{equation}
+\end{definizione}
+In contrasto, la convergenza in norma è detta \emph{convergenza forte}.
+Questo suggerisce qualche proprietà.
+\begin{proprieta} \label{pr:convergenza-forte-implica-debole}
+    Sia $\{x_n\}_{n\in\N}\subset X$ una successione tale che $x_n\to\bar{x}$ per un $\bar{x}\in X$.
+    Allora $x_n\weakto\bar{x}$.
+\end{proprieta}
+\begin{proof}
+    Sia $f\in\dual{X}$: risulta dalla definizione della norma di $f$ che
+    \begin{equation}
+        \abs{f(x_n)-f(\bar{x})}=
+        \abs{f(x_n-\bar{x})}\le
+        \norm{f}\norm{x_n-\bar{x}}_X
+    \end{equation}
+    che tende a zero per $n\to+\infty$, perciò $x_n$ converge anche debolmente (e \emph{al medesimo limite}).
+\end{proof}
+Non vale invece l'implicazione inversa: può esistere un limite debole senza che la successione converga in norma (vedremo qualche esempio più tardi).
+Questo è un comportamento tipico degli spazi di dimensione infinita: in spazi di dimensione finita convergenza forte e debole sono del tutto equivalenti.
+
+Specializziamo ora la teoria agli spazi di funzioni: prendiamo $\Omega\subset\R^n$ aperto e $X=\leb[p]{\Omega}$.
+Un naturale funzionale lineare su questi spazi è dato da una funzione $f\in\leb[q]{\Omega}$ con $q=p'$ (il coniugato di Hölder, come nella \eqref{eq:coniugato-holder}), tramite la quale si definisce il funzionale
+\begin{equation}
+    F_f\colon g\mapsto\int_\Omega fg\,\dd\mu.
+\end{equation}
+È ovviamente lineare, ed è limitato poich\'e, dalla disuguaglianza di Hölder,
+\begin{equation}
+    \abs{F_f(g)}=
+    \abs[\bigg]{\int_\Omega fg\,\dd\mu}\le
+    \norm{f}_q\norm{g}_p
+\end{equation}
+da cui otteniamo
+\begin{equation}
+    \norm{F_f}=
+    \sup_{g\in\leb[p]{\Omega}\setminus\{0\}}\frac{\abs{F_f(g)}}{\norm{g}_p}\le
+    \sup_{g\in\leb[p]{\Omega}\setminus\{0\}}\norm{f}_q=
+    \norm{f}_q.
+\end{equation}
+In particolare, se prendiamo $\tilde{g}\defeq\abs{f}^{q/p}\sgn f$ (con $\sgn f\defeq 0$ se $f=0$) risulta
+\begin{multline}
+    F_f(\tilde{g})=
+    \int_\Omega f\tilde{g}\,\dd\mu=
+    \int_\Omega \abs{f}^{q/p+1}\,\dd\mu=
+    \int_\Omega \abs{f}^q\,\dd\mu=
+    \norm{f}_q^q=
+    \norm{f}_q\norm{f}_q^{q-1}=\\=
+    \norm{f}_q\norm{\tilde{g}^{p/q}}_q^{q-1}=
+    \norm{f}_q\biggl(\int_\Omega \abs{\tilde{g}}^p\,\dd\mu\biggr)^{\frac{q-1}{q}}=
+    \norm{f}_q\biggl(\int_\Omega \abs{\tilde{g}}^p\,\dd\mu\biggr)^{\frac1{p}}=
+    \norm{f}_q\norm{\tilde{g}}_p
+\end{multline}
+perciò
+\begin{equation}
+    \frac{\abs{F_f(\tilde{g})}}{\norm{\tilde{g}}_p}=\norm{f}_q
+\end{equation}
+e si ha l'uguaglianza $\norm{F_f}=\norm{f}_q$.
+A questo punto è naturale chiedersi se \emph{tutti} i funzionali di $\dual{\leb[p]{\Omega}}$ siano di questa forma: la risposta è \emph{s\`i}, ma solo per $1\le p<+\infty$.
+Lo spazio $\leb[\infty]{\Omega}$ è un caso particolare, su cui torneremo più avanti.
+
+Vediamo ora alcuni esempi di successioni di $\leb[p]{\Omega}$ che convergono debolmente ma non in norma.
+\begin{esempio} \label{es:convergenza-debole-ma-non-forte}
+   Sia $\Omega=(0,1)$.
+   \begin{itemize}
+       \item Consideriamo $f_k(x)=\sin(k\pi x)$: sono funzioni che, al crescere di $k$, oscillano sempre di più.
+           La successione $\{f_k\}_{k\in\N}$ converge debolmente a zero, ma $\norm{f_k}_p\not\to 0$.
+       \item Possiamo considerare una successione che ``esplode'' in un certo punto, come $f_k(x)=k^\frac1{p}g(kx)$ per una funzione $g\in\leb[p]{\Omega}$ fissata.
+           Chiaramente $\{f_k\}_{k\in\N}\subset\leb[p]{\Omega}$, e si dimostra che $f_k\weakto 0$, ma $\norm{f_k}_p=\norm{g}_p$ che certamente non tende a zero.
+           Se entrambi i limiti esistessero, dovrebbero coincidere, e qui non accade.
+           In un certo senso, la $f_k$ converge alla delta di Dirac, che però non è un elemento di $\leb[p]{\Omega}$ (non è nemmeno una funzione!).
+       \item Fissata $g\in\leb[p]{\Omega}$, consideriamo la successione delle ``traslate'' $f_k(x)=g(x+k)$.
+           Anche qui $f\weakto 0$ e $\norm{f_k}_p=\norm{g}_p\not\to 0$.
+   \end{itemize}
+\end{esempio}
