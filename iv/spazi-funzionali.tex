@@ -224,3 +224,67 @@ Uno spazio normato completo è uno \emph{spazio di Banach}, e gli spazi $\lclass
     \end{equation}
     dunque la sottosuccessione è limitata e non decrescente, per cui converge puntualmente (sempre quasi ovunque) ad un certo limite $f$; ma ogni $f_{n_k}$ è limitata da $F\in\leb[p]{\Omega}$ quindi per il teorema \ref{t:convergenza-dominata-Lp} della convergenza dominata si ha che anche il limite $f$ appartiene a $\leb[p]{\Omega}$, da cui la tesi.
 \end{proof}
+
+Se $f\in\leb[p]{\Omega}$, dimostriamo ora che $f$ è ``vicina'' a una funzione semplice, ma anche a una funzione continua, vale a dire che gli insiemi di tali funzioni sono densi in $\leb[p]{\Omega}$: per ogni $\epsilon>0$ esiste una funzione semplice $s$ o una funzione continua $\phi$ definite su $\Omega$ tali che $\norm{f-s}_p<\epsilon$ e $\norm{f-\phi}_p<\epsilon$.
+\begin{teorema} \label{t:funzioni-semplici-dense}
+    L'insieme delle funzioni semplici $s\colon\Omega\to\R$ è denso in $\leb[p]{\Omega}$.
+\end{teorema}
+\begin{proof}
+    È sufficiente considerare le funzioni semplici a valori non negativi: per il caso generale, si scomponga la funzione nelle sue parti positiva e negativa.
+    Sia $\mathcal{S}$ tale insieme: possiamo rappresentare una generica $s\in\mathcal{S}$ come $\sum_{j=1}^mc_j\chi_{A_j}$ per $c_j\ge 0$ e $A_j\in\mis(\R^n)$ disgiunti.
+    Se $\Omega$ è limitato allora $s\in\leb[p]{\Omega}$ poich\'e
+    \begin{multline}
+        \norm{s}_p^p=
+        \int_\Omega\abs[\bigg]{\sum_{j=1}^mc_j\chi_{A_j}}^p\dd\mu\le
+        \int_\Omega\sum_{j=1}^mc\abs{c_j\chi_{A_j}}^p\dd\mu\le
+        \sum_{j=1}^m\int_\Omega(\abs{c_j}\chi_{A_j})^p\dd\mu=\\=
+        \sum_{j=1}^m\int_\Omega\abs{c_j}^p\chi_{A_j}\dd\mu=
+        \sum_{j=1}^m\abs{c_j}^p\int_\Omega\chi_{A_j}\dd\mu=
+        \sum_{j=1}^m\abs{c_j}^p\mu(A_j)<
+        +\infty.
+    \end{multline}
+    Sappiamo già dal teorema \ref{t:funzione-semplice-misurabile} che per ogni $f\colon\Omega\to[0,+\infty)$ misurabile esiste una successione $\{s_n\}_{n\in\N}\subset\mathcal{S}$ tale che $s_n\le s_{n+1}\le f$ in $\Omega$ e che converge a $f$ quasi ovunque: detti $E_{n,i}\defeq f^{-1}\Bigl(\bigl[\frac{i-1}{2^n},\frac{i}{2^n}\bigr]\Bigr)$ e $F_n\defeq f^{-1}\bigl([n,+\infty)\bigr)$ si ha che la successione
+        \begin{equation}
+            s_n\defeq\sum_{i=1}^{n2^n}\frac{i-1}{2^n}\chi_{E_{n,i}}+n\chi_{F_n}
+        \end{equation}
+        soddisfa queste proprietà e pertanto $\abs{f-s_n}^p\le\abs{f}^p\in\leb[1]{\Omega}$, ma allora per il teorema \ref{t:convergenza-dominata-Lp} della convergenza dominata si ha $\norm{s_n-f}_p\to 0$ per $n\to+\infty$.
+\end{proof}
+Per le funzioni continue dobbiamo porre qualche restrizione: l'affermazione che $\cont{\Omega}$ è denso in $\leb[p]{\Omega}$ è evidentemente falsa, perch\'e non ne è nemmeno un sottoinsieme; è sufficiente prendere $\Omega=(0,1)$ e la funzione $x\mapsto\frac1{x}$, che è continua ma non sommabile.
+Introduciamo allora il \emph{supporto} di una funzione $f\colon\Omega\to\R$, ossia l'insieme
+\begin{equation*}
+    \supp f\defeq\clos{\{\vec x\in\Omega\colon f(\vec x)\ne 0\}}
+\end{equation*}
+e con esso l'insieme delle \emph{funzioni a supporto compatto}, ossia l'insieme
+\begin{equation*}
+    \contsc{\Omega}\defeq\{f\in\cont{\Omega}\colon \supp f\subset\Omega\}
+\end{equation*}
+delle cui funzioni il supporto è chiuso --- per definizione --- e limitato perch\'e sottoinsieme di $\Omega$, quindi compatto: tali funzioni sono nulle in un intorno dei punti di $\boundary\Omega$.
+\begin{teorema}[Lusin] \label{t:lusin}
+    Sia $f\colon\Omega\to\R$ misurabile, e $A\subset\Omega$ con $\mu(A)<+\infty$ e $\supp f\subset A$.
+    Per ogni $\epsilon>0$ esiste $g_\epsilon\in\contsc{\Omega}$ tale che $\mu\bigl(\{\vec x\in\Omega\colon f(\vec x)\ne g_\epsilon(\vec x)\}\bigr)<\epsilon$, inoltre la si può scegliere tale che $\sup_\Omega\abs{g_\epsilon}\le\norm{f}_{\infty}$.
+\end{teorema}
+\begin{teorema} \label{t:funzioni-continue-supporto-compatto-dense}
+    L'insieme $\contsc{\Omega}$ è denso in $\leb[p]{\Omega}$.
+\end{teorema}
+\begin{proof}
+    Una volta dimostrata la densità nell'insieme delle funzioni semplici, per il teorema \ref{t:funzioni-semplici-dense} il risultato vale anche per tutto $\leb[p]{\Omega}$.
+    Sia $s\colon\Omega\to\R$ semplice: per il teorema precedente, $\forall\epsilon>0$ $\exists g_\epsilon\in\contsc{\Omega}$ tale che $g_\epsilon=s$ tranne che su un insieme $A_\epsilon$ con $\mu(A_\epsilon)<\epsilon$, e per la quale $\abs{g_\epsilon}\le\norm{s}_\infty=\sup_\Omega s$.
+    Allora
+    \begin{multline}
+        \norm{g_\epsilon-s}_p=
+        \biggl(\int_\Omega\abs{g_\epsilon-s}^p\,\dd\mu\biggr)^\frac1{p}=
+        \biggl(\int_{A_\epsilon}\abs{g_\epsilon-s}^p\,\dd\mu\biggr)^\frac1{p}\le
+        \biggl(\int_{A_\epsilon}(\abs{g_\epsilon}+\abs{s})^p\,\dd\mu\biggr)^\frac1{p}\le\\ \le
+        \biggl(\int_{A_\epsilon}2^p\norm{s}_\infty^p\,\dd\mu\biggr)^\frac1{p}=
+        2\norm{s}_\infty\bigl(\mu(A_\epsilon)\bigr)^\frac1{p}<
+        2\norm{s}_\infty\epsilon^\frac1{p}.
+    \end{multline}
+    Per $f\in\leb[p]{\Omega}$, si ha quindi
+    \begin{equation}
+        \norm{f-g_\epsilon}_p\le
+        \norm{f-s}_p+\norm{s-g_\epsilon}_p<
+        \epsilon+\epsilon=
+        2\epsilon.\qedhere
+    \end{equation}
+\end{proof}
+La densità di $\contsc{\Omega}$ si può anche scrivere come $\clos{\contsc{\Omega}}\equiv\leb[p]{\Omega}$, dove la chiusura è presa rispetto alla distanza data da $\norm{\cdot}_p$: in altre parole, ``aggiungendo i limiti'' nella norma $\norm{\cdot}_p$ a $\contsc{\Omega}$ (che, da solo, non è completo) si ottiene $\leb[p]{\Omega}$.
