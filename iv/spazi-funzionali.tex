@@ -456,3 +456,95 @@ Vediamo ora alcuni esempi di successioni di $\leb[p]{\Omega}$ che convergono deb
            Anche qui $f\weakto 0$ e $\norm{f_k}_p=\norm{g}_p\not\to 0$.
    \end{itemize}
 \end{esempio}
+
+\begin{lemma} \label{l:funzionali-separano-Lp}
+    Sia $g\in\leb[p]{\Omega}$ tale che $F(g)=0$ per ogni $F\in\dual{\leb[p]{\Omega}}$: allora $g=0$.
+\end{lemma}
+\begin{proof}
+    Fissiamo $g\in\leb[p]{\Omega}$ con $p\in(1,+\infty)$ e definiamo $h\defeq\abs{g}^{p-2}g$; risulta per $q=p'$
+    \begin{equation}
+        \int_\Omega \abs{f}^q\,\dd\mu=
+        \int_\Omega \abs{g}^{(p-1)q}\,\dd\mu=
+        \int_\Omega \abs{g}^p\,\dd\mu<
+        +\infty
+    \end{equation}
+    perciò $f\in\leb[q]{\Omega}$.
+    Associamo dunque a $f$ il funzionale lineare continuo $F\colon g\mapsto\int_\Omega fg\,\dd\mu$: per ipotesi deve essere $F(g)=0$, ma questo significa che $0=\int_\Omega\abs{g}^p\,\dd\mu=\norm{g}_p^p$ ossia $g=0$.
+\end{proof}
+In altre parole si dice che i funzionali lineari continui «separano» gli elementi di $\leb[p]{\Omega}$, poich\'e se $g,h\in\leb[p]{\Omega}$ sono tali per cui $F(g)=F(h)$ per ogni $F\in\dual{\leb[p]{\Omega}}$ allora $g=h$, mentre se esiste anche un solo elemento $F$ del duale per cui $F(g)\ne F(h)$ allora deve essere $g\ne h$.
+\begin{teorema}[principio di limitatezza uniforme] \label{t:limitatezza-uniforme}
+    Sia $\{f_n\}_{n\in\N}\subset\leb[p]{\Omega}$ una successione tale che per ogni $F\in\dual{\leb[p]{\Omega}}$ esista $M_F>0$ tale per cui $\abs{F(f_n)}\le M_F$ $\forall n\in\N$.
+    Allora esiste $c>0$ tale per cui $\norm{f_n}_p<c$, $\forall n\in\N$, ossia la successione delle norme è limitata.
+\end{teorema}
+\begin{proof}
+    Supponiamo per assurdo che $\norm{f_n}_p\to+\infty$ per $n\to+\infty$: possiamo assumere allora che esista una sottosuccessione, che indichiamo ancora con $\{f_n\}$, tale per cui $\norm{f_n}_p=4^n$.
+    Infatti esiste certamente una sottosuccessione $\{f_n\}$ per cui $\norm{f_n}_p\ge 4^n$, ma allora possiamo ``rinormalizzarla'' ponendo
+    \begin{equation}
+        \tilde{f}_n\defeq\frac{4^n}{\norm{f_n}_p}f_n,
+    \end{equation}
+    che è tale per cui $F(\tilde{f}_n)=\frac{4^n}{\norm{f_n}_p}F(f_n)$; dato che $\frac{4^n}{\norm{f_n}_p}\le 1$ e $F(f_n)\le M_F$, si ha allora $F(\tilde{f}_n)\le M_F$, quindi $\tilde{f}_n$ soddisfa ancora le ipotesi e ovviamente $\norm{\tilde{f}_n}_p=4^n$.
+
+    Definiamo dunque la successione
+    \begin{equation}
+        g_n\defeq\frac{\abs{f_n}^{p-2}f_n}{\norm{f_n}_p^{p-1}}
+    \end{equation}
+    per la quale risulta, per $q=p'$,
+    \begin{equation}
+        \norm{g_n}_q^q=
+        \frac1{\norm{f_n}_p^{(p-1)q}}\int_\Omega \abs{f_n}^{(p-1)q}\,\dd\mu
+        \norm{f_n}_p^{-p}\int_\Omega \abs{f_n}^{p}\,\dd\mu=
+        1.
+    \end{equation}
+    Definiamo una successione $\{\sigma_i\}$ tale che $\sigma_1=1$ e per $i\ge 2$ sia tale che $\sigma_n\int_\Omega f_ng_n\,\dd\mu$ abbia lo stesso segno di $\sum_{k=1}^{n-1}\frac{\sigma_k}{3^k}\int_\Omega f_ng_k\,\dd\mu$.
+    Possiamo allora effettuare la seguente stima:
+    \begin{equation}
+        \abs[\bigg]{\sum_{k=1}^n\frac{\sigma_k}{3^k}\int_\Omega f_ng_k\,\dd\mu}=
+        \abs[\bigg]{\frac{\sigma_n}{3^n}\int_\Omega f_ng_n\,\dd\mu+\sum_{k=1}^{n-1}\frac{\sigma_k}{3^k}\int_\Omega f_ng_k\,\dd\mu}\ge
+        \frac1{3^n}\abs[\bigg]{\int_\Omega f_ng_n\,\dd\mu}
+    \end{equation}
+    poich\'e i due addendi, per costruzione, hanno lo stesso segno: siccome
+    \begin{equation}
+        \abs[\bigg]{\int_\Omega f_ng_n\,\dd\mu}=
+        \norm{f_n}_p^{1-p}\abs[\bigg]{\int_\Omega \abs{f_n}^{p-2}f_nf_n\,\dd\mu}=
+        \norm{f_n}_p^{1-p}\norm{f_n}_p^p=
+        \norm{f_n}_p
+    \end{equation}
+    si ha allora che
+    \begin{equation}
+        \frac1{3^n}\abs[\bigg]{\int_\Omega f_ng_n\,\dd\mu}=
+        \frac{\norm{f_n}_p}{3^n}=\biggl(\frac43\biggr)^n.
+    \end{equation}
+    Consideriamo ora il funzionale
+    \begin{equation}
+        F\colon h\in\leb[p]{\Omega}\mapsto\sum_{k=1}^{+\infty}\frac{\sigma_k}{3^k}\int_\Omega g_kh\,\dd\mu.
+    \end{equation}
+    Risulta per ogni $h\in\leb[p]{\Omega}$ che
+    \begin{equation}
+        \abs{F(h)}\le
+        \sum_{k=1}^{+\infty}\frac1{3^k}\abs[\bigg]{\int_\Omega g_kh\,\dd\mu}\le
+        \sum_{k=1}^{+\infty}\frac1{3^k}\norm{g_k}_q\norm{h}_p=
+        \norm{h}_p\sum_{k=1}^{+\infty}\frac{\norm{g_k}_q}{3^k}\le
+        c\norm{h}_p
+    \end{equation}
+    per un certo $c>0$, dunque $F$ è limitato.
+    Per la sottosuccessione $\{f_n\}$ si ottiene però
+    \begin{equation}
+        \begin{split}
+            \abs{F(f_n)}&=
+            \abs[\bigg]{\sum_{k=1}^{+\infty}\frac{\sigma_k}{3^k}\int_\Omega f_ng_k\,\dd\mu}=\\&=
+            \abs[\bigg]{\sum_{k=1}^{n}\frac{\sigma_k}{3^k}\int_\Omega f_ng_k\,\dd\mu+\sum_{k=n+1}^{+\infty}\frac{\sigma_k}{3^k}\int_\Omega f_ng_k\,\dd\mu}\ge\\&\ge
+            % Questo passaggio è molto sospetto, solitamente la disuguaglianza dovrebbe essere nel verso opposto.
+            \abs[\bigg]{\sum_{k=1}^{n}\frac{\sigma_k}{3^k}\int_\Omega f_ng_k\,\dd\mu}+\abs[\bigg]{\sum_{k=n+1}^{+\infty}\frac{\sigma_k}{3^k}\int_\Omega f_ng_k\,\dd\mu}\ge\\&\ge
+            \biggl(\frac43\biggr)^n-\sum_{k=n+1}^{+\infty}\frac1{3^k}\norm{g_k}_q\norm{f_n}_p=\\&=
+            \biggl(\frac43\biggr)^n-\sum_{k=n+1}^{+\infty}\frac{4^n}{3^k}=\\&=
+            \biggl(\frac43\biggr)^n-\biggl(\frac43\biggr)^n\sum_{k=n+1}^{+\infty}\frac1{3^{k-n}}=\\&=
+            \biggl(\frac43\biggr)^n\biggl(1-\sum_{l=1}^{+\infty}\frac1{3^l}\biggr)=\\&=
+            \biggl(\frac43\biggr)^n\biggl(1-\frac{\frac13}{1-\frac13}\biggr)=\\&=
+            \frac12\biggl(\frac43\biggr)^n\to+\infty
+        \end{split}
+    \end{equation}
+    che contraddice l'ipotesi di limitatezza di $\abs{F(f_n)}$.
+    Di conseguenza deve essere che $\norm{f_n}_p$ è limitata.
+\end{proof}
+Come conseguenza troviamo che ogni successione debolmente convergente è limitata: infatti, per $\{f_n\}_{n\in\N}\subset\leb[p]{\Omega}$, se $f_n\weakto f$ si ha per qualsiasi $F\in\dual{\leb[p]{\Omega}}$ che la successione $\{F(f_n)\}_{n\in\N}\subset\R$ è limitata, in quanto convergente.
+Allora anche $\norm{f_n}_p$ è limitata per il teorema appena dimostrato.
