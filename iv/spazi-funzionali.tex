@@ -404,7 +404,7 @@ Non vale invece l'implicazione inversa: può esistere un limite debole senza che
 Questo è un comportamento tipico degli spazi di dimensione infinita: in spazi di dimensione finita convergenza forte e debole sono del tutto equivalenti.
 
 Specializziamo ora la teoria agli spazi di funzioni: prendiamo $\Omega\subset\R^n$ aperto e $X=\leb[p]{\Omega}$.
-Un naturale funzionale lineare su questi spazi è dato da una funzione $f\in\leb[q]{\Omega}$ con $q=p'$ (il coniugato di Hölder, come nella \eqref{eq:coniugato-holder}), tramite la quale si definisce il funzionale
+Un naturale funzionale lineare su questi spazi è dato da una funzione $f\in\leb[q]{\Omega}$ con $q=p'$ (il coniugato di Hölder, come nella \eqref{eq:coniugato-holder}), tramite la quale si definisce il funzionale\label{pag:norma-funzionale-lineare}
 \begin{equation}
     F_f\colon g\mapsto\int_\Omega fg\,\dd\mu.
 \end{equation}
@@ -548,3 +548,111 @@ In altre parole si dice che i funzionali lineari continui «separano» gli eleme
 \end{proof}
 Come conseguenza troviamo che ogni successione debolmente convergente è limitata: infatti, per $\{f_n\}_{n\in\N}\subset\leb[p]{\Omega}$, se $f_n\weakto f$ si ha per qualsiasi $F\in\dual{\leb[p]{\Omega}}$ che la successione $\{F(f_n)\}_{n\in\N}\subset\R$ è limitata, in quanto convergente.
 Allora anche $\norm{f_n}_p$ è limitata per il teorema appena dimostrato.
+\begin{lemma}[disuguaglianza di Clarkson] \label{l:disuguaglianza-clarkson}
+    Per ogni $a,b\in\R$ e $p\ge 2$ vale la relazione
+    \begin{equation}
+        \abs[\bigg]{\frac{a+b}2}^p+\abs[\bigg]{\frac{a-b}2}^p \le \frac12(\abs{a}^p+\abs{b}^p).
+        \label{eq:disuguaglianza-clarkson}
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Per prima cosa, prendiamo $\alpha,\beta>0$: si ha
+    \begin{equation}
+        \alpha^p+\beta^p\le(\alpha^2+\beta^2)^{p/2}.
+        \label{eq:disuguaglianza-clarkson-1}
+    \end{equation}
+    Dividendo per $\beta^p$ e ponendo $x\defeq\frac{\alpha}{\beta}$ tale disequazione è equivalente a $x^p+1\le(x^2+1)^{p/2}$ ossia $(x^2+1)^{p/2}-x^p-1\ge 0$: in $x=0$ il primo membro è nullo dunque la disuguaglianza è verificata, mentre la sua derivata è $px(x^2+1)^{p/2-1}-px^{p-1}$ che non è negativa se $(x^2+1)^{p/2-1}\ge x^{p-2}$, il che è sempre vero dato che $x$ e $p$ sono positivi.
+    Questo dimostra che la \eqref{eq:disuguaglianza-clarkson-1} è vera per ogni $\alpha,\beta>0$.
+
+    Posti dunque $\alpha=\abs[\big]{\frac{a+b}2}$ e $\beta=\abs[\big]{\frac{a-b}2}$ in tale espressione otteniamo che
+    \begin{equation}
+        \abs[\bigg]{\frac{a+b}2}^p+\abs[\bigg]{\frac{a-b}2}^p\le
+        \biggl(\abs[\bigg]{\frac{a+b}2}^2+\abs[\bigg]{\frac{a-b}2}^2\biggr)^{p/2}=
+        \biggl(\frac{a^2}2+\frac{b^2}2\biggr)^{p/2}\le
+        \frac12(\abs{a}^p+\abs{b}^p)
+    \end{equation}
+    per la convessità della funzione $x\mapsto x^{p/2}$ per $p\ge 2$.
+\end{proof}
+\begin{lemma}
+    Sia $f\in\leb[p]{\Omega}$ e $\mathcal{M}$ un sottoinsieme convesso di $\leb[p]{\Omega}$.
+    Detta $d(f,\mathcal{M})\defeq\inf_{g\in\mathcal{M}}\norm{f-g}_p$, se $\mathcal{M}$ è chiuso allora $\exists h\in\mathcal{M}$ per cui $d(f,\mathcal{M})=\norm{f-h}_p$, e vale per ogni $g\in\mathcal{M}$ che $\int_\Omega (g-h)\abs{f-h}^{p-2}(f-h)\,\dd\mu\le 0$.
+\end{lemma}
+\begin{proof}
+    Dimostriamo solo il caso in cui $p\ge 2$.
+    A meno di traslazioni, possiamo supporre che $f=0$.
+    Prendiamo una successione $\{h_n\}_{n\in\N}\subset\mathcal{M}$ tale che $\norm{0-h_n}_p=\norm{h}_p\to d$ dall'alto (dato che $d=\inf_{h\in\mathcal{M}}\norm{h}_p$).
+    Dimostriamo che esiste $h\in\mathcal{M}$ tale che $h_n\to h$; è sufficiente mostrare che $\{h_n\}$ è di Cauchy, al resto ci pensa la completezza di $\mathcal{M}$.
+    Se $p\ge 2$, grazie alla disuguaglianza di Clarkson \ref{l:disuguaglianza-clarkson} abbiamo
+    \begin{equation}
+        \norm[\bigg]{\frac{h_j+h_k}2}_p^p+\norm[\bigg]{\frac{h_j-h_k}2}_p^p \le \frac12(\norm{h_j}_p^p+\norm{h_k}_p^p).
+    \end{equation}
+    Siccome $\mathcal{M}$ è convesso, abbiamo che $\frac12(h_j+h_k)\in\mathcal{M}$ e di conseguenza la sua norma non è maggiore di $d$.
+    Allo stesso tempo, $\forall\epsilon>0$ esiste $N\in\N$ tale che $\norm{h_n}_p^p<d^p+\epsilon$ per $n>N$, quindi la disuguaglianza precedente diventa
+    \begin{equation}
+        d^p+\norm[\bigg]{\frac{h_j-h_k}2}_p^p \le \frac12(d^p+\epsilon+d^p+\epsilon)
+        \qqq
+        \norm[\bigg]{\frac{h_j-h_k}2}_p^p < \epsilon
+    \end{equation}
+    cioè $\{h_n\}$ è di Cauchy.
+    Detto $h$ il suo limite, e presa $g\in\mathcal{M}$, definiamo le funzioni $\tilde{g}(t)\defeq(1-t)h+tg$ e $n(t)\defeq\norm{\tilde{g}(t)}_p^p$ per $t\in[0,1]$ (per la convessità di $\mathcal{M}$ si ha $\tilde{g}(t)\in\mathcal{M}$).
+    Per quanto visto finora sappiamo che $n(t)\ge d^p$, e derivando $n$ in $t=0$ risulta
+    \begin{equation}
+        \begin{split}
+            n'(0)&=
+            \lim_{t\to 0}\frac{n(t)-n(0)}{t}=\\&=
+            \lim_{t\to 0}\frac1{t}\biggl(\int_\Omega \abs{\tilde{g}(t)}^p\,\dd\mu-\int_\Omega \abs{\tilde{g}(0)}^p\,\dd\mu\biggr)=\\&=
+            \lim_{t\to 0}\frac1{t}\int_\Omega\bigl(\abs{\tilde{g}(t)}^p-\abs{\tilde{g}(0)}^p\bigl)\,\dd\mu=\\&=
+            p\int_\Omega\abs{\tilde{g}(0)}^{p-2}\tilde{g}(0)(g-h)\,\dd\mu=\\&=
+            p\int_\Omega\abs{h}^{p-2}h(g-h)\,\dd\mu\ge
+            0
+        \end{split}
+    \end{equation}
+    come volevasi dimostrare.
+\end{proof}
+\begin{teorema} \label{t:duale-Lp}
+    Per ogni $p\in[1,+\infty)$ si ha $\dual{\leb[p]{\Omega}}=\leb[p']{\Omega}$, ossia ogni elemento $F\in\dual{\leb[p]{\Omega}}$ si può scrivere come $F\colon g\mapsto\int_\Omega vg\,\dd\mu$ per un \emph{unico} $v\in\leb[p']{\Omega}$; inoltre $\norm{F}=\norm{v}_q$.
+\end{teorema}
+\begin{proof}
+    Siano $p\in(1,+\infty)$ e $\ell\in\dual{\leb[p]{\Omega}}$.
+    Il suo nucleo è convesso, poich\'e è uno spazio vettoriale; è anche chiuso, dato che se $g_n\to g$ e $\ell(g_n)=0$ allora $\ell(g_n)\to 0$, e per la continuità di $\ell$ risulta allora $\ell(g)=0$ ossia $g\in\ker\ell$.
+    Se $\ell=0$, banalmente possiamo prendere $v=0$ e il teorema è dimostrato.
+    Sia dunque $\ell\ne 0$, e prendiamo una $f\notin\ker\ell$: evidentemente $d(f,\ker\ell)>0$, per cui dal lemma precedente abbiamo che $\exists h\in\ker\ell$ tale per cui
+    \begin{equation}
+        \int_\Omega (f-h)\abs{f-h}^{p-2}(g-h)\,\dd\mu\le 0\quad\forall g\in\ker\ell.
+    \end{equation}
+    Siccome $g,h\in\ker\ell$ però anche $-(g-h)\in\ker\ell$ quindi l'equazione precedente vale anche sostituendo $g$ con $-(g-h)$, ottenendo cos\`i che $\int_\Omega(f-h)\abs{f-h}^{p-2}(g-h)\,\dd\mu=0$.
+    Abbreviamo con $u\defeq\abs{f-h}^{p-2}(f-h)$, e prendiamo un elemento arbitrario $g\in\leb[p]{\Omega}$ scrivendolo come somma $g_1+g_2$ con
+    \begin{equation}
+        g_1\defeq\frac{\ell(g)}{\ell(f-h)}(f-h)
+        \qtext{e}
+        g_2\defeq g-g_1.
+    \end{equation}
+    Ora, dalla definizione di $f$ si ha $\ell(f-h)=\ell(f)\ne 0$, quindi
+    \begin{equation}
+        \ell(g_2)=
+        \ell(g-g_1)=
+        \ell(g)-\frac{\ell(g)}{\ell(f-h)}\ell(f-h)=
+        0
+    \end{equation}
+    perciò $g_2\in\ker\ell$.
+    Di conseguenza $\int_\Omega ug_2\,\dd\mu=0$, e
+    \begin{equation}
+        \int_\Omega ug\,\dd\mu=
+        \int_\Omega ug_1\,\dd\mu=
+        \int_\Omega u\frac{\ell(g)}{\ell(f-h)}(f-h)\,\dd\mu=
+        \ell(g)\int_\Omega \frac{(f-h)u}{\ell(f-h)}\,\dd\mu=
+        \alpha\ell(g)
+    \end{equation}
+    con $\alpha\ne 0$ poich\'e $\int_\Omega (f-h)u\,\dd\mu=\norm{f-h}_p^p>0$.
+    Ma allora
+    \begin{equation}
+        \ell(g)=
+        \frac1{\alpha}\int_\Omega ug\,\dd\mu=
+        \int_\Omega\frac{u}{\alpha}g\,\dd\mu
+    \end{equation}
+    e la funzione $v\in\leb[p']{\Omega}$ cercata è $\frac{u}{\alpha}$.
+    Abbiamo già visto a pagina \ref{pag:norma-funzionale-lineare} che $\norm{\ell}=\norm{v}_{p'}$.
+
+    Per quanto riguarda l'unicità, infine, sia $w\in\leb[p']{\Omega}$ un altra funzione tale per cui $\ell(g)=\int_\Omega wg\,\dd\mu$ per ogni $g\in\leb[p]{\Omega}$: scegliendo $g=\abs{v-w}^{q-2}(v-w)$ --- che, si dimostra, è un elemento di $\leb[p]{\Omega}$ --- troviamo $\int_\Omega \abs{v-w}^q\,\dd\mu=0$ ossia $v=w$.
+\end{proof}
+Questo teorema mostra che, per $p\in(1,+\infty)$, lo spazio $\leb[p]{\Omega}$ è riflessivo, ossia $\dual{(\dual{\leb[p]{\Omega}})}=\leb[p]{\Omega}$.
