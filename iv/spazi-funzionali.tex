@@ -656,3 +656,47 @@ Allora anche $\norm{f_n}_p$ è limitata per il teorema appena dimostrato.
     Per quanto riguarda l'unicità, infine, sia $w\in\leb[p']{\Omega}$ un altra funzione tale per cui $\ell(g)=\int_\Omega wg\,\dd\mu$ per ogni $g\in\leb[p]{\Omega}$: scegliendo $g=\abs{v-w}^{q-2}(v-w)$ --- che, si dimostra, è un elemento di $\leb[p]{\Omega}$ --- troviamo $\int_\Omega \abs{v-w}^q\,\dd\mu=0$ ossia $v=w$.
 \end{proof}
 Questo teorema mostra che, per $p\in(1,+\infty)$, lo spazio $\leb[p]{\Omega}$ è riflessivo, ossia $\dual{(\dual{\leb[p]{\Omega}})}=\leb[p]{\Omega}$.
+
+\begin{teorema} \label{t:Lp-separabile}
+    Per $p\in[1,+\infty)$ lo spazio $\leb[p]{\Omega}$ è separabile.
+\end{teorema}
+Abbiamo già visto nel teorema \ref{t:funzioni-semplici-dense} che lo spazio delle funzioni semplici è denso in $\leb[p]{\Omega}$.
+Per dimostrare questo teorema bisogna individuare un sottoinsieme di $\leb[p]{\Omega}$ numerabile la cui chiusura coincide con l'intero $\leb[p]{\Omega}$: l'insieme delle funzioni semplici \emph{a valori razionali}, associate a insiemi $s^{-1}(a_i)$ ``a coordinate razionali'' (ad esempio, unioni di intervalli i cui estremi sono numeri razionali), fa al caso nostro.
+
+\begin{teorema}[Banach-Alao\u{g}lu] \label{t:banach-alaoglu}
+    Sia $p\in(1,+\infty)$.
+    Se $\{f_n\}_{n\in\N}\subset\leb[p]{\Omega}$ è una successione tale che per ogni $n\in\N$ esista $c>0$ tale per cui si abbia $\norm{f_n}_p<c$, allora esiste una sottosuccessione $\{f_{n_k}\}$ debolmente convergente.
+\end{teorema}
+\begin{proof}
+    È sufficiente dimostrare la tesi per un insieme denso e numerabile: ossia che la sottosuccessione $\{f_{n_k}\}$ sia tale che $h(f_{n_k})\to h(f)$ (per un certo $f\in\leb[p]{\Omega}$ per ogni $h\in\Phi=\{\phi_j\}_{j\in\N}$, denso in $\dual{\leb[p]{\Omega}}$.
+
+    Per $\phi_1$ sia $c_{1,j}\defeq\int_\Omega \phi_1f_j\,\dd\mu$: la successione $\{c_{1,j}\}_{j\in\N}$ è limitata, poich\'e $\abs{c_{1,j}}\le\norm{\phi_1}_{p'}\norm{f_j}_p$ che per ipotesi è una quantità finita.
+    Esiste allora una sottosuccessione $\{f_{1,j}\}_{j\in\N}\subseteq\{f_n\}_{n\in\N}$ tale per cui $\int_\Omega \phi_1f_{1,j}\,\dd\mu$ converge: sia $c_1$ il limite.
+    Sia ora $c_{2,j}\defeq\int_\Omega \phi_2f_{1,j}\,\dd\mu$: anch'essa è limitata e possiamo dunque estrarre una sottosuccessione $\{f_{2,j}\}_{j\in\N}\subseteq\{f_{1,j}\}_{j\in\N}$ per la quale $\int_\Omega \phi_2f_{2,j}\,\dd\mu$ converge, a un certo $c_2$.
+    Proseguendo in questo modo, al passo $n$-esimo, prendendo $\phi_n$ da $\Phi$, estraiamo una sottosuccessione $\{f_{n,j}\}_{j\in\N}\subseteq\{f_{n-1,j}\}_{j\in\N}$ per cui $\int_\Omega \phi_nf_{n,j}\,\dd\mu$ converge a un certo $c_n$, ma anche $\int_\Omega \phi_nf_{l,j}\,\dd\mu$ converge allo stesso $c_n$ per ogni $l>n$.
+
+    Ora, prendiamo la ``diagonale'' $F_k\defeq f_{k,k}$: è tale che $\int_\Omega\phi_lF_k\,\dd\mu\to c_l$ per $k\to+\infty$.
+    La mappa
+    \begin{equation}
+        L\colon \phi_l\mapsto c_l=\lim_{k\to+\infty}\int_\Omega \phi_lF_k\,\dd\mu
+    \end{equation}
+    definisce evidentemente un funzionale lineare, che è anche limitato poich\'e
+    \begin{equation}
+        \abs{L(\phi_l)}\le
+        \lim_{k\to+\infty}\abs[\bigg]{\int_\Omega \phi_lF_k\,\dd\mu}\le
+        \lim_{k\to+\infty}\norm{F_k}_p\norm{\phi_l}_{p'}
+    \end{equation}
+    dalla disuguaglianza di Hölder, e $\norm{F_k}_p\le c$ per ipotesi.
+    $L$ è dunque un funzionale lineare continuo sull'insieme numerabile $\Phi$: presa $g\in\leb[p']{\Omega}$, tale che $\phi_k\to g$ per $k\to+\infty$, dalla condizione di Cauchy si verifica che $L(\phi_k)\to L(g)$ e anche per $g$ vale la proprietà di limitatezza precedente; di conseguenza $L$ è limitato su $\clos{\Phi}=\leb[p']{\Omega}$, ossia $L\in\leb[p]{\Omega}$.
+    Allora esiste $f\in\leb[p]{\Omega}$ tale per cui $L(g)=\int_\Omega fg\,\dd\mu$, e con ciò possiamo identificare la funzione $f$ tramite
+    \begin{equation}
+        \lim_{k\to+\infty}\int_\Omega \phi_lF_k\,\dd\mu=\int_\Omega \phi_lf\,\dd\mu;
+    \end{equation}
+    dato che questo vale per ogni $\phi_l$ e $\phi_l\to g$ per $l\to+\infty$ risulta allora
+    \begin{equation}
+        \lim_{k\to+\infty}\int_\Omega gF_k\,\dd\mu=\int_\Omega gf\,\dd\mu.\qedhere
+    \end{equation}
+\end{proof}
+Il seguente è un esempio del fatto che il teorema non può valere per $p=1$: presi $\Omega=\R$ e la successione $f_k\defeq k\chi_{[0,1/k]}$, si ha che la norma è $\norm{f_k}_1=1$ per ogni $k\in\N$, ma se esiste $f\in\leb[1]{\Omega}$ per cui $f_k\weakto f$, siccome la successione converge puntualmente alla funzione nulla, si deve avere $f=0$ quasi ovunque.
+È dunque vero che $\int_{\R}f_kg\,\dd\mu\to 0$ per ogni $g\in\leb[\infty]{\Omega}$?
+No, come si vede prendendo $g=1$.
