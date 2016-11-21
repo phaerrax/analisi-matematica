@@ -1,0 +1,51 @@
+\chapter{L'equazione di Laplace}
+\newcommand{\sfl}{\Lambda} % Soluzione fondamentale dell'equazione di Laplace
+Sia $\Omega\subseteq\R^n$ aperto, e $f\in\cont[2]{\Omega}$ una funzione a valori reali.
+L'equazione di Laplace per $f$ è l'equazione differenziale alle derivate parziali
+\begin{equation}
+    \lap f=0
+    \label{eq:laplace}
+\end{equation}
+che è del secondo ordine, ellittica e omogenea.
+Le soluzioni di questa equazione sono dette \emph{funzioni armoniche} (sull'insieme $\Omega$).
+Soluzioni banali di questa equazione sono le funzioni costanti o quelle lineari/affini, che sono anche le \emph{uniche} soluzioni se il problema è unidimensionale; un po' meno banali sono i cosiddetti ``polinomi armonici'', come ad esempio un polinomio della forma $\frac12x_1^2-\frac12x_2^2$ più termini di grado minore.
+
+Sia $\sfl\colon\R^n\setminus\{\vec 0\}\to\R$ la funzione
+\begin{equation}
+    \sfl(\vec x)=
+    \begin{cases}
+        -\frac1{2\pi}\log\norm{\vec x}      & n=2\\
+        \frac1{n(2-n)\omega_n}\norm{\vec x}^{2-n}  & n\ge 3
+    \end{cases}
+    \label{eq:soluzione-fondamentale-laplace}
+\end{equation}
+dove
+\begin{equation}
+    \omega_n\defeq\frac{\pi^{n/2}}{\Gamma\bigl(\frac{n}2+1\bigr)}
+    \label{eq:volume-palla-unitaria}
+\end{equation}
+è il volume della palla unitaria $n$-dimensionale $B^n$.
+Ignoriamo il caso $n=1$, per cui si ritrova un'equazione differenziale ordinaria, che è tanto banale da non essere di alcun interesse.
+
+Chiamiamo la funzione $\sfl$ \emph{soluzione fondamentale} dell'equazione di Laplace: verifichiamo che ne è una soluzione.
+\begin{equation}
+    \begin{gathered}
+        \drp{}{x_i}\sfl(\vec x)=\frac1{n\omega_n}\norm{\vec x}^{-n}x_i\\
+        \frac{\partial^2}{\partial x_i\partial x_j}\sfl(\vec x)=\frac1{n\omega_n}(\norm{\vec x}^2\delta_{ij}-nx_ix_j)\norm{\vec x}^{-n}
+    \end{gathered}
+\end{equation}
+da cui
+\begin{multline}
+    \lap\sfl(\vec x)=
+    \sum_{i=1}^n\frac{\partial^2}{\partial x_i^2}\sfl(\vec x)=
+    \sum_{i=1}^n\frac1{n\omega_n}(\norm{\vec x}^2-nx_i^2)\norm{\vec x}^{-n}=\
+    \frac1{n\omega_n\norm{\vec x}^n}\biggl(n\norm{\vec x}^2-n\sum_{i=1}^nx_i^2\biggr)=
+    0
+\end{multline}
+quindi $\sfl$ è armonica in $\R^n\setminus\{\vec 0\}$.
+Notiamo subito la simmetria sferica dell'equazione: se $A$ è una matrice $n\times n$ ortogonale e $f$ è armonica, allora anche $f\circ A$ è armonica nel medesimo insieme.
+È ragionevole dunque cercare una soluzione che sia radiale: in coordinate sferiche, con $r\defeq\norm{\vec x}$, la \eqref{eq:laplace} per funzioni radiali si riscrive come
+\begin{equation}
+    u''(r)+\frac{n-1}{r}u'(r)=0,
+\end{equation}
+che è un'equazione particolarmente comoda da risolvere, a meno di due costanti arbitrarie da determinare.
