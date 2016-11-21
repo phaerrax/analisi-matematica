@@ -182,3 +182,66 @@ da cui otteniamo che $u_1-u_2$ è costante.
 
 Il problema di trovare una soluzione conoscendo la funzione sul bordo è noto come \emph{problema di Dirichlet}; se invece è nota la derivata normale, \emph{problema di Neumann}.
 
+Determiniamo ora la funzione di Green sulla palla $B_R(\vec 0)$, di raggio $R$.
+Definiamo la mappa di ``riflessione alla frontiera''
+\begin{equation}
+    \vec y\mapsto\bar{\vec y}\defeq
+    \begin{cases}
+        \frac{R^2}{\norm{\vec y}^2}\vec y & \vec y\ne\vec 0\\
+        \infty                            & \vec y=\vec 0
+    \end{cases}
+    \label{eq:riflessione-frontiera}
+\end{equation}
+che opera una sorta di riflessione di un punto attraverso la superficie $\boundary B_R(\vec 0)$; notiamo che $\bar{\vec x}=\vec x$ se $\norm{\vec x}=R$ e che $\bar{\bar{\vec y}}=\vec y$.
+Per $\vec x\in B_R(\vec 0)$ sia
+\begin{equation}
+    G(\vec x,\vec y)=
+    \begin{cases}
+        \sfl(\vec x-\vec y)-\sfl\Bigl(\frac{\norm{\vec y}}{R}(\vec x-\bar{\vec y})\Bigr) & \vec x\ne\vec y\\
+        \sfl(\vec x)-\sfl(R)                                                             & \vec x=\vec y
+    \end{cases}
+\end{equation}
+e controlliamo che sia una funzione di Green per $B_R(\vec 0)$.
+Se $\vec x\ne\vec y$, $G$ è una differenza di due funzioni armoniche dunque essa stessa è armonica; se poi $\vec y\in B_R(\vec 0)$, allora $\bar{\vec y}\notin B_R(\vec 0)$ quindi $G$ possiede un'unica singolarità in tale insieme, poich\'e solo per uno dei due termini la variabile può essere nulla, ossia non può verificarsi sia che $\vec x=\vec y$ sia che $\vec x=\bar{\vec y}$.
+Inoltre la funzione $G-\sfl=-\sfl\bigl(\frac{\norm{\vec y}}{R}(\vec x-\bar{\vec y})\bigr)$ è armonica in tutta $B_R(\vec 0)$.
+
+Ora, per $\vec x\in\boundary B_R(\vec 0)$, ossia $\norm{\vec x}=R$, espandendo la norma della differenza troviamo, dato che $\norm{\bar{\vec y}}=R^2/\norm{\vec y}$,
+\begin{equation}
+    \begin{split}
+        G(\vec x,\vec y)&=
+        \sfl\bigl(\sqrt{\norm{\vec x}^2+\norm{\vec y}^2-2\scalar{\vec x}{\vec y}}\bigr)-\sfl\biggl(\frac{\norm{\vec y}}{R}\sqrt{\norm{\vec x}^2+\norm{\hat{\vec y}}^2-\scalar{\vec x}{\hat{\vec y}}}\biggr)=\\&=
+        \sfl\bigl(\sqrt{R^2+\norm{\vec y}^2-2\scalar{\vec x}{\vec y}}\bigr)-\sfl\biggl(\sqrt{\frac{\norm{\vec x}^2\norm{\vec y}^2}{R^2}+R^2-\scalar{\vec x}{\hat{\vec y}}}\biggr)=\\&=
+        \sfl\bigl(\sqrt{R^2+\norm{\vec y}^2-2\scalar{\vec x}{\vec y}}\bigr)-\sfl\biggl(\sqrt{\norm{\vec y}^2+R^2-\scalar{\vec x}{\hat{\vec y}}}\biggr)=
+        0
+    \end{split}
+\end{equation}
+dunque $G$ è una funzione di Green per $B_R(\vec 0)$.
+\begin{esempio} \label{es:funzione-green-semipiano}
+    Una funzione di Green per il semipiano $\{\vec x\in\R^n\colon x_1>0\}$ si costruisce in modo analogo, questa volta con la riflessione data dalla mappa $(x_1,x_2,\dotsc,x_n)\mapsto(-x_1,x_2,\dotsc,x_n)$.
+\end{esempio}
+\begin{osservazione} \label{o:funzione-green-simmetrica}
+    La funzione di Green costruita per $B_r(\vec 0)$ è evidentemente simmetrica nelle due variabili, inoltre non è negativa in $B_R(\vec 0)$: per vederlo è sufficiente mostrare che $\norm{\vec x-\vec y}\le\frac{\norm{\vec y}}{R}\norm{\vec x-\bar{\vec y}}$.
+    Questa disuguaglianza è equivalente a
+    \begin{equation}
+        \norm{\vec x}^2+\norm{\vec y}\le\frac{\norm{\vec x}^2\norm{\vec y}^2}{R^2}+R^2
+        \qqq
+        \frac{\norm{\vec x}^2}{R^2}(R^2-\norm{\vec y})\le R^2-\norm{\vec y}^2
+    \end{equation}
+    che è vera se $\norm{\vec x}\le R$ ossia se $\vec x\in B_R(\vec 0)$.
+\end{osservazione}
+La derivata normale al bordo di $B_R(\vec 0)$ non è altro che la derivata nella direzione radiale, per la quale $\scalar{\vnu}{\grad u}=\drp{u}{r}$ dove $r=\norm{\vec x}$:
+\begin{equation}
+    \begin{split}
+        \drp{G}{\nu}(\vec x,\vec y)&=
+        \drp{}{r}\biggl[\sfl\Bigl(\sqrt{\norm{\vec x}^2+\norm{\vec y}^2-2\scalar{\vec x}{\vec y}}\Bigr)-\sfl\biggl(\sqrt{\frac{\norm{\vec x}\norm{\vec y}}{R^2}+R^2-2\scalar{\vec x}{\vec y}}\biggr)\biggr]=\\&=
+        \drp{}{r}\frac{\bigl(\norm{\vec x}^2+\norm{\vec y}^2-2\scalar{\vec x}{\vec y}\bigr)^\frac{2-n}{n}}{n(2-n)\omega_n}-\drp{}{r}\frac{\bigl(\norm{\vec x}^2\norm{\vec y}^2/R^2+R^2-2\scalar{\vec x}{\vec y}\bigr)^\frac{2-n}{n}}{n(2-n)\omega_n}=\\&=
+        \frac1{2n\omega_n}\bigl(\norm{\vec x}^2\norm{\vec y}^2-2\scalar{\vec x}{\vec y}\bigr)^{-n}\biggl[2\norm{\vec x}-\drp{}{r}(2\scalar{\vec x}{\vec y})\biggr]-\frac1{2n\omega_n}\biggl(\frac{\norm{\vec x}^2\norm{\vec y}^2}{R^2}+R^2-2\scalar{\vec x}{\vec y}\biggr)^{-n}\biggl[2\frac{\norm{\vec x}\norm{\vec y}^2}{R^2}-\drp{}{r}(2\scalar{\vec x}{\vec y})\biggr]=\\&=
+        \frac1{2n\omega_n}\biggl(2\norm{\vec x-\vec y}^{-n}\norm{\vec x}-2\norm{\vec x-\vec y}^{-n}\frac{\norm{\vec y}}{R}\biggr)=\\&=
+        \frac{R^2-\norm{\vec y}^2}{n\omega_nR^2\norm{\vec x-\vec y}^2}.
+    \end{split}
+\end{equation}
+Avevamo visto che se $u$ è armonica in $\Omega$ allora $u(\vec y)=\int_{\boundary\Omega} u(\vec x)\drp{G}{\nu}(\vec x,\vec y)\,\dd\sigma(\vec x)$: per $\Omega=B_R(\vec 0)$ si ha allora
+\begin{equation}
+    u(\vec y)=\frac{R^2-\norm{\vec y}^2}{n\omega_nR}\int_{\boundary B_R(\vec 0)}\frac{u(\vec x)}{\norm{\vec x-\vec y}^n}\,\dd\sigma(\vec x).
+    \label{eq:rappresentazione-green-palla}
+\end{equation}
