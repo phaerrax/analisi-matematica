@@ -44,6 +44,7 @@ da cui
 \end{multline}
 quindi $\sfl$ è armonica in $\R^n\setminus\{\vec 0\}$.
 Notiamo subito la simmetria sferica dell'equazione: se $A$ è una matrice $n\times n$ ortogonale e $f$ è armonica, allora anche $f\circ A$ è armonica nel medesimo insieme.
+Per questo motivo, dato che $\sfl$ è in realtà funzione solo della norma del suo argomento, talvolta commetteremo un abuso di notazione scrivendo $\sfl(r)$ per $r\in\R$, intendendo che applichiamo $\sfl$ a un vettore di norma $r$ (la direzione di tale vettore, come abbiamo appena detto, non è importante); il significato sarà ogni volta chiaro dal contesto.
 È ragionevole dunque cercare una soluzione che sia radiale: in coordinate sferiche, con $r\defeq\norm{\vec x}$, la \eqref{eq:laplace} per funzioni radiali si riscrive come
 \begin{equation}
     u''(r)+\frac{n-1}{r}u'(r)=0,
@@ -99,7 +100,7 @@ dove $\dd\sigma$ è la misura di Lebesgue su $\boundary\Omega$, e abbiamo inoltr
     \begin{equation}
         \lim_{\epsilon\to 0^+}\int_{\Omega\setminus B_\epsilon(\vec y)} \sfl(\vec x-\vec y)\lap u(\vec x)\,\dd\mu(\vec x)=
     \end{equation}
-    Su $\boundary B_\epsilon(\vec y)$ abbiamo che $\vec x-\vec y$ è un vettore $\vepsilon$ con norma $\epsilon$, di conseguenza $\sfl(\vec x-\vec y)\sim\epsilon^{2-n}$, mentre la derivata normale di $u$ rimane limitata per la regolarità della funzione, come prima: allora
+    Su $\boundary B_\epsilon(\vec y)$ abbiamo che $\norm{\vec x-\vec y}=\epsilon$, di conseguenza $\sfl(\vec x-\vec y)=\sfl(\epsilon)\sim\epsilon^{2-n}$, mentre la derivata normale di $u$ rimane limitata per la regolarità della funzione, come prima: allora
     \begin{multline}
         \abs[\bigg]{\int_{\boundary B_\epsilon(\vec y)} \sfl(\vec x-\vec y)\drp{u}{\nu}(\vec x)\,\dd\sigma(\vec x)}\le
         \frac1{\epsilon^{n-2}}\sup_{\vec x\in\boundary B_\epsilon(\vec y)}\abs[\bigg]{\drp{u}{\nu}(\vec x)}\int_{\boundary B_\epsilon(\vec y)}\dd\sigma(\vec x)\le\\\le
@@ -180,3 +181,4 @@ Di conseguenza nell'equazione precedente rimane
 da cui otteniamo che $u_1-u_2$ è costante.
 
 Il problema di trovare una soluzione conoscendo la funzione sul bordo è noto come \emph{problema di Dirichlet}; se invece è nota la derivata normale, \emph{problema di Neumann}.
+
