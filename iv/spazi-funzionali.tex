@@ -700,3 +700,113 @@ Per dimostrare questo teorema bisogna individuare un sottoinsieme di $\leb[p]{\O
 Il seguente è un esempio del fatto che il teorema non può valere per $p=1$: presi $\Omega=\R$ e la successione $f_k\defeq k\chi_{[0,1/k]}$, si ha che la norma è $\norm{f_k}_1=1$ per ogni $k\in\N$, ma se esiste $f\in\leb[1]{\Omega}$ per cui $f_k\weakto f$, siccome la successione converge puntualmente alla funzione nulla, si deve avere $f=0$ quasi ovunque.
 È dunque vero che $\int_{\R}f_kg\,\dd\mu\to 0$ per ogni $g\in\leb[\infty]{\Omega}$?
 No, come si vede prendendo $g=1$.
+
+\section{Spazi di Hilbert}
+Tra tutti gli spazi $\lclass[p]$, lo spazio $\lclass[2]$ ha la particolare proprietà di essere il duale di s\'e stesso, e di conseguenza gli elementi di $\leb[2]{\Omega}$ si rappresentano tramite le funzioni dell'insieme stesso.
+In tale spazio, possiamo definire in modo naturale un prodotto interno da cui far derivare la norma, come solitamente accade per spazi di dimensione finita.
+Questo e altre proprietà rende $\leb[2]{\Omega}$ uno \emph{spazio di Hilbert}, che ora andiamo a definire in modo più astratto.
+\begin{definizione} \label{d:spazio-hilbert}
+    Uno spazio di Hilbert (reale) è uno spazio vettoriale $H$ dotato di un prodotto interno $\inner{\cdot}{\cdot}\colon H\times H\to\R$, che soddisfa le proprietà:
+    \begin{enumerate}
+        \item per ogni $x,y,z\in H$, $\inner{x+y}{z}=\inner{x}{z}+\inner{y}{z}$ e $\inner{x}{y,z}=\inner{x}{y}+\inner{x}{z}$,
+        \item per ogni $x,y\in H$ e $\alpha\in\R$ $\inner{ax}{y}=a\inner{x}{y}$ e $\inner{x,ay}=a\inner{x}{y}$,
+        \item per ogni $x,y\in H$ $\inner{x}{y}=\inner{y}{x}$,
+        \item per ogni $x\in H$ $\inner{x}{x}\ge 0$ e in particolare $\inner{x}{x}=0$ se e solo se $x=0$,
+    \end{enumerate}
+    e che è uno spazio metrico completo rispetto alla distanza indotta da tale prodotto interno. 
+\end{definizione}
+La mappa
+\begin{equation}
+    \inner{\cdot}{\cdot}\colon(f,g)\in\leb[2]{\Omega}\times\leb[2]{\Omega}\mapsto\int_\Omega fg\,\dd\mu
+    \label{eq:prodotto-interno-L2}
+\end{equation}
+chiaramente soddisfa tutte queste proprietà, rendendo $\leb[2]{\Omega}$ uno spazio di Hilbert reale.
+
+La grandezza $\norm{x}\defeq\sqrt{\inner{x}{x}}$ soddisfa tutte le proprietà di una norma, e dalle quattro proprietà sopra elencate si deducono la disuguaglianza di Cauchy-Schwarz e la disuguaglianza triangolare come in \ref{t:cauchy-schwarz} e \ref{t:disuguaglianza-triangolare}.
+\begin{definizione} \label{d:ortogonalita}
+    Due elementi $x,y$ di uno spazio di Hilbert $H$ si dicono \emph{ortogonali} se $\inner{x}{y}=0$.
+    Un insieme $\{v_i\}_{i\in\mathcal{I}}\subset H$ è detto ortogonale se $\inner{v_i}{v_j}=0$ se $i\ne j$ per ogni $i,j\in\mathcal{I}$, e \emph{ortonormale} se ulteriormente $\norm{v_i}=1$ per ogni $i\in\mathcal{I}$, vale a dire $\inner{v_i}{v_j}=\delta_{ij}$.
+\end{definizione}
+Se due vettori $x,y$ sono ortogonali, allora vale il \emph{teorema di Pitagora} $\norm{x+y}^2=\norm{x}^2+\norm{y}^2$; infine, si ha l'\emph{identità del parallelogramma}
+\begin{equation}
+    \norm{x+y}^2+\norm{x-y}^2=2\norm{x}^2+2\norm{y}^2,
+    \label{eq:identita-parallelogramma}
+\end{equation}
+per ogni $x,y\in H$.
+
+La struttura di spazio di Hilbert permette di aggiungere a $\leb[2]{\Omega}$ delle importanti proprietà che gli altri spazi $\lclass[p]$ non possono avere.
+Sia $L$ lo spazio generato da un insieme ortonormale $V\defeq\{v_i\}_{i\in\mathcal{I}}$, ossia lo spazio formato dalle combinazioni lineari finite (a coefficienti reali) di elementi di $V$: possiamo chiederci qual è la ``migliore approssimazione'' di un elemento di $H$ con un elemento di $L$; in altre parole, l'elemento di $L$ la cui distanza dall'elemento approssimato è minima.
+Fissiamo $x\in H\setminus L$ (se $x\in L$ il risultato è banalmente $x$ stesso) e calcoliamo dunque l'elemento $\bar{v}\in L$ tale per cui $\norm{x-\bar{v}}=\inf_{v\in L}\norm{x-v}$.
+Partiamo con $\dim V<+\infty$, e assumiamo senza perdita di generalità che $\mathcal{I}=\{1,2,\dotsc,n\}$.
+Allora la migliore approssimazione è $\bar{v}=\sum_{i=1}^n\inner{x}{v_i}v_i$ e si ha
+\begin{multline}
+    0\le
+    \norm{x-\bar{v}}^2=
+    \norm{x}^2+\norm{\bar{v}}^2-2\inner{\bar{v}}{x}=
+    \norm{x^2}+\inner[\bigg]{\sum_{i=1}^n\inner{x}{v_i}v_i}{\sum_{j=1}^n\inner{x}{v_j}v_j}-2\inner[\bigg]{x}{\sum_{i=1}^n\inner{x}{v_i}v_i}=\\=
+    \norm{x}^2+\sum_{i=1}^n\sum_{j=1}^n\inner{x}{v_i}\inner{x}{v_j}\inner{v_i}{v_j}-2\sum_{i=1}^n\inner{x}{v_i}\inner{x}{v_i}=
+    \norm{x}^2-\sum_{i=1}^n\inner{x}{v_i}^2
+\end{multline}
+da cui otteniamo la \emph{disuguaglianza di Bessel}
+\begin{equation}
+    \norm{x}^2\ge\sum_{i=1}^n\inner{x}{v_i}^2
+    \label{eq:disuguaglianza-bessel}
+\end{equation}
+valida per ogni $n\in\N$ e dunque anche al limite per $n\to+\infty$, grazie al teorema di permanenza del segno.
+
+Se lo spazio di Hilbert $H$ è separabile (abbiamo già visto nel teorema \ref{t:Lp-separabile} che $\leb[2]{\Omega}$ lo è) esso ammette un insieme $\mathcal{S}$ numerabile tale che $\clos{\mathcal{S}}=H$.
+Sia dunque $\mathcal{S}=\{u_i\}_{i\in\N}$: da esso possiamo estrarre un insieme ortonormale con il seguente algoritmo, detto \emph{algoritmo di Gram-Schmidt}: il primo elemento dell'insieme è $v_1\defeq u_1/\norm{u_1}$; prendiamo dunque il secondo elemento $u_2$, sottraiamo la componente parallela a $v_1$ ottenendo $w_2\defeq u_2-\inner{u_2}{v_1}v_1$ e normalizziamo il risultato ponendo $v_2\defeq w_2/\norm{w_2}$.
+In generale il $k$-elemento dell'insieme ortonormale è definito dunque ricorsivamente come
+\begin{equation}
+    v_k\defeq\frac{w_k}{\norm{w_k}}
+    \qtext{con}
+    w_k\defeq u_k-\sum_{j=1}^{k-1}\inner{u_k}{v_j}v_j
+    \label{eq:algoritmo-gram-schmidt}
+\end{equation}
+scartando eventuali elementi nulli.
+\begin{lemma} \label{l:completezza}
+    Sia $\mathcal{S}=\{u_i\}_{i\in\N}\subset H$ un sottoinsieme numerabile e denso in uno spazio di Hilbert $H$.
+    Se $x\in H$ è tale che $\inner{x}{u_i}=0$ per ogni $i$, allora $x=0$.
+\end{lemma}
+\begin{proof}
+    Dato che $\mathcal{S}$ è denso in $H$, scelto un qualsiasi $\epsilon>0$ esiste un elemento $u_N\in\mathcal{S}$ tale che $\norm{x-u_N}<\epsilon$.
+    Dall'algoritmo di Gram-Schmidt abbiamo che (con la notazione precedente)
+    \begin{equation}
+        u_N=w_N+\sum_{k=1}^{N-1}\inner{u_N}{v_k}v_k
+    \end{equation}
+    (per $N$ qualsiasi).
+    Dato che $u_N$ è proporzionale a $w_N$, l'ipotesi che $\inner{x}{u_k}=0$ per ogni $k$ implica che $\inner{x}{u_N}=0$, ma allora
+    \begin{equation}
+        \epsilon^2>
+        \norm{x-u_N}^2=
+        \norm{x}^2+\norm{u_N}^2
+    \end{equation}
+    da cui $\norm{x}<\epsilon$; per l'arbitrarietà di $\epsilon$ si conclude allora che $\norm{x}=0$ ossia $x=0$.
+\end{proof}
+Continuiamo a usare la notazione e le quantità definite finora in quanto segue.
+Sia ora $x_M\defeq\sum_{i=1}^M\inner{x}{v_i}v_i$: dato che $\norm{x_M}^2\le\norm{x}^2$, per la disuguaglianza di Bessel, e $\norm{x_M-x_N}^2=\sum_{i=N+1}^M\inner{x}{v_i}^2$, affinch\'e $\norm{x_M}$ si mantenga limitata si deve avere che $\norm{x_N-x_M}^2<\epsilon$ per $M,N$ ``sufficientemente grandi''.
+Data la completezza di $H$, esiste $y$ tale per cui $x_M\to y$, ossia $\norm{x_M-y}\to 0$ per $M\to+\infty$.
+Ma
+\begin{equation}
+    \norm{x_M-y}^2\ge
+    \sum_{i=1}^M\inner{x_M-y}{v_i}^2\ge
+    \inner{x_M-y}{v_j}
+\end{equation}
+per ogni $j\in\{1,\dotsc,M\}$.
+Siccome
+\begin{equation}
+    \inner{x_M}{v_i}=
+    \sum_{k=1}^M\inner[\big]{\inner{x}{v_k}}{v_i}=
+    \sum_{k=1}^M\inner{x}{v_k}\delta_{ik}=
+    \inner{x}{v_i}
+\end{equation}
+quindi per ogni $i$ si ha $\inner{x-y}{v_i}^2=0$.
+Dal lemma precedente allora $x=y$.
+
+\begin{definizione} \label{d:insieme-completo}
+    Un insieme $\mathcal{B}=\{b_i\}_{i\in\N}\subset H$ è detto \emph{completo} se per ogni $x\in H$ si può scrivere
+    \begin{equation}
+        x=\sum_{i=1}^{+\infty}\inner{x}{b_i}b_i=\lim_{n\to+\infty}\sum_{i=1}^n\inner{x}{b_i}b_i.
+    \end{equation}
+    Un insieme completo linearmente indipendente è una \emph{base} per $H$, e i coefficienti $\inner{x}{b_i}$ sono detti \emph{coefficienti di Fourier} (rispetto alla base $\mathcal{B}$).
+\end{definizione}
