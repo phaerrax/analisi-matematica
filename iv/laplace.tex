@@ -49,3 +49,134 @@ Notiamo subito la simmetria sferica dell'equazione: se $A$ è una matrice $n\tim
     u''(r)+\frac{n-1}{r}u'(r)=0,
 \end{equation}
 che è un'equazione particolarmente comoda da risolvere, a meno di due costanti arbitrarie da determinare.
+
+\section{Formula di rappresentazione di Green}
+Considieriamo d'ora in poi un insieme $\Omega\subseteq\R^n$ aperto.
+\begin{definizione} \label{d:bordo-liscio}
+    La frontiera $\boundary\Omega$ di $\Omega$ è detta di classe $\cclass[k]$, per un $k\in\N_0$, se per ogni $\vec x_0\in\boundary\Omega$ esistono $r>0$ e $\gamma\colon\R^{n-1}\to\R$ di classe $\cclass[k]$ tale che
+    \begin{equation}
+        \Omega\cap B_r(\vec x_0)=\{\vec x\in B_r(\vec x_0)\colon x_n>\gamma(x_1,\dotsc,x_{n-1})\}.
+    \end{equation}
+\end{definizione}
+\begin{definizione} \label{d:derivata-normale}
+    Sia $\boundary\Omega$ di classe $\cclass[1]$: data una funzione $u\in\cont[1]{E}$ con $E\supset\clos{\Omega}$ definiamo la \emph{derivata normale} come
+    \begin{equation}
+        \drp{u}{\nu}\defeq\scalar{\vnu}{\grad u}
+        \label{eq:derivata-normale}
+    \end{equation}
+    dove $\vnu(\vec x)$ è il versore normale a $\boundary\Omega$ nel punto $\vec x$.
+\end{definizione}
+Sappiamo dal teorema della divergenza che per un campo vettoriale $\vec f\in\cont[1]{E}$ con $E\supset\clos{\Omega}$ aperto vale
+\begin{equation}
+    \int_\Omega\div f\,\dd\mu=\int_{\boundary\Omega} \scalar{\vec f}{\vnu}\,\dd\sigma
+\end{equation}
+dove $\dd\sigma$ è la misura di Lebesgue su $\boundary\Omega$, e abbiamo inoltre le formule di Green
+\begin{gather}
+    \int_\Omega (\phi\lap\psi+\scalar{\grad\phi}{\grad\psi})\,\dd\mu=\int_{\boundary\Omega} \psi\drp{\phi}{\nu}\,\dd\sigma \label{eq:green1}\\
+    \int_\Omega (\psi\lap\phi+\phi\lap\psi)\,\dd\mu=\int_{\boundary\Omega} \biggl(\psi\drp{\phi}{\nu}-\phi\drp{\psi}{\nu}\biggr)\,\dd\sigma. \label{eq:green2}
+\end{gather}
+
+\begin{teorema} \label{t:rappresentazione-green}
+    Sia $u\in\cont[2]{E}$ con $E\supset\clos{\Omega}$ aperto: per ogni $\vec y\in\Omega$ vale la relazione\footnote{
+        In questi integrali la variabile di integrazione è $\vec x$, mentre $\vec y$ è fissa; evidenzieremo (qui e d'ora in poi) questo fatto indicando la variabile opportuna nella misura di integrazione, ossia ad esempio $\dd\mu(\vec x)$ anzich\'e solamente $\dd\mu$.
+    }
+    \begin{equation}
+        u(\vec y)=
+        \int_{\boundary\Omega} \biggl[u(\vec x)\drp{\sfl(\vec x-\vec y)}{\nu_\vec{x}}-\sfl\drp{u(\vec x)}{\nu_\vec{x}}\biggr]\,\dd\sigma(\vec x)+
+        \int_\Omega \sfl(\vec x-\vec y)\lap u(\vec x)\,\dd\mu(\vec x).
+        \label{eq:rappresentazione-green}
+    \end{equation}
+\end{teorema}
+\begin{proof}
+    Sia $\epsilon>0$, e consideriamo un intorno $B_\epsilon(\vec y)\subset\Omega$.
+    Per la seconda formula di Green \eqref{eq:green2}, applicata sull'insieme $\Omega\setminus B_\epsilon(\vec y)$ (poich\'e $\sfl(\vec x-\vec y)$ è singolare se $\vec x=\vec y$; altrove è armonica) troviamo
+    \begin{multline}
+        \int_{\Omega\setminus B_\epsilon(\vec y)} \sfl(\vec x-\vec y)\lap u(\vec x)\,\dd\mu(\vec x)=\\=
+        \int_{\boundary\Omega} \biggl[\sfl(\vec x-\vec y)\drp{u}{\nu}(\vec x)-u(\vec x)\drp{\sfl}{\nu}(\vec x-\vec y)\biggr]\,\dd\sigma(\vec x)-
+        \int_{\boundary B_\epsilon(\vec y)} \biggl[\sfl(\vec x-\vec y)\drp{u}{\nu}(\vec x)-u(\vec x)\drp{\sfl}{\nu}(\vec x-\vec y)\biggr]\,\dd\sigma(\vec x).
+    \end{multline}
+    Al limite $\epsilon\to 0^+$, vediamo che $\lap u$ rimane limitata in $\clos{\Omega}$ poich\'e $u\in\cont[2]{E}$, mentre $\sfl$ è sommabile, dunque
+    \begin{equation}
+        \lim_{\epsilon\to 0^+}\int_{\Omega\setminus B_\epsilon(\vec y)} \sfl(\vec x-\vec y)\lap u(\vec x)\,\dd\mu(\vec x)=
+    \end{equation}
+    Su $\boundary B_\epsilon(\vec y)$ abbiamo che $\vec x-\vec y$ è un vettore $\vepsilon$ con norma $\epsilon$, di conseguenza $\sfl(\vec x-\vec y)\sim\epsilon^{2-n}$, mentre la derivata normale di $u$ rimane limitata per la regolarità della funzione, come prima: allora
+    \begin{multline}
+        \abs[\bigg]{\int_{\boundary B_\epsilon(\vec y)} \sfl(\vec x-\vec y)\drp{u}{\nu}(\vec x)\,\dd\sigma(\vec x)}\le
+        \frac1{\epsilon^{n-2}}\sup_{\vec x\in\boundary B_\epsilon(\vec y)}\abs[\bigg]{\drp{u}{\nu}(\vec x)}\int_{\boundary B_\epsilon(\vec y)}\dd\sigma(\vec x)\le\\\le
+        \frac1{\epsilon^{n-2}}c\int_{\boundary B_\epsilon(\vec y)}\dd\sigma(\vec x)=
+        \frac1{\epsilon^{n-2}}cn\omega_n\epsilon^{n-1}=
+        cn\omega_n\epsilon\to 0
+    \end{multline}
+    per $\epsilon\to 0^+$, mentre
+    \begin{equation}
+        \int_{\boundary B_\epsilon(\vec y)} u(\vec x)\drp{\sfl}{\nu}(\vec x-\vec y)\,\dd\sigma(\vec x)=
+        \drp{\sfl}{\epsilon}(\vepsilon)\int_{\boundary B_\epsilon(\vec y)} u(\vec x)\,\dd\sigma(\vec x)=
+        \frac1{n\omega_n\epsilon^{n-1}} \int_{\boundary B_\epsilon(\vec y)}u(\vec x)\,\dd\sigma(\vec x)
+    \end{equation}
+    e siccome il denominatore è la misura di $\boundary B_\epsilon(\vec y)$ e $u\in\cont[][\big]{\boundary B_\epsilon(\vec y)}$, questo termine è il valore medio di $u$ in $\boundary B_\epsilon(\vec y)$, che per $\epsilon\to 0^+$ tende dunque a $u(\vec y)$.
+    Di conseguenza
+    \begin{equation}
+        u(\vec y)=
+        \int_{\boundary\Omega}\biggl[u(\vec x)\drp{\sfl}{\nu}(\vec x-\vec y)-\sfl(\vec x-\vec y)\drp{u}{\nu}(\vec x)\biggr]\,\dd\sigma(\vec x)+
+        \int_\Omega \sfl(\vec x-\vec y)\lap u(\vec x)\,\dd\mu(\vec x).\qedhere
+    \end{equation}
+\end{proof}
+Se inoltre $u\in\contsc[\infty]{\Omega}$, allora è nulla sul bordo e il primo integrale è zero, e otteniamo
+\begin{equation}
+    u(\vec y)=\int_\Omega \sfl(\vec x-\vec y)\lap u(\vec x)\,\dd\mu(\vec x);
+\end{equation}
+integrando per parti, tramite la seconda identità di Green \eqref{eq:green2} scambiamo le derivate (il laplaciano è sempre una derivata sulle variabili $\vec x$) ottenendo infine
+\begin{equation}
+    u(\vec y)=\int_\Omega \lap\sfl(\vec x-\vec y)u(\vec x)\,\dd\mu(\vec x)
+    \label{eq:laplace-delta}
+\end{equation}
+da cui vediamo che, come distribuzione, $\lap\sfl(\vec x-\vec y)=\delta(\vec x-\vec y)$.
+
+Ecco due conseguenze di questa formula.
+\begin{itemize}
+    \item Se $u$ è armonica, allora in tutto $\Omega$ è univocamente determinata dai valori che assume su $\boundary\Omega$; in ogni caso è determinata da $u$ e $\drp{u}{\nu}$ su $\boundary\Omega$. % E il laplaciano?
+    \item Viceversa, possiamo assegnare una qualsiasi condizione al contorno su $\boundary\Omega$ per determinare univocamente una soluzione?
+        No, se vogliamo assegnare arbitrariamente allo stesso momento sia $u$ che $\drp{u}{\nu}$: è sufficiente infatti specificarne uno dei due.
+\end{itemize}
+
+\begin{definizione} \label{d:funzione-green}
+    Sia $\Omega\subseteq\R^n$ aperto.
+    Una funzione $G(\vec x,\vec y)$ definita su $\Omega\times\Omega$ tranne che per $\vec x=\vec y$ a valori in $\R$ è detta \emph{funzione di Green} per $\Omega$ se:
+    \begin{itemize}
+        \item $G(\vec x,\vec y)=0$ se $\vec x\in\boundary\Omega$;
+        \item la funzione $G(\vec x,\vec y)-\sfl(\vec x-\vec y)$ è armonica per ogni $\vec x\in\Omega$ (anche per $\vec x=\vec y$).
+    \end{itemize}
+\end{definizione}
+Evidentemente $G$ deve mostrare la stessa singolarità di $\sfl$ in $\vec x=\vec y$, affinch\'e le due si cancellino per dare una funzione armonica.
+Sia dunque $G$ una funzione di Green in $\Omega$: fissiamo $\vec y\in\Omega$ e poniamo $v(\vec x)\defeq G(\vec x,\vec y)-\sfl(\vec x-\vec y)$.
+Dalla seconda identità di Green \eqref{eq:green2} si ottiene, per una funzione $u$ armonica in $\Omega$ (come lo è $v$)
+\begin{equation}
+    0=\int_\Omega (v\lap u-u\lap v)\,\dd\mu=\int_{\boundary\Omega}\biggl(v\drp{u}{\nu}-u\drp{v}{\nu}\biggr)\,\dd\sigma
+\end{equation}
+ma per la formula di rappresentazione \eqref{eq:rappresentazione-green}
+\begin{equation}
+    u(\vec y)=\int_{\boundary\Omega}\biggl(u\drp{\sfl}{\nu}-\sfl\drp{u}{\nu}\biggr)\,\dd\sigma+\int_\Omega \sfl\lap u\,\dd\mu
+\end{equation}
+perciò prendendone la differenza abbiamo
+\begin{multline}
+        u(\vec y)=
+        \int_{\boundary\Omega} \biggl(u\drp{\sfl}{\nu}-\sfl\drp{u}{\nu}\biggr)\,\dd\sigma-\int_{\boundary\Omega}\biggl[(G-\sfl)\drp{u}{\nu}-u\drp{G}{\nu}+u\drp{\sfl}{\nu}\biggr]\,\dd\sigma=\\=
+        \int_{\boundary\Omega} \biggl(u\drp{G}{\nu}-G\drp{u}{\nu}\biggr)\,\dd\sigma=
+        \int_{\boundary\Omega} u\drp{G}{\nu}\,\dd\sigma,
+\end{multline}
+siccome $G$ è nulla se $\vec x\in\boundary\Omega$, che mostra come $u$ sia determinata unicamente dai valori che assume su $\boundary\Omega$.
+Analogamente si può creare un'altra funzione di Green $\tilde{G}$ per $\Omega$, tale che sia definita ancora per $\vec x\ne\vec y$ ma stavolta con $\drp{\tilde{G}}{\nu}=1$ per $\vec x\in\boundary\Omega$, e tale che $\tilde{G}-\sfl$ sia armonica in tutto $\Omega$.
+Ricalcando i calcoli precedenti si ottiene stavolta
+\begin{equation}
+    u(\vec y)=
+    \int_{\boundary\Omega} u\,\dd\sigma-\int_{\boundary\Omega}\tilde{G}\drp{u}{\nu}\,\dd\sigma+\int_\Omega\tilde{G}\lap u\,\dd\mu.
+\end{equation}
+
+Diamo uno sguardo all'unicità delle soluzioni: se $u_1$ e $u_2$ sono funzioni armoniche su $\Omega$ tali che $\drp{u_1}{\nu}=\drp{u_2}{\nu}$ su $\boundary\Omega$, allora $u_1-u_2$ è ancora armonica e soddisfa $\drp{(u_1-u_2)}{\nu}=0$ sul bordo.
+Di conseguenza nell'equazione precedente rimane
+\begin{equation}
+    u_1(\vec y)-u_2(\vec y)=\int_{\boundary\Omega}(u_1-u_2)\,\dd\sigma
+\end{equation}
+da cui otteniamo che $u_1-u_2$ è costante.
+
+Il problema di trovare una soluzione conoscendo la funzione sul bordo è noto come \emph{problema di Dirichlet}; se invece è nota la derivata normale, \emph{problema di Neumann}.
