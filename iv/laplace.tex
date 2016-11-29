@@ -245,3 +245,76 @@ Avevamo visto che se $u$ è armonica in $\Omega$ allora $u(\vec y)=\int_{\bounda
     u(\vec y)=\frac{R^2-\norm{\vec y}^2}{n\omega_nR}\int_{\boundary B_R(\vec 0)}\frac{u(\vec x)}{\norm{\vec x-\vec y}^n}\,\dd\sigma(\vec x).
     \label{eq:rappresentazione-green-palla}
 \end{equation}
+Ci chiediamo ora l'inverso, ossia se ogni funzione costruita in questo modo è armonica.
+\begin{teorema} \label{t:laplace-rappresentazione-poisson}
+    Dato il problema di Dirichlet in $B_R(\vec 0)$
+    \begin{equation}
+        \begin{cases}
+            \lap u=0 & x\in B_R(\vec 0)\\
+            u=\phi   & x\in\boundary B_R(\vec 0)
+        \end{cases}
+    \end{equation}
+    per una certa $\phi\in\cont{\boundary B_R(\vec 0)}$, sia $u\colon\clos{B_R(\vec 0)}\to\R$ la funzione definita da
+    \begin{equation}
+        u(\vec x)=\frac{R^2-\norm{\vec x}^2}{n\omega_n R}\int_{\boundary B_R(\vec 0)}\frac{\phi(\vec y)}{\norm{\vec x-\vec y}^n}\,\dd\sigma(\vec y)
+    \end{equation}
+    per $\vec x\in B_R(\vec 0)$ e da $u=\phi$ per $\vec x\in\boundary B_R(\vec 0)$.
+    Allora la funzione $u$ è armonica in $B_R(\vec 0)$, ed è continua in $\clos{B_R(\vec 0)}$.
+\end{teorema}
+\begin{proof}
+    Sappiamo che la funzione di Green $G$ per $B_R(\vec 0)$ è armonica in entrambe le variabili, e che
+    \begin{equation}
+        u(\vec y)=\int_{\boundary B_R(\vec 0)}u(\vec x)\drp{G}{\nu_{\vec x}}(\vec x,\vec y)\,\dd\sigma(\vec x).
+    \end{equation}
+    Dato che $\lap_{\vec y}G=0$, si ha ovviamente $\drp{}{\nu_{\vec x}}\lap_{\vec y}G=0$ da cui $\lap_y\drp{}{\nu_{\vec x}}G=0$.
+    Pertanto il nucleo
+    \begin{equation}
+        K(\vec x,\vec y)=
+        \drp{G}{\nu_{\vec x}}(\vec x,\vec y)=
+        \frac{R^2-\norm{\vec x}^2}{n\omega_n R}\frac1{\norm{\vec x-\vec y}^n}
+    \end{equation}
+    dell'integrale è ancora armonico in $\vec y$, ossia $\lap_{\vec y}K=0$, e di conseguenza anche $u$ è armonica.
+
+    Osserviamo ora che la funzione $\phi=1$ in $\clos{B_R(\vec 0)}$ è evidentemente armonica, quindi
+    \begin{equation}
+        1=
+        \frac{R^2-\norm{\vec x}^2}{n\omega_n R}\int_{\boundary B_R(\vec 0)}\frac1{\norm{\vec x-\vec y}^n}\,\dd\sigma(\vec x)=
+        \int_{\boundary B_R(\vec 0)}K(\vec x,\vec y)\,\dd\sigma(\vec x)
+    \end{equation}
+    per ogni $\vec y\in B_R(\vec 0)$.
+    Sia $\vec y_0\in\boundary B_R(\vec 0)$: per la continuità di $\phi$, per ogni $\epsilon>0$ esiste $\delta>0$ tale che $\abs{\phi(\vec y)-\phi(\vec y_0)}<\epsilon/2$ per ogni $\vec y\in\boundary B_R(\vec 0)$ tale che $\norm{\vec y-\vec y_0}<2\delta$.
+    Dato che $\boundary B_R(\vec 0)$ è compatto, si ha che
+    \begin{equation}
+        m\defeq
+        \sup_{\boundary B_R(\vec 0)}\phi=
+        \max_{\boundary B_R(\vec 0)}\phi<
+        +\infty,
+    \end{equation}
+    e siccome
+    \begin{equation}
+        u(\vec y_0)=
+        \phi(\vec y_0)=
+        \phi(\vec y_0)\int_{\boundary B_R(\vec 0)}K(\vec x,\vec y)\,\dd\sigma(\vec x)=
+        \int_{\boundary B_R(\vec 0)}K(\vec x,\vec y)\phi(\vec y_0)\,\dd\sigma(\vec x)
+    \end{equation}
+    risulta
+    \begin{multline}
+        \abs{u(\vec y)-u(\vec y_0)}=
+        \abs[\bigg]{\int_{\boundary B_R(\vec 0)}K(\vec x,\vec y)\bigl[\phi(\vec x)-\phi(\vec y_0)\bigr]\,\dd\sigma(\vec x)}\le\\\le
+        \int_{\{\vec x\in\boundary B_R(\vec 0)\colon \norm{\vec x-\vec y_0}<2\delta\}}K(\vec x,\vec y)\abs{\phi(\vec x)-\phi(\vec y_0)}\,\dd\sigma(\vec x)+\\+
+        \int_{\{\vec x\in\boundary B_R(\vec 0)\colon \norm{\vec x-\vec y_0}\ge 2\delta\}}K(\vec x,\vec y)\abs{\phi(\vec x)-\phi(\vec y_0)}\,\dd\sigma(\vec x).
+    \end{multline}
+    Ora, per $\vec x\in B_R(\vec 0)$ e $\norm{\vec x-\vec y_0}<2\delta$ si ha $\abs{\phi(\vec x)-\phi(\vec y_0)}<\epsilon/2$ dunque il primo addendo è minore anch'esso di $\epsilon/2$, dato che $K$ è positiva e l'integrale è solo su una parte di $\boundary B_R(\vec 0)$; per il secondo addendo, $\abs{\phi(\vec x)-\phi(\vec y_0)}\ge 2m$ perciò
+    \begin{equation}
+        \abs{u(\vec y)-u(\vec y_0)}\le
+        \frac{\epsilon}2+2m\frac{R^2-\norm{\vec x}^2}{n\omega_n R}\int_{\{\vec x\in\boundary B_R(\vec 0)\colon \norm{\vec x-\vec y_0}\ge 2\delta\}}\frac1{\norm{\vec x-\vec y}^n}\,\dd\sigma(\vec x).
+    \end{equation}
+    Per $\norm{\vec x-\vec y_0}\ge 2\delta$ vale comunque, per $\norm{\vec y-\vec y_0}<\delta$, che $\norm{\vec x-\vec y}\ge\norm{\vec x-\vec y_0}-\norm{\vec y_0-\vec y}\ge 2\delta-\delta=\delta$ quindi
+    \begin{equation}
+        \frac1{\norm{\vec x-\vec y}^n}\le\frac1{\delta^n}
+        \qqq
+        \abs{u(\vec y)-u(\vec y_0)}\le
+        \frac{\epsilon}2+2m\frac{R^2-\norm{\vec x}^2}{n\omega_n R}\frac1{\delta^n}n\omega_n R^{n-1}.
+    \end{equation}
+    Al limite per $\norm{\vec y}\to R$ si ha $\abs{R-\norm{\vec y}}\le\tilde{\delta}$ e l'ultimo termine rimane minore di $\epsilon/2$, quindi $\abs{u(\vec y)-u(\vec y_0)}\le\epsilon$ che prova che $u$ è continua in $B_R(\vec 0)$.
+\end{proof}
