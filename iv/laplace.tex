@@ -318,3 +318,78 @@ Ci chiediamo ora l'inverso, ossia se ogni funzione costruita in questo modo è a
     \end{equation}
     Al limite per $\norm{\vec y}\to R$ si ha $\abs{R-\norm{\vec y}}\le\tilde{\delta}$ e l'ultimo termine rimane minore di $\epsilon/2$, quindi $\abs{u(\vec y)-u(\vec y_0)}\le\epsilon$ che prova che $u$ è continua in $B_R(\vec 0)$.
 \end{proof}
+
+\section{Formule del valor medio}
+Definiamo le seguenti notazioni per indicare la media integrale di una funzione sulla palla $B_R(\vec x)$, per un $\vec x\in\R^n$, o la sua frontiera:
+\begin{equation}
+    \avint_{B_R(\vec x)}u\,\dd\mu\defeq\frac1{\omega R^n}\int_{B_R(\vec x)}u\,\dd\mu
+    \qquad
+    \avint_{\boundary B_R(\vec x)}u\,\dd\sigma\defeq\frac1{n\omega_nR^{n-1}}\int_{\boundary B_R(\vec x)}u\,\dd\sigma.
+\end{equation}
+\begin{teorema} \label{t:valor-medio-laplace}
+    Se $u\in\cont[2]{\Omega}$ è armonica allora, per ogni $R$ tale che $B_R(\vec x)\subset\Omega$,
+    \begin{equation}
+        u(\vec x)=\avint_{\boundary B_R(\vec x)} u\,\dd\sigma=\avint_{B_R(\vec x)} u\,\dd\mu.
+    \end{equation}
+\end{teorema}
+\begin{proof}
+    Senza perdere generalità possiamo assumere che $\vec x=0$.
+    Tramite la formula di Poisson in $\vec y=0$ abbiamo che
+    \begin{equation}
+        u(\vec 0)=\frac{R^2}{n\omega_n R}\int_{\boundary B_R(\vec 0)}\frac{u(\vec x)}{\norm{\vec x}^n}\,\dd\sigma(\vec x)
+    \end{equation}
+    per cui, siccome $\norm{\vec x}=R$ sul bordo,
+    \begin{equation}
+        u(\vec 0)=\frac1{n\omega_n R^{n-1}}\int_{\boundary B_R(\vec 0)}u\,\dd\sigma
+    \end{equation}
+    che dimostra la prima uguaglianza.
+    
+    Per la seconda, invece, integrando radialmente si ha
+    \begin{multline}
+        \int_{B_R(\vec 0)} u\,\dd\mu=
+        \int_0^R\int_{\boundary B_s(\vec 0)} u\,\dd\sigma\,\dd s=
+        \int_0^R n\omega_n s^{n-1}\avint_{\boundary B_s(\vec 0)} u\,\dd\sigma\,\dd s=\\=
+        u(\vec 0)n\omega_n \int_0^R s^{n-1}\,\dd s=
+        u(\vec 0)n\omega_n\frac{R^n}{n}
+    \end{multline}
+    da cui otteniamo
+    \begin{equation}
+        u(\vec 0)=\frac1{\omega_nR^n}\avint_{B_R(\vec 0)} u\,\dd\mu.\qedhere
+    \end{equation}
+\end{proof}
+Vale anche l'inverso, ossia, una funzione che possiede questa proprietà del valor medio è armonica?
+S\`i, come vediamo nel seguente teorema.
+\begin{teorema} \label{t:valor-medio-armonicità}
+    Se $u\in\cont[2]{\Omega}$ è tale che $u(\vec y)=\avint_{\boundary B_R(\vec y)} u\,\dd\sigma$ per ogni $R$ tale che $B_R(\vec y)\subset\Omega$, allora $u$ è armonica.
+\end{teorema}
+\begin{proof}
+    Supponiamo che $u$ non sia armonica, ossia che esista $\vec x\in\Omega$ tale che $\lap u(\vec x)\ne 0$, e assumiamo (senza perdere generalità) che $\lap u(\vec x)>0$.
+    Siccome $u\in\cont[2]{\Omega}$, il suo laplaciano è continuo dunque esiste $r$ tale per cui $\lap u(\bar{\vec x})>0$ per ogni $\bar{\vec x}\in B_r(\vec x)\subset\Omega$.
+    Sia $R>r$, e definiamo, con una traslazione da $\vec x$ a $\vec 0$,
+    \begin{equation}
+        \phi(R)\defeq\avint_{\boundary B_R(\vec 0)} u\,\dd\sigma.
+    \end{equation}
+    Effettuiamo una traslazione delle coordinate nell'origine, con $\vec x=\vec y+R\vec z$ e $\norm{\vec z}=1$ ottenendo
+    \begin{equation}
+        \phi(R)=\avint_{\boundary B_1(\vec 0)}u(\vec y+R\vec z)\,\dd\sigma(\vec z).
+    \end{equation}
+    Ora, $\phi$ è costante, poich\'e per il teorema del valore medio l'integrale nell'equazione precedente è sempre uguale a $u(\vec y)$: allora $\phi'(R)=0$, e cos\`i
+    \begin{equation}
+        0=
+        \avint_{\boundary B_1(\vec 0)} \drv{}{R}u(\vec y+R\vec z)\,\dd\sigma(\vec z)=
+        \avint_{\boundary B_1(\vec 0)} \scalar{\vec z}{\grad u(\vec y+R\vec z)}\,\dd\sigma(\vec z).
+    \end{equation}
+    Tornando alle variabili originarie,
+    \begin{equation}
+        0=
+        \avint_{\boundary B_R(\vec y)} \scalar{\frac{\vec x-\vec y}{R}}{\grad u(\vec x)}\,\dd\sigma(\vec x)=
+        \avint_{\boundary B_R(\vec y)} \scalar{\vnu}{\grad u}\,\dd\sigma=
+        \avint_{\boundary B_R(\vec y)} \drp{u}{\nu}\,\dd\sigma
+    \end{equation}
+    e infine per il teorema della divergenza questo è uguale a
+    \begin{equation}
+        \frac1{n\omega_n R^{n-1}}\int_{B_R(\vec y)} \lap u\,\dd\mu
+    \end{equation}
+    che è positivo, poich\'e $B_R(\vec y)$ contiene $B_r(\vec y)$ dove $\lap u$ è positivo.
+    Questo contraddice le ipotesi, quindi $u$ deve essere armonica.
+\end{proof}
