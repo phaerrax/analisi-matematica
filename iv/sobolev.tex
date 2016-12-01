@@ -34,14 +34,38 @@ In più variabili, preso $\Omega$ aperto in $\R^n$, abbiamo l'insieme $\locleb[1
 \end{equation}
 sempre per ogni $\phi\in\contsc[\infty]{\Omega}$.
 
+Le derivate deboli di ordine superiore a uno si definiscono in modo analogo.
+Se $f$ è una funzione a $n$ variabili, associamo a ogni derivata una lista di $n$ indici $i_1,\dotsc,i_n$, tali per cui l'indice $i_k$ indica quante volte si è derivato rispetto alla $k$-esima variabile: una derivata di ordine $d$ è dunque tale che $i_1+\dotsb+i_n=d$.
+Usiamo perciò la notazione con i \emph{multiindici}, ossia delle $n$-uple di numeri interi non negativi $\alpha=(\alpha_1,\dotsc,\alpha_n)\in\N_0^n$ per cui è definita (tra altre proprietà) il valore assoluto $\abs{\alpha}\defeq\alpha_1+\dotsb+\alpha_n$.
+Indicheremo dunque le derivate parziali come
+\begin{equation}
+    D^\alpha f\defeq\frac{\partial^{\abs{\alpha}}f}{\partial^{\alpha_1}x_1\dotsm\partial^{\alpha_n}x_n},
+\end{equation}
+e $\abs{\alpha}$ è l'ordine di derivazione.
+Detto ciò, data una funzione $f\in\leb[p]{\Omega}$, se esiste una $g$ tale che
+\begin{equation}
+    \int_\Omega fD^\alpha\,\dd\mu=(-1)^{\abs{\alpha}}\int_\Omega g\phi\,\dd\mu
+\end{equation}
+per ogni $\phi\in\contsc[\infty]{\Omega}$ allora $g$ è la $\alpha$-esima derivata debole di $f$.
+
 \section{Spazi di Sobolev}
 Da qui in avanti, quanto parleremo di derivate (di qualsiasi tipo) intenderemo sempre le derivate deboli, e useremo la notazione classica $\drv{f}{x}$, $\drp{f}{x}$ etc. anche per le derivate deboli.
 Sia $1\le p<+\infty$ e $\Omega\in\R^n$ aperto.
 Lo spazio delle funzioni in $\leb[p]{\Omega}$ che possiedono una derivata debole $(v_1,\dotsc,v_n)\in\leb[p]{\Omega}^n$, ossia tali per cui la funzione e tutte le sue derivate parziali sono in $\leb[p]{\Omega}$, è detto \emph{spazio di Sobolev $1,p$} ed è indicato con $\sobW[1,p]{\Omega}$.
 In esso possiamo definire una norma come
 \begin{equation}
-    \norm{u}_{1,p}\defeq\biggl(\norm{u}_p^p+\sum_{i=1}^n\norm[\bigg]{\drp{u}{x_i}}_p^p\biggr)^{1/p}
+    \norm{u}_{1,p}\defeq\biggl(\norm{u}_p^p+\sum_{i=1}^n\norm[\bigg]{\drp{u}{x_i}}_p^p\biggr)^{1/p}.
     \label{eq:norma-W1p}
+\end{equation}
+Questi spazi si generalizzano poi per le derivate di ordine superiore: lo \emph{spazio di Sobolev} $k,p$, indicato con $\sobW[k,p]{\Omega}$, è lo spazio delle funzioni $u\in\leb[p]{\Omega}$ le cui derivate deboli $D^\alpha u$ per ogni $\alpha$ tale che $\abs{\alpha}\le k$ sono ancora in $\leb[p]{\Omega}$.
+Alternativamente si può definire induttivamente come
+\begin{equation}
+    \sobW[k,p]=\biggl\{u\in\sobW[k-1,p]{\Omega}\colon \drp{u}{x_i}\in\sobW[k-1,p]{\Omega}\biggr\}.
+\end{equation}
+In questi spazi si può definire la norma
+\begin{equation}
+    \norm{u}_{k,p}\defeq\sum_{\abs{\alpha}\le k}\norm{D^\alpha u}_p.
+    \label{eq:norma-Wkp}
 \end{equation}
 \begin{proprieta}
     Lo spazio $\sobW[1,p]{\Omega}$ ha le seguenti proprietà:
@@ -75,13 +99,21 @@ In esso possiamo definire una norma come
             \begin{equation}
                 \norm[\big]{\bigl(\norm{\grad u}\bigr)}_p=\Bigl(\int_\Omega\Bigl[\sum_{i=1}^n\Bigl(\drp{u}{x_i}\Bigr)^2\Bigr]^{p/2}\,\dd\mu\Bigr)^{1/p}
             \end{equation}}
-        \item Come prima, siccome $E$ è separabile e $T(\sobW[1,p]{\Omega})\subset E$ allora è separabile anche $\sobW[1,p]{\Omega}$.
+        \item Come prima, siccome $E$ è separabile e $T(\sobW[1,p]{\Omega})\subset E$ allora è separabile anche $\sobW[1,p]{\Omega}$.\qedhere
     \end{itemize}
 \end{proof}
-Nel caso particolare di $p=2$, abbiamo visto che lo spazio $\lclass[2]$ è uno spazio di Hilbert: per il corrispontende spazio di Sobolev, la norma \eqref{eq:norma-funzionale} può essere fatta discendere dal prodotto interno
+Gli stessi risultati valgono anche, con le medesime condizioni su $p$, per gli spazi $\sobW[k,p]{\Omega}$.
+
+Nel caso di $p=2$, abbiamo visto che lo spazio $\lclass[2]$ è uno spazio di Hilbert: per il corrispondente spazio di Sobolev, la norma \eqref{eq:norma-funzionale} può essere fatta discendere dal prodotto interno
+\begin{equation}
+    \inner{f}{g}_{k,2}\defeq
+    \sum_{\abs{\alpha}\le k}\int_\Omega D^\alpha fD^\alpha g\,\dd\mu
+    \label{eq:prodotto-interno-Wk2}
+\end{equation}
+da cui $\norm{f}_{k,2}=\sqrt{\inner{f}{f}_{k,2}}$; per $k=1$ si ha in particolare
 \begin{equation}
     \inner{f}{g}_{1,2}\defeq
-    \int_\Omega fg\,\dd\mu+\int_\Omega \scalar{\grad f}{\grad g}\,\dd\mu
+    \int_\Omega (fg+\scalar{\grad f}{\grad g})\,\dd\mu.
     \label{eq:prodotto-interno-W12}
 \end{equation}
-e con ciò anche lo spazio $\sobW[1,2]{\Omega}$ è uno spazio di Hilbert.
+Con ciò anche lo spazio $\sobW[k,2]{\Omega}$ è uno spazio di Hilbert: per questo fatto questi spazi sono denotati anche come $\sobH[k]{\Omega}$, sottintendendo $p=2$.
