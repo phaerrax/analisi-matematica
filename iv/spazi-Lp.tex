@@ -290,6 +290,22 @@ delle cui funzioni il supporto è chiuso --- per definizione --- e limitato perc
 \end{proof}
 La densità di $\contsc{\Omega}$ si può anche scrivere come $\clos{\contsc{\Omega}}\equiv\leb[p]{\Omega}$, dove la chiusura è presa rispetto alla distanza data da $\norm{\cdot}_p$: in altre parole, ``aggiungendo i limiti'' nella norma $\norm{\cdot}_p$ a $\contsc{\Omega}$ (che, da solo, non è completo) si ottiene $\leb[p]{\Omega}$.
 
+A proposito delle funzioni a supporto compatto, dimostriamo il seguente, molto importante, lemma.
+\begin{lemma} \label{t:fondamentale-calcolo-variazioni}
+    Se $g\in\cont{\Omega}$ e $\int_\Omega g\eta\,\dd\mu=0$ per ogni $\eta\in\contsc[\infty]{\Omega}$, allora $g=0$.
+\end{lemma}
+\begin{proof}
+    Supponiamo per assurdo che esista $\vec x_0\in\Omega$ tale che $g(\vec x_0)\ne 0$, e assumiamo che $g(\vec x_0)>0$.
+    Per la continuità della funzione abbiamo che $\exists\delta>0$ tale che $\forall\vec x\in B_\delta(\vec x_0)$ si ha $g(\vec x)>0$, e in particolare $g(\vec x)\ge\frac12g(\vec x_0)$.
+    Allora, se $\eta$ è tale che $\supp\eta\supset B_\delta(\vec x_0)$ (anche qui assumiamo $\eta>0$) risulta $g\eta>0$, e cos\`i
+    \begin{equation}
+        \int_\Omega g\eta\,\dd\mu=
+        \int_{\supp\eta} g\eta\,\dd\mu\ge
+        \int_{\supp\eta} \frac12g(\vec x_0)\eta\,\dd\mu>0
+    \end{equation}
+    in contraddizione con le ipotesi, perciò deve essere $g=0$.
+\end{proof}
+
 \section{Spazi duali}
 Vediamo ora alcune generalità sugli spazi duali a spazi normati, che poi applicheremo agli insiemi $\lclass[p]$.
 \begin{definizione} \label{d:mappa-lineare-continua-limitata}
