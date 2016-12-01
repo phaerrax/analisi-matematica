@@ -393,3 +393,40 @@ S\`i, come vediamo nel seguente teorema.
     che è positivo, poich\'e $B_R(\vec y)$ contiene $B_r(\vec y)$ dove $\lap u$ è positivo.
     Questo contraddice le ipotesi, quindi $u$ deve essere armonica.
 \end{proof}
+
+\begin{teorema} \label{t:principio-massimo-laplace}
+    Se $u\in\cont[2]{\Omega}\cap\cont{\clos{\Omega}}$ è armonica su $\Omega$, allora essa assume il suo massimo su $\boundary\Omega$, vale a dire
+    \begin{equation}
+        \max_{\clos{\Omega}}u=\max_{\boundary\Omega}u.
+    \end{equation}
+    Se inoltre $\Omega$ è connesso ed esiste $\vec x_0\in\Omega$ tale che $u(\vec x_0)=\max_{\clos{\Omega}}u$, allora $u$ è costante su $\Omega$.
+\end{teorema}
+\begin{proof}
+    (Dimostriamo solo la seconda affermazione, dato che essa implica la prima.)
+    Sia $M\defeq\max_{\clos{\Omega}}u=u(\vec x_0)$, e $r\in\bigl(0,d(\vec x_0,\boundary\Omega)\bigr)$ con il quale costruiamo la palla $B_r(\vec x_0)\subset\Omega$.
+    Per la proprietà del valor medio risulta
+    \begin{equation}
+        M=u(\vec x_0)=\avint_{B_r(\vec x_0)}u\,\dd\mu.
+        \label{eq:dim-principio-massimo-locale}
+    \end{equation}
+    Poich\'e $u(\vec x)\le M$ per ogni $\vec x\in\Omega$, si deve avere $\avint_{B_r(\vec x_0)}u\,\dd\mu\le M$.
+    Se però esistesse un punto $\vec x$ per il quale $u(\vec x)<M$, allora $\avint_{B_r(\vec x_0)}u\,\dd\mu$ sarebbe \emph{minore} di $M$, contraddicendo la \eqref{eq:dim-principio-massimo-locale}.
+    Allora deve essere $u(\vec x)=M$ per ogni $\vec x\in B_r(\vec x_0)$: di conseguenza, l'insieme $P\defeq\{\vec x\in\Omega\colon u(\vec x)=M\}$ è sia aperto che chiuso in $\Omega$ (con la topologia indotta da $\R^n$) e siccome quest'ultimo è connesso, $P=\Omega$ provando cos\`i che $u$ è costante in $\Omega$.
+\end{proof}
+
+\begin{teorema} \label{t:unicità-problema-dirichlet-laplace}
+    Se $\phi_1,\phi_2\in\cont[2]{\Omega}$ sono soluzioni del medesimo problema di Dirichlet in $\Omega$
+    \begin{equation}
+        \begin{cases}
+            \lap u=0 \\
+            u\bigr|_{\boundary\Omega}=g
+        \end{cases}
+    \end{equation}
+    allora $\phi_1=\phi_2$ in $\Omega$.
+\end{teorema}
+\begin{proof}
+    Mostriamo che $\phi_1\le\phi_2$ in $\Omega$ è una conseguenza di $\phi_1\le\phi_2$ in $\boundary\Omega$.
+    Sia $v=\phi_1-\phi_2$: essa è soluzione del problema di Dirichlet con $\lap v=0$ in $\Omega$ e $v\le 0$ su $\boundary\Omega$ poich\'e $v$ deve assumere il massimo (che è pari a zero) sul bordo, dove $v=\phi_1-\phi_2\le 0$.
+    Se poi $\phi_1=\phi_2$ su $\boundary\Omega$, allora su tale bordo si ha contemporaneamente che $\phi_1\le\phi_2$ e $\phi_1\ge\phi_2$, dunque si ha sia $v\le 0$ sia $v\ge 0$ su $\Omega$, vale a dire $v=0$ cioè $\phi_1=\phi_2$ su tutto $\Omega$.
+\end{proof}
+Il ragionamento di questa dimostrazione si applica ugualmente all'equazione di Poisson $\lap u=f$.
