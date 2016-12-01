@@ -33,3 +33,55 @@ In più variabili, preso $\Omega$ aperto in $\R^n$, abbiamo l'insieme $\locleb[1
     \int_\Omega v_i\phi\,\dd\mu=-\int_\Omega u\drp{\phi}{x_i}\,\dd\mu
 \end{equation}
 sempre per ogni $\phi\in\contsc[\infty]{\Omega}$.
+
+\section{Spazi di Sobolev}
+Da qui in avanti, quanto parleremo di derivate (di qualsiasi tipo) intenderemo sempre le derivate deboli, e useremo la notazione classica $\drv{f}{x}$, $\drp{f}{x}$ etc. anche per le derivate deboli.
+Sia $1\le p<+\infty$ e $\Omega\in\R^n$ aperto.
+Lo spazio delle funzioni in $\leb[p]{\Omega}$ che possiedono una derivata debole $(v_1,\dotsc,v_n)\in\leb[p]{\Omega}^n$, ossia tali per cui la funzione e tutte le sue derivate parziali sono in $\leb[p]{\Omega}$, è detto \emph{spazio di Sobolev $1,p$} ed è indicato con $\sobW[1,p]{\Omega}$.
+In esso possiamo definire una norma come
+\begin{equation}
+    \norm{u}_{1,p}\defeq\biggl(\norm{u}_p^p+\sum_{i=1}^n\norm[\bigg]{\drp{u}{x_i}}_p^p\biggr)^{1/p}
+    \label{eq:norma-W1p}
+\end{equation}
+\begin{proprieta}
+    Lo spazio $\sobW[1,p]{\Omega}$ ha le seguenti proprietà:
+    \begin{itemize}
+        \item è uno spazio di Banach per $1\le p<+\infty$ (e si può estendere anche per $p=+\infty$);
+        \item è riflessivo per $1<p<+\infty$;
+        \item è separabile per $1\le p<+\infty$.
+    \end{itemize}
+\end{proprieta}
+\begin{proof}
+    La dimostrazione si basa sulle proprietà analoghe degli spazi $\lclass[p]$ già viste.
+    \begin{itemize}
+        \item Sia $\{u_n\}_{n\in\N}\subset\sobW[1,p]{\Omega}$ una successione di Cauchy: allora scelto arbitrariamente $\epsilon>0$ esiste $\bar{n}\in\N$ tale che per ogni $n,m>\bar{n}$ si ha
+            \begin{equation}
+                \norm{u_n-u_m}_p^p+\sum_{i=1}^n\norm[\bigg]{\drp{u_n}{x_i}-\drp{u_m}{x_i}}_p^p<\epsilon
+            \end{equation}
+            Questo significa, dato che tutti gli addendi sono positivi, che $\epsilon$ è maggiore di ciascuno di essi, ossia la funzione $u_n$ e le sue derivate parziali formano, una per una, successioni di Cauchy; per la completezza di $\leb[p]{\Omega}$ ciò significa che esistono $u,g_i$ con $i\in\{1,\dotsc,n\}$ tali che $u_n\to u$ e $\drp{u_n}{x_i}\to g_i$.
+            Allo stesso tempo, dalla definizione di derivata debole, $\forall\phi\in\contsc[\infty]{\Omega}$
+            \begin{equation}
+                \int_\Omega u_n\drp{\phi}{x_i}\,\dd\mu=-\int_\Omega\phi\drp{u_n}{x_i}\,\dd\mu
+            \end{equation}
+            perciò prendendo il limite per $n\to +\infty$ si ottiene
+            \begin{equation}
+                \int_\Omega u\drp{\phi}{x_i}\,\dd\mu=-\int_\Omega \phi g_i\,\dd\mu
+            \end{equation}
+            che mostra che $(g_1,\dotsc,g_n)$ è la derivata debole di $u$.
+        \item Sappiamo che $\leb[p]{\Omega}$ è riflessivo se $p\in(1,+\infty)$: sia $E\defeq\leb[p]{\Omega}^{n+1}$ (anch'esso ovviamente rilessivo) e definiamo la mappa $T\colon\sobW[1,p]{\Omega}\to E$ data da $u\mapsto(u,\grad u)$.
+            Essa è un'ovvia isometria rispetto alla norma $\norm{u}_{1,p}\defeq\norm{u}_p+\norm{\grad u}_p$, dato che la definizione di norma rimane proprio uguale, e poich\'e si dimostra che $T(\sobW[1,p]{\Omega})\subset E$ si ha che $\sobW[1,p]{\Omega}$ è riflessivo.
+            \footnote{La norma qui definita è \emph{equivalente} alla precedente: due norme $f$ e $g$ su uno spazio $X$ sono equivalenti se esistono $c_1,c_2>0$ tali che per ogni $x\in X$ si ha $c_1f(x)\le g(x)\le c_2 f(x)$.}
+            \footnote{Abbreviamo con $\norm{\grad u}_p$ la quantità
+            \begin{equation}
+                \norm[\big]{\bigl(\norm{\grad u}\bigr)}_p=\Bigl(\int_\Omega\Bigl[\sum_{i=1}^n\Bigl(\drp{u}{x_i}\Bigr)^2\Bigr]^{p/2}\,\dd\mu\Bigr)^{1/p}
+            \end{equation}}
+        \item Come prima, siccome $E$ è separabile e $T(\sobW[1,p]{\Omega})\subset E$ allora è separabile anche $\sobW[1,p]{\Omega}$.
+    \end{itemize}
+\end{proof}
+Nel caso particolare di $p=2$, abbiamo visto che lo spazio $\lclass[2]$ è uno spazio di Hilbert: per il corrispontende spazio di Sobolev, la norma \eqref{eq:norma-funzionale} può essere fatta discendere dal prodotto interno
+\begin{equation}
+    \inner{f}{g}_{1,2}\defeq
+    \int_\Omega fg\,\dd\mu+\int_\Omega \scalar{\grad f}{\grad g}\,\dd\mu
+    \label{eq:prodotto-interno-W12}
+\end{equation}
+e con ciò anche lo spazio $\sobW[1,2]{\Omega}$ è uno spazio di Hilbert.
