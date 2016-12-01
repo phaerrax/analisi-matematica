@@ -1,0 +1,35 @@
+\chapter{Spazi di Sobolev}
+\label{ch:spazi-sobolev}
+
+\section{Derivata debole}
+\label{sec:derivata-debole}
+Sia $I\subset\R$ un aperto: indichiamo con il simbolo $\locleb[1]{I}$ lo spazio delle funzioni da $I$ a $\R$ che sono in $\leb[1]{K}$ per ogni sottoinsieme $K$ compatto di $I$, vale a dire l'insieme
+\begin{equation}
+    \biggl\{u\colon I\to\R\colon \int_K\abs{u}\,\dd\mu<+\infty\quad\forall K\subset I\text{ compatto}\biggr\}.
+\end{equation}
+\begin{definizione} \label{d:derivata-debole}
+    Data una funzione $u\in\locleb[1]{I}$, diciamo che $v\in\locleb[1]{I}$ è la \emph{derivata debole} di $u$ se
+    \begin{equation}
+        \int_I v\phi\,\dd\mu=-\int_I u\phi'\,\dd\mu
+    \end{equation}
+    per ogni $\phi\in\contsc[\infty]{I}$.
+\end{definizione}
+\begin{osservazione} \label{o:unicita-derivata-debole}
+    La derivata debole, se esiste, è unica: se infatti $v_1$ e $v_2$ sono derivate deboli di $u\in\locleb[1]{I}$, allora detta $\tilde{v}\defeq v_1-v_2$ si ha che
+    \begin{equation}
+        \int_I \tilde{v}\phi\,\dd\mu=0
+    \end{equation}
+    per ogni $\phi\in\contsc[\infty]{I}$, da cui $\tilde{v}=0$ per il lemma \ref{t:fondamentale-calcolo-variazioni}.
+\end{osservazione}
+\begin{osservazione} \label{o:corrispondenza-derivata-debole}
+    Se $u\in\cont[1]{I}$, allora ammette sempre una derivata debole, che coincide con la derivata ordinaria: integrando per parti si ha chiaramente che
+    \begin{equation}
+        \int_I u'\phi\,\dd\mu=-\int_I u\phi'\,\dd\mu
+    \end{equation}
+    quindi la derivata debole è proprio $u'$.
+\end{osservazione}
+In più variabili, preso $\Omega$ aperto in $\R^n$, abbiamo l'insieme $\locleb[1]{\Omega}$ definito in modo analogo, e questa volta possiamo calcolare la derivata debole per ciascuna variabile: la derivata debole di $u\in\locleb[1]{\Omega}$, se esiste, è la funzione $(v_1,\dotsc,v_n)\in\locleb[1]{\Omega}^n$ tale che
+\begin{equation}
+    \int_\Omega v_i\phi\,\dd\mu=-\int_\Omega u\drp{\phi}{x_i}\,\dd\mu
+\end{equation}
+sempre per ogni $\phi\in\contsc[\infty]{\Omega}$.
