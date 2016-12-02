@@ -146,3 +146,99 @@ Si dice anche che la mappa di inclusione (continua e lineare) $\iota\colon X\to 
     Dato uno spazio $X$ di Banach, un suo sottoinsieme $K$ è relativamente compatto se e solo se $\forall\delta>0$ esiste $n=n(\delta)\in\N$ e un insieme di punti $\{a_1,\dotsc,a_n\}\in X$ tale che $\bigcup_{i=1}^n B_\delta(a_i)\supset K$.
 \end{teorema}
 In altre parole, fissato un raggio $\delta$ l'insieme $K$ può essere ricoperto con un numero finito di palle aventi tale raggio; un insieme con questa proprietà si dice anche \emph{totalmente limitato}.
+
+A partire dalle funzioni liscie a supporto compatto, definiamo lo spazio $\sobWc[k,p]{\Omega}$ come la chiusura di $\contsc[\infty]{\Omega}$, rispetto alla $k,p$-norma: esso è completo per definizione e di conseguenza è uno spazio di Banach.
+\begin{teorema}[Sobolev] \label{t:sobolev}
+    Sia $\Omega\subset\R^n$ aperto, limitato e con bordo lipschitziano, e siano $k,p\in\N$ tali che $kp<n$: allora $\sobW[k,p]{\Omega}\emb\leb[q]{\Omega}$ per ogni $q$ tale che $1\le q\le\frac{np}{n-kp}$.
+\end{teorema}
+\begin{proof}
+    Dimostriamo il teorema solo nel caso $\sobWc[1,p]{\Omega}\emb\leb[q]{\Omega}$, per cui si ha $p<n$ e $1\le q\le\frac{np}{n-p}$.
+    Dobbiamo mostrare che esiste una costante $c$, dipendente al più da $n$, $p$, e $\Omega$ tale che
+    \begin{equation}
+        \norm{u}_\frac{np}{n-p}\le c(\norm{u}_p+\norm{\grad u}_p).
+        \label{eq:dim-sobolev-obiettivo}
+    \end{equation}
+    Sia $u\in\contsc[1]{\Omega}$, che possiamo estendere, siccome $\supp u\subset\Omega$, a tutto $\R^n$ ponendo $u=0$ in $\R^n\setminus\Omega$.
+    Dato che si ha dalla definizione di $u$ che $\lim_{\norm{\vec x}\to+\infty}u(\vec x)=0$ (e in particolare per ciascuna $x_i\to+\infty$), per il teorema fondamentale del calcolo integrale possiamo scrivere per $i\in\{1,\dotsc,n\}$
+    \begin{equation}
+        u(\vec x)=\int_{-\infty}^{x_i}\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)\,\dd\xi.
+    \end{equation}
+    Allora troviamo
+    \begin{multline}
+        \abs{u(\vec x)}^\frac1{n-1}=
+        \abs[\bigg]{\int_{-\infty}^{x_i}\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)\,\dd\xi}^\frac1{n-1}\le\\ \le
+        \biggl[\int_{-\infty}^{x_i}\abs[\bigg]{\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)}\,\dd\xi\biggr]^\frac1{n-1}
+        \biggl[\int_\R\abs[\bigg]{\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)}\,\dd\xi\biggr]^\frac1{n-1}
+    \end{multline}
+    e considerando tutte le $n$ variabili
+    \begin{equation}
+        \abs{u(\vec x)}^\frac{n}{n-1}\le
+        \prod_{i=1}^n\biggl[\int_\R\abs[\bigg]{\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)}\,\dd\xi\biggr]^\frac1{n-1}.
+    \end{equation}
+    Ora, integrando in $x_1$ otteniamo
+    \begin{equation}
+        \int_\R\abs{u}^\frac{n}{n-1}\,\dd x_1\le
+        \biggl(\int_\R\abs[\bigg]{\drp{u}{x_1}}\,\dd x_1\biggr)^\frac1{n-1}
+        \int_\R\biggl[
+            \biggl(\int_\R\abs[\bigg]{\drp{u}{x_2}}\,\dd x_2\biggr)^\frac1{n-1}
+            \dotsm
+            \biggl(\int_\R\abs[\bigg]{\drp{u}{x_n}}\,\dd x_n\biggr)^\frac1{n-1}
+        \biggr]\,\dd x_1.
+    \end{equation}
+    Usando iterativamente la disuguaglianza di Hölder su tutti i fattori, per $p_1,\dotsc,p_n$ tali che $\frac1{p_1}+\dotsb+\frac1{p_n}=1$ si ha
+    \begin{equation}
+        \int_\R\abs{u}^\frac{n}{n-1}\,\dd x_1\le
+        \biggl(\int_\R\abs[\bigg]{\drp{u}{x_1}}\,\dd x_1\biggr)^\frac1{n-1}
+        \biggl(\int_\R\int_\R\abs[\bigg]{\drp{u}{x_2}}\,\dd x_2\,\dd x_1\biggr)^\frac1{n-1}
+        \dotsm
+        \biggl(\int_\R\int_\R\abs[\bigg]{\drp{u}{x_n}}\,\dd x_n\,\dd x_1\biggr)^\frac1{n-1}.
+    \end{equation}
+    Iterando e integrando sulle restanti variabili, allora,
+    \begin{equation}
+        \int_\R\dotsi\int_\R\abs{u}^\frac{n}{n-1}\,\dd x_1\dotsm\dd x_n\le
+        \prod_{i=1}^n\biggl(\int_\R\dotsi\int_\R\abs[\bigg]{\drp{u}{x_i}}\,\dd x_1\dotsm\dd x_n\biggr)^\frac1{n-1}
+    \end{equation}
+    ma dato che $\supp u\subset\Omega$ questo è equivalente a dire
+    \begin{equation}
+        \int_\Omega\abs{u}^\frac{n}{n-1}\,\dd\mu\le
+        \prod_{i=1}^n\biggl(\int_\Omega\abs[\bigg]{\drp{u}{x_i}}\,\dd\mu\biggr)^\frac1{n-1}
+    \end{equation}
+    da cui ricaviamo
+    \begin{multline}
+        \norm{u}_\frac{n}{n-1}\le
+        \biggl[\prod_{i=1}^n\biggl(\int_\Omega\abs[\bigg]{\drp{u}{x_i}}\,\dd\mu\biggr)^\frac1{n-1}\biggr]^\frac{n-1}{n}=
+        \biggl[\prod_{i=1}^n\biggl(\int_\Omega\abs[\bigg]{\drp{u}{x_i}}\,\dd\mu\biggr)\biggr]^\frac1{n}\le\\ \le
+        \frac1{n}\sum_{i=1}^n\int_\Omega\abs[\bigg]{\drp{u}{x_i}}\,\dd\mu=
+        \frac1{n}\int_\Omega\sum_{i=1}^n\abs[\bigg]{\drp{u}{x_i}}\,\dd\mu=
+        \frac1{n}\norm{\grad u}_1,
+    \end{multline}
+    dato che la media geometrica di un insieme di quantità non negative non è mai maggiore della rispettiva media aritmetica.
+
+    Ora sostituiamo $u$ con la funzione $\abs{u}^\gamma$, con $\gamma>0$, nella disuguaglianza trovata $\norm{u}_\frac{n}{n-1}\le\frac1{n}\norm{\grad u}_1$: in questo modo troviamo
+    \begin{equation}
+        \norm{\abs{u}^\gamma}_\frac{n}{n-1}\le
+        \frac1{n}\int_\Omega\norm[\big]{\grad\big(\abs{u}^\gamma)}\,\dd\mu\le
+        \frac{\gamma}{n}\int_\Omega\abs{u}^{\gamma-1}\norm{\grad u}\,\dd\mu
+    \end{equation}
+    perciò dalla disuguaglianza di Hölder abbiamo
+    \begin{equation}
+        \norm{\abs{u}^\gamma}_\frac{n}{n-1}\le
+        \frac{\gamma}{n}\norm[\big]{\abs{u}^{\gamma-1}}_\frac{p}{p-1}\norm{\grad u}_p.
+    \end{equation}
+    Infine,
+    \begin{equation}
+        \norm{u}_{\gamma\frac{n}{n-1}}^\gamma\le
+        \frac{\gamma}{n}\norm{u}^{\gamma-1}_{(\gamma-1)\frac{p}{p-1}}\norm{\grad u}_p
+    \end{equation}
+    e per individuare il valore di $\gamma$ imponiamo che le due norme di $u$ siano sul medesimo spazio, in modo che si possano semplificare, ossia che
+    \begin{equation}
+        \gamma\frac{n}{n-1}=(\gamma-1)\frac{p}{p-1}
+        \qqq
+        \gamma=\frac{(n-1)p}{n-p}.
+    \end{equation}
+    Inserendo questo valore nella disuguaglianza, dato che $\gamma\frac{n}{n-1}=\frac{np}{n-p}$, risulta allora
+    \begin{equation}
+        \norm{u}_\frac{np}{n-p}\le\frac{\gamma}{n}\norm{\grad u}_p
+    \end{equation}
+    da cui segue in modo ovvio la \eqref{eq:dim-sobolev-obiettivo} con $c=\frac{\gamma}{n}$.
+\end{proof}
