@@ -242,3 +242,20 @@ A partire dalle funzioni liscie a supporto compatto, definiamo lo spazio $\sobWc
     \end{equation}
     da cui segue in modo ovvio la \eqref{eq:dim-sobolev-obiettivo} con $c=\frac{\gamma}{n}$.
 \end{proof}
+Ad esempio, per $\Omega\subset\R^3$ abbiamo con $k=1$ e $p=2$ che il massimo valore che $q$ può assumere è $6$, perciò $\sobW[1,2]{\Omega}\emb\leb[q]{\Omega}$ per $q=1,\dotsc,6$, dato che siccome $\mu(\Omega)<+\infty$ si ha $\leb[q]{\Omega}\subset\leb[q']{\Omega}$ se $q<q'$.
+L'immersione data in questo teorema è ottimale, nel senso che non è possibile immergere con continuità lo spazio di Sobolev in spazi più grandi.
+Per vedere da dove deriva il valore critico $\frac{np}{n-kp}$ per $q$ possiamo prendere il seguente ragionamento.
+Consideriamo $f\in\sobW[1,p]{\R^n}\cap\leb[q]{\R^n}$, ed effettuiamo un riscalamento definendo $f_\lambda(\vec y)\defeq f(\vec y/\lambda)=f(\vec x)$ per $\lambda>0$.
+Risulta
+\begin{multline}
+    \biggl(\int_{\R^n}\norm{\grad f_\lambda(\vec y)}^p\,\dd\mu(\vec y)\biggr)^\frac1{p}=
+    \biggl(\int_{\R^n}\frac1{\lambda^p}\norm{\grad f(\vec y/\lambda)}^p\,\dd\mu(\vec y)\biggr)^\frac1{p}=\\=
+    \biggl(\int_{\R^n}\frac1{\lambda^p}\norm{\grad f(\vec x)}^p\lambda^n\,\dd\mu(\vec x)\biggr)^\frac1{p}=
+    \lambda^\frac{n-p}{p}\biggl(\int_{\R^n}\norm{\grad f(\vec x)}^p\,\dd\mu(\vec x)\biggr)^\frac1{p}
+\end{multline}
+e con la $q$-norma abbiamo invece
+\begin{equation}
+    \biggl(\int_{\R^n}\abs{f_\lambda(\vec y)}^q\,\dd\mu(\vec y)\biggr)^\frac1{q}=
+    \lambda^\frac{n}{q}\biggl(\int_{\R^n}\abs{f(\vec x)}^q\,\dd\mu(\vec x)\biggr)^\frac1{q}
+\end{equation}
+di conseguenza $\lambda^\frac{n}{q}\norm{f}_q\le c\lambda^{\frac{n}{p}-1}\norm{\grad f}_p$, e se vogliamo che la costante che limita le norme (rendendo cos\`i continua l'inclusione) non dipenda da $\lambda$, cioè sia indipendente dalla funzione, allora dobbiamo prendere $\frac{n}{q}=\frac{n}{p}-1$ vale a dire $q=\frac{np}{n-p}$, che è l'esponente critico del teorema per $k=1$.
