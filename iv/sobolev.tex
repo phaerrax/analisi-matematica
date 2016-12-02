@@ -259,3 +259,26 @@ e con la $q$-norma abbiamo invece
     \lambda^\frac{n}{q}\biggl(\int_{\R^n}\abs{f(\vec x)}^q\,\dd\mu(\vec x)\biggr)^\frac1{q}
 \end{equation}
 di conseguenza $\lambda^\frac{n}{q}\norm{f}_q\le c\lambda^{\frac{n}{p}-1}\norm{\grad f}_p$, e se vogliamo che la costante che limita le norme (rendendo cos\`i continua l'inclusione) non dipenda da $\lambda$, cioè sia indipendente dalla funzione, allora dobbiamo prendere $\frac{n}{q}=\frac{n}{p}-1$ vale a dire $q=\frac{np}{n-p}$, che è l'esponente critico del teorema per $k=1$.
+
+Introduciamo ora un altro spazio di funzioni, le funzioni Hölder-continue, e vediamo come includere gli spazi di Sobolev in essi.
+\begin{definizione} \label{d:continuita-holder}
+    Una funzione $f\colon\Omega\subset\R^n\to\R$ si dice \emph{Hölder-continua} di ordine $\alpha\in(0,1]$ se esiste $c>0$ tale per cui per ogni $\vec x,\vec y\in\Omega$  con $\vec x\ne\vec y$ si ha
+    \begin{equation}
+        \abs{f(\vec x)-f(\vec y)}\le c\norm{\vec x-\vec y}^\alpha.
+    \end{equation}
+\end{definizione}
+Tutte le funzioni di questo tipo, per ogni $\alpha\in(0,1]$, sono anche continue; se $\alpha=1$ la definizione è equivalente a quella di lipschitzianità.
+Un esempio veloce: la funzione $x\mapsto\sqrt{x}$ è Hölder-continua di ordine $\frac12$.
+Definiamo inoltre la quantità
+\begin{equation}
+    [f]_\alpha\defeq\sup_{\substack{\vec x,\vec y\in\Omega\\\vec x\ne\vec y}}\frac{\abs{f(\vec x)-f(\vec y)}}{\norm{\vec x-\vec y}^\alpha}
+    \label{eq:seminorma-holder}
+\end{equation}
+che è finita se $f$ è Hölder-continua di ordine $\alpha$.
+A questo punto consideriamo lo spazio delle funzioni $f\in\cont[k]{\Omega}$ tali che le derivate $D^\alpha f$ con $\abs{\alpha}=k$ sono Hölder-continue di ordine $\beta\in(0,1]$: esso è indicato come $\cont[k,\beta]{\Omega}$, ed è uno spazio di Banach dotato della norma
+\begin{equation}
+    \norm{f}_{\cont[k,\beta]{\Omega}}\defeq\sum_{\abs{\gamma}\le k}\norm{D^\gamma f}_\infty+\sum_{\abs{\alpha}=k}[D^\alpha f]_\beta.
+    \label{eq:norma-spazio-holder}
+\end{equation}
+Per $k=0$ si ha lo spazio delle funzioni Hölder-continue di ordine $\beta$ come definite nella \ref{d:continuita-holder}.
+Questi spazi sono importanti per determinare la regolarità in senso classico delle funzioni in $\sobW[k,p]{\Omega}$, in modo che da una funzione definita quasi ovunque si possa tornare a una funzione classica, continua e regolare.
