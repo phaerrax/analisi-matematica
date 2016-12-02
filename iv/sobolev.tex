@@ -117,3 +117,32 @@ da cui $\norm{f}_{k,2}=\sqrt{\inner{f}{f}_{k,2}}$; per $k=1$ si ha in particolar
     \label{eq:prodotto-interno-W12}
 \end{equation}
 Con ciò anche lo spazio $\sobW[k,2]{\Omega}$ è uno spazio di Hilbert: per questo fatto questi spazi sono denotati anche come $\sobH[k]{\Omega}$, sottintendendo $p=2$.
+
+\section{Teoremi di immersione}
+È evidente dalla definizione che $\sobW[k,p]{\Omega}\subset\leb[p]{\Omega}$ per $k\ge 1$ e $\sobW[0,p]{\Omega}=\leb[p]{\Omega}$.
+In questo capitolo vediamo come sia invece possibile trovare delle inclusioni (o immersioni) tra spazi di Sobolev di ordini differenti, e come queste immersioni possono essere continue o compatte.
+Ma prima, alcune definizioni.
+\begin{definizione} \label{d:bordo-regolare}
+    Sia $\Omega\subset\R^n$ aperto.
+    Il suo bordo $\boundary\Omega$ è detto di classe $\cclass[k]$ ($k\ge 1$) se per ogni punto $\vec p\in\boundary\Omega$ esistono degli intorni $U\defeq B_r(\vec p)$ e $B_\delta(\vec 0)$ in $\R^n$ e un diffeomorfismo $\Phi\colon U\to B_\delta(\vec 0)$ di classe $\cclass[k]$ tale che $\Phi\colon U\cap\boundary\Omega\to B_\delta(\vec 0)\cap\R^{n-1}\times\{0\}$; in altre parole $\Phi$, ristretto al bordo di $\Omega$, lo mappa in ``$\R^n$ meno una coordinata'', cioè raddrizzandolo in un iperpiano di $\R^n$.
+    Diciamo inoltre che $\boundary\Omega$ è \emph{lipschitziano} se lo è $\Phi$.
+\end{definizione}
+Ricordiamo ora che, se $A$ è un sottoinsieme di $B$, la mappa da $A$ a $B$ che porta ogni elemento $x\in A$ in s\'e stesso visto come elemento di $B$ è detta \emph{inclusione}.
+\begin{definizione} \label{d:immersione-continua}
+    Siano $X$ e $Y$ due spazi normati, con $X\subseteq Y$.
+    Lo spazio $X$ si dice \emph{immerso con continuità} in $Y$, e si indica con $X\emb Y$, se la mappa di inclusione $\iota\colon X\to Y$ (quindi $X\subseteq Y$) è continua, ossia esiste $c>0$ tale per cui $\norm{x}_Y\le c\norm{\iota(x)}_Y$ per ogni $x\in X$.
+\end{definizione}
+\begin{definizione} \label{d:insieme-relativamente-compatto}
+    Sia $X$ uno spazio di Banach.
+    Un sottoinsieme $K\subset X$ è detto \emph{relativamente compatto} se la sua chiusura è compatta in $X$.
+\end{definizione}
+\begin{definizione} \label{d:immersione-compatta}
+    Siano $X$ e $Y$ due spazi di Banach, con $X\subseteq Y$.
+    Lo spazio $X$ si dice \emph{immerso con compattezza} in $Y$, e si indica con $X\cemb Y$, se $X\emb Y$ e ogni insieme limitato in $X$ è relativamente compatto in $Y$.
+\end{definizione}
+Se $X\cemb Y$, per ogni insieme limitato di $X$ esiste una successione tale da possedere una sottosuccessione di Cauchy in $Y$.
+Si dice anche che la mappa di inclusione (continua e lineare) $\iota\colon X\to Y$ è un \emph{operatore compatto} tra $X$ e $Y$.
+\begin{teorema} \label{t:relativamente-compatto-sse-totalmente-limitato}
+    Dato uno spazio $X$ di Banach, un suo sottoinsieme $K$ è relativamente compatto se e solo se $\forall\delta>0$ esiste $n=n(\delta)\in\N$ e un insieme di punti $\{a_1,\dotsc,a_n\}\in X$ tale che $\bigcup_{i=1}^n B_\delta(a_i)\supset K$.
+\end{teorema}
+In altre parole, fissato un raggio $\delta$ l'insieme $K$ può essere ricoperto con un numero finito di palle aventi tale raggio; un insieme con questa proprietà si dice anche \emph{totalmente limitato}.
