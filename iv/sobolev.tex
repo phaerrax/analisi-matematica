@@ -282,3 +282,128 @@ A questo punto consideriamo lo spazio delle funzioni $f\in\cont[k]{\Omega}$ tali
 \end{equation}
 Per $k=0$ si ha lo spazio delle funzioni Hölder-continue di ordine $\beta$ come definite nella \ref{d:continuita-holder}.
 Questi spazi sono importanti per determinare la regolarità in senso classico delle funzioni in $\sobW[k,p]{\Omega}$, in modo che da una funzione definita quasi ovunque si possa tornare a una funzione classica, continua e regolare.
+
+\begin{teorema}[Morrey] \label{t:morrey}
+    Sia $\Omega\subset\R^n$ aperto, limitato e con bordo lipschitziano, e siano $k,p\in\N$ tali che $kp>n$: per $0\le m<k-\frac{n}{p}<m+1$ con $m\in\N_0$ si ha $\sobW[k,p]{\Omega}\emb\cont[m,\alpha]{\Omega}$ con $0\le\alpha\le k-m-\frac{n}{p}$.
+    L'immersione è inoltre compatta se $\alpha<k-m-\frac{n}{p}$.
+\end{teorema}
+\begin{proof}
+    Come per il teorema di Sobolev, anche in questo caso dimostriamo solo il caso $k=1$, e prendiamo $\Omega=\R^n$, ossia dimostriamo la tesi $\sobW[1,p]{\R^n}\emb\cont[0,\alpha]{\R^n}$ provando che esiste $c>0$ tale che $\norm{u}_{\cont[0,\alpha]{\R^n}}\le c\norm{u}_{1,p}$ con $p>n$ e $\alpha=1-\frac{n}{p}$, per ogni $u\in\cont[1]{\R^n}$.
+    Omettiamo invece la seconda parte della dimostrazione, ossia dimostriamo solo che l'inclusione è continua.
+
+    Sia $r>0$ e consideriamo la palla $B_r(\vec x)\subset\R^n$: mostriamo innanzitutto che
+    \begin{equation}
+        \avint_{B_r(\vec x)}\abs{u(\vec x)-u(\vec y)}\,\dd\mu(\vec y)\le c\int_{B_r(\vec x)}\frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y).
+        \label{eq:dim-morrey-obiettivo}
+    \end{equation}
+    Sia $\vec w\in\R^n$ di norma unitaria, e $0<s<r$: allora
+    \begin{equation}
+        u(\vec x+s\vec w)-u(\vec x)=
+        \int_0^s\drv{u}{t}(\vec x+t\vec w)\,\dd t=
+        \int_0^s\scalar{\vec w}{\grad u(\vec x+t\vec w)}\,\dd t.
+    \end{equation}
+    In valore assoluto,
+    \begin{equation}
+        \abs{u(\vec x+s\vec w)-u(\vec x)}\le
+        \int_0^s\abs{\scalar{\vec w}{\grad u(\vec x+t\vec w)}}\,\dd t\le
+        \int_0^s\norm{\grad u(\vec x+t\vec w)}\,\dd t.
+    \end{equation}
+    Integrando i due membri sul bordo della palla unitaria si ha
+    \begin{equation}
+        \int_{\boundary B_1(\vec 0)} \abs{u(\vec x+s\vec w)-u(\vec x)}\,\dd\sigma(\vec x)\le
+        \int_{\boundary B_1(\vec 0)}\int_0^s \norm{\grad u(\vec x+t\vec w)}\,\dd t\,\dd\sigma(\vec x)=
+        \int_{B_s(\vec 0)} \norm{\grad u(\vec x+t\vec w)}\,\dd\mu(\vec x).
+    \end{equation}
+    Cambiamo le variabili di integrazione ponendo $\vec y\defeq\vec x+t\vec w$ (da cui $t=\norm{\vec y-\vec x}$), per cui
+    \begin{multline}
+        \int_{B_s(\vec 0)} \norm{\grad u(\vec x+t\vec w)}\,\dd\mu(\vec x)=
+        \int_{B_s(\vec 0)} \frac{t^{n-1}}{t^{n-1}}\norm{\grad u(\vec x+t\vec w)}\,\dd\mu(\vec x)=\\=
+        \int_{B_s(\vec 0)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)\le
+        \int_{B_r(\vec 0)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y).
+    \end{multline}
+    Abbiamo dunque la disuguaglianza 
+    \begin{equation}
+        \int_{\boundary B_1(\vec 0)} \abs{u(\vec x+s\vec w)-u(\vec x)}\,\dd\sigma(\vec x)\le
+        \int_{B_r(\vec 0)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y):
+    \end{equation}
+    Moltiplicando entrambi i membri per $s^{n-1}$ e integrando in $s\in(0,r)$ otteniamo
+    \begin{multline}
+        \int_{B_r(\vec 0)}\abs{u(\vec y)-u(\vec x)}\,\dd\mu(\vec y)\le
+        \frac{r^n}{n}\int_{B_r(\vec 0)}\frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)=\\=
+        \frac{r^n\omega_n}{n\omega_n}\int_{B_r(\vec 0)}\frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)=
+        \frac{r^n\omega_n}{n}\avint_{B_r(\vec 0)}\frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y),
+    \end{multline}
+    che dimostra la \eqref{eq:dim-morrey-obiettivo} con $\frac{r^n\omega_n}{n}$ come costante.
+
+    Per $\vec x\in\R^n$ risulta
+    \begin{multline}
+        \abs{u(\vec x)}=
+        \abs[\bigg]{\avint_{B_1(\vec x)} u(\vec x)\,\dd\mu(\vec y)}\le
+        \avint_{B_1(\vec x)}\bigl[\abs{u(\vec x)-u(\vec y)}+\abs{u(\vec y)}\bigr]\,\dd\mu(\vec y)=\\=
+        \avint_{B_1(\vec x)}\abs{u(\vec x)-u(\vec y)}\,\dd\mu(\vec y)+\frac1{\mu\bigl(B_1(\vec x)\bigr)}\int_{B_1(\vec x)}\abs{u(\vec y)}\,\dd\mu(\vec y).
+    \end{multline}
+    Con la disuguaglianza di Hölder stimiamo l'ultimo integrale come 
+    \begin{equation}
+        \int_{B_1(\vec x)}\abs{u}\,\dd\mu\le
+        \biggl(\int_{B_1(\vec x)}\dd\mu\biggr)^\frac{p-1}{p}\biggl(\int_{B_1(\vec x)}\abs{u}^p\,\dd\mu\biggr)^\frac1{p}
+    \end{equation}
+    da cui, con la \eqref{eq:dim-morrey-obiettivo}, abbiamo
+    \begin{equation}
+        \abs{u(\vec x)}\le c\avint_{B_1(\vec x)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)+c'\norm{u}_{\leb[p]{B_1(\vec x)}}.
+    \end{equation}
+    Sfruttando ancora la disuguaglianza di Hölder,
+    \begin{equation}
+        \int_{B_1(\vec x)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)\le
+        \biggl(\int_{\R^n}\norm{\grad u(\vec y)}^p\,\dd\mu(\vec y)\biggr)^\frac1{p}\biggl(\int_{B_1(\vec x)}\frac1{\norm{\vec x-\vec y}^{(n-1)\frac{p}{p-1}}}\,\dd\mu(\vec y)\biggr)^\frac{p-1}{p}:
+    \end{equation}
+    il primo fattore è $\norm{\grad u}_{\leb[p]{\R^n}}$, mentre per il secondo effettuiamo il cambio di variabile $r\defeq\norm{\vec x-\vec y}$ (che varia tra $0$ e $1$), e data la simmetria sferica della funzione integranda (attorno al punto $\vec x$) possiamo separare l'integrale radiale in $(0,1)$ da quello angolare su $\boundary B_1(\vec 0)$, vale a dire
+    \begin{multline}
+        \biggl(\int_{B_1(\vec x)}\frac1{\norm{\vec x-\vec y}^{(n-1)\frac{p}{p-1}}}\,\dd\mu(\vec y)\biggr)^\frac{p-1}{p}=
+        \biggl(\int_{\boundary B_1(\vec 0)}\int_0^1 \frac1{r^{(n-1)\frac{p}{p-1}}}r^{n-1}\,\dd r\,\dd\sigma\biggr)^\frac{p-1}{p}=\\=
+        \biggl(\int_{\boundary B_1(\vec 0)}\dd\sigma\int_0^1 \frac1{r^{(n-1)(1-\frac{p}{p-1})}}\,\dd r\biggr)^\frac{p-1}{p}=
+        \biggl(n\omega_n\frac1{n-(n-1)\frac{p}{1-p}}\biggr)^\frac{p-1}{p}.
+    \end{multline}
+    Ora, si dimostra che quest'ultima quantità è (una costante) finita se $(n-1)p<n(p-1)$, vale a dire $\frac{n-1}{n}<\frac{p-1}{p}$ da cui $p>n$.
+    Detta $c''$ tale costante, risulta allora
+    \begin{equation}
+        \int_{B_1(\vec x)}\frac1{\norm{\vec x-\vec y}^{(n-1)\frac{p}{p-1}}}\,\dd\mu(\vec y)\le
+        c''\norm{\grad u}_{\leb[p]{\R^n}},
+    \end{equation}
+    da cui $\abs{u(\vec x)}\le cc''\norm{\grad u}_{\leb[p]{\R^n}}$.
+
+    Siano ora $\vec x,\vec y\in\R^n$, $r\defeq\norm{\vec x-\vec y}$ come prima e chiamiamo $W\defeq B_r(\vec x)\cap B_r(\vec y)$.
+    Risulta
+    \begin{equation}
+        \abs{u(\vec x)-u(\vec y)}=
+        \avint_W \abs{u(\vec x)-u(\vec y)}\,\dd\mu(\vec z)\le
+        \avint_W \abs{u(\vec x)-u(\vec z)}\,\dd\mu(\vec z)+\avint_W \abs{u(\vec y)-u(\vec z)}\,\dd\mu(\vec z).
+    \end{equation}
+    Siccome $W\subset B_r(\vec x)$ si ha, per il primo addendo (per il secondo è analogo)
+    \begin{equation}
+        \avint_W \abs{u(\vec x)-u(\vec z)}\,\dd\mu(\vec z)\le
+        \frac1{\mu(W)}\int_{B_r(\vec x)}\abs{u(\vec x)-u(\vec z)}\,\dd\mu(\vec z)=
+        \frac{\mu\bigl(B_r(\vec x)\bigr)}{\mu(W)}\avint_{B_r(\vec x)}\abs{u(\vec x)-u(\vec z)}\,\dd\mu(\vec z).
+    \end{equation}
+    Con la \eqref{eq:dim-morrey-obiettivo} e la disuguaglianza di Hölder, questo è a sua volta minore o uguale a
+    \begin{multline}
+        c\biggl(\int_{B_r(\vec x)}\norm{\grad u}^p\,\dd\mu\biggr)^\frac1{p}\biggl(\int_{B_r(\vec x)}\frac1{\norm{\vec x-\vec z}^{(n-1)\frac{p}{p-1}}}\,\dd\mu(\vec z)\biggr)^\frac{p-1}{p}\le\\ \le
+        c\norm{\grad u}_{\leb[p]{\R^n}}\biggl(n\omega_n\int_0^r \frac1{s^\frac{p}{p-1}}\,\dd s\biggr)^\frac{p-1}{p}
+        \tilde{c}\norm{\grad u}_{\leb[p]{\R^n}}(r^{n-(n-1)\frac{p}{p-1}})^\frac{p-1}{p}=
+        \tilde{c}\norm{\grad u}_{\leb[p]{\R^n}}r^{1-\frac{n}{p}}
+    \end{multline}
+    per una $\tilde{c}>0$.
+    La stessa stima vale per l'addendo con $\vec y$ al posto di $\vec x$, perciò
+    \begin{equation}
+        \abs{u(\vec x)-u(\vec y)}\le\tilde{c}r^{1-\frac{n}{p}}\norm{\grad u}_{\leb[p]{\R^n}}.
+    \end{equation}
+    Dividendo per $r^{1-\frac{n}{p}}=\norm{\vec x-\vec y}^{1-\frac{n}{p}}$, quando $\vec x\ne\vec y$, otteniamo dunque che
+    \begin{equation}
+        \frac{\abs{u(\vec x)-u(\vec y)}}{\norm{\vec x-\vec y}^{1-\frac{n}{p}}}\le\tilde{c}\norm{\grad u}_{\leb[p]{\R^n}}
+    \end{equation}
+    vale a dire
+    \begin{equation}
+        [u]_{1-\frac{n}{p}}=\norm{u}_{\cont[0,1-\frac{n}{p}]{\R^n}}\le\tilde{c}\norm{\grad u}_{\leb[p]{\R^n}}
+    \end{equation}
+    che prova che $\sobW[1,p]{\R^n}\emb\cont[0,1-\frac{n}{p}]{\R^n}$.
+\end{proof}
+Ad esempio se $\Omega\subset\R^3$ lo spazio $\sobW[2,2]{\Omega}$ è incluso con continuità in $\cont[0,\frac12]{\Omega}$ poich\'e per $k=p=2$ e $n=3$ si ha $0\le\alpha\le 2-m-\frac32$, e dato che $0\le m\le 2-\frac32=\frac12$ e $m\in\N_0$ deve essere $m=0$, per cui $0\le\alpha\le\frac12$.
