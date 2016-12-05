@@ -407,3 +407,21 @@ Questi spazi sono importanti per determinare la regolarità in senso classico de
     che prova che $\sobW[1,p]{\R^n}\emb\cont[0,1-\frac{n}{p}]{\R^n}$.
 \end{proof}
 Ad esempio se $\Omega\subset\R^3$ lo spazio $\sobW[2,2]{\Omega}$ è incluso con continuità in $\cont[0,\frac12]{\Omega}$ poich\'e per $k=p=2$ e $n=3$ si ha $0\le\alpha\le 2-m-\frac32$, e dato che $0\le m\le 2-\frac32=\frac12$ e $m\in\N_0$ deve essere $m=0$, per cui $0\le\alpha\le\frac12$.
+
+Ora però abbiamo il problema che negli spazi di Sobolev gli elementi sono classi di equivalenza di funzioni, mentre negli spazi di Hölder ci sono funzioni vere e proprie.
+Passiamo dall'una all'altra tramite la seguente definizione.
+\begin{definizione} \label{d:versione}
+    Data una funzione $u\colon A\to B$, diciamo che $\bar{u}$ è una \emph{versione} di $u$ se $u=\bar{u}$ quasi ovunque in $A$.
+\end{definizione}
+\begin{teorema} \label{t:versione-holder-continua}
+    Sia $\Omega\subset\R^n$ aperto e $p>n$, e $u\in\sobWc[1,p]{\Omega}$.
+    Allora $u$ ammette una versione $\bar{u}\in\cont[0,\gamma]{\Omega}$ per $\gamma=1-\frac{n}{p}$, tale che $\norm{\bar{u}}_{\cont[0,\gamma]{\Omega}}\le c\norm{u}_{1,p}$ per un certo $c>0$.
+\end{teorema}
+\begin{proof}
+   Possiamo ancora estendere $\Omega$ a tutto $\R^n$ poich\'e $\supp u\subset\Omega$, ponendo $u=0$ al di fuori dell'insieme.
+   La completezza dello spazio di Sobolev e la densità di $\contsc[\infty]{\Omega}$ assicurano che esiste una successione $\{u_k\}_{k\in\N}\subset\contsc[\infty]{\Omega}$ tale che $u_k\to u$, con $u\in\sobW[1,p]{\Omega}$ ma anche in $\sobW[1,p]{\R^n}$ estendo le $u_k$ come prima.
+   Anche in questo caso vale $\norm{u_k-u_l}_{\cont[0,\gamma]{\Omega}}\le\norm{u_k-u_l}_{1,p}$ quindi se $\{u_k\}$ è di Cauchy in $\sobW[1,p]{\R^n}$ allora lo è anche in $\cont[0,\gamma]{\R^n}$, ossia esiste una funzione $\bar{u}\in\cont[0,\gamma]{\R^n}$ tale per cui $u_k\to\bar{u}$.
+   Ma $u_k\to u$ in $\sobW[1,p]{\R^n}$, quindi $u$ e $\bar{u}$ (doev $u$ è vista come funzione) devono coincidere quasi ovunque, per l'unicità del limite, quindi $\bar{u}$ è una versione di $u$ in $\cont[0,\gamma]{\R^n}$.
+   Dalla disuguaglianza $\norm{u_k}_{\cont[0,\gamma]{\R^n}}\le c\norm{u_k}_{1,p}$ infine, al limite per $k\to+\infty$, otteniamo $\norm{\bar{u}}_{\cont[0,\gamma]{\R^n}}\le c\norm{u}_{1,p}$.
+\end{proof}
+
