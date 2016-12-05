@@ -475,3 +475,36 @@ Prima di affrontarlo servono ulteriori definizioni e proprietà.
     \end{equation}
     è continua in $E$.
 \end{proof}
+
+Vediamo ora come ``regolarizzare'' una funzione poco regolare tramite la convoluzione.
+\begin{definizione} \label{d:mollificatore}
+    Una funzione $\rho\in\cont[\infty]{\R^n}$ tale che $\rho\ge 0$, $\rho(\vec x)=0$ per $\vec x\notin B_1(\vec 0)$ e $\int_{\R^n}\rho\,\dd\mu=1$ è detta \emph{mollificatore}.
+\end{definizione}
+Ne è un esempio la funzione
+\begin{equation*}
+    \begin{cases}
+        c\vec x\mapsto\exp(\frac1{\norm{\vec x}^2-1}) & \norm{\vec x}\le 1 \\
+        0                                             & \norm{\vec x}>1
+    \end{cases}
+\end{equation*}
+dove la costante $c$ serve da opportuna normalizzazione.
+Preso un mollificatore $\rho$, usiamo la notazione $\rho_\epsilon$ per indicare il riscalamento
+\begin{equation}
+    \vec x\mapsto\frac1{\epsilon^n}\rho\biggl(\frac{\vec x}{\epsilon}\biggr);
+\end{equation}
+se $\rho=0$ al di fuori di $B_1(\vec 0)$, allora $\rho_\epsilon=0$ fuori da $B_\epsilon(\vec 0)$ ed è ancora $\cclass[\infty]$.
+\begin{definizione} \label{d:regolarizzazione}
+    Siano $u\in\locleb[1]{\Omega}$, $\epsilon>0$: definiamo la \emph{regolarizzazione} di $u$ come la funzione
+    \begin{equation}
+        u_\epsilon\colon\vec x\mapsto\int_\Omega\rho_\epsilon(\vec x-\vec y)u(\vec y)\,\dd\mu(\vec y).
+        \label{eq:regolarizzazione}
+    \end{equation}
+\end{definizione}
+Dato che $\rho_\epsilon(\vec x-\vec y)=0$ se $\norm{\vec x-\vec y}>\epsilon$ e $\vec y\in\Omega$, abbiamo che $u_\epsilon(\vec x)=0$ se $d(\vec x,\boundary\Omega)>\epsilon$.
+Detto dunque $\Omega_\epsilon\defeq\{\vec x\in\Omega\colon d(\vec x,\boundary\Omega)<\epsilon\}$ risulta allora che $u_\epsilon\in\cont[\infty]{\Omega_\epsilon}$, e per ogni multiindice $\alpha$
+\begin{equation}
+    D_{\vec x}^\alpha u_\epsilon(\vec x)=\int_\Omega D_{\vec x}^\alpha\rho_\epsilon(\vec x-\vec y)u(\vec y)\,\dd\mu(\vec y).
+\end{equation}
+Se $\Omega=\R^n$ e $u\in\leb[1]{\R^n}$ allora $u_\epsilon$ non ha problemi di definizione per qualsiasi $\epsilon>0$, e $u_\epsilon\in\cont[\infty]{\R^n}$.
+Infine, per $\epsilon\to 0$ i valori per cui $\rho_\epsilon\ne 0$ sono sempre meno, dato che la palla $B_\epsilon(\vec 0)$ si ``restringe'', ma allo stesso tempo $\epsilon^{-n}\to+\infty$: nel senso distribuzionale $\rho_\epsilon$ converge alla delta di Dirac $\delta_{\vec x}$, e in questo limite $u_\epsilon\to u$ quasi ovunque.
+Si veda \cite[p.~630]{evans} per le dimostrazioni di questi risultati.
