@@ -508,3 +508,118 @@ Detto dunque $\Omega_\epsilon\defeq\{\vec x\in\Omega\colon d(\vec x,\boundary\Om
 Se $\Omega=\R^n$ e $u\in\leb[1]{\R^n}$ allora $u_\epsilon$ non ha problemi di definizione per qualsiasi $\epsilon>0$, e $u_\epsilon\in\cont[\infty]{\R^n}$.
 Infine, per $\epsilon\to 0$ i valori per cui $\rho_\epsilon\ne 0$ sono sempre meno, dato che la palla $B_\epsilon(\vec 0)$ si ``restringe'', ma allo stesso tempo $\epsilon^{-n}\to+\infty$: nel senso distribuzionale $\rho_\epsilon$ converge alla delta di Dirac $\delta_{\vec x}$, e in questo limite $u_\epsilon\to u$ quasi ovunque.
 Si veda \cite[p.~630]{evans} per le dimostrazioni di questi risultati.
+
+\begin{teorema}[Rellich-Kondrachov] \label{t:rellich-kondrachov}
+    Sia $\Omega$ un sottoinsieme di $\R^n$ limitato, aperto, con bordo lipschitziano, e siano $k,p\in\N$ tali che $kp<n$: allora $\sobW[k,p]{\Omega}\cemb\leb[q]{\Omega}$ per ogni $q$ tale che $1\le q<\frac{np}{n-kp}$.
+\end{teorema}
+\begin{proof}
+    Come nei precedenti teoremi di immersione, dimostriamo anche questo nel caso $k=1$ e per funzioni a supporto compatto.
+
+    Sia $q=1$ e consideriamo un insieme $A\subset\sobWc[1,p]{\Omega}$ limitato.
+    Sia $u\in\sobWc[1,p]{\Omega}$ e, fissato $\epsilon>0$, definiamo $A_\epsilon\defeq\{u_\epsilon\colon u\in A\}$ (l'insieme delle regolarizzazioni delle funzioni di $A$): i suoi elementi sono regolari per definizione, e per essi vale
+    \begin{equation}
+        \abs{u_\epsilon(\vec x)}=
+        \abs[\bigg]{\int_{B_\epsilon(\vec x)} \rho_\epsilon(\vec x-\vec y)u(\vec y)\,\dd\mu(\vec y)}\le
+        \int_{B_1(\vec 0)} \rho(\vec z)\abs{u(\vec x-\epsilon\vec z)}\,\dd\mu(\vec z)\le
+        \norm{u}_1\max_{B_1(\vec 0)}\rho<
+        +\infty
+    \end{equation}
+    per il teorema di Sobolev \ref{t:sobolev}: $A_\epsilon$ è dunque uniformemente limitato.
+    Inoltre è equicontinuo, poich\'e la derivata è uniformemente limitata:
+    \begin{multline}
+        \norm{\grad u_\epsilon(\vec x)}=
+        \norm[\bigg]{\int_{B_\epsilon(\vec x)}\grad\rho_\epsilon(\vec x-\vec y)u(\vec y)\,\dd\mu(\vec y)}\le
+        \int_{B_1(\vec 0)}\norm{\grad\rho(\vec z)}\abs{u(\vec x-\epsilon\vec z)}\,\dd\mu(\vec z)\le\\ \le
+        \norm{u}_1\max_{B_1(\vec 0)}\norm{\grad\rho}<
+        +\infty.
+    \end{multline}
+    Dato che $A_\epsilon\subset\cont{\clos{\Omega}}$ è uniformemente limitato ed equicontinuo esso contiene successioni che, per il teorema di Ascoli-Arzelà \ref{t:ascoli-arzela}, ammettono sottosuccessioni convergenti in $\cont{\clos{\Omega}}$, cioè di Cauchy.
+    \begin{equation}
+        \norm{u_n-u_m}_1=
+        \int_\Omega\abs{u_n-u_m}\,\dd\mu\le
+        \sup_\Omega\abs{u_n-u_m}\mu(\Omega)=
+        \norm{u_n-u_m}_{\cont{\Omega}}\mu(\Omega)<
+        \epsilon\mu(\Omega),
+    \end{equation}
+    quindi anche $\{u_n\}$ è di Cauchy in $\leb[1]{\Omega}$, e in esso converge.
+    Ciò prova che $A_\epsilon$ è relativamente compatto in $\leb[1]{\Omega}$.
+
+    Passiamo ora al limite per $\epsilon\to 0$: dato che $\int_{B_1(\vec 0)}\rho\,\dd\mu=1$, si ha
+    \begin{equation}
+        \begin{split}
+            u_\epsilon(\vec x)-u(\vec x)&=
+            \int_{B_1(\vec 0)}\rho(\vec z)u(\vec x-\epsilon\vec z)\,\dd\mu(\vec z)-u(\vec x)\int_{B_1(\vec 0)}\rho(\vec z)\,\dd\mu(\vec z)=\\ &=
+            \int_{B_1(\vec 0)}\rho(\vec z)\bigl[u(\vec x-\epsilon\vec z)-u(\vec x)\bigr]\,\dd\mu(\vec z)=\\ &=
+            \int_{B_1(\vec 0)}\rho(\vec z)\biggl[\int_0^1\drp{u}{t}(\vec x-t\epsilon\vec z)\,\dd t\biggr]\,\dd\mu(\vec z)=\\ &=
+            \int_{B_1(\vec 0)}\rho(\vec z)\biggl[\int_0^1-\epsilon\scalar{\vec z}{\grad u(\vec x-t\epsilon\vec z)}\,\dd t\biggr]\,\dd\mu(\vec z).
+        \end{split}
+    \end{equation}
+    Integriamo ora in $\Omega_\epsilon$, ottenendo
+    \begin{equation}
+        \begin{split}
+            \int_{\Omega_\epsilon}\abs{u_n(\vec x)-u_m(\vec x)}\,\dd\mu(\vec x)&=
+            \int_{\Omega_\epsilon}\epsilon\abs[\bigg]{\int_{B_1(\vec 0)}\rho(\vec z)\biggl[\int_0^1-\scalar{\vec z}{\grad u(\vec x-t\epsilon\vec z)}\,\dd t\biggr]\,\dd\mu(\vec z)}\,\dd\mu(\vec x)\le\\ &\le
+            \epsilon\int_{\Omega_\epsilon}\int_{B_1(\vec 0)}\int_0^1\rho(\vec z)\norm{\grad u(\vec x-t\epsilon\vec z)}\,\dd t\,\dd\mu(\vec z)\,\dd\mu(\vec x)\le\\ &\le
+            \epsilon\int_{B_1(\vec 0)}\rho(\vec z)\int_0^1\int_{\Omega_\epsilon}\norm{\grad u(\vec x-t\epsilon\vec z)}\,\dd\mu(\vec x)\,\dd t\,\dd\mu(\vec z)\le\\ &\le
+            \epsilon\int_{B_1(\vec 0)}\rho(\vec z)\int_0^1\int_\Omega\norm{\grad u(\vec x)}\,\dd\mu(\vec x)\,\dd t\,\dd\mu(\vec z)\le\\ &\le
+            \epsilon\int_{B_1(\vec 0)}\rho(\vec z)\,\dd\mu(\vec z)\int_0^1\,\dd t\int_\Omega\norm{\grad u(\vec x)}\,\dd\mu(\vec x)
+        \end{split}
+    \end{equation}
+    che per la disuguaglianza di Hölder è minore o uguale a
+    \begin{equation}
+        \epsilon\biggl(\int_\Omega\dd\mu\biggr)^\frac1{p'}\biggl(\int_\Omega\norm{\grad u}^p\,\dd\mu\biggr)^\frac1{p}\le
+        \epsilon\mu(\Omega)^\frac1{p'}\norm{\grad u}_{1,p}\le
+        c\epsilon
+    \end{equation}
+    per ogni $u\in A$.
+    Per il teorema \ref{t:relativamente-compatto-sse-totalmente-limitato} allora $A$ è totalmente limitato, ossia per ogni $\delta>0$ esiste $n=n(\delta)$ tale per cui $\exists\{a_1,\dotsc,a_{n(\delta)}\}\subset A$ tale che $A\subset\bigcup_{i=1}^{n(\delta)}B_\delta(a_i)$.
+    Inoltre per ogni $u_\epsilon$ esiste $i\in\{1,\dotsc,n(\delta)\}$ tale per cui $u_\epsilon\in B_\delta(a_i)$, ma allora per $c\epsilon<\delta$ si ha che $u\in B_{2\delta}(a_i)$ da cui, per lo stesso teorema, dato che $A\subset\bigcup_{i=1}^{n(\delta)}B_{2\delta}(a_i)$, $A$ è relativamente compatto in $\leb[p]{\Omega}$.
+
+    Rimane da mostrare l'esponente critico per $q$.
+    Risulta per un $\lambda>0$
+    \begin{equation}
+        \begin{split}
+            \norm{u}_q&=
+            \biggl(\int_\Omega\abs{u}^\lambda\abs{u}^{q-\lambda}\,\dd\mu\biggr)^\frac1{q}\le\\ &\le
+            \biggl[
+                \biggl(\int_\Omega(\abs{u}^\lambda)^\frac1{\lambda}\,\dd\mu\biggr)^\lambda
+                \biggl(\int_\Omega(\abs{u}^{q-\lambda})^{\frac{np}{n-p}\frac1{q-\lambda}}\,\dd\mu\biggr)^{\frac{n-p}{np}(q-\lambda)}
+            \biggr]^\frac1{q}=\\ &=
+            \biggl[
+                \biggl(\int_\Omega\abs{u}\,\dd\mu\biggr)^\lambda
+                \biggl(\int_\Omega\abs{u}^\frac{np}{n-p}\,\dd\mu\biggr)^{\frac{n-p}{np}(q-\lambda)}
+            \biggr]^\frac1{q}=\\ &=
+            \norm{u}_1^\frac{\lambda}{q}\norm{u}_\frac{np}{n-p}^\frac{q-\lambda}{q},
+        \end{split}
+    \end{equation}
+    usando la disuguaglianza di Hölder, per la quale deve verificarsi che
+    \begin{equation}
+        \lambda+(q-\lambda)\frac{n-p}{np}=
+        \frac{n-p}{np}q+\biggl(1-\frac{n-p}{np}\biggr)\lambda=1
+        \label{eq:dim-rellich-kondrachov-lambda}
+    \end{equation}
+    Ora, per il teorema di Sobolev \ref{t:sobolev} si ha $\norm{u}_\frac{np}{n-p}\le\norm{u}_{1,p}$ e se $\lambda<q$ allora $\norm{u}_\frac{np}{n-p}^{1-\frac{\lambda}{q}}\le\norm{u}_{1,p}^{1-\frac{\lambda}{q}}$ che è una costante, che indichiamo con $c^{1-\frac{\lambda}{q}}$, dato che $A$ è limitato in $\sobW[1,p]{\Omega}$.
+    Data la compattezza relativa di $A$ in $\leb[1]{\Omega}$, inoltre,
+    \begin{equation}
+        \norm{u}_q\le\norm{u}_1^\frac{\lambda}{q}\norm{u}_\frac{np}{n-p}^{1-\frac{\lambda}{q}}.
+    \end{equation}
+    Dalla \eqref{eq:dim-rellich-kondrachov-lambda}, siccome $\frac{np}{n-p}>1$, troviamo che
+    \begin{equation}
+        \lambda=\frac{1-\frac{n-p}{np}q}{1-\frac{n-p}{np}}>0
+    \end{equation}
+    solo se $\frac{n-p}{np}q>1$ vale a dire $q<\frac{np}{n-p}$.
+    Imponendo dunque che $\lambda<q$ risulta inoltre che
+    \begin{equation}
+        \frac{1-\frac{n-p}{np}q}{1-\frac{n-p}{np}}<q
+        \qqq
+        1-q\frac{n-p}{np}<q\biggl(1-\frac{n-p}{np}\biggr)
+        \qqq
+        q>1.
+    \end{equation}
+    Ora, per ogni $\epsilon>0$, esiste $N\in\N$ tale che $\forall n,m>N$ si ha $\norm{u_n-u_m}_1<\epsilon$, siccome $\{u_n\}$ è di Cauchy in $\leb[1]{\Omega}$, perciò
+    \begin{equation}
+        \norm{u_n-u_m}_q\le
+        \norm{u_n-u_m}_1^\frac{\lambda}{q}\norm{u_n-u_m}_\frac{np}{n-p}^{1-\frac{\lambda}{q}}<\epsilon^\frac{\lambda}{q}c^{1-\frac{\lambda}{q}}
+    \end{equation}
+    che prova che $\{u_n\}$ è di Cauchy anche in $\leb[q]{\Omega}$, quindi converge a un $u\in\leb[q]{\Omega}$.
+\end{proof}
