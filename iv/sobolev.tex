@@ -425,3 +425,53 @@ Passiamo dall'una all'altra tramite la seguente definizione.
    Dalla disuguaglianza $\norm{u_k}_{\cont[0,\gamma]{\R^n}}\le c\norm{u_k}_{1,p}$ infine, al limite per $k\to+\infty$, otteniamo $\norm{\bar{u}}_{\cont[0,\gamma]{\R^n}}\le c\norm{u}_{1,p}$.
 \end{proof}
 
+A questo punto rimane da valutare la compattezza dell'immersione tra spazi di Sobolev e $\lclass[p]$, dimostrata nel seguente teorema di Rellich-Kondrachov.
+Prima di affrontarlo servono ulteriori definizioni e proprietà.
+\begin{definizione} \label{d:equicontinuita}
+    Siano $X$ e $Y$ due spazi metrici e $\mathcal{F}$ un insieme di funzioni da $X$ a $Y$.
+    L'insieme $\mathcal{F}$ è detto \emph{equicontinuo} in un punto $\bar{x}\in X$ se per ogni $\epsilon>0$ esiste $\delta>0$ tale che $d_Y\bigl(f(x),f(\bar{x})\bigr)<\epsilon$ per ogni $f\in\mathcal{F}$ e per ogni $x\in X$ tale che $d_X(x,\bar{x})<\delta$.
+    L'insieme è poi equicontinuo in $X$ se è equicontinuo per ogni $x\in X$.
+\end{definizione}
+\begin{teorema}[Ascoli-Arzelà] \label{t:ascoli-arzela}
+    Sia $\{f_n\}_{n\in\N}$ una successione di funzioni definite da $E\subset\R^n$ compatto; se $\{f_n\}_{n\in\N}$ è equicontinua ed esiste $c>0$ tale che $\abs{f_n(\vec x)}\le c$ per ogni $\vec x\in E$ e ogni $n\in\N$ ($c$ è indipendente da $n$) allora esiste una sottosuccessione $\{f_{n_k}\}$ tale che $f_{n_k}\to f\in\cont{E}$, vale a dire
+    \begin{equation}
+        \lim_{n_k\to+\infty}\sup_{\vec x\in E}\abs{f_{n_k}(\vec x)-f(\vec x)}=0.
+    \end{equation}
+\end{teorema}
+\begin{proof}
+    Sia $A=\{\vec x_i\}_{i\in\N}$ un sottoinsieme denso di $E$, ad esempio $E\cap\Q^n$.
+    Preso $\vec x_1$, sia $a^{(1)}_n\defeq f_n(\vec x_1)$: dato che $\abs{a^{(1)}_n}=\abs{f_n(\vec x_1)}\le c$, la successione $\{a^{(1)}_n\}_{n\in\N}$ ammette una sottosuccessione convergente, che indichiamo come $\{f_{p^{(1)}_1}(\vec x_1),f_{p^{(1)}_2}(\vec x_1),\dotsc\}$.
+    Lo stesso si può dire della successione $\{f_n(\vec x_2)\}_{n\in\N}$, che ammette una sottosuccessione convergente che indichiamo con $\{f_{p^{(2)}_1}(\vec x_2),f_{p^{(2)}_2}(\vec x_2),\dotsc\}$; anche la successione $\{f_{p^{(2)}_1}(\vec x_1),f_{p^{(2)}_2}(\vec x_1),\dotsc\}$ converge.
+    In questo modo abbiamo le successioni di funzioni
+    \begin{equation}
+        \begin{array}[h]{ll}
+            f_{p^{(1)}_1},f_{p^{(1)}_2},\dotsc,f_{p^{(1)}_n},\dotsc & \text{che converge in }\vec x_1\\
+            f_{p^{(2)}_1},f_{p^{(2)}_2},\dotsc,f_{p^{(2)}_n},\dotsc & \text{che converge in }\vec x_1,\vec x_2\\
+            f_{p^{(3)}_1},f_{p^{(3)}_2},\dotsc,f_{p^{(3)}_n},\dotsc & \text{che converge in }\vec x_1,\vec x_2,\vec x_3\\
+            \vdots & \\
+            f_{p^{(m)}_1},f_{p^{(m)}_2},\dotsc,f_{p^{(m)}_n},\dotsc & \text{che converge in }\vec x_1,\dotsc,\vec x_m
+        \end{array}
+    \end{equation}
+    e ognuna è una sottosuccessione delle precedenti.
+    Se esistesse una funzione ``finale'', essa convergerebbe su tutto $A$, ma il procedimento è infinito: costruiamo dunque la successione $\{f_{p^{(k)}_k}\}_{k\in\N}$, con la diagonale di Cantor; otteniamo cos\`i una sottosuccessione delle precedenti, con $f_{p^{(m)}_m}$ convergente per tutti gli $\vec x_i$ con $1\le i\le m$; al limite per $m\to+\infty$, allora, essa converge su tutto $A$.
+
+    Sia ora $\epsilon>0$: per definizione, per ogni $n\in\N$ $\exists\delta>0$ tale che se $\abs{\vec x-\bar{\vec x}}>\delta$ allora $\abs{f_n(\vec x)-f_n(\bar{\vec x})}<\epsilon$ per $\vec x,\bar{\vec x}\in E$.
+    Sia $\{F_n\}_{n\in\N}$ la sottosuccessione ottenuta precedentemente con il metodo della diagonale: si ha che $\abs{F_n(\vec x_i)-F_m(\vec x_i)}<\epsilon$ per ogni $n,m>N$ per un opportuno $N\in\N_0$, dato che $\{F_n(\vec x_i)\}_{n\in\N}$ è di Cauchy, in quanto convergente, per ogni $\vec x_i\in A$.
+    Abbiamo che $E\subset\bigcap_{i\in\N} B_{\delta}(\vec x_i)$ (ossia gli intorni dei punti di $A$ ricoprono $E$), ma per la compattezza di $E$ ne è necessario solo un numero finito, ossia $\exists q\in\N$ tale che $E\subset\bigcup_{i=1}^q B_\delta(\vec x_i)$.
+    Per ogni $\bar{\vec x}\in E$ esiste $i\in\{1,\dotsc,q\}$ tale che $\bar{\vec x}\in B_\delta(\vec x_i)$: allora
+    \begin{equation}
+        \abs{F_n(\bar{\vec x})-F_m(\bar{\vec x})}\le
+        \abs{F_n(\bar{\vec x})-F_n(\vec x_i)}+\abs{F_n(\vec x_i)-F_m(\vec x_i)}+\abs{F_m(\bar{\vec x})-F_m(\vec x_i)}
+    \end{equation}
+    e se $\bar{\vec x}\in B_\delta(\vec x_i)$ allora $\abs{\bar{\vec x}-\vec x_i}<\delta$ da cui $\abs{F_n(\bar{\vec x})-F_n(\vec x_i)}<\epsilon$ (e lo stesso per $F_m$) per l'equicontinuità della successione di partenza, mentre si ha $\abs{F_n(\vec x_i)-F_m(\vec x_i)}<\epsilon$ poich\'e $\{F_n\}_{n\in\N}$ è di Cauchy.
+    In sostanza,
+    \begin{equation}
+        \abs{F_n(\bar{\vec x})-F_m(\bar{\vec x})}<3\epsilon
+    \end{equation}
+    quindi $\{F_n(\bar{\vec x})\}_{n\in\N}$ è di Cauchy per ogni $\bar{\vec x}\in E$; in altre parole per ogni $\bar{\vec x}\in E$ esiste $F(\bar{\vec x})\in\R$ per cui si ha $F_n(\bar{\vec x})\to F(\bar{\vec x})$.
+    Infine, dato che la convergenza è uniforme, la funzione limite
+    \begin{equation}
+        F\colon\vec x\mapsto\lim_{n\to+\infty}F_n(\vec x)
+    \end{equation}
+    è continua in $E$.
+\end{proof}
