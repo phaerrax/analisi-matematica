@@ -623,3 +623,42 @@ Si veda \cite[p.~630]{evans} per le dimostrazioni di questi risultati.
     \end{equation}
     che prova che $\{u_n\}$ è di Cauchy anche in $\leb[q]{\Omega}$, quindi converge a un $u\in\leb[q]{\Omega}$.
 \end{proof}
+
+\begin{teorema}[Disuguaglianza di Poincar\'e] \label{t:disuguaglianza-poincare}
+    Sia $\Omega$ un sottoinsieme di $\R^n$ limitato in almeno una direzione (ossia esiste $c>0$ tale che $\Omega=\{\vec x\in\R^n\colon\vec x=(\vec x',x_n)\text{ con }\abs{x_n}\le c\}$): esiste una costante $C>0$ tale che per ogni $u\in\sobHc[1]{\Omega}$
+    \begin{equation}
+        \norm{u}_2\le\norm{\grad u}_2.
+        \label{eq:disuguaglianza-poincare}
+    \end{equation}
+\end{teorema}
+\begin{proof}
+    Sia $u\in\contsc[1]{\Omega}$: posto $\vec x=(\vec x',x_n)\in\R^{n-1}\times\R$, con $\abs{x_n}\le L$ per un $L>0$, risulta che
+    \begin{multline}
+        \abs{u(\vec x',x_n)}^2=
+        \int_{-L}^{x_n}\drp{u}{x_n}\abs{u(\vec x',x_n)}^2\,\dd x_n=
+        2\int_{-L}^{x_n}\biggl[u(\vec x',t)\drp{u}{t}(\vec x',t)\biggr]\,\dd t\le\\ \le
+        2\int_{-L}^{x_n}\abs[\bigg]{u(\vec x',t)\drp{u}{t}(\vec x',t)}\,\dd t\le
+        2\int_{-L}^L\abs{u(\vec x',t)}\abs[\bigg]{\drp{u}{t}(\vec x',t)}\,\dd t.
+    \end{multline}
+    Integriamo in $x_n\in[-L,L]$, ottenendo
+    \begin{equation}
+        \int_{-L}^L\abs{u(\vec x',x_n)}^2\,\dd x_n\le
+        2\int_{-L}^L\int_{-L}^L\abs{u(\vec x',t)}\abs[\bigg]{\drp{u}{t}(\vec x',t)}\,\dd t\,\dd x_n=
+        4L\int_{-L}^L\abs{u(\vec x',t)}\abs[\bigg]{\drp{u}{t}(\vec x',t)}\,\dd t,
+    \end{equation}
+    e poi su tutte le altre variabili:
+    \begin{equation}
+        \begin{aligned}
+            \int_{R^{n-1}}\int_{-L}^L\abs{u(\vec x',x_n)}^2\,\dd x_n &\le 4L\int_{-L}^L\abs{u(\vec x',t)}\abs[\bigg]{\drp{u}{t}(\vec x',t)}\,\dd t\\
+            \int_\Omega\abs{u}^2\,\dd\mu                             &\le 4L\int_\Omega\abs{u}\abs[\bigg]{\drp{u}{t}}\,\dd\mu.
+        \end{aligned}
+    \end{equation}
+    Con la disuguaglianza di Cauchy-Schwarz l'ultimo integrale, che è il prodotto interno in $\sobH[1]{\Omega}$ di $\abs{u}$ e $\abs{\drp{u}{t}}$, è minore o uguale di $\norm{u}_2\norm{\grad u}_2$, per cui si ha $\norm{u}_2^2\le 4L\norm{u}_2\norm{\grad u}_2$, da cui $\norm{u}_2\le 4L\norm{\grad u}_2$ che prova la tesi.
+\end{proof}
+Se la funzione $u$ non è tale che $\clos{\supp u}\subset\Omega$, allora questa disuguaglianza non può essere vera, come dimostra subito l'esempio di una funzione costante: prendiamo $u=1$ e $\Omega=(0,1)$, per esempio.
+Vale invece, più in generale e anche in questi casi, la \emph{disuguaglianza di Wirtinger}
+\begin{equation}
+    \norm{u-\bar{u}}_2\le C\norm{\grad u}_2
+    \label{eq:disuguaglianza-wirtinger}
+\end{equation}
+dove $\bar{u}=\frac1{\mu(\Omega)}\int_\Omega u\,\dd\mu$.
