@@ -826,3 +826,86 @@ Dal lemma precedente allora $x=y$.
     \end{equation}
     Un insieme completo linearmente indipendente è una \emph{base} per $H$, e i coefficienti $\inner{x}{b_i}$ sono detti \emph{coefficienti di Fourier} (rispetto alla base $\mathcal{B}$).
 \end{definizione}
+
+\section{Funzioni a valori in spazi di Banach}
+Sarà utile nei capitoli successivi studiare delle funzioni definite da un intervallo di $\R$ a valori in un certo spazio di Banach $X$; un esempio che vedremo è una funzione $f$ delle coordinate spaziali e temporali, in cui il tempo ha un ruolo privilegiato, e perciò è trattato a parte.
+La funzione è cos\`i studiata in due tempi: prima, come funzione da un intervallo di tempo (di $\R$) che restituisce una funzione dello spazio, che è in uno degli spazi funzionali che studiamo in questi capitoli, ossia
+\begin{equation}
+    t\mapsto \tilde{f}(t)\mapsto f(t,\vec x)
+\end{equation}
+con $t\in I\subset\R$, $\tilde{f}(t)\in X$, $f(t,\vec x)\in\R$.
+Un esempio (che ritroveremo più avanti) è la funzione
+\begin{equation}
+    f\colon(t,\vec x)\in(0,+\infty)\times\R^2\mapsto\frac1{4\pi t}e^{-\frac{\norm{\vec x}^2}{4t}},
+\end{equation}
+che possiamo analizzare nei due ``pezzi''
+\begin{equation}
+    \begin{aligned}
+        \tilde{f}&\colon t\to\tilde{f}(t)\\
+        \tilde{f}(t)&\colon\vec x\mapsto f(t,\vec x)=\frac1{4\pi t}e^{-\frac{\norm{\vec x}^2}{4t}}.
+    \end{aligned}
+\end{equation}
+Per questi tipi di funzioni generalizziamo alcune proprietà viste finora per le funzioni reali a questo tipo di funzioni.
+Un riassunto dei risultati principali si può trovare in \cite[cap.~6A]{pde:hunter}, di cui seguiamo i punti salienti.
+Preso $T>0$, considereremo sempre funzioni da $[0,T]$ a valori in $X$.
+
+Innanzitutto, possiamo definire allo stesso modo le funzioni semplici come funzioni $s\colon[0,T]\to X$ che assumono un numero finito di valori, e anche in questo caso possiamo rappresentarle come
+\begin{equation}
+    s=\sum_{i=1}^nc_i\chi_{A_i}
+    \label{eq:funzione-semplice-banach}
+\end{equation}
+con $c_i\in X$ e $A_i\subseteq[0,T]$, che supporremo sempre misurabili.
+\begin{definizione} \label{d:funzione-fortemente-misurabile}
+    Una funzione $f\colon[0,T]\to X$ è detta \emph{fortemente misurabile} se esiste una successione $\{f_n\}_{n\in\N}$ di funzioni semplici tali che $f_n(t)\to f(t)$ in $X$ quasi ovunque in $[0,T]$.
+\end{definizione}
+Si faccia attenzione al fatto che in questa definizione la convergenza della successione è, in $[0,T]$, puntuale quasi ovunque, ma ogni valore $f_n(t)\in X$ converge \emph{in norma} in $X$.
+Chiameremo semplicemente \emph{misurabili} le funzioni di questo tipo.
+Insieme a questa definizione, come ci si può aspettare dal nome, esiste anche il concetto di misurabilità \emph{debole}: una funzione $f\colon[0,T]\to X$ è debolmente misurabile se per ogni $g\in\dual{X}$ la funzione $g(f)$ (che è da $[0,T]$ a valori reali) è misurabile.
+
+Per l'integrazione, non possiamo semplicemente estendere la definizione \ref{d:integrale-lebesgue-funzioni-nonnegative}, dato che su $X$ non esiste una relazione d'ordine che possiamo usare.
+Definiamo invece l'integrale completando lo spazio delle funzioni semplici appena definite.
+Per una funzione semplice come nella \eqref{eq:funzione-semplice-banach} definiamo
+\begin{equation}
+    \int_0^T s\,\dd t\defeq\sum_{i=1}^nc_i\mu(A_i).
+    \label{eq:integrale-funzione-semplice-banach}
+\end{equation}
+\begin{definizione} \label{d:integrale-bochner}
+    Una funzione $f\colon[0,T]\to X$ è \emph{integrabile secondo Bochner} se esiste una successione $\{f_n\}_{n\in\N}$ di funzioni semplici tale che $f_n(t)\to f(t)$ puntualmente quasi ovunque in $[0,T]$ e
+    \begin{equation}
+        \lim_{n\to+\infty}\int_0^T\norm{f_n-f}_X\,\dd t=0.
+    \end{equation}
+    In tal caso l'integrale di $f$ in $[0,T]$ è definito come il limite, nella topologia forte di $X$,
+    \begin{equation}
+        \int_0^T f\,\dd t\defeq\lim_{n\to+\infty}\int_0^T f_n\,\dd t.
+        \label{eq:integrale-bochner}
+    \end{equation}
+\end{definizione}
+Diremo che una funzione è integrabile intendendo sempre che lo è secondo Bochner.
+\begin{teorema}[Bochner] \label{t:bochner}
+    Una funzione $f\colon[0,T]\to X$ è integrabile (secondo Bochner) se e solo se è fortemente misurabile e
+    \begin{equation}
+        \int_0^T\norm{f}_X\,\dd t<+\infty.
+    \end{equation}
+\end{teorema}
+Questa condizione è più semplice da verificare, dato che $\norm{f}_X$ è una funzione da $[0,T]$ a $\R$.
+
+Definiamo dunque gli spazi $\leb[p]{0,T;X}$, per $p\in[1,+\infty)$, come gli insiemi delle (classi di equivalenza secondo la solita uguaglianza quasi ovunque delle) funzioni fortemente misurabili $f\colon[0,T]\to X$ tali che
+\begin{equation}
+    \int_0^T\norm{f}_X^p\,\dd t<+\infty.
+\end{equation}
+Tale spazio, dotato della norma
+\begin{equation}
+    \norm{f}_{\leb[p]{0,T;X}}\defeq\biggl(\int_0^T\norm{f}_X^p\,\dd t\biggr)^\frac1{p},
+    \label{eq:p-norma-banach}
+\end{equation}
+è uno spazio di Banach.
+Lo spazio $\leb[\infty]{0,T;X}$ è invece definito dalla condizione
+\begin{equation}
+    \esssup_{t\in[0,T]}\norm{f(t)}_X<+\infty
+\end{equation}
+e anch'esso è uno spazio di Banach con la norma
+\begin{equation}
+    \norm{f}_{\leb[\infty]{0,T;X}}\defeq\esssup_{[0,T]}\norm{f}_X.
+    \label{eq:p-norma-infinito-banach}
+\end{equation}
+Lo spazio delle funzioni semplici \eqref{eq:funzione-semplice-banach} è denso in $\leb[p]{0,T;X}$.

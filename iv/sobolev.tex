@@ -48,6 +48,13 @@ Detto ciò, data una funzione $f\in\leb[p]{\Omega}$, se esiste una $g$ tale che
 \end{equation}
 per ogni $\phi\in\contsc[\infty]{\Omega}$ allora $g$ è la $\alpha$-esima derivata debole di $f$.
 
+Per funzioni a valori in uno spazio di Banach $X$, se $f\in\locleb[1]{0,T;X}$, ossia $f$ è integrabile in ogni sottoinsieme compatto di $[0,T]$, definiamo la derivata debole di $f$ come la funzione, se esiste, $g\in\locleb[1]{0,T;X}$ tale che
+\begin{equation}
+    \int_0^T \phi g\,\dd t=-\int_0^T \phi'f\,\dd t
+    \label{eq:derivata-debole-banach}
+\end{equation}
+per ogni $\phi\in\contsc[\infty]{[0,T]}$, dove gli integrali sono intesi come integrali di Bochner (si veda la \ref{d:integrale-bochner}).
+
 \section{Spazi di Sobolev}
 Da qui in avanti, quanto parleremo di derivate (di qualsiasi tipo) intenderemo sempre le derivate deboli, e useremo la notazione classica $\drv{f}{x}$, $\drp{f}{x}$ etc. anche per le derivate deboli.
 Sia $1\le p<+\infty$ e $\Omega\in\R^n$ aperto.
@@ -117,6 +124,30 @@ da cui $\norm{f}_{k,2}=\sqrt{\inner{f}{f}_{k,2}}$; per $k=1$ si ha in particolar
     \label{eq:prodotto-interno-W12}
 \end{equation}
 Con ciò anche lo spazio $\sobW[k,2]{\Omega}$ è uno spazio di Hilbert: per questo fatto questi spazi sono denotati anche come $\sobH[k]{\Omega}$, sottintendendo $p=2$.
+
+Diamo ora uno sguardo alle funzioni a valori in uno spazio di Banach $X$.
+Lo spazio di Sobolev $\sobW[1,p]{0,T;X}$ è definito come lo spazio vettoriale delle funzioni $u\in\leb[p]{0,T;X}$ per le quali esiste la derivata debole $\drp{u}{t}$ ed essa appartiene a $\leb[p]{0,T;X}$.
+Con la norma
+\begin{equation}
+    \norm{u}_{\sobW[1,p]{0,T;X}}\defeq\biggl[\int_0^T\biggl(\norm{u}_X^p+\norm[\bigg]{\drp{u}{t}}_X^p\biggr)\,\dd t\biggr]^\frac1{p}
+    \label{eq:norma-sobolev-banach}
+\end{equation}
+tale insieme è uno spazio di Banach.
+\begin{teorema}
+    Sia $X$ uno spazio di Banach, $T>0$, e $u\in\sobW[1,p]{0,T;X}$ con $p\in[1,+\infty)$: allora
+    \begin{itemize}
+        \item esiste $\bar{u}\in\sobW[1,p]{0,T;X}$ tale che $\bar{u}=u$ quasi ovunque e $\bar{u}$ è continua in $[0,T]$;
+        \item per $0\le s\le t\le T$ si ha
+            \begin{equation}
+                u(t)=u(s)+\int_s^t\drp{u}{t}(t)\,\dd t
+            \end{equation}
+            cioè vale il teorema fondamentale del calcolo integrale (in altre parole, $u$ è detta \emph{assolutamente continua});
+        \item per un $c>0$ vale
+            \begin{equation}
+                \max_{t\in[0,T]}\norm{u(t)}_X\le c\norm{u}_{\sobW[1,p]{0,T;X}}.
+            \end{equation}
+    \end{itemize}
+\end{teorema}
 
 \section{Teoremi di immersione}
 È evidente dalla definizione che $\sobW[k,p]{\Omega}\subset\leb[p]{\Omega}$ per $k\ge 1$ e $\sobW[0,p]{\Omega}=\leb[p]{\Omega}$.
