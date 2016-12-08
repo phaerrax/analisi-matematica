@@ -552,3 +552,100 @@ Assumiamo dunque nella \eqref{eq:problema-dirichlet-equazione-poisson-integrale}
 A questo punto possiamo estendere, per continuità, l'integrale a sinistra anche a $\phi\in\sobHc[1]{\Omega}$.
 L'integrale a destra allora ha senso non solo per $f\in\leb[2]{\Omega}$, ma più in generale per una $f$ nel duale di $\sobHc[1]{\Omega}$.
 Per ora restiamo nelle ipotesi che $f\in\leb[2]{\Omega}$ e $u,\phi\in\sobH[1]{\Omega}$.
+
+Fissata $f$, definiamo il funzionale $E_f\colon\sobHc[1]{\Omega}\to\R$ come
+\begin{equation}
+    E_f(u)=\frac12\int_\Omega\norm{\grad u}^2\,\dd\mu+\int_\Omega fu\,\dd\mu.
+    \label{eq:funzionale-energia-poisson}
+\end{equation}
+L'integrale è ben definito poich\'e si ha
+\begin{equation}
+    \abs{E_f(u)}\le
+    \frac12\norm{\grad u}_2^2+\norm{f}_2\norm{u}_2<
+    +\infty
+\end{equation}
+con le ipotesi fatte.
+Come già visto, la soluzione al problema di Dirichlet \eqref{eq:problema-dirichlet-equazione-poisson} è il punto di minimo di $E_f$ in $\sobHc[1]{\Omega}$, ma tale minimo viene poi assunto?
+Innanzitutto vediamo che, con la norma $\norm{u}_{1,2}=\norm{\grad u}_2$ su $\sobHc[1]{\Omega}$,
+\begin{equation}
+    E_f(u)\ge
+    \frac12\norm{u}_{1,2}^2-\norm{f}_2\norm{u}_2=
+    \frac12\norm{u}_{1,2}^2-\frac1{\delta}\norm{f}_2\delta\norm{u}_2\ge
+    \frac12\norm{u}_{1,2}^2-\frac12\biggl(\frac{\norm{f}_2}{\delta}\biggr)^2-\frac12(\delta\norm{u}_2)^2
+\end{equation}
+per ogni $\delta>0$, e con la disuguaglianza di Poincar\'e esiste $C>0$ per cui $\norm{u}_2\le C\norm{\grad u}_2$, quindi
+\begin{equation}
+    E_f(u)\ge
+    \frac12\norm{u}_{1,2}^2-\frac12\biggl(\frac{\norm{f}_2}{\delta}\biggr)^2-\frac12(\delta C\norm{\grad u}_2)^2.
+\end{equation}
+Scegliendo $\delta^2=\frac1{2C^2}$ otteniamo allora
+\begin{equation}
+    E_f(u)\ge
+    \frac12\norm{u}_{1,2}^2-\frac14\norm{u}_{1,2}^2-C^2\norm{f}_2^2=
+    \frac14\norm{u}_{1,2}^2-C^2\norm{f}_2^2.
+\end{equation}
+Consideriamo dunque una successione $\{u_n\}_{n\in\N}\subset\sobHc[1]{\Omega}$ che minimizza $E_f$, cioè tale che per $n\to+\infty$ si abbia $E_f(u_n)\to\min E_f$.
+Sia $m\defeq\min E_f$: esiste $\bar{m}\in\N$ tale che $\forall n>\bar{m}$ si ha $m\le E_f(u_n)\le m+1$, ossia
+\begin{equation}
+    m\le
+    \frac12\int_\Omega\norm{\grad u_n}^2\,\dd\mu+\int_\Omega fu_n\,\dd\mu\le
+    \frac12\int_\Omega\norm{\grad u_n}^2\,\dd\mu+\norm{f}_2\norm{u_n}_2\le
+    m+1.
+\end{equation}
+Ciò significa che $\norm{\grad u_n}_2$ è limitata.
+Dato che $\sobHc[1]{\Omega}$ è uno spazio di Hilbert riflessivo, esiste una sottosuccessione $\{u_{n_k}\}\subset\{u_n\}$ che converge debolmente a una $u\in\sobHc[1]{\Omega}$, % per quale teorema?
+e per il teorema di Rellich-Kondrachov \ref{t:rellich-kondrachov} la sottosuccessione converge a $u$ anche in norma in $\leb[2]{\Omega}$, siccome $\sobHc[1]{\Omega}\cemb\leb[2]{\Omega}$.
+Allora $u_{n_k}\weakto u$ anche in $\leb[2]{\Omega}$, e in particolare
+\begin{equation}
+    \int_\Omega fu_{n_k}\,\dd\mu\to\int_\Omega fu\,\dd\mu,
+\end{equation}
+e di conseguenza
+\begin{equation}
+    E_f(u_{n_k})=
+    \frac12\int_\Omega\norm{\grad u_{n_k}}^2\,\dd\mu+\int_\Omega fu_{n_k}\,\dd\mu\to
+    \frac12\int_\Omega\norm{\grad u}^2\,\dd\mu+\int_\Omega fu\,\dd\mu=
+    m.
+\end{equation}
+D'ora in poi indichiamo la sottosuccessione con $u_n$.
+Risulta
+\begin{multline}
+    0\le
+    \int_\Omega\norm{\grad(u_n-u)}^2\,\dd\mu=
+    \int_\Omega\bigl(\norm{\grad u_n}^2-2\scalar{\grad u}{\grad u_n}+\norm{\grad u_n}^2\bigr)\,\dd\mu=\\=
+    \int_\Omega\norm{\grad u_n}^2\,\dd\mu-2\int_\Omega\scalar{\grad u}{\grad u_n}\,\dd\mu+\int_\Omega\norm{\grad u_n}^2\,\dd\mu.
+\end{multline}
+Ora, $\int_\Omega\scalar{\grad u}{\grad u_n}\,\dd\mu$ è un funzionale in $\sobHc[1]{\Omega}$ su $u_n$ che, per la convergenza debole della sottosuccessione, converge a $\int_\Omega\norm{\grad u}^2\,\dd\mu$, perciò al limite per $n\to+\infty$ otteniamo dalla disuguaglianza precedente
+\begin{equation}
+    \int_\Omega\norm{\grad u}^2\,\dd\mu \le \lim_{n\to+\infty}\int_\Omega\norm{\grad u_n}^2,
+\end{equation}
+perciò
+\begin{equation}
+    m-\int_\Omega fu\,\dd\mu=
+    \lim_{n\to+\infty}\frac12\int_\Omega\norm{\grad u_n}^2\,\dd\mu\ge
+    \frac12\int_\Omega\norm{\grad u_n}^2\,\dd\mu
+\end{equation}
+dalla quale otteniamo
+\begin{equation}
+    m\ge
+    \frac12\int_\Omega\norm{\grad u}^2\,\dd\mu+\int_\Omega fu\,\dd\mu\ge
+    m
+\end{equation}
+da cui è ovvio che
+\begin{equation}
+    m=\frac12\int_\Omega\norm{\grad u}^2\,\dd\mu+\int_\Omega fu\,\dd\mu=E_f(u)
+\end{equation}
+quindi il minimo è davvero assunto da una funzione in $\sobHc[1]{\Omega}$.
+
+Inoltre, per tutte le derivate direzionali si ha
+\begin{equation}
+    E_f'(u)[\phi]=
+    \lim_{t\to 0}\frac{E_f(u+t\phi)-E_f(u)}{t}=
+    \int_\Omega\scalar{\grad u}{\grad\phi}\,\dd\mu+\int_\Omega f\phi\,\dd\mu=0
+\end{equation}
+per ogni $\phi\in\sobHc[1]{\Omega}$.
+Anche la soluzione debole del problema di Dirichlet è unica: se $u_1$ e $u_2$ sono tali, allora $u_1-u_2$ soddisfa il problema \eqref{eq:problema-dirichlet-laplace} con condizioni al contorno omogenee, ossia $(u_1-u_2)\big|_{\boundary\Omega}=0$: di conseguenza
+\begin{equation}
+    \int_\Omega\scalar{\grad\phi}{\grad(u_1-u_2)}\,\dd\mu=0
+\end{equation}
+per ogni $\phi\in\sobHc[1]{\Omega}$ e in particolare scegliendo $\phi=u_1-u_2$ si ha $\norm{u_1-u_2}_{1,2}^2=0$, da cui $u_1=u_2$.
+
