@@ -430,3 +430,125 @@ S\`i, come vediamo nel seguente teorema.
     Se poi $\phi_1=\phi_2$ su $\boundary\Omega$, allora su tale bordo si ha contemporaneamente che $\phi_1\le\phi_2$ e $\phi_1\ge\phi_2$, dunque si ha sia $v\le 0$ sia $v\ge 0$ su $\Omega$, vale a dire $v=0$ cioè $\phi_1=\phi_2$ su tutto $\Omega$.
 \end{proof}
 Il ragionamento di questa dimostrazione si applica ugualmente all'equazione di Poisson $\lap u=f$.
+
+\section{Formulazione debole}
+Consideriamo il problema di Dirichlet
+\begin{equation}
+    \begin{cases}
+        \lap u=0 &\text{ in }\Omega\\
+        u=f      &\text{ in }\boundary\Omega
+    \end{cases}
+    \label{eq:problema-dirichlet-laplace}
+\end{equation}
+per un dominio limitato $\Omega$ in $\R^n$, con bordo liscio, e con $u\in\cont[2]{\Omega}$.
+\begin{teorema} \label{t:problema-dirichlet-laplace-variazionale}
+    Una funzione $u\in\cont[2]{\Omega}$ è soluzione del problema di Dirichlet \eqref{eq:problema-dirichlet-laplace} se è tale che
+    \begin{equation}
+        \int_\Omega\norm{\grad u}^2\,\dd\mu=\min_{w\in\mathcal{W}}\biggl\{\int_\Omega\norm{\grad w}^2\,\dd\mu\biggr\}
+    \end{equation}
+    dove $\mathcal{W}=\{w\in\cont{\clos{\Omega}}\cap\cont[2]{\Omega}\text{ tali che }w\big|_{\boundary\Omega}=f\}$.
+\end{teorema}
+\begin{proof}
+    Sia $\eta\in\contsc[\infty]{\Omega}$, e definiamo
+    \begin{equation}
+        \alpha\colon t\mapsto\int_\Omega\norm{\grad(u+t\eta)}^2\,\dd\mu,
+    \end{equation}
+    in altre parole facciamo variare $u$ con la funzione $t\eta$, che è compatibile con le condizioni al contorno del problema di Dirichlet poich\'e $(u+t\eta)\big|_{\boundary\Omega}=0$.
+    Dato che per ipotesi il punto $t=0$ è di minimo per $\alpha$, abbiamo $\alpha'(0)=0$ da cui
+    \begin{equation}
+        0=
+        \biggr(2\int_\Omega\scalar{\grad u}{\grad \eta}\,\dd\mu+2t\int_\Omega\norm{\grad \eta}^2\,\dd\mu\biggl)_{t=0}=
+        2\int_\Omega\scalar{\grad u}{\grad\eta}\,\dd\mu.
+    \end{equation}
+    Dalla prima identità di Green \eqref{eq:green1} si ha perciò
+    \begin{equation}
+        0=
+        \int_\Omega\scalar{\grad u}{\grad\eta}\,\dd\mu=
+        -\int_\Omega\eta\lap u\,\dd\mu+\int_{\boundary\Omega}\eta\drp{u}{\nu}\,\dd\sigma
+    \end{equation}
+    da cui $\int_\Omega\eta\lap u\,\dd\mu=0$.
+    Per il teorema \ref{t:fondamentale-calcolo-variazioni} concludiamo dunque che $\lap u=0$.
+\end{proof}
+Si può mostrare che il funzionale su $\cont[2]{\Omega}$
+\begin{equation}
+    u\mapsto \int_\Omega\norm{\grad u}^2\,\dd\mu
+\end{equation}
+è limitato dal basso, e questo può far pensare che il minimo sia sempre assunto per una funzione $\cclass[2]$, ma il seguente controesempio formulato da Weierstrass mostra che cos\`i non è.
+Consideriamo $\Omega=(0,1)$, la misura $\dd\mu(x)=x^2\,\dd x$ e il funzionale
+\begin{equation}
+    \ell\colon u\mapsto \int_0^1 u'(x)^2\,\dd\mu(x)=\int_0^1u'(x)^2 x^2\,\dd x
+    \label{eq:controesempio-weierstrass-dirichlet}
+\end{equation}
+da minimizzare nell'insieme delle funzioni $\mathcal{W}=\{w\in\cont{[0,1]}\cap\cont[2]{(0,1)}\text{ a tratti, tali che }w(0)=0, w(1)=1\}$.
+Consideriamo la seguente successione $\{w_n\}_{n\in\N}\subset\mathcal{W}$:
+\begin{equation}
+    w_n(x)=
+    \begin{cases}
+        nx & 0\le x\le\frac1{n}\\
+        1  & \frac1{n}< x\le 1
+    \end{cases}.
+\end{equation}
+Chiaramente $\ell(w_n)\to 0$ per $n\to+\infty$, ma il limite di $w_n$, che è
+\begin{equation}
+    w(x)=
+    \begin{cases}
+        1 & x>0\\
+        0 & x=0
+    \end{cases}
+\end{equation}
+non è certo in $\mathcal{W}$.
+
+Sia dunque $\Delta$ il funzionale
+\begin{equation}
+    \Delta\colon u\mapsto \int_\Omega\norm{\grad u}^2\,\dd\mu
+\end{equation}
+e consideriamo più in generale una successione $\{u_n\}_{n\in\N}$ minimizzante il problema di Dirichlet \eqref{eq:problema-dirichlet-laplace}, ossia tale che $\lim_{n\to +\infty}\Delta(u_n)=\min\Delta$.
+Tale funzionale è convesso, poich\'e per $t\in[0,1]$ e due funzioni $u,v$
+\begin{equation}
+    \begin{split}
+        \Delta\bigl(tu+(1-t)v\bigr)&=
+        \int_\Omega\norm{t\grad u+(1-t)\grad v}^2\,\dd\mu=\\ &=
+        \int_\Omega\bigl[t^2\norm{\grad u}^2+(1-t)^2\norm{\grad v}^2+2t(1-t)\scalar{\grad u}{\grad v}\bigr]\,\dd\mu\le\\ &\le
+        \int_\Omega\bigl[t\norm{\grad u}^2+(1-t)\norm{\grad v}^2\bigr]\,\dd\mu=\\ &=
+        t\Delta(u)+(1-t)\Delta(v)
+    \end{split}
+\end{equation}
+e dunque per $n,m\in\N$ si ha
+\begin{multline}
+    \Delta(u_n-u_m)=
+    \int_\Omega\norm{\grad(u_n-u_m)}^2\,\dd\mu=
+    2\int_\Omega\bigl(\norm{\grad u_n}^2+\norm{\grad u_m}^2\bigr)\,\dd\mu-4\int_\Omega\norm[\bigg]{\grad\frac{u_n-u_m}2}^2\,\dd\mu=\\=
+    2\Delta(u_n)+2\Delta(u_m)-4\Delta\biggl(\frac{u_n-u_m}2\biggr).
+    \label{eq:funzionale-dirichlet-successione-cauchy}
+\end{multline}
+Risulta ovviamente $\min\Delta\le\Delta\bigl(\frac{u_n-u_m}2\bigr)$, e per la convessità vista sopra, preso $t=\frac12$, si ottiene $\Delta\bigl(\frac{u_n-u_m}2\bigr)\le\frac12\Delta(u_n)+\frac12\Delta(u_m)$.
+Entrambi gli addendi di quest'ultimo membro, per $n,m\to+\infty$, tendono a $\min\Delta$, quindi sostituendo nella \eqref{eq:funzionale-dirichlet-successione-cauchy} risulta che $\Delta(u_n-u_m)\to 0$.
+Siccome
+\begin{multline}
+    \Delta(u_n-u_m)=
+    \int_\Omega\norm{\grad(u_n-u_m)}^2\,\dd\mu=
+    \int_\Omega\sum_{i=1}^n\abs[\bigg]{\drp{}{x_i}(u_n-u_m)}^2\,\dd\mu=\\=
+    \sum_{i=1}^n\int_\Omega\abs[\bigg]{\drp{}{x_i}(u_n-u_m)}^2\,\dd\mu=
+    \sum_{i=1}^n\norm[\bigg]{\drp{u_n}{x_i}-\drp{u_m}{x_i}}_2^2
+\end{multline}
+si ha anche che $\drp{u_n}{x_i}$ forma una successione di Cauchy in $\leb[2]{\Omega}$, per $i\in\{1,\dotsc,n\}$, e per la completezza dello spazio tale successione converge\ldots\ a una funzione che è in $\leb[2]{\Omega}$, ma non è detto che sia anche solo continua.
+
+In questo intervengono gli spazi di Sobolev e la formulazione debole del problema: partiamo più in generale dal problema di Dirichlet dell'equazione di Poisson
+\begin{equation}
+    \begin{cases}
+        \lap u=f & \text{in }\Omega\\
+        u=0      & \text{su }\boundary\Omega
+    \end{cases}
+    \label{eq:problema-dirichlet-equazione-poisson}
+\end{equation}
+per una $f\in\cont{\Omega}$.
+Moltiplicando la prima per una funzione $\phi\in\contsc[\infty]{\Omega}$ e integrando per parti, siccome i termini di bordo si annullano, otteniamo
+\begin{equation}
+    \int_\Omega\scalar{\grad u}{\grad\phi}\,\dd\mu+\int_\Omega f\phi\,\dd\mu=0.
+    \label{eq:problema-dirichlet-equazione-poisson-integrale}
+\end{equation}
+Ora formuliamo delle ipotesi più deboli sulle funzioni affinch\'e quest'ultima equazione abbia senso: assumeremo cos\`i che le soluzioni e le loro derivate siano in $\leb[2]{\Omega}$, cos\`i che l'equazione sopra sia ben definita e che possiamo lavorare in uno spazio di Hilbert.
+Assumiamo dunque nella \eqref{eq:problema-dirichlet-equazione-poisson-integrale} che $u\in\sobH[1]{\Omega}$, e imponiamo la condizione al contorno $u=0$ dicendo ulteriormente che $u\in\sobHc[1]{\Omega}$.
+A questo punto possiamo estendere, per continuità, l'integrale a sinistra anche a $\phi\in\sobHc[1]{\Omega}$.
+L'integrale a destra allora ha senso non solo per $f\in\leb[2]{\Omega}$, ma più in generale per una $f$ nel duale di $\sobHc[1]{\Omega}$.
+Per ora restiamo nelle ipotesi che $f\in\leb[2]{\Omega}$ e $u,\phi\in\sobH[1]{\Omega}$.
