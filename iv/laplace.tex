@@ -649,3 +649,77 @@ Anche la soluzione debole del problema di Dirichlet è unica: se $u_1$ e $u_2$ s
 \end{equation}
 per ogni $\phi\in\sobHc[1]{\Omega}$ e in particolare scegliendo $\phi=u_1-u_2$ si ha $\norm{u_1-u_2}_{1,2}^2=0$, da cui $u_1=u_2$.
 
+\section{Operatori ellittici del secondo ordine}
+Possiamo generalizzare quanto detto finora ad operatori differenziali ellittici del secondo ordine.
+Sia
+\begin{equation}
+    L\colon u\mapsto-\sum_{i=1}^n\sum_{j=1}^n\drp{}{x_i}\biggl(a_{ij}\drp{u}{x_j}\biggr)+c_0u
+    \label{eq:operatore-ellittico-secondo-ordine}
+\end{equation}
+dove assumiamo che $a_{ij},c_0\in\leb[\infty]{\Omega}$, e tutte le derivate sono intese in senso debole.
+Un tale operatore è detto \emph{in forma divergenza}.
+L'operatore è ellittico se $\exists\lambda>0$ tale che
+\begin{equation}
+    \sum_{i=1}^n\sum_{j=1}^na_{ij}(\vec x)\xi_i\xi_j\ge\lambda\norm{\vxi}^2
+\end{equation}
+quasi ovunque in $\Omega$ e per ogni $\vxi\in\R^n$.
+L'operatore laplaciano $-\lap$ è ellittico, con $a_{ij}=\delta_{ij}$.
+Consideriamo dunque il problema
+\begin{equation}
+    \begin{cases}
+        L(u)=f & \text{in }\Omega\\
+        u=0    & \text{su }\boundary\Omega
+    \end{cases}
+    \label{eq:problema-dirichlet-ellittico-omogeneo}
+\end{equation}
+e definiamo una forma bilineare $a\colon\sobHc[1]{\Omega}\times\sobHc[1]{\Omega}\to\R$ da
+\begin{equation}
+    a(u,v)\defeq\int_\Omega\biggl(\sum_{i=1}^n\sum_{j=1}^na_{ij}\drp{u}{x_i}\drp{v}{x_j}+c_0uv\biggr)\,\dd\mu
+    \label{eq:forma-bilineare-ellittica}
+\end{equation}
+Diciamo che $u\in\sobHc[1]{\Omega}$ è una soluzione debole di \eqref{eq:problema-dirichlet-ellittico-omogeneo} se $a(u,\phi)=\int_\Omega f\phi\,\dd\mu$ per ogni $\phi\in\sobHc[1]{\Omega}$.
+\begin{proprieta} \label{pr:continuta-forma-bilineare-ellittica}
+    La forma bilineare definita dalla \eqref{eq:forma-bilineare-ellittica} è continua in $\sobHc[1]{\Omega}\times\sobHc[1]{\Omega}$.
+\end{proprieta}
+\begin{proof}
+    Per ogni $u,v\in\sobHc[1]{\Omega}$ si ha
+    \begin{equation}
+        \begin{split}
+            \abs{a(u,v)}&\le
+            \int_\Omega\biggl(\sum_{i=1}^n\sum_{j=1}^n\abs[\bigg]{a_{ij}\drp{u}{x_i}\drp{v}{x_j}}+\abs{c_0uv}\biggr)\,\dd\mu\le\\ &\le
+            \sum_{i=1}^n\sum_{j=1}^n\biggl(\norm{a_{ij}}_\infty\norm[\bigg]{\drp{u}{x_i}}_2\norm[\bigg]{\drp{v}{x_j}}_2+\norm{c_0}_\infty\norm{u}_2\norm{v}_2\biggr)
+        \end{split}
+    \end{equation}
+    con la disuguaglianza di Schwarz, mentre per la disuguaglianza di Poincar\'e esiste $c$ tale che $\norm{u}_2\le c\norm{\grad u}_2$, quindi
+    \begin{equation}
+        \begin{split}
+            \abs{a(u,v)}&\le
+            \sum_{i=1}^n\sum_{j=1}^n\biggl(\norm{a_{ij}}_\infty\norm[\bigg]{\drp{u}{x_i}}_2\norm[\bigg]{\drp{v}{x_j}}_2+c\norm{c_0}_\infty\norm{\grad u}_2\norm{v}_2\biggr)=\\ &=
+            \sup_{i,j\in\{1,\dotsc,n\}}\norm{a_{ij}}_\infty\sum_{i=1}^n\norm[\bigg]{\drp{u}{x_i}}_2\sum_{j=1}^n\norm[\bigg]{\drp{v}{x_j}}_2+c\norm{c_0}_\infty\norm{\grad u}_2\norm{v}_2\le\\ &\le
+            c'\sup_{i,j\in\{1,\dotsc,n\}}\norm{a_{ij}}_\infty\norm{u}_{\sobHc[1]{\Omega}}\norm{v}_{\sobHc[1]{\Omega}}+c\norm{c_0}_\infty\norm{u}_{\sobHc[1]{\Omega}}\norm{v}_{\sobHc[1]{\Omega}}
+        \end{split}
+    \end{equation}
+    che prova la limitatezza e dunque la continuità di $a$.
+    Per l'ellitticità, notiamo che
+    \begin{equation}
+        a(u,v)=
+        \sum_{i=1}^n\sum_{j=1}^n\int_\Omega\drp{u}{x_i}\drp{u}{x_j}a_{ij}\,\dd\mu+\int_\Omega c_0u^2\,\dd\mu\ge
+        % . . . qui manca qualcosa . . .
+        \lambda\sum_{i=1}^n \int_\Omega\abs[\bigg]{\drp{u}{x_i}}^2\,\dd\mu=
+        \lambda\norm{u}_{1,2}^2.\qedhere
+    \end{equation}
+\end{proof}
+Questa proprietà indica inoltre che $u\mapsto\sqrt{a(u,u)}$ è una norma equivalente alle altre già viste su $\sobHc[1]{\Omega}$.
+È anche simmetrica, perciò $a(u,v)$ è un prodotto interno su tale spazio.
+
+Costruiamo quindi da questa forma bilineare il funzionale
+\begin{equation}
+    E_a\colon u\mapsto\frac12a(u,u)-\int_\Omega fu\,\dd\mu
+    \label{eq:funzionale-energia-ellittico-dirichlet}
+\end{equation}
+associato al problema di Dirichlet \eqref{eq:problema-dirichlet-ellittico-omogeneo}.
+Esso è tale che esiste $\bar{u}\in\sobHc[1]{\Omega}$ per cui
+\begin{equation}
+    \inf_{\sobHc[1]{\Omega}}E_a(u)=E_a(\bar{u})
+\end{equation}
+e $E_a'(\bar{u})[\phi]=0$ per ogni $\phi$; in sostanza il problema ammette una soluzione debole.
