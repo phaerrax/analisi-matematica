@@ -797,3 +797,24 @@ Tale $\alpha$ avrà un minimo in $t=0$, per quanto visto finora, quindi
     \end{split}
 \end{equation}
 quindi $\bar{u}$ è una soluzione debole del problema \eqref{eq:problema-dirichlet-allen-cahn}.
+
+Possiamo generalizzare quanto detto finora a equazioni del tipo
+\begin{equation}
+    L(u)+g(u)=f
+\end{equation}
+dove $L$ è un operatore ellittico (come $-\lap$) e $g$, come funzione da $\R$ in $\R$, è continua e limitata da
+\begin{equation}
+    \abs{g(s)}\le c+d\abs{s}^p,
+\end{equation}
+ossia la sua crescita è al più polinomiale, per dei $c,d>0$ e $1\le p<\frac{n+2}{n-2}$ in modo da poter applicare le immersioni studiate.
+Inoltre se $G(t)=\int_0^tg(s)\,\dd s$ allora $G\in\cclass[1]$
+\begin{equation}
+    \abs{G(s)}\le c'+d'\abs{s}^{p+1}
+\end{equation}
+per dei $c',d'>0$ e si ha $p+1<\frac{n+2}{n-2}+1=\frac{2n}{n-2}$, con la disuguaglianza stretta in modo da poter usare la compattezza dell'immersione.
+Con queste ipotesi il funzionale associato all'equazione (che comunque non è univoco) è
+\begin{equation}
+    E\colon u\mapsto \int_\Omega\bigl[\norm{\grad u}^2+G(u)-fu\bigr]\,\dd\mu
+\end{equation}
+per $u\in\sobHc[1]{\Omega}$.
+Aggiungendo l'ipotesi che il funzionale sia ``grande all'infinito'', ossia che diverga per $\norm{u}_{1,2}\to+\infty$, allora $\bar{u}$ è soluzione debole del problema se $E(\bar{u})=\min E$.
