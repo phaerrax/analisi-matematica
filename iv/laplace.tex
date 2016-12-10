@@ -818,3 +818,100 @@ Con queste ipotesi il funzionale associato all'equazione (che comunque non è un
 \end{equation}
 per $u\in\sobHc[1]{\Omega}$.
 Aggiungendo l'ipotesi che il funzionale sia ``grande all'infinito'', ossia che diverga per $\norm{u}_{1,2}\to+\infty$, allora $\bar{u}$ è soluzione debole del problema se $E(\bar{u})=\min E$.
+
+\section{Problemi vincolati}
+Vediamo innanzitutto una versione del teorema dei moltiplicatori di Lagrange per generici spazi di Banach, di dimensione infinita.
+\begin{teorema}[Lagrange] \label{t:lagrange-dimensione-infinita}
+    Sia $X$ uno spazio di Banach reale $U\subset X$ aperto, e $f,g\colon X\to R$ funzioni di classe $\cclass[1]$.
+    Se $a$ è un punto estremante per $f$ in $\{x\in U\colon g(x)=0\}$, e la derivata direzionale $g'(a)[\cdot]\colon X\to\R$ è suriettiva, allora $\exists\lambda\in\R$ tale per cui
+    \begin{equation}
+        f'(a)[\phi]=\lambda g'(a)[\phi]
+    \end{equation}
+    per ogni $\phi\in X$.
+\end{teorema}
+Analizziamo ora il problema
+\begin{equation}
+    \begin{cases}
+        -\lap u=\lambda u & \text{in }\Omega\\
+        u=0               & \text{su }\boundary\Omega
+    \end{cases}
+    \label{eq:problema-autovalori-laplaciano}
+\end{equation}
+ossia il problema agli autovalori (con condizioni al contorno omogenee) del laplaciano.
+Vogliamo minimizzare il funzionale dato da
+\begin{equation}
+    E\colon u\mapsto\int_\Omega\norm{\grad u}^2\,\dd\mu
+\end{equation}
+non su tutto $\sobHc[1]{\Omega}$, per il quale si avrebbe ovviamente $u=0$ come soluzione, ma sulla sfera unitaria $S\defeq\{u\in\sobHc[1]{\Omega}\colon\norm{u}_{1,2}=1\}$.
+Data la linearità della \eqref{eq:problema-autovalori-laplaciano}, infatti, se $u$ è soluzione anche $\alpha u$ lo è per ogni $\alpha\in\R$: consideriamo dunque soltanto gli elementi normalizzati di $\sobHc[1]{\Omega}$, escludendo la soluzione banale $u=0$.
+Se $\Omega$ è limitato, dalla disuguaglianza di Poincar\'e \ref{t:disuguaglianza-poincare} esiste $c>0$ per cui $\norm{u}_2^2\le c\norm{\grad u}_2^2$ quindi
+\begin{equation}
+    E(u)=\norm{\grad u}_2^2\ge\frac1{c}\norm{u}_2^{2}=\frac1{c}
+\end{equation}
+che mostra che $E$ è limitato dal basso.
+Sia dunque $\lambda_1\defeq\inf_S E$, e prendiamo una successione $\{u_n\}_{n\in\N}\subset S$ minimizzante $E$, quindi tale che $E(u_n)\to\lambda_1$ per $n\to+\infty$: essa è allora limitata, perciò per il teorema di Banach-Alao\u{g}lu esiste una sottosuccessione $\{u_{n_k}\}$ che converge debolmente a un $u\in\sobHc[1]{\Omega}$; si potrebbe avere che $u\notin S$, però sappiamo che per il teorema di Rellich-Kondrachov \ref{t:rellich-kondrachov} $\sobHc[1]{\Omega}\cemb\leb[2]{\Omega}$ e cos\`i $u_{n_k}\to u\in\leb[2]{\Omega}$, per cui
+\begin{equation}
+    \norm{u}_2=\lim_{n_k\to+\infty}\norm{u_{n_k}}_2=\lim_{n_k\to+\infty}1=1
+\end{equation}
+che mostra che, dopotutto, $u\in S$.
+Come abbiamo visto nei problemi precedenti, dunque, l'estremo inferiore viene assunto da $E$ poich\'e dato che la successione minimizza $E$ si ha 
+\begin{equation}
+    \lambda_1=
+    \lim_{n\to+\infty}\int_\Omega\norm{\grad u_n}^2\,\dd\mu\ge
+    \lim_{n\to+\infty}\int_\Omega\norm{\grad u}^2\,\dd\mu\ge
+    \lambda_1
+\end{equation}
+perciò $\exists\bar{u}\in S$ tale che $E(\bar{u})=\lambda_1$.
+Sia $e_1$ tale $\bar{u}$: seguendo il teorema \ref{t:lagrange-dimensione-infinita}, il vincolo è rappresentato dalla funzione
+\begin{equation}
+    g(u)=\int_\Omega u^2\,\dd\mu-1
+\end{equation}
+e la derivata direzionale è suriettiva poich\'e $g'(e_1)[\phi]\ne 0$ per ogni $\phi\in\sobHc[1]{\Omega}$, quindi esiste $\lambda\in\R$ per cui % manca qualche passo intermedio...
+\begin{equation}
+    \int_\Omega\scalar{\grad e_1}{\grad\phi}\,\dd\mu=\lambda\int_\Omega u\phi\,\dd\mu
+\end{equation}
+per ogni $\phi\in\sobHc[1]{\Omega}$, ma tale $\lambda$ è proprio $\lambda_1$: se infatti scegliamo $\phi=e_1$ troviamo
+\begin{equation}
+    \int_\Omega\norm{\grad e_1}^2\,\dd\mu=\lambda\int_\Omega e_1^2\,\dd\mu=\lambda
+\end{equation}
+dato che $e_1\in S$.
+Allora $e_1$ è la soluzione di $-\lap u=\lambda_1u$.
+Questa funzione è lo ``stato fondamentale'' del laplaciano: tra le sue proprietà si ha che essa non cambia segno (o meglio, la sua versione continua) su $\Omega$.
+\begin{osservazione}
+    Supponiamo che $w$ sia autofunzione di $-\lap$ con autovalore $\lambda\ne\lambda_1$: essa risolve in modo debole, dunque, $-\lap w=\lambda w$.
+    Allora
+    \begin{equation}
+        \inner{e_1}{w}_{1,2}=
+        \int_\Omega we_1\,\dd\mu=
+        \frac1{\lambda_1}\int_\Omega\scalar{\grad e_1}{\grad w}\,\dd\mu=
+        \frac{\lambda}{\lambda_1}\int_\Omega we_1\,\dd\mu=
+        \frac{\lambda}{\lambda_1}\inner{e_1}{w}_{1,2}
+    \end{equation}
+    e siccome $\lambda/\lambda_1\ne 1$ dev'essere che $w$ è ortogonale ad $e_1$.
+\end{osservazione}
+
+Alla luce di quest'osservazione, consideriamo il sottospazio di $\sobHc[1]{\Omega}$ ortogonale a $\gen{\{e_1\}}$, che chiamiamo $S_2$ ed è ancora uno spazio di Hilbert.
+Consideriamo $\lambda_2\defeq\inf_{S\cap S_2}E$: sicuramente si deve avere $\lambda_2\ge\lambda_1$, e tale estremo inferiore è assunto per una $e_2\in S\cap S_2$ tale che
+\begin{equation}
+    \int_\Omega\scalar{\grad e_2}{\grad\phi}\,\dd\mu=\lambda_2\int_\Omega e_2\phi\,\dd\mu
+\end{equation}
+per ogni $\phi\in\sobHc[1]{\Omega}$, e $\int_\Omega e_1e_2\,\dd\mu=0$.
+Si può mostrare anche che in realtà la disuguaglianza è stretta, ossia $\lambda_2>\lambda_1$, inoltre affinch\'e sia $\inner{e_1}{e_2}_{1,2}=0$ si ha che $e_2$ deve cambiare segno in $\Omega$.
+Procedendo in questo modo troviamo una successione non decrescente di autovalori di $-\lap$.
+È possibile che alcuni siano degeneri (con degenerazione sempre finita), come ad esempio per le funzioni $\sin x\sin(2y)$ e $\sin(2x)\sin y$ nello spazio $\sobH[1]{(0,\pi)\times(0,\pi)}$.
+Se per assurdo un autovalore $\lambda_k$ avesse degenerazione infinita, infatti, otterremmo uno spazio di dimensione infinita generato dall'insieme (ortogonale) delle autofunzioni linearmente indipendenti $\{e_{k_1},e_{k_2},\dotsc\}$ associate a tale autovalore.
+Ma
+\begin{equation}
+    \lambda_k=\int_\Omega\norm{\grad e_k}^2\,\dd\mu=\norm{e_k}_{1,2}^2-1
+\end{equation}
+dato che $e_k\in S$.
+Dato che la successione $\{e_{k_n}\}_{n\in\N}$ è limitata in norma, dal teorema di Banach-Alao\u{g}lu \ref{t:banach-alaoglu} esiste una sottosuccessione $\{\tilde{e}_n\}_{n\in\N}\subset\{e_{k_n}\}_{n\in\N}$ tale che $\tilde{e}_n\weakto v\in\sobHc[1]{\Omega}$ e per il teorema di Rellich-Kondrachov \ref{t:rellich-kondrachov} $\tilde{e}_n\to v\in\leb[2]{\Omega}$.
+Siccome allora $\{\tilde{e_n}\}_{n\in\N}$ è di Cauchy, per ogni $\epsilon>0$ si deve avere definitivamente che $\norm{\tilde{e}_n-\tilde{e}_m}_2^2<\epsilon^2$, ma ciò è assurdo poich\'e
+\begin{equation}
+    \norm{\tilde{e}_n-\tilde{e}_m}_2^2=
+    \int_\Omega\tilde{e}_n^2\,\dd\mu-2\int_\Omega\tilde{e}_n\tilde{e}_m\,\dd\mu+\int_\Omega\tilde{e}_m^2\,\dd\mu=
+    \int_\Omega\tilde{e}_n^2\,\dd\mu+\int_\Omega\tilde{e}_m^2\,\dd\mu=
+    2
+\end{equation}
+dato che $\inner{\tilde{e}_n}{\tilde{e}_m}_2=0$.
+La successione $\{\lambda_n\}$ degli autovalori di $-\lap$, in effetti, è addirittura divergente.
