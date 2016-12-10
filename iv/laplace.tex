@@ -723,3 +723,77 @@ Esso è tale che esiste $\bar{u}\in\sobHc[1]{\Omega}$ per cui
     \inf_{\sobHc[1]{\Omega}}E_a(u)=E_a(\bar{u})
 \end{equation}
 e $E_a'(\bar{u})[\phi]=0$ per ogni $\phi$; in sostanza il problema ammette una soluzione debole.
+
+Come esempio di quanto abbiamo appena visto, consideriamo il problema di Dirichlet per l'equazione di Allen-Cahn
+\begin{equation}
+    \begin{cases}
+        -\lap u+u^3-u=f & \text{in }\Omega\\
+        u=0             & \text{su }\boundary\Omega
+    \end{cases}
+    \label{eq:problema-dirichlet-allen-cahn}
+\end{equation}
+a cui associamo il funzionale caratteristico (per $f\in\leb[2]{\Omega}$ fissata) $E_f\colon\sobHc[1]{\Omega}\to\R$ dato da
+\begin{equation}
+    E_f\colon u\mapsto
+    \int_\Omega\biggl(\frac12\norm{\grad u}^2+\frac14u^4-\frac12u^2-fu\biggr)\,\dd\mu.
+    \label{eq:funzionale-energia-allen-cahn}
+\end{equation}
+Sappiamo che per $1\le q\le\frac{2n}{n-2}$, dal teorema di Sobolev \ref{t:sobolev}, si ha $\sobHc[1]{\Omega}\emb\leb[q]{\Omega}$, quindi dovremo porre il problema in uno spazio $n$-dimensionale con $\frac{2n}{n-2}\ge 4$ affinch\'e $E_f$ sia ben definito: questo implica che $n\le 4$.
+Se invece $\Omega\subset\R^3$ (ossia $n=3$, ma anche in dimensione più bassa) si ha $\frac{2n}{n-2}=6$ quindi si ha anche che $\sobHc[1]{\Omega}\cemb\leb[q]{\Omega}$ per il teorema di Rellich-Kondrachov \ref{t:rellich-kondrachov}.
+Minimizziamo dunque il funzionale e verifichiamo che l'estremo inferiore sia anche un minimo.
+Sicuramente $E_f$ è limitato dal basso poich\'e
+\begin{equation}
+    \begin{split}
+        E_f(u)&\ge
+        \int_\Omega\biggl(\frac12\norm{\grad u}^2+\frac14u^4-\frac12u^2\biggr)\,\dd\mu-\norm{f}_2\norm{u}_2=\\ &=
+        \int_\Omega\biggl[\frac12\norm{\grad u}^2+\frac12u^2\biggl(\frac12u^2-1\biggr)\biggr]\,\dd\mu-\norm{f}_2\norm{u}_2
+    \end{split}
+\end{equation}
+e detti $\mathcal{U}_+\defeq\{\vec x\in\Omega\colon\abs{u(\vec x)}>1\}$ e $\mathcal{U}_-\defeq\{\vec x\in\Omega\colon\abs{u(\vec x)}\le 1\}$ si ha
+\begin{equation}
+    \int_\Omega\frac12u^2\biggl(\frac12u^2-1\biggr)\,\dd\mu=
+    \int_{\mathcal{U}_-}\frac12u^2\biggl(\frac12u^2-1\biggr)\,\dd\mu+\int_{\mathcal{U}_+}\frac12u^2\biggl(\frac12u^2-1\biggr)\,\dd\mu:
+\end{equation}
+il secondo termine non è mai negativo, mentre il primo è limitato da $C\mu(\Omega)$ per un $C>0$, dunque
+\begin{equation}
+    E_f(u)\ge\frac12\norm{u}_2^2-\norm{f}_2\norm{u}_2-C'
+\end{equation}
+per un certo $C'>0$.
+Si può poi mostrare che quando $\norm{u}_2\to+\infty$ si ha $E_f(u)\to+\infty$, ossia che $L$ è coercitivo.
+Possiamo cos\`i trovare una palla $\mathcal{B}=\{u\in\sobHc[1]{\Omega}\colon\norm{u}_2\le R\}$ tale che per $u\notin\mathcal{B}$ si abbia $E_f(u)\ge m+1$, dove $m\defeq\inf_{\sobHc[1]{\Omega}}E_f=\inf_\mathcal{B}E_f$.
+
+Prendiamo dunque una successione $\{u_n\}_{n\in\N}$ minimizzante, ossia tale che $E_f(u_n)\to m$: sappiamo che $\norm{u_n}\le R$.
+Esiste poi, per la riflessività dello spazio $\sobHc[1]{\Omega}$, una sottosuccessione $\{u_{n_k}\}$ tale per cui $\exists u\in\sobHc[1]{\Omega}$ tale che $u_{n_k}\weakto u$, quindi $E_f(u_{n_k})\to E_f(u)$.
+Per il teorema di Rellich-Kondrachov \ref{t:rellich-kondrachov} dunque $u_{n_k}\to u$ in $\leb[q]{\Omega}$ per $q<\frac{2n}{n-2}$, ad esempio $q<4$.
+Pertanto
+\begin{equation}
+    \int_\Omega u_n^4\,\dd\mu\to\norm{u}_4^4=\int_\Omega u^4\,\dd\mu
+\end{equation}
+e anche i successivi termini di $E_f(u_n)$ convergono, per la compattezza dell'immersione sia in $\leb[4]{\Omega}$ che in $\leb[2]{\Omega}$.
+Rimane il gradiente di $u_n$, per il quale abbiamo
+\begin{equation}
+    \liminf_{n\to+\infty}\frac12\int_\Omega\norm{\grad u_n}^2\,\dd\mu\ge\frac12\int_\Omega\norm{\grad u}^2\,\dd\mu
+\end{equation}
+quindi
+\begin{equation}
+    \begin{split}
+        m=\lim_{n\to+\infty} E_f(u_n)&=
+        \lim_{n\to+\infty}\int_\Omega\frac12\norm{\grad u_n}^2\,\dd\mu+\int_\Omega\biggl(\frac14u_n^4-\frac12u_n^2-fu\biggr)\,\dd\mu\ge\\ &\ge
+        \liminf_{n\to+\infty}\int_\Omega\frac12\norm{\grad u_n}^2\,\dd\mu+\int_\Omega\biggl(\frac14u_n^4-\frac12u_n^2-fu\biggr)\,\dd\mu\ge\\ &\ge
+        \int_\Omega\biggl(\frac12\norm{\grad u}^2+\frac14u_n^4-\frac12u_n^2-fu\biggr)\,\dd\mu
+    \end{split}
+\end{equation}
+che dimostra l'esistenza di una $\bar{u}\in\sobHc[1]{\Omega}$ tale che $E_f(\bar{u})=\min E_f$.
+Prendiamo ora la derivata direzionale di $E_f$ in $\bar{u}$ lungo una $\phi\in\sobHc[1]{\Omega}\setminus\{0\}$: per $t\in\R$ sia $\alpha(t)\defeq E_f(\bar{u}+t\phi)$.
+Tale $\alpha$ avrà un minimo in $t=0$, per quanto visto finora, quindi
+\begin{equation}
+    \begin{split}
+        0=\alpha'(0)&=
+        \lim_{t\to 0}\frac{E_f(\bar{u}+t\phi)-E_f(\bar{u})}{t}=\\ &=
+        \lim_{t\to 0}\frac1{t}\biggl\{\int_\Omega\biggr[\frac12\norm{\grad(\bar{u}+t\phi)}^2+\frac14(\bar{u}+t\phi)^4-\frac12(\bar{u}+t\phi)^2-(\bar{u}'t\phi)f\biggr]\,\dd\mu-E_f(\bar{u})\biggr\}=\\ &=
+        \lim_{t\to 0}\frac1{t}\int_\Omega\biggr[\frac122t\scalar{\grad\bar{u}}{\grad\phi}+t^2\norm{\grad\phi}^2-\frac12\biggl(2t\bar{u}\phi-\frac{t^2}2\phi^2\biggr)-tf\phi\biggr]\,\dd\mu=\\ &=
+        \lim_{t\to 0}\int_\Omega\biggr(\scalar{\grad\bar{u}}{\grad\phi}+t\norm{\grad\phi}^2-\bar{u}\phi+\frac{t}4\phi^2-f\phi\biggr)\,\dd\mu=\\ &=
+        \int_\Omega\biggr(\scalar{\grad\bar{u}}{\grad\phi}-\bar{u}\phi-f\phi\biggr)\,\dd\mu
+    \end{split}
+\end{equation}
+quindi $\bar{u}$ è una soluzione debole del problema \eqref{eq:problema-dirichlet-allen-cahn}.
