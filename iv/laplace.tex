@@ -915,3 +915,56 @@ Siccome allora $\{\tilde{e_n}\}_{n\in\N}$ è di Cauchy, per ogni $\epsilon>0$ si
 \end{equation}
 dato che $\inner{\tilde{e}_n}{\tilde{e}_m}_2=0$.
 La successione $\{\lambda_n\}$ degli autovalori di $-\lap$, in effetti, è addirittura divergente.
+
+\section{Regolarità}
+Torniamo ora al problema di Dirichlet \eqref{eq:problema-dirichlet-laplace}, che avevamo risolto in senso debole.
+La soluzione trovata appartiene a uno spazio di Sobolev, ma nulla si può dire a priori della sua regolarità.
+Cerchiamo ora delle condizioni sotto le quali la soluzione debole è in realtà anche una soluzione classica.
+
+Detta $u$ la soluzione debole, sia $\vec w=\grad u$.
+Come già visto, vale per ogni $\phi\in\sobHc[1]{\Omega}$ che
+\begin{equation}
+    \int_\Omega\scalar{\vec w}{\grad\phi}\,\dd\mu=\int_\Omega f\phi\,\dd\mu,
+\end{equation}
+ma allora se $f\in\leb[2]{\Omega}$ essa è la derivata debole di $\div\vec w$ poich\'e
+\begin{equation}
+    \int_\Omega f\phi\,\dd\mu=
+    \int_\Omega\scalar{\vec w}{\grad\phi}\,\dd\mu=
+    \int_\Omega\sum_{i=1}^nw_i\drp{\phi}{x_i}\,\dd\mu=
+    -\int_\Omega\sum_{i=1}^n\drp{w_i}{x_i}\phi\,\dd\mu=
+    -\int_\Omega\div\vec w\phi\,\dd\mu.
+\end{equation}
+Di conseguenza $\div\vec w\in\leb[2]{\Omega}$ vale a dire $-\lap u\in\leb[2]{\Omega}$.
+Ora, esiste $C>0$ tale per cui vale
+\begin{equation}
+    \norm{u}_{1,2}\le
+    \norm[\bigg]{\sum_{\abs{\alpha}\le k}D^\alpha u}\le
+    C\norm{\lap u}_2
+\end{equation}
+che mostra che la funzione $u\mapsto\norm{\lap u}_2$ è una norma su $\sobHc[1]{\Omega}\cap\sobHc[2]{\Omega}$ equivalente alle altre viste finora.
+Se $\vec w\in\sobHc[1]{\Omega}^n$ allora $u\in\sobHc[2]{\Omega}$.
+Sia $f\in\sobHc[1]{\Omega}$: scriviamo l'equazione della formulazione debole con $\phi$ sostituito da $\drp{\phi}{x_i}$, ottenendo
+\begin{equation}
+    \int_\Omega\scalar{\grad u}{\grad\drp{\phi}{x_i}}\,\dd\mu=
+    \int_\Omega f\drp{\phi}{x_i}=
+    -\int_\Omega \drp{f}{x_i}\phi\,\dd\mu
+\end{equation}
+integrando per parti, e allo stesso tempo
+\begin{equation}
+    \int_\Omega\scalar{\grad u}{\grad\drp{\phi}{x_i}}\,\dd\mu=
+    \int_\Omega\scalar{\grad\drp{u}{x_i}}{\grad\phi}\,\dd\mu.
+\end{equation}
+Come prima, allora, $\drp{u}{x_i}\in\sobHc[2]{\Omega}$ ma allora $\vec w$ (per la quale $w_i=\drp{\phi}{x_i}$) appartiene a $\sobHc[3]{\Omega}$.
+\begin{teorema}
+    Siano $u\in\sobHc[1]{\Omega}$ e $f\in\sobH[k]{\Omega}$: se $-\lap u=f$, allora $u\in\sobH[k+2]{\Omega}$.
+\end{teorema}
+Da questo teorema, se inoltre $f\in\cont[\infty]{\clos{\Omega}}$, allora $f\in\sobH[k]{\Omega}$ per ogni $k\in\N$ e dunque
+\begin{equation}
+    u\in\bigcap_{n\in\N}\sobH[k+2]{\Omega}.
+\end{equation}
+Dal teorema di Morrey \ref{t:morrey}, siccome $\sobH[j+m]{\Omega}\emb\cont[j,\lambda]{\Omega}$ per $0<\lambda\le m-\frac{n}2$, si ha che
+\begin{equation}
+    u\in\bigcap_{k\in\N}\cont[k,\lambda]{\Omega}=\cont[\infty]{\Omega}
+\end{equation}
+nel senso che esiste una versione $\bar{u}$ di $u$ che sia liscia.
+Abbiamo dimostrato dunque che la soluzione debole può essere anche classica: il cerchio si chiude.
