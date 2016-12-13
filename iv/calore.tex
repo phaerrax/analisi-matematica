@@ -84,3 +84,70 @@ per un $b\in\R$ arbitrario, quindi, tornando alla forma iniziale della soluzione
     u(t,\vec x)=\frac{b}{t^\frac{n}2}e^{-\frac{\norm{\vec x}^2}{4t}}
 \end{equation}
 che è la soluzione fondamentale, una volta trovato $b$ imponendo la normalizzazione per $\vec x\in\R^n$.
+
+Prendiamo ora come condizione al contorno $u(0,\vec x)=g(\vec x)$: mostriamo ora che la funzione
+\begin{equation}
+    u(t,\vec x)=\int_{\R^n}\sfc(t,\vec x-\vec y)g(\vec y)\,\dd^ny
+    \label{eq:soluzione-calore-convoluzione}
+\end{equation}
+risolve il problema di Cauchy.
+Notiamo innanzitutto che in senso distribuzionale si ha
+\begin{equation}
+    \lim_{(t,\vec x)\to(0,\vec 0)}\sfc(t,\vec x)=\delta(\vec x).
+\end{equation}
+Sia $g\in\cont[\infty]{\R^n}\cap\leb[\infty]{\R^n}$, ossia liscia e limitata.
+Al di fuori della singolarità, ossia per $t\ne 0$, si avrà anche che $u\in\cont[\infty]{(0,+\infty)\times\R^n}$, e per il limite precedente $\lim_{(t,\vec x)\to(0,\vec x_0)}u(t,\vec x)=g(\vec x_0)$.
+Fissiamo dunque $\delta>0$ e prendiamo $t\in[\delta,+\infty)$: chiaramente la funzione $\sfc$ è $\cclass[\infty]$ su $[\delta,+\infty)\times\R^n$, per ogni $\delta>0$, perciò lo è anche su tutto $(0,+\infty)\times\R^n$, e si ha
+\begin{equation}
+    \biggl(\drp{}{t}-\lap\biggr)u(t,\vec x)=
+    \int_{\R^n}\biggl(\drp{}{t}-\lap\biggr)\sfc(t,\vec x-\vec y)g(\vec y)\,\dd^ny=
+    0
+\end{equation}
+dato che $\sfc$ è soluzione della \eqref{eq:calore}.
+Fissiamo poi $\vec x_0\in\R^n$ ed $\epsilon>0$: per la continuità di $g$, esiste $\delta>0$ tale che $\abs{g(\vec y)-g(\vec x_0)}<\epsilon$ se $\norm{\vec y-\vec x_0}<\delta$; preso dunque $\vec x$ tale che $\norm{\vec x-\vec x_0}<\frac{\delta}2$ possiamo allora stimare
+\begin{equation}
+    \begin{split}
+        \abs{u(t,\vec x)-g(\vec x_0)}&=
+        \abs[\bigg]{\int_{\R^n}\sfc(t,\vec x-\vec y)g(\vec y)\,\dd^ny-g(\vec x_0)\int_{\R^n}\sfc(\vec t,\vec x-\vec y)\,\dd^ny}=\\ &=
+        \abs[\bigg]{\int_{\R^n}\sfc(t,\vec x-\vec y)\bigl[g(\vec y)-g(\vec x_0)\bigr]\,\dd^ny}\le\\ &\le
+        \int_{B_\delta(\vec x_0)}\sfc(t,\vec x-\vec y)\abs{g(\vec y)-g(\vec x_0)}\,\dd^ny+
+        \int_{\R^n\setminus B_\delta(\vec x_0)}\sfc(t,\vec x-\vec y)\abs{g(\vec y)-g(\vec x_0)}\,\dd^ny.
+    \end{split}
+\end{equation}
+Nel primo integrale abbiamo $\vec y\in B_\delta(\vec x_0)$ dunque $\abs{g(\vec y)-g(\vec x_0)}<\epsilon$: siccome $\sfc>0$ su tutto $\R^n$ allora
+\begin{equation}
+    \int_{B_\delta(\vec x_0)}\sfc(t,\vec x-\vec y)\abs{g(\vec y)-g(\vec x_0)}\,\dd^ny< 
+    \epsilon\int_{B_\delta(\vec x_0)}\sfc(t,\vec x-\vec y)\,\dd^ny\le
+    \epsilon\int_{\R^n}\sfc(t,\vec x-\vec y)\,\dd^ny=
+    \epsilon.
+\end{equation}
+Nel secondo, siccome $g$ è limitata si ha per la disuguaglianza triangolare che $\abs{g(\vec y)-g(\vec x_0)}\le\abs{g(\vec y)}+\abs{g(\vec x_0)}\le 2\norm{g}_\infty$.
+Abbiamo inoltre $\norm{\vec x-\vec x_0}<\frac{\delta}2$ e $\norm{\vec x-\vec x_0}>\frac{\delta}2$ quindi
+\begin{equation}
+    \norm{\vec y-\vec x_0}<
+    \norm{\vec y-\vec x}+\norm{\vec x-\vec x_0}<
+    \norm{\vec y-\vec x}+\frac{\delta}2<
+    \norm{\vec y-\vec x}+\frac{\norm{\vec y-\vec x_0}}2
+    \qqq
+    \frac12\norm{\vec y-\vec x_0}<\norm{\vec y-\vec x}.
+\end{equation}
+Raggruppando tutte le costanti in una $c\in\R$ risulta allora che il secondo integrale non è maggiore di
+\begin{equation}
+    \frac{c}{t^\frac{n}2}\int_{\R^n\setminus B_\delta(\vec x_0)}e^{-\frac{\norm{\vec x-\vec y}^2}{4t}}\,\dd^ny\le
+    \frac{c}{t^\frac{n}2}\int_{\R^n\setminus B_\delta(\vec x_0)}e^{-\frac{\norm{\vec y-\vec x_0}^2}{16t}}\,\dd^ny
+\end{equation}
+che è indipendente da $\vec x$, inoltre è radiale con centro in $\vec x_0$: detta $r\defeq\norm{\vec y-\vec x_0}$ quest'ultimo integrale è uguale a
+\footnote{
+    Per ogni $t>0$ e $p\in\N_0$ si ha la stima $e^t\ge\frac1{p!}t^p$: si osservi semplicemente che il secondo membro è uno dei termini (tutti positivi per $t>0$) dello sviluppo di Taylor di $e^t$.
+}
+\begin{multline}
+    \frac{c}{t^\frac{n}2}\int_\delta^{+\infty}e^{-\frac{r^2}{16t}}r^{n-1}\,\dd r\le
+    \frac{c}{t^\frac{n}2}\int_\delta^{+\infty}\frac1{\frac1{n!}\bigl(\frac{r^2}{16t}\bigr)^n}r^{n-1}\,\dd r=\\=
+    \frac{cn!16^n}{t^{\frac{n}2-n}}\int_\delta^{+\infty}\frac1{r^{n+1}}\,\dd r=
+    \tilde{c}t^\frac{n}2\frac1{r^n}\bigg|_\delta^{+\infty}=
+    \tilde{c}\delta^{-n}t^\frac{n}2
+\end{multline}
+che è arbitrariamente piccolo per $t\to 0$.
+\begin{osservazione} \label{o:propagazione-calore-velocita-infinita}
+    Se $g\ge 0$ in un intorno dell'origine e $g=0$ al di fuori, allora per ogni $(t,\vec x)\in(0,+\infty)\times\R^n$ si ha $u(t,\vec x)>0$ poich\'e $\sfc(t,\vec x-\vec y)>0$ e $g(\vec y)>0$: secondo questo modello dunque la velocità di propagazione del calore è infinita!
+\end{osservazione}
