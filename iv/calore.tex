@@ -1,0 +1,86 @@
+\chapter{L'equazione del calore}
+\label{ch:calore}
+\newcommand{\sfc}{\Phi} % Soluzione fondamentale dell'equazione del calore
+
+L'equazione del calore è
+\begin{equation}
+    \drp{u}{t}-\lap u=f
+    \label{eq:calore}
+\end{equation}
+dove $f$ e $u$ sono funzioni di $(t,\vec x)$ da $[0,+\infty)\times\Omega$ a $\R$, con $\Omega\subset\R^n$.
+La funzione
+\begin{equation}
+    \sfc(t,\vec x)=
+    \begin{cases}
+        0                                                                   & t\le 0\\
+        \bigl(\frac1{4\pi t}\bigr)^\frac{n}2e^{-\frac{\norm{\vec x}}{4t}} & t>0
+    \end{cases}
+    \label{eq:soluzione-fondamentale-calore}
+\end{equation}
+risolve l'equazione \eqref{eq:calore} omogenea, con $f=0$: infatti
+\begin{equation}
+    \drp{\sfc}{t}(t,\vec x)=
+    -\frac{n}{2t}\sfc(t,\vec x)+\frac{\norm{\vec x}^2}{4t^2}\sfc(t,\vec x)
+\end{equation}
+mentre
+\begin{equation}
+    \drp{\sfc}{x_i}(t,\vec x)=
+    -\frac{x_i}{2t}\sfc(t,\vec x)
+    \qqq
+    \ddrp{\sfc}{x_i}(t,\vec x)=
+    -\frac1{2t}\sfc(t,\vec x)+\frac{x_i^2}{4t^2}\sfc(t,\vec x)
+\end{equation}
+perciò
+\begin{equation}
+    \drp{\sfc}{t}(t,\vec x)-\lap\sfc(t,\vec x)=
+    \biggl[-\frac{n}{2t}\sfc(t,\vec x)+\frac{\norm{\vec x}^2}{4t^2}-\sum_{i=1}^n\biggl(-\frac1{2t}\sfc(t,\vec x)+\frac{x_i^2}{4t^2}\biggr)\biggr]\sfc(t,\vec x)=
+    0.
+\end{equation}
+La $\sfc$ è detta \emph{soluzione fondamentale dell'equazione del calore}: essa è radiale (in $\vec x$), ha una singolarità nell'origine, e
+\begin{multline}
+    \int_{\R^n}\sfc(t,\vec x)\,\dd^n x=
+    \frac1{(4\pi t)^\frac{n}2}\int_{\R^n}e^{-\frac{\norm{\vec x}^2}{4t}}\,\dd^n x=
+    \frac1{(4\pi t)^\frac{n}2}\int_{\R^n}4t^\frac{n}2e^{-\norm{\vzeta}^2}\,\dd^n\zeta=\\=
+    \frac1{\pi^\frac{n}2}\int_{\R^n}e^{-\sum_{i=1}^n\zeta_i^2}\,\dd^n\zeta=
+    \frac1{\pi^\frac{n}2}\biggl(\int_\R e^{-\zeta^2}\,\dd\zeta\biggr)^n=
+    \frac1{\pi^\frac{n}2}(\sqrt{\pi})^n=
+    1.
+\end{multline}
+Possiamo effettuare un riscalamento delle soluzioni: se $u=u(t,\vec x)$ risolve la \eqref{eq:calore}, allora anche $u_\lambda=u(\lambda^2 t,\lambda\vec x)$ la risolve, per ogni $\lambda\ne 0$.
+Scegliendo $\lambda=\frac1{\sqrt{t}}$ allora si ha $u=u(1,\frac{\vec x}{t})$.
+Consideriamo
+\begin{equation}
+    u(t,\vec x)=
+    \lambda^{2\alpha}u(\lambda^2 t,\lambda\vec x)=
+    t^{-\alpha}u\Bigl(1,\frac{\vec x}{t}\Bigr):
+\end{equation}
+sappiamo che $u$ dipende da $\vec x$ solo in modo radiale, perciò detto $r=\norm{\vec x}$ la \eqref{eq:calore} si riscrive come
+\begin{equation}
+    \drp{u}{t}-\ddrp{u}{r}-\frac{n-1}{r}\drp{u}{r}=0.
+    \label{eq:calore-radiale}
+\end{equation}
+Sia $\vec y=\frac{\vec x}{t}$ e chiamiamo $v(\vec y)\defeq u(1,\vec y)$: allora
+\begin{equation}
+    -\alpha t^{-\alpha-1}v+t^{-\alpha}\biggl(-\frac{r}2t^{-\frac{3}{2}}\biggr)\drp{v}{y}-\frac{t^\alpha}{t}\ddrp{v}{y}-\frac{n-1}{r}\drp{v}{y}\frac{t^{-\alpha}}{\sqrt{t}}=0
+\end{equation}
+che si semplifica in
+\begin{equation}
+    \alpha v+\frac12y\drp{v}{y}+\ddrp{v}{y}+\frac{n-1}{y}\drp{v}{y}=0.
+\end{equation}
+Scegliendo $\alpha=\frac{n}2$ otteniamo
+\begin{equation}
+    \drp{}{y}\biggl(y^{n-1}\drp{v}{y}+\frac12y^nv\biggr)=0:
+\end{equation}
+se assumiamo che $v$ e la sua derivata, per $y\to+\infty$, tendano a zero più velocemente di un polinomio, allora la quantità derivata in quest'ultima equazione è nulla, da cui risulta
+\begin{equation}
+    \drp{v}{y}=-\frac12yv
+\end{equation}
+che ha come soluzione
+\begin{equation}
+    v(\vec y)=be^{-\frac14y^2}
+\end{equation}
+per un $b\in\R$ arbitrario, quindi, tornando alla forma iniziale della soluzione,
+\begin{equation}
+    u(t,\vec x)=\frac{b}{t^\frac{n}2}e^{-\frac{\norm{\vec x}^2}{4t}}
+\end{equation}
+che è la soluzione fondamentale, una volta trovato $b$ imponendo la normalizzazione per $\vec x\in\R^n$.
