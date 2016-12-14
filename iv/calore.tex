@@ -151,3 +151,81 @@ che è arbitrariamente piccolo per $t\to 0$.
 \begin{osservazione} \label{o:propagazione-calore-velocita-infinita}
     Se $g\ge 0$ in un intorno dell'origine e $g=0$ al di fuori, allora per ogni $(t,\vec x)\in(0,+\infty)\times\R^n$ si ha $u(t,\vec x)>0$ poich\'e $\sfc(t,\vec x-\vec y)>0$ e $g(\vec y)>0$: secondo questo modello dunque la velocità di propagazione del calore è infinita!
 \end{osservazione}
+
+Affrontiamo ora l'equazione non omogenea \eqref{eq:calore} con $f\ne 0$, e $u(0,\vec x)=0$ $\forall\vec x\in\R^n$.
+Seguendo il principio di Duhamel, usiamo la $f$ come dato iniziale per ogni istante di tempo, ossia prendiamo la funzione
+\begin{equation}
+    u(t,\vec x)=\int_0^t\int_{\R^n}\sfc(t-s,\vec x-\vec y)f(s,\vec y)\,\dd^ny\,\dd s.
+\end{equation}
+Assumiamo che la mappa $f\mapsto f(t,\vec x)$ sia $\cclass[2]$ in $[0,+\infty)$, che la mappa $\vec x\mapsto f(t,\vec x)$ sia $\cclass[1]$ in $\R^n$, e che $\supp f$ sia compatto in $[0,+\infty)\times\R^n$.
+Con il cambio di variabile $z\defeq\vec x-\vec y$ e $r\defeq t-s$ abbiamo
+\begin{equation}
+    u(t,\vec x)=
+    \int_0^t\int_{\R^n}\sfc(r,\vec z)f(t-r,\vec x-\vec z)\,\dd^nz\,\dd r
+\end{equation}
+e siccome il supporto di $f$ è compatto nell'insieme di integrazione si ha
+\begin{equation}
+    \drp{u}{t}(t,\vec x)=\int_0^t\int_{\R^n}\sfc(r,\vec z)\drp{f}{t}(t-r,\vec x-\vec z)\,\dd^nz\,\dd r+\int_{\R^n}\sfc(t,\vec z)f(0,\vec x-\vec z)\,\dd^nz.
+\end{equation}
+In modo simile si calcola
+\begin{equation}
+    \frac{\partial^2 u}{\partial x_i\partial x_j}=
+    \int_0^t\int_{\R^n}\sfc(r,\vec z)\frac{\partial^2 f}{\partial x_i\partial x_j}(t-r,\vec x-\vec z)\,\dd^nz\,\dd r.
+\end{equation}
+Data la regolarità delle funzioni integrande, risulta che $u$ è $\cclass[1]$ nella variabile $t\in(0,+\infty)$ e $\cclass[2]$ nella variabile $\vec x\in\R^n$.
+Sostituendo quanto trovato nella \eqref{eq:calore} si ha allora
+\begin{equation}
+    \begin{split}
+        \biggl(\drp{}{t}-\lap\biggr)u(t,\vec x)&=
+        \int_0^t\int_{\R^n}\sfc(r,\vec z)\biggl(\drp{}{t}-\lap\biggr)f(t-r,\vec x-\vec x)+\int_{\R^n}\sfc(t,\vec z)f(0,\vec x-\vec z)\,\dd^nz=\\ &=
+        \!\begin{multlined}[t]
+            \int_\epsilon^t\int_{\R^n}\sfc(r,\vec z)\biggl(-\drp{}{r}-\lap\biggr)f(t-r,\vec x-\vec z)+\\+
+            \int_0^\epsilon\int_{\R^n}\sfc(r,\vec z)\biggl(-\drp{}{r}-\lap\biggr)f(t-r,\vec x-\vec x)+\int_{\R^n}\sfc(t,\vec z)f(0,\vec x-\vec z)\,\dd^nz
+        \end{multlined}
+    \end{split}
+\end{equation}
+per un $\epsilon>0$.
+Analizziamo i tre termini separatamente: dal primo, integrando per parti (i termini di bordo dovuti al laplaciano sono nulli poich\'e $f$ ha supporto compatto in $\R^n$) otteniamo
+\begin{equation}
+    \begin{aligned}
+        &\int_\epsilon^t\int_{\R^n}\sfc(r,\vec z)\biggl(\drp{}{t}-\lap_{\vec x}\biggr)f(t-r,\vec x-\vec x)=\\
+        =&\int_\epsilon^t\int_{\R^n}\biggl(\drp{}{r}-\lap_{\vec z}\biggr)\sfc(r,\vec z)f(t-r,\vec x-\vec z)\,\dd^nz\,\dd r-\int_{\R^n}\sfc(r,\vec z)f(t-r,\vec x-\vec z)\,\dd^nz\bigg|_\epsilon^t=\\
+        =&-\int_{\R^n}\sfc(t,\vec z)f(0,\vec x-\vec z)\,\dd^nz+\int_{\R^n}\sfc(\epsilon,\vec z)f(t-\epsilon,\vec x-\vec z)\,\dd^nz,
+    \end{aligned}
+\end{equation}
+e il primo di questi due termini si cancella con l'ultimo dei tre integrali sopra.
+Per il secondo termine, il suo valore assoluto non è maggiore di
+\begin{equation}
+    \begin{aligned}
+        &\int_0^\epsilon\int_{\R^n}\sfc(r,\vec z)\biggl(\drp{}{t}-\lap_{\vec x}\biggr)f(t-r,\vec x-\vec x)\le\\
+        \le&\int_0^\epsilon\int_{\R^n}\sfc(r,\vec z)\biggl[\abs[\bigg]{\drp{f}{r}(t-r,\vec x-\vec z)}+\abs[\big]{\lap_{\vec x}f(t-r,\vec x\vec z)}\biggr]\,\dd^nz\,\dd r\le\\
+        \le&\biggl(\norm[\bigg]{\drp{f}{r}}_\infty+\norm{\lap f}_\infty\biggr)\int_0^\epsilon\int_{\R^n}\sfc(r,\vec z)\,\dd^nz\,\dd r=\\
+        =&\biggl(\norm[\bigg]{\drp{f}{r}}_\infty+\norm{\lap f}_\infty\biggr)\epsilon.
+    \end{aligned}
+\end{equation}
+In conclusione si ha, come in precedenza,
+\begin{equation}
+    \biggl(\drp{}{t}-\lap\biggr)u(t,\vec x)=
+    \lim_{\epsilon\to 0}\int_{\R^n}\sfc(\epsilon,\vec z)f(t-\epsilon,\vec x-\vec z)\,\dd^nz=
+    f(t,\vec z)
+\end{equation}
+e per $t\to 0$
+\begin{equation}
+    \abs{u(t,\vec x)}\le
+    \norm{u}_\infty\le
+    t\norm{f}_\infty\int_{\R^n}\sfc(s,\vec y)\,\dd^ny\to
+    0.
+\end{equation}
+Per la linearità dell'equazione possiamo comporre le due soluzioni trovate nei due casi: con tutte le ipotesi fatte, la funzione
+\begin{equation}
+    u(t,\vec x)=\int_{\R^n}\sfc(t,\vec x-\vec y)g(\vec y)\,\dd^ny+\int_0^t\int_{\R^n}\sfc(t-s,\vec x-\vec y)f(s,\vec y)\,\dd^ny\,\dd s
+    \label{eq:soluzione-generale-equazione-calore}
+\end{equation}
+risolve il problema di Cauchy
+\begin{equation}
+    \begin{cases}
+        \drp{u}{t}(t,\vec x)-\lap u(t,\vec x)=f(t,\vec x) & (t,\vec x)\in(0,+\infty)\times\R^n\\
+        u(0,\vec x)=g(\vec x)                             & \vec x\in\R^n
+    \end{cases}.
+    \label{eq:problema-cauchy-equazione-calore}
+\end{equation}
