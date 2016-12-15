@@ -284,3 +284,43 @@ Per quanto appena detto sugli spazi duali, possiamo allora estendere la derivata
         \drv{}{t}\norm{u(t,\cdot)}_2^2=2\dualpair[\bigg]{\drp{u}{t}(t)}{u(t)}.
     \end{equation}
 \end{teorema}
+
+Per studiare l'esistenza e l'unicità delle soluzioni di questo tipo di equazioni, partiamo con la cosiddetta \emph{procedura di Galerkin}: prendiamo una base $\{e_k\}\in\cont[\infty]{\Omega}$ ortonormale per $\sobHc[1]{\Omega}$ e $\leb[2]{\Omega}$, ad esempio le autofunzioni del laplaciano.
+Fissiamo $m\in\N$ e definiamo la funzione $u_m\colon[0,T]\to\sobHc[1]{\Omega}$ come
+\begin{equation}
+    u_m(t)=\sum_{k=1}^md^k_m(t)e_k
+\end{equation}
+(in cui i coefficienti $d^k_m$ variano con $t$, ma le $e_k$ no): ne vogliamo determinare i coefficienti a partire dalla forma dell'equazione differenziale.
+Innanzitutto per $t=0$ si ha
+\begin{equation}
+    u_m(0)=\sum_{k=1}^md^k_m(0)e_k
+    \qqq
+    \inner{u_m(0)}{e_j}_2=\sum_{k=1}^md^m_k(0)\inner{e_k}{e_j}_2=d^j_m(0).
+\end{equation}
+Siccome $u_m(0)=g$ si avrà allora $d^k_m(0)=\inner{g}{e_k}_2$.
+Con l'altra condizione al contorno della formulazione debole si ha poi
+\begin{equation}
+    \inner[\bigg]{\drp{u_m}{t}}{e_k}+B(u_m,e_k,t)=\inner{f}{e_k}
+    \label{eq:paraboliche-formulazione-debole-galerkin}
+\end{equation}
+per $k\in\{1,\dotsc,m\}$.
+
+Vediamo ora che per ogni $m\in\N$ esiste una funzione $u_m$ che soddisfa in senso debole il problema di Cauchy.
+Dalla \eqref{eq:paraboliche-formulazione-debole-galerkin} troviamo infatti
+\begin{equation}
+    \inner[\bigg]{\drp{u_m}{t}}{e_k}_2=
+    \inner[\bigg]{\drp{}{t}\sum_{j=1}^md^j_m(t)e_j}{e_k}_2=
+    \sum_{j=1}^m\drp{d^j_m}{t}(t)\inner{e_j}{e_k}_2=
+    \drp{D_k^m}{t}(t)
+\end{equation}
+inoltre $B(u_m,e_k,t)=\sum_{j=1}^md^j_m(t)B(e_j,e_k,t)$, e quest'ultimo $B(e_j,e_k,t)$ è un termine che abbreviamo con $h_{jk}(t)$ e possiamo vedere come una matrice $n\times n$ che moltiplica il vettore $d^j_m(t)$, ossia
+\begin{equation}
+    B(u_m,e_k,t)=\sum_{j=1}^mh_{jk}(t)d^j_m(t).
+\end{equation}
+Non possiamo dire niente per ora su $\inner{f}{e_k}_2$, ma lo abbreviamo con $f_k(t)$.
+Passando alla derivata totale rispetto a $t$ dove necessario, troviamo l'equazione (per $k\in\{1,\dotsc,m\}$)
+\begin{equation}
+    \drv{d^k_m}{t}(t)+\sum_{j=1}^nh_{jk}(t)d^j_m(t)=f_k(t)
+\end{equation}
+con la condizione iniziale $d^k_m(0)=\inner{g}{e_k}_2$.
+Questo è un sistema di $m$ equazioni differenziali lineari del primo ordine, che ammette per il teorema \ref{t:E-globale} un'unica soluzione, che indichiamo con $\bigl(d^1_m(t),\dotsc,d^m_m(t)\bigr)$.
