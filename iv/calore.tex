@@ -229,3 +229,58 @@ risolve il problema di Cauchy
     \end{cases}.
     \label{eq:problema-cauchy-equazione-calore}
 \end{equation}
+
+\section{Equazioni paraboliche}
+L'equazione del calore è un'equazione parabolica del secondo ordine.
+Prendiamo $\Omega\subset\R^n$ limitato, e chiamiamo $\Omega_T\defeq\Omega\times(0,T)$ per $T>0$.
+Consideriamo l'operatore differenziale
+\begin{equation}
+    L\colon u\mapsto-\sum_{i=1}^n\sum_{j=1}^n\drp{}{x_i}\biggl(a_{ij}\drp{u}{x_j}\biggr)+\sum_{i=1}^nb_i\drp{u}{x_i}+cu
+\end{equation}
+con $a_{ij}=a_{ji}$ per ogni $\vec x\in\Omega$ e con $\norm{a_{ij}}_\infty,\norm{b_i}_\infty,\norm{c}_\infty<+\infty$.
+Un'equazione della forma
+\begin{equation}
+    \drp{u}{t}+L(u)=f
+\end{equation}
+è detta parabolica se $L$ è ellittico.
+In questa definizione i coefficienti di $L$ possono benissimo anche dipendere da $t$, ma la variabile non entra mai nelle derivate.
+Il problema di Cauchy si scrive come
+\begin{equation}
+    \begin{cases}
+        \drp{u}{t}+L(u)=f & \text{in }\Omega_T\\
+        u=0               & \text{in }\boundary\Omega\times(0,T]\\
+        u=g               & \text{in }\Omega\times\{0\}
+    \end{cases}
+    \label{eq:problema-cauchy-parabolico}
+\end{equation}
+per $f\in\leb[2]{\Omega_T}$, $g\in\leb[2]{\Omega}$.
+Definiamo inoltre la forma bilineare $B:\sobHc[1]{\Omega}\times\sobHc[1]{\Omega}\times[0,T]\to\R$ come
+\begin{equation}
+    B(u,v,t)\defeq\int_\Omega\biggl(\sum_{i=1}^n\sum_{j=1}^na_{ij}\drp{u}{x_i}\drp{v}{x_j}+\sum_{i=1}^nb_i\drp{u}{x_i}v+cuv\biggr)\,\dd\mu
+    \label{eq:forma-bilineare-parabolica}
+\end{equation}
+che è continua, e dipende da $t$ ma non da $\vec x$.
+Scriviamo l'equazione parabolica in forma debole come
+\begin{equation}
+    \inner[\bigg]{\drp{u}{t}}{v}+B(u,v,t)=\inner{f}{v}
+    \label{eq:equazione-parabolica-debole}
+\end{equation}
+e $u$ è una soluzione debole del problema se vale questa equazione (insieme alla condizione al contorno $u(0,\vec x)=g(\vec x)$ $\forall\vec x\in\R^n$) per quasi ogni $t\in[0,T]$ e per ogni $v\in\sobHc[1]{\Omega}$.
+Possiamo considerare il prodotto interno come quello in $\lclass[2]$, ma possiamo anche considerare $\inner{f}{v}$ e $\inner[\big]{\drp{u}{t}}{v}$ come l'azione di funzionali su $v$, e dato che $\sobHc[1]{\Omega}\subset\sobH[1]{\Omega}$ la classe di funzionali è più ampia dello spazio $\sobHc[1]{\Omega}$ stesso: usando la notazione $\sobH[-1]{\Omega}\defeq\dual{\sobHc[1]{\Omega}}$, si ha infatti
+\begin{equation}
+    \sobHc[1]{\Omega}\subset\leb[2]{\Omega}\subset\sobH[-1]{\Omega}
+\end{equation}
+e cos\`i possiamo sostituire il prodotto interno $\inner{f}{v}$ con la \emph{forma di dualità} $\dualpair{f}{v}\defeq f(v)$.
+Per distinguere poi la dipendenza da $t$ da quella da $\vec x$, che sono ben diverse, consideriamo $u$ come una funzione che associa a $t\in[0,T]$ una funzione $\tilde{u}(t)$ tale che
+\begin{equation}
+    [\tilde{u}(t)](\vec x)=u(t,\vec x)
+\end{equation}
+separando perciò la mappa $t\mapsto\tilde{u}(t)$ che è in $\leb[2]{0,T;\sobHc[1]{\Omega}}$, dalla mappa $\vec x\mapsto[\tilde{u}(t)](\vec x)=u(t,\vec x)$ che è in $\sobHc[1]{\Omega}$.
+Per quanto appena detto sugli spazi duali, possiamo allora estendere la derivata $\drp{u}{t}$ allo stesso modo come una funzione in $\leb[2]{0,T;\sobH[-1]{\Omega}}$.
+\begin{teorema}
+    Siano $u\in\leb[2]{0,T;\sobHc[1]{\Omega}}$ e $\drp{u}{t}\in\leb[2]{0,T;\sobH[-1]{\Omega}}$.
+    Allora $u\in\cont{0,T;\leb[2]{\Omega}}$ e la mappa $t\mapsto\norm{u(t,\cdot)}_2^2$ è assolutamente continua, vale a dire
+    \begin{equation}
+        \drv{}{t}\norm{u(t,\cdot)}_2^2=2\dualpair[\bigg]{\drp{u}{t}(t)}{u(t)}.
+    \end{equation}
+\end{teorema}
