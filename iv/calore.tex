@@ -365,3 +365,103 @@ Questo è un sistema di $m$ equazioni differenziali lineari del primo ordine, ch
     \end{equation}
     da cui la \eqref{eq:disuguaglianza-gronwall-generale}.
 \end{proof}
+Con questo lemma possiamo effettuare le seguenti stime.
+\begin{teorema} \label{t:stime-energia-paraboliche}
+    Esiste una costante $c$ in dipendenza solo da $\Omega$, $T$ ed $L$ (dove $L$ è l'operatore ellittico e $T$ l'estremo superiore dell'intervallo in cui è definita la funzione $u_m$) tale che per ogni $m\in\N$ si ha
+    \begin{equation}
+        \max_{t\in[0,T]}\norm{u_m(t)}_{\leb[2]{\Omega}}+\norm{u_m}_{\leb[2]{0,T;\sobHc[1]{\Omega}}}+\norm[\bigg]{\drp{u_m}{t}}_{\leb[2]{0,T;\sobH[-1]{\Omega}}}\le
+        c\bigl(\norm{f}_{\leb[2]{0,T;\leb[2]{\Omega}}}+\norm{g}_{\leb[2]{\Omega}}\bigr).
+    \end{equation}
+\end{teorema}
+\begin{proof}
+    Prendiamo una combinazione lineare della \eqref{eq:paraboliche-formulazione-debole-galerkin} in modo da sostituire $e_k$ con $u_m=\sum_{k=1}^md^k_me_k$, ottenendo
+    \begin{equation}
+        \inner[\Big]{\drp{u_m}{t}}{u_m}_2+B(u_m,u_m,t)=\inner{f}{u_m}_2.
+    \end{equation}
+    Mostriamo che esistono $\beta>0$ e $\gamma\ge 0$ tali che
+    \begin{equation}
+        \beta\norm{u_m(t)}_{\sobHc[1]{\Omega}}^2\le
+        B(u_m,u_m,t)+\gamma\norm{u_m}_2^2:
+        \label{eq:dim-stime-energia-paraboliche1}
+    \end{equation}
+    si ha infatti per l'ellitticità di $L$ che esiste $\delta>0$ per cui
+    \begin{equation}
+        B(u,u,t)\ge
+        \delta\int_\Omega\norm{\grad u}^2\,\dd\mu+\int_\Omega\biggl(b_i\drp{u}{x_i}u+cu^2\biggr)\,\dd\mu,
+    \end{equation}
+    inoltre, detto $b\defeq\sup\{b_i\}_{i\in\{1,\dotsc,n\}}$, si ha per un arbitrario $\epsilon>0$ e con la disuguaglianza di Cauchy-Schwarz
+    \begin{multline}
+        \int_\Omega b_i\drp{u}{x_i}u\,\dd\mu\le
+        b\int_\Omega u\drp{u}{x_i}\,\dd\mu\le
+        b\epsilon\norm{\grad u}_2\frac1{\epsilon}\norm{u}_2\le\\ \le
+        \frac12\bigl(b\epsilon\norm{\grad u}_{2}\bigr)^2+\frac12\Bigl(\frac1{\epsilon}\norm{u}_2\Bigr)^2=
+        \frac{\delta}2\norm{\grad u}_2^2+\gamma\norm{u}_2^2
+    \end{multline}
+    chiamando $\gamma\defeq\frac1{2\epsilon}$: allora $\gamma\norm{u}_{1,2}^2\le B(u,u,t)$.
+    Ancora con la disuguaglianza di Cauchy-Schwarz si ha
+    \begin{equation}
+        \inner{f}{u_m}_2\le
+        \norm{f}_2\norm{u_m}_2\le
+        \frac12\norm{f}_2^2+\frac12\norm{u_m}_2^2,
+    \end{equation}
+    e infine
+    \begin{equation}
+        \inner[\Big]{\drp{u_m}{t}}{u_m}_2=
+        \frac12\drp{}{t}\norm{u_m}_2^2.
+    \end{equation}
+    Risulta perciò
+    \begin{equation}
+        \drp{}{t}\norm{u_m}_2^2+2\beta\norm{u_m}_2^2\le\norm{f}_2^2+c'\norm{u_m}_2^2.
+        \label{eq:dim-stime-energia-paraboliche2}
+    \end{equation}
+    Dal lemma \ref{l:disuguaglianza-gronwall}, ponendo $\eta=\norm{u_m}_2^2$, $\xi=\norm{f}_2^2$, e $c'=c_1$ e dato che $2\beta\norm{u_m}_{1,2}^2\ge 0$ si ottiene
+    \begin{equation}
+        \norm{u_m(t)}_2^2\le
+        C\norm{u_m(0)}_2^2+\tilde{c}\norm{f}_{\leb[2]{0,T;\leb[2]{\Omega}}}=
+        C\norm{g}_2^2+\tilde{c}\norm{f}_{\leb[2]{0,T;\leb[2]{\Omega}}}
+    \end{equation}
+    e in particolare vale anche per il massimo di $\norm{u_m(t)}_2^2$ per $t\in[0,T]$.
+    Integrando la \eqref{eq:dim-stime-energia-paraboliche2} e trascurando il primo termine otteniamo
+    \begin{equation}
+        2\beta\norm{u_m}_{\leb[2]{0,T;\sobHc[1]{\Omega}}}^2\le\tilde{c}'\norm{f}_{\leb[2]{0,T;\leb[2]{\Omega}}}^2+2\norm{g}_2^2.
+        \label{eq:dim-stime-energia-paraboliche3}
+    \end{equation}
+
+    Ora, siano $v\in\sobHc[1]{\Omega}$ con $\norm{v}_{1,2}=1$ ed $E_m\defeq\gen{\{e_1,\dotsc,e_m\}}$: possiamo scomporre $\sobHc[1]{\Omega}$ nella somma diretta di $E_m$ e il sottospazio ad esso ortogonale, e in accordo scriviamo $v=v_1+v_2$, dove $v_1$ è la proiezione di $v$ su $E_m$ e $v_2$ quella su $E_m^\perp$.
+    Consideriamo la \eqref{eq:equazione-parabolica-debole} con $u=u_m$ e $v=v_1$: siccome $v_2$ è ortogonale a tutti gli $e_k$, risulta
+    \begin{equation}
+        \inner[\bigg]{\drp{u_m}{t}}{v}=
+        \inner[\bigg]{\sum_{i=1}^n\drv{d^j_m}{t}(t)e_j}{v}=
+        \inner[\bigg]{\sum_{i=1}^n\drv{d^j_m}{t}(t)e_j}{v_1}=
+        \inner[\bigg]{\drp{u_m}{t}}{v_1}
+    \end{equation}
+    che è un prodotto in $\leb[2]{\Omega}$, tuttavia $v\in\sobHc[1]{\Omega}$ quindi è ben definito anche considerando $\drp{u_m}{t}\in\sobH[-1]{\Omega}$.
+    Allora
+    \begin{equation}
+        \abs[\bigg]{\dualpair[\Big]{\drp{u_m}{t}}{v}}\le
+        \norm{f}_2\norm{v_1}_2+\abs{B(u_m,v,t)}\le
+        c\norm{v_1}_{1,2}\norm{f}_2+c'\norm{u_m}_2\norm{v_1}_2
+    \end{equation}
+    e dato che $\norm{v_1}_2=\norm{v}_2-\norm{v_2}_2\le\norm{v}=1$ si ha per ogni tale $v$ che
+    \begin{equation}
+        \abs[\bigg]{\dualpair[\Big]{\drp{u_m}{t}}{v}}\le
+        c\norm{f}_2+c'\norm{u_m}_2.
+    \end{equation}
+    e prendendo l'estremo superiore tra tutti i $v$ con norma unitaria si ha la norma di $\drp{u_m}{t}$, dato che
+    \begin{equation}
+        \sup_{\substack{v\in\sobHc[1]{\Omega}\\\norm{v}_{1,2}=1}}\abs[\bigg]{\dualpair[\Big]{\drp{u_m}{t}}{v}}=\norm[\bigg]{\drp{u_m}{t}}_{\sobH[-1]{\Omega}}.
+    \end{equation}
+    Abbiamo allora ottenuto la stima cercata:
+    \begin{equation}
+        \norm[\bigg]{\drp{u_m}{t}}_{\sobH[-1]{\Omega}}^2\le
+        c\bigl(\norm{f}_2+\norm{u_m}_{1,2}\bigr)^2\le
+        d_1\norm{f}_2^2+d_2\norm{u_m}_{1,2}^2,
+    \end{equation}
+    e integrando infine su $t\in[0,T]$ otteniamo
+    \begin{equation}
+        \norm{u_m}_{\leb[2]{0,T;\sobH[-1]{\Omega}}}^2\le
+        d_1\norm{f}_{\leb[2]{0,T;\leb[2]{\Omega}}}^2+d_2\norm{u_m}_{\leb[2]{0,T;\sobHc[1]{\Omega}}}^2\le
+        d_1\norm{f}_{\leb[2]{0,T;\leb[2]{\Omega}}}^2+d_2\norm{g}_2^2.
+    \end{equation}
+    come volevasi dimostrare.
+\end{proof}
