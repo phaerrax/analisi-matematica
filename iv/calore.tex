@@ -324,3 +324,44 @@ Passando alla derivata totale rispetto a $t$ dove necessario, troviamo l'equazio
 \end{equation}
 con la condizione iniziale $d^k_m(0)=\inner{g}{e_k}_2$.
 Questo è un sistema di $m$ equazioni differenziali lineari del primo ordine, che ammette per il teorema \ref{t:E-globale} un'unica soluzione, che indichiamo con $\bigl(d^1_m(t),\dotsc,d^m_m(t)\bigr)$.
+
+\begin{lemma}[disuguaglianza di Grönwall] \label{l:disuguaglianza-gronwall}
+    Sia $t_0\in\R$, $I$ un intervallo del tipo $[t_0,t')$ oppure $[t_0,t']$ con $t'>t_0$ (eventualmente anche $t'=+\infty$), $\eta\colon I\to\R$ una funzione differenziabile in $\interior{I}$, e $\xi\colon I\to[0,+\infty)$.
+    Se esistono $c_1,c_2\in\R$ tali per cui $\eta'(t)\le c_1\eta(t)+c_2\xi(t)$ per $t\in I$, allora
+    \begin{equation}
+        \eta(t)\le e^{c_1t}\biggl[\eta(t_0)+c_2\int_{t_0}^t\xi(s)\,\dd s\biggr].
+        \label{eq:disuguaglianza-gronwall}
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Mostriamo, più in generale, che se $\eta'(t)\le\phi(t)\eta(t)+\psi(t)$ per $\phi,\psi\colon I\to[0,+\infty)$ allora
+    \begin{equation}
+        \eta(t)\le\exp\biggl[\int_{t_0}^t\phi(s)\,\dd s\biggr]\biggl[\eta(t_0)+\int_{t_0}^t\psi(s)\,\dd s\biggr],
+        \label{eq:disuguaglianza-gronwall-generale}
+    \end{equation}
+    da cui discende la \eqref{eq:disuguaglianza-gronwall} per $\phi=c_1$, $\psi=c_2\xi$.
+    Costruiamo la funzione
+    \begin{equation}
+        s\mapsto\eta(s)\exp\biggl[-\int_{t_0}^s\phi(r)\,\dd r\biggr]
+    \end{equation}
+    e deriviamola, ottenendo
+    \begin{equation}
+        \begin{split}
+            \drv{}{s}\eta(s)\exp\biggl[-\int_{t_0}^s\phi(r)\,\dd r\biggr]&=
+            \eta'(s)\exp\biggl[-\int_{t_0}^s\phi(r)\,\dd r\biggl]-\phi'(s)\eta(s)\exp\biggl[-\int_{t_0}^s\phi(r)\,\dd r\biggr]=\\ &=
+            \exp\biggl[-\int_{t_0}^s\phi(r)\,\dd r\biggl]\bigl[\eta'(s)-\phi'(s)\eta(s)\bigr]\le\\ &\le
+            \exp\biggl[-\int_{t_0}^s\phi(r)\,\dd r\biggl]\psi(s).
+        \end{split}
+    \end{equation}
+    Integrando in $s\in[t_0,t]$ questa disuguaglianza otteniamo allora
+    \begin{equation}
+        \eta(t)\exp\biggl[-\int_{t_0}^t\phi(r)\,\dd r\biggr]-\eta(t_0)\le
+        \int_{t_0}^t\psi(s)\exp\biggl[-\int_{t_0}^s\phi(r)\,\dd r\biggr]\,\dd s
+    \end{equation}
+    ma siccome l'argomento dell'esponenziale è negativo se $\phi\ge 0$ in $I$, si ha che tale esponenziale non è maggiore di $1$.
+    Allora possiamo maggiorare l'integranda al secondo membro con $\psi(s)$ soltanto, ottenendo
+    \begin{equation}
+        \eta(t)\exp\biggl[-\int_{t_0}^t\phi(r)\,\dd r\biggr]\le\eta(t_0)+\int_{t_0}^t\psi(s)\,\dd s
+    \end{equation}
+    da cui la \eqref{eq:disuguaglianza-gronwall-generale}.
+\end{proof}
