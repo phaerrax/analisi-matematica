@@ -573,3 +573,42 @@ Concludiamo lo studio delle equazioni paraboliche mostrando la regolarità delle
     \end{enumerate}
 \end{teorema}
 Trovandoci dunque con delle soluzioni negli spazi di Sobolev, con il teorema di Morrey \ref{t:morrey} possiamo dedurre la regolarità classica delle soluzioni deboli, ritrovando le soluzioni classiche.
+
+\begin{esempio} \label{es:equazione-trasporto}
+    Come esempio facile di equazione parabolica, studiamo l'\emph{equazione del trasporto}
+    \begin{equation}
+        \drp{u}{t}+\scalar{\vec b}{\grad u}=0
+        \label{eq:trasporto}
+    \end{equation}
+    in $(0,+\infty)\times\R^n$, con $\vec b\in\R^n$. 
+    Supponiamo che $u$ sia una soluzione di questa equazione: fissato $(t,\vec x)\in(0,+\infty)\times\R^n$, sia $z(s)\defeq u(t+s,\vec x+s\vec b)$.
+    Derivando questa funzione si ha $z'(s)=\scalar{\vec b}{\grad u(t+s,\vec x+s\vec b)}+\drp{u}{t}(t+s,\vec x+s\vec b)=0$, quindi $z(s)$ è costante.
+    In altre parole, $u$ è costante lungo la retta $\ell\colon(t,\vec x)+s(t,\vec b)$.
+    Possiamo aggiungere il dato iniziale $u(0,\vec x)=g(\vec x)$ per $\vec x\in\R^n$: in questo caso $\ell$ incrocia il piano $\{0\}\times\R^n$ in $s=-t$ ossia nel punto $(0,\vec x-t\vec b)$.
+    Siccome, dalla condizione iniziale, $u(0,\vec x-t\vec b)=g(\vec x-t\vec b)$, e su tale retta $\ell$ la funzione $u$ è costante, se $\vec x\in\R^n$ e $t>0$ questa è anche la soluzione dell'equazione se $u\in\cont[1]{(0,+\infty)\times\R^n}$.
+
+    Possiamo pensare di generalizzare il problema al caso non omogeneo:
+    \begin{equation}
+        \begin{cases}
+            \drp{u}{t}+\scalar{\vec b}{\grad u}=f & \text{in }(0,+\infty)\times\R^n\\
+            u=g                                   & \text{in }\{0\}\times\R^n
+        \end{cases}
+        \label{eq:trasporto-non-omogeneo}
+    \end{equation}
+    per il quale procediamo in modo analogo: detta $z(s)\defeq u(t+s,\vec x+s\vec b)$ la sua derivata è stavolta $f(t+s,\vec x+s\vec b)$, quindi non è più costante.
+    Consideriamo
+    \begin{equation}
+        u(t,\vec x)-g(\vec x-t\vec b)=
+        z(0)-z(-t)=
+        \int_{-t}^0z'(s)\,\dd s=
+        \int_{-t}^0f(t+s,\vec x+s\vec b)\,\dd s.
+    \end{equation}
+    Con il cambio di variabile $\tau=t+s$ otteniamo che questo è uguale a
+    \begin{equation}
+        \int_0^tf\bigl(\tau,\vec x+(\tau-t)\vec b\bigr)\,\dd\tau
+    \end{equation}
+    ma siccome $f$ è nota, con un ragionamento analogo a quello precedente, abbiamo la soluzione
+    \begin{equation}
+        u(t,\vec x)=g(\vec x-t\vec b)+\int_0^tf\bigl(\tau,\vec x+(\tau-t)\vec b\bigr)\,\dd\tau.
+    \end{equation}
+\end{esempio}
