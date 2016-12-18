@@ -465,3 +465,88 @@ Con questo lemma possiamo effettuare le seguenti stime.
     \end{equation}
     come volevasi dimostrare.
 \end{proof}
+
+\begin{teorema} \label{t:esistenza-unicita-paraboliche}
+    Esiste una e una sola soluzione debole al problema di Cauchy \eqref{eq:problema-cauchy-parabolico}.
+\end{teorema}
+\begin{proof}
+    Integriamo la \eqref{eq:equazione-parabolica-debole} su $(0,T)$ ponendo $u=u_m(t)=\sum_{j=1}^md^j_m(t)e_j$.
+    Sappiamo che $u_m$ è limitata, per il teorema precedente, nello spazio $\leb[2]{0,T;\sobHc[1]{\Omega}}$, mentre $\drp{u}{t}$ lo è in $\leb[2]{0,T;\sobH[-1]{\Omega}}$.
+    Questi due spazi sono spazi di Hilbert riflessivi, perciò per il teorema di Banach-Alao\u{g}lu \ref{t:banach-alaoglu} esistono delle sottosuccessioni $\{u_{m_k}\}\subset\{u_m\}_{m\in\N}$ e $\{\drp{u_{m_k}}{t}\}\subset\{\drp{u_m}{t}\}_{m\in\N}$ tali che
+    \begin{equation*}
+        u_{m_k}\weakto u\in\leb[2]{0,T;\sobHc[1]{\Omega}}
+        \qtext{e}
+        \drp{u_{m_k}}{t}\weakto\drp{u}{t}\in\leb[2]{0,T;\sobH[-1]{\Omega}}.
+    \end{equation*}
+    Allora, per ogni $v\in\sobHc[1]{\Omega}$,
+    \begin{equation}
+        \int_0^T\Bigl[\dualpair[\Big]{\drp{u_{m_k}}{t}}{v}+B(u_{m_k},v,t)+\dualpair{f}{v}\Bigr]\,\dd t
+        \label{eq:dim-esistenza-unicita-paraboliche1}
+    \end{equation}
+    converge per $m_k\to+\infty$ a
+    \begin{equation}
+        \int_0^T\Bigl[\dualpair[\Big]{\drp{u}{t}}{v}+B(u,v,t)+\dualpair{f}{v}\Bigr]\,\dd t
+    \end{equation}
+    che è poi l'equazione parabolica in forma debole.
+    Consideriamo le condizioni al contorno, mostrando che $u(0,\vec x)=g(\vec x)$ per $\vec x\in\Omega$.
+    Procediamo integrando per parti l'equazione precedente, ottenendo
+    \begin{equation}
+        \int_0^T\Bigl[-\dualpair[\Big]{u}{\drp{v}{t}}+B(u,v,t)\Bigr]\,\dd t=
+        \int_0^T\bigl[\dualpair{f}{v}+\inner{u(0)}{v(0)}_2\,\dd t
+    \end{equation}
+    con $v\in\cont[1]{0,T;\sobHc[1]{\Omega}}$ tale che $v(T)=0$.
+    L'integrazione è stata svolta dopo il limite, ma possiamo anche fare viceversa, integrando prima l'equazione debole \eqref{eq:dim-esistenza-unicita-paraboliche1} si ottiene
+    \begin{equation}
+        \int_0^T\Bigl[-\dualpair[\Big]{u_{m_k}}{\drp{v}{t}}+B(u_{m_k},v,t)\Bigr]\,\dd t=
+        \int_0^T\bigl[\dualpair{f}{v}+\inner{u_{m_k}(0)}{v(0)}_2\,\dd t
+    \end{equation}
+    e per $m_k\to+\infty$ si ha al primo membro lo stesso risultato.
+    Per il secondo membro deve valere allora
+    \begin{equation}
+        \inner{u(0)}{v(0)}_2=
+        \inner{u_m(0)}{v(0)}_2=
+        \inner[\bigg]{\sum_{j=1}^nd^j_m(0)e_j}{v(0)}_2=
+        \inner[\bigg]{\sum_{j=1}^n\inner{g}{e_j}_2e_j}{v(0)}_2
+    \end{equation}
+    e dato che $\{e_j\}$ è una base, per $m\to+\infty$ si ha $g=\sum_{j=1}^{+\infty}\inner{g}{e_j}_2e_j$ quindi $\inner{g}{v(0)}_2=\inner{u(0)}{v(0)}_2$ ossia $u(0)=g$.
+
+    Continuiamo mostrando l'unicità della soluzione: siano $u_1$ e $u_2$ due soluzioni di \eqref{eq:problema-cauchy-parabolico}.
+    Detta $w\defeq u_1-u_2$, essa soddisfa
+    \begin{equation}
+        \dualpair[\Big]{\drp{w}{t}}{v}+B(w,v,t)=0
+        \label{eq:dim-esistenza-unicita-paraboliche3}
+    \end{equation}
+    con $w=0$ su $\{0\}\times\boundary\Omega$ ed è tale che $\vec x\mapsto w(t,\vec x)$ è in $\sobHc[1]{\Omega}$.
+    Poniamo $v=w$ nella \eqref{eq:dim-esistenza-unicita-paraboliche3} trovando
+    \begin{equation}
+        0=
+        \dualpair[\Big]{\drp{w}{t}}{w}+B(w,w,t)=
+        \frac12\drp{}{t}\bigl(\norm{w}_2^2\bigr)+B(w,w,t)
+    \end{equation}
+    ma con la stima, dalla \eqref{eq:dim-stime-energia-paraboliche1},
+    \begin{equation}
+        B(w,w,t)\ge\beta\norm{w}_{\sobHc[1]{\Omega}}-\gamma\norm{w}_2
+    \end{equation}
+    l'equazione diventa
+    \begin{equation}
+        0\ge
+        \drp{}{t}\bigl(\norm{w}_2^2\bigr)+2\beta\norm{w}_{\sobHc[1]{\Omega}}-2\gamma\norm{w}_2
+    \end{equation}
+    da cui infine otteniamo
+    \begin{equation}
+        \drp{}{t}\bigl(\norm{w}_2^2\bigr)\le
+        2\gamma\norm{w}_2-2\beta\norm{w}_{\sobHc[1]{\Omega}}\le
+        2\gamma\norm{w}_2.
+    \end{equation}
+    Applicando dunque la disuguaglianza di Grönwall \ref{l:disuguaglianza-gronwall} abbiamo
+    \begin{equation}
+        \norm{w(t)}_2^2\le e^{2\gamma t}\norm{w(0)}_2^2
+    \end{equation}
+    ma $w(0)=0$ quindi
+    \begin{equation}
+        \norm{w(t)}_2^2=0
+        \qqq
+        w(t)=0,
+    \end{equation}
+    ossia $u_1=u_2$.
+\end{proof}
