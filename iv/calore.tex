@@ -550,3 +550,26 @@ Con questo lemma possiamo effettuare le seguenti stime.
     \end{equation}
     ossia $u_1=u_2$.
 \end{proof}
+
+Concludiamo lo studio delle equazioni paraboliche mostrando la regolarità delle soluzioni deboli.
+\begin{teorema} \label{t:regolarita-soluzioni-deboli-paraboliche}
+    Sia $u$ soluzione debole del problema di Cauchy \eqref{eq:problema-cauchy-parabolico}.
+    \begin{enumerate}
+        \item Se $g\in\sobHc[1]{\Omega}$ e $f\in\leb[2]{0,T;\leb[2]{\Omega}}$, allora
+            \begin{gather*}
+                u\in\leb[2]{0,T;\sobH[2]{\Omega}}\cap\leb[\infty]{0,T;\sobHc[1]{\Omega}}\\
+                \drp{u}{t}\in\leb[2]{0,T;\leb[2]{\Omega}}.
+            \end{gather*}
+        \item Se $g\in\sobH[2]{\Omega}$ e $f\in\sobH[1]{0,T;\leb[2]{\Omega}}$ allora
+            \begin{gather*}
+                u\in\leb[\infty]{0,T;\sobH[2]{\Omega}}\\
+                \drp{u}{t}\in\leb[\infty]{0,T;\leb[2]{\Omega}}\cap\leb[2]{0,T;\sobHc[1]{\Omega}}\\
+                \ddrp{u}{t}\in\leb[2]{0,T;\sobH[-1]{\Omega}}.
+            \end{gather*}
+        \item Se $g\in\sobH[m+2]{\Omega}$ e $\frac{\partial^k f}{\partial t^k}\in\leb[2]{0,T;\sobH[2m-2k]{\Omega}}$ allora
+            \begin{gather*}
+                \frac{\partial^k u}{\partial t^k}\in\leb[2]{0,T;\sobH[2+2m-2k]{\Omega}}.
+            \end{gather*}
+    \end{enumerate}
+\end{teorema}
+Trovandoci dunque con delle soluzioni negli spazi di Sobolev, con il teorema di Morrey \ref{t:morrey} possiamo dedurre la regolarità classica delle soluzioni deboli, ritrovando le soluzioni classiche.
