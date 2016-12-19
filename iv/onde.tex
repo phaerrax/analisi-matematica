@@ -1,0 +1,63 @@
+\chapter{L'equazione delle onde}
+\label{ch:onde}
+
+L'equazione delle onde, o anche di D'Alembert, è
+\begin{equation}
+    \ddrp{u}{t}-\lap u=f
+    \label{eq:onde}
+\end{equation}
+per $u=u(t,\vec x)$ con $t\in[0,+\infty)$ e $\vec x\in\Omega\subset\R^n$.
+Più in breve, definendo l'\emph{operatore dalembertiano} $\dal=\ddrp{}{t}-\lap$ possiamo riscriverla come
+\begin{equation}
+    \dal u=f.
+    \label{eq:onde-dalembertiano}
+\end{equation}
+Per semplicità, trattiamo il caso $n=1$, $\Omega=\R$ e poniamo il problema di Cauchy
+\begin{equation}
+    \begin{cases}
+        \ddrp{u}{t}-\ddrp{u}{x}=0 & \text{in }(0,+\infty)\times\R\\
+        u=g                       & \text{in }\{0\}\times\R\\
+        \drp{u}{t}=h              & \text{in }\{0\}\times\R
+    \end{cases}
+    \label{eq:problema-cauchy-onde}
+\end{equation}
+e cerchiamo una soluzione in termini di $g$ e $h$.
+Mediante un'opportuna fattorizzazione possiamo ricondurre l'equazione omogenea a una coppia di equazioni del trasporto:
+\begin{equation}
+    \dal u=\biggl(\drp{}{t}+\drp{}{x}\biggr)\biggl(\drp{u}{t}-\drp{u}{x}\biggr)=0
+\end{equation}
+e detto $v=\drp{u}{t}-\drp{u}{x}$ abbiamo
+\begin{equation}
+    \drp{v}{t}+\drp{v}{x}=0.
+\end{equation}
+Riconducendoci all'esempio \ref{es:equazione-trasporto}, sia $a(x-t)\defeq v(t,x)$; risulta $\drp{v}{x}(t,x)=a'(x-t)$ e $\drp{v}{t}(t,x)=-a'(t,x)$.
+D'altro canto l'equazione
+\begin{equation}
+    \drp{u}{t}(t,x)-\drp{u}{x}(t,x)=a(x-t)
+\end{equation}
+è ancora un'equazione del trasporto (non omogenea), per cui
+\begin{equation}
+    u(t,x)=
+    \int_0^ta\bigl(x+(t-s)-s)\,\dd s+b(x+t)=
+    \frac12\int_{x-t}^{x+t}a(y)\,\dd y+b(x+t)
+\end{equation}
+dove $a$ è determinata dalla non omogeneità della soluzione mentre $b$ è determinata dai dati iniziali: si ha $b(x)=u(0,x)=g(x)$ e $a(x)=v(0,x)=\drp{u}{t}(0,x)-\drp{u}{x}(0,x)=h(x)-g'(x)$ quindi
+\begin{equation}
+    \begin{split}
+        u(t,x)&=
+        \frac12\int_{x-t}^{x+t}\bigl[h(y)-g'(y)\bigr]\,\dd y+g(x+t)=\\ &=
+        \frac12\int_{x-t}^{x+t}h(y)\,\dd y+\frac12\bigl[g(x-t)-g(x+t)\bigr]+g(x+t)=\\ &=
+        \frac12\int_{x-t}^{x+t}h(y)\,\dd y+\frac12\bigl[g(x-t)+g(x+t)\bigr]
+    \end{split}
+    \label{eq:rappresentazione-soluzione-onde}
+\end{equation}
+che è la formula di rappresentazione generale.
+Essa vale per $t>0$, ma si dimostra che se $g\in\cont[2]{\R}$ e $h\in\cont[1]{\R}$ allora $u$ soddisfa l'equazione delle onde su tutto $\R$.
+\begin{teorema}
+    Se $g\in\cclass[2]$ e $h\in\cclass[1]$ allora la soluzione $u$ del problema di Cauchy \eqref{eq:problema-cauchy-onde} è in $\cont[2]{(0,+\infty)\times\R}$ e vale
+    \begin{equation}
+        g(x_0)=\lim_{(t,x)\to(0,x_0)}u(t,x)
+        \qtext{e}
+        h(x_0)=\lim_{(t,x)\to(0,x_0)}\drp{u}{t}(t,x).
+    \end{equation}
+\end{teorema}
