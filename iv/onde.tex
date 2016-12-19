@@ -61,3 +61,40 @@ Essa vale per $t>0$, ma si dimostra che se $g\in\cont[2]{\R}$ e $h\in\cont[1]{\R
         h(x_0)=\lim_{(t,x)\to(0,x_0)}\drp{u}{t}(t,x).
     \end{equation}
 \end{teorema}
+
+\section{Equazioni iperboliche}
+Generalizziamo l'equazione delle onde a un generico problema
+\begin{equation}
+    \ddrp{u}{t}+L(u)=f & \text{in }\Omega_T=[0,T]\times\Omega\\
+    u=0                & \text{in }[0,T]\times\boundary\Omega\\
+    u=g                & \text{in }\{0\}\times\Omega\\
+    \drp{u}{t}=h       & \text{in }\{0\}\times\Omega
+    \label{eq:problema-cauchy-iperbolico}
+\end{equation}
+con $f\colon\Omega_T\to\R$ e $g,h\colon\Omega\to\R$, ed $L$ un operatore ellittico dipendente da $t$:
+\begin{equation}
+    L\colon u\mapsto -\sum_{i=1}^n\sum_{j=1}^n\drp{x_i}\biggl(a_{ij}\drp{u}{x_j}\biggr)+\sum_{i=1}^nb_i\drp{u}{x_i}+cu
+\end{equation}
+tale che esiste $\lambda>0$ per cui
+\begin{equation}
+    \sum_{i=1}^n\sum_{j=1}^n a_{ij}(t,\vec x)\xi_i\xi_j \ge \lambda\norm{\vxi}^2
+\end{equation}
+per ogni $\vxi\in\R^n$ e $(t,\vec x)\in\Omega_T$.
+Cerchiamone una soluzione debole, assumendo che $a_{ji}=a_{ij}$ e $a_{ij},b_i\in\cont[1]{\clos{\Omega_T}}$, $f\in\leb[2]{\Omega_T}$, $g\in\sobHc[1]{\Omega}$ e $h\in\leb[2]{\Omega}$.
+Ricaviamo dall'equazione la forma bilineare
+\begin{equation}
+    B(u,v,t)=\int_\Omega\biggl[\sum_{i=1}^n\sum_{j=1}^na_{ij}\drp{u}{x_i}\drp{v}{x_j}+\sum_{i=1}^nb_i\drp{u}{x_i}v+cuv\biggr]\,\dd\mu
+    \label{eq:forma-bilineare-iperboliche}
+\end{equation}
+definita da $\sobHc[1]{\Omega}\times\sobHc[1]{\Omega}$ a $\R$.
+Diciamo che $u\in\leb[2]{0,T;\sobHc[1]{\Omega}}$, con $\drp{u}{t}\in\leb[2]{0,T;\leb[2]{\Omega}}$ e $\ddrp{u}{t}\in\leb[2]{0,T;\sobH[-1]{\Omega}}$ è soluzione debole del \eqref{eq:problema-cauchy-iperbolico} se per ogni $v\in\sobHc[1]{\Omega}$ vale
+\begin{equation}
+    \inner[\Big]{\ddrp{u}{t}}{v}_2+\inner{L(u)}{v}_2=\inner{f}{v}_2
+\end{equation}
+per quasi ogni $t\in[0,T]$, ossia
+\begin{equation}
+    \inner[\Big]{\ddrp{u}{t}}{v}_2+B(u,v,t)=\inner{f}{v}_2.
+\end{equation}
+e $u(0,\cdot)=g$, $\drp{u}{t}(0,\cdot)=h$.
+Come per le equazioni paraboliche, possiamo anche intendere che $\ddrp{u}{t}\in\sobH[-1]{\Omega}$ sostituendo $\inner{\ddrp{u}{t}}{v}$ con la forma di dualità tra $\sobH[-1]{\Omega}$ e $\sobHc[1]{\Omega}$.
+Anche il procedimento per dimostrare l'esistenza e l'unicità delle soluzioni deboli è analogo al caso parabolico.
