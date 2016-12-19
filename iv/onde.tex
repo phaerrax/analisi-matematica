@@ -65,15 +65,17 @@ Essa vale per $t>0$, ma si dimostra che se $g\in\cont[2]{\R}$ e $h\in\cont[1]{\R
 \section{Equazioni iperboliche}
 Generalizziamo l'equazione delle onde a un generico problema
 \begin{equation}
-    \ddrp{u}{t}+L(u)=f & \text{in }\Omega_T=[0,T]\times\Omega\\
-    u=0                & \text{in }[0,T]\times\boundary\Omega\\
-    u=g                & \text{in }\{0\}\times\Omega\\
-    \drp{u}{t}=h       & \text{in }\{0\}\times\Omega
+    \begin{cases}
+        \ddrp{u}{t}+L(u)=f & \text{in }\Omega_T=[0,T]\times\Omega\\
+        u=0                & \text{in }[0,T]\times\boundary\Omega\\
+        u=g                & \text{in }\{0\}\times\Omega\\
+        \drp{u}{t}=h       & \text{in }\{0\}\times\Omega
+    \end{cases}
     \label{eq:problema-cauchy-iperbolico}
 \end{equation}
 con $f\colon\Omega_T\to\R$ e $g,h\colon\Omega\to\R$, ed $L$ un operatore ellittico dipendente da $t$:
 \begin{equation}
-    L\colon u\mapsto -\sum_{i=1}^n\sum_{j=1}^n\drp{x_i}\biggl(a_{ij}\drp{u}{x_j}\biggr)+\sum_{i=1}^nb_i\drp{u}{x_i}+cu
+    L\colon u\mapsto -\sum_{i=1}^n\sum_{j=1}^n\drp{}{x_i}\biggl(a_{ij}\drp{u}{x_j}\biggr)+\sum_{i=1}^nb_i\drp{u}{x_i}+cu
 \end{equation}
 tale che esiste $\lambda>0$ per cui
 \begin{equation}
@@ -98,3 +100,45 @@ per quasi ogni $t\in[0,T]$, ossia
 e $u(0,\cdot)=g$, $\drp{u}{t}(0,\cdot)=h$.
 Come per le equazioni paraboliche, possiamo anche intendere che $\ddrp{u}{t}\in\sobH[-1]{\Omega}$ sostituendo $\inner{\ddrp{u}{t}}{v}$ con la forma di dualità tra $\sobH[-1]{\Omega}$ e $\sobHc[1]{\Omega}$.
 Anche il procedimento per dimostrare l'esistenza e l'unicità delle soluzioni deboli è analogo al caso parabolico.
+Effettuiamo un'approssimazione di dimensione finita per poi ricondurci, con un limite, al caso originale: sia $\{e_k\}_{k\in\N}$ una base ortonormale in $\leb[2]{\Omega}$ e $\sobHc[1]{\Omega}$, e consideriamo
+\begin{equation}
+    u_m(t,\vec x)=\sum_{j=1}^md^j_m(t)e_k(\vec x)
+    \label{eq:approssimazione-finita-iperboliche}
+\end{equation}
+per $d^j_m\colon[0,T]\to\R$ tali che $d^j_m(0)=\inner{g}{e_j}_2$ e $\drv{d^j_m}{t}(0)=\inner{h}{e_j}_2$ per ogni $j\in\{1,\dotsc,m\}$.
+\begin{teorema} \label{t:esistenza-soluzione-approssimata-iperboliche}
+    Per ogni $m\in\N$ esiste ed è unica una funzione $u_m$ della forma \eqref{eq:approssimazione-finita-iperboliche} che soddisfa
+    \begin{equation}
+        \dualpair[\Big]{\ddrp{u_m}{t}}{e_k}+B(u_m,e_k,t)=\inner{f}{e_k}_2
+    \end{equation}
+    per ogni $k\in\N$.
+\end{teorema}
+\begin{proof}
+    Anche in questo caso ci riconduciamo a delle equazioni differenziali ordinarie: risulta che
+    \begin{equation}
+        \dualpair[\Big]{\ddrp{u}{t}}{e_k}=
+        \sum_{j=1}^m\ddrv{d^j_m}{t}(t)\dualpair{e_j}{e_k}=
+        \sum_{j=1}^m\ddrv{d^j_m}{t}(t)\inner{e_j}{e_k}_2=
+        \ddrv{d^k_m}{t}(t)
+    \end{equation}
+    inoltre, posto $b_{jk}(t)=B(e_j,e_k,t)$,
+    \begin{equation}
+        B(u_m,e_k,t)=
+        \sum_{j=1}^md^j_m(t)B(e_j,e_k,t)=
+        \sum_{j=1}^md^j_m(t)b_{jk}(t)
+    \end{equation}
+    e infine scriviamo $f_k\defeq\inner{f}{e_k}_2$.
+    Otteniamo in questo modo un sistema di equazioni differenziali lineari ordinarie del secondo ordine nella variabile $t$,
+    \begin{equation}
+        \ddrv{}{t}d^k_m(t)+\sum_{j=1}^mb_{jk}(t)d^j_m(t)=f_k(t)
+    \end{equation}
+    che con le opportune condizioni iniziali ammette un'unica soluzione, in $\cont[2]{(0,T)}$, per il teorema \ref{t:E-globale}.
+\end{proof}
+\begin{teorema} \label{t:stima-energia-iperboliche}
+    Esiste una costante $c=c(\Omega,L,T)$ tale che
+    \begin{multline}
+        \max_{t\in[0,T]}\biggl(\norm{u_m(t)}_{\sobHc[1]{\Omega}}+\norm[\bigg]{\drp{u_m}{t}(t)}_{\leb[2]{\Omega}}\biggr)+\norm[\bigg]{\ddrp{u}{t}(t)}_{\leb[2]{0,T;\sobH[-1]{\Omega}}}\le\\ \le
+        c\bigl(\norm{f}_{\leb[2]{0,T;\leb[2]{\Omega}}}+\norm{g}_{\sobHc[1]{\Omega}}+\norm{h}_{\leb[2]{\Omega}}\bigr).
+        \label{eq:stima-energia-iperboliche}
+    \end{multline}
+\end{teorema}
