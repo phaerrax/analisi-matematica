@@ -142,3 +142,124 @@ per $d^j_m\colon[0,T]\to\R$ tali che $d^j_m(0)=\inner{g}{e_j}_2$ e $\drv{d^j_m}{
         \label{eq:stima-energia-iperboliche}
     \end{multline}
 \end{teorema}
+\begin{teorema} \label{t:esistenza-unicita-iperboliche}
+    Esiste ed è unica una soluzione debole del problema di Cauchy \eqref{eq:problema-cauchy-iperbolico}.
+\end{teorema}
+\begin{proof}
+    Consideriamo la successione $\{u_m\}_{m\in\N}$ delle soluzioni approssimate \eqref{eq:approssimazione-finita-iperboliche}: dal teorema precedente
+    \begin{equation}
+        \norm{u_m}_{\leb[2]{0,T;\sobHc[1]{\Omega}}}=
+        \int_0^T\int_\Omega\norm{\grad u_m}^2\,\dd\mu\,\dd t\le
+        T\max_{t\in[0,T]}\int_\Omega\norm{\grad u_m(t)}^2\,\dd\mu\le
+        Tc
+    \end{equation}
+    quindi per il teorema di Banach-Alao\u{g}lu \ref{t:banach-alaoglu} otteniamo che esiste una sottosuccessione $\{u_{m_k}\}$ tale che $u_{m_k}\weakto u\in\leb[2]{0,T;\sobHc[1]{\Omega}}$ per $m_k\to+\infty$.
+    Analogamente $\drp{u_{m_k}}{t}\weakto\drp{u}{t}$ e $\ddrp{u_{m_k}}{t}\weakto\ddrp{u}{t}$ nei rispettivi spazi.
+    Inoltre dall'equazione
+    \begin{equation}
+        \int_0^T\biggl[\dualpair[\Big]{\ddrp{u_{m_k}}{t}}{v}+B(u_{m_k},v,t)\biggr]\,\dd t=\int_0^T\inner{f}{v}_2\,\dd t,
+    \end{equation}
+    ponendo $v=\sum_{j=1}^mc_j(t)e_j$, per $m\to+\infty$ si ottiene la convergenza
+    \begin{equation}
+        \int_0^T\biggl[\dualpair[\Big]{\ddrp{u}{t}}{v}+B(u,v,t)\biggr]\,\dd t=\int_0^T\inner{f}{v}_2\,\dd t.
+    \end{equation}
+    e siccome l'insieme di tali $v$ approssimati è denso in $\sobHc[1]{\Omega}$ si ha anche che vale per ogni $v\in\sobHc[1]{\Omega}$.
+    Di conseguenza vale che
+    \begin{equation}
+        \dualpair[\Big]{\ddrp{u}{t}}{v}+B(u,v,t)=\inner{f}{v}_2
+    \end{equation}
+    per quasi ogni $t\in[0,T]$, vale a dire $u$ è soluzione debole del problema di Cauchy.
+
+    Per quanto riguarda l'unicità, se abbiamo due soluzioni del medesimo problema di Cauchy allora la loro differenza risolve l'equazione iperbolica ma con condizioni al contorno tutte nulle, ossia
+    \begin{equation}
+        \begin{cases}
+            \dualpair[\big]{\ddrp{u}{t}}{v}+B(u,v,t)=0 & \text{in }\Omega_T=[0,T]\times\Omega\\
+            u=0                                        & \text{in }[0,T]\times\boundary\Omega\cup\{0\}\times\Omega\\
+            \drp{u}{t}=0                               & \text{in }\{0\}\times\Omega
+        \end{cases}
+    \end{equation}
+    e mostriamo che la soluzione di tale problema è il solo zero, cos\`i che le due soluzioni di \eqref{eq:problema-cauchy-iperbolico} coincidano.
+    Fissiamo $s\in[0,T]$ e definiamo la funzione
+    \begin{equation}
+        v(t)\defeq
+        \begin{cases}
+            \int_t^su(\tau)\,\dd\tau & t\in[0,s]\\
+            0                        & t\in(s,T]
+        \end{cases}
+    \end{equation}
+    che è in $\sobHc[1]{\Omega}$ per ogni $t\in[0,T]$; possiamo sostituirla nella forma debole dell'equazione differenziale ottenendo
+    \begin{equation}
+        \int_0^s\biggl[\dualpair[\Big]{\ddrp{u}{t}}{v}+B(u,v,t)\biggr]\,\dd t=0
+    \end{equation}
+    con $v(s)=0$ e $\drp{u}{t}(0)=0$.
+    Integrando per parti, siccome i termini di bordo sono nulli, otteniamo
+    \begin{equation}
+        \int_0^s\biggl[-\dualpair[\Big]{\drp{u}{t}}{\drp{v}{t}}+B(u,v,t)\biggr]\,\dd t=0
+    \end{equation}
+    ma $\drp{v}{t}=-u$ se $0\le t\le s$ quindi
+    \begin{equation}
+        \int_0^s\biggl[\dualpair[\Big]{\drp{u}{t}}{u}+B\biggl(\drp{v}{t},v,t\biggr)\biggr]\,\dd t=0
+    \end{equation}
+    da cui ricaviamo
+    \begin{equation}
+        \int_0^s\biggl[\frac12\drv{}{t}\norm{u}_2^2-\frac12\drv{}{t}B\biggl(\drp{v}{t},v,t\biggr)\biggr]\,\dd t=
+        -\int_0^s\bigl[C(u,v,t)+D(v,t)\bigr]\,\dd t
+    \end{equation}
+    dove $C$ e $D$ sono termini di resto provenienti dall'integrazione per parti della forma bilineare $B$:
+    \begin{equation}
+        \begin{gathered}
+            C(u,v,t)=\int_\Omega\sum_{i=1}^n\biggl(b_iu\drp{v}{x_i}+\frac12\drp{b_i}{x_i}uv\biggr)\,\dd\mu\\
+            D(v,t)=\frac12\int_\Omega\biggl(\sum_{i=1}^n\sum_{j=1}^n\drp{a_{ij}}{t}\drp{u}{x_i}\drp{v}{x_j}+\sum_{i=1}^n\drp{b_i}{t}\drp{u}{x_i}v+\drp{c}{t}uv\biggr)\,\dd\mu.
+        \end{gathered}
+    \end{equation}
+    Infatti si ha che
+    \begin{equation}
+        \begin{split}
+            \frac12\drp{}{t}B(v,v,t)&=
+            \frac12\drp{}{t}\int_\Omega\biggl[\sum_{i=1}^n\sum_{j=1}^na_{ij}\drp{v}{x_i}\drp{v}{x_j}+\sum_{i=1}^nb_i\drp{v}{x_i}v+cv^2\biggr]\,\dd\mu=\\ &=
+                \int_\Omega\sum_{i=1}^n\sum_{j=1}^na_{ij}\drp{}{t}\biggl(\drp{v}{x_i}\biggr)\drp{v}{x_j}\,\dd\mu+
+                \frac12\int_\Omega\sum_{i=1}^nb_i\drp{}{t}\biggl(\drp{v}{x_i}\biggr)v\,\dd\mu+\\ &+
+                \frac12\int_\Omega\sum_{i=1}^nb_i\drp{v}{x_i}\drp{v}{t}\,\dd\mu+
+                \int_\Omega c\drp{v}{t}v\,\dd\mu+
+                \frac12\int_\Omega\sum_{i=1}^n\sum_{j=1}^n\drp{a_{ij}}{t}\drp{v}{x_i}\drp{v}{x_j}\,\dd\mu+\\ &+
+                \frac12\int_\Omega\sum_{i=1}^n\drp{b_i}{t}\drp{v}{x_i}v\,\dd\mu
+                \frac12\int_\Omega\drp{c}{t}v^2\,\dd\mu
+        \end{split}
+        \label{eq:dim-esistenza-unicita-iperboliche1}
+    \end{equation}
+    ma siccome (tenendo a parte il fattore $\frac12$)
+    \begin{equation}
+        \int_\Omega\sum_{i=1}^nb_i\drp{v}{x_i}\drp{v}{t}\,\dd\mu=
+        -\int_\Omega\sum_{i=1}^nb_i\drp{}{t}\biggl(\drp{v}{x_i}\biggr)v\,\dd\mu-\int_\Omega\sum_{i=1}^n\drp{b_i}{x_i}\drp{v}{x_i}v\,\dd\mu
+    \end{equation}
+    e il primo termine si cancella con uno dei precedenti dalla \eqref{eq:dim-esistenza-unicita-iperboliche1} ricaviamo che esistono $c,d>0$ tali per cui
+    \begin{equation}
+        B\bigl(v(0),v(0),t\bigr)=c\norm{v(0)}_{\sobHc[1]{\Omega}}^2+d\norm{v(0)}_2^2
+    \end{equation}
+    perciò
+    \begin{equation}
+        \norm{u(s)}_2^2+\norm{v(0)}_{\sobHc[1]{\Omega}}^2\le
+        d\norm{v(0)}_2^2+\int_0^s\bigl[c\norm{v(t)}_{\sobHc[1]{\Omega}}^2+d\norm{v(t)}_2^2\bigr]\,\dd t.
+    \end{equation}
+    Poniamo dunque $w(t)\defeq\int_0^t u(s)\,\dd s$, per $t\in[0,T]$: dato che $v(0)=w(s)$, risulta
+    \begin{equation}
+        \norm{u(s)}_2^2+\norm{w(s)}_{\sobHc[1]{\Omega}}^2\le
+        c\int_0^s\bigl[\norm{w(t)-w(s)}_{\sobHc[1]{\Omega}}^2+\norm{u(t)}_2^2\bigr]\,\dd t+\norm{w(s)}_2^2.
+    \end{equation}
+    Grazie alle disuguaglianze
+    \begin{gather}
+        \norm{w(t)-w(s)}_{\sobHc[1]{\Omega}}^2 \le 2\norm{w(t)}_{\sobHc[1]{\Omega}}^2+2\norm{w(s)}_{\sobHc[1]{\Omega}}^2\\
+        \norm{w(s)}_2^2 \le \int_0^s\norm{u(t)}_2^2\,\dd t
+    \end{gather}
+    troviamo infine
+    \begin{equation}
+        \norm{u(s)}_2^2+(1-2cs)\norm{w(s)}_{\sobHc[1]{\Omega}}^2\le
+        2c\int_0^s\bigl[\norm{w(t)}_{\sobHc[1]{\Omega}}^2+\norm{u(t)}_2^2\bigr]\,\dd t.
+    \end{equation}
+    Ora, preso $t\in[0,T']$ con $T'$ tale che $1-2cT'=\frac12$ troviamo che $1-2cs\ge\frac12$ e riaggiustando le costanti risulta
+    \begin{equation}
+        \norm{u(s)}_2^2+\norm{w(s)}_{\sobHc[1]{\Omega}}\le k\int_0^s\bigl[\norm{w(t)}_{\sobHc[1]{\Omega}}^2+\norm{u(t)}_2^2\bigr]\,\dd t
+    \end{equation}
+    per un certo $k>0$, da cui $u=w=0$ su $[0,T']$.
+    Iterando questo procedimento su ogni intervallo $[T',T'']$, poi $[T'',T''']$ e cos\`i via fino a ricoprire tutto $[0,T]$ troviamo che la soluzione $u$ è nulla su tutto tale intervallo, provando cos\`i che la soluzione debole è unica.
+\end{proof}
