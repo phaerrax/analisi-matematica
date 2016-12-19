@@ -263,3 +263,46 @@ per $d^j_m\colon[0,T]\to\R$ tali che $d^j_m(0)=\inner{g}{e_j}_2$ e $\drv{d^j_m}{
     per un certo $k>0$, da cui $u=w=0$ su $[0,T']$.
     Iterando questo procedimento su ogni intervallo $[T',T'']$, poi $[T'',T''']$ e cos\`i via fino a ricoprire tutto $[0,T]$ troviamo che la soluzione $u$ è nulla su tutto tale intervallo, provando cos\`i che la soluzione debole è unica.
 \end{proof}
+
+\section{Velocità di propagazione}
+Nelle equazioni paraboliche (osservazione \ref{o:propagazione-calore-velocita-infinita}) avevamo visto che la velocità di propagazione era infinita: una perturbazione delle condizioni al contorno si traduceva in una modifica istantanea della soluzione in tutto il suo dominio.
+In questo caso la situazione è diversa: prendiamo l'equazione $\dal u=0$ su $(0,+\infty)\times\R^n$ e fissiamo $(t_0,\vec x_0)$ in tale insieme; definiamo inoltre il cono
+\begin{equation}
+    \mathcal{C}=\{(t,\vec x)\colon 0\le t\le t_0, \norm{\vec x-\vec x_0}\le t_0-t\}
+\end{equation}
+e chiamiamo $\mathcal{B}(t_0-t',\vec x)$ la sua intersezione con il piano $t=t'$.
+\begin{teorema}
+    Se $u=0$ e $\drp{u}{t}=0$ su $\mathcal{B}(0,\vec x_0)$ allora $u=0$ sull'intero $\mathcal{C}$.
+\end{teorema}
+\begin{proof}
+    Sia
+    \begin{equation}
+        \eta(t)\defeq\frac12\int_{\mathcal{B}(t_0-t,\vec x_0)}\biggl[\biggl(\drp{u}{t}(t,\vec x)\biggr)^2+\norm{\grad u(t,\vec x)}^2\biggr]\,\dd\mu(\vec x)
+    \end{equation}
+    per $t\in[0,t_0]$.
+    La sua derivata rispetto a $t$ (con $u$ soluzione classica) è
+    \begin{equation}
+        \eta'(t)=
+        \int_{\mathcal{B}(t_0-t,\vec x_0)}\biggl[\drp{u}{t}\ddrp{u}{t}+\scalar{\grad u}{\grad\drp{u}{t}}\biggr]\,\dd\mu(\vec x)-
+        \frac12\int_{\boundary\mathcal{B}(t_0-t,\vec x_0)}\biggl[\biggl(\drp{u}{t}(t,\vec x)\biggr)^2+\norm{\grad u(t,\vec x)}^2\biggr]\,\dd\sigma(\vec x)
+    \end{equation}
+    e integrando per parti otteniamo
+    \begin{equation}
+        \eta'(t)=
+        \int_{\mathcal{B}(t_0-t,\vec x_0)}\biggl(\drp{u}{t}\ddrp{u}{t}-\lap u\drp{u}{t}\biggr)\,\dd\mu(\vec x)-
+        \int_{\boundary\mathcal{B}(t-t_0,\vec x_0)}\biggl(\drp{u}{t}\drp{u}{\nu}-\frac12\ddrp{u}{t}-\frac12\norm{\grad u}^2\biggr)\,\dd\sigma(\vec x).
+    \end{equation}
+    Il primo integrale è nullo, poich\'e $u$ è tale che $\dal u=0$, mentre
+    \begin{equation}
+        \abs[\bigg]{\drp{u}{t}\drp{u}{\nu}}\le
+        \norm{\grad u}\abs[\bigg]{\drp{u}{t}}\le
+        \frac12\norm{\grad u}^2+\frac12\abs[\bigg]{\drp{u}{t}}^2
+    \end{equation}
+    perciò $\eta'(t)\le 0$ per ogni $t\in[0,t_0]$.
+    Siccome $\eta(0)=0$ (siccome $\mathcal{B}(0,\vec x_0)$ ha misura nulla), ciò significa che $0\le\eta(t)\le\eta(t_0)=0$ ossia $\eta=0$ in $[0,t_0]$, e di conseguenza anche $u=0$ in $\mathcal{C}$.
+\end{proof}
+
+\begin{teorema}
+    Dato il problema di Cauchy \eqref{eq:problema-cauchy-iperbolico} esiste una funzione $q\colon\R^n\to\R$ tale che $\delta\norm{\vec x-\vec x_0}\le q(\vec x)\le\gamma\norm{\vec x-\vec x_0}$, per $\delta,\gamma>0$ dipendenti dalla forma dell'operatore $L$, tale che $\mathcal{C}=\{(t,\vec x)\colon q(\vec x)\le t_0-t\}$ e se $u$ è una soluzione $\cclass[\infty]$ del problema con dati iniziali $u=\drp{u}{t}=0$ su $\mathcal{B}(0,\vec x_0)$ allora $u=0$ sull'intero cono $\mathcal{C}$.
+\end{teorema}
+Questa funzione $q$ fornisce una ``distanza'' (che va a sostituire la semplice norma $\norm{\vec x-\vec x_0}$ che generalizza il cono $\mathcal{C}$ di propagazione delle soluzioni nelle equazioni iperboliche; per l'equazione delle onde si ha $a_{ij}=\delta_{ij}$ nell'operatore $L$ e questo porta ad avere un cono $\mathcal{C}$ ``dritto''.
