@@ -1,0 +1,26 @@
+\chapter{L'equazione di Schrödinger}
+\label{ch:schroedinger}
+
+Nella forma più generale, l'equazione di Schrödinger è
+\begin{equation}
+    -i\hbar\drp{\psi}{t}-\frac{\hbar^2}{2m}\lap\psi+V\psi=0
+    \label{eq:schroedinger}
+\end{equation}
+da risolvere per la funzione $\psi\colon(0,+\infty)\times\R^n\to\C$, di $t$ e $\vec x$, con una funzione fissata $V\colon\R^n\to\R$, di $\vec x$ soltanto, che rappresenta l'energia potenziale; d'ora in poi poniamo $m=1$.
+Vogliamo cercare delle soluzioni della forma
+\begin{equation}
+    \psi(t,\vec x)=e^{-\frac{i}{\hbar}Et}u(\vec x)
+    \label{eq:soluzione-stazionaria-schroedinger}
+\end{equation}
+per un $E\in\R$, ossia delle soluzioni stazionarie della \eqref{eq:schroedinger}: sostituendo questa soluzione abbiamo infatti che $u$ soddisfa
+\begin{equation}
+    -\frac{\hbar^2}{2}\lap u+Vu-Eu=0
+    \label{eq:schroedinger-stazionaria}
+\end{equation}
+ossia $u$ è un'autofunzione, con autovalore $E$, dell'operatore (i cui insiemi di definizione andranno opportunamente definiti)
+\begin{equation}
+    -\frac{\hbar^2}{2}\lap+V
+    \label{eq:operatore-hamiltoniano}
+\end{equation}
+detto \emph{hamiltoniano} del sistema.
+Studieremo quali condizioni dovrà soddisfare la funzione potenziale $V$ affinch\'e l'equazione differenziale ammetta soluzioni.
