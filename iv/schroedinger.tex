@@ -24,3 +24,115 @@ ossia $u$ è un'autofunzione, con autovalore $E$, dell'operatore (i cui insiemi 
 \end{equation}
 detto \emph{hamiltoniano} del sistema.
 Studieremo quali condizioni dovrà soddisfare la funzione potenziale $V$ affinch\'e l'equazione differenziale ammetta soluzioni.
+
+\section{Formulazione debole}
+\newcommand{\E}{\mathcal{E}}
+\renewcommand{\S}{\mathcal{S}}
+Introduciamo il funzionale
+\begin{equation}
+    \E\colon u\mapsto\int_{\R^n}\norm{\grad u}^2\,\dd\mu+\int_{\R^n}Vu^2\,\dd\mu
+    \label{eq:funzionale-energia-schroedinger}
+\end{equation}
+e chiamiamo $\E_0$ l'estremo inferiore che esso assume in $\S=\{u\in\sobH[1]{\R^n}\colon\norm{u}_2=1\}$.
+Ha senso restringerci alla sfera unitaria perch\'e l'equazione \eqref{eq:schroedinger-stazionaria} è omogenea quindi se $u$ è soluzione lo è anche $\alpha u$ per qualsiasi $\alpha\in\R$.
+Se esiste $\bar{u}\in\S$ tale che $\E(\bar{u})=\E_0$, allora dal teorema di Lagrange \ref{t:lagrange-dimensione-infinita} esiste $\lambda\in\R$ tale che, detto
+\begin{equation}
+    F\colon u\mapsto\int_{\R^n}u^2\,\dd\mu-1,
+\end{equation}
+si abbia $\E'(\bar{u})[v]=\lambda F'(\bar{u})[v]$.
+Questo significa che
+\begin{equation}
+    2\int_{\R^n}\bigl(\scalar{\grad\bar{u}}{\grad v}+V\bar{u}v\bigr)\,\dd\mu=2\lambda\int_{\R^n}\bar{u}v\,\dd\mu
+\end{equation}
+per ogni $v\in\sobH[1]{\R^n}$.
+Ponendo $v=\bar{u}$ troviamo dunque
+\begin{equation}
+    \int_{\R^n}\bigl(\norm{\grad\bar{u}}^2+V\bar{u}^2\bigr)\,\dd\mu=\lambda\int_{\R^n}\bar{u}^2\,\dd\mu
+\end{equation}
+ma allora $\lambda=\E_0$, e $\bar{u}$ è soluzione debole dell'equazione di Schrödinger.
+
+\begin{teorema}
+    Sia $V$ una funzione appartenente a
+    \begin{enumerate}
+        \item $\leb[\frac{n}2]{\R^n}+\leb[\infty]{\R^n}$, se $n\ge 3$;
+        \item $\leb[1+\epsilon]{\R^2}+\leb[\infty]{\R^2}$ per un $\epsilon>0$;
+        \item $\leb[1]{\R}+\leb[\infty]{\R}$
+    \end{enumerate}
+    dove $V\in A+B$ è inteso nel senso che esistono $f\in A$ e $g\in B$ tali che $V=f+g$.
+    Allora $\E$ è limitato ed esistono $c,d>0$ tali che
+    \begin{equation}
+        \int_{\R^n}\norm{\grad u}^2\,\dd\mu\le c\E(u)+d\norm{u}_2^2.
+    \end{equation}
+\end{teorema}
+\begin{proof}
+    Ricordiamo dal teorema di Sobolev \ref{t:sobolev} la disuguaglianza\footnote{
+        Abbreviamo con $\sobc{p}$ il \emph{coniugato di Sobolev}, ossia l'esponente critico nell'omonimo teorema.
+    }
+    \begin{equation}
+        s_n\biggl(\int_{\R^n}u^{{\sobc 2}}\,\dd\mu\biggr)^\frac{n-2}{n} \le \int_{\R^n}\norm{\grad u}^2\,\dd\mu
+    \end{equation}
+    se $n\ge 3$, mentre per $n=2$
+    \begin{equation}
+        s_{2,p}\biggl(\int_{\R^2}u^p\,\dd\mu\biggr)^\frac2{p} \le \int_{\R^2}\bigl(\norm{\grad u}^2+u^2\bigr)\,\dd\mu
+    \end{equation}
+    e infine per $n=1$
+    \begin{equation}
+        s_{1,\infty}\norm{u}_\infty^2 \le \int_\R(u^{\prime 2}+u^2)\,\dd\mu
+    \end{equation}
+    per degli $s_n,s_{2,p},s_{1,\infty}>0$.
+
+    Consideriamo solo il primo caso, per $n\ge 3$: si ha
+    \begin{equation}
+        \abs[\bigg]{\int_{\R^n}Vu^2\,\dd\mu}\le
+        \biggl(\int_{\R^n}\abs{V}^q\,\dd\mu\biggr)^\frac1{q}\biggl(\int_{\R^n}u^{2\frac{{\sobc 2}}2}\,\dd\mu\biggr)^\frac2{{\sobc 2}}
+    \end{equation}
+    e il valore di $q$ affinch\'e $\frac1{q}+\frac{n-2}2=1$ è $\frac{n}2$.
+    Di conseguenza
+    \begin{equation}
+        \norm{Vu^2}_1\le
+        \norm{V}_\frac{n}2\norm{u}_{\sobc 2}^2,
+    \end{equation}
+    e per il teorema di Sobolev sopra citato
+    \begin{equation}
+        \norm{Vu^2}_1\le
+        \norm{V}_\frac{n}2\frac1{s_n}\int_{\R^n}\norm{\grad u}^2\,\dd\mu.
+    \end{equation}
+    Siano $v\in\leb[\frac{n}2]{\R^n}$ e $w\in\leb[\infty]{\R^n}$ tali che $V=v+w$ (come dalle ipotesi) e, per $\lambda>0$, definiamo la funzione $h_\lambda\defeq\min\{v+\lambda,0\}$, e mostriamo che esiste $\bar{\lambda}>0$ tale che $\norm{h_{\bar{\lambda}}}_\frac{n}2\le\frac12s_n$.
+    Osserviamo infatti che per $\lambda\to+\infty$ la $h_\lambda$ tende puntualmente a zero, mentre $\abs{h_\lambda}\le v$, quindi per il teorema della convergenza dominata \ref{t:convergenza-dominata-Lp} si ha che $\norm{h_\lambda}_\frac{n}2\to 0$ per $\lambda\to+\infty$.
+    Possiamo allora effettuare la stima
+    \begin{equation}
+        \abs[\bigg]{\int_{\R^n}h_\lambda u^2\,\dd\mu}\le
+        \norm{h_\lambda}_\frac{n}2\frac1{s_n}\int_{\R^n}\norm{\grad u}^2\,\dd\mu
+    \end{equation}
+    quindi per $\lambda$ sufficientemente grande possiamo avere $\norm{h_\lambda}_\frac{n}2\le\frac12s_n$: allora
+    \begin{equation}
+        \abs[\bigg]{\int_{\R^n}h_\lambda u^2\,\dd\mu}\le
+        \frac12\int_{\R^n}\norm{\grad u}^2\,\dd\mu.
+    \end{equation}
+    Il funzionale $\E$, scindendo $V$ nei due addendi, è dunque tale per cui
+    \begin{equation}
+        \begin{split}
+            \E(u)&=
+            \int_{\R^n}\bigl[\norm{\grad u}^2+(v+\lambda)u^2-\lambda u^2+wu^2\bigr]\,\dd\mu\ge\\ &\ge
+            \int_{\R^n}\norm{\grad u}^2\,\dd\mu+\int_{\R^n}h_\lambda u^2\,\dd\mu-\lambda\int_{\R^n}u^2\,\dd\mu\int_{\R^n}wu^2\,\dd\mu\ge\\ &\ge
+            \int_{\R^n}\Bigl(\norm{\grad u}^2-\frac12\norm{\grad u}^2-\lambda u^2-\norm{w}_\infty u^2\Bigr)\,\dd\mu
+        \end{split}
+    \end{equation}
+    e siccome $\norm{u}_2=1$ otteniamo
+    \begin{equation}
+        \E(u)\ge
+        \frac12\int_{\R^n}\norm{\grad u}^2\,\dd\mu-\lambda-\norm{w}_\infty\ge
+        -\lambda-\norm{w}_\infty
+    \end{equation}
+    che è dunque un limite inferiore di $\E$.
+    Allo stesso tempo
+    \begin{equation}
+        \int_{\R^n}\norm{\grad u}^2\,\dd\mu\le
+        c\E(u)+d
+    \end{equation}
+    dove $c=2$ e $d=\lambda+\norm{w}_\infty$.
+\end{proof}
+\begin{osservazione} \label{o:potenziali-ammissibili}
+    Queste tipologie di potenziali non esauriscono quelli per i quali l'equazione di Schrödinger ammette una soluzione (come l'oscillatore armonico, che chiaramente non appartiene ad alcun $\leb[p]{\R^n}$ per qualsiasi $p\ge 1$), ma comprendono i casi ``più realistici'' che non divergono all'infinito e ammettono eventualmente delle singolarità che vanno a $-\infty$, come il potenziale coulombiano.
+    Per questi tipi di potenziale un'energia positiva è tipicamente associata a uno stato non legato.
+\end{osservazione}
