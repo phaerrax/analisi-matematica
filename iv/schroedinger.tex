@@ -51,7 +51,7 @@ Ponendo $v=\bar{u}$ troviamo dunque
 \end{equation}
 ma allora $\lambda=\E_0$, e $\bar{u}$ è soluzione debole dell'equazione di Schrödinger.
 
-\begin{teorema}
+\begin{teorema} \label{t:limitatezza-funzionale-energia-schroedinger}
     Sia $V$ una funzione appartenente a
     \begin{enumerate}
         \item $\leb[\frac{n}2]{\R^n}+\leb[\infty]{\R^n}$, se $n\ge 3$;
@@ -136,3 +136,102 @@ ma allora $\lambda=\E_0$, e $\bar{u}$ è soluzione debole dell'equazione di Schr
     Queste tipologie di potenziali non esauriscono quelli per i quali l'equazione di Schrödinger ammette una soluzione (come l'oscillatore armonico, che chiaramente non appartiene ad alcun $\leb[p]{\R^n}$ per qualsiasi $p\ge 1$), ma comprendono i casi ``più realistici'' che non divergono all'infinito e ammettono eventualmente delle singolarità che vanno a $-\infty$, come il potenziale coulombiano.
     Per questi tipi di potenziale un'energia positiva è tipicamente associata a uno stato non legato.
 \end{osservazione}
+
+\begin{teorema}
+    Sia $V$ una funzione che rispetta una delle tre ipotesi del teorema precedente, e sia $\mu\bigl(\{\vec x\in\R^n\colon \abs{V(\vec x)}<a\}\bigr)<+\infty$, $\forall a>0$.
+    Allora il funzionale $f\colon\sobH[1]{\R^n}\to\R$ definito da
+    \begin{equation}
+        f\colon u\mapsto\int_{\R^n}Vu^2\,\dd\mu
+    \end{equation}
+    è tale che, se $u_n\weakto u$, allora $f(u_n)\to f(u)$ (in altre parole, è \emph{debolmente continuo}).
+\end{teorema}
+\begin{proof}
+    Sia $u_n\weakto u$.
+    Per il principio di limitatezza uniforme (teorema \ref{t:limitatezza-uniforme} esiste $c>0$ tale che $\norm{u_n}_{1,2}\le c$.
+    Siano $\delta>0$ e
+    \begin{equation}
+        V_\delta(\vec x)\defeq
+        \begin{cases}
+            V(\vec x) & \text{se }\abs{V(\vec x)}\le\frac1{\delta}\\
+            0         & \text{se }\abs{V(\vec x)}>\frac1{\delta}
+        \end{cases};
+    \end{equation}
+    risulta che puntualmente $(V-V_\delta)(\vec x)\to 0$, per $\delta\to+\infty$, e per ogni $\delta>0$ è maggiorata (indipendentemente dal valore di $\delta$) da $2V$ che appartiene a $\leb[\frac{n}2]{\R^n}$, quindi per il teorema della convergenza dominata \ref{t:convergenza-dominata-Lp} si ottiene $\norm{V_\delta-V}_\frac{n}2\to 0$.
+    Dalla disuguaglianza di Hölder e il teorema di Sobolev (come nel teorema precedente) quindi
+    \begin{equation}
+        \abs[\bigg]{\int_{\R^n}(V-V_\delta)u_n^2\,\dd\mu}^2\le
+        \biggl(\int_{\R^n}\abs{V-V_\delta}^\frac{n}2\,\dd\mu\biggr)^\frac2{n}\biggl(\int_{\R^n}\abs{u_n}^{\sobc 2}\,\dd\mu\biggr)^\frac2{\sobc 2}\le
+        \epsilon\frac1{s_n}\norm{u_n}_{1,2}^2
+    \end{equation}
+    per un $s_n>0$ e $\epsilon$, quest'ultimo in dipendenza da $\delta$.
+    È sufficiente allora dimostrare che, per ogni $\delta>0$, si abbia
+    \begin{equation}
+        \int_{\R^n}V_\delta u_n^2\,\dd\mu\to\int_{\R^n}V_\delta u^2\,\dd\mu
+    \end{equation}
+    per $n\to+\infty$.
+    Consideriamo $\delta$ fissato e definiamo $A_\epsilon\defeq\{\vec x\in\R^n\colon\abs{V_\delta(\vec x)}>\epsilon\}$: per le ipotesi, si ha che $\mu(A_\epsilon)<+\infty$.
+    Separiamo l'insieme di integrazione come
+    \begin{equation}
+        \int_{\R^n}V_\delta u_n^2\,\dd\mu=
+        \int_{A_\epsilon}V_\delta u_n^2\,\dd\mu+\int_{\R^n\setminus A_\epsilon}V_\delta u_n^2\,\dd\mu:
+        \label{eq:dim-schroedinger1}
+    \end{equation}
+    nel primo integrale, dal teorema di Rellich-Kondrachov \ref{t:rellich-kondrachov}, abbiamo che $u_n\to u$ in $\leb[r]{A_\epsilon}$ (poich\'e $A_\epsilon$ è limitato) se $1\le r\le\sobc 2$, dunque $u_n^2\to u^2$ in $\leb[\frac{r}2]{A_\epsilon}$.
+    Sempre per la limitatezza di $A_\epsilon$ si ha che $\leb[\infty]{A_\epsilon}\subset\leb[q]{A_\epsilon}$ per ogni $q\ge 1$; poich\'e $V_\delta$ appartiene a $\leb[\infty]{A_\epsilon}$ allora appartiene anche a $\leb[\frac{r}{r-2}]{A_\epsilon}=\dual{\leb[\frac{r}2]{A_\epsilon}}$, quindi otteniamo dalla disuguaglianza di Hölder che
+    \begin{equation}
+        \abs[\bigg]{\int_{A_\epsilon}V_\delta(u_n^2-u^2)\,\dd\mu}\le
+        \biggl(\int_{A_\epsilon}\abs{V_\delta}^\frac{r}{r-2}\,\dd\mu\biggr)^\frac{r-2}{r}\biggl(\int_{A_\epsilon}(u_n^2-u^2)^\frac{r}2\,\dd\mu\biggr)^\frac2{r}
+    \end{equation}
+    e il primo fattore è limitato mentre il secondo tende a zero.
+    Per il secondo integrale della \eqref{eq:dim-schroedinger1}, invece, risulta
+    \begin{equation}
+        \abs[\bigg]{\int_{\R^n\setminus A_\epsilon}V_\delta(u_n^2-u^2)\,\dd\mu}\le
+        \epsilon\int_{\R^n\setminus A_\epsilon}(u_n^2-u^2)\,\dd\mu\le
+        \epsilon\int_{\R^n\setminus A_\epsilon}(u_n^2+u^2)\,\dd\mu\le
+        2\epsilon
+    \end{equation}
+    che prova la tesi.
+\end{proof}
+
+\begin{teorema} \label{t:esistenza-soluzione-debole-schroedinger}
+    Sia $V$ un potenziale come nel teorema \ref{t:limitatezza-funzionale-energia-schroedinger}, tale che $\forall a>0$ si abbia $\mu\bigl(\{\vec x\in\R^n\colon\abs{V(\vec x)}>a\}\bigr)<+\infty$.
+    Se $\inf_{\sobH[1]{\R^n}}\E>0$, allora esiste $\bar{u}\in\sobH[1]{\R^n}$ tale per cui $\E(\bar{u})=\inf_{\sobH[1]{\R^n}}\E$ e $\norm{\bar{u}}_2^2=1$.
+\end{teorema}
+\begin{proof}
+    Sia $\{u_n\}_{n\in\N}\subset\sobH[1]{\R^n}$ una successione tale che $\norm{u_n}_2=1$ e che minimizzi $\E$, e chiamiamo $\E_0\defeq\inf_{\sobH[1]{\R^n}}\E$.
+    Per i due teoremi precedente, esistono $c,d>0$ tali che $\norm{\grad u_n}_2^2\le c\E(u_n)+d$, perciò la successione individuata da $\norm{\grad u_n}_2$ è limitata, dato che $\E(u_n)$ converge.
+    Allora si ha che
+    \begin{equation}
+        \norm{u_n}_{1,2}^2=\norm{\grad u_n}_2^2+\norm{u_n}_2^2\le d.
+    \end{equation}
+    Per la riflessività dello spazio $\sobH[1]{\R^n}$, esiste allora dal teorema di Banach-Alao\u{g}lu \ref{t:banach-alaoglu} una sottosuccessione $\{u_{n_k}\}$ che converge debolmente a un $\bar{u}\in\sobH[1]{\R^n}$.
+    Per essa vale inoltre $\norm{\bar{u}}_2^2\le\norm{u_n}_2^2=1$.
+    Ora, dato che
+    \begin{equation}
+        \E(u_n)=
+        \int_{\R^n}\norm{\grad u_n}^2\,\dd\mu+\int_{\R^n}V\abs{u_n}^2\,\dd\mu
+    \end{equation}
+    e per il primo termine $\norm{\grad u_n}^2$ converge a $\norm{\grad\bar{u}}_2$, mentre per il secondo $u_n\weakto\bar{u}$, quindi
+    \begin{equation}
+        \inf_{\sobH[1]{\R^n}}\E\ge
+        \int_{\R^n}\norm{\grad\bar{u}}^2\,\dd\mu+\int_{\R^n}V\bar{u}^2\,\dd\mu.
+    \end{equation}
+    Sappiamo poi che
+    \begin{equation}
+        0>
+        \E_0\ge
+        \E(\bar{u})\ge
+        \E_0\int_{\R^n}\bar{u}^2\,\dd\mu
+    \end{equation}
+    e siccome $\E_0$ è negativo abbiamo in valore assoluto che
+    \begin{equation}
+        \abs{\E_0}\le
+        \abs{\E_0}\int_{\R^n}\bar{u}^2\,\dd\mu,
+    \end{equation}
+    e infine semplificando $\E_0$ dall'equazione otteniamo $\norm{\bar{u}}_2^2\ge 1$, ossia $\norm{\bar{u}}_2=1$ e
+    \begin{equation}
+        \E_0\le
+        \int_{\R^n}\norm{\grad\bar{u}}^2\,\dd\mu+\int_{\R^n}V\bar{u}^2\,\dd\mu
+    \end{equation}
+    vale a dire $\E(\bar{u})=\E_0$.
+\end{proof}
