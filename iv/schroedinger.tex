@@ -235,3 +235,23 @@ ma allora $\lambda=\E_0$, e $\bar{u}$ è soluzione debole dell'equazione di Schr
     \end{equation}
     vale a dire $\E(\bar{u})=\E_0$.
 \end{proof}
+
+\begin{esempio} \label{es:schroedinger-potenziale-coulomb}
+    Consideriamo il potenziale di Coulomb, dato dalla funzione $V\colon\vec x\mapsto-\frac{\alpha}{\norm{\vec x}}$ che dividiamo nei due pezzi $V_1\defeq V\chi_{B_1(\vec 0)}$ e $V_2\defeq V\chi_{\R^n\setminus B_1(\vec 0)}$, tali che $V=V_1+V_2$.
+    La $V_2$ è limitata quindi appartiene a $\leb[\infty]{\R^n}$, mentre
+    \begin{equation}
+        \int_{B_1(\vec 0)}\abs{V}^\frac{n}2\,\dd\mu=
+        \omega_n\int_0^1\frac1{r^\frac{n}2}r^{n-1}\,\dd r=
+        \omega_n\int_0^1r^{\frac{n}2-1}\,\dd r=
+        \frac{2\omega_n}{n}
+    \end{equation}
+    che è finito, quindi $V_1\in\leb[\frac{n}2]{\R^n}$.
+
+    Volendo generalizzare a funzioni del tipo $V\colon\vec x\mapsto-\frac{\alpha}{\norm{\vec x}^\beta}$, allora (nel caso $n=3$) abbiamo che l'integrale di $\abs{V}^\frac{n}2$ sulla palla unitaria è proporzionale a
+    \begin{equation}
+        \int_0^1\frac1{r^{\frac32\beta}}r^2\,\dd r=
+        \int_0^1r^{2-\frac32\beta}\,\dd r=
+        \frac1{3\bigl(1-\frac{\beta}2\bigr)}
+    \end{equation}
+    per cui deve essere $\beta\le 2$ affinch\'e $V_1\in\leb[\frac32]{\R^n}$.
+\end{esempio}
