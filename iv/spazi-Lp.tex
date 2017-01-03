@@ -9,9 +9,9 @@ Gli spazi $\lclass[p]$ contengono le classi di equivalenza, rispetto alla relazi
 \end{equation*}
 per $1\le p<+\infty$.
 Per $p=+\infty$ si definisce invece lo spazio $\leb[\infty]{\Omega}$ come l'insieme delle classi di equivalenza di funzioni $f\colon\Omega\to\R$ misurabili tali che $\abs{f}$ è limitata quasi ovunque in $\Omega$.
-
-\newcommand{\eqc}[1]{\hat{#1}} % Classe di equivalenza
-Per il momento, distinguiamo la funzione $f$ dalla sua classe di equivalenza che indichiamo con $\eqc{f}$; tale $f$ è un \emph{rappresentante} della classe $\eqc{f}$.
+\begin{osservazione}
+    Lo diciamo ora e non lo ripeteremo mai più: gli elementi degli spazi $\leb[p]{\Omega}$ sono \emph{classi di equivalenza} (rispetto all'uguaglianza puntuale quasi ovunque nell'insieme $\Omega$) di funzioni e non, rigorosamente, delle funzioni; ciononostante, scriveremo $f\in\leb[p]{\Omega}$ per una $f\colon\Omega\to\R$ identificando sempre le classi con le funzioni al loro interno.
+\end{osservazione}
 Questi spazi sono spazi vettoriali: se $u,v\in\leb[p]{\Omega}$ e $p<+\infty$ allora si ha che, puntualmente, 
 \begin{equation}
     \abs{u+v}^p\le(\abs{u}+\abs{v})^p\le
@@ -45,15 +45,15 @@ Verifichiamone le proprietà necessarie.
 \begin{proprieta} \label{pr:norma}
     Per ogni $p\in[1,+\infty]$, $f,g\in\leb[p]{\Omega}$ e $\alpha\in\R$ valgono le seguenti proprietà:
     \begin{enumerate}
-        \item $\norm{f}_p=0$ se e solo se $\eqc{f}=0$, ossia $f=0$ quasi ovunque;
+        \item $\norm{f}_p=0$ se e solo se $f=0$, (ossia $f$ è zero quasi ovunque);
         \item $\norm{\alpha f}_p=\abs{\alpha}\norm{f}_p$;
         \item $\norm{f+g}_p\le\norm{f}_p+\norm{g}_p$ (nota come \emph{disuguaglianza di Minkowski}).
     \end{enumerate}
 \end{proprieta}
 \begin{proof}
     Le prime due sono banali, quindi saltiamo direttamente alla terza.
-    Se $p=+\infty$ è ancora elementare, cos\`i come i casi $\eqc{f}=0$ o $\eqc{g}=0$; siano dunque $\alpha\defeq\norm{f}_p$ e $\beta\defeq\norm{g}_p$, che assumiamo entrambi positivi.
-    Siano $f_0$ e $g_0$ le ``normalizzazioni'' delle due funzioni date, ossia tali che $\abs{f}=\alpha f_0$ e $\abs{g}=\beta g_0$ e $\norm{f}_p=\norm{g}_p=1$.
+    Se $p=+\infty$ è ancora elementare, cos\`i come i casi $f=0$ o $g=0$; siano dunque $\alpha\defeq\norm{f}_p$ e $\beta\defeq\norm{g}_p$, che assumiamo quindi entrambi positivi (se $f\ne 0$ e $g\ne 0$).
+    Siano $f_0$ e $g_0$ le ``normalizzazioni'' delle due funzioni date, ossia tali che $\abs{f}=\alpha f_0$ e $\abs{g}=\beta g_0$ e $\norm{f_0}_p=\norm{g_0}_p=1$.
     Detto $\lambda\defeq\frac{\alpha}{\alpha+\beta}$ abbiamo
     \begin{equation}
         \abs{f+g}^p\le
@@ -62,7 +62,7 @@ Verifichiamone le proprietà necessarie.
         (\alpha+\beta)^p\bigl[\lambda f_0+(1-\lambda)g_0\bigr]^p
     \end{equation}
     (si noti che $1-\lambda=\frac{\beta}{\alpha+\beta}$).
-    Dato che la mappa $t\mapsto t^p$ è convessa per $p\ge 1$, la combinazione convessa $(\alpha+\beta)^p\bigl[\lambda f_0+(1-\lambda)g_0\bigr]^p$ risulta minore o uguale a $\lambda f_0^p+(1-\lambda)g_0^p$, poich\'e il valore in un punto intermedio di $t^p$ è minore o uguale del corrispondente punto sulla retta secante la funzione.
+    Dato che la mappa $t\mapsto t^p$ è convessa per $p\ge 1$, la combinazione convessa $\bigl[\lambda f_0+(1-\lambda)g_0\bigr]^p$ risulta minore o uguale a $\lambda f_0^p+(1-\lambda)g_0^p$, poich\'e il valore in un punto intermedio di $t^p$ è minore o uguale del corrispondente punto sulla retta secante la funzione.
     Con ciò risulta
     \begin{equation}
         \abs{f+g}^p\le
@@ -106,7 +106,7 @@ Se $p=1$ si definisce $1'=+\infty$, e viceversa $+\infty'=1$.
         \esssup_\Omega\abs{g}\int_\Omega\abs{f}\,\dd\mu=
         \norm{g}_\infty\norm{f}_1<+\infty
     \end{equation}
-    e analogamente per $p=+\infty$, scambiando i ruoli di $p$ e $p'$.
+    e analogamente per $p=+\infty$, scambiando i ruoli di $f$ e $g$.
     Se $p\in(1,+\infty)$, invece, è sufficiente considerare i casi $f\ge 0$ e $g\ge 0$ (tanto dobbiamo calcolare il valore assoluto dell'integrale).
     Sia dunque $h\defeq g^{p'-1}$, che equivale a $g^{p'/p}$: risulta anche
     \begin{equation}
@@ -175,12 +175,18 @@ La funzione limite sarà, per il teorema di permanenza del segno, quasi ovunque 
 \end{proof}
 \begin{teorema} \label{t:convergenza-dominata-Lp}
     Sia $\Omega\in\mis(\R^n)$ e $\{f_n\}_{n\in\N}\subset\leb[p]{\Omega}$ una successione di funzioni convergente quasi ovunque in $\Omega$ a un limite (misurabile) $f$.
-    Se esiste una funzione $g\in\leb[p]{\Omega}$ tale che per ogni $n\in\N$ si abbia $\abs{f_n}\le g$ quasi ovunque in $\Omega$, allora $\lim_{n\to+\infty}\norm{f_n-f}_p=0$.
+    Se esiste una funzione $g\in\leb[p]{\Omega}$ tale che per ogni $n\in\N$ si abbia $\abs{f_n}\le g$ quasi ovunque in $\Omega$, allora $f\in\leb[p]{\Omega}$ e $\lim_{n\to+\infty}\norm{f_n-f}_p=0$.
 \end{teorema}
 \begin{proof}
     Se $f_n\in\leb[p]{\Omega}$ allora $f_n^p\in\leb[1]{\Omega}$.
     Per il teorema di permanenza del segno si ha, quasi ovunque in $\Omega$, che $\abs{f}\le g$, e ovviamente $\abs{f_n}^p\le g^p$ e $\abs{f}^p\le g^p$.
-    Allora per la disuguaglianza triangolare $\abs{f_n-f}^p\le(\abs{f_n}-\abs{f})^p\le(2g)^p$.
+    Allora per la disuguaglianza triangolare $\abs{f_n-f}^p\le(\abs{f_n}-\abs{f})^p\le(2g)^p$ e
+    \begin{equation}
+        \int_\Omega\abs{f}^p\,\dd\mu\le
+        \int_\Omega g^p\,\dd\mu<
+        +\infty
+    \end{equation}
+    quindi $f\in\leb[p]{\Omega}$.
     La successione $h_n\defeq\abs{f_n-f}^p$ è, per le ipotesi, convergente quasi ovunque puntualmente a zero, ed è maggiorata da $(2g)^p$ che è sommabile.
     Per il teorema \ref{t:convergenza-dominata} della convergenza dominata allora
     \begin{equation}
@@ -226,25 +232,25 @@ Uno spazio normato completo è uno \emph{spazio di Banach}, e gli spazi $\lclass
     dunque la sottosuccessione è limitata e non decrescente, per cui converge puntualmente (sempre quasi ovunque) ad un certo limite $f$; ma ogni $f_{n_k}$ è limitata da $F\in\leb[p]{\Omega}$ quindi per il teorema \ref{t:convergenza-dominata-Lp} della convergenza dominata si ha che anche il limite $f$ appartiene a $\leb[p]{\Omega}$, da cui la tesi.
 \end{proof}
 
-Se $f\in\leb[p]{\Omega}$, dimostriamo ora che $f$ è ``vicina'' a una funzione semplice, ma anche a una funzione continua, vale a dire che gli insiemi di tali funzioni sono densi in $\leb[p]{\Omega}$: per ogni $\epsilon>0$ esiste una funzione semplice $s$ o una funzione continua $\phi$ definite su $\Omega$ tali che $\norm{f-s}_p<\epsilon$ e $\norm{f-\phi}_p<\epsilon$.
+Se $f\in\leb[p]{\Omega}$, dimostriamo ora che $f$ è arbitrariamente vicina a una funzione semplice e una funzione continua (con qualche ipotesi aggiuntiva), vale a dire che gli insiemi di tali funzioni sono densi in $\leb[p]{\Omega}$: per ogni $\epsilon>0$ esiste una funzione semplice $s$ o una funzione continua $\phi$ definite su $\Omega$ tali che $\norm{f-s}_p<\epsilon$ e $\norm{f-\phi}_p<\epsilon$.
 \begin{teorema} \label{t:funzioni-semplici-dense}
     L'insieme delle funzioni semplici $s\colon\Omega\to\R$ è denso in $\leb[p]{\Omega}$.
 \end{teorema}
 \begin{proof}
     È sufficiente considerare le funzioni semplici a valori non negativi: per il caso generale, si scomponga la funzione nelle sue parti positiva e negativa.
     Sia $\mathcal{S}$ tale insieme: possiamo rappresentare una generica $s\in\mathcal{S}$ come $\sum_{j=1}^mc_j\chi_{A_j}$ per $c_j\ge 0$ e $A_j\in\mis(\R^n)$ disgiunti.
-    Se $\Omega$ è limitato allora $s\in\leb[p]{\Omega}$ poich\'e
+    Se $\Omega$ è limitato allora $s\in\leb[p]{\Omega}$ poich\'e, per ogni $p\in(1,+\infty)$,
     \begin{multline}
-        \norm{s}_p^p=
         \int_\Omega\abs[\bigg]{\sum_{j=1}^mc_j\chi_{A_j}}^p\dd\mu\le
-        \int_\Omega\sum_{j=1}^mc\abs{c_j\chi_{A_j}}^p\dd\mu\le
+        \int_\Omega\sum_{j=1}^m\abs{c_j\chi_{A_j}}^p\dd\mu\le
         \sum_{j=1}^m\int_\Omega(\abs{c_j}\chi_{A_j})^p\dd\mu=\\=
         \sum_{j=1}^m\int_\Omega\abs{c_j}^p\chi_{A_j}\dd\mu=
         \sum_{j=1}^m\abs{c_j}^p\int_\Omega\chi_{A_j}\dd\mu=
         \sum_{j=1}^m\abs{c_j}^p\mu(A_j)<
         +\infty.
     \end{multline}
-    Sappiamo già dal teorema \ref{t:funzione-semplice-misurabile} che per ogni $f\colon\Omega\to[0,+\infty)$ misurabile esiste una successione $\{s_n\}_{n\in\N}\subset\mathcal{S}$ tale che $s_n\le s_{n+1}\le f$ in $\Omega$ e che converge a $f$ quasi ovunque: detti $E_{n,i}\defeq f^{-1}\Bigl(\bigl[\frac{i-1}{2^n},\frac{i}{2^n}\bigr]\Bigr)$ e $F_n\defeq f^{-1}\bigl([n,+\infty)\bigr)$ si ha che la successione
+    mentre $\esssup_\Omega s\le\sup_\Omega s=\sup\{c_j\}_{j=1}^m<+\infty$.
+    Sappiamo già dal teorema \ref{t:funzione-semplice-misurabile} che per ogni $f\colon\Omega\to[0,+\infty)$ misurabile esiste una successione $\{s_n\}_{n\in\N}\subset\mathcal{S}$ tale che $s_n\le s_{n+1}\le f$ in $\Omega$ e che converge a $f$ quasi ovunque: detti $E_{n,i}\defeq f^{-1}\bigl(\bigl[\frac{i-1}{2^n},\frac{i}{2^n}\bigr]\bigr)$ e $F_n\defeq f^{-1}\bigl([n,+\infty)\bigr)$ si ha che la successione
         \begin{equation}
             s_n\defeq\sum_{i=1}^{n2^n}\frac{i-1}{2^n}\chi_{E_{n,i}}+n\chi_{F_n}
         \end{equation}
@@ -309,14 +315,12 @@ A proposito delle funzioni a supporto compatto, dimostriamo il seguente, molto i
 
 \section{Spazi duali}
 Vediamo ora alcune generalità sugli spazi duali a spazi normati, che poi applicheremo agli insiemi $\lclass[p]$.
-\begin{definizione} \label{d:mappa-lineare-continua-limitata}
-    Siano $(X,\norm{\cdot}_X)$ e $(Y,\norm{\cdot}_Y)$ due spazi normati: una mappa $f\colon X\to Y$ è detta
-    \begin{itemize}
-        \item \emph{lineare} se $f(ax+by)=af(x)+bf(y)$ per ogni $x,y\in X$ e $a,b\in\R$;
-        \item \emph{limitata} se esiste $M>0$ tale per cui $\norm{f(x)}_Y\le M\norm{x}_X$ per ogni $x\in X$;
-        \item \emph{continua} in un punto $x_0\in X$ se $\forall\epsilon>0$ $\exists\delta>0$ tale che se $\norm{x-x_0}_X<\delta$ allora $\norm{f(x)-f(x_0)}_Y<\epsilon$.
-    \end{itemize}
-\end{definizione}
+Ricordiamo che dati due spazi normati $(X,\norm{\cdot}_X)$ e $(Y,\norm{\cdot}_Y)$, una mappa $f\colon X\to Y$ è detta
+\begin{itemize}
+    \item \emph{lineare} se $f(ax+by)=af(x)+bf(y)$ per ogni $x,y\in X$ e $a,b\in\R$;
+    \item \emph{limitata} se esiste $M>0$ tale per cui $\norm{f(x)}_Y\le M\norm{x}_X$ per ogni $x\in X$;
+    \item \emph{continua} in un punto $x_0\in X$ se $\forall\epsilon>0$ $\exists\delta>0$ tale che se $\norm{x-x_0}_X<\delta$ allora $\norm{f(x)-f(x_0)}_Y<\epsilon$.
+\end{itemize}
 \begin{teorema} \label{t:continuita-limitatezza-linearita}
     Se $(X,\norm{\cdot}_X)$ e $(Y,\norm{\cdot}_Y)$ sono due spazi normati e $f\colon X\to Y$ è una mappa lineare, allora le seguenti sono equivalenti:
     \begin{enumerate}
@@ -340,7 +344,7 @@ Vediamo ora alcune generalità sugli spazi duali a spazi normati, che poi applic
     \end{equation}
     per linearità, perciò $f$ è continua anche in $x_1$.
 
-    Sia infine $f$ continua ovunque: sfrutando la continuità in $0\in X$, $\forall\epsilon>0$ $\exists\delta>0$ per cui $\norm{x}_X<\delta$ implica $\norm{f(x)}_Y<\epsilon$.
+    Sia infine $f$ continua ovunque: sfruttando la continuità in $0\in X$, $\forall\epsilon>0$ $\exists\delta>0$ per cui $\norm{x}_X<\delta$ implica $\norm{f(x)}_Y<\epsilon$.
     Scelto $\epsilon=1$, si ha
     \begin{equation}
         \norm{f(x)}_Y=
@@ -352,7 +356,7 @@ Vediamo ora alcune generalità sugli spazi duali a spazi normati, che poi applic
 \end{proof}
 Di conseguenza una mappa lineare continua è sempre anche lipschitziana, dato che $M$ non dipende da $x$.
 
-Di particolare interesse sono le mappe di questo tipo in cui $Y$ è $\R$ con la distanza euclidea, ossia i \emph{funzionali lineari e continui}; lo spazio di queste funzioni è lo \emph{spazio duale} di $X$, indicato con $\dual{X}$.
+Di particolare interesse sono le mappe di questo tipo in cui $Y$ è $\R$, ossia i \emph{funzionali lineari e continui}; lo spazio di queste funzioni è lo \emph{spazio duale} di $X$, indicato con $\dual{X}$.
 Dotato delle operazioni di somma e moltiplicazione per scalare
 \begin{equation}
     \begin{gathered}
@@ -366,7 +370,7 @@ Definiamo la seguente funzione da $\dual{X}$ a $\R$:
     \norm{f}\defeq\sup_{x\in X\setminus\{0\}}\frac{\abs{f(x)}}{\norm{x}_X}
     \label{eq:norma-funzionale}
 \end{equation}
-che per la linearità è equivalente a $\sup_{x\in X\colon \norm{x}_X=1}\abs{f(x)}$.
+che per la linearità è equivalente a $\sup_{\{x\in X\colon\norm{x}_X=1}\}\abs{f(x)}$.
 Questa quantità è evidentemente sempre finita per i funzionali limitati.
 \begin{proprieta} \label{pr:norma-funzionale}
     La funzione $\norm{\cdot}\colon\dual{X}\to\R$ definita dalla \eqref{eq:norma-funzionale} è una norma.
@@ -374,7 +378,7 @@ Questa quantità è evidentemente sempre finita per i funzionali limitati.
 \begin{proof}
     Dimostriamo le tre proprietà date nella \ref{d:norma}.
     \begin{itemize}
-        \item Se $f\in\dual{X}$ è il funzionale nullo, allora $\norm{f}=\sup_{x\in X\setminus\{0\}}\abs{f(x)}=\sup_{x\in X\setminus\{0\}}0=0$; viceversa, se $\norm{f}=0$ allora $\sup_{x\in X\setminus\{0\}}\abs{f(x)}=0$ e di conseguenza, siccome chiaramente $\abs{f(x)}>0$, si ha $f(x)=0$ $\forall x\in X$ da cui $f=0$.
+        \item Se $f\in\dual{X}$ è il funzionale nullo, allora $\norm{f}=\sup_{x\in X\setminus\{0\}}\abs{f(x)}=\sup_{x\in X\setminus\{0\}}0=0$; viceversa, se $\norm{f}=0$ allora $\sup_{x\in X\setminus\{0\}}\abs{f(x)}=0$ e di conseguenza, siccome $\abs{f(x)}\ge 0$, si ha $f(x)=0$ $\forall x\in X$ da cui $f=0$.
         \item Per $\alpha\in\R$ e $f\in\dual{X}$ si ha
             \begin{equation}
                 \norm{\alpha f}=
@@ -461,7 +465,7 @@ Lo spazio $\leb[\infty]{\Omega}$ è un caso particolare, su cui torneremo più a
 
 Vediamo ora alcuni esempi di successioni di $\leb[p]{\Omega}$ che convergono debolmente ma non in norma.
 \begin{esempio} \label{es:convergenza-debole-ma-non-forte}
-   Sia $\Omega=(0,1)$.
+   Prendiamo $\Omega=(0,1)$.
    \begin{itemize}
        \item Consideriamo $f_k(x)=\sin(k\pi x)$: sono funzioni che, al crescere di $k$, oscillano sempre di più.
            La successione $\{f_k\}_{k\in\N}$ converge debolmente a zero, ma $\norm{f_k}_p\not\to 0$.
@@ -503,23 +507,23 @@ In altre parole si dice che i funzionali lineari continui «separano» gli eleme
 
     Definiamo dunque la successione
     \begin{equation}
-        g_n\defeq\frac{\abs{f_n}^{p-2}f_n}{\norm{f_n}_p^{p-1}}
+        g_n\defeq\frac{\abs{f_n}^{p-3}f_n}{\norm{f_n}_p^{p-1}}
     \end{equation}
     per la quale risulta, per $q=p'$,
     \begin{equation}
         \norm{g_n}_q^q=
-        \frac1{\norm{f_n}_p^{(p-1)q}}\int_\Omega \abs{f_n}^{(p-1)q}\,\dd\mu
+        \frac1{\norm{f_n}_p^{(p-1)q}}\int_\Omega \abs{f_n}^{(p-1)q}\,\dd\mu=
         \norm{f_n}_p^{-p}\int_\Omega \abs{f_n}^{p}\,\dd\mu=
         1.
     \end{equation}
-    Definiamo una successione $\{\sigma_i\}$ tale che $\sigma_1=1$ e per $i\ge 2$ sia tale che $\sigma_n\int_\Omega f_ng_n\,\dd\mu$ abbia lo stesso segno di $\sum_{k=1}^{n-1}\frac{\sigma_k}{3^k}\int_\Omega f_ng_k\,\dd\mu$.
+    Definiamo una successione $\{\sigma_i\}_{i\in\N}$ tale che $\sigma_1=1$ e per $i\ge 2$ sia tale che $\sigma_n\int_\Omega f_ng_n\,\dd\mu$ abbia lo stesso segno di $\sum_{k=1}^{n-1}\sigma_k3^{-k}\int_\Omega f_ng_k\,\dd\mu$.
     Possiamo allora effettuare la seguente stima:
     \begin{equation}
         \abs[\bigg]{\sum_{k=1}^n\frac{\sigma_k}{3^k}\int_\Omega f_ng_k\,\dd\mu}=
         \abs[\bigg]{\frac{\sigma_n}{3^n}\int_\Omega f_ng_n\,\dd\mu+\sum_{k=1}^{n-1}\frac{\sigma_k}{3^k}\int_\Omega f_ng_k\,\dd\mu}\ge
         \frac1{3^n}\abs[\bigg]{\int_\Omega f_ng_n\,\dd\mu}
     \end{equation}
-    poich\'e i due addendi, per costruzione, hanno lo stesso segno: siccome
+    poich\'e i due addendi, per costruzione, hanno lo stesso segno; siccome
     \begin{equation}
         \abs[\bigg]{\int_\Omega f_ng_n\,\dd\mu}=
         \norm{f_n}_p^{1-p}\abs[\bigg]{\int_\Omega \abs{f_n}^{p-2}f_nf_n\,\dd\mu}=
@@ -557,14 +561,16 @@ In altre parole si dice che i funzionali lineari continui «separano» gli eleme
             \biggl(\frac43\biggr)^n-\biggl(\frac43\biggr)^n\sum_{k=n+1}^{+\infty}\frac1{3^{k-n}}=\\&=
             \biggl(\frac43\biggr)^n\biggl(1-\sum_{l=1}^{+\infty}\frac1{3^l}\biggr)=\\&=
             \biggl(\frac43\biggr)^n\biggl(1-\frac{\frac13}{1-\frac13}\biggr)=\\&=
-            \frac12\biggl(\frac43\biggr)^n\to+\infty
+            \frac12\biggl(\frac43\biggr)^n
         \end{split}
     \end{equation}
-    che contraddice l'ipotesi di limitatezza di $\abs{F(f_n)}$.
+    che tende a $+\infty$ per $n\to+\infty$; ciò contraddice l'ipotesi di limitatezza di $\abs{F(f_n)}$.
     Di conseguenza deve essere che $\norm{f_n}_p$ è limitata.
 \end{proof}
 Come conseguenza troviamo che ogni successione debolmente convergente è limitata: infatti, per $\{f_n\}_{n\in\N}\subset\leb[p]{\Omega}$, se $f_n\weakto f$ si ha per qualsiasi $F\in\dual{\leb[p]{\Omega}}$ che la successione $\{F(f_n)\}_{n\in\N}\subset\R$ è limitata, in quanto convergente.
 Allora anche $\norm{f_n}_p$ è limitata per il teorema appena dimostrato.
+
+Arriviamo dunque al teorema che caratterizza gli spazi duali degli spazi $\lclass[p]$, per il quale ci servono i seguenti lemmi.
 \begin{lemma}[disuguaglianza di Clarkson] \label{l:disuguaglianza-clarkson}
     Per ogni $a,b\in\R$ e $p\ge 2$ vale la relazione
     \begin{equation}
