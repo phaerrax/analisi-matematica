@@ -1,0 +1,63 @@
+\chapter[Equazioni differenziali alle derivate parziali]{Equazioni differenziali alle\\derivate parziali}
+
+\begin{definizione} \label{d:pde}
+    Un'\emph{equazione differenziale alle derivate parziali} è un'equazione della forma
+    \begin{equation}
+        F\bigl(D^k u(\vec x),D^{k-1}u(\vec x),\dotsc,D^2u(\vec x),Du(\vec x),u(\vec x),\vec x\bigr)=0
+        \label{eq:pde-generica}
+    \end{equation}
+    dove $D^ku$ indica una qualsiasi derivata di $u$ di ordine $k$, e
+    \begin{equation*}
+        F\colon\R^{n^k}\times\R^{n^{k-1}}\times\dotsb\times\R^{n^2}\times\R^n\times\R\times A\to\R
+    \end{equation*}
+    con $A\subseteq\R^n$.
+    L'ordine maggiore tra quelli delle derivate è l'ordine dell'equazione differenziale.
+\end{definizione}
+Classifichiamo le equazioni in base alla forma della funzione $F$: diciamo che l'equazione è
+\begin{itemize}
+    \item \emph{lineare} se ha la forma
+        \begin{equation}
+            \sum_{\abs{\alpha}\le k}a_\alpha(\vec x)D^\alpha u(\vec x)=f(\vec x)
+            \label{eq:pde-lineare}
+        \end{equation}
+        dove $\alpha$ è un multiindice di $n$ componenti; si dice poi \emph{omogenea} se $f=0$, e in tal caso le soluzioni formano uno spazio vettoriale;
+    \item \emph{semilineare} se ha la forma
+        \begin{equation}
+            \sum_{\abs{\alpha}=k}D^\alpha u(\vec x)+f\bigl(D^{k-1}u(\vec x),\dotsc,Du(\vec x),u(\vec x),\vec x\bigr)=0,
+            \label{eq:pde-semilineare}
+        \end{equation}
+        ossia è lineare almeno nelle derivate di ordine maggiore (la condizione di omogeneità è inclusa direttamente nella forma di $f$);
+    \item \emph{quasilineare} se ha la forma
+        \begin{equation}
+            \sum_{\abs{\alpha}=k}a_\alpha(D^{k-1}u,\dotsc,Du,u,\vec x)D^\alpha u(\vec x)+f\bigl(D^{k-1}u(\vec x),\dotsc,Du(\vec x),u(\vec x),\vec x\bigr)=0,
+            \label{eq:pde-quasilineare}
+        \end{equation}
+        ossia è lineare nelle derivate di ordine maggiore ma i coefficienti possono dipendere dalle derivate di ordine inferiore della funzione;
+    \item \emph{completamente non lineare} se non dipende in modo lineare nemmeno nella derivata di ordine maggiore.
+\end{itemize}
+
+Per le equazioni del secondo ordine, inoltre, nella forma generale $F\bigl(D^2u(\vec x),Du(\vec x),u(\vec x),\vec x\bigr)=0$, abbiamo un'ulteriore suddivisione: guardiamo solo alla funzione $F$, dimenticandoci per un attimo che le sue variabili possono essere le derivate di una funzione, come $F=F(p_{ij},q_i,u,\vec x)$ per $(p_{ij})_{i,j=1}^n\in\R^{n^2}$, $(q_i)_{i=1}^n\in\R^n$, $u\in\R$ e $\vec x\in A\subseteq\R^n$.
+Supponiamo inoltre che sia differenziabile, e denotiamo con $F_{ij}$ la matrice
+\begin{equation*}
+    \Biggl(\frac{\partial^2F}{\partial p_i\partial p_j}\biggl(\frac{\partial^2 u}{\partial x_i\partial x_j},\drp{u}{x_i},u,\vec x\biggr)\Biggr)_{i,j=1,\dotsc,n}.
+\end{equation*}
+L'equazione alle derivate parziali è detta
+\begin{itemize}
+    \item \emph{ellittica} se $F_{ij}$ è definita positiva per ogni $\vec x\in A$;
+    \item \emph{iperbolica} se $F_{ij}$ ha un unico autovalore negativo e i restanti sono positivi;
+    \item \emph{parabolica} se ha la forma
+        \begin{equation}
+            \drp{u}{t}=F(D^2u,Du,u,\vec x)
+            \label{eq:pde-parabolica}
+        \end{equation}
+        e $F_{ij}$ è definita positiva per ogni $\vec x\in A$.
+\end{itemize}
+
+Ecco infine alcuni esempi importanti di equazioni differenziali alle derivate parziali.
+\begin{itemize}
+    \item L'equazione di Laplace $\lap u=0$ è lineare del secondo ordine, ed è ellitica.  \item L'equazione di Poisson $\lap u=f$ è del secondo ordine ed ellittica, e può essere lineare o semilineare se $f$ dipende da $\vec x$ o meno.  \item L'equazione del calore $\drp{u}{t}-\lap u=0$, con $u\colon(0,+\infty)\times U\to\R$ e $U\subseteq\R^n$ (la variabile positiva è $t$) è lineare del secondo ordine e parabolica.  \item L'equazione delle onde $\ddrp{u}{t}-\lap u=0$ è lineare del secondo ordine e iperbolica.
+    \item L'equazione di Korteweg-de Vries $\drp{u}{t}+\frac{\partial^3u}{\partial x^3}-6u\drp{u}{x}=0$ (per una $u$ come nell'equazione del calore) è del terzo ordine e quasilineare.
+    \item L'equazione di Monge-Ampère $\ddrp{u}{x}\ddrp{u}{y}-\frac{\partial^2 u}{\partial x\partial y}=f(x,y)$ è del secondo ordine e completamente non lineare.
+    \item L'equazione della superficie minima $(1+\drp{u}{y}^2)\ddrp{u}{x}-2\drp{u}{x}\drp{u}{y}\frac{\partial^2 u}{\partial x\partial y}+(1+\drp{u}{x}^2)\ddrp{u}{y}=0$ è del secondo ordine, ellittica e quasilineare, dato che il coefficiente $(1+\drp{u}{x}^2)$ della derivata di ordine maggiore dipende da $\drp{u}{x}$ che è di ordine inferiore.
+    \item L'equazione di Schrödinger $i\hbar\drp{u}{t}=-\frac{\hbar^2}{2m}\lap u+F(u,\vec x)=0$ è semilineare del secondo ordine, ed è anche lineare se $F$ dipende solo da $\vec x$; assomiglia a un'equazione parabolica, ma non è a coefficienti reali.
+\end{itemize}
