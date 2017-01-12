@@ -36,7 +36,7 @@ sempre per ogni $\phi\in\contsc[\infty]{\Omega}$.
 
 Le derivate deboli di ordine superiore a uno si definiscono in modo analogo.
 Se $f$ è una funzione a $n$ variabili, associamo a ogni derivata una lista di $n$ indici $i_1,\dotsc,i_n$, tali per cui l'indice $i_k$ indica quante volte si è derivato rispetto alla $k$-esima variabile: una derivata di ordine $d$ è dunque tale che $i_1+\dotsb+i_n=d$.
-Usiamo perciò la notazione con i \emph{multiindici}, ossia delle $n$-uple di numeri interi non negativi $\alpha=(\alpha_1,\dotsc,\alpha_n)\in\N_0^n$ per cui è definita (tra altre proprietà) il valore assoluto $\abs{\alpha}\defeq\alpha_1+\dotsb+\alpha_n$.
+Usiamo perciò la notazione con i \emph{multiindici}, ossia delle $n$-uple di numeri interi non negativi $\alpha=(\alpha_1,\dotsc,\alpha_n)\in\N_0^n$; definiamo la \emph{lunghezza} di un tale elemento come $\abs{\alpha}\defeq\alpha_1+\dotsb+\alpha_n$.
 Indicheremo dunque le derivate parziali come
 \begin{equation}
     D^\alpha f\defeq\frac{\partial^{\abs{\alpha}}f}{\partial^{\alpha_1}x_1\dotsm\partial^{\alpha_n}x_n},
@@ -56,9 +56,9 @@ Per funzioni a valori in uno spazio di Banach $X$, se $f\in\locleb[1]{0,T;X}$, o
 per ogni $\phi\in\contsc[\infty]{[0,T]}$, dove gli integrali sono intesi come integrali di Bochner (si veda la \ref{d:integrale-bochner}).
 
 \section{Spazi di Sobolev}
-Da qui in avanti, quanto parleremo di derivate (di qualsiasi tipo) intenderemo sempre le derivate deboli, e useremo la notazione classica $\drv{f}{x}$, $\drp{f}{x}$ etc. anche per le derivate deboli.
+Da qui in avanti, quanto parleremo di derivate (di qualsiasi tipo) intenderemo sempre le derivate deboli, e le indicheremo sempre con la notazione classica $\drv{f}{x}$, $\drp{f}{x}$ eccetera.
 Sia $1\le p<+\infty$ e $\Omega\in\R^n$ aperto.
-Lo spazio delle funzioni in $\leb[p]{\Omega}$ che possiedono una derivata debole $(v_1,\dotsc,v_n)\in\leb[p]{\Omega}^n$, ossia tali per cui la funzione e tutte le sue derivate parziali sono in $\leb[p]{\Omega}$, è detto \emph{spazio di Sobolev $1,p$} ed è indicato con $\sobW[1,p]{\Omega}$.
+Lo spazio delle funzioni in $\leb[p]{\Omega}$ che possiedono una derivata debole $(v_1,\dotsc,v_n)\in\leb[p]{\Omega}^n$, ossia tali per cui la funzione e tutte le sue derivate prime parziali sono in $\leb[p]{\Omega}$, è detto \emph{spazio di Sobolev $1,p$} ed è indicato con $\sobW[1,p]{\Omega}$.
 In esso possiamo definire una norma come
 \begin{equation}
     \norm{u}_{1,p}\defeq\biggl(\norm{u}_p^p+\sum_{i=1}^n\norm[\bigg]{\drp{u}{x_i}}_p^p\biggr)^{1/p}.
@@ -67,7 +67,7 @@ In esso possiamo definire una norma come
 Questi spazi si generalizzano poi per le derivate di ordine superiore: lo \emph{spazio di Sobolev} $k,p$, indicato con $\sobW[k,p]{\Omega}$, è lo spazio delle funzioni $u\in\leb[p]{\Omega}$ le cui derivate deboli $D^\alpha u$ per ogni $\alpha$ tale che $\abs{\alpha}\le k$ sono ancora in $\leb[p]{\Omega}$.
 Alternativamente si può definire induttivamente come
 \begin{equation}
-    \sobW[k,p]=\biggl\{u\in\sobW[k-1,p]{\Omega}\colon \drp{u}{x_i}\in\sobW[k-1,p]{\Omega}\biggr\}.
+    \sobW[k,p]{\Omega}=\biggl\{u\in\sobW[k-1,p]{\Omega}\colon \drp{u}{x_i}\in\sobW[k-1,p]{\Omega}\biggr\}.
 \end{equation}
 In questi spazi si può definire la norma
 \begin{equation}
@@ -99,7 +99,7 @@ In questi spazi si può definire la norma
                 \int_\Omega u\drp{\phi}{x_i}\,\dd\mu=-\int_\Omega \phi g_i\,\dd\mu
             \end{equation}
             che mostra che $(g_1,\dotsc,g_n)$ è la derivata debole di $u$.
-        \item Sappiamo che $\leb[p]{\Omega}$ è riflessivo se $p\in(1,+\infty)$: sia $E\defeq\leb[p]{\Omega}^{n+1}$ (anch'esso ovviamente rilessivo) e definiamo la mappa $T\colon\sobW[1,p]{\Omega}\to E$ data da $u\mapsto(u,\grad u)$.
+        \item Sappiamo che $\leb[p]{\Omega}$ è riflessivo se $p\in(1,+\infty)$: sia $E\defeq\leb[p]{\Omega}^{n+1}$ (anch'esso è ovviamente riflessivo) e definiamo la mappa $T\colon\sobW[1,p]{\Omega}\to E$ data da $u\mapsto(u,\grad u)$.
             Essa è un'ovvia isometria rispetto alla norma $\norm{u}_{1,p}\defeq\norm{u}_p+\norm{\grad u}_p$, dato che la definizione di norma rimane proprio uguale, e poich\'e si dimostra che $T(\sobW[1,p]{\Omega})\subset E$ si ha che $\sobW[1,p]{\Omega}$ è riflessivo.
             \footnote{La norma qui definita è \emph{equivalente} alla precedente: due norme $f$ e $g$ su uno spazio $X$ sono equivalenti se esistono $c_1,c_2>0$ tali che per ogni $x\in X$ si ha $c_1f(x)\le g(x)\le c_2 f(x)$.}
             \footnote{Abbreviamo con $\norm{\grad u}_p$ la quantità
@@ -136,7 +136,7 @@ tale insieme è uno spazio di Banach.
 \begin{teorema}
     Sia $X$ uno spazio di Banach, $T>0$, e $u\in\sobW[1,p]{0,T;X}$ con $p\in[1,+\infty)$: allora
     \begin{itemize}
-        \item esiste $\bar{u}\in\sobW[1,p]{0,T;X}$ tale che $\bar{u}=u$ quasi ovunque e $\bar{u}$ è continua in $[0,T]$;
+        \item esiste $\bar{u}\in\sobW[1,p]{0,T;X}\cap\cont{0,T;X}$ tale che $\bar{u}=u$ quasi ovunque;
         \item per $0\le s\le t\le T$ si ha
             \begin{equation}
                 u(t)=u(s)+\int_s^t\drp{u}{t}(t)\,\dd t
@@ -144,15 +144,16 @@ tale insieme è uno spazio di Banach.
             cioè vale il teorema fondamentale del calcolo integrale (in altre parole, $u$ è detta \emph{assolutamente continua});
         \item per un $c>0$ vale
             \begin{equation}
-                \max_{t\in[0,T]}\norm{u(t)}_X\le c\norm{u}_{\sobW[1,p]{0,T;X}}.
+                \sup_{t\in[0,T]}\norm{u(t)}_X\le c\norm{u}_{\sobW[1,p]{0,T;X}}.
             \end{equation}
     \end{itemize}
 \end{teorema}
+Si veda \cite[cap.~6A]{pde:hunter} per le dimostrazioni di questi punti.
 
 \section{Teoremi di immersione}
 È evidente dalla definizione che $\sobW[k,p]{\Omega}\subset\leb[p]{\Omega}$ per $k\ge 1$ e $\sobW[0,p]{\Omega}=\leb[p]{\Omega}$.
 In questo capitolo vediamo come sia invece possibile trovare delle inclusioni (o immersioni) tra spazi di Sobolev di ordini differenti, e come queste immersioni possono essere continue o compatte.
-Ma prima, alcune definizioni.
+Prima, ecco alcune definizioni.
 \begin{definizione} \label{d:bordo-regolare}
     Sia $\Omega\subset\R^n$ aperto.
     Il suo bordo $\boundary\Omega$ è detto di classe $\cclass[k]$ ($k\ge 1$) se per ogni punto $\vec p\in\boundary\Omega$ esistono degli intorni $U\defeq B_r(\vec p)$ e $B_\delta(\vec 0)$ in $\R^n$ e un diffeomorfismo $\Phi\colon U\to B_\delta(\vec 0)$ di classe $\cclass[k]$ tale che $\Phi\colon U\cap\boundary\Omega\to B_\delta(\vec 0)\cap\R^{n-1}\times\{0\}$; in altre parole $\Phi$, ristretto al bordo di $\Omega$, lo mappa in ``$\R^n$ meno una coordinata'', cioè raddrizzandolo in un iperpiano di $\R^n$.
@@ -161,7 +162,7 @@ Ma prima, alcune definizioni.
 Ricordiamo ora che, se $A$ è un sottoinsieme di $B$, la mappa da $A$ a $B$ che porta ogni elemento $x\in A$ in s\'e stesso visto come elemento di $B$ è detta \emph{inclusione}.
 \begin{definizione} \label{d:immersione-continua}
     Siano $X$ e $Y$ due spazi normati, con $X\subseteq Y$.
-    Lo spazio $X$ si dice \emph{immerso con continuità} in $Y$, e si indica con $X\emb Y$, se la mappa di inclusione $\iota\colon X\to Y$ (quindi $X\subseteq Y$) è continua, ossia esiste $c>0$ tale per cui $\norm{x}_Y\le c\norm{\iota(x)}_Y$ per ogni $x\in X$.
+    Lo spazio $X$ si dice \emph{immerso con continuità} in $Y$, e si indica con $X\emb Y$, se la mappa di inclusione $\iota\colon X\to Y$ è continua, ossia esiste $c>0$ tale per cui $\norm{\iota(x)}_Y\le c\norm{x}_X$ per ogni $x\in X$.
 \end{definizione}
 \begin{definizione} \label{d:insieme-relativamente-compatto}
     Sia $X$ uno spazio di Banach.
@@ -195,18 +196,20 @@ A partire dalle funzioni liscie a supporto compatto, definiamo lo spazio $\sobWc
         u(\vec x)=\int_{-\infty}^{x_i}\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)\,\dd\xi.
     \end{equation}
     Allora troviamo
-    \begin{multline}
-        \abs{u(\vec x)}^\frac1{n-1}=
-        \abs[\bigg]{\int_{-\infty}^{x_i}\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)\,\dd\xi}^\frac1{n-1}\le\\ \le
-        \biggl[\int_{-\infty}^{x_i}\abs[\bigg]{\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)}\,\dd\xi\biggr]^\frac1{n-1}
-        \biggl[\int_\R\abs[\bigg]{\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)}\,\dd\xi\biggr]^\frac1{n-1}
-    \end{multline}
+    \begin{equation}
+        \begin{split}
+            \abs{u(\vec x)}^\frac1{n-1}&=
+            \abs[\bigg]{\int_{-\infty}^{x_i}\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)\,\dd\xi}^\frac1{n-1}\le\\ &\le
+            \biggl[\int_{-\infty}^{x_i}\abs[\bigg]{\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)}\,\dd\xi\biggr]^\frac1{n-1}\le\\ &\le
+            \biggl[\int_\R\abs[\bigg]{\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)}\,\dd\xi\biggr]^\frac1{n-1}
+        \end{split}
+    \end{equation}
     e considerando tutte le $n$ variabili
     \begin{equation}
         \abs{u(\vec x)}^\frac{n}{n-1}\le
         \prod_{i=1}^n\biggl[\int_\R\abs[\bigg]{\drp{u}{x_i}(x_1,\dotsc,x_{i-1},\xi,x_{i+1},\dotsc,x_n)}\,\dd\xi\biggr]^\frac1{n-1}.
     \end{equation}
-    Ora, integrando in $x_1$ otteniamo
+    Integrando in $x_1$ otteniamo
     \begin{equation}
         \int_\R\abs{u}^\frac{n}{n-1}\,\dd x_1\le
         \biggl(\int_\R\abs[\bigg]{\drp{u}{x_1}}\,\dd x_1\biggr)^\frac1{n-1}
@@ -216,7 +219,7 @@ A partire dalle funzioni liscie a supporto compatto, definiamo lo spazio $\sobWc
             \biggl(\int_\R\abs[\bigg]{\drp{u}{x_n}}\,\dd x_n\biggr)^\frac1{n-1}
         \biggr]\,\dd x_1.
     \end{equation}
-    Usando iterativamente la disuguaglianza di Hölder su tutti i fattori, per $p_1,\dotsc,p_n$ tali che $\frac1{p_1}+\dotsb+\frac1{p_n}=1$ si ha
+    Usando iterativamente la disuguaglianza di Hölder (per $p_1,\dotsc,p_{n-1}$ tali che $\frac1{p_1}+\dotsb+\frac1{p_{n-1}}=1$) su tutti gli $n-1$ fattori contenuti nel secondo integrale si ha
     \begin{equation}
         \int_\R\abs{u}^\frac{n}{n-1}\,\dd x_1\le
         \biggl(\int_\R\abs[\bigg]{\drp{u}{x_1}}\,\dd x_1\biggr)^\frac1{n-1}
@@ -224,7 +227,8 @@ A partire dalle funzioni liscie a supporto compatto, definiamo lo spazio $\sobWc
         \dotsm
         \biggl(\int_\R\int_\R\abs[\bigg]{\drp{u}{x_n}}\,\dd x_n\,\dd x_1\biggr)^\frac1{n-1}.
     \end{equation}
-    Iterando e integrando sulle restanti variabili, allora,
+    usando $p_1=\dotsb=p_{n-1}=\frac1{n-1}$.
+    Continuando in questo modo e integrando sulle restanti variabili, allora,
     \begin{equation}
         \int_\R\dotsi\int_\R\abs{u}^\frac{n}{n-1}\,\dd x_1\dotsm\dd x_n\le
         \prod_{i=1}^n\biggl(\int_\R\dotsi\int_\R\abs[\bigg]{\drp{u}{x_i}}\,\dd x_1\dotsm\dd x_n\biggr)^\frac1{n-1}
@@ -234,7 +238,7 @@ A partire dalle funzioni liscie a supporto compatto, definiamo lo spazio $\sobWc
         \int_\Omega\abs{u}^\frac{n}{n-1}\,\dd\mu\le
         \prod_{i=1}^n\biggl(\int_\Omega\abs[\bigg]{\drp{u}{x_i}}\,\dd\mu\biggr)^\frac1{n-1}
     \end{equation}
-    da cui ricaviamo
+    da cui ricaviamo, elevando i membri alla $\frac{n-1}{n}$,
     \begin{multline}
         \norm{u}_\frac{n}{n-1}\le
         \biggl[\prod_{i=1}^n\biggl(\int_\Omega\abs[\bigg]{\drp{u}{x_i}}\,\dd\mu\biggr)^\frac1{n-1}\biggr]^\frac{n-1}{n}=
@@ -245,7 +249,7 @@ A partire dalle funzioni liscie a supporto compatto, definiamo lo spazio $\sobWc
     \end{multline}
     dato che la media geometrica di un insieme di quantità non negative non è mai maggiore della rispettiva media aritmetica.
 
-    Ora sostituiamo $u$ con la funzione $\abs{u}^\gamma$, con $\gamma>0$, nella disuguaglianza trovata $\norm{u}_\frac{n}{n-1}\le\frac1{n}\norm{\grad u}_1$: in questo modo troviamo
+    Ora sostituiamo $u$ con la funzione $\abs{u}^\gamma$, con $\gamma>0$, nella disuguaglianza appena trovata:
     \begin{equation}
         \norm{\abs{u}^\gamma}_\frac{n}{n-1}\le
         \frac1{n}\int_\Omega\norm[\big]{\grad\big(\abs{u}^\gamma)}\,\dd\mu\le
@@ -273,7 +277,7 @@ A partire dalle funzioni liscie a supporto compatto, definiamo lo spazio $\sobWc
     \end{equation}
     da cui segue in modo ovvio la \eqref{eq:dim-sobolev-obiettivo} con $c=\frac{\gamma}{n}$.
 \end{proof}
-Ad esempio, per $\Omega\subset\R^3$ abbiamo con $k=1$ e $p=2$ che il massimo valore che $q$ può assumere è $6$, perciò $\sobW[1,2]{\Omega}\emb\leb[q]{\Omega}$ per $q=1,\dotsc,6$, dato che siccome $\mu(\Omega)<+\infty$ si ha $\leb[q]{\Omega}\subset\leb[q']{\Omega}$ se $q<q'$.
+Ad esempio, per $\Omega\subset\R^3$ abbiamo con $k=1$ e $p=2$ che il massimo valore che $q$ può assumere è $6$, perciò $\sobW[1,2]{\Omega}\emb\leb[q]{\Omega}$ per $q=1,\dotsc,6$, dato che siccome $\mu(\Omega)<+\infty$ si ha $\leb[q]{\Omega}\subset\leb[q']{\Omega}$ se $1\le q'<q<+\infty$.
 L'immersione data in questo teorema è ottimale, nel senso che non è possibile immergere con continuità lo spazio di Sobolev in spazi più grandi.
 Per vedere da dove deriva il valore critico $\frac{np}{n-kp}$ per $q$ possiamo prendere il seguente ragionamento.
 Consideriamo $f\in\sobW[1,p]{\R^n}\cap\leb[q]{\R^n}$, ed effettuiamo un riscalamento definendo $f_\lambda(\vec y)\defeq f(\vec y/\lambda)=f(\vec x)$ per $\lambda>0$.
@@ -315,12 +319,12 @@ Per $k=0$ si ha lo spazio delle funzioni Hölder-continue di ordine $\beta$ come
 Questi spazi sono importanti per determinare la regolarità in senso classico delle funzioni in $\sobW[k,p]{\Omega}$, in modo che da una funzione definita quasi ovunque si possa tornare a una funzione classica, continua e regolare.
 
 \begin{teorema}[Morrey] \label{t:morrey}
-    Sia $\Omega\subset\R^n$ aperto, limitato e con bordo lipschitziano, e siano $k,p\in\N$ tali che $kp>n$: per $0\le m<k-\frac{n}{p}<m+1$ con $m\in\N_0$ si ha $\sobW[k,p]{\Omega}\emb\cont[m,\alpha]{\Omega}$ con $0\le\alpha\le k-m-\frac{n}{p}$.
+    Sia $\Omega\subset\R^n$ aperto, limitato e con bordo lipschitziano, e siano $k,p\in\N$ tali che $kp>n$: si ha $\sobW[k,p]{\Omega}\emb\cont[m,\alpha]{\Omega}$ per $m\in\N_0$ tale che $m<k-\frac{n}{p}<m+1$ e $0\le\alpha\le k-m-\frac{n}{p}$.
     L'immersione è inoltre compatta se $\alpha<k-m-\frac{n}{p}$.
 \end{teorema}
 \begin{proof}
-    Come per il teorema di Sobolev, anche in questo caso dimostriamo solo il caso $k=1$, e prendiamo $\Omega=\R^n$, ossia dimostriamo la tesi $\sobW[1,p]{\R^n}\emb\cont[0,\alpha]{\R^n}$ provando che esiste $c>0$ tale che $\norm{u}_{\cont[0,\alpha]{\R^n}}\le c\norm{u}_{1,p}$ con $p>n$ e $\alpha=1-\frac{n}{p}$, per ogni $u\in\cont[1]{\R^n}$.
-    Omettiamo invece la seconda parte della dimostrazione, ossia dimostriamo solo che l'inclusione è continua.
+    Come per il teorema di Sobolev, anche in questo caso dimostriamo solo il caso $k=1$ (da cui necessariamente $m=0$), e prendiamo $\Omega=\R^n$, ossia dimostriamo la tesi $\sobW[1,p]{\R^n}\emb\cont[0,\alpha]{\R^n}$ provando che esiste $c>0$ tale che $\norm{u}_{\cont[0,\alpha]{\R^n}}\le c\norm{u}_{1,p}$ con $p>n$ e $\alpha=1-\frac{n}{p}$, per ogni $u\in\cont[1]{\R^n}$.
+    Omettiamo inoltre la seconda parte della dimostrazione, ossia dimostriamo solo che l'inclusione è continua.
 
     Sia $r>0$ e consideriamo la palla $B_r(\vec x)\subset\R^n$: mostriamo innanzitutto che
     \begin{equation}
@@ -339,50 +343,55 @@ Questi spazi sono importanti per determinare la regolarità in senso classico de
         \int_0^s\abs{\scalar{\vec w}{\grad u(\vec x+t\vec w)}}\,\dd t\le
         \int_0^s\norm{\grad u(\vec x+t\vec w)}\,\dd t.
     \end{equation}
-    Integrando i due membri sul bordo della palla unitaria si ha
+    Integriamo i due membri sul bordo della palla unitaria ottenendo
     \begin{equation}
         \int_{\boundary B_1(\vec 0)} \abs{u(\vec x+s\vec w)-u(\vec x)}\,\dd\sigma(\vec x)\le
-        \int_{\boundary B_1(\vec 0)}\int_0^s \norm{\grad u(\vec x+t\vec w)}\,\dd t\,\dd\sigma(\vec x)=
-        \int_{B_s(\vec 0)} \norm{\grad u(\vec x+t\vec w)}\,\dd\mu(\vec x).
+        \int_{\boundary B_1(\vec 0)}\int_0^s \norm{\grad u(\vec x+t\vec w)}\,\dd t\,\dd\sigma(\vec x).
     \end{equation}
-    Cambiamo le variabili di integrazione ponendo $\vec y\defeq\vec x+t\vec w$ (da cui $t=\norm{\vec y-\vec x}$), per cui
+    Nel secondo integrale, cambiamo le variabili di integrazione ponendo $\vec y\defeq\vec x+t\vec w$ (da cui $t=\norm{\vec y-\vec x}$): $\vec y$ varia in una palla centrata in $\vec x$ il cui raggio $t$ varia da $0$ a $s$, quindi passando alle coordinate polari in $\vec y$
     \begin{multline}
-        \int_{B_s(\vec 0)} \norm{\grad u(\vec x+t\vec w)}\,\dd\mu(\vec x)=
-        \int_{B_s(\vec 0)} \frac{t^{n-1}}{t^{n-1}}\norm{\grad u(\vec x+t\vec w)}\,\dd\mu(\vec x)=\\=
-        \int_{B_s(\vec 0)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)\le
-        \int_{B_r(\vec 0)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y).
+        \int_{\boundary B_1(\vec 0)}\int_0^s \norm{\grad u(\vec x+t\vec w)}\,\dd t\,\dd\sigma(\vec x)=
+        \int_{\boundary B_1(\vec 0)}\int_0^s \frac{t^{n-1}}{t^{n-1}}\norm{\grad u(\vec x+t\vec w)}\,\dd t\,\dd\sigma(\vec x)=\\=
+        \int_{B_s(\vec x)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)\le
+        \int_{B_r(\vec x)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y).
     \end{multline}
     Abbiamo dunque la disuguaglianza 
     \begin{equation}
         \int_{\boundary B_1(\vec 0)} \abs{u(\vec x+s\vec w)-u(\vec x)}\,\dd\sigma(\vec x)\le
-        \int_{B_r(\vec 0)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y):
+        \int_{B_r(\vec x)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y):
     \end{equation}
-    Moltiplicando entrambi i membri per $s^{n-1}$ e integrando in $s\in(0,r)$ otteniamo
+    Moltiplicando entrambi i membri per $s^{n-1}$ e integrando in $s\in(0,r)$ otteniamo, effettuando il cambio di variabile $\vec y=\vec x+s\vec w$ nel primo membro,
     \begin{multline}
         \int_{B_r(\vec 0)}\abs{u(\vec y)-u(\vec x)}\,\dd\mu(\vec y)\le
-        \frac{r^n}{n}\int_{B_r(\vec 0)}\frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)=\\=
-        \frac{r^n\omega_n}{n\omega_n}\int_{B_r(\vec 0)}\frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)=
-        \frac{r^n\omega_n}{n}\avint_{B_r(\vec 0)}\frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y),
+        \frac{r^n}{n}\int_{B_r(\vec x)}\frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)=\\=
+        \frac{r^n\omega_n}{n\omega_n}\int_{B_r(\vec x)}\frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)=
+        \frac{r^n\omega_n}{n}\avint_{B_r(\vec x)}\frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y),
     \end{multline}
     che dimostra la \eqref{eq:dim-morrey-obiettivo} con $\frac{r^n\omega_n}{n}$ come costante.
 
     Per $\vec x\in\R^n$ risulta
-    \begin{multline}
-        \abs{u(\vec x)}=
-        \abs[\bigg]{\avint_{B_1(\vec x)} u(\vec x)\,\dd\mu(\vec y)}\le
-        \avint_{B_1(\vec x)}\bigl[\abs{u(\vec x)-u(\vec y)}+\abs{u(\vec y)}\bigr]\,\dd\mu(\vec y)=\\=
-        \avint_{B_1(\vec x)}\abs{u(\vec x)-u(\vec y)}\,\dd\mu(\vec y)+\frac1{\mu\bigl(B_1(\vec x)\bigr)}\int_{B_1(\vec x)}\abs{u(\vec y)}\,\dd\mu(\vec y).
-    \end{multline}
-    Con la disuguaglianza di Hölder stimiamo l'ultimo integrale come 
+    \begin{equation}
+        \begin{split}
+            \abs{u(\vec x)}&=
+            \abs[\bigg]{u(\vec x)\avint_{B_1(\vec x)} \,\dd\mu(\vec y)}=\\ &=
+            \abs[\bigg]{\avint_{B_1(\vec x)} u(\vec x)\,\dd\mu(\vec y)}\le\\ &\le
+            \avint_{B_1(\vec x)}\bigl[\abs{u(\vec x)-u(\vec y)}+\abs{u(\vec y)}\bigr]\,\dd\mu(\vec y)=\\ &=
+            \avint_{B_1(\vec x)}\abs{u(\vec x)-u(\vec y)}\,\dd\mu(\vec y)+\frac1{\mu\bigl(B_1(\vec x)\bigr)}\int_{B_1(\vec x)}\abs{u(\vec y)}\,\dd\mu(\vec y).
+        \end{split}
+    \end{equation}
+    Per l'ultimo integrale abbiamo
     \begin{equation}
         \int_{B_1(\vec x)}\abs{u}\,\dd\mu\le
-        \biggl(\int_{B_1(\vec x)}\dd\mu\biggr)^\frac{p-1}{p}\biggl(\int_{B_1(\vec x)}\abs{u}^p\,\dd\mu\biggr)^\frac1{p}
+        \mu\bigl(B_1(\vec x)\bigr)^{1-\frac1{p}}\norm{u}_{\leb[p]{B_1(\vec x)}}=
+        \mu\bigl(B_1(\vec x)\bigr)^{1-\frac1{p}}\norm{u}_{\leb[p]{\R^n}}
     \end{equation}
-    da cui, con la \eqref{eq:dim-morrey-obiettivo}, abbiamo
+    estendendo $u$ ponendola uguale a zero su $\R^n\setminus B_1(\vec x)$.
+    Per il primo invece usiamo la \eqref{eq:dim-morrey-obiettivo}; otteniamo
     \begin{equation}
-        \abs{u(\vec x)}\le c\avint_{B_1(\vec x)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)+c'\norm{u}_{\leb[p]{B_1(\vec x)}}.
+        \abs{u(\vec x)}\le c\avint_{B_1(\vec x)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)+c'\norm{u}_{\leb[p]{B_1(\vec x)}}
     \end{equation}
-    Sfruttando ancora la disuguaglianza di Hölder,
+    usando $c$ e $c'$ per le costanti (positive)
+    Per la disuguaglianza di Hölder
     \begin{equation}
         \int_{B_1(\vec x)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)\le
         \biggl(\int_{\R^n}\norm{\grad u(\vec y)}^p\,\dd\mu(\vec y)\biggr)^\frac1{p}\biggl(\int_{B_1(\vec x)}\frac1{\norm{\vec x-\vec y}^{(n-1)\frac{p}{p-1}}}\,\dd\mu(\vec y)\biggr)^\frac{p-1}{p}:
@@ -391,53 +400,60 @@ Questi spazi sono importanti per determinare la regolarità in senso classico de
     \begin{multline}
         \biggl(\int_{B_1(\vec x)}\frac1{\norm{\vec x-\vec y}^{(n-1)\frac{p}{p-1}}}\,\dd\mu(\vec y)\biggr)^\frac{p-1}{p}=
         \biggl(\int_{\boundary B_1(\vec 0)}\int_0^1 \frac1{r^{(n-1)\frac{p}{p-1}}}r^{n-1}\,\dd r\,\dd\sigma\biggr)^\frac{p-1}{p}=\\=
-        \biggl(\int_{\boundary B_1(\vec 0)}\dd\sigma\int_0^1 \frac1{r^{(n-1)(1-\frac{p}{p-1})}}\,\dd r\biggr)^\frac{p-1}{p}=
-        \biggl(n\omega_n\frac1{n-(n-1)\frac{p}{1-p}}\biggr)^\frac{p-1}{p}.
+        \biggl(\int_{\boundary B_1(\vec 0)}\dd\sigma\int_0^1 r^{(n-1)(1-\frac{p}{p-1})}\,\dd r\biggr)^\frac{p-1}{p}.
     \end{multline}
-    Ora, si dimostra che quest'ultima quantità è (una costante) finita se $(n-1)p<n(p-1)$, vale a dire $\frac{n-1}{n}<\frac{p-1}{p}$ da cui $p>n$.
-    Detta $c''$ tale costante, risulta allora
+    L'integrale radiale converge se $(n-1)(1-\frac{p}{p-1})>-1$, che è vera per $p>n$, e in tal caso chiamiamo $c''$ il suo valore.
+    Risulta allora
     \begin{equation}
-        \int_{B_1(\vec x)}\frac1{\norm{\vec x-\vec y}^{(n-1)\frac{p}{p-1}}}\,\dd\mu(\vec y)\le
-        c''\norm{\grad u}_{\leb[p]{\R^n}},
+        \int_{B_1(\vec x)} \frac{\norm{\grad u(\vec y)}}{\norm{\vec x-\vec y}^{n-1}}\,\dd\mu(\vec y)\le
+        c''\norm{\grad u}_{\leb[p]{\R^n}}
     \end{equation}
-    da cui $\abs{u(\vec x)}\le cc''\norm{\grad u}_{\leb[p]{\R^n}}$.
+    da cui, scelto $C\defeq\max\{cc'',c'\}$,
+    \begin{equation}
+        \abs{u(\vec x)}\le
+        cc''\norm{\grad u}_{\leb[p]{\R^n}}+c'\norm{u}_{\leb[p]{\R^n}}\le
+        C(\norm{\grad u}_{\leb[p]{\R^n}}+\norm{u}_{\leb[p]{\R^n}})\le
+        C\norm{u}_{\sobW[1,p]{\R^n}}
+    \end{equation}
+    perciò $\sup_{\R^n}\abs{u}\le C\norm{u}_{\sobW[1,p]{\R^n}}$.
+    % Questo risultato apparentemente non serve a niente.
 
     Siano ora $\vec x,\vec y\in\R^n$, $r\defeq\norm{\vec x-\vec y}$ come prima e chiamiamo $W\defeq B_r(\vec x)\cap B_r(\vec y)$.
-    Risulta
+    Moltiplicando per $\avint_W\,\dd\mu(\vec z)=1$ e sfruttando la disuguaglianza triangolare risulta
     \begin{equation}
         \abs{u(\vec x)-u(\vec y)}=
         \avint_W \abs{u(\vec x)-u(\vec y)}\,\dd\mu(\vec z)\le
         \avint_W \abs{u(\vec x)-u(\vec z)}\,\dd\mu(\vec z)+\avint_W \abs{u(\vec y)-u(\vec z)}\,\dd\mu(\vec z).
     \end{equation}
-    Siccome $W\subset B_r(\vec x)$ si ha, per il primo addendo (per il secondo è analogo)
+    Siccome $W\subset B_r(\vec x)$ si ha, per il primo addendo (e per il secondo è analogo)
     \begin{equation}
         \avint_W \abs{u(\vec x)-u(\vec z)}\,\dd\mu(\vec z)\le
         \frac1{\mu(W)}\int_{B_r(\vec x)}\abs{u(\vec x)-u(\vec z)}\,\dd\mu(\vec z)=
         \frac{\mu\bigl(B_r(\vec x)\bigr)}{\mu(W)}\avint_{B_r(\vec x)}\abs{u(\vec x)-u(\vec z)}\,\dd\mu(\vec z).
     \end{equation}
-    Con la \eqref{eq:dim-morrey-obiettivo} e la disuguaglianza di Hölder, questo è a sua volta minore o uguale a
+    Con la \eqref{eq:dim-morrey-obiettivo} e la disuguaglianza di Hölder, come in precedenza, questo è a sua volta minore o uguale (sempre se $p>n$ in modo che l'integrale converga) a
     \begin{multline}
-        c\biggl(\int_{B_r(\vec x)}\norm{\grad u}^p\,\dd\mu\biggr)^\frac1{p}\biggl(\int_{B_r(\vec x)}\frac1{\norm{\vec x-\vec z}^{(n-1)\frac{p}{p-1}}}\,\dd\mu(\vec z)\biggr)^\frac{p-1}{p}\le\\ \le
-        c\norm{\grad u}_{\leb[p]{\R^n}}\biggl(n\omega_n\int_0^r \frac1{s^\frac{p}{p-1}}\,\dd s\biggr)^\frac{p-1}{p}
+        c\biggl(\int_{B_r(\vec x)}\norm{\grad u}^p\,\dd\mu\biggr)^\frac1{p}\biggl(\int_{B_r(\vec x)}\frac1{\norm{\vec x-\vec z}^{(n-1)\frac{p}{p-1}}}\,\dd\mu(\vec z)\biggr)^\frac{p-1}{p}= \\=
+        c\norm{\grad u}_{\leb[p]{\R^n}}\biggl(n\omega_n\int_0^r s^{(n-1)(1-\frac{p}{p-1})}\,\dd s\biggr)^\frac{p-1}{p}=
         \tilde{c}\norm{\grad u}_{\leb[p]{\R^n}}(r^{n-(n-1)\frac{p}{p-1}})^\frac{p-1}{p}=
         \tilde{c}\norm{\grad u}_{\leb[p]{\R^n}}r^{1-\frac{n}{p}}
     \end{multline}
-    per una $\tilde{c}>0$.
+    per $\tilde{c}>0$.
     La stessa stima vale per l'addendo con $\vec y$ al posto di $\vec x$, perciò
     \begin{equation}
-        \abs{u(\vec x)-u(\vec y)}\le\tilde{c}r^{1-\frac{n}{p}}\norm{\grad u}_{\leb[p]{\R^n}}.
+        \abs{u(\vec x)-u(\vec y)}\le 2\tilde{c}r^{1-\frac{n}{p}}\norm{\grad u}_{\leb[p]{\R^n}}.
     \end{equation}
     Dividendo per $r^{1-\frac{n}{p}}=\norm{\vec x-\vec y}^{1-\frac{n}{p}}$, quando $\vec x\ne\vec y$, otteniamo dunque che
     \begin{equation}
         \frac{\abs{u(\vec x)-u(\vec y)}}{\norm{\vec x-\vec y}^{1-\frac{n}{p}}}\le\tilde{c}\norm{\grad u}_{\leb[p]{\R^n}}
     \end{equation}
-    vale a dire
+    e prendendone l'estremo superiore
     \begin{equation}
         [u]_{1-\frac{n}{p}}=\norm{u}_{\cont[0,1-\frac{n}{p}]{\R^n}}\le\tilde{c}\norm{\grad u}_{\leb[p]{\R^n}}
     \end{equation}
     che prova che $\sobW[1,p]{\R^n}\emb\cont[0,1-\frac{n}{p}]{\R^n}$.
 \end{proof}
-Ad esempio se $\Omega\subset\R^3$ lo spazio $\sobW[2,2]{\Omega}$ è incluso con continuità in $\cont[0,\frac12]{\Omega}$ poich\'e per $k=p=2$ e $n=3$ si ha $0\le\alpha\le 2-m-\frac32$, e dato che $0\le m\le 2-\frac32=\frac12$ e $m\in\N_0$ deve essere $m=0$, per cui $0\le\alpha\le\frac12$.
+Ad esempio se $\Omega\subset\R^3$ lo spazio $\sobW[2,2]{\Omega}$ è incluso con continuità in $\cont[0,\frac12]{\Omega}$ poich\'e per $k=p=2$ e $n=3$ si ha $m<\frac12<m+1$ da cui $m=0$, quindi $0\le\alpha\le 2-m-\frac32=\frac12$.
 
 Ora però abbiamo il problema che negli spazi di Sobolev gli elementi sono classi di equivalenza di funzioni, mentre negli spazi di Hölder ci sono funzioni vere e proprie.
 Passiamo dall'una all'altra tramite la seguente definizione.
@@ -450,13 +466,13 @@ Passiamo dall'una all'altra tramite la seguente definizione.
 \end{teorema}
 \begin{proof}
    Possiamo ancora estendere $\Omega$ a tutto $\R^n$ poich\'e $\supp u\subset\Omega$, ponendo $u=0$ al di fuori dell'insieme.
-   La completezza dello spazio di Sobolev e la densità di $\contsc[\infty]{\Omega}$ assicurano che esiste una successione $\{u_k\}_{k\in\N}\subset\contsc[\infty]{\Omega}$ tale che $u_k\to u$, con $u\in\sobW[1,p]{\Omega}$ ma anche in $\sobW[1,p]{\R^n}$ estendo le $u_k$ come prima.
+   La completezza dello spazio di Sobolev e la densità di $\contsc[\infty]{\Omega}$ assicurano che esiste una successione $\{u_k\}_{k\in\N}\subset\contsc[\infty]{\Omega}$ tale che $u_k\to u$, con $u\in\sobW[1,p]{\Omega}$ ma anche in $\sobW[1,p]{\R^n}$ estendendo le $u_k$ come prima.
    Anche in questo caso vale $\norm{u_k-u_l}_{\cont[0,\gamma]{\Omega}}\le\norm{u_k-u_l}_{1,p}$ quindi se $\{u_k\}$ è di Cauchy in $\sobW[1,p]{\R^n}$ allora lo è anche in $\cont[0,\gamma]{\R^n}$, ossia esiste una funzione $\bar{u}\in\cont[0,\gamma]{\R^n}$ tale per cui $u_k\to\bar{u}$.
-   Ma $u_k\to u$ in $\sobW[1,p]{\R^n}$, quindi $u$ e $\bar{u}$ (doev $u$ è vista come funzione) devono coincidere quasi ovunque, per l'unicità del limite, quindi $\bar{u}$ è una versione di $u$ in $\cont[0,\gamma]{\R^n}$.
+   Ma $u_k\to u$ in $\sobW[1,p]{\R^n}$, quindi per l'unicità del limite si ha che $u=\bar{u}$ ossia $\bar{u}$ è una versione di $u$ in $\cont[0,\gamma]{\R^n}$.
    Dalla disuguaglianza $\norm{u_k}_{\cont[0,\gamma]{\R^n}}\le c\norm{u_k}_{1,p}$ infine, al limite per $k\to+\infty$, otteniamo $\norm{\bar{u}}_{\cont[0,\gamma]{\R^n}}\le c\norm{u}_{1,p}$.
 \end{proof}
 
-A questo punto rimane da valutare la compattezza dell'immersione tra spazi di Sobolev e $\lclass[p]$, dimostrata nel seguente teorema di Rellich-Kondrachov.
+A questo punto rimane da valutare la compattezza dell'immersione tra spazi di Sobolev e $\lclass[p]$, dimostrata nel teorema dovuto a Rellich e Kondrachov.
 Prima di affrontarlo servono ulteriori definizioni e proprietà.
 \begin{definizione} \label{d:equicontinuita}
     Siano $X$ e $Y$ due spazi metrici e $\mathcal{F}$ un insieme di funzioni da $X$ a $Y$.
@@ -464,58 +480,56 @@ Prima di affrontarlo servono ulteriori definizioni e proprietà.
     L'insieme è poi equicontinuo in $X$ se è equicontinuo per ogni $x\in X$.
 \end{definizione}
 \begin{teorema}[Ascoli-Arzelà] \label{t:ascoli-arzela}
-    Sia $\{f_n\}_{n\in\N}$ una successione di funzioni definite da $E\subset\R^n$ compatto; se $\{f_n\}_{n\in\N}$ è equicontinua ed esiste $c>0$ tale che $\abs{f_n(\vec x)}\le c$ per ogni $\vec x\in E$ e ogni $n\in\N$ ($c$ è indipendente da $n$) allora esiste una sottosuccessione $\{f_{n_k}\}$ tale che $f_{n_k}\to f\in\cont{E}$, vale a dire
+    Sia $E\subset\R^n$ compatto e $\{f_n\}_{n\in\N}\in\cont{E}$; se $\{f_n\}_{n\in\N}$ è equicontinua ed esiste $c>0$ tale che $\abs{f_n(\vec x)}\le c$ per ogni $\vec x\in E$ e ogni $n\in\N$ ($c$ è indipendente da $n$) allora esiste una sottosuccessione $\{f_{n_k}\}$ convergente uniformemente a una $f\in\cont{E}$, vale a dire
     \begin{equation}
-        \lim_{n_k\to+\infty}\sup_{\vec x\in E}\abs{f_{n_k}(\vec x)-f(\vec x)}=0.
+        \lim_{k\to+\infty}\sup_{\vec x\in E}\abs{f_{n_k}(\vec x)-f(\vec x)}=0.
     \end{equation}
 \end{teorema}
 \begin{proof}
     Sia $A=\{\vec x_i\}_{i\in\N}$ un sottoinsieme denso di $E$, ad esempio $E\cap\Q^n$.
-    Preso $\vec x_1$, sia $a^{(1)}_n\defeq f_n(\vec x_1)$: dato che $\abs{a^{(1)}_n}=\abs{f_n(\vec x_1)}\le c$, la successione $\{a^{(1)}_n\}_{n\in\N}$ ammette una sottosuccessione convergente, che indichiamo come $\{f_{p^{(1)}_1}(\vec x_1),f_{p^{(1)}_2}(\vec x_1),\dotsc\}$.
-    Lo stesso si può dire della successione $\{f_n(\vec x_2)\}_{n\in\N}$, che ammette una sottosuccessione convergente che indichiamo con $\{f_{p^{(2)}_1}(\vec x_2),f_{p^{(2)}_2}(\vec x_2),\dotsc\}$; anche la successione $\{f_{p^{(2)}_1}(\vec x_1),f_{p^{(2)}_2}(\vec x_1),\dotsc\}$ converge.
-    In questo modo abbiamo le successioni di funzioni
+    Preso $\vec x_1$, sia $a^{(1)}_n\defeq f_n(\vec x_1)$: dato che $\abs{a^{(1)}_n}=\abs{f_n(\vec x_1)}\le c$, la successione $\{a^{(1)}_n\}_{n\in\N}$ ammette una sottosuccessione convergente, che indichiamo come $\{f_{1,1}(\vec x_1),f_{1,2}(\vec x_1),\dotsc\}$.
+    Lo stesso si può dire della successione $\{f_{1,n}(\vec x_2)\}_{n\in\N}$, la quale ammette dunque una sottosuccessione convergente che indichiamo con $\{f_{2,1}(\vec x_2),f_{2,2}(\vec x_2),\dotsc\}$; anche la successione $\{f_{2,1}(\vec x_1),f_{2,2}(\vec x_1),\dotsc\}$ converge, dato che è una sottosuccessione di $\{f_{1,n}(\vec x_1)\}_{n\in\N}$.
+    Continuando in questo modo abbiamo le successioni di funzioni
     \begin{equation}
         \begin{array}[h]{ll}
-            f_{p^{(1)}_1},f_{p^{(1)}_2},\dotsc,f_{p^{(1)}_n},\dotsc & \text{che converge in }\vec x_1\\
-            f_{p^{(2)}_1},f_{p^{(2)}_2},\dotsc,f_{p^{(2)}_n},\dotsc & \text{che converge in }\vec x_1,\vec x_2\\
-            f_{p^{(3)}_1},f_{p^{(3)}_2},\dotsc,f_{p^{(3)}_n},\dotsc & \text{che converge in }\vec x_1,\vec x_2,\vec x_3\\
+            f_{1,1},f_{1,2},\dotsc,f_{1,n},\dotsc & \text{che converge in }\vec x_1\\
+            f_{2,1},f_{2,2},\dotsc,f_{2,n},\dotsc & \text{che converge in }\vec x_1,\vec x_2\\
+            f_{3,1},f_{3,2},\dotsc,f_{3,n},\dotsc & \text{che converge in }\vec x_1,\vec x_2,\vec x_3\\
             \vdots & \\
-            f_{p^{(m)}_1},f_{p^{(m)}_2},\dotsc,f_{p^{(m)}_n},\dotsc & \text{che converge in }\vec x_1,\dotsc,\vec x_m
+            f_{m,1},f_{m,2},\dotsc,f_{m,n},\dotsc & \text{che converge in }\vec x_1,\dotsc,\vec x_m
         \end{array}
     \end{equation}
     e ognuna è una sottosuccessione delle precedenti.
-    Se esistesse una funzione ``finale'', essa convergerebbe su tutto $A$, ma il procedimento è infinito: costruiamo dunque la successione $\{f_{p^{(k)}_k}\}_{k\in\N}$, con la diagonale di Cantor; otteniamo cos\`i una sottosuccessione delle precedenti, con $f_{p^{(m)}_m}$ convergente per tutti gli $\vec x_i$ con $1\le i\le m$; al limite per $m\to+\infty$, allora, essa converge su tutto $A$.
+    Se esistesse una funzione ``finale'', essa convergerebbe su tutto $A$, ma il procedimento è infinito: costruiamo dunque la successione $\{f_{k,k}\}_{k\in\N}$, con la diagonale di Cantor; otteniamo cos\`i una sottosuccessione delle precedenti, con $f_{m,m}$ convergente per tutti gli $\vec x_i$ con $1\le i\le m$; al limite per $m\to+\infty$, allora, essa converge su tutto $A$.
 
-    Sia ora $\epsilon>0$: per definizione, per ogni $n\in\N$ $\exists\delta>0$ tale che se $\abs{\vec x-\bar{\vec x}}>\delta$ allora $\abs{f_n(\vec x)-f_n(\bar{\vec x})}<\epsilon$ per $\vec x,\bar{\vec x}\in E$.
-    Sia $\{F_n\}_{n\in\N}$ la sottosuccessione ottenuta precedentemente con il metodo della diagonale: si ha che $\abs{F_n(\vec x_i)-F_m(\vec x_i)}<\epsilon$ per ogni $n,m>N$ per un opportuno $N\in\N_0$, dato che $\{F_n(\vec x_i)\}_{n\in\N}$ è di Cauchy, in quanto convergente, per ogni $\vec x_i\in A$.
-    Abbiamo che $E\subset\bigcap_{i\in\N} B_{\delta}(\vec x_i)$ (ossia gli intorni dei punti di $A$ ricoprono $E$), ma per la compattezza di $E$ ne è necessario solo un numero finito, ossia $\exists q\in\N$ tale che $E\subset\bigcup_{i=1}^q B_\delta(\vec x_i)$.
-    Per ogni $\bar{\vec x}\in E$ esiste $i\in\{1,\dotsc,q\}$ tale che $\bar{\vec x}\in B_\delta(\vec x_i)$: allora
+    Sia ora $\epsilon>0$: per l'equicontinuità della successione, per ogni $n\in\N$ $\exists\delta>0$ tale che se $\abs{\vec x-\bar{\vec x}}<\delta$ allora $\abs{f_n(\vec x)-f_n(\bar{\vec x})}<\epsilon$ per $\vec x,\bar{\vec x}\in E$.
+    Sia $\{F_n\}_{n\in\N}$ la sottosuccessione ottenuta precedentemente con il metodo della diagonale: essa è convergente per ogni $\vec x_i\in A$ quindi è di Cauchy, perciò si ha che $\abs{F_n(\vec x_i)-F_m(\vec x_i)}<\epsilon$ per ogni $n,m>N$ per un opportuno $N\in\N_0$.
+    Siccome poi $A$ è denso in $E$, abbiamo che $E\subset\bigcap_{i\in\N} B_{\delta}(\vec x_i)$ ossia gli intorni dei punti di $A$ ricoprono $E$; per la compattezza di $E$ da questa copertura possiamo estrarre una sottocopertura finita, quindi $\exists q\in\N$ tale che $E\subset\bigcup_{i=1}^q B_\delta(\vec x_i)$.
+    Ogni punto di $E$ si troverà per forza in uno di questi intorni che compongono la sottocopertura: per ogni $\bar{\vec x}\in E$ esiste $i\in\{1,\dotsc,q\}$ tale che $\bar{\vec x}\in B_\delta(\vec x_i)$, e allora
     \begin{equation}
         \abs{F_n(\bar{\vec x})-F_m(\bar{\vec x})}\le
-        \abs{F_n(\bar{\vec x})-F_n(\vec x_i)}+\abs{F_n(\vec x_i)-F_m(\vec x_i)}+\abs{F_m(\bar{\vec x})-F_m(\vec x_i)}
+        \abs{F_n(\bar{\vec x})-F_n(\vec x_i)}+\abs{F_n(\vec x_i)-F_m(\vec x_i)}+\abs{F_m(\vec x_i)-F_m(\bar{\vec x})}
     \end{equation}
-    e se $\bar{\vec x}\in B_\delta(\vec x_i)$ allora $\abs{\bar{\vec x}-\vec x_i}<\delta$ da cui $\abs{F_n(\bar{\vec x})-F_n(\vec x_i)}<\epsilon$ (e lo stesso per $F_m$) per l'equicontinuità della successione di partenza, mentre si ha $\abs{F_n(\vec x_i)-F_m(\vec x_i)}<\epsilon$ poich\'e $\{F_n\}_{n\in\N}$ è di Cauchy.
-    In sostanza,
+    e se $\bar{\vec x}\in B_\delta(\vec x_i)$ allora $\abs{\bar{\vec x}-\vec x_i}<\delta$ da cui $\abs{F_n(\bar{\vec x})-F_n(\vec x_i)}<\epsilon$ (e lo stesso per $F_m$) per l'equicontinuità della successione, mentre si ha $\abs{F_n(\vec x_i)-F_m(\vec x_i)}<\epsilon$ poich\'e $\{F_n\}_{n\in\N}$ è di Cauchy.
+    In sostanza, per ogni $\epsilon>0$ abbiamo $N\in\N_0$ tale che $\forall n,m>N$ si ha, per ogni $\bar{\vec x}\in E$,
     \begin{equation}
-        \abs{F_n(\bar{\vec x})-F_m(\bar{\vec x})}<3\epsilon
+        \abs{F_n(\bar{\vec x})-F_m(\bar{\vec x})}<3\epsilon.
     \end{equation}
-    quindi $\{F_n(\bar{\vec x})\}_{n\in\N}$ è di Cauchy per ogni $\bar{\vec x}\in E$; in altre parole per ogni $\bar{\vec x}\in E$ esiste $F(\bar{\vec x})\in\R$ per cui si ha $F_n(\bar{\vec x})\to F(\bar{\vec x})$.
-    Infine, dato che la convergenza è uniforme, la funzione limite
-    \begin{equation}
-        F\colon\vec x\mapsto\lim_{n\to+\infty}F_n(\vec x)
-    \end{equation}
-    è continua in $E$.
+    quindi $\{F_n(\bar{\vec x})\}_{n\in\N}$ è di Cauchy secondo la norma uniforme.
+    Esiste dunque una funzione $F$ tale per cui $F_n\to F$ in questa norma, cioè converge uniformemente: per il teorema \ref{t:continuita_conv_uniforme} allora $F\in\cont{E}$.
 \end{proof}
+Più in generale, questo teorema mostra che se un insieme $A\subset\cont{E}$, con $E\subset\R^n$ compatto, è equicontinuo e l'insieme $\{f(\vec x)\colon f\in A\}$ è relativamente compatto (che nel nostro caso si traduce nella limitatezza di $\abs{f_n(\vec x)}$ per ogni $\vec x\in E$ e $n\in\N$) allora $A$ è relativamente compatto, quindi ogni successione in $A$ ammette una sottosuccessione convergente in $\cont{E}$.
 
-Vediamo ora come ``regolarizzare'' una funzione poco regolare tramite la convoluzione.
+Vediamo ora come ``regolarizzare'' una funzione tramite la convoluzione.
 \begin{definizione} \label{d:mollificatore}
     Una funzione $\rho\in\cont[\infty]{\R^n}$ tale che $\rho\ge 0$, $\rho(\vec x)=0$ per $\vec x\notin B_1(\vec 0)$ e $\int_{\R^n}\rho\,\dd\mu=1$ è detta \emph{mollificatore}.
 \end{definizione}
 Ne è un esempio la funzione
 \begin{equation*}
+    \vec x\mapsto
     \begin{cases}
-        c\vec x\mapsto\exp(\frac1{\norm{\vec x}^2-1}) & \norm{\vec x}\le 1 \\
-        0                                             & \norm{\vec x}>1
+        c\exp\bigl(\frac1{\norm{\vec x}^2-1}\bigr)    & \norm{\vec x}<1 \\
+        0                                             & \norm{\vec x}\ge 1
     \end{cases}
 \end{equation*}
 dove la costante $c$ serve da opportuna normalizzazione.
@@ -523,16 +537,22 @@ Preso un mollificatore $\rho$, usiamo la notazione $\rho_\epsilon$ per indicare 
 \begin{equation}
     \vec x\mapsto\frac1{\epsilon^n}\rho\biggl(\frac{\vec x}{\epsilon}\biggr);
 \end{equation}
-se $\rho=0$ al di fuori di $B_1(\vec 0)$, allora $\rho_\epsilon=0$ fuori da $B_\epsilon(\vec 0)$ ed è ancora $\cclass[\infty]$.
+se $\rho=0$ al di fuori di $B_1(\vec 0)$, allora $\rho_\epsilon=0$ fuori da $B_\epsilon(\vec 0)$ e la funzione chiaramente è ancora $\cclass[\infty]$.
 \begin{definizione} \label{d:regolarizzazione}
-    Siano $u\in\locleb[1]{\Omega}$, $\epsilon>0$: definiamo la \emph{regolarizzazione} di $u$ come la funzione
+    Siano $u\in\locleb[1]{\Omega}$, $\epsilon>0$ e $\Omega_\epsilon\defeq\{\vec x\in\Omega\colon d(\vec x,\boundary\Omega)>\epsilon\}$: definiamo la \emph{regolarizzazione} di $u$ come la funzione $u_\epsilon\colon\Omega_\epsilon\to\R$ data da
     \begin{equation}
-        u_\epsilon\colon\vec x\mapsto\int_\Omega\rho_\epsilon(\vec x-\vec y)u(\vec y)\,\dd\mu(\vec y).
+        u_\epsilon(\vec x)=
+        \int_\Omega\rho_\epsilon(\vec x-\vec y)u(\vec y)\,\dd\mu(\vec y).
         \label{eq:regolarizzazione}
     \end{equation}
 \end{definizione}
-Dato che $\rho_\epsilon(\vec x-\vec y)=0$ se $\norm{\vec x-\vec y}>\epsilon$ e $\vec y\in\Omega$, abbiamo che $u_\epsilon(\vec x)=0$ se $d(\vec x,\boundary\Omega)>\epsilon$.
-Detto dunque $\Omega_\epsilon\defeq\{\vec x\in\Omega\colon d(\vec x,\boundary\Omega)<\epsilon\}$ risulta allora che $u_\epsilon\in\cont[\infty]{\Omega_\epsilon}$, e per ogni multiindice $\alpha$
+La mollificazione è un'operazione che in ogni $\vec x\in\Omega_\epsilon$ restituisce il valore medio di $u$ in una palla di raggio $\epsilon$ attorno a $\vec x$: siccome $\vec y$ nell'integrale varia in $\Omega$ (dove $u$ è definita: non possiamo spingergi più in là di cos\`i), la condizione $\vec x\in\Omega_\epsilon$ fa s\`i che questa palla, per ogni $\vec x$, rimanga sempre inclusa in $\Omega$.
+Una definizione equivalente è infatti
+\begin{equation}
+    u_\epsilon(\vec x)=
+    \int_{B_\epsilon(\vec 0)}\rho_\epsilon(\vec y)u(\vec x-\vec y)\,\dd\mu(\vec y).
+\end{equation}
+Si ha inoltre che $u_\epsilon\in\cont[\infty]{\Omega_\epsilon}$, e per ogni multiindice $\alpha$
 \begin{equation}
     D_{\vec x}^\alpha u_\epsilon(\vec x)=\int_\Omega D_{\vec x}^\alpha\rho_\epsilon(\vec x-\vec y)u(\vec y)\,\dd\mu(\vec y).
 \end{equation}
@@ -546,33 +566,39 @@ Si veda \cite[p.~630]{evans} per le dimostrazioni di questi risultati.
 \begin{proof}
     Come nei precedenti teoremi di immersione, dimostriamo anche questo nel caso $k=1$ e per funzioni a supporto compatto.
 
-    Sia $q=1$ e consideriamo un insieme $A\subset\sobWc[1,p]{\Omega}$ limitato.
-    Sia $u\in\sobWc[1,p]{\Omega}$ e, fissato $\epsilon>0$, definiamo $A_\epsilon\defeq\{u_\epsilon\colon u\in A\}$ (l'insieme delle regolarizzazioni delle funzioni di $A$): i suoi elementi sono regolari per definizione, e per essi vale
+    Consideriamo un insieme $A\subset\sobWc[1,p]{\Omega}$ limitato.
+    Sia $u\in\sobWc[1,p]{\Omega}$ e, fissato $\epsilon>0$, definiamo $A_\epsilon\defeq\{u_\epsilon\colon u\in A\}$ (l'insieme delle regolarizzazioni delle funzioni di $A$): i suoi elementi sono regolari per definizione, e per essi sappiamo che
     \begin{equation}
-        \abs{u_\epsilon(\vec x)}=
-        \abs[\bigg]{\int_{B_\epsilon(\vec x)} \rho_\epsilon(\vec x-\vec y)u(\vec y)\,\dd\mu(\vec y)}\le
-        \int_{B_1(\vec 0)} \rho(\vec z)\abs{u(\vec x-\epsilon\vec z)}\,\dd\mu(\vec z)\le
-        \norm{u}_1\max_{B_1(\vec 0)}\rho<
-        +\infty
+        u_\epsilon(\vec x)=
+        \int_{B_\epsilon(\vec 0)} \rho_\epsilon(\vec y)u(\vec x-\vec y)\,\dd\mu(\vec y)=
+        \int_{B_\epsilon(\vec 0)} \frac1{\epsilon^n}\rho\biggl(\frac{\vec y}{\epsilon}\biggr)u(\vec x-\vec y)\,\dd\mu(\vec y);
     \end{equation}
-    per il teorema di Sobolev \ref{t:sobolev}: $A_\epsilon$ è dunque uniformemente limitato.
-    Inoltre è equicontinuo, poich\'e la derivata è uniformemente limitata:
+    effettuiamo il cambio di variabile $\vec y=\epsilon\vec z$ ($\dd\mu(\vec y)=\epsilon^n\,\dd\mu(\vec z)$), con $\vec z$ che dunque varia nella palla unitaria, e prendiamo il valore assoluto ottenendo
+    \begin{multline}
+        \abs{u_\epsilon(\vec x)}=
+        \abs[\bigg]{\int_{B_1(\vec 0)} \rho(\vec z)u(\vec x-\epsilon\vec z)\,\dd\mu(\vec z)}\le
+        \int_{B_1(\vec 0)} \rho(\vec z)\abs{u(\vec x-\epsilon\vec z)}\,\dd\mu(\vec z)\le\\ \le
+        \norm{u}_1\sup_{B_1(\vec 0)}\rho\le
+        \sup_{u\in A}\norm{u}_1\sup_{B_1(\vec 0)}\rho
+    \end{multline}
+    e $\sup_{u\in A}\norm{u}_1<+\infty$ poich\'e per il teorema di Sobolev \ref{t:sobolev} si ha $\sobWc[1,p]{\Omega}\subset\sobW[1,p]{\Omega}\emb\leb[1]{\Omega}$, dunque $A$ è limitato anche in $\leb[1]{\Omega}$, mentre $\sup_{B_1(\vec 0)}\rho<+\infty$ poich\'e $\rho\in\cont[\infty]{B_1(\vec 0)}$: il loro prodotto fornisce un limite superiore a $\abs{u_\epsilon(\vec x)}$ per ogni $\vec x\in E$ e $u\in A$, dunque $A_\epsilon$ è uniformemente limitato.
+    Esso è anche equicontinuo, poich\'e la derivata è uniformemente limitata:
     \begin{multline}
         \norm{\grad u_\epsilon(\vec x)}=
-        \norm[\bigg]{\int_{B_\epsilon(\vec x)}\grad\rho_\epsilon(\vec x-\vec y)u(\vec y)\,\dd\mu(\vec y)}\le
+        \norm[\bigg]{\int_{B_\epsilon(\vec 0)}\grad\rho_\epsilon(\vec y)u(\vec x-\vec y)\,\dd\mu(\vec y)}\le
         \int_{B_1(\vec 0)}\norm{\grad\rho(\vec z)}\abs{u(\vec x-\epsilon\vec z)}\,\dd\mu(\vec z)\le\\ \le
         \norm{u}_1\max_{B_1(\vec 0)}\norm{\grad\rho}<
         +\infty.
     \end{multline}
-    Dato che $A_\epsilon\subset\cont{\clos{\Omega}}$ è uniformemente limitato ed equicontinuo esso contiene successioni che, per il teorema di Ascoli-Arzelà \ref{t:ascoli-arzela}, ammettono sottosuccessioni convergenti in $\cont{\clos{\Omega}}$, cioè di Cauchy.
+    Dato che $A_\epsilon\subset\cont{\clos{\Omega}}$ è uniformemente limitato ed equicontinuo, per il teorema di Ascoli-Arzelà \ref{t:ascoli-arzela} ogni successione in $A_\epsilon$ ammette una sottosuccessione convergente in $\cont{\clos{\Omega}}$, che è quindi di Cauchy in quest'ultimo spazio.
+    Allora presa $\{u_n\}_{n\in\N}\subset A_\epsilon$ abbiamo
     \begin{equation}
         \norm{u_n-u_m}_1=
         \int_\Omega\abs{u_n-u_m}\,\dd\mu\le
         \sup_\Omega\abs{u_n-u_m}\mu(\Omega)=
-        \norm{u_n-u_m}_{\cont{\Omega}}\mu(\Omega)<
-        \epsilon\mu(\Omega),
+        \norm{u_n-u_m}_{\cont{\clos{\Omega}}}\mu(\Omega).
     \end{equation}
-    quindi anche $\{u_n\}$ è di Cauchy in $\leb[1]{\Omega}$, e in esso converge.
+    e siccome $\{u_n\}$ è di Cauchy in $\cont{\clos{\Omega}}$ per ogni $\eta>0$ esiste $N\in\N_0$ tale che $\forall n,m>N$ si ha $\norm{u_n-u_m}_{\cont{\clos{\Omega}}}<\eta$: in tal caso quindi $\norm{u_n-u_m}_1<\eta\mu(\Omega)$ che significa che $\{u_n\}$ è di Cauchy anche in $\leb[1]{\Omega}$; per la completezza dello spazio, allora, $u_n$ converge in $\leb[1]{\Omega}$.
     Ciò prova che $A_\epsilon$ è relativamente compatto in $\leb[1]{\Omega}$.
 
     Passiamo ora al limite per $\epsilon\to 0$: dato che $\int_{B_1(\vec 0)}\rho\,\dd\mu=1$, si ha
@@ -585,74 +611,64 @@ Si veda \cite[p.~630]{evans} per le dimostrazioni di questi risultati.
             \int_{B_1(\vec 0)}\rho(\vec z)\biggl[\int_0^1-\epsilon\scalar{\vec z}{\grad u(\vec x-t\epsilon\vec z)}\,\dd t\biggr]\,\dd\mu(\vec z).
         \end{split}
     \end{equation}
-    Integriamo ora in $\Omega_\epsilon$, ottenendo
+    Integriamone il valore assoluto in $\Omega_\epsilon$ ottenendo
     \begin{equation}
         \begin{split}
             \int_{\Omega_\epsilon}\abs{u_n(\vec x)-u_m(\vec x)}\,\dd\mu(\vec x)&=
             \int_{\Omega_\epsilon}\epsilon\abs[\bigg]{\int_{B_1(\vec 0)}\rho(\vec z)\biggl[\int_0^1-\scalar{\vec z}{\grad u(\vec x-t\epsilon\vec z)}\,\dd t\biggr]\,\dd\mu(\vec z)}\,\dd\mu(\vec x)\le\\ &\le
-            \epsilon\int_{\Omega_\epsilon}\int_{B_1(\vec 0)}\int_0^1\rho(\vec z)\norm{\grad u(\vec x-t\epsilon\vec z)}\,\dd t\,\dd\mu(\vec z)\,\dd\mu(\vec x)\le\\ &\le
+            \epsilon\int_{\Omega_\epsilon}\int_{B_1(\vec 0)}\int_0^1\rho(\vec z)\norm{\vec z}\norm{\grad u(\vec x-t\epsilon\vec z)}\,\dd t\,\dd\mu(\vec z)\,\dd\mu(\vec x)\le\\ &\le
             \epsilon\int_{B_1(\vec 0)}\rho(\vec z)\int_0^1\int_{\Omega_\epsilon}\norm{\grad u(\vec x-t\epsilon\vec z)}\,\dd\mu(\vec x)\,\dd t\,\dd\mu(\vec z)\le\\ &\le
             \epsilon\int_{B_1(\vec 0)}\rho(\vec z)\int_0^1\int_\Omega\norm{\grad u(\vec x)}\,\dd\mu(\vec x)\,\dd t\,\dd\mu(\vec z)\le\\ &\le
-            \epsilon\int_{B_1(\vec 0)}\rho(\vec z)\,\dd\mu(\vec z)\int_0^1\,\dd t\int_\Omega\norm{\grad u(\vec x)}\,\dd\mu(\vec x)
+            \epsilon\int_{B_1(\vec 0)}\rho(\vec z)\,\dd\mu(\vec z)\int_0^1\,\dd t\int_\Omega\norm{\grad u(\vec x)}\,\dd\mu(\vec x)=\\ &=
+            \epsilon\norm{\grad u}_{\leb[1]{\Omega}}\,\dd\mu(\vec x),
         \end{split}
     \end{equation}
-    che per la disuguaglianza di Hölder è minore o uguale a
+    e per la disuguaglianza di Hölder si ha
     \begin{equation}
-        \epsilon\biggl(\int_\Omega\dd\mu\biggr)^\frac1{p'}\biggl(\int_\Omega\norm{\grad u}^p\,\dd\mu\biggr)^\frac1{p}\le
-        \epsilon\mu(\Omega)^\frac1{p'}\norm{\grad u}_{1,p}\le
+        \epsilon\norm{\grad u}_{\leb[1]{\Omega}}\,\dd\mu(\vec x)\le
+        \epsilon\mu(\Omega)^{1-\frac1{p}}\norm{\grad u}_{\leb[p]{\Omega}}\le
+        \epsilon\mu(\Omega)^{1-\frac1{p}}\norm{u}_{\sobW[1,p]{\Omega}}\le
         c\epsilon
     \end{equation}
     per ogni $u\in A$.
-    Per il teorema \ref{t:relativamente-compatto-sse-totalmente-limitato} allora $A$ è totalmente limitato, ossia per ogni $\delta>0$ esiste $n=n(\delta)$ tale per cui $\exists\{a_1,\dotsc,a_{n(\delta)}\}\subset A$ tale che $A\subset\bigcup_{i=1}^{n(\delta)}B_\delta(a_i)$.
-    Inoltre per ogni $u_\epsilon$ esiste $i\in\{1,\dotsc,n(\delta)\}$ tale per cui $u_\epsilon\in B_\delta(a_i)$, ma allora per $c\epsilon<\delta$ si ha che $u\in B_{2\delta}(a_i)$ da cui, per lo stesso teorema, dato che $A\subset\bigcup_{i=1}^{n(\delta)}B_{2\delta}(a_i)$, $A$ è relativamente compatto in $\leb[p]{\Omega}$.
+    Per il teorema \ref{t:relativamente-compatto-sse-totalmente-limitato} allora $A$ è totalmente limitato in $\sobWc[1,p]{\Omega}$, ossia per ogni $\delta>0$ esiste $n=n(\delta)$ tale per cui $\exists\{a_1,\dotsc,a_n\}\subset A$ tale che $A\subset\bigcup_{i=1}^nB_\delta(a_i)$.
+    Per ogni $u_\epsilon$ esiste dunque un $i\in\{1,\dotsc,n\}$ tale per cui $u_\epsilon\in B_\delta(a_i)$; ma allora se scegliamo $\delta>c\epsilon$, siccome $\norm{u-u_\epsilon}_1<c\epsilon$, si ha che $u\in B_{2\delta}(a_i)$.
+    Possiamo allora ricoprire $A$ con gli intorni (questa volta nello spazio $\leb[1]{\Omega}$) $B_{2\delta}(a_i)$, ossia $A\subset\bigcup_{i=1}^nB_{2\delta}(a_i)$ quindi $A$ è totalmente limitato anche in $\leb[1]{\Omega}$: di conseguenza è anche relativamente compatto in tale spazio metrico, e questo prova la tesi per $q=1$.
 
-    Rimane da mostrare l'esponente critico per $q$.
-    Risulta per un $\lambda>0$
+    Rimane da mostrare l'esponente critico per $q$: sia $u\in\sobWc[1,p]{\Omega}$.
+    Per il teorema di Sobolev \ref{t:sobolev} si ha che $u\in\leb[1]{\Omega}\cap\leb[\frac{np}{n-p}]{\Omega}$, quindi con la disuguaglianza di Hölder si dimostra che
     \begin{equation}
-        \begin{split}
-            \norm{u}_q&=
-            \biggl(\int_\Omega\abs{u}^\lambda\abs{u}^{q-\lambda}\,\dd\mu\biggr)^\frac1{q}\le\\ &\le
-            \biggl[
-                \biggl(\int_\Omega(\abs{u}^\lambda)^\frac1{\lambda}\,\dd\mu\biggr)^\lambda
-                \biggl(\int_\Omega(\abs{u}^{q-\lambda})^{\frac{np}{n-p}\frac1{q-\lambda}}\,\dd\mu\biggr)^{\frac{n-p}{np}(q-\lambda)}
-            \biggr]^\frac1{q}=\\ &=
-            \biggl[
-                \biggl(\int_\Omega\abs{u}\,\dd\mu\biggr)^\lambda
-                \biggl(\int_\Omega\abs{u}^\frac{np}{n-p}\,\dd\mu\biggr)^{\frac{n-p}{np}(q-\lambda)}
-            \biggr]^\frac1{q}=\\ &=
-            \norm{u}_1^\frac{\lambda}{q}\norm{u}_\frac{np}{n-p}^\frac{q-\lambda}{q},
-        \end{split}
+        \norm{u}_q\le
+        \norm{u}_1^\alpha\norm{u}_\frac{np}{n-p}^{1-\alpha}
     \end{equation}
-    usando la disuguaglianza di Hölder, per la quale deve verificarsi che
+    per $\alpha\in[0,1]$ tale che
     \begin{equation}
-        \lambda+(q-\lambda)\frac{n-p}{np}=
-        \frac{n-p}{np}q+\biggl(1-\frac{n-p}{np}\biggr)\lambda=1
+        \frac1{q}=\alpha+\frac{(1-\alpha)(n-p)}{np}
+        \qqq
+        \alpha=\frac{\frac{np}{n-p}-q}{q(\frac{np}{n-p}-1)}.
         \label{eq:dim-rellich-kondrachov-lambda}
     \end{equation}
-    Ora, per il teorema di Sobolev \ref{t:sobolev} si ha $\norm{u}_\frac{np}{n-p}\le\norm{u}_{1,p}$ e se $\lambda<q$ allora $\norm{u}_\frac{np}{n-p}^{1-\frac{\lambda}{q}}\le\norm{u}_{1,p}^{1-\frac{\lambda}{q}}$ che è una costante, che indichiamo con $c^{1-\frac{\lambda}{q}}$, dato che $A$ è limitato in $\sobW[1,p]{\Omega}$.
-    Data la compattezza relativa di $A$ in $\leb[1]{\Omega}$, inoltre,
+    Per il medesimo teorema $\norm{u}_\frac{np}{n-p}\le\norm{u}_{1,p}$, e dato che $A$ è limitato in $\sobW[1,p]{\Omega}$ si ha che
     \begin{equation}
-        \norm{u}_q\le\norm{u}_1^\frac{\lambda}{q}\norm{u}_\frac{np}{n-p}^{1-\frac{\lambda}{q}}.
+        \norm{u}_q\le C\norm{u}_1^\alpha
     \end{equation}
-    Dalla \eqref{eq:dim-rellich-kondrachov-lambda}, siccome $\frac{np}{n-p}>1$, troviamo che
+    Dalla \eqref{eq:dim-rellich-kondrachov-lambda}, siccome vale sempre $\frac{np}{n-p}>1$, troviamo che
     \begin{equation}
-        \lambda=\frac{1-\frac{n-p}{np}q}{1-\frac{n-p}{np}}>0
+        \begin{gathered}
+            \alpha\ge 0
+            \qtext{se}
+            q\le\frac{np}{n-p}\\
+            \alpha\le 1
+            \qtext{se}
+            q>1.
+        \end{gathered}
     \end{equation}
-    solo se $\frac{n-p}{np}q>1$ vale a dire $q<\frac{np}{n-p}$.
-    Imponendo dunque che $\lambda<q$ risulta inoltre che
-    \begin{equation}
-        \frac{1-\frac{n-p}{np}q}{1-\frac{n-p}{np}}<q
-        \qqq
-        1-q\frac{n-p}{np}<q\biggl(1-\frac{n-p}{np}\biggr)
-        \qqq
-        q>1.
-    \end{equation}
-    Ora, per ogni $\epsilon>0$, esiste $N\in\N$ tale che $\forall n,m>N$ si ha $\norm{u_n-u_m}_1<\epsilon$, siccome $\{u_n\}$ è di Cauchy in $\leb[1]{\Omega}$, perciò
+    Ora, per ogni $\eta>0$, esiste $N\in\N$ tale che $\forall n,m>N$ si ha $\norm{u_n-u_m}_1<\eta$, siccome $\{u_n\}$ è di Cauchy in $\leb[1]{\Omega}$, perciò
     \begin{equation}
         \norm{u_n-u_m}_q\le
-        \norm{u_n-u_m}_1^\frac{\lambda}{q}\norm{u_n-u_m}_\frac{np}{n-p}^{1-\frac{\lambda}{q}}<\epsilon^\frac{\lambda}{q}c^{1-\frac{\lambda}{q}}
+        \norm{u_n-u_m}_1^\alpha\norm{u_n-u_m}_\frac{np}{n-p}^{1-\alpha}<\eta^\alpha C
     \end{equation}
-    che prova che $\{u_n\}$ è di Cauchy anche in $\leb[q]{\Omega}$, quindi converge a un $u\in\leb[q]{\Omega}$.
+    e se $\alpha\ne 0$ (questo esclude quindi il caso $q=\frac{np}{n-p}$) ciò prova che $\{u_n\}$ è di Cauchy anche in $\leb[q]{\Omega}$, quindi converge a un $u\in\leb[q]{\Omega}$.
 \end{proof}
 
 \begin{teorema}[Disuguaglianza di Poincar\'e] \label{t:disuguaglianza-poincare}
@@ -663,28 +679,39 @@ Si veda \cite[p.~630]{evans} per le dimostrazioni di questi risultati.
     \end{equation}
 \end{teorema}
 \begin{proof}
-    Sia $u\in\contsc[1]{\Omega}$: posto $\vec x=(\vec x',x_n)\in\R^{n-1}\times\R$, con $\abs{x_n}\le L$ per un $L>0$, risulta che
+    Se $u=0$ la tesi è ovvia, quindi assumiamo $u\ne 0$: sia $u\in\contsc[1]{\Omega}$, e posto $\vec x=(\vec x',x_n)\in\R^{n-1}\times\R$, con $\abs{x_n}\le L$ per un $L>0$, risulta che
     \begin{multline}
         \abs{u(\vec x',x_n)}^2=
-        \int_{-L}^{x_n}\drp{u}{x_n}\abs{u(\vec x',x_n)}^2\,\dd x_n=
-        2\int_{-L}^{x_n}\biggl[u(\vec x',t)\drp{u}{t}(\vec x',t)\biggr]\,\dd t\le\\ \le
+        \int_{-L}^{x_n}\drp{u}{t}\abs{u(\vec x',t)}^2\,\dd t=
+        2\int_{-L}^{x_n}u(\vec x',t)\drp{u}{t}(\vec x',t)\,\dd t\le\\ \le
         2\int_{-L}^{x_n}\abs[\bigg]{u(\vec x',t)\drp{u}{t}(\vec x',t)}\,\dd t\le
         2\int_{-L}^L\abs{u(\vec x',t)}\abs[\bigg]{\drp{u}{t}(\vec x',t)}\,\dd t.
     \end{multline}
     Integriamo in $x_n\in[-L,L]$, ottenendo
     \begin{equation}
-        \int_{-L}^L\abs{u(\vec x',x_n)}^2\,\dd x_n\le
-        2\int_{-L}^L\int_{-L}^L\abs{u(\vec x',t)}\abs[\bigg]{\drp{u}{t}(\vec x',t)}\,\dd t\,\dd x_n=
-        4L\int_{-L}^L\abs{u(\vec x',t)}\abs[\bigg]{\drp{u}{t}(\vec x',t)}\,\dd t,
+        \begin{split}
+            \int_{-L}^L\abs{u(\vec x',x_n)}^2\,\dd x_n&\le
+            2\int_{-L}^L\int_{-L}^L\abs{u(\vec x',t)}\abs[\bigg]{\drp{u}{t}(\vec x',t)}\,\dd t\,\dd x_n=\\ &=
+            2\int_{-L}^L\dd x_n \int_{-L}^L\abs{u(\vec x',t)}\abs[\bigg]{\drp{u}{t}(\vec x',t)}\,\dd t=\\ &=
+            4L\int_{-L}^L\abs{u(\vec x',t)}\abs[\bigg]{\drp{u}{t}(\vec x',t)}\,\dd t,
+        \end{split}
     \end{equation}
     e poi su tutte le altre variabili:
     \begin{equation}
-        \begin{aligned}
-            \int_{R^{n-1}}\int_{-L}^L\abs{u(\vec x',x_n)}^2\,\dd x_n &\le 4L\int_{-L}^L\abs{u(\vec x',t)}\abs[\bigg]{\drp{u}{t}(\vec x',t)}\,\dd t\\
-            \int_\Omega\abs{u}^2\,\dd\mu                             &\le 4L\int_\Omega\abs{u}\abs[\bigg]{\drp{u}{t}}\,\dd\mu.
-        \end{aligned}
+        \int_{\R^{n-1}}\int_{-L}^L\abs{u(\vec x',x_n)}^2\,\dd x_n\le 4L\int_{-L}^L\abs{u(\vec x',t)}\abs[\bigg]{\drp{u}{t}(\vec x',t)}\,\dd t
     \end{equation}
-    Con la disuguaglianza di Cauchy-Schwarz l'ultimo integrale, che è il prodotto interno in $\sobH[1]{\Omega}$ di $\abs{u}$ e $\abs{\drp{u}{t}}$, è minore o uguale di $\norm{u}_2\norm{\grad u}_2$, per cui si ha $\norm{u}_2^2\le 4L\norm{u}_2\norm{\grad u}_2$, da cui $\norm{u}_2\le 4L\norm{\grad u}_2$ che prova la tesi.
+    da cui, siccome $\supp u\subset\Omega$, segue
+    \begin{equation}
+        \int_\Omega\abs{u}^2\,\dd\mu\le 4L\int_\Omega\abs{u}\abs[\bigg]{\drp{u}{t}}\,\dd\mu.
+    \end{equation}
+    Con la disuguaglianza di Cauchy-Schwarz si ha infine che
+    \begin{equation}
+        \int_\Omega\abs{u}\abs[\bigg]{\drp{u}{t}}\,\dd\mu\le
+        \biggl(\int_\Omega\abs{u}^2\,\dd\mu\biggr)^\frac12\biggl(\int_\Omega\abs[\bigg]{\drp{u}{t}}^2\,\dd\mu\biggr)^\frac12\le
+        \biggl(\int_\Omega\abs{u}^2\,\dd\mu\biggr)^\frac12\biggl(\int_\Omega\norm{\grad u}^2\,\dd\mu\biggr)^\frac12=
+        \norm{u}_2\norm{\grad u}_2
+    \end{equation}
+    per cui si ha $\norm{u}_2^2\le 4L\norm{u}_2\norm{\grad u}_2$, da cui $\norm{u}_2\le 4L\norm{\grad u}_2$ che prova la tesi.
 \end{proof}
 Se la funzione $u$ non è tale che $\clos{\supp u}\subset\Omega$, allora questa disuguaglianza non può essere vera, come dimostra subito l'esempio di una funzione costante: prendiamo $u=1$ e $\Omega=(0,1)$, per esempio.
 Vale invece, più in generale e anche in questi casi, la \emph{disuguaglianza di Wirtinger}
