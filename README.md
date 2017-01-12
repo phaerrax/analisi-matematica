@@ -26,7 +26,6 @@ Alla prima compilazione, bisogna generare i file della bibliografia di `biblatex
 È necessario anche creare una sottocartella chiamata `tex` nella cartella principale: `pgfplots`, con l'opzione `externalize` impostata nel preambolo del file principale, compila i grafici solo alla prima occasione, e li salva in formato PDF nella cartella `tex`, per riutilizzarli le volte successive (salvo modifiche al loro codice).
 Una compilazione senza aver creato la cartella `tex` dovrebbe arrestarsi in breve tempo con qualche errore.
 Trovandosi nella cartella principale, eseguire
-
 ```bash
 mkdir -p tex
 pdflatex -shell-escape analisi-matematica
@@ -36,17 +35,14 @@ pdflatex -shell-escape analisi-matematica
 ```
 
 Le volte successive, se il file `analisi-matematica.bib` non è stato modificato e non sono state aggiunte citazioni (in tal caso, ripetere i passaggi precedenti), è sufficiente un unico passaggio:
-
 ```bash
 pdflatex -shell-escape analisi-matematica
 ```
-
 ripetuto eventualmente una seconda volta per sistemare riferimenti interni.
 
 ##### Requisiti
 Per poter compilare il documento è necessario ovviamente avere installato tutti i pacchetti di LaTeX elencati nel file di stile e le applicazioni di base per compilare.
 Se usate una distribuzione TeX Live per sistemi basati su Debian è sufficiente installare i pacchetti
-
 ```
 texlive-base
 texlive-bibtex-extra
@@ -65,4 +61,14 @@ texlive-science
 biber
 gnuplot
 ```
-
+mentre per sistemi basati su Arch Linux sono sufficienti
+```
+texlive-bibtexextra
+texlive-bin
+texlive-core
+texlive-latexextra
+texlive-pictures
+texlive-science
+biber
+gnuplot
+```
